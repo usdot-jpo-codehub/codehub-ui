@@ -1,0 +1,48 @@
+language: node_js
+node_js: 4.4.3
+cache:
+  directories: node_modules
+env:
+  global:
+  - secure: Ch1QMswEx5wTrgn/TwEFjbMd7p2di9p7NgGTff43EcambfqZeP+NqQQ+RI+fnSXeJWLxrUopSVXZi+CIJEtey4B92lo6J+HetspzVvLygcdenpFzrB4PYiA6YQXj1V/MFzDHZQ75WbgaqWLeuQjR+XteTnWqI8Nd47xbehRELCn4LHsCX82+Ay3s1Ygc0pgwWv526yfmUt4oPj+dPv62KpHkL0tgBm/rcPQgKfJr3P+m5HkL7Mxl4j063KNOe1VksUgZCgdBe9QiVzKrUjPv7zCD2FKHQ/htsjAMATIi8fikL2din8KwAjRCeZ1H1cZMtANeAPyngUQoSrjUi40rUCe49cam2YddYxL00QcelizjR6gR6I9v2J+9jUVHumSbYR8/Z5ol+r3rNOB0IrfMIwdYVgWVRS1LqLMAw0GiUwqin1fi///lmH83LldIPLtT/AODi4Y2virO3+s5JmCJrxK3oQnHRFeEeH9ntUXcQ/YuHpjom2kjDuJifR6XOwPlT2Toap+EMBnagY0lyv/Lap+ENedjXzgVXbgSvINHpGCEyCIY6/2D1yOBnh37cPp7ChMcOtSdZQbqGgRvRlaoZ0xkFmeBSvBQybf5/awh+uaAa2plcXN+y8vAz47lwEjol67ewjNPa5l/cg04pB9WQ94LnNndZSpX1dkdwaJ7KGc=
+install:
+- npm install -g gulp
+- npm install -g jspm
+- npm install -g coveralls
+- npm install
+- jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
+- jspm install -y
+script:
+- gulp build
+- npm prune --production
+before_deploy:
+- zip -rq heimdall-uiapp-1.0.0.zip *
+- mkdir -p dpl_cd_upload
+- mv heimdall-uiapp-1.0.0.zip dpl_cd_upload/heimdall-uiapp-1.0.0.zip
+deploy:
+- provider: s3
+  access_key_id: &1
+    secure: H7rmUJ5whdHk2U6oQtRtmshtgsWK4r0xDM8SOSnKsIA9FSk0/F4/6Y8AAOAZ7iOV/uuxDUnme+gUJiTEXIdWaRgSufKMwZ5mP7CJBjhpB0zGIzquCEh8EArqJ60FYFhbrB7dtVgbnHuoriPbdmgN7p80eGivRho2KIme5K6KCEZmejQXqlCpFWYcBz1bEYGX5v7cA6Dq9igy3gDD08Ev+8+r4V2GhNCJjRkgjFBSE7lATrWuYbeW1/7mVyXAaKxM5IJ8lCvJ+fWVmJeC5hs5U4I5giFmEpaKQXiYkHHai6ws5YWTKEpX/Kny/ZY+EUA8+vf55FXK0F+NF19J4Vdg9VOjm8fTKzYm0D7W7fQvysjtkhCsDhKcbGT9t8ES2YhA3WQdeUiRSb9pvXApXp/oImQhGE0ydR+JtxUsc/oiS2TFK2I6kDpybliMic476jEMXyXxPCMIDLzRSU4C1rjVgO0KzWAyHhe2Y4m2t4H6r8Hh/ZD4lcyYultyaJCWV1pRzpkq8VkwdBd3hOapFrXe96hM7Xp5E7qxHebOnWd/+QhEkHKn+lg9lW0fs7YlR+BdWNzeHKWPhHBFaOZ0ZQgT/GuvCuspr2XmLfmpqIkTGCD4qXKnwkLjNd5vrG4HtbbHRUp/yd/gIi1nfqxlOCg8cRvM46LsH4jOFwU1cAmx4PE=
+  secret_access_key: &2
+    secure: AOOkHkiYBsk/6OztBNIBz4bGOU9P8sXVVQo+F12Ku00xd3fUTT9yz9xTy6umz8s2/5fUd2zRnJKlBPeENFIZm9lXdXXQho7USotfnMZw3c7sOGPljv69NCpZ5fsGVtFptdbEsk1BJ7NQr+4Fs0ku/R6HAQyvcywAKgP5CwoHx7Poe0ICxcpc34GA3ZJsFEVJZh+CAB0W/j3H8I/1DWBkQcOss2zIJ65kpM7gCsU9QSKKPt1mRLcpH10kDTeX1MQ2I1IH+hT7QiewX37Fv5QZ3A0GgGac6fcEYVlVt+uE3eujYGWKEd3sAgXDMr+smyPbLUKEZo3FSm+DxeXJfAafhycnY5FB78QXH+ZEnIhxV9EPpUgFZ0ZpquVG132XBqggM28aliSeFuINS6yf1JMCiAYflXCuV25mqrhWSVjTCafjpyxa1s866RUQDJuuoS1Zp8R1hgFP0dZDNWEEG7fC3ZhIs8Iy9bYV7z1ZNUWxNSPm7JrOSTRflipQNLAvIE7JbYyJaWw8NntjB8YSOoewceVUimR40jMsd9pgXBgA2dmZ3T34hmRUAdnGJJq3IY+8lLW8To5LUE3bQuxFa5NI/oDvK+Q97NJXloJXBkvI2gDdlXBuoYGz6TxbjZNwl0Nh+nPFBPSJaCWIIlqct5xqBr9sp+TtoNKSWC8h4VHQ2bw=
+  local_dir: dpl_cd_upload
+  on: &3
+    repo: Project-Heimdall/heimdall-uiapp
+    branch: master
+  bucket: codedeploy-heimdall-uiapp
+  region: us-west-2
+  skip_cleanup: true
+- provider: codedeploy
+  access_key_id: *1
+  secret_access_key: *2
+  bucket: codedeploy-heimdall-uiapp
+  key: heimdall-uiapp-1.0.0.zip
+  bundle_type: zip
+  application: CodeDeploy-Heimdall-UIApp
+  deployment_group: CodeDeploy-HeimdallWebapp-Group
+  region: us-east-1
+  on: *3
+  skip_cleanup: true
+notifications:
+  slack:
+    secure: UQ8y/1HLzbSakJ4YFSZE+yv57VR/Jk2Oab8bKsO36OBM92YKdmYCZqbqesKxKhFOunBmEW2oxXGcN0TmxfCwiR3j6rPTZbsjvyH1xoK1gzrJpk8VmNMIk+LOf3n+1YoScEwFHbalz3df5UNgWd4D02H8WpiVnaNJ7gb+YoxrKYke+vfRc9Q5NKOM8XjEGX4yOfDtKwPIlvDu91jBPA//SFSMZdelVN/gmo2u7MMrE7bJd/hqzG6d53voksqCZ+J+999X6KRxXeTXww0G3rkD13azVEYciTgG96boB/xCu81wHe2gamDLk4cM2IeuBKRPzcern2aB7C2EkycL9raxchs7CGxI7wKTHM4ytOiJFNf6KPy6/BlOJZl9nD85DDTNIdBH9dS48/dmZEO/MYzecSHCquWOPsiTNEIow4sicYI4VJKOj8Zk3Fvi9w3xN2hUztS5Pd0u4AE+gKwNcljj3llkU+H1BRM6h8SZxmTIdJGBOcrN1m9YNJTk7ZEsa6HsfeUjGJuAb9XStJMHNlNU3hixmTYZqsqPp91V7Swv11WM4EVCowTJoP1l0Jo7WkTTKHC9MaJhrbJzjmFE1dHkK+qFagqWPCsFX8Su0KsXUWO/+Mm1swR59bNB1FW62V5GDVulktXaE5R6dTyCPFPMIgnhzJxoNgmwYJ8Stt0il4U=

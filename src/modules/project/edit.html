@@ -1,0 +1,45 @@
+<template>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <h3>Editing ${project.name}</h3>
+            </div>
+            <button class="btn btn-info"
+            click.delegate="goBack()">
+            Back
+            </button>
+            <button class="btn btn-info"
+            click.delegate="cancel()"
+            disabled.bind="isUnchanged">
+            Cancel
+            </button>
+            <button class="btn btn-info"
+            click.delegate="save()"
+            disabled.bind="isUnchanged">
+            Save
+            </button>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal"
+        validate.bind="validation">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+                <input type="text" placeholder="Name"  class="form-control"
+                value.bind="project.name" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-10">
+                <input type="text" placeholder="Description" class="form-control"
+                value.bind="project.description" />
+            </div>
+        </div>
+    </form>
+            <!-- disabled.bind="!validation.result.isValid" -->
+        </div>
+    </div>
+</div>
+</template>
