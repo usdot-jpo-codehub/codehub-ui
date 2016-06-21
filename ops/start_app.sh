@@ -1,1 +1,1 @@
-nginx
+sudo nginx
