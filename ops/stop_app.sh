@@ -1,1 +1,1 @@
-sudo nginx -s quit
+nginx -s quit
