@@ -1,2 +1,2 @@
 # Remove all previously installed app files.
-sudo rm -rf /opt/heimdall
+rm -rf /opt/heimdall
