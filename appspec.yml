@@ -78,33 +78,29 @@ hooks:
 #   in the script specified in "location" starting from the root of the
 #   revision's file bundle.
 ApplicationStop:
-  - location: ops/stop_app.sh
+  - location: opss/stop_app.sh
     timeout: 300
-    runas: root
 #    - location:
 #      timeout:
 #      runas:
 # During the BeforeInstall deployment lifecycle event, run the commands
 #   in the script specified in "location".
 BeforeInstall:
-  - location: ops/clean_app_files.sh
+  - location: opss/clean_app_files.sh
     timeout: 60
-    runas: root
 #    - location:
 #      timeout:
 #      runas:
 # During the AfterInstall deployment lifecycle event, run the commands
 #   in the script specified in "location".
 AfterInstall:
-  - location: ops/install_dependencies.sh
+  - location: opss/install_dependencies.sh
     timeout: 300
-    runas: root
 # During the ApplicationStart deployment lifecycle event, run the commands
 #   in the script specified in "location".
 ApplicationStart:
-  - location: ops/start_app.sh
+  - location: opss/start_app.sh
     timeout: 300
-    runas: root
 # During the ValidateService deployment lifecycle event, run the commands
 #   in the script specified in "location".
 #  ValidateService:
