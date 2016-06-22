@@ -8,32 +8,32 @@ env:
   - HEIMDALL_VERSION_NUMBER=1.0.0
   - HEIMDALL_PACKAGE_NAME=heimdall-uiapp-$HEIMDALL_VERSION_NUMBER.$TRAVIS_BUILD_NUMBER-$TRAVIS_BRANCH-$TRAVIS_NODE_VERSION.zip
 install:
-# - npm install -g gulp
-# - npm install -g jspm
-# - npm install -g coveralls
-# - npm install
-# - jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
-# - jspm install -y
+- npm install -g gulp
+- npm install -g jspm
+- npm install -g coveralls
+- npm install
+- jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
+- jspm install -y
 script:
-# - gulp build
-# - npm prune --production
+- gulp build
+- npm prune --production
 before_deploy:
 - zip -rq $HEIMDALL_PACKAGE_NAME *
 - mkdir -p dpl_cd_upload
 - mv $HEIMDALL_PACKAGE_NAME dpl_cd_upload/$HEIMDALL_PACKAGE_NAME
-# deploy:
-# - provider: s3
-#   access_key_id: &1
-#     secure: KRaLbFj2S733jLaLcyu6zACwFVE1z3S4ADHLFctUto4lg2cVLMh59j84F546z0V4fSf8tYyynX/wMluNDGuTlqb/p/i5ZbaFF0mI+d2RTSqpNNkfGTJgd+C3oet9dFUJMA0kEbBeNH99d69P1nHqIzlVDWZAhZqgIySCAvaT9CIDCRwAe8CywknYIuvGhtLC7tdgIiGy8uWYma5LuGARQZCdftSSy7mZmGWzTEsCWByvIjtEBLzUVO7dFivT002M4BozG8epfXJ8VTYnIy4SkLrNtz3QF6xfsFnve628dmNeq+eY0i41kY2bRyUxTiu73EVf4WhV9YEue/Ftm2QiHJ5qKnbs+G6AuKSmtYvb5Ch5xwjaQdN6AeaW6acTdy9yAaEkCIPk+/3un4idHGoUkzE1zbfC8RC5IsYE5JCZy8t5PdFW1VER4m4knfIi/PXjY4hGRGOL61nzwepP+FQ/WwiKvhOLifGqklj49Ujc+R2KspaN5yrf72riXiXrIePkEohsvIvRuGPgCRZzMkGL/NRFTkG2Ob6Z2gSUgbfEZZmrgPTJLnQpkGhl27jvUsL77n+kAis//9ZTdZ8fXeEb0cRRzv6cLRG3WmY+uHEeH3WQphK7V/WhSvRvZDOO9RDyOPclyNZ6L29dA+z71Jciha1388e+Kuo1/U0C6mjnvL8=
-#   secret_access_key: &2
-#     secure: PIEYDBX2Zh6Bh6amt4pJ/HtXFKQ/prQpOSGxKCYpm8sGaNbsdp8HTyX/x+lNUeSt131S+YPZFar/l9v73LbJ30ySvfCv7DV8HkozSjurhsYW0hR+f61JyANq98Od9bi3h3zG+UdDECrO0JnVvL6D5bYCrAEQM//AYrotrjbF6lzWSBvpUjTKCeSWK7qm2ykLyOfVVm5kCSVuaaLSZCF2q4avxPTgQzwAM3lyXtOCvdKA4ynEZQNnBve2cWSw9VT7pEqRXpt45S2e3y2NOa7dscx3WOfpTroZeX6kUXkcHSqC45ZI0uyM6FK+/5j+hXWkhPb9BhPKBiLSHKIRKHGAFrq5HNSHvC24EO+wPFzZ0tE07jyMNqRyL+bSxsfIdy7wbOqysTw7PvG8ialpZVsRisRjk5kelcQ+2GciIkNjlnoUniirhYKtGZyRqDXvpriHd1JYyvQr4BnZEti5XEfp0CmRANdVqQUiHdWBx0MSGF86vQGcBmh863DYEWS8AieB6Gxk9zKnHRMq21N52Q17v8rK+YovZ857Pbss42eyJTL0VNeRhjkXYHOTx/3OLyenoVL3y6nqnRkXmfdT/9fgOO9e23J1yBttxY+ZJ1W6ElBod8wnW3GWXhxDR+rUSR2PvgQseIVZbehoNa51v1Xrg86xP4/S60v/5KfIrxcrcmQ=
-#   local_dir: dpl_cd_upload
-#   on: &3
-#     repo: Project-Heimdall/heimdall-uiapp
-#     branch: master
-#   bucket: codedeploy-heimdall-uiapp
-#   region: us-west-2
-#   skip_cleanup: true
+deploy:
+- provider: s3
+  access_key_id: &1
+    secure: KRaLbFj2S733jLaLcyu6zACwFVE1z3S4ADHLFctUto4lg2cVLMh59j84F546z0V4fSf8tYyynX/wMluNDGuTlqb/p/i5ZbaFF0mI+d2RTSqpNNkfGTJgd+C3oet9dFUJMA0kEbBeNH99d69P1nHqIzlVDWZAhZqgIySCAvaT9CIDCRwAe8CywknYIuvGhtLC7tdgIiGy8uWYma5LuGARQZCdftSSy7mZmGWzTEsCWByvIjtEBLzUVO7dFivT002M4BozG8epfXJ8VTYnIy4SkLrNtz3QF6xfsFnve628dmNeq+eY0i41kY2bRyUxTiu73EVf4WhV9YEue/Ftm2QiHJ5qKnbs+G6AuKSmtYvb5Ch5xwjaQdN6AeaW6acTdy9yAaEkCIPk+/3un4idHGoUkzE1zbfC8RC5IsYE5JCZy8t5PdFW1VER4m4knfIi/PXjY4hGRGOL61nzwepP+FQ/WwiKvhOLifGqklj49Ujc+R2KspaN5yrf72riXiXrIePkEohsvIvRuGPgCRZzMkGL/NRFTkG2Ob6Z2gSUgbfEZZmrgPTJLnQpkGhl27jvUsL77n+kAis//9ZTdZ8fXeEb0cRRzv6cLRG3WmY+uHEeH3WQphK7V/WhSvRvZDOO9RDyOPclyNZ6L29dA+z71Jciha1388e+Kuo1/U0C6mjnvL8=
+  secret_access_key: &2
+    secure: PIEYDBX2Zh6Bh6amt4pJ/HtXFKQ/prQpOSGxKCYpm8sGaNbsdp8HTyX/x+lNUeSt131S+YPZFar/l9v73LbJ30ySvfCv7DV8HkozSjurhsYW0hR+f61JyANq98Od9bi3h3zG+UdDECrO0JnVvL6D5bYCrAEQM//AYrotrjbF6lzWSBvpUjTKCeSWK7qm2ykLyOfVVm5kCSVuaaLSZCF2q4avxPTgQzwAM3lyXtOCvdKA4ynEZQNnBve2cWSw9VT7pEqRXpt45S2e3y2NOa7dscx3WOfpTroZeX6kUXkcHSqC45ZI0uyM6FK+/5j+hXWkhPb9BhPKBiLSHKIRKHGAFrq5HNSHvC24EO+wPFzZ0tE07jyMNqRyL+bSxsfIdy7wbOqysTw7PvG8ialpZVsRisRjk5kelcQ+2GciIkNjlnoUniirhYKtGZyRqDXvpriHd1JYyvQr4BnZEti5XEfp0CmRANdVqQUiHdWBx0MSGF86vQGcBmh863DYEWS8AieB6Gxk9zKnHRMq21N52Q17v8rK+YovZ857Pbss42eyJTL0VNeRhjkXYHOTx/3OLyenoVL3y6nqnRkXmfdT/9fgOO9e23J1yBttxY+ZJ1W6ElBod8wnW3GWXhxDR+rUSR2PvgQseIVZbehoNa51v1Xrg86xP4/S60v/5KfIrxcrcmQ=
+  local_dir: dpl_cd_upload
+  on: &3
+    repo: Project-Heimdall/heimdall-uiapp
+    branch: master
+  bucket: codedeploy-heimdall-uiapp
+  region: us-west-2
+  skip_cleanup: true
 # - provider: codedeploy
 #   access_key_id: *1
 #   secret_access_key: *2
