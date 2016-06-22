@@ -1,5 +1,6 @@
 <template>
   <require from="./search-project-favorites"></require>
+  <require from="./../../../../styles/search-results.css"></require>
   <div class="container-fluid bg_main">
     <div class="row">
       <search-project-favorites></search-project-favorites>
@@ -11,599 +12,549 @@
     </div>
 
     <div class="row">
+      <div class="col-lg-12"><p>We've found 10 results!</p></div>
+
       <div class="col-lg-12">
-        <p>We've found 10 results!</p>
+        <a route-href="route:project-details-popular" class="card card-link card-search">
+          <div class="card-header clearfix">
+            <h2 class="card-title pull-left">
+              <i class="fa fa-code fa-lg card-icon code"></i>
+              <span class="repo-name">Booz Allen/18F <small><i class="fa fa-certificate"></i></small></span>
+            </h2>
+            <small class="pull-right">
+              <ul class="list-inline pull-right">
+                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                  </span>
+                </li>
+              </ul>
+            </small>
+          </div>
+
+          <div class="card-content">
+            <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
+          </div>
+
+          <div class="card-footer clearfix">
+            <ul class="list-inline pull-right">
+              <li><i class="octicon octicon-markdown"></i> Readme</li>
+              <li><i class="octicon octicon-file"></i> Build File</li>
+              <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/docker.svg"> Dockerfile</li>
+              <li><img class="project-icon vargant-icon" alt="JavaScript Icon" src="../../../../img/logos/vagrant.svg"> Vagrantfile</li>
+            </ul>
+          </div>
+        </a>
       </div>
-      <!-- <div repeat.for="repo of projects"> -->
-        <div class="col-lg-12">
-          <div class="card card-link card-search">
-            <div class="card-header">
-              <h2 class="card-title clearfix">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">18F</span>
-                <small>
-                  <ul class="list-inline pull-right">
-                    <li><img class="project-icon" alt="HTML5 Icon" src="../../img/logos/html5.svg"></li>
-                    <li><img class="project-icon" alt="JavaScript Icon" src="../../img/logos/javascript.svg"></li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-code"></i> <span class="text-uppercase">Lines of Code:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                      </span>
-                    </li>
-                  </ul>
-                </small>
-              </h2>
-            </div>
 
-            <div class="card-content">
-              <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
-            </div>
-            <div class="card-footer">
+      <div class="col-lg-12">
+        <a route-href="route:project-details-popular" class="card card-link card-search">
+          <div class="card-header clearfix">
+            <h2 class="card-title pull-left">
+              <i class="fa fa-code fa-lg card-icon code"></i>
+              <span class="repo-name">Booz Allen/18F</span>
+            </h2>
+            <small class="pull-right">
               <ul class="list-inline pull-right">
-                <li><a href="#"><img class="project-icon" alt="Bootstrap" src="img/logos/bootstrap.svg"> Bootstrap</a></li>
-                <li><a href="#"><img class="project-icon" alt="Docker" src="img/logos/docker.svg"> Docker</a></li>
-                <li><a href="#"><img class="project-icon" alt="Vagrant" src="img/logos/vagrant.svg"> Vargantfile</a></li>
-                <li><a href="#"><img class="project-icon" alt="Jasmine" src="img/logos/jasmine.svg"> Jasmine</a></li>
+                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                  </span>
+                </li>
               </ul>
-            </div>
-          </div>    
-        </div>
+            </small>
+          </div>
 
-        <div class="col-lg-12">
-          <div class="card card-search">
-            <div class="card-header">
-              <h2 class="card-title clearfix">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">18F</span>
-                <small>
-                  <ul class="list-inline pull-right">
-                    <li><img class="project-icon" alt="HTML5 Icon" src="../../img/logos/html5.svg"></li>
-                    <li><img class="project-icon" alt="JavaScript Icon" src="../../img/logos/javascript.svg"></li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-code"></i> <span class="text-uppercase">Lines of Code:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                      </span>
-                    </li>
-                  </ul>
-                </small>
-              </h2>
-            </div>
+          <div class="card-content">
+            <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
+          </div>
 
-            <div class="card-content">
-              <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
-            </div>
-            <div class="card-footer">
+          <div class="card-footer clearfix">
+            <ul class="list-inline pull-right">
+              <li><i class="octicon octicon-markdown"></i> Readme</li>
+              <li><i class="octicon octicon-file"></i> Build File</li>
+              <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/docker.svg"> Dockerfile</li>
+              <li><img class="project-icon vargant-icon" alt="JavaScript Icon" src="../../../../img/logos/vagrant.svg"> Vagrantfile</li>
+            </ul>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-lg-12">
+        <a route-href="route:project-details-popular" class="card card-link card-search">
+          <div class="card-header clearfix">
+            <h2 class="card-title pull-left">
+              <i class="fa fa-code fa-lg card-icon code"></i>
+              <span class="repo-name">Booz Allen/18F</span>
+            </h2>
+            <small class="pull-right">
               <ul class="list-inline pull-right">
-                <li><a href="#"><img class="project-icon" alt="Bootstrap" src="img/logos/bootstrap.svg"> Bootstrap</a></li>
-                <li><a href="#"><img class="project-icon" alt="Docker" src="img/logos/docker.svg"> Docker</a></li>
-                <li><a href="#"><img class="project-icon" alt="Vagrant" src="img/logos/vagrant.svg"> Vargantfile</a></li>
-                <li><a href="#"><img class="project-icon" alt="Jasmine" src="img/logos/jasmine.svg"> Jasmine</a></li>
+                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                  </span>
+                </li>
               </ul>
-            </div>
-          </div>    
-        </div>
+            </small>
+          </div>
 
-        <div class="col-lg-12">
-          <div class="card card-search">
-            <div class="card-header">
-              <h2 class="card-title clearfix">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">18F</span>
-                <small>
-                  <ul class="list-inline pull-right">
-                    <li><img class="project-icon" alt="HTML5 Icon" src="../../img/logos/html5.svg"></li>
-                    <li><img class="project-icon" alt="JavaScript Icon" src="../../img/logos/javascript.svg"></li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-code"></i> <span class="text-uppercase">Lines of Code:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                      </span>
-                    </li>
-                  </ul>
-                </small>
-              </h2>
-            </div>
+          <div class="card-content">
+            <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
+          </div>
 
-            <div class="card-content">
-              <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
-            </div>
-            <div class="card-footer">
+          <div class="card-footer clearfix">
+            <ul class="list-inline pull-right">
+              <li><i class="octicon octicon-markdown"></i> Readme</li>
+              <li><i class="octicon octicon-file"></i> Build File</li>
+              <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/docker.svg"> Dockerfile</li>
+              <li><img class="project-icon vargant-icon" alt="JavaScript Icon" src="../../../../img/logos/vagrant.svg"> Vagrantfile</li>
+            </ul>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-lg-12">
+        <a route-href="route:project-details-popular" class="card card-link card-search">
+          <div class="card-header clearfix">
+            <h2 class="card-title pull-left">
+              <i class="fa fa-code fa-lg card-icon code"></i>
+              <span class="repo-name">Booz Allen/18F</span>
+            </h2>
+            <small class="pull-right">
               <ul class="list-inline pull-right">
-                <li><a href="#"><img class="project-icon" alt="Bootstrap" src="img/logos/bootstrap.svg"> Bootstrap</a></li>
-                <li><a href="#"><img class="project-icon" alt="Docker" src="img/logos/docker.svg"> Docker</a></li>
-                <li><a href="#"><img class="project-icon" alt="Vagrant" src="img/logos/vagrant.svg"> Vargantfile</a></li>
-                <li><a href="#"><img class="project-icon" alt="Jasmine" src="img/logos/jasmine.svg"> Jasmine</a></li>
+                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                  </span>
+                </li>
               </ul>
-            </div>
-          </div>    
-        </div>
+            </small>
+          </div>
 
-        <div class="col-lg-12">
-          <div class="card card-search">
-            <div class="card-header">
-              <h2 class="card-title clearfix">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">18F</span>
-                <small>
-                  <ul class="list-inline pull-right">
-                    <li><img class="project-icon" alt="HTML5 Icon" src="../../img/logos/html5.svg"></li>
-                    <li><img class="project-icon" alt="JavaScript Icon" src="../../img/logos/javascript.svg"></li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-code"></i> <span class="text-uppercase">Lines of Code:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                      </span>
-                    </li>
-                  </ul>
-                </small>
-              </h2>
-            </div>
+          <div class="card-content">
+            <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
+          </div>
 
-            <div class="card-content">
-              <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
-            </div>
-            <div class="card-footer">
+          <div class="card-footer clearfix">
+            <ul class="list-inline pull-right">
+              <li><i class="octicon octicon-markdown"></i> Readme</li>
+              <li><i class="octicon octicon-file"></i> Build File</li>
+              <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/docker.svg"> Dockerfile</li>
+              <li><img class="project-icon vargant-icon" alt="JavaScript Icon" src="../../../../img/logos/vagrant.svg"> Vagrantfile</li>
+            </ul>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-lg-12">
+        <a route-href="route:project-details-popular" class="card card-link card-search">
+          <div class="card-header clearfix">
+            <h2 class="card-title pull-left">
+              <i class="fa fa-code fa-lg card-icon code"></i>
+              <span class="repo-name">Booz Allen/18F</span>
+            </h2>
+            <small class="pull-right">
               <ul class="list-inline pull-right">
-                <li><a href="#"><img class="project-icon" alt="Bootstrap" src="img/logos/bootstrap.svg"> Bootstrap</a></li>
-                <li><a href="#"><img class="project-icon" alt="Docker" src="img/logos/docker.svg"> Docker</a></li>
-                <li><a href="#"><img class="project-icon" alt="Vagrant" src="img/logos/vagrant.svg"> Vargantfile</a></li>
-                <li><a href="#"><img class="project-icon" alt="Jasmine" src="img/logos/jasmine.svg"> Jasmine</a></li>
+                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                  </span>
+                </li>
               </ul>
-            </div>
-          </div>    
-        </div>
+            </small>
+          </div>
 
-        <div class="col-lg-12">
-          <div class="card card-search">
-            <div class="card-header">
-              <h2 class="card-title clearfix">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">18F</span>
-                <small>
-                  <ul class="list-inline pull-right">
-                    <li><img class="project-icon" alt="HTML5 Icon" src="../../img/logos/html5.svg"></li>
-                    <li><img class="project-icon" alt="JavaScript Icon" src="../../img/logos/javascript.svg"></li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-code"></i> <span class="text-uppercase">Lines of Code:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                      </span>
-                    </li>
-                  </ul>
-                </small>
-              </h2>
-            </div>
+          <div class="card-content">
+            <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
+          </div>
 
-            <div class="card-content">
-              <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
-            </div>
-            <div class="card-footer">
+          <div class="card-footer clearfix">
+            <ul class="list-inline pull-right">
+              <li><i class="octicon octicon-markdown"></i> Readme</li>
+              <li><i class="octicon octicon-file"></i> Build File</li>
+              <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/docker.svg"> Dockerfile</li>
+              <li><img class="project-icon vargant-icon" alt="JavaScript Icon" src="../../../../img/logos/vagrant.svg"> Vagrantfile</li>
+            </ul>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-lg-12">
+        <a route-href="route:project-details-popular" class="card card-link card-search">
+          <div class="card-header clearfix">
+            <h2 class="card-title pull-left">
+              <i class="fa fa-code fa-lg card-icon code"></i>
+              <span class="repo-name">Booz Allen/18F</span>
+            </h2>
+            <small class="pull-right">
               <ul class="list-inline pull-right">
-                <li><a href="#"><img class="project-icon" alt="Bootstrap" src="img/logos/bootstrap.svg"> Bootstrap</a></li>
-                <li><a href="#"><img class="project-icon" alt="Docker" src="img/logos/docker.svg"> Docker</a></li>
-                <li><a href="#"><img class="project-icon" alt="Vagrant" src="img/logos/vagrant.svg"> Vargantfile</a></li>
-                <li><a href="#"><img class="project-icon" alt="Jasmine" src="img/logos/jasmine.svg"> Jasmine</a></li>
+                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                  </span>
+                </li>
               </ul>
-            </div>
-          </div>    
-        </div>
+            </small>
+          </div>
 
-        <div class="col-lg-12">
-          <div class="card card-search">
-            <div class="card-header">
-              <h2 class="card-title clearfix">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">18F</span>
-                <small>
-                  <ul class="list-inline pull-right">
-                    <li><img class="project-icon" alt="HTML5 Icon" src="../../img/logos/html5.svg"></li>
-                    <li><img class="project-icon" alt="JavaScript Icon" src="../../img/logos/javascript.svg"></li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-code"></i> <span class="text-uppercase">Lines of Code:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                      </span>
-                    </li>
-                  </ul>
-                </small>
-              </h2>
-            </div>
+          <div class="card-content">
+            <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
+          </div>
 
-            <div class="card-content">
-              <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
-            </div>
-            <div class="card-footer">
+          <div class="card-footer clearfix">
+            <ul class="list-inline pull-right">
+              <li><i class="octicon octicon-markdown"></i> Readme</li>
+              <li><i class="octicon octicon-file"></i> Build File</li>
+              <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/docker.svg"> Dockerfile</li>
+              <li><img class="project-icon vargant-icon" alt="JavaScript Icon" src="../../../../img/logos/vagrant.svg"> Vagrantfile</li>
+            </ul>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-lg-12">
+        <a route-href="route:project-details-popular" class="card card-link card-search">
+          <div class="card-header clearfix">
+            <h2 class="card-title pull-left">
+              <i class="fa fa-code fa-lg card-icon code"></i>
+              <span class="repo-name">Booz Allen/18F</span>
+            </h2>
+            <small class="pull-right">
               <ul class="list-inline pull-right">
-                <li><a href="#"><img class="project-icon" alt="Bootstrap" src="img/logos/bootstrap.svg"> Bootstrap</a></li>
-                <li><a href="#"><img class="project-icon" alt="Docker" src="img/logos/docker.svg"> Docker</a></li>
-                <li><a href="#"><img class="project-icon" alt="Vagrant" src="img/logos/vagrant.svg"> Vargantfile</a></li>
-                <li><a href="#"><img class="project-icon" alt="Jasmine" src="img/logos/jasmine.svg"> Jasmine</a></li>
+                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                  </span>
+                </li>
               </ul>
-            </div>
-          </div>    
-        </div>
+            </small>
+          </div>
 
-        <div class="col-lg-12">
-          <div class="card card-search">
-            <div class="card-header">
-              <h2 class="card-title clearfix">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">18F</span>
-                <small>
-                  <ul class="list-inline pull-right">
-                    <li><img class="project-icon" alt="HTML5 Icon" src="../../img/logos/html5.svg"></li>
-                    <li><img class="project-icon" alt="JavaScript Icon" src="../../img/logos/javascript.svg"></li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-code"></i> <span class="text-uppercase">Lines of Code:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                      </span>
-                    </li>
-                  </ul>
-                </small>
-              </h2>
-            </div>
+          <div class="card-content">
+            <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
+          </div>
 
-            <div class="card-content">
-              <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
-            </div>
-            <div class="card-footer">
+          <div class="card-footer clearfix">
+            <ul class="list-inline pull-right">
+              <li><i class="octicon octicon-markdown"></i> Readme</li>
+              <li><i class="octicon octicon-file"></i> Build File</li>
+              <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/docker.svg"> Dockerfile</li>
+              <li><img class="project-icon vargant-icon" alt="JavaScript Icon" src="../../../../img/logos/vagrant.svg"> Vagrantfile</li>
+            </ul>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-lg-12">
+        <a route-href="route:project-details-popular" class="card card-link card-search">
+          <div class="card-header clearfix">
+            <h2 class="card-title pull-left">
+              <i class="fa fa-code fa-lg card-icon code"></i>
+              <span class="repo-name">Booz Allen/18F</span>
+            </h2>
+            <small class="pull-right">
               <ul class="list-inline pull-right">
-                <li><a href="#"><img class="project-icon" alt="Bootstrap" src="img/logos/bootstrap.svg"> Bootstrap</a></li>
-                <li><a href="#"><img class="project-icon" alt="Docker" src="img/logos/docker.svg"> Docker</a></li>
-                <li><a href="#"><img class="project-icon" alt="Vagrant" src="img/logos/vagrant.svg"> Vargantfile</a></li>
-                <li><a href="#"><img class="project-icon" alt="Jasmine" src="img/logos/jasmine.svg"> Jasmine</a></li>
+                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                  </span>
+                </li>
               </ul>
-            </div>
-          </div>    
-        </div>
+            </small>
+          </div>
 
-        <div class="col-lg-12">
-          <div class="card card-search">
-            <div class="card-header">
-              <h2 class="card-title clearfix">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">18F</span>
-                <small>
-                  <ul class="list-inline pull-right">
-                    <li><img class="project-icon" alt="HTML5 Icon" src="../../img/logos/html5.svg"></li>
-                    <li><img class="project-icon" alt="JavaScript Icon" src="../../img/logos/javascript.svg"></li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-code"></i> <span class="text-uppercase">Lines of Code:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                      </span>
-                    </li>
-                  </ul>
-                </small>
-              </h2>
-            </div>
+          <div class="card-content">
+            <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
+          </div>
 
-            <div class="card-content">
-              <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
-            </div>
-            <div class="card-footer">
+          <div class="card-footer clearfix">
+            <ul class="list-inline pull-right">
+              <li><i class="octicon octicon-markdown"></i> Readme</li>
+              <li><i class="octicon octicon-file"></i> Build File</li>
+              <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/docker.svg"> Dockerfile</li>
+              <li><img class="project-icon vargant-icon" alt="JavaScript Icon" src="../../../../img/logos/vagrant.svg"> Vagrantfile</li>
+            </ul>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-lg-12">
+        <a route-href="route:project-details-popular" class="card card-link card-search">
+          <div class="card-header clearfix">
+            <h2 class="card-title pull-left">
+              <i class="fa fa-code fa-lg card-icon code"></i>
+              <span class="repo-name">Booz Allen/18F</span>
+            </h2>
+            <small class="pull-right">
               <ul class="list-inline pull-right">
-                <li><a href="#"><img class="project-icon" alt="Bootstrap" src="img/logos/bootstrap.svg"> Bootstrap</a></li>
-                <li><a href="#"><img class="project-icon" alt="Docker" src="img/logos/docker.svg"> Docker</a></li>
-                <li><a href="#"><img class="project-icon" alt="Vagrant" src="img/logos/vagrant.svg"> Vargantfile</a></li>
-                <li><a href="#"><img class="project-icon" alt="Jasmine" src="img/logos/jasmine.svg"> Jasmine</a></li>
+                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                  </span>
+                </li>
               </ul>
-            </div>
-          </div>    
-        </div>
+            </small>
+          </div>
 
-        <div class="col-lg-12">
-          <div class="card card-search">
-            <div class="card-header">
-              <h2 class="card-title clearfix">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">18F</span>
-                <small>
-                  <ul class="list-inline pull-right">
-                    <li><img class="project-icon" alt="HTML5 Icon" src="../../img/logos/html5.svg"></li>
-                    <li><img class="project-icon" alt="JavaScript Icon" src="../../img/logos/javascript.svg"></li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-code"></i> <span class="text-uppercase">Lines of Code:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                      </span>
-                    </li>
-                  </ul>
-                </small>
-              </h2>
-            </div>
+          <div class="card-content">
+            <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
+          </div>
 
-            <div class="card-content">
-              <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
-            </div>
-            <div class="card-footer">
+          <div class="card-footer clearfix">
+            <ul class="list-inline pull-right">
+              <li><i class="octicon octicon-markdown"></i> Readme</li>
+              <li><i class="octicon octicon-file"></i> Build File</li>
+              <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/docker.svg"> Dockerfile</li>
+              <li><img class="project-icon vargant-icon" alt="JavaScript Icon" src="../../../../img/logos/vagrant.svg"> Vagrantfile</li>
+            </ul>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-lg-12">
+        <a route-href="route:project-details-popular" class="card card-link card-search">
+          <div class="card-header clearfix">
+            <h2 class="card-title pull-left">
+              <i class="fa fa-code fa-lg card-icon code"></i>
+              <span class="repo-name">Booz Allen/18F</span>
+            </h2>
+            <small class="pull-right">
               <ul class="list-inline pull-right">
-                <li><a href="#"><img class="project-icon" alt="Bootstrap" src="img/logos/bootstrap.svg"> Bootstrap</a></li>
-                <li><a href="#"><img class="project-icon" alt="Docker" src="img/logos/docker.svg"> Docker</a></li>
-                <li><a href="#"><img class="project-icon" alt="Vagrant" src="img/logos/vagrant.svg"> Vargantfile</a></li>
-                <li><a href="#"><img class="project-icon" alt="Jasmine" src="img/logos/jasmine.svg"> Jasmine</a></li>
+                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                  </span>
+                </li>
+                <li>
+                  <span class="label label-info">
+                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                  </span>
+                </li>
               </ul>
-            </div>
-          </div>    
-        </div>
+            </small>
+          </div>
 
-        <div class="col-lg-12">
-          <div class="card card-search">
-            <div class="card-header">
-              <h2 class="card-title clearfix">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">18F</span>
-                <small>
-                  <ul class="list-inline pull-right">
-                    <li><img class="project-icon" alt="HTML5 Icon" src="../../img/logos/html5.svg"></li>
-                    <li><img class="project-icon" alt="JavaScript Icon" src="../../img/logos/javascript.svg"></li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-code"></i> <span class="text-uppercase">Lines of Code:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                      </span>
-                    </li>
-                    <li>
-                      <span class="label label-info">
-                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                      </span>
-                    </li>
-                  </ul>
-                </small>
-              </h2>
-            </div>
+          <div class="card-content">
+            <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
+          </div>
 
-            <div class="card-content">
-              <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
-            </div>
-            <div class="card-footer">
-              <ul class="list-inline pull-right">
-                <li><a href="#"><img class="project-icon" alt="Bootstrap" src="img/logos/bootstrap.svg"> Bootstrap</a></li>
-                <li><a href="#"><img class="project-icon" alt="Docker" src="img/logos/docker.svg"> Docker</a></li>
-                <li><a href="#"><img class="project-icon" alt="Vagrant" src="img/logos/vagrant.svg"> Vargantfile</a></li>
-                <li><a href="#"><img class="project-icon" alt="Jasmine" src="img/logos/jasmine.svg"> Jasmine</a></li>
-              </ul>
-            </div>
-          </div>    
-        </div>
-      <!-- </div> -->
+          <div class="card-footer clearfix">
+            <ul class="list-inline pull-right">
+              <li><i class="octicon octicon-markdown"></i> Readme</li>
+              <li><i class="octicon octicon-file"></i> Build File</li>
+              <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/docker.svg"> Dockerfile</li>
+              <li><img class="project-icon vargant-icon" alt="JavaScript Icon" src="../../../../img/logos/vagrant.svg"> Vagrantfile</li>
+            </ul>
+          </div>
+        </a>
+      </div>
+
+    </div>
+      
   </div>
 </template>
