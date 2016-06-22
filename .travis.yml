@@ -38,7 +38,7 @@ deploy:
   access_key_id: *1
   secret_access_key: *2
   bucket: codedeploy-heimdall-uiapp
-  key: heimdall-uiapp-1.0.0.zip
+  key: $HEIMDALL_PACKAGE_NAME
   bundle_type: zip
   application: CodeDeploy-Heimdall-UIApp
   deployment_group: CodeDeploy-HeimdallWebapp-Group
