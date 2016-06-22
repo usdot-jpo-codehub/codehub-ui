@@ -18,9 +18,9 @@ script:
 - gulp build
 - npm prune --production
 before_deploy:
-- zip -rq $HEIMDALL_PACKAGE_NAME *
+- zip -rq "${HEIMDALL_PACKAGE_NAME}" *
 - mkdir -p dpl_cd_upload
-- mv $HEIMDALL_PACKAGE_NAME dpl_cd_upload/$HEIMDALL_PACKAGE_NAME
+- mv "${HEIMDALL_PACKAGE_NAME}" dpl_cd_upload/"${HEIMDALL_PACKAGE_NAME}"
 deploy:
 - provider: s3
   access_key_id: &1
