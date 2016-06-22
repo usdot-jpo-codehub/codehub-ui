@@ -80,7 +80,7 @@ hooks:
 ApplicationStop:
   - location: ops/stop_app.sh
     timeout: 300
-#      runas:
+    runas: root
 #    - location:
 #      timeout:
 #      runas:
@@ -89,7 +89,7 @@ ApplicationStop:
 BeforeInstall:
   - location: ops/clean_app_files.sh
     timeout: 60
-#      runas:
+    runas: root
 #    - location:
 #      timeout:
 #      runas:
@@ -98,11 +98,13 @@ BeforeInstall:
 AfterInstall:
   - location: ops/install_dependencies.sh
     timeout: 300
+    runas: root
 # During the ApplicationStart deployment lifecycle event, run the commands
 #   in the script specified in "location".
 ApplicationStart:
   - location: ops/start_app.sh
     timeout: 300
+    runas: root
 # During the ValidateService deployment lifecycle event, run the commands
 #   in the script specified in "location".
 #  ValidateService:
