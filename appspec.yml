@@ -99,7 +99,7 @@ hooks:
 # During the ApplicationStart deployment lifecycle event, run the commands
 #   in the script specified in "location".
   ApplicationStart:
-    - location: opss/start_app.sh
+    - location: ops/start_app.sh
       timeout: 300
 # During the ValidateService deployment lifecycle event, run the commands
 #   in the script specified in "location".
