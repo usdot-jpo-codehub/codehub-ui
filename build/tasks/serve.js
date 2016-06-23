@@ -9,7 +9,14 @@ gulp.task('serve', ['build'], function(done) {
     online: false,
     open: false,
     port: 9000,
-    proxy: 'localhost:8080'
+    // Expecting a proxy to be present that will proxy to an API Server
+    proxy: {
+      target: 'localhost:8080',
+      middleware: function(req, res, next) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        next();
+      }
+    }
     // server: {
     //   baseDir: ['.'],
     //   middleware: function(req, res, next) {
@@ -28,12 +35,20 @@ gulp.task('serve-bundle', ['bundle'], function(done) {
     online: false,
     open: false,
     port: 9000,
-    server: {
-      baseDir: ['.'],
+    // Expecting a proxy to be present that will proxy to an API Server
+    proxy: {
+      target: 'localhost:8080',
       middleware: function(req, res, next) {
         res.setHeader('Access-Control-Allow-Origin', '*');
         next();
       }
     }
+    // server: {
+    //   baseDir: ['.'],
+    //   middleware: function(req, res, next) {
+    //     res.setHeader('Access-Control-Allow-Origin', '*');
+    //     next();
+    //   }
+    // }
   }, done);
 });
