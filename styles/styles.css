@@ -6121,7 +6121,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   text-decoration: none;
 }
 .card-fixed .card-block {
-  min-height: 160px;
+  min-height: 180px;
 }
 .project-details .page-header {
   display: flex;
