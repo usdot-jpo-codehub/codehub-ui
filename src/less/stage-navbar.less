@@ -1,0 +1,127 @@
+// Navbar styles
+
+// Default navbar
+.navbar-default {
+  background-color: @stage-navbar-bk;
+  border: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+
+	.navbar-nav {
+		> li > a {
+		  color: @white;
+
+		  &:hover,
+		  &:focus {
+		    color: @white;
+		    background-color: transparent;
+		  }
+		}
+		> .active > a {
+		  &,
+		  &:hover,
+		  &:focus {
+		    color: @white;
+		    background-color: transparent;
+		    border-bottom: 4px solid @white;
+		  }
+		}
+		> .disabled > a {
+		  &,
+		  &:hover,
+		  &:focus {
+		    color: @navbar-default-link-disabled-color;
+		    background-color: transparent;
+		  }
+		}
+	}
+
+	.user-avatar{
+		margin-right: 10px;
+		height: 24px;
+		width: 24px;
+	}
+
+	// Dropdown menu items
+	.navbar-nav {
+		// Remove background color from open dropdown
+		> .open > a {
+			&,
+			&:hover,
+			&:focus {
+				background-color: transparent;
+				color: @white;
+			}
+		}
+
+		@media (max-width: @grid-float-breakpoint-max) {
+			// Dropdowns get custom display when collapsed
+			.open .dropdown-menu {
+				> li > a {
+					color: @navbar-default-link-color;
+					&:hover,
+					&:focus {
+						color: @navbar-default-link-hover-color;
+						background-color: @navbar-default-link-hover-bg;
+					}
+				}
+				> .active > a {
+					&,
+					&:hover,
+					&:focus {
+						color: @navbar-default-link-active-color;
+						background-color: @navbar-default-link-active-bg;
+					}
+				}
+				> .disabled > a {
+					&,
+					&:hover,
+					&:focus {
+						color: @navbar-default-link-disabled-color;
+						background-color: @navbar-default-link-disabled-bg;
+					}
+				}
+			}
+		}
+	}
+
+	// Links in navbars
+	//
+	// Add a class to ensure links outside the navbar nav are colored correctly.
+
+	.navbar-link {
+		color: @white;
+		&:hover {
+			color: @white;
+		}
+	}
+
+	.btn-link {
+		color: @white;
+		&:hover,
+		&:focus {
+			color: @white;
+		}
+		&[disabled],
+		fieldset[disabled] & {
+			&:hover,
+			&:focus {
+				color: @white;
+			}
+		}
+	}
+
+	// Navbar Dropdown
+	.dropdown-menu {
+		// Links within the dropdown menu
+		> li > a {
+			color: @stage-color;
+			
+			&:hover,
+  			&:focus {
+  				background-color:@gray;
+  				color: @white;
+  			}
+		}
+	}
+}

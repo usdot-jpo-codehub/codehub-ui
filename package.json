@@ -81,6 +81,7 @@
       "aurelia-templating-resources": "npm:aurelia-templating-resources@^1.0.0-beta.1.1.3",
       "aurelia-templating-router": "npm:aurelia-templating-router@^1.0.0-beta.1.1.2",
       "bootstrap": "github:twbs/bootstrap@^3.3.5",
+      "bootstrap-less": "github:distros/bootstrap-less@^3.3.9",
       "fetch": "github:github/fetch@^0.11.0",
       "font-awesome": "npm:font-awesome@^4.5.0",
       "jquery": "npm:jquery@^2.2.3",
@@ -93,5 +94,8 @@
       "babel-runtime": "npm:babel-runtime@^5.8.24",
       "core-js": "npm:core-js@^1.1.4"
     }
+  },
+  "dependencies": {
+    "gulp-less": "^3.1.0"
   }
 }

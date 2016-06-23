@@ -1,4 +1,7 @@
 var gulp = require('gulp');
+var watchLess = require('gulp-watch-less');
+var less = require('gulp-less');
+var path = require('path');
 var runSequence = require('run-sequence');
 var changed = require('gulp-changed');
 var plumber = require('gulp-plumber');
@@ -29,6 +32,18 @@ gulp.task('build-html', function() {
   return gulp.src(paths.html)
     .pipe(changed(paths.output, {extension: '.html'}))
     .pipe(gulp.dest(paths.output));
+});
+
+// DEV task only
+// compiles less to styles directory
+gulp.task('build-less', function () {
+  gulp.src('./src/less/styles.less')
+    .pipe(watchLess('./src/less/*.less'))
+    .pipe(less({
+      paths: ['./src/less/']
+    }))
+    .pipe(gulp.dest('./styles/'));
+
 });
 
 // copies changed css files to the output directory
