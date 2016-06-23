@@ -1,10 +1,13 @@
 import {inject} from "aurelia-framework";
-import {SearchProjectData} from "./searchProjectData";
+import {SearchProjectData} from "../dataRepository/searchProjectData";
 import {Router} from "aurelia-router";
 
 @inject(SearchProjectData, Router)
 export class SearchProjectFavorites {
 
+  getViewStrategy() {
+        return '../common/search-project.html';
+    }
   constructor(searchProjectData, router) {
   		this.searchProjectData = searchProjectData;
       this.router = router;

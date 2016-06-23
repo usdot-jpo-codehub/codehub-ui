@@ -1,6 +1,6 @@
 import {inject} from 'aurelia-framework';
 import {Router} from "aurelia-router";
-import {SearchProjectData} from "./searchProjectData";
+import {SearchProjectData} from "../dataRepository/searchProjectData";
 //import {SearchProject} from "./search-project";
 import {bindable} from 'aurelia-framework';
 
@@ -13,6 +13,9 @@ export class ProjectDetailsPopular {
     this.searchProject = searchProject;
 	}
 
+  getViewStrategy() {
+        return '../common/project-details.html';
+    }
 	activate(params, routeConfig, navigationInstruction) {
     return this.searchProjectData.searchByName(params.searchText).then(projects=> {
 			this.projects = projects;
