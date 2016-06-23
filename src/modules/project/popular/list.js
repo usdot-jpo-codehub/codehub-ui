@@ -1,12 +1,12 @@
 import {inject} from 'aurelia-framework';
-import {ProjectData} from "./projectData";
+import {ProjectData} from "../dataRepository/projectData";
 import {Router} from "aurelia-router";
 
 @inject(ProjectData, Router)
 export class List {
   heading = 'Projects List';
   queries = [];
-
+  projectTitle = "Most Popular Projects";
 
   constructor(projectData, router) {
     this.projectData = projectData;
@@ -14,6 +14,9 @@ export class List {
     this.router = router;
   };
 
+  getViewStrategy() {
+        return '../common/list.html';
+    }
   gotoProject(project){
     this.router.navigateToRoute('edit', { id: project.id })
   };
