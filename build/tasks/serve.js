@@ -9,13 +9,14 @@ gulp.task('serve', ['build'], function(done) {
     online: false,
     open: false,
     port: 9000,
-    server: {
-      baseDir: ['.'],
-      middleware: function(req, res, next) {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        next();
-      }
-    }
+    proxy: 'localhost:8080'
+    // server: {
+    //   baseDir: ['.'],
+    //   middleware: function(req, res, next) {
+    //     res.setHeader('Access-Control-Allow-Origin', '*');
+    //     next();
+    //   }
+    //}
   }, done);
 });
 

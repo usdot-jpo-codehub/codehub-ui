@@ -31,22 +31,6 @@ gulp.task('build-html', function() {
     .pipe(gulp.dest(paths.output));
 });
 
-// copies external library files to the output directory
-gulp.task('copy-lib', function() {
-    gulp.src('jspm_packages/github/twbs/bootstrap@3.3.6/css/bootstrap.css')
-      .pipe(gulp.dest('vendor/'));
-
-    gulp.src('jspm_packages/npm/font-awesome@4.6.1/css/font-awesome.css')
-        .pipe(gulp.dest('vendor/'));
-    gulp.src('jspm_packages/npm/font-awesome@4.6.1/fonts/**/*.{ttf,woff,woff2,eof,svg}')
-        .pipe(gulp.dest('fonts/'));
-
-    gulp.src('jspm_packages/npm/octicons@4.2.0/build/font/octicons.css')
-        .pipe(gulp.dest('vendor/'));
-    gulp.src('jspm_packages/npm/octicons@4.2.0/build/font/**/*.{ttf,woff,woff2,eof,svg}')
-        .pipe(gulp.dest('vendor/'));
-});
-
 // copies changed css files to the output directory
 gulp.task('build-css', function() {
   return gulp.src(paths.css)
@@ -62,7 +46,7 @@ gulp.task('build-css', function() {
 gulp.task('build', function(callback) {
   return runSequence(
     'clean',
-    ['build-system', 'build-html', 'copy-lib', 'build-css'],
+    ['build-system', 'build-html', 'build-css'],
     callback
   );
 });
