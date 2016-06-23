@@ -1,10 +1,10 @@
 import {inject} from "aurelia-framework";
 import {HttpClient} from "aurelia-http-client";
 
-let baseUrl = "https://api.github.com";
+let baseUrl = '/api/favorites';
 
 @inject(HttpClient)
-export class ProjectAllStaticData {
+export class SearchProjectData {
 
   constructor(httpClient) {
     this.http = httpClient;
@@ -27,13 +27,28 @@ export class ProjectAllStaticData {
       });
   }
 
-  getAll(org) {
-    var org_url = baseUrl + "/orgs/"+org+"/repos";
-    return this.http.get(org_url)
+  getAll() {
+    return this.http.get(baseUrl)
       .then(response => {
         return response.content;
       });
   }
+  searchByName(searchText) {
+    //let adjusted_url = '/api/favorites' + '?filter={"where": {"name": {"inq": [' + '"'+searchText +'"'+ ']}}}';
+    return this.http.get(baseUrl)
+      .then(response => {
+        return response.content;
+      });
+  }
+
+  searchFavoritesByName(searchText) {
+    //let adjusted_url = '/api/favorites' + '?filter={"where": {"name": {"inq": [' + '"'+searchText +'"'+ ']}}}';
+    return this.http.get(baseUrl)
+      .then(response => {
+        return response.content;
+      });
+  }
+
   save(project) {
     var request = this.http.createRequest();
     if (project.id) {

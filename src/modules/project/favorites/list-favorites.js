@@ -1,9 +1,14 @@
 import {inject} from 'aurelia-framework';
-import {FavoriteProject} from "./favoriteProject";
+import {FavoriteProject} from "../dataRepository/favoriteProject";
 import {Router} from "aurelia-router";
 @inject(FavoriteProject, Router)
 export class List {
   heading = 'Projects List';
+  projectTitle = "Favorite Projects";
+
+  getViewStrategy() {
+        return '../common/list.html';
+    }
 
   constructor(data, router) {
     this.service = data;

@@ -1,10 +1,10 @@
 import {inject} from "aurelia-framework";
 import {HttpClient} from "aurelia-http-client";
 
-let baseUrl = '/api/projects';
+let baseUrl = "https://api.github.com";
 
 @inject(HttpClient)
-export class SearchProjectData {
+export class ProjectAllStaticData {
 
   constructor(httpClient) {
     this.http = httpClient;
@@ -17,6 +17,7 @@ export class SearchProjectData {
       });
   }
 
+
   getPage(pageNumber) {
     return this.http.createRequest(baseUrl)
       .asGet()
@@ -27,20 +28,21 @@ export class SearchProjectData {
       });
   }
 
-  getAll() {
-    return this.http.get(baseUrl)
+  getAll(org) {
+    var org_url = baseUrl + "/orgs/"+org+"/repos";
+    return this.http.get(org_url)
       .then(response => {
         return response.content;
       });
   }
-  searchByName(searchText) {
-    //let adjusted_url = baseUrl + '?filter={"where": {"name": {"inq": [' + '"'+searchText +'"'+ ']}}}';
-    return this.http.get(baseUrl)
+  getReadMeUrl(repo_login) {
+    var adjusted_url = baseUrl + '/repos/'+repo_login+'/readme'
+    return this.http.get(adjusted_url)
       .then(response => {
+        console.log(response.content);
         return response.content;
       });
   }
-
   save(project) {
     var request = this.http.createRequest();
     if (project.id) {

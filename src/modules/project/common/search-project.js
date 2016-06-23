@@ -5,9 +5,9 @@ import {Router} from "aurelia-router";
 @inject(SearchProjectData, Router)
 export class SearchProject {
 
-  getViewStrategy() {
-        return '../common/search-project.html';
-    }
+  // getViewStrategy() {
+  //       return '../common/search-project.html';
+  //   }
   constructor(searchProjectData, router) {
   		this.searchProjectData = searchProjectData;
       this.router = router;

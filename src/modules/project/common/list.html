@@ -1,12 +1,11 @@
 <template>
   <require from="./search-project"></require>
-  <require from="./nav-bar.html"></require>
   <div class="container-fluid bg_main">
     <div class="row">
       <search-project></search-project>
       <div class="col-lg-12">
         <div class="page-header">
-          <h1>Most Popular Projects</h1>
+          <h1>${projectTitle}</h1>
         </div>
       </div>
     </div>
@@ -15,29 +14,36 @@
       <div repeat.for="repo of projects">
         <div class="col-sm-12 col-md-6 col-lg-4">
           <div class="">
-            <a route-href="route:project-details-popular" class="card card-link card-fixed">
+            <div class="card card-fixed">
               <div class="card-header">
                 <h2 class="card-title clearfix">
-                  <span class="project-type" if.bind="repo.type === 'code'">
-                    <i class="fa fa-code fa-lg card-icon code"></i>
-                  </span>
-                  <span class="project-type" if.bind="repo.type === 'component'">
-                    <i class="fa fa-cube fa-lg card-icon component"></i>
-                  </span>
-                  <span class="project-type" if.bind="repo.type === 'stack'">
-                    <i class="fa fa-database fa-lg card-icon stack"></i>
-                  </span>
-                  <span class="repo-name">${repo.name}</span>
+                  <a route-href="route:project-details-popular">
+                    <span class="project-type" if.bind="repo.type === 'code'">
+                      <i class="fa fa-code fa-lg card-icon code"></i>
+                    </span>
+                    <span class="project-type" if.bind="repo.type === 'component'">
+                      <i class="fa fa-cube fa-lg card-icon component"></i>
+                    </span>
+                    <span class="project-type" if.bind="repo.type === 'stack'">
+                      <i class="fa fa-database fa-lg card-icon stack"></i>
+                    </span>
+                    <span class="repo-name">${repo.name}</span>
+                  </a>
 
                   <small>
                     <ul class="list-inline pull-right">
-                      <li><img class="project-icon" alt="HTML5 Icon" src="../../img/logos/html5.svg"></li>
-                      <li><img class="project-icon" alt="JavaScript Icon" src="../../img/logos/javascript.svg"></li>
+                      <li><img class="project-icon" alt="HTML5 Icon" src="${repo.owner.avatar_url}"></li>
+                      <!-- <li><img class="project-icon" alt="HTML5 Icon" src="../../img/logos/html5.svg"></li> -->
+                      <!-- <li><img class="project-icon" alt="JavaScript Icon" src="../../img/logos/javascript.svg"></li> -->
                     </ul>
                   </small>
                 </h2>
               </div>
-              <div class="card-block"><p>${repo.description}</p></div>
+              <div class="card-block">
+                <p>${repo.description}</p>
+                <p><a href="${repo.html_url}/blob/master/README.md" target="_blank">ReadMe</a></p>
+              </div>
+
               <div class="card-footer flex">
                 <div class="flex-item">
                   <span class="label label-info">
@@ -60,7 +66,7 @@
                   </span>
                 </div>
               </div>
-            </a>
+            </div>
           </div>
         </div>
       </div>
