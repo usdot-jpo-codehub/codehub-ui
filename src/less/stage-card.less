@@ -1,0 +1,103 @@
+// Card Styles -- based on Google Material Design
+
+.card {
+	position: relative;
+	display: block;
+	margin-bottom: .75rem;
+	border-radius: .25rem;
+
+	background-color: @stage-card-bk;
+	color: @white;
+	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+	.card-header {
+		padding: .75rem 1.25rem;
+
+		.card-title {
+  			margin-bottom: .75rem;
+
+			.repo-name{
+				width: 65%;
+				display: inline-block;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				margin-left: 45px;
+			}
+		}
+	}
+
+	.card-block {
+		padding: 1.25rem;
+	}
+
+	.card-footer{
+		border-top: 1px solid @gray;
+	}
+
+	.project-icon{
+		height: 25px;
+		width: 25px;
+	}
+
+	.vargant-icon{
+		height: 15px;
+		width: 15px;
+	}
+
+	.card-icon {
+		border-radius: 100px;
+			color: #f6f6f6;
+			padding: 12px 10px;
+			font-size: 15px;
+			position: absolute;
+	}
+
+	.code {
+		background-color: @stage-code;
+	}
+
+	.component {
+		background-color: @stage-component;
+	}
+
+	.stack {
+		background-color: @stage-stack;
+	}
+}
+
+.card-search{
+	.card-header{
+		.card-title{
+			.repo-name{
+				width: 100%;
+
+				.fa {
+					position: absolute;
+					top: 31px;
+					margin-left: 15px;
+					color: #ffffff;
+					font-size: 150%;
+				}
+			}
+		}
+	}
+}
+
+.card-link{
+	color: @white;
+  	text-decoration: none;
+
+  	&:hover,
+	&:focus {
+		background-color: @stage-card-hover-bk;
+		color: @white;
+		text-decoration: none;
+  	}
+}
+
+.card-fixed {
+	.card-block{
+		min-height: 180px; 
+	}
+}
