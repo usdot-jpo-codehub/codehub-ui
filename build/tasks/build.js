@@ -34,16 +34,24 @@ gulp.task('build-html', function() {
     .pipe(gulp.dest(paths.output));
 });
 
-// DEV task only
-// compiles less to styles directory
-gulp.task('build-less', function () {
-  gulp.src('./src/less/styles.less')
-    .pipe(watchLess('./src/less/*.less'))
+// ****DEV task only****
+// compiles all less files 
+// and then copies the complied file
+// into the styles directory
+gulp.task('build-less', function() {
+  return gulp.src(paths.less +'styles.less')
+    .pipe(plumber())
     .pipe(less({
-      paths: ['./src/less/']
+      paths: [paths.less]
     }))
-    .pipe(gulp.dest('./styles/'));
+    .pipe(gulp.dest('./styles/'))
+  });
 
+// ****DEV Task only****
+// watches the src/less directory for any changes
+// and then calls the build-less task
+gulp.task('watch-less', function() {
+  gulp.watch('./src/less/*.less', ['build-less']);
 });
 
 // copies changed css files to the output directory
