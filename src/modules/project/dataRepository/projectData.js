@@ -2,6 +2,7 @@ import {inject} from "aurelia-framework";
 import {HttpClient} from "aurelia-http-client";
 
 let baseUrl = "/api/projects";
+//let baseUrl = "https://api.github.com";
 
 @inject(HttpClient)
 export class ProjectData {
