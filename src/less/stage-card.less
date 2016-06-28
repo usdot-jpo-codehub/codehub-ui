@@ -12,6 +12,7 @@
 
 	.card-header {
 		padding: .75rem 1.25rem;
+		border-bottom: 1px solid @gray;
 
 		.card-title {
   			margin-bottom: .75rem;
@@ -27,8 +28,14 @@
 		}
 	}
 
-	.card-block {
+	.card-block,
+	.card-actions {
 		padding: 1.25rem;
+	}
+
+	.card-actions {
+		display: flex;
+		justify-content: center;
 	}
 
 	.card-footer{
@@ -84,7 +91,7 @@
 	}
 }
 
-.card-link{
+.card-link {
 	color: @white;
   	text-decoration: none;
 
@@ -92,7 +99,7 @@
 	&:focus {
 		background-color: @stage-card-hover-bk;
 		color: @white;
-		text-decoration: none;
+		text-decoration: underline;
   	}
 }
 

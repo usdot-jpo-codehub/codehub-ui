@@ -33,15 +33,15 @@
                   <small>
                     <ul class="list-inline pull-right">
                       <li><img class="project-icon" alt="HTML5 Icon" src="${repo.owner.avatar_url}"></li>
-                      <!-- <li><img class="project-icon" alt="HTML5 Icon" src="../../img/logos/html5.svg"></li> -->
-                      <!-- <li><img class="project-icon" alt="JavaScript Icon" src="../../img/logos/javascript.svg"></li> -->
                     </ul>
                   </small>
                 </h2>
               </div>
               <div class="card-block">
                 <p>${repo.description}</p>
-                <p><a href="${repo.html_url}/blob/master/README.md" target="_blank">ReadMe</a></p>
+              </div>
+              <div class="card-actions">
+                  <a class="btn btn-primary btn-sm" href="${repo.html_url}/blob/master/README.md" target="_blank" role="button"><i class="octicon octicon-markdown"></i> <span class="text-uppercase">readme</span></a>
               </div>
 
               <div class="card-footer flex">
