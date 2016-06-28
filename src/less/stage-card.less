@@ -26,7 +26,20 @@
     		text-overflow: ellipsis;
     		white-space: nowrap;
 			max-width: 100%;
+
+			a{
+				text-decoration: underline;
+				color: @white;
+
+				&:hover,
+				&:focus {
+					color: #93ADD5;
+					text-decoration: underline;
+				}
+			}
 		}
+
+		
 
 		.repo-owner{
             font-size: 18.5px;

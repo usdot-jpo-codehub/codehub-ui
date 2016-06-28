@@ -30,7 +30,7 @@
               </div>
               <div class="col-lg-8 col-md-8 col-sm-10 col-repo-title">
                 <h2 class="repo-title"><a route-href="route:project-details-popular">${repo.name}</a></h2>
-                <small class="repo-owner">${repo.owner}</small>
+                <small class="repo-owner">${repo.owner.login}</small>
               </div>
               <div class="col-lg-2 col-md-2 col-sm-1">
                 <span if.bind="repo.language === 'JavaScript'"><img class="project-icon" alt="JavaScript Icon" title="JavaScript Icon" src="../../img/logos/javascript.svg"></span>

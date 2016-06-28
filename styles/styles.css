@@ -6071,6 +6071,15 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   white-space: nowrap;
   max-width: 100%;
 }
+.card .card-header .repo-title a {
+  text-decoration: underline;
+  color: #ffffff;
+}
+.card .card-header .repo-title a:hover,
+.card .card-header .repo-title a:focus {
+  color: #93ADD5;
+  text-decoration: underline;
+}
 .card .card-header .repo-owner {
   font-size: 18.5px;
   color: #C9C9C9;
