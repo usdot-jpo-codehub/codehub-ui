@@ -6099,7 +6099,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ffffff;
 }
 .navbar-default .dropdown-menu > li > a {
-  color: #595959;
+  color: #555555;
 }
 .navbar-default .dropdown-menu > li > a:hover,
 .navbar-default .dropdown-menu > li > a:focus {
@@ -6119,16 +6119,31 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   padding: .75rem 1.25rem;
   border-bottom: 1px solid #555555;
 }
-.card .card-header .card-title {
-  margin-bottom: .75rem;
+.card .card-header .col-repo-title {
+  padding-left: 0;
+  padding-right: 0;
 }
-.card .card-header .card-title .repo-name {
-  width: 65%;
-  display: inline-block;
-  white-space: nowrap;
+.card .card-header .repo-title {
+  margin-top: 0;
+  margin-bottom: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-left: 45px;
+  white-space: nowrap;
+  max-width: 100%;
+}
+.card .card-header .repo-title a {
+  text-decoration: underline;
+  color: #ffffff;
+}
+.card .card-header .repo-title a:hover,
+.card .card-header .repo-title a:focus {
+  color: #93ADD5;
+  text-decoration: underline;
+}
+.card .card-header .repo-owner {
+  font-size: 18.5px;
+  color: #ffffff;
+  margin-bottom: 0;
 }
 .card .card-block,
 .card .card-actions {
@@ -6144,6 +6159,15 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .card .project-icon {
   height: 25px;
   width: 25px;
+}
+.card .coffee-icon,
+.card .java-icon,
+.card .groovy-icon {
+  background-color: #ffffff;
+  border-radius: 100px;
+  height: 30px;
+  width: 30px;
+  padding: 5px;
 }
 .card .vargant-icon {
   height: 15px;

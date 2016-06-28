@@ -14,18 +14,39 @@
 		padding: .75rem 1.25rem;
 		border-bottom: 1px solid @gray;
 
-		.card-title {
-  			margin-bottom: .75rem;
+		.col-repo-title {
+			padding-left: 0;
+			padding-right: 0;
+		}
 
-			.repo-name{
-				width: 65%;
-				display: inline-block;
-				white-space: nowrap;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				margin-left: 45px;
+		.repo-title{
+			margin-top: 0;
+			margin-bottom: 0;
+
+			overflow: hidden;
+    		text-overflow: ellipsis;
+    		white-space: nowrap;
+			max-width: 100%;
+
+			a{
+				text-decoration: underline;
+				color: @white;
+
+				&:hover,
+				&:focus {
+					color: #93ADD5;
+					text-decoration: underline;
+				}
 			}
 		}
+
+		
+
+		.repo-owner{
+            font-size: 18.5px;
+            color: @white;
+            margin-bottom: 0;
+        }
 	}
 
 	.card-block,
@@ -47,6 +68,16 @@
 		width: 25px;
 	}
 
+	.coffee-icon,
+	.java-icon,
+	.groovy-icon{
+		background-color: @white;
+		border-radius: 100px;
+		height: 30px;
+		width: 30px;
+		padding: 5px;
+	}
+
 	.vargant-icon{
 		height: 15px;
 		width: 15px;
@@ -54,10 +85,10 @@
 
 	.card-icon {
 		border-radius: 100px;
-			color: #f6f6f6;
-			padding: 12px 10px;
-			font-size: 15px;
-			position: absolute;
+		color: #f6f6f6;
+		padding: 12px 10px;
+		font-size: 15px;
+		position: absolute;
 	}
 
 	.code {
