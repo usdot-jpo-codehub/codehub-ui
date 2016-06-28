@@ -14,8 +14,6 @@
       <div repeat.for="repo of projects" class="clearfix col-sm-12 col-md-6 col-lg-4">
         <div class="card card-fixed">
           <div class="card-header">
-
-
             <div class="row">
               <div class="col-lg-2 col-md-2 col-sm-1">
                 <span class="project-type" if.bind="repo.type === 'code'">
@@ -28,10 +26,12 @@
                   <i class="fa fa-database fa-lg card-icon stack"></i>
                 </span>
               </div>
+
               <div class="col-lg-8 col-md-8 col-sm-10 col-repo-title">
                 <h2 class="repo-title"><a route-href="route:project-details-popular">${repo.name}</a></h2>
                 <small class="repo-owner">${repo.owner.login}</small>
               </div>
+
               <div class="col-lg-2 col-md-2 col-sm-1">
                 <span if.bind="repo.language === 'JavaScript'"><img class="project-icon" alt="JavaScript Icon" title="JavaScript Icon" src="../../img/logos/javascript.svg"></span>
                 <span if.bind="repo.language === 'Ruby'"><img class="project-icon" alt="Ruby Icon" title="Ruby Icon" src="../../img/logos/ruby.svg"></span>
@@ -46,6 +46,10 @@
           <div class="card-block">
             <p>${repo.description}</p>
             <p><a href="${repo.html_url}/blob/master/README.md" target="_blank">ReadMe</a></p>
+          </div>
+
+          <div class="card-actions">
+              <a class="btn btn-primary btn-sm" href="${repo.html_url}/blob/master/README.md" target="_blank" role="button"><i class="octicon octicon-markdown"></i> <span class="text-uppercase">readme</span></a>
           </div>
 
           <div class="card-footer flex">

@@ -2,7 +2,7 @@
 // Scaffolding
 // --------------------------------------------------
 
-body{
+body {
 	color: @white;
 	background-color: @stage-body-bk;
 }
@@ -15,13 +15,13 @@ body{
 	}
 }
  
-.page-title{
+.page-title {
 	h1{
 		margin-top: 0;
 	}
 }
 
-.page-header{
+.page-header {
 	margin: 10px;
 	display: flex;
 	justify-content: center;
@@ -39,14 +39,14 @@ body{
 	}
 }
 
-.flex{
+.flex {
 	display:flex;
 	justify-content: space-around;
 	flex-wrap: wrap;
 	padding: .75rem 2.25rem;
 }
 
-.flex-item{
+.flex-item {
 	text-align: center;
 	padding: 5px 0;
 	font-size: 12px;
@@ -61,10 +61,29 @@ body{
 	}
 }
 
-.display-input{
+.display-input {
 	width: 45px;
 	color: @black;
 }
+
+// Links
+
+a {
+  color: @link-color;
+  text-decoration: none;
+
+
+  &:hover,
+  &:focus {
+    color: @link-hover-color;
+    text-decoration: @link-hover-decoration;
+  }
+
+  &:focus {
+    .tab-focus();
+  }
+}
+
 
 /* Media queries */
 

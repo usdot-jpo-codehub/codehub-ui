@@ -11,7 +11,8 @@
 	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 	.card-header {
-		padding: .75rem 1.25rem 0rem 1.25rem;
+		padding: .75rem 1.25rem;
+		border-bottom: 1px solid @gray;
 
 		.col-repo-title {
 			padding-left: 0;
@@ -48,8 +49,14 @@
         }
 	}
 
-	.card-block {
+	.card-block,
+	.card-actions {
 		padding: 1.25rem;
+	}
+
+	.card-actions {
+		display: flex;
+		justify-content: center;
 	}
 
 	.card-footer{
@@ -114,7 +121,7 @@
 	}
 }
 
-.card-link{
+.card-link {
 	color: @white;
   	text-decoration: none;
 
@@ -122,7 +129,7 @@
 	&:focus {
 		background-color: @stage-card-hover-bk;
 		color: @white;
-		text-decoration: none;
+		text-decoration: underline;
   	}
 }
 
