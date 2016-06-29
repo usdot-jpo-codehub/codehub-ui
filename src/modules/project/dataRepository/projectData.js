@@ -1,8 +1,8 @@
 import {inject} from "aurelia-framework";
 import {HttpClient} from "aurelia-http-client";
 
-let baseUrl = "/api/projects";
-//let baseUrl = "https://api.github.com";
+//let baseUrl = "/api/projects";
+let baseUrl = "https://api.github.com";
 
 @inject(HttpClient)
 export class ProjectData {
@@ -28,13 +28,32 @@ export class ProjectData {
       });
   }
 
-  getAll() {
-    return this.http.get(baseUrl)
+  getAll(org) {
+    var org_url = baseUrl + "/orgs/"+org+"/repos?client_id=a4f779a22dc1acdff78d&client_secret=08a0a3547b4c9252a450eeffe3cca068c9704cfc";
+    return this.http.get(org_url)
       .then(response => {
         return response.content;
       });
   }
 
+  getNumberofContributors(full_name){
+    var contributors_url = baseUrl + "/repos/"+full_name+"/stats/contributors?client_id=a4f779a22dc1acdff78d&client_secret=08a0a3547b4c9252a450eeffe3cca068c9704cfc";
+    return this.http.get(contributors_url)
+      .then(response => {
+        return response.content;
+      });
+
+}
+getNumberofCommits(full_name){
+  ///repos/:owner/:repo/stats/contributors
+  full_name = 'boozallen/projectjellyfish'
+  var commits_url = baseUrl + "/repos/"+full_name+"/commits?client_id=a4f779a22dc1acdff78d&client_secret=08a0a3547b4c9252a450eeffe3cca068c9704cfc";
+  return this.http.get(commits_url)
+    .then(response => {
+      console.log(response.content);
+      return response.content.length;
+    });
+}
   save(project) {
     var request = this.http.createRequest();
     if (project.id) {

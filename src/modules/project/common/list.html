@@ -1,4 +1,6 @@
 <template>
+  <require from="../utility/sort"></require>
+  <require from="../utility/pick"></require>
   <require from="./search-project"></require>
   <div class="container-fluid bg_main">
     <div class="row">
@@ -11,7 +13,7 @@
     </div>
 
     <div class="row">
-      <div repeat.for="repo of projects">
+      <div repeat.for="repo of projects | sort: { propertyName: 'total_score', direction: 'descending'} | take:20">
         <div class="col-sm-12 col-md-6 col-lg-4">
           <div class="">
             <div class="card card-fixed">
@@ -43,6 +45,7 @@
               </div>
               <div class="card-block">
                 <p>${repo.description}</p>
+                <p>${repo.total_score}</p>
                 <p><a href="${repo.html_url}/blob/master/README.md" target="_blank">ReadMe</a></p>
               </div>
 
