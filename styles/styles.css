@@ -1006,7 +1006,7 @@ a {
 }
 a:hover,
 a:focus {
-  color: #902144;
+  color: #ffffff;
   text-decoration: underline;
 }
 a:focus {
@@ -3215,7 +3215,7 @@ fieldset[disabled] .btn-link {
 }
 .btn-link:hover,
 .btn-link:focus {
-  color: #902144;
+  color: #ffffff;
   text-decoration: underline;
   background-color: transparent;
 }
@@ -4476,7 +4476,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
-  color: #902144;
+  color: #ffffff;
   background-color: #eeeeee;
   border-color: #ddd;
 }
@@ -5956,11 +5956,11 @@ body {
 }
 a {
   color: #ffffff;
-  text-decoration: none;
+  text-decoration: underline;
 }
 a:hover,
 a:focus {
-  color: #902144;
+  color: #93ADD5;
   text-decoration: underline;
 }
 a:focus {
@@ -6019,6 +6019,9 @@ fieldset[disabled] .btn-primary.active {
   color: #902144;
   background-color: #fff;
 }
+a.btn {
+  text-decoration: none;
+}
 .navbar-default {
   background-color: #005D6A;
   border: none;
@@ -6027,10 +6030,12 @@ fieldset[disabled] .btn-primary.active {
 }
 .navbar-default .navbar-nav > li > a {
   color: #ffffff;
+  text-decoration: none;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
   color: #ffffff;
+  text-decoration: none;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
@@ -6038,12 +6043,14 @@ fieldset[disabled] .btn-primary.active {
 .navbar-default .navbar-nav > .active > a:focus {
   color: #ffffff;
   background-color: transparent;
+  text-decoration: none;
   border-bottom: 4px solid #ffffff;
 }
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
 .navbar-default .navbar-nav > .disabled > a:focus {
   color: #ccc;
+  text-decoration: none;
   background-color: transparent;
 }
 .navbar-default .user-avatar {
@@ -6100,11 +6107,13 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 .navbar-default .dropdown-menu > li > a {
   color: #555555;
+  text-decoration: none;
 }
 .navbar-default .dropdown-menu > li > a:hover,
 .navbar-default .dropdown-menu > li > a:focus {
   background-color: #555555;
   color: #ffffff;
+  text-decoration: none;
 }
 .card {
   position: relative;
