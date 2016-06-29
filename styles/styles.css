@@ -6128,10 +6128,6 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   padding: .75rem 1.25rem;
   border-bottom: 1px solid #555555;
 }
-.card .card-header .col-repo-title {
-  padding-left: 0;
-  padding-right: 0;
-}
 .card .card-header .repo-title {
   margin-top: 0;
   margin-bottom: 0;
@@ -6187,7 +6183,6 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #f6f6f6;
   padding: 12px 10px;
   font-size: 15px;
-  position: absolute;
 }
 .card .code {
   background-color: #902144;
@@ -6198,15 +6193,24 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .card .stack {
   background-color: #a999de;
 }
-.card-search .card-header .card-title .repo-name {
-  width: 100%;
+.card-search .card-header .card-icon {
+  margin-right: 15px;
 }
-.card-search .card-header .card-title .repo-name .fa {
-  position: absolute;
-  top: 31px;
+.card-search .card-header h2,
+.card-search .card-header .card-details {
+  margin-top: 10px;
+}
+.card-search .card-header .proj-cert {
   margin-left: 15px;
-  color: #ffffff;
+}
+.card-search .card-header .proj-cert i {
   font-size: 150%;
+}
+.card-search .card-header .repo-owner {
+  margin-left: 60px;
+}
+.card-search .card-footer {
+  padding: .75rem 0;
 }
 .card-link {
   color: #ffffff;
