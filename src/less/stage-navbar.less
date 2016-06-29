@@ -9,11 +9,13 @@
 
 	.navbar-nav {
 		> li > a {
-		  color: @white;
+		  color: @link-color;
+		  text-decoration: none;
 
 		  &:hover,
 		  &:focus {
-		    color: @white;
+		    color: @link-color;
+		    text-decoration: none;
 		    background-color: transparent;
 		  }
 		}
@@ -21,8 +23,9 @@
 		  &,
 		  &:hover,
 		  &:focus {
-		    color: @white;
+		    color: @link-color;
 		    background-color: transparent;
+		    text-decoration: none;
 		    border-bottom: 4px solid @white;
 		  }
 		}
@@ -31,6 +34,7 @@
 		  &:hover,
 		  &:focus {
 		    color: @navbar-default-link-disabled-color;
+		    text-decoration: none;
 		    background-color: transparent;
 		  }
 		}
@@ -116,11 +120,13 @@
 		// Links within the dropdown menu
 		> li > a {
 			color: @gray;
+			text-decoration: none;
 			
 			&:hover,
   			&:focus {
   				background-color:@gray;
   				color: @white;
+  				text-decoration: none;
   			}
 		}
 	}
