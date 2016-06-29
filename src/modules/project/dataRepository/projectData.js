@@ -29,7 +29,7 @@ export class ProjectData {
   }
 
   getAll(org) {
-    var org_url = baseUrl + "/orgs/"+org+"/repos?client_id=a4f779a22dc1acdff78d&client_secret=08a0a3547b4c9252a450eeffe3cca068c9704cfc";
+    var org_url = baseUrl + "/orgs/"+org+"/repos";
     return this.http.get(org_url)
       .then(response => {
         return response.content;
@@ -37,7 +37,7 @@ export class ProjectData {
   }
 
   getNumberofContributors(full_name){
-    var contributors_url = baseUrl + "/repos/"+full_name+"/stats/contributors?client_id=a4f779a22dc1acdff78d&client_secret=08a0a3547b4c9252a450eeffe3cca068c9704cfc";
+    var contributors_url = baseUrl + "/repos/"+full_name+"/stats/contributors";
     return this.http.get(contributors_url)
       .then(response => {
         return response.content;
@@ -47,7 +47,7 @@ export class ProjectData {
 getNumberofCommits(full_name){
   ///repos/:owner/:repo/stats/contributors
   full_name = 'boozallen/projectjellyfish'
-  var commits_url = baseUrl + "/repos/"+full_name+"/commits?client_id=a4f779a22dc1acdff78d&client_secret=08a0a3547b4c9252a450eeffe3cca068c9704cfc";
+  var commits_url = baseUrl + "/repos/"+full_name+"/commits";
   return this.http.get(commits_url)
     .then(response => {
       console.log(response.content);
