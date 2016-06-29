@@ -15,8 +15,8 @@
 		border-bottom: 1px solid @gray;
 
 		.col-repo-title {
-			padding-left: 0;
-			padding-right: 0;
+			//padding-left: 0;
+			//padding-right: 0;
 		}
 
 		.repo-title{
@@ -39,8 +39,6 @@
 				}
 			}
 		}
-
-		
 
 		.repo-owner{
             font-size: 18.5px;
@@ -88,7 +86,7 @@
 		color: #f6f6f6;
 		padding: 12px 10px;
 		font-size: 15px;
-		position: absolute;
+		// position: absolute;
 	}
 
 	.code {
@@ -106,19 +104,31 @@
 
 .card-search{
 	.card-header{
-		.card-title{
-			.repo-name{
-				width: 100%;
 
-				.fa {
-					position: absolute;
-					top: 31px;
-					margin-left: 15px;
-					color: #ffffff;
-					font-size: 150%;
-				}
+		.card-icon {
+			margin-right: 15px;
+		}
+
+		h2,
+		.card-details {
+			margin-top: 10px;
+		}
+
+		.proj-cert{
+			margin-left: 15px;
+
+			i {
+				font-size: 150%;
 			}
 		}
+
+		.repo-owner{
+			margin-left: 60px;
+		}
+	}
+
+	.card-footer{
+		padding: .75rem 0;
 	}
 }
 
