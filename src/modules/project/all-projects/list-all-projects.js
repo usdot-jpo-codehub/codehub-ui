@@ -33,25 +33,28 @@ getViewStrategy() {
 
   getData(org) {
     this.currentPage++;
-    this.service.getAll(org)
+    return this.service.getAll(org)
       .then(projects => {
-          this.projectsList = JSON.parse(JSON.stringify(projects));
-          for(var i = 0; i < this.projectsList.length; i++){
-            //this.projectsList[i].readme_url = this.getReadMeUrl(this.projectsList[i].full_name);
-            this.projects.push(this.projectsList[i]);
-
-          }
+          this.projects = JSON.parse(JSON.stringify(projects));
+          return this.projects;
+     }).then(projects =>{
+        projects.forEach(proj =>{
+          this.getReadMeUrl(proj.full_name)
+          .then(readme_url =>{
+            proj.readme_url = readme_url;
+            return proj;
+          });
+        return projects;
+        })
      });
 
   }
 
-  getReadMeUrl(repo_login){
-    this.service.getReadMeUrl(repo_login)
+  getReadMeUrl(repo_full_name){
+    return this.service.getReadMeUrl(repo_full_name)
       .then(projects_readme => {
-          this.projectsList = JSON.parse(JSON.stringify(projects_readme));
-          console.log(this.projectsList);
-
-     });
+          return projects_readme;
+     })
   }
 
   activate() {
