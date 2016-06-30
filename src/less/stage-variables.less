@@ -14,6 +14,7 @@
 @stage-component:#005d6a;
 @stage-stack:#a999de;
 @stage-card-hover-bk:#8E8E8E;
+@stage-blue:#155569;
 
 @stage-modal-border:#4c4d4d;
 
@@ -22,6 +23,10 @@
 @stage-modal-footer-bk:#252525;
 
 @brand-primary:         @stage-code;
+//@brand-success:         #5cb85c;
+@brand-info:            @stage-blue;
+//@brand-warning:         #f0ad4e;
+//@brand-danger:          #d9534f;
 
 //== Buttons
 //
@@ -31,6 +36,10 @@
 @btn-primary-bg:                 @brand-primary;
 @btn-primary-border:             darken(@btn-primary-bg, 5%);
 
+@btn-info-color:                 #fff;
+@btn-info-bg:                    @brand-info;
+@btn-info-border:                darken(@btn-info-bg, 5%);
+
 //** Global textual link color.
 @link-color:            @white;
 //** Link hover color for navbar
@@ -39,3 +48,6 @@
 @link-alt-hover-color: @blue;
 //** Link hover decoration.
 @link-hover-decoration: underline;
+
+//** Info label background color
+@label-info-bg:               @brand-info;
