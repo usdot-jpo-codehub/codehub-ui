@@ -6223,7 +6223,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   text-decoration: underline;
 }
 .card-fixed .card-block {
-  min-height: 100px;
+  min-height: 115px;
 }
 .project-details .page-header {
   display: flex;
