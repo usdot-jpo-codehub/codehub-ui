@@ -1,6 +1,6 @@
 <template>
   <require from="./search-project"></require>
-  <require from="./../../../../styles/search-results.css"></require>
+  <!-- <require from="./../../../../styles/search-results.css"></require> -->
   <div class="container-fluid bg_main">
     <div class="row">
       <search-project></search-project>
@@ -18,46 +18,51 @@
 
       <div class="col-lg-12">
         <div class="card card-search">
-          <div class="card-header clearfix">
-            <h2 class="card-title pull-left">
-              <a href="#">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">Booz Allen/18F <small><i class="fa fa-certificate"></i></small></span>
-              </a>
-            </h2>
-            <small class="pull-right">
-              <ul class="list-inline pull-right">
-                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                  </span>
-                </li>
-              </ul>
-            </small>
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                <h2 class="repo-title">
+                  <i class="fa fa-code fa-lg card-icon code"></i>
+                  <a href="#">18F <small class="proj-cert"><i class="fa fa-certificate"></i></small></a>
+                </h2>
+                <small class="repo-owner">Booz Allen</small>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 clearfix">
+                <small class="card-details pull-right">
+                  <ul class="list-inline">
+                    <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                      </span>
+                    </li>
+                  </ul>
+                </small>
+              </div>
+            </div>
           </div>
 
-          <div class="card-content">
+          <div class="card-block">
             <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
           </div>
 
@@ -74,46 +79,51 @@
 
       <div class="col-lg-12">
         <div class="card card-search">
-          <div class="card-header clearfix">
-            <h2 class="card-title pull-left">
-              <a href="#">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">Booz Allen/18F <small><i class="fa fa-certificate"></i></small></span>
-              </a>
-            </h2>
-            <small class="pull-right">
-              <ul class="list-inline pull-right">
-                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                  </span>
-                </li>
-              </ul>
-            </small>
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                <h2 class="repo-title">
+                  <i class="fa fa-code fa-lg card-icon code"></i>
+                  <a href="#">18F</a>
+                </h2>
+                <small class="repo-owner">Booz Allen</small>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 clearfix">
+                <small class="card-details pull-right">
+                  <ul class="list-inline">
+                    <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                      </span>
+                    </li>
+                  </ul>
+                </small>
+              </div>
+            </div>
           </div>
 
-          <div class="card-content">
+          <div class="card-block">
             <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
           </div>
 
@@ -130,46 +140,51 @@
 
       <div class="col-lg-12">
         <div class="card card-search">
-          <div class="card-header clearfix">
-            <h2 class="card-title pull-left">
-              <a href="#">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">Booz Allen/18F <small><i class="fa fa-certificate"></i></small></span>
-              </a>
-            </h2>
-            <small class="pull-right">
-              <ul class="list-inline pull-right">
-                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                  </span>
-                </li>
-              </ul>
-            </small>
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                <h2 class="repo-title">
+                  <i class="fa fa-code fa-lg card-icon code"></i>
+                  <a href="#">18F</a>
+                </h2>
+                <small class="repo-owner">Booz Allen</small>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 clearfix">
+                <small class="card-details pull-right">
+                  <ul class="list-inline">
+                    <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                      </span>
+                    </li>
+                  </ul>
+                </small>
+              </div>
+            </div>
           </div>
 
-          <div class="card-content">
+          <div class="card-block">
             <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
           </div>
 
@@ -186,46 +201,51 @@
 
       <div class="col-lg-12">
         <div class="card card-search">
-          <div class="card-header clearfix">
-            <h2 class="card-title pull-left">
-              <a href="#">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">Booz Allen/18F <small><i class="fa fa-certificate"></i></small></span>
-              </a>
-            </h2>
-            <small class="pull-right">
-              <ul class="list-inline pull-right">
-                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                  </span>
-                </li>
-              </ul>
-            </small>
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                <h2 class="repo-title">
+                  <i class="fa fa-code fa-lg card-icon code"></i>
+                  <a href="#">18F</a>
+                </h2>
+                <small class="repo-owner">Booz Allen</small>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 clearfix">
+                <small class="card-details pull-right">
+                  <ul class="list-inline">
+                    <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                      </span>
+                    </li>
+                  </ul>
+                </small>
+              </div>
+            </div>
           </div>
 
-          <div class="card-content">
+          <div class="card-block">
             <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
           </div>
 
@@ -242,46 +262,51 @@
 
       <div class="col-lg-12">
         <div class="card card-search">
-          <div class="card-header clearfix">
-            <h2 class="card-title pull-left">
-              <a href="#">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">Booz Allen/18F <small><i class="fa fa-certificate"></i></small></span>
-              </a>
-            </h2>
-            <small class="pull-right">
-              <ul class="list-inline pull-right">
-                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                  </span>
-                </li>
-              </ul>
-            </small>
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                <h2 class="repo-title">
+                  <i class="fa fa-code fa-lg card-icon code"></i>
+                  <a href="#">18F</a>
+                </h2>
+                <small class="repo-owner">Booz Allen</small>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 clearfix">
+                <small class="card-details pull-right">
+                  <ul class="list-inline">
+                    <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                      </span>
+                    </li>
+                  </ul>
+                </small>
+              </div>
+            </div>
           </div>
 
-          <div class="card-content">
+          <div class="card-block">
             <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
           </div>
 
@@ -298,46 +323,51 @@
 
       <div class="col-lg-12">
         <div class="card card-search">
-          <div class="card-header clearfix">
-            <h2 class="card-title pull-left">
-              <a href="#">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">Booz Allen/18F <small><i class="fa fa-certificate"></i></small></span>
-              </a>
-            </h2>
-            <small class="pull-right">
-              <ul class="list-inline pull-right">
-                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                  </span>
-                </li>
-              </ul>
-            </small>
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                <h2 class="repo-title">
+                  <i class="fa fa-code fa-lg card-icon code"></i>
+                  <a href="#">18F</a>
+                </h2>
+                <small class="repo-owner">Booz Allen</small>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 clearfix">
+                <small class="card-details pull-right">
+                  <ul class="list-inline">
+                    <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                      </span>
+                    </li>
+                  </ul>
+                </small>
+              </div>
+            </div>
           </div>
 
-          <div class="card-content">
+          <div class="card-block">
             <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
           </div>
 
@@ -354,46 +384,51 @@
 
       <div class="col-lg-12">
         <div class="card card-search">
-          <div class="card-header clearfix">
-            <h2 class="card-title pull-left">
-              <a href="#">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">Booz Allen/18F <small><i class="fa fa-certificate"></i></small></span>
-              </a>
-            </h2>
-            <small class="pull-right">
-              <ul class="list-inline pull-right">
-                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                  </span>
-                </li>
-              </ul>
-            </small>
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                <h2 class="repo-title">
+                  <i class="fa fa-code fa-lg card-icon code"></i>
+                  <a href="#">18F</a>
+                </h2>
+                <small class="repo-owner">Booz Allen</small>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 clearfix">
+                <small class="card-details pull-right">
+                  <ul class="list-inline">
+                    <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                      </span>
+                    </li>
+                  </ul>
+                </small>
+              </div>
+            </div>
           </div>
 
-          <div class="card-content">
+          <div class="card-block">
             <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
           </div>
 
@@ -410,46 +445,51 @@
 
       <div class="col-lg-12">
         <div class="card card-search">
-          <div class="card-header clearfix">
-            <h2 class="card-title pull-left">
-              <a href="#">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">Booz Allen/18F <small><i class="fa fa-certificate"></i></small></span>
-              </a>
-            </h2>
-            <small class="pull-right">
-              <ul class="list-inline pull-right">
-                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                  </span>
-                </li>
-              </ul>
-            </small>
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                <h2 class="repo-title">
+                  <i class="fa fa-code fa-lg card-icon code"></i>
+                  <a href="#">18F</a>
+                </h2>
+                <small class="repo-owner">Booz Allen</small>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 clearfix">
+                <small class="card-details pull-right">
+                  <ul class="list-inline">
+                    <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                      </span>
+                    </li>
+                  </ul>
+                </small>
+              </div>
+            </div>
           </div>
 
-          <div class="card-content">
+          <div class="card-block">
             <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
           </div>
 
@@ -466,46 +506,51 @@
 
       <div class="col-lg-12">
         <div class="card card-search">
-          <div class="card-header clearfix">
-            <h2 class="card-title pull-left">
-              <a href="#">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">Booz Allen/18F <small><i class="fa fa-certificate"></i></small></span>
-              </a>
-            </h2>
-            <small class="pull-right">
-              <ul class="list-inline pull-right">
-                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                  </span>
-                </li>
-              </ul>
-            </small>
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                <h2 class="repo-title">
+                  <i class="fa fa-code fa-lg card-icon code"></i>
+                  <a href="#">18F</a>
+                </h2>
+                <small class="repo-owner">Booz Allen</small>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 clearfix">
+                <small class="card-details pull-right">
+                  <ul class="list-inline">
+                    <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                      </span>
+                    </li>
+                  </ul>
+                </small>
+              </div>
+            </div>
           </div>
 
-          <div class="card-content">
+          <div class="card-block">
             <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
           </div>
 
@@ -522,46 +567,51 @@
 
       <div class="col-lg-12">
         <div class="card card-search">
-          <div class="card-header clearfix">
-            <h2 class="card-title pull-left">
-              <a href="#">
-                <i class="fa fa-code fa-lg card-icon code"></i>
-                <span class="repo-name">Booz Allen/18F <small><i class="fa fa-certificate"></i></small></span>
-              </a>
-            </h2>
-            <small class="pull-right">
-              <ul class="list-inline pull-right">
-                <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
-                  </span>
-                </li>
-                <li>
-                  <span class="label label-info">
-                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
-                  </span>
-                </li>
-              </ul>
-            </small>
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                <h2 class="repo-title">
+                  <i class="fa fa-code fa-lg card-icon code"></i>
+                  <a href="#">18F</a>
+                </h2>
+                <small class="repo-owner">Booz Allen</small>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 clearfix">
+                <small class="card-details pull-right">
+                  <ul class="list-inline">
+                    <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                      </span>
+                    </li>
+                  </ul>
+                </small>
+              </div>
+            </div>
           </div>
 
-          <div class="card-content">
+          <div class="card-block">
             <p>Workspace for collecting various artifacts related to 18f projects in the Firm.</p>
           </div>
 

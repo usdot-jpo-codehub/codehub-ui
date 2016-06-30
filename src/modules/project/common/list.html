@@ -13,63 +13,70 @@
     </div>
 
     <div class="row">
-      <div repeat.for="repo of projects | sort: { propertyName: 'total_score', direction: 'descending'} | take:20">
-        <div class="col-sm-12 col-md-6 col-lg-4">
-          <div class="">
-            <div class="card card-fixed">
-              <div class="card-header">
-                <h2 class="card-title clearfix">
-                  <a route-href="route:project-details-popular">
-                    <span class="project-type" if.bind="repo.type === 'code'">
-                      <i class="fa fa-code fa-lg card-icon code"></i>
-                    </span>
-                    <span class="project-type" if.bind="repo.type === 'component'">
-                      <i class="fa fa-cube fa-lg card-icon component"></i>
-                    </span>
-                    <span class="project-type" if.bind="repo.type === 'stack'">
-                      <i class="fa fa-database fa-lg card-icon stack"></i>
-                    </span>
-                    <span class="repo-name">${repo.name}</span>
-                  </a>
-
-                  <small>
-                    <ul class="list-inline pull-right">
-                      <li><img class="project-icon" alt="HTML5 Icon" src="${repo.owner.avatar_url}"></li>
-                      <li>${repo.language}</li>
-                      <li>${repo.owner.login}</li>
-                      <!-- <li><img class="project-icon" alt="HTML5 Icon" src="../../img/logos/html5.svg"></li> -->
-                      <!-- <li><img class="project-icon" alt="JavaScript Icon" src="../../img/logos/javascript.svg"></li> -->
-                    </ul>
-                  </small>
-                </h2>
-              </div>
-              <div class="card-block">
-                <p>${repo.description}</p>
-                <p><a href="${repo.readme_url}" target="_blank">ReadMe</a></p>
+      <div repeat.for="repo of projects | sort: { propertyName: 'total_score', direction: 'descending'} | pick:20" class="clearfix col-sm-12 col-md-6 col-lg-4">
+        <div class="card card-fixed">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-2 col-md-2 col-sm-1">
+                <span class="project-type" if.bind="repo.type === 'code'">
+                  <i class="fa fa-code fa-lg card-icon code"></i>
+                </span>
+                <span class="project-type" if.bind="repo.type === 'component'">
+                  <i class="fa fa-cube fa-lg card-icon component"></i>
+                </span>
+                <span class="project-type" if.bind="repo.type === 'stack'">
+                  <i class="fa fa-database fa-lg card-icon stack"></i>
+                </span>
               </div>
 
-              <div class="card-footer flex">
-                <div class="flex-item">
-                  <span class="label label-info">
-                    <i class="octicon octicon-mail"></i> <span class="text-uppercase">Emails:</span> ${repo.email}
-                  </span>
-                </div>
-                <div class="flex-item">
-                  <span class="label label-info">
-                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commits:</span> ${repo.commits}
-                  </span>
-                </div>
-                <div class="flex-item">
-                  <span class="label label-info">
-                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> ${repo.forks}
-                  </span>
-                </div>
-                <div class="flex-item">
-                  <span class="label label-info">
-                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> ${repo.contributors}
-                  </span>
-                </div>
+              <div class="col-lg-8 col-md-8 col-sm-10 col-repo-title">
+                <h2 class="repo-title"><a route-href="route:project-details-popular">${repo.name}</a></h2>
+                <small class="repo-owner">${repo.owner.login}</small>
               </div>
+
+              <div class="col-lg-2 col-md-2 col-sm-1">
+                <span if.bind="repo.language === 'JavaScript'"><img class="project-icon" alt="JavaScript Icon" title="JavaScript Icon" src="../../img/logos/javascript.svg"></span>
+                <span if.bind="repo.language === 'Ruby'"><img class="project-icon" alt="Ruby Icon" title="Ruby Icon" src="../../img/logos/ruby.svg"></span>
+                <span if.bind="repo.language === 'Java'"><img class="project-icon java-icon" alt="Java Icon" title="Java Icon" src="../../img/logos/java.svg"></span>
+                <span if.bind="repo.language === 'HTML'"><img class="project-icon" alt="HTML Icon" title="HTML Icon" src="../../img/logos/html5.svg"></span>
+                <span if.bind="repo.language === 'Coffeescript'"><img class="project-icon coffee-icon" alt="Coffeescript Icon" title="Coffeescript Icon" src="../../img/logos/coffeescript.svg"></span>
+                <span if.bind="repo.language === 'Python'"><img class="project-icon" alt="Python Icon" title="Python Icon" src="../../img/logos/python.svg"></span>
+                <span if.bind="repo.language === 'Groovy'"><img class="project-icon groovy-icon" alt="Groovy Icon" title="Groovy Icon" src="../../img/logos/Groovy-logo.svg"></span>
+                <span if.bind="repo.language === 'Shell'"><img class="project-icon" alt="Shell Icon" title="Shell Icon" src="../../img/logos/terminal.svg"></span>
+                <span if.bind="repo.language === 'Scala'"><img class="project-icon" alt="Scala Icon" title="Scala Icon" src="../../img/logos/scala.svg"></span>
+                <span if.bind="repo.language === 'null'"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-block">
+            <p>${repo.description}</p>
+          </div>
+
+          <div class="card-actions">
+              <a class="btn btn-primary btn-sm" href="${repo.readme_url}" target="_blank" role="button"><i class="octicon octicon-markdown"></i> <span class="text-uppercase">readme</span></a>
+          </div>
+
+          <div class="card-footer flex">
+            <div class="flex-item">
+              <span class="label label-info">
+                <i class="octicon octicon-mail"></i> <span class="text-uppercase">Emails:</span> ${repo.email}
+              </span>
+            </div>
+            <div class="flex-item">
+              <span class="label label-info">
+                <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commits:</span> ${repo.commits}
+              </span>
+            </div>
+            <div class="flex-item">
+              <span class="label label-info">
+                <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> ${repo.forks}
+              </span>
+            </div>
+            <div class="flex-item">
+              <span class="label label-info">
+                <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> ${repo.contributors}
+              </span>
             </div>
           </div>
         </div>
