@@ -39,8 +39,7 @@ export class ProjectAllStaticData {
     var adjusted_url = baseUrl + '/repos/'+repo_login+'/readme'
     return this.http.get(adjusted_url)
       .then(response => {
-        console.log(response.content);
-        return response.content;
+        return response.content.html_url;
       });
   }
   save(project) {
