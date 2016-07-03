@@ -5,22 +5,22 @@ import {SearchProjectData} from "../dataRepository/searchProjectData";
 import {bindable} from 'aurelia-framework';
 
 @inject(SearchProjectData, Router)
-export class Result {
+export class ResultRet {
   heading = 'Projects List';
 
-  // getViewStrategy() {
-  //       return '../common/result.html';
-  //   }
+  getViewStrategy() {
+        return '../popular/result-ret.html';
+    }
   constructor(searchProjectData, searchProject, searchText) {
 		this.searchProjectData = searchProjectData;
     this.searchProject = searchProject;
     console.log(searchText);
-    this.projects = ["Nooooop"];
+    this.projects = ["Nooooop===== retttt"];
     this.orgs = ["boozallen","booz-allen-hamilton","netflix"];
 	}
 
   activate(params, routeConfig, navigationInstruction) {
-    console.log(routeConfig.settings)
+    //console.log(routeConfig.settings)
     return this.searchProjectData.getAllProjects(this.orgs)
     .then( projects => {
       var projs = JSON.parse(JSON.stringify(projects));
@@ -48,11 +48,26 @@ export class Result {
         }
 
       }
-      console.log(projList);
-      this.projects = projList;
-     return this.projects;
+          console.log(projList);
+          this.projects = projList;
+         return this.projects;
       }
     });
 
 	}
+
+
+  // activate(params, routeConfig, navigationInstruction) {
+  //   console.log(params);
+  //   console.log(routeConfig);
+  //   return this.searchProjectData.getAllPages(params.searchText)
+  //   .then( projects => {
+  //     var projs = JSON.parse(JSON.stringify(projects));
+  //     this.projects = projs;
+  //     return this.projects;
+  //   })
+  //
+	// }
+
+
 }

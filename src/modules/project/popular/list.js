@@ -38,7 +38,6 @@ getData(orgs) {
         this.projects.push(this.getEachProjectContributors(p));
       }
     }
-    console.log(this.projects);
     return this.projects;
   });
 }

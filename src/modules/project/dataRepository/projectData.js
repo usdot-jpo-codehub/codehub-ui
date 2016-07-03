@@ -32,7 +32,7 @@ export class ProjectData {
     var org_url = '';
     var promise = '';
     for (var org of orgs){
-      org_url = baseUrl + "/orgs/"+org+"/repos";
+      org_url = baseUrl + "/orgs/"+org+"/repos?client_id=a9aaad91830dbe7558bc&client_secret=82126472052081d51ab1e0be3d77e7fdd94dc84f";
       promise =  this.http.get(org_url).then(response => {return response.content});
       project_promises.push(promise);
     }
@@ -41,7 +41,7 @@ export class ProjectData {
   }
 
   getNumberofContributors(full_name){
-    var contributors_url = baseUrl + "/repos/"+full_name+"/stats/contributors";
+    var contributors_url = baseUrl + "/repos/"+full_name+"/stats/contributors?client_id=a9aaad91830dbe7558bc&client_secret=82126472052081d51ab1e0be3d77e7fdd94dc84f";
     return this.http.get(contributors_url)
       .then(response => {
         return response.content;
@@ -50,7 +50,7 @@ export class ProjectData {
 
 getNumberofCommits(full_name){
   full_name = 'boozallen/projectjellyfish'
-  var commits_url = baseUrl + "/repos/"+full_name+"/commits";
+  var commits_url = baseUrl + "/repos/"+full_name+"/commits?client_id=a9aaad91830dbe7558bc&client_secret=82126472052081d51ab1e0be3d77e7fdd94dc84f";
   return this.http.get(commits_url)
     .then(response => {
       return response.content.length;
