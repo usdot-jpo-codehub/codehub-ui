@@ -49,7 +49,7 @@ export class SearchProjectData {
   }
   searchByName(searchText) {
     //let adjusted_url = '/api/favorites' + '?filter={"where": {"name": {"inq": [' + '"'+searchText +'"'+ ']}}}';
-    let adjusted_url = baseUrl+'/search/repositories?q='+searchText+'&per_page=101&sort=stars&order=desc'
+    let adjusted_url = baseUrl+'/search/repositories?q='+searchText+'&per_page=100&sort=stars&order=desc'
     return this.http.get(adjusted_url)
       .then(response => {
         return response;

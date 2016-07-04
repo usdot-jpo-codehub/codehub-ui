@@ -50,7 +50,7 @@ export class ProjectData {
 
 getNumberofCommits(full_name){
   full_name = 'boozallen/projectjellyfish'
-  var commits_url = baseUrl + "/repos/"+full_name+"/commits?client_id=a9aaad91830dbe7558bc&client_secret=82126472052081d51ab1e0be3d77e7fdd94dc84f";
+  var commits_url = baseUrl + "/repos/"+full_name+"/commits";
   return this.http.get(commits_url)
     .then(response => {
       return response.content.length;
