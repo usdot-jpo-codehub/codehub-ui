@@ -1,7 +1,6 @@
 import {inject} from 'aurelia-framework';
 import {Router} from "aurelia-router";
 import {SearchProjectData} from "../dataRepository/searchProjectData";
-//import {SearchProject} from "./search-project";
 import {bindable} from 'aurelia-framework';
 
 @inject(SearchProjectData, Router)

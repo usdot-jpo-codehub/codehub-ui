@@ -1,8 +1,10 @@
 <template>
-  <require from="../search/result-search"></require>
+  <require from="../utility/sort"></require>
+  <require from="../utility/pick"></require>
+  <require from="../search/search-project"></require>
   <div class="container-fluid bg_main">
     <div class="row">
-        <result-search></result-search>
+      <search-project></search-project>
       <div class="col-lg-12">
         <div class="page-header results-header">
           <h1>Search Results</h1>
@@ -13,7 +15,7 @@
       <div class="col-lg-12">
         <p>We've found ${projects.length} results!</p>
       </div>
-    <div repeat.for="repo of projects">
+      <div repeat.for="repo of projects | sort: { propertyName: 'stargazers_count', direction: 'descending'}">
       <div class="col-lg-12">
         <div class="card card-search">
           <div class="card-header">
@@ -63,7 +65,6 @@
           <div class="card-block">
             <p>${repo.description}</p>
           </div>
-
           <div class="card-footer clearfix">
             <ul class="list-inline pull-right">
               <li><a href="#"><i class="octicon octicon-markdown"></i> Readme</a></li>
@@ -76,6 +77,5 @@
       </div>
     </div>
     </div>
-
   </div>
 </template>

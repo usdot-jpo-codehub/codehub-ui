@@ -32,7 +32,7 @@ export class ProjectData {
     var org_url = '';
     var promise = '';
     for (var org of orgs){
-      org_url = baseUrl + "/orgs/"+org+"/repos?client_id=a9aaad91830dbe7558bc&client_secret=82126472052081d51ab1e0be3d77e7fdd94dc84f";
+      org_url = baseUrl + "/orgs/"+org+"/repos";
       promise =  this.http.get(org_url).then(response => {return response.content});
       project_promises.push(promise);
     }
@@ -41,7 +41,7 @@ export class ProjectData {
   }
 
   getNumberofContributors(full_name){
-    var contributors_url = baseUrl + "/repos/"+full_name+"/stats/contributors?client_id=a9aaad91830dbe7558bc&client_secret=82126472052081d51ab1e0be3d77e7fdd94dc84f";
+    var contributors_url = baseUrl + "/repos/"+full_name+"/stats/contributors";
     return this.http.get(contributors_url)
       .then(response => {
         return response.content;

@@ -60,7 +60,7 @@ export class ProjectAllStaticData {
         .withHeader("Content-Type", "application/json")
         .withContent(project);
     }
-    ;
+    
 
     return request.send().then(response => response.content);
   }
