@@ -85,6 +85,7 @@
       "fetch": "github:github/fetch@^0.11.0",
       "font-awesome": "npm:font-awesome@^4.5.0",
       "jquery": "npm:jquery@^2.2.3",
+      "jquery-ui": "npm:jquery-ui@^1.10.5",
       "numeral": "npm:numeral@^1.5.3",
       "octicons": "npm:octicons@^4.2.0",
       "text": "github:systemjs/plugin-text@^0.0.3"
@@ -97,6 +98,6 @@
   },
   "dependencies": {
     "gulp-less": "^3.1.0",
-    "gulp-watch-less":"^1.0.1"
+    "gulp-watch-less": "^1.0.1"
   }
 }

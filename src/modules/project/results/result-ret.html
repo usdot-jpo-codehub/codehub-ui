@@ -1,0 +1,81 @@
+<template>
+  <require from="../utility/sort"></require>
+  <require from="../utility/pick"></require>
+  <require from="../search/search-project"></require>
+  <div class="container-fluid bg_main">
+    <div class="row">
+      <search-project></search-project>
+      <div class="col-lg-12">
+        <div class="page-header results-header">
+          <h1>Search Results</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <p>We've found ${projects.length} results!</p>
+      </div>
+      <div repeat.for="repo of projects | sort: { propertyName: 'stargazers_count', direction: 'descending'}">
+      <div class="col-lg-12">
+        <div class="card card-search">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                <h2 class="repo-title">
+                  <i class="fa fa-code fa-lg card-icon code"></i>
+                  <a href="#">${repo.name} <small class="proj-cert"><i class="fa fa-certificate"></i></small></a>
+                </h2>
+                <small class="repo-owner">${repo.owner.login}</small>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 clearfix">
+                <small class="card-details pull-right">
+                  <ul class="list-inline">
+                    <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/spring.svg"> Spring</li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> ${repo.stargazers_count}
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> ${repo.forks}
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commit:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> 100
+                      </span>
+                    </li>
+                    <li>
+                      <span class="label label-info">
+                        <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> 100
+                      </span>
+                    </li>
+                  </ul>
+                </small>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-block">
+            <p>${repo.description}</p>
+          </div>
+          <div class="card-footer clearfix">
+            <ul class="list-inline pull-right">
+              <li><a href="#"><i class="octicon octicon-markdown"></i> Readme</a></li>
+              <li><i class="octicon octicon-file"></i> Build File</li>
+              <li><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/docker.svg"> Dockerfile</li>
+              <li><img class="project-icon vargant-icon" alt="JavaScript Icon" src="../../../../img/logos/vagrant.svg"> Vagrantfile</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</template>
