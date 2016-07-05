@@ -30,19 +30,50 @@ export class Result {
       }
       else{
         var projList = [];
-        for(var projArr of projs){
-          for(var proj of projArr){
-          if(new RegExp(params.searchText,"i").test(proj.full_name) || new RegExp(params.searchText,"i").test(proj.description)){
-            projList.push(proj);
+        var splitted_search_text = params.searchText.split(" ");
+        if(splitted_search_text.length == 1){
+          for(var projArr of projs){
+            for(var proj of projArr){
+            if(new RegExp(params.searchText,"i").test(proj.full_name) || new RegExp(params.searchText,"i").test(proj.description)){
+              projList.push(proj);
+            }
+
           }
 
         }
+        }
+        else{
+            var parsedSearchText = this.getCombinationsOfSearchText(splitted_search_text);
+            for(var searchWord of parsedSearchText){
+              for(var projArr of projs){
+                for(var proj of projArr){
+                if(new RegExp(searchWord,"i").test(proj.full_name) || new RegExp(searchWord,"i").test(proj.description)){
+                  projList.push(proj);
+                }
 
-      }
+              }
+
+            }
+            }
+
+        }
       this.projects = projList;
       return this.projects;
       }
     });
 
 	}
+
+getCombinationsOfSearchText(searchTextArray){
+  var result = [];
+  var ret = function(prefix, searchTextArray) {
+    for (var i = 0; i < searchTextArray.length; i++) {
+      result.push(prefix + searchTextArray[i]);
+      ret(prefix + searchTextArray[i] +" ", searchTextArray.slice(i + 1));
+    }
+  }
+  ret('', searchTextArray);
+  return result;
+}
+
 }
