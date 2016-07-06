@@ -49,7 +49,10 @@ export class ResultRet {
               for(var projArr of projs){
                 for(var proj of projArr){
                 if(new RegExp(searchWord,"i").test(proj.full_name) || new RegExp(searchWord,"i").test(proj.description)){
-                  projList.push(proj);
+                  if(projList.indexOf(proj) == -1){
+                    projList.push(proj);
+
+                  }
                 }
 
               }
