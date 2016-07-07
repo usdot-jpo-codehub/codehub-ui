@@ -5908,9 +5908,65 @@ a.list-group-item-danger.active:focus {
     display: none !important;
   }
 }
+.text-muted {
+  color: #BDBDBD;
+}
+html {
+  font-size: 16px;
+}
 body {
   color: #ffffff;
   background-color: #2E3234;
+}
+.col-xs-1,
+.col-sm-1,
+.col-md-1,
+.col-lg-1,
+.col-xs-2,
+.col-sm-2,
+.col-md-2,
+.col-lg-2,
+.col-xs-3,
+.col-sm-3,
+.col-md-3,
+.col-lg-3,
+.col-xs-4,
+.col-sm-4,
+.col-md-4,
+.col-lg-4,
+.col-xs-5,
+.col-sm-5,
+.col-md-5,
+.col-lg-5,
+.col-xs-6,
+.col-sm-6,
+.col-md-6,
+.col-lg-6,
+.col-xs-7,
+.col-sm-7,
+.col-md-7,
+.col-lg-7,
+.col-xs-8,
+.col-sm-8,
+.col-md-8,
+.col-lg-8,
+.col-xs-9,
+.col-sm-9,
+.col-md-9,
+.col-lg-9,
+.col-xs-10,
+.col-sm-10,
+.col-md-10,
+.col-lg-10,
+.col-xs-11,
+.col-sm-11,
+.col-md-11,
+.col-lg-11,
+.col-xs-12,
+.col-sm-12,
+.col-md-12,
+.col-lg-12 {
+  margin-bottom: 15px;
 }
 .container-fluid > .row {
   margin-bottom: 15px;
@@ -6116,114 +6172,154 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   text-decoration: none;
 }
 .card {
+  width: 100%;
   position: relative;
   display: block;
-  margin-bottom: .75rem;
-  border-radius: .25rem;
-  background-color: #424242;
+  margin: 0;
+  margin-bottom: 0.75rem;
   color: #ffffff;
-  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #424242;
+  border-radius: 0.25rem;
+  border: 1px solid #555555;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  font-size: .875rem;
+  font-weight: normal;
 }
 .card .card-header {
-  padding: .75rem 1.25rem;
+  padding: 0;
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
   border-bottom: 1px solid #555555;
 }
-.card .card-header .repo-title {
-  margin-top: 0;
-  margin-bottom: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 100%;
+.card .card-header .project-component-flex {
+  min-height: 2.0rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 0.25rem 1rem;
+  margin: 0;
 }
-.card .card-header .repo-title a {
-  text-decoration: underline;
-  color: #ffffff;
+.card .card-header .project-component-flex img {
+  width: 1.25rem;
+  height: 1.25rem;
 }
-.card .card-header .repo-title a:hover,
-.card .card-header .repo-title a:focus {
-  color: #93ADD5;
-  text-decoration: underline;
+.card .card-header .project-component-flex .fa {
+  font-size: 150%;
 }
-.card .card-header .repo-owner {
-  font-size: 18.5px;
-  color: #ffffff;
-  margin-bottom: 0;
+.card .card-block {
+  padding: 0.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Card Files */
 }
-.card .card-block,
-.card .card-actions {
-  padding: 1.25rem;
+.card .card-block .card-actions {
+  flex-basis: 100%;
+}
+.card .card-block .flex-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.card .card-block .flex-links .project-icon {
+  height: 1rem;
+  width: 1rem;
 }
 .card .card-actions {
   display: flex;
   justify-content: center;
-}
-.card .card-footer {
-  border-top: 1px solid #555555;
-}
-.card .project-icon {
-  height: 25px;
-  width: 25px;
+  font-size: 150%;
+  border-bottom: 1px solid #555555;
+  margin-bottom: 1rem;
 }
 .card .coffee-icon,
 .card .java-icon,
 .card .groovy-icon {
   background-color: #ffffff;
-  border-radius: 100px;
-  height: 30px;
-  width: 30px;
-  padding: 5px;
 }
-.card .vargant-icon {
-  height: 15px;
-  width: 15px;
+.card .card-footer {
+  background-color: #282828;
+  box-shadow: 0 0 0 1px #555555 inset;
+  padding: 0.5rem;
 }
-.card .card-icon {
-  border-radius: 100px;
-  color: #f6f6f6;
-  padding: 12px 10px;
-  font-size: 15px;
+.card .card-title {
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.card .card-title a {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1 2 auto;
+}
+.card .card-subtitle {
+  margin-top: -0.375rem;
+  margin-bottom: 0;
 }
 .card .code {
   background-color: #902144;
+  border-color: #501226;
 }
 .card .component {
   background-color: #005d6a;
+  border-color: #00252A;
 }
 .card .stack {
   background-color: #a999de;
+  border-color: #786D9E;
 }
-.card-search .card-header .card-icon {
-  margin-right: 15px;
+.card-search .card-title a {
+  overflow: inherit;
+  text-overflow: initial;
+  white-space: initial;
+  flex: auto;
 }
-.card-search .card-header h2,
-.card-search .card-header .card-details {
-  margin-top: 10px;
+/* Footer Components */
+.flex-footer {
+  display: flex;
+  flex: row;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
-.card-search .card-header .proj-cert {
-  margin-left: 15px;
+.flex-footer .flex-item {
+  width: 50%;
+  text-align: center;
+  padding: 0;
+  padding: 0.15rem;
+  margin: 0;
+  margin-bottom: 0.1rem;
 }
-.card-search .card-header .proj-cert i {
-  font-size: 150%;
+/* Component Types */
+.project-type {
+  display: flex;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  margin: auto;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+  background-color: #005D6A;
+  border: 0.375rem solid #00252A;
 }
-.card-search .card-header .repo-owner {
-  margin-left: 60px;
+.project-type img {
+  width: 2rem;
+  height: 2rem;
 }
-.card-search .card-footer {
-  padding: .75rem 0;
-}
-.card-link {
-  color: #ffffff;
-  text-decoration: none;
-}
-.card-link:hover,
-.card-link:focus {
-  background-color: #8E8E8E;
-  color: #ffffff;
-  text-decoration: underline;
+.project-info img {
+  width: 3.5rem;
+  height: 3.5rem;
 }
 .card-fixed .card-block {
-  min-height: 115px;
+  min-height: 180px;
 }
 .project-details .page-header {
   display: flex;
