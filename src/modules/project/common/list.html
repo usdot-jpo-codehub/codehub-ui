@@ -18,13 +18,9 @@
 
           <div class="card-header">
 
-            <!-- ${repo.type ? 'code component stack' : ''} -->
-            <div class="project-component-flex">
-              <span class="component-type text-uppercase"><i class="fa fa-code fa-lg code"></i> <strong>Code</strong></span>
+            <div class="project-component-flex" >
 
-              <span class="component-type text-uppercase" if.bind="repo.type === 'code'"><i class="fa fa-code fa-lg code"></i> <strong>Code</strong></span>
-              <span class="component-type text-uppercase" if.bind="repo.type === 'component'"><i class="fa fa-cube fa-lg component"></i> <strong>Component</strong></span>
-              <span class="component-type text-uppercase" if.bind="repo.type === 'stack'"><i class="fa fa-database fa-lg stack"></i> <strong>Stack</strong></span>
+              <span class="component-type text-uppercase"><i class="fa fa-code fa-lg ${repo.type == undefined ? 'code' : repo.type}"></i> <strong>${repo.type == undefined ? 'code' : repo.type}</strong></span>
 
               <span if.bind="repo.language === 'JavaScript'"><img class="project-icon" alt="JavaScript Icon" title="JavaScript Icon" src="../../img/logos/javascript.svg"></span>
               <span if.bind="repo.language === 'Ruby'"><img class="project-icon" alt="Ruby Icon" title="Ruby Icon" src="../../img/logos/ruby.svg"></span>
@@ -46,7 +42,7 @@
             </div>
 
           </div>
-          
+
           <div class="card-block">
             <p class="card-text">${repo.description}</p>
 
@@ -59,7 +55,7 @@
               <a href="#" class="card-link"><span class="octicon octicon-file"></span> Travis.yml</a>
             </div>
           </div>
-          
+
           <div class="card-footer flex-footer">
             <span class="flex-item ">
               <span class="octicon octicon-mail"></span> Emails ${repo.email}
