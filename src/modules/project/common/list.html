@@ -18,7 +18,7 @@
 
           <div class="card-header">
 
-            <div class="project-component-flex" >
+            <div class="project-component-flex ${repo.type == undefined ? 'code' : repo.type}" >
 
               <span class="component-type text-uppercase"><i class="fa fa-code fa-lg ${repo.type == undefined ? 'code' : repo.type}"></i> <strong>${repo.type == undefined ? 'code' : repo.type}</strong></span>
 
