@@ -44,14 +44,19 @@
 		padding: 0.25rem 1rem;
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
 
-		.card-actions {
-			flex-basis: 100%;
+		.card-text {
+			align-self: flex-start;
+			width: 100%;
+			flex-grow: 2;
 		}
 
 		/* Card Files */
 		.flex-links {
+			width: 100%;
+			// flex-grow: 1;
+			height: 50px;
+			align-self: flex-end;
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-around;
@@ -59,6 +64,8 @@
 			list-style: none;
 			margin: 0;
 			-webkit-padding-start: 0;
+			border-top: 1px solid @gray;
+			padding-top: 0.25rem;
 
 			.project-icon {
 				height: 1rem;
@@ -143,7 +150,6 @@
 }
 
 .card-details {
-	
 	.project-icon {
 		height: 1rem;
 		width: 1rem;

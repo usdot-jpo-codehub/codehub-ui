@@ -48,13 +48,10 @@
                         </div>
 
                         <div class="card-block">
-                            <p>${repo.description}</p>
-
-                            <div class="card-actions">
-                              <a href="${repo.readme_url}" target="_blank" class="card-link"><span class="octicon octicon-book"></span> Readme</a>
-                            </div>
+                            <p class="card-text">${repo.description}</p>
 
                             <ul class="flex-links">
+                                <li><a href="${repo.readme_url}" target="_blank" class="card-link"><span class="octicon octicon-book"></span> Readme</a></li>
                                 <li><a href="#" class="card-link"><span class="octicon octicon-file"></span> Package.json</a></li>
                                 <li><a href="#" class="card-link"><span class="octicon octicon-file"></span> Travis.yml</a></li>
                                 <li><a href="#" class="card-link"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/docker.svg"> Dockerfile</a></li>
