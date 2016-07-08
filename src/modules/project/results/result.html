@@ -48,33 +48,32 @@
                         </div>
 
                         <div class="card-block">
-                            <p>${repo.description}</p>
+                            <p class="card-text">${repo.description}</p>
 
-                            <div class="card-actions">
-                              <a href="${repo.readme_url}" target="_blank" class="card-link"><span class="octicon octicon-book"></span> Readme</a>
-                            </div>
-
-                            <div class="flex-links">
-                              <a href="#" class="card-link"><span class="octicon octicon-file"></span> Package.json</a>
-                              <a href="#" class="card-link"><span class="octicon octicon-file"></span> Travis.yml</a>
-                              <a href="#" class="card-link"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/docker.svg"> Dockerfile</a>
-                              <a href="#" class="card-link"><img class="project-icon vargant-icon" alt="JavaScript Icon" src="../../../../img/logos/vagrant.svg"> Vagrantfile</a>
-                            </div>
+                            <ul class="flex-links">
+                                <li><a href="${repo.readme_url}" target="_blank" class="card-link"><span class="octicon octicon-book"></span> Readme</a></li>
+                                <li><a href="#" class="card-link"><span class="octicon octicon-file"></span> Package.json</a></li>
+                                <li><a href="#" class="card-link"><span class="octicon octicon-file"></span> Travis.yml</a></li>
+                                <li><a href="#" class="card-link"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/docker.svg"> Dockerfile</a></li>
+                                <li><a href="#" class="card-link"><img class="project-icon vargant-icon" alt="JavaScript Icon" src="../../../../img/logos/vagrant.svg"> Vagrantfile</a></li>
+                            </ul>
                         </div>
 
-                        <div class="card-footer flex-footer">
-                            <span class="flex-item ">
-                                <span class="octicon octicon-mail"></span> Emails ${repo.email}
-                            </span>
-                            <span class="flex-item">
-                                <span class="octicon octicon-git-commit"></span> Commits ${repo.commits}
-                            </span>
-                            <span class="flex-item">
-                                <span class="octicon octicon-repo-forked"></span> Forks ${repo.forks}
-                            </span>
-                            <span class="flex-item">
-                                <span class="octicon octicon-organization"></span> Contributors ${repo.contributors}
-                            </span>
+                        <div class="card-footer">
+                            <ul class="flex-footer">
+                                <li class="flex-item ">
+                                    <span class="octicon octicon-mail"></span> Emails ${repo.email}
+                                </li>
+                                <li class="flex-item">
+                                    <span class="octicon octicon-git-commit"></span> Commits ${repo.commits}
+                                </li>
+                                <li class="flex-item">
+                                    <span class="octicon octicon-repo-forked"></span> Forks ${repo.forks}
+                                </li>
+                                <li class="flex-item">
+                                    <span class="octicon octicon-organization"></span> Contributors ${repo.contributors}
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
