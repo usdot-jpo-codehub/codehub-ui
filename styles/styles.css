@@ -5968,6 +5968,56 @@ body {
 .col-lg-12 {
   margin-bottom: 15px;
 }
+.card-details .col-xs-1,
+.card-details .col-sm-1,
+.card-details .col-md-1,
+.card-details .col-lg-1,
+.card-details .col-xs-2,
+.card-details .col-sm-2,
+.card-details .col-md-2,
+.card-details .col-lg-2,
+.card-details .col-xs-3,
+.card-details .col-sm-3,
+.card-details .col-md-3,
+.card-details .col-lg-3,
+.card-details .col-xs-4,
+.card-details .col-sm-4,
+.card-details .col-md-4,
+.card-details .col-lg-4,
+.card-details .col-xs-5,
+.card-details .col-sm-5,
+.card-details .col-md-5,
+.card-details .col-lg-5,
+.card-details .col-xs-6,
+.card-details .col-sm-6,
+.card-details .col-md-6,
+.card-details .col-lg-6,
+.card-details .col-xs-7,
+.card-details .col-sm-7,
+.card-details .col-md-7,
+.card-details .col-lg-7,
+.card-details .col-xs-8,
+.card-details .col-sm-8,
+.card-details .col-md-8,
+.card-details .col-lg-8,
+.card-details .col-xs-9,
+.card-details .col-sm-9,
+.card-details .col-md-9,
+.card-details .col-lg-9,
+.card-details .col-xs-10,
+.card-details .col-sm-10,
+.card-details .col-md-10,
+.card-details .col-lg-10,
+.card-details .col-xs-11,
+.card-details .col-sm-11,
+.card-details .col-md-11,
+.card-details .col-lg-11,
+.card-details .col-xs-12,
+.card-details .col-sm-12,
+.card-details .col-md-12,
+.card-details .col-lg-12 {
+  margin-bottom: 0;
+}
 .container-fluid > .row {
   margin-bottom: 15px;
   margin-left: 10px;
@@ -6222,10 +6272,16 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+  list-style: none;
+  margin: 0;
+  -webkit-padding-start: 0;
 }
 .card .card-block .flex-links .project-icon {
   height: 1rem;
   width: 1rem;
+}
+.card .card-block .card-links {
+  justify-content: flex-start;
 }
 .card .card-actions {
   display: flex;
@@ -6261,6 +6317,9 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   margin-top: -0.375rem;
   margin-bottom: 0;
 }
+.card .stage {
+  background-color: #155569;
+}
 .card .code {
   background-color: #902144;
   border-color: #501226;
@@ -6279,14 +6338,24 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   white-space: initial;
   flex: auto;
 }
+.card-details .project-icon {
+  height: 1rem;
+  width: 1rem;
+}
+.card-details .project-info {
+  height: 88px;
+}
 /* Footer Components */
 .flex-footer {
   display: flex;
+  list-style: none;
   flex: row;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: 0;
+  -webkit-padding-start: 0;
 }
 .flex-footer .flex-item {
   width: 50%;
