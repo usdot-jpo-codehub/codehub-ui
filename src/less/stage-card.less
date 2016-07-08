@@ -1,145 +1,185 @@
 // Card Styles -- based on Google Material Design
 
 .card {
+	width: 100%;
 	position: relative;
 	display: block;
-	margin-bottom: .75rem;
-	border-radius: .25rem;
-
-	background-color: @stage-card-bk;
+	margin: 0;
+	margin-bottom: 0.75rem;
 	color: @white;
-	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background-color: @stage-card-bk;
+	border-radius: 0.25rem;
+	border: 1px solid @gray;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+	font-size: .875rem;
+	font-weight: normal;
 
 	.card-header {
-		padding: .75rem 1.25rem;
+		padding: 0;
+		padding-bottom: 1rem;
+		margin-bottom: 0.5rem;
 		border-bottom: 1px solid @gray;
 
-		.repo-title{
-			margin-top: 0;
-			margin-bottom: 0;
+		.project-component-flex {
+			min-height: 2.0rem;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			color: white;
+			padding: 0.25rem 1rem;
+			margin: 0;
 
-			overflow: hidden;
-    		text-overflow: ellipsis;
-    		white-space: nowrap;
-			max-width: 100%;
+			img {
+			  width: 1.25rem;
+			  height: 1.25rem;
+			}
 
-			a{
-				text-decoration: underline;
-				color: @white;
-
-				&:hover,
-				&:focus {
-					color: #93ADD5;
-					text-decoration: underline;
-				}
+			.fa {
+				font-size: 150%;
 			}
 		}
-
-		.repo-owner{
-            font-size: 18.5px;
-            color: @white;
-            margin-bottom: 0;
-        }
 	}
 
-	.card-block,
-	.card-actions {
-		padding: 1.25rem;
+	.card-block {
+		padding: 0.25rem 1rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		.card-actions {
+			flex-basis: 100%;
+		}
+
+		/* Card Files */
+		.flex-links {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			align-items: center;
+
+			.project-icon {
+				height: 1rem;
+				width: 1rem;
+			}
+		}
 	}
 
 	.card-actions {
 		display: flex;
 		justify-content: center;
-	}
-
-	.card-footer{
-		border-top: 1px solid @gray;
-	}
-
-	.project-icon{
-		height: 25px;
-		width: 25px;
+		font-size: 150%;
+		border-bottom: 1px solid @gray;
+		margin-bottom: 1rem;
 	}
 
 	.coffee-icon,
 	.java-icon,
-	.groovy-icon{
+	.groovy-icon {
 		background-color: @white;
-		border-radius: 100px;
-		height: 30px;
-		width: 30px;
-		padding: 5px;
 	}
 
-	.vargant-icon{
-		height: 15px;
-		width: 15px;
+	.card-footer {
+		background-color: @stage-footer;
+		box-shadow: 0 0 0 1px @gray inset;
+		padding: 0.5rem;
 	}
 
-	.card-icon {
-		border-radius: 100px;
-		color: #f6f6f6;
-		padding: 12px 10px;
-		font-size: 15px;
+	.card-title {
+		margin-top: 0.5rem;
+		margin-bottom: 0.75rem;
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+
+		a {
+			overflow: hidden;
+        	text-overflow: ellipsis;
+        	white-space: nowrap;
+        	flex: 1 2 auto;
+		}
+	}
+
+	.card-subtitle {
+		margin-top: -0.375rem;
+		margin-bottom: 0;
 	}
 
 	.code {
 		background-color: @stage-code;
+		border-color: #501226;
 	}
 
 	.component {
 		background-color: @stage-component;
+		border-color: #00252A;
 	}
 
 	.stack {
 		background-color: @stage-stack;
+		border-color: #786D9E;
 	}
 }
 
 .card-search{
-	.card-header{
 
-		.card-icon {
-			margin-right: 15px;
+	.card-title {
+		a {
+			overflow: inherit;
+        	text-overflow: initial;
+        	white-space: initial;
+        	flex: auto;
 		}
-
-		h2,
-		.card-details {
-			margin-top: 10px;
-		}
-
-		.proj-cert{
-			margin-left: 15px;
-
-			i {
-				font-size: 150%;
-			}
-		}
-
-		.repo-owner{
-			margin-left: 60px;
-		}
-	}
-
-	.card-footer{
-		padding: .75rem 0;
 	}
 }
 
-.card-link {
-	color: @white;
-  	text-decoration: none;
+/* Footer Components */
 
-  	&:hover,
-	&:focus {
-		background-color: @stage-card-hover-bk;
-		color: @white;
-		text-decoration: underline;
-  	}
+.flex-footer {
+	display: flex;
+	flex: row;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	.flex-item{
+		width: 50%;
+		text-align: center;
+		padding: 0;
+		padding: 0.15rem;
+		margin: 0;
+		margin-bottom: 0.1rem;
+	}
+}
+
+/* Component Types */
+
+.project-type {
+	display: flex;
+	width: 5rem;
+	height: 5rem;
+	border-radius: 50%;
+	margin: auto;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	color: #FFFFFF;
+	background-color: #005D6A;
+	border: 0.375rem solid #00252A;
+
+	img {
+		width: 2rem;
+		height: 2rem;
+	}
+}
+
+.project-info img{
+	width: 3.5rem;
+	height: 3.5rem;
 }
 
 .card-fixed {
 	.card-block{
-		min-height:115px; 
+		min-height:180px;
 	}
 }
