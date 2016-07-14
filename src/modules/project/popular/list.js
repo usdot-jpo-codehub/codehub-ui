@@ -30,17 +30,12 @@ export class List {
 
   }
 
-getData(orgs) {
-  var contributor_list = [];
-  return this.projectData.getAll(orgs).then(results => {
-    for(var proj of results){
-      for(var p of proj){
-        this.projects.push(this.getEachProjectContributors(p));
-      }
-    }
-    return this.projects;
-  });
-}
+  getData() {
+    return this.projectData.getAll().then(results => {
+      this.projects = results;
+      return this.projects;
+    });
+  }
 
 getEachProjectContributors(proj){
          this.getNumberofContributors(proj.full_name)
@@ -91,7 +86,7 @@ getEachProjectContributors(proj){
 
    }
  activate() {
-    this.getData(this.orgs);
-  }
+      this.getData();
+ }
 
 }

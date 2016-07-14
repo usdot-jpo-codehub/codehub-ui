@@ -1,8 +1,9 @@
 import {inject} from "aurelia-framework";
 import {HttpClient} from "aurelia-http-client";
 
-let baseUrl = "https://api.github.com";
-let access_token = "?client_id=d59cc34b4839c118aeb1&client_secret=c0902736d0aeb9d02e1d4ea69113652979d68dd6";
+let baseUrl = "/api/projects";
+//let access_token = "?client_id=d59cc34b4839c118aeb1&client_secret=c0902736d0aeb9d02e1d4ea69113652979d68dd6";
+let access_token = "";
 
 @inject(HttpClient)
 export class ProjectData {
@@ -28,17 +29,12 @@ export class ProjectData {
       });
   }
 
-  getAll(orgs) {
-    var project_promises = [];
-    var org_url = '';
-    var promise = '';
-    for (var org of orgs){
-      org_url = baseUrl + "/orgs/"+org+"/repos"+access_token;
-      promise =  this.http.get(org_url).then(response => {return response.content});
-      project_promises.push(promise);
-    }
-    return Promise.all(project_promises);
-
+  getAll() {
+    return this.http.get(baseUrl)
+      .then(response =>{
+        console.log(response.content);
+        return response.content;
+      })
   }
 
   getNumberofContributors(full_name){
