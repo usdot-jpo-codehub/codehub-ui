@@ -32,7 +32,6 @@ export class ProjectData {
   getAll() {
     return this.http.get(baseUrl)
       .then(response =>{
-        console.log(response.content);
         return response.content;
       })
   }
