@@ -6310,12 +6310,13 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .card .card-subheader {
   padding: 0 1rem;
 }
-.card .card-subheader .repo-subtitle {
-  flex-basis: 100%;
+.card .card-subheader .card-subtitle {
+  margin-top: 0;
 }
 .card .card-block {
   padding: 0.25rem 1rem;
   display: flex;
+  min-height: 200px;
 }
 .card .card-block .repo-descrip {
   flex-basis: 75%;
