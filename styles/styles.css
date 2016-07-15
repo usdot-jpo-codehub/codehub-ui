@@ -6288,33 +6288,59 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   font-weight: normal;
 }
 .card .card-header {
-  padding: 0;
-  padding-bottom: 1rem;
+  padding: 0.25rem 1rem;
   margin-bottom: 0.5rem;
   border-bottom: 1px solid #CCCCCC;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-.card .card-header .project-component-flex {
-  min-height: 2.0rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-  padding: 0.25rem 1rem;
+.card .card-header .repo-name {
+  flex-basis: 95%;
   margin: 0;
 }
-.card .card-header .project-component-flex .project-icon {
+.card .card-header .repo-language {
+  flex-basis: 5%;
+  margin: 0;
+}
+.card .card-header .repo-language .project-icon {
   height: 1.5rem;
   width: 1.5rem;
-  padding-top: 0.25rem;
 }
-.card .card-header .project-component-flex .java-icon {
-  background-color: #ffffff;
-  border-radius: 50%;
-  height: 1.75em;
-  width: 1.75em;
+.card .card-subheader {
+  padding: 0 1rem;
+}
+.card .card-subheader .repo-subtitle {
+  flex-basis: 100%;
+}
+.card .card-block {
+  padding: 0.25rem 1rem;
+  display: flex;
+}
+.card .card-block .repo-descrip {
+  flex-basis: 75%;
+}
+.card .card-block .repo-stats {
+  flex-basis: 25%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.card .card-block .repo-stats .flex-item {
+  text-align: right;
+}
+.card .card-footer {
+  background-color: #626161;
+  box-shadow: 0 0 0 1px #555555 inset;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+.card .card-footer .flex-footer {
+  list-style: none;
+  -webkit-padding-start: 0;
+  margin: 5px 0;
 }
 .project-details .page-header {
   display: flex;

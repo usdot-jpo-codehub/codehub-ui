@@ -15,35 +15,69 @@
 	font-weight: normal;
 
 	.card-header {
-		padding: 0;
-		padding-bottom: 1rem;
+		padding: 0.25rem 1rem;
 		margin-bottom: 0.5rem;
 		border-bottom: 1px solid @stage-gray;
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
 
-		.project-component-flex {
-			min-height: 2.0rem;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			color: white;
-			padding: 0.25rem 1rem;
+		.repo-name {
+			flex-basis: 95%;
+			margin: 0;
+		}
+
+		.repo-language {
+			flex-basis: 5%;
 			margin: 0;
 
 			.project-icon {
 				height: 1.5rem;
 				width: 1.5rem;
-				padding-top: 0.25rem;
 			}
+		}
+	}
+	
+		.card-subheader{
+		padding: 0 1rem;
 
-			.java-icon {
-				background-color: @white;
-				border-radius: 50%;
-				height: 1.75em;
-				width: 1.75em;
+		.repo-subtitle {
+			flex-basis: 100%;
+		}
+	}
+
+	.card-block {
+		padding: 0.25rem 1rem;
+		display: flex;
+
+		.repo-descrip {
+			flex-basis: 75%;
+		}
+
+		.repo-stats {
+			flex-basis: 25%;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+
+			.flex-item {
+				text-align: right;
 			}
+		}
+	}
+
+	.card-footer {
+		background-color: @stage-footer;
+		box-shadow: 0 0 0 1px @gray inset;
+		padding: 0.5rem;
+		display: flex;
+		justify-content: center;
+		padding: 0;
+
+		.flex-footer {
+			list-style: none;
+			-webkit-padding-start: 0;
+			margin: 5px 0;
 		}
 	}
 }
