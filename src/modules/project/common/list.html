@@ -34,7 +34,7 @@
           </div>
 
           <div class="card-subheader">
-            <h4 class="card-subtitle text-muted">${repo.owner.login}</h4>
+            <h4 class="card-subtitle text-muted">${repo.organization}</h4>
           </div>
 
           <div class="card-block">
@@ -43,19 +43,19 @@
 
             <ul class="repo-stats">
               <li class="flex-item">
-                <span class="octicon octicon-star"></span> Stars <span class="badge">10</span>
+                <span class="octicon octicon-star"></span> Stars <span class="badge">${repo.stars}</span>
               </li>
               <li class="flex-item">
                 <span class="octicon octicon-organization"></span> Contributors <span class="badge">${repo.contributors}</span>
               </li>
               <li class="flex-item">
-                <span class="octicon octicon-eye"></span> Watchers <span class="badge">1000</span>
+                <span class="octicon octicon-eye"></span> Watchers <span class="badge">${repo.watchers}</span>
               </li>
               <li class="flex-item">
                 <span class="octicon octicon-git-commit"></span> Commits <span class="badge">${repo.commits}</span>
               </li>
               <li class="flex-item">
-                <span class="octicon octicon-tag"></span> Releases <span class="badge">100</span>
+                <span class="octicon octicon-tag"></span> Releases <span class="badge">${repo.releases}</span>
               </li>
             </ul>
           </div>
