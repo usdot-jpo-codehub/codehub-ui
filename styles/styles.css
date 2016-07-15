@@ -1232,7 +1232,7 @@ mark,
   text-transform: capitalize;
 }
 .text-muted {
-  color: #777777;
+  color: #CCCCCC;
 }
 .text-primary {
   color: #902144;
@@ -2140,7 +2140,7 @@ table {
 caption {
   padding-top: 8px;
   padding-bottom: 8px;
-  color: #777777;
+  color: #CCCCCC;
   text-align: left;
 }
 th {
@@ -6088,6 +6088,9 @@ body {
   font-size: 14px;
   vertical-align: -8%;
 }
+.badge {
+  background-color: #262626;
+}
 .flex {
   display: flex;
   justify-content: space-around;
@@ -6277,7 +6280,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   margin: 0;
   margin-bottom: 0.75rem;
   color: #ffffff;
-  background-color: #424242;
+  background-color: #575757;
   border-radius: 0.25rem;
   border: 1px solid #555555;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
@@ -6287,7 +6290,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .card .card-header {
   padding: 0.25rem 1rem;
   margin-bottom: 0.5rem;
-  border-bottom: 1px solid #555555;
+  border-bottom: 1px solid #CCCCCC;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -6327,7 +6330,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   text-align: right;
 }
 .card .card-footer {
-  background-color: #282828;
+  background-color: #626161;
   box-shadow: 0 0 0 1px #555555 inset;
   padding: 0.5rem;
   display: flex;
