@@ -2,7 +2,6 @@ import {inject} from "aurelia-framework";
 import {HttpClient} from "aurelia-http-client";
 
 let baseUrl = "/api/projects";
-//let access_token = "?client_id=d59cc34b4839c118aeb1&client_secret=c0902736d0aeb9d02e1d4ea69113652979d68dd6";
 let access_token = "";
 
 @inject(HttpClient)
