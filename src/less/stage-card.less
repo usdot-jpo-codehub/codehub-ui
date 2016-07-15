@@ -15,203 +15,69 @@
 	font-weight: normal;
 
 	.card-header {
-		padding: 0;
-		padding-bottom: 1rem;
+		padding: 0.25rem 1rem;
 		margin-bottom: 0.5rem;
 		border-bottom: 1px solid @gray;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
 
-		.project-component-flex {
-			min-height: 2.0rem;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			color: white;
-			padding: 0.25rem 1rem;
+		.repo-name {
+			flex-basis: 95%;
+			margin: 0;
+		}
+
+		.repo-language {
+			flex-basis: 5%;
 			margin: 0;
 
-			img {
-			  width: 1.25rem;
-			  height: 1.25rem;
+			.project-icon {
+				height: 1.5rem;
+				width: 1.5rem;
 			}
+		}
+	}
 
-			.fa {
-				font-size: 150%;
-			}
+	.card-subheader{
+		padding: 0 1rem;
+
+		.repo-subtitle {
+			flex-basis: 100%;
 		}
 	}
 
 	.card-block {
 		padding: 0.25rem 1rem;
 		display: flex;
-		flex-direction: column;
 
-		.card-text {
-			align-self: flex-start;
-			width: 100%;
-			flex-grow: 2;
+		.repo-descrip {
+			flex-basis: 75%;
 		}
 
-		/* Card Files */
-		.flex-links {
-			width: 100%;
-			// flex-grow: 1;
-			height: 50px;
-			align-self: flex-end;
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-around;
-			align-items: center;
+		.repo-stats {
+			flex-basis: 25%;
 			list-style: none;
+			padding: 0;
 			margin: 0;
-			-webkit-padding-start: 0;
-			border-top: 1px solid @gray;
-			padding-top: 0.25rem;
 
-			.project-icon {
-				height: 1rem;
-				width: 1rem;
+			.flex-item {
+				text-align: right;
 			}
 		}
-
-		.card-links {
-			justify-content: flex-start;
-		}
-	}
-
-	.card-actions {
-		display: flex;
-		justify-content: center;
-		font-size: 150%;
-		border-bottom: 1px solid @gray;
-		margin-bottom: 1rem;
-	}
-
-	.coffee-icon,
-	.java-icon,
-	.groovy-icon {
-		background-color: @white;
 	}
 
 	.card-footer {
 		background-color: @stage-footer;
 		box-shadow: 0 0 0 1px @gray inset;
 		padding: 0.5rem;
-	}
-
-	.card-title {
-		margin-top: 0.5rem;
-		margin-bottom: 0.75rem;
 		display: flex;
-		flex-direction: row;
-		width: 100%;
-
-		a {
-			overflow: hidden;
-        	text-overflow: ellipsis;
-        	white-space: nowrap;
-        	flex: 1 2 auto;
-		}
-	}
-
-	.card-subtitle {
-		margin-top: -0.375rem;
-		margin-bottom: 0;
-	}
-
-	.stage {
-		background-color: @stage-blue;
-	}
-
-	.code {
-		background-color: @stage-code;
-		border-color: #501226;
-	}
-
-	.component {
-		background-color: @stage-component;
-		border-color: #00252A;
-	}
-
-	.stack {
-		background-color: @stage-stack;
-		border-color: #786D9E;
-	}
-}
-
-.card-search {
-	.card-title {
-		a {
-			overflow: inherit;
-        	text-overflow: initial;
-        	white-space: initial;
-        	flex: auto;
-		}
-	}
-}
-
-.card-details {
-	.project-icon {
-		height: 1rem;
-		width: 1rem;
-	}
-
-	.project-info {
-		height: 88px;
-	}
-}
-
-/* Footer Components */
-
-.flex-footer {
-	display: flex;
-	list-style: none;
-	flex: row;
-	flex-wrap: wrap;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 0;
-	-webkit-padding-start: 0;
-
-	.flex-item{
-		width: 50%;
-		text-align: center;
+		justify-content: center;
 		padding: 0;
-		padding: 0.15rem;
-		margin: 0;
-		margin-bottom: 0.1rem;
-	}
-}
 
-/* Component Types */
-
-.project-type {
-	display: flex;
-	width: 5rem;
-	height: 5rem;
-	border-radius: 50%;
-	margin: auto;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	color: #FFFFFF;
-	background-color: #005D6A;
-	border: 0.375rem solid #00252A;
-
-	img {
-		width: 2rem;
-		height: 2rem;
-	}
-}
-
-.project-info img{
-	width: 3.5rem;
-	height: 3.5rem;
-}
-
-.card-fixed {
-	
-	.card-block{
-		min-height:180px;
+		.flex-footer {
+			list-style: none;
+			-webkit-padding-start: 0;
+			margin: 5px 0;
+		}
 	}
 }
