@@ -1,5 +1,18 @@
 .btn-primary {
-  .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+	.button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+}
+
+.btn-secondary {
+	border: 1px solid @white;
+	background-color: transparent;
+
+	&:hover,
+	&:focus,
+	&.focus {
+		background-color: @white;
+		color: @black;
+		text-decoration: none;
+	}
 }
 
 a.btn{
