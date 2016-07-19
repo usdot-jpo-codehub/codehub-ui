@@ -13,12 +13,27 @@
     </div>
 
     <div class="row">
-      <div repeat.for="repo of projects | sort: { propertyName: 'total_score', direction: 'descending'} | pick:20" class="clearfix col-lg-6">
+      <label for="sortProperty">Sort By:</label>
+      <select id="sortProperty" ref="sortProperty" class="form-control">
+        <option value="stars">Stars</option>
+        <option value="watchers">Watchers</option>
+        <option value="releases">Releases</option>
+        <option value="commits">Commits</option>
+        <option value="contributors">Contributors</option>
+      </select>
+      <select ref="sortDirection" class="form-control">
+        <option value="descending">Descending</option>
+        <option value="ascending">Ascending</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <div repeat.for="repo of projects | sort: { propertyName: sortProperty.value, direction: sortDirection.value} | pick:20" class="clearfix col-lg-6">
         <div class="card">
           <div class="card-header">
             <h2 class="repo-name"><a route-href="route:project-details-popular">${repo.project_name}</a></h2>
             <h5 class="repo-language">
-              
+
               <span if.bind="repo.language === 'JavaScript'"><img class="project-icon" alt="JavaScript Icon" title="JavaScript Icon" src="../../img/logos/javascript.svg"></span>
               <span if.bind="repo.language === 'Ruby'"><img class="project-icon" alt="Ruby Icon" title="Ruby Icon" src="../../img/logos/ruby.svg"></span>
               <span if.bind="repo.language === 'Java'"><img class="project-icon java-icon" alt="Java Icon" title="Java Icon" src="../../img/logos/java.svg"></span>
