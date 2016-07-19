@@ -1,3 +1,9 @@
+import {DialogService} from 'aurelia-dialog';
+import {inject} from 'aurelia-framework';
+import {Modal} from './modules/project/modal/modal';
+
+@inject(DialogService)
+
 export class App {
   configureRouter(config, router) {
     config.title = 'Stage';
@@ -18,4 +24,12 @@ export class App {
     ]);
     this.router = router;
   }
+
+  constructor(dialogService) {
+      this.dialogService = dialogService;
+   }
+
+   openModal(repo) {
+      this.dialogService.open({viewModel: Modal, model: repo});
+   }
 }

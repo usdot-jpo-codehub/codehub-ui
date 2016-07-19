@@ -1415,6 +1415,31 @@ address {
   font-style: normal;
   line-height: 1.42857143;
 }
+.close {
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
 code,
 kbd,
 pre,
@@ -6177,6 +6202,17 @@ fieldset[disabled] .btn-primary.active {
   color: #902144;
   background-color: #fff;
 }
+.btn-secondary {
+  border: 1px solid #ffffff;
+  background-color: transparent;
+}
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary.focus {
+  background-color: #ffffff;
+  color: #000000;
+  text-decoration: none;
+}
 a.btn {
   text-decoration: none;
 }
@@ -6370,8 +6406,15 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   background-color: #ffffff;
   color: #2E3234;
 }
+body ai-dialog-overlay.active {
+  background-color: #000;
+  opacity: 0.5;
+}
 .modal-header button.close {
   color: #ffffff;
+}
+.modal > button {
+  display: inherit;
 }
 .modal-body > h4:first-child {
   color: #ffffff;
