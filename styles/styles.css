@@ -1415,31 +1415,6 @@ address {
   font-style: normal;
   line-height: 1.42857143;
 }
-.close {
-  float: right;
-  font-size: 21px;
-  font-weight: bold;
-  line-height: 1;
-  color: #000;
-  text-shadow: 0 1px 0 #fff;
-  opacity: 0.2;
-  filter: alpha(opacity=20);
-}
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-  opacity: 0.5;
-  filter: alpha(opacity=50);
-}
-button.close {
-  padding: 0;
-  cursor: pointer;
-  background: transparent;
-  border: 0;
-  -webkit-appearance: none;
-}
 code,
 kbd,
 pre,
@@ -3283,6 +3258,40 @@ input[type="submit"].btn-block,
 input[type="reset"].btn-block,
 input[type="button"].btn-block {
   width: 100%;
+}
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+}
+.fade.in {
+  opacity: 1;
+}
+.collapse {
+  display: none;
+  visibility: hidden;
+}
+.collapse.in {
+  display: block;
+  visibility: visible;
+}
+tr.collapse.in {
+  display: table-row;
+}
+tbody.collapse.in {
+  display: table-row-group;
+}
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition-property: height, visibility;
+  transition-property: height, visibility;
+  -webkit-transition-duration: 0.35s;
+  transition-duration: 0.35s;
+  -webkit-transition-timing-function: ease;
+  transition-timing-function: ease;
 }
 .caret {
   display: inline-block;
@@ -5292,6 +5301,31 @@ a.list-group-item-danger.active:focus {
 .panel-danger > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #ebccd1;
 }
+.close {
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
 .modal-open {
   overflow: hidden;
 }
@@ -6099,6 +6133,9 @@ body {
 .page-title h1 {
   margin-top: 0;
 }
+.sort-col .form-group {
+  margin: 0;
+}
 .page-header {
   margin: 10px;
   display: flex;
@@ -6136,6 +6173,9 @@ body {
 .display-input {
   width: 45px;
   color: #000000;
+}
+.sort-col .form-inline {
+  padding-right: 30px;
 }
 a {
   color: #ffffff;
@@ -6331,6 +6371,9 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   flex-direction: row;
   flex-wrap: wrap;
 }
+.card .card-header h3 {
+  margin: 0px;
+}
 .card .card-header .repo-name {
   flex-basis: 95%;
   margin: 0;
@@ -6365,6 +6408,40 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 .card .card-block .repo-stats .flex-item {
   text-align: right;
+}
+.card .card-sidebar {
+  display: block;
+}
+.card .card-sidebar h3 {
+  margin-top: 10px;
+}
+.card .card-sidebar .panel-default {
+  border: none;
+  background-color: transparent;
+  border-radius: 0;
+  margin-bottom: 0;
+  box-shadow: none;
+}
+.card .card-sidebar .panel-default > .panel-heading {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #CCCCCC;
+  color: #ffffff;
+  padding: 0.25rem;
+}
+.card .card-sidebar .panel-default > .panel-heading h4 {
+  margin: 0;
+}
+.card .card-sidebar .panel-default .panel-body {
+  padding: 0.25rem 0rem;
+}
+.card .card-sidebar .panel-default .panel-body .list-group {
+  margin-bottom: 0;
+}
+.card .card-sidebar .panel-default .panel-body .list-group .list-group-item {
+  background-color: transparent;
+  border: none;
+  padding: 0.25rem 1rem;
 }
 .card .card-footer {
   background-color: #626161;
