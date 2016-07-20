@@ -6174,6 +6174,10 @@ body {
   width: 45px;
   color: #000000;
 }
+.sort-col p {
+  padding: 6px 0 6px 30px;
+  margin-bottom: 0;
+}
 .sort-col .form-inline {
   padding-right: 30px;
 }
@@ -6363,6 +6367,10 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   font-size: .875rem;
   font-weight: normal;
 }
+.card .project-icon {
+  height: 25px;
+  width: 25px;
+}
 .card .card-header {
   padding: 0.25rem 1rem;
   margin-bottom: 0.5rem;
@@ -6455,6 +6463,27 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   list-style: none;
   -webkit-padding-start: 0;
   margin: 5px 0;
+}
+.card-details .card-block {
+  min-height: initial;
+}
+.card-details .card-block .flex-block {
+  display: flex;
+  flex-direction: column;
+}
+.card-details .card-block .flex-links {
+  list-style: none;
+  -webkit-padding-start: 0;
+  margin: 5px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.card-details .card-block .flex-links .flex-item {
+  text-align: inherit;
+}
+.card-stats .card-block,
+.card-dependencies .card-block {
+  flex-direction: column;
 }
 .project-details .page-header {
   display: flex;
