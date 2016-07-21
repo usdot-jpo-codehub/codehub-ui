@@ -6,8 +6,10 @@
                <button type="button" click.trigger="controller.cancel()" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                <h4 class="modal-title">Readme for ${repo.project_name}</h4>
             </div>
-            <div class="modal-body">
-               <p>${repo.project_description}</p>
+            <div class="modal-body markdown-body">
+               ${repo.content}
+
+               
             </div>
             <div class="modal-footer">
                <button type="button" class="btn btn-default" click.trigger="controller.cancel()">Close</button>
