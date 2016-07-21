@@ -7,6 +7,7 @@ export class MarkdownCustomAttribute {
   constructor(element) {
     this.element = element;
     this.Converter = new Showdown.Converter();
+    this.Converter.setOption('tables', 'true');
   }
 
   valueChanged(newValue, oldValue) {
