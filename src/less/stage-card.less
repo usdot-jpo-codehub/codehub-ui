@@ -58,14 +58,14 @@
 	.card-block {
 		padding: 0.25rem 1rem;
 		display: flex;
-		min-height: 200px;
+		min-height: 225	px;
 
 		.repo-descrip {
-			flex-basis: 75%;
+			flex-basis: 70%;
 		}
 
 		.repo-stats {
-			flex-basis: 25%;
+			flex-basis: 30%;
 			list-style: none;
 			padding: 0;
 			margin: 0;
@@ -138,6 +138,7 @@
 .card-details {
 	.card-block {
 		min-height: initial;
+		flex-direction: column;
 
 		.flex-block {
 			display: flex;
@@ -166,5 +167,20 @@
 .card-dependencies {
 	.card-block {
 		flex-direction: column;
+	}
+}
+
+.card-aside,
+.card-detail {
+	.card-header {
+		border-bottom: 1px solid #ffffff;
+	}
+}
+
+.card-aside {
+	.card-header {
+		h2 {
+			text-transform: uppercase;
+		}
 	}
 }
