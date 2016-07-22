@@ -27,6 +27,9 @@ export class App {
 
   constructor(dialogService) {
       this.dialogService = dialogService;
+    
+      // Default sorting direction for lists
+      this.sortDirection = "descending";
    }
 
    openModal(repo) {

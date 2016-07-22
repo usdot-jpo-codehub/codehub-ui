@@ -14,6 +14,11 @@
 	font-size: .875rem;
 	font-weight: normal;
 
+	.project-icon {
+		height: 25px;
+		width: 25px;
+	}
+
 	.card-header {
 		padding: 0.25rem 1rem;
 		margin-bottom: 0.5rem;
@@ -21,6 +26,10 @@
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
+
+		h3 {
+			margin: 0px;
+		}
 
 		.repo-name {
 			flex-basis: 95%;
@@ -49,14 +58,14 @@
 	.card-block {
 		padding: 0.25rem 1rem;
 		display: flex;
-		min-height: 200px;
+		min-height: 230px;
 
 		.repo-descrip {
-			flex-basis: 75%;
+			flex-basis: 70%;
 		}
 
 		.repo-stats {
-			flex-basis: 25%;
+			flex-basis: 30%;
 			list-style: none;
 			padding: 0;
 			margin: 0;
@@ -65,6 +74,53 @@
 				text-align: right;
 			}
 		}
+	}
+
+	.card-sidebar {
+		display: block;
+
+		h3 {
+			margin-top: 10px;
+		}
+
+		.card-block {
+			min-height: initial;
+		}
+
+		.panel-default {
+			border: none;
+			background-color: transparent;
+			border-radius: 0;
+			margin-bottom: 0;
+			box-shadow: none;
+
+
+			> .panel-heading {
+				background-color: transparent;
+				border: none;
+				border-bottom: 1px solid @stage-gray;
+				color: @white;
+				padding: 0.25rem;
+
+				h4 {
+					margin: 0;
+				}
+			}
+
+			.panel-body {
+				padding: 0.25rem 0rem;
+
+				.list-group {
+					margin-bottom: 0;
+
+					.list-group-item {
+						background-color: transparent;
+						border: none;
+						padding: 0.25rem 1rem;
+					}
+				}
+			}
+		}	
 	}
 
 	.card-footer {
@@ -79,6 +135,56 @@
 			list-style: none;
 			-webkit-padding-start: 0;
 			margin: 5px 0;
+		}
+	}
+}
+
+.card-details {
+	.card-block {
+		min-height: initial;
+		flex-direction: column;
+
+		.flex-block {
+			display: flex;
+			flex-direction: column;
+		}
+		
+		.flex-links {
+			list-style: none;
+			-webkit-padding-start: 0;
+			margin: 5px 0;
+			display: flex;
+			flex-wrap: wrap;
+
+			.flex-item {
+				text-align: inherit;
+			}
+
+			.extended-flex-item {
+			}
+
+		}
+	}
+}
+
+.card-stats,
+.card-dependencies {
+	.card-block {
+		flex-direction: column;
+	}
+}
+
+.card-aside,
+.card-detail {
+	.card-header {
+		border-bottom: 1px solid #ffffff;
+	}
+}
+
+.card-aside {
+	.card-header {
+		h2 {
+			text-transform: uppercase;
 		}
 	}
 }
