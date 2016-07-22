@@ -22,6 +22,10 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 
+		h3 {
+			margin: 0px;
+		}
+
 		.repo-name {
 			flex-basis: 95%;
 			margin: 0;
@@ -65,6 +69,49 @@
 				text-align: right;
 			}
 		}
+	}
+
+	.card-sidebar {
+		display: block;
+
+		h3 {
+			margin-top: 10px;
+		}
+
+		.panel-default {
+			border: none;
+			background-color: transparent;
+			border-radius: 0;
+			margin-bottom: 0;
+			box-shadow: none;
+
+
+			> .panel-heading {
+				background-color: transparent;
+				border: none;
+				border-bottom: 1px solid @stage-gray;
+				color: @white;
+				padding: 0.25rem;
+
+				h4 {
+					margin: 0;
+				}
+			}
+
+			.panel-body {
+				padding: 0.25rem 0rem;
+
+				.list-group {
+					margin-bottom: 0;
+
+					.list-group-item {
+						background-color: transparent;
+						border: none;
+						padding: 0.25rem 1rem;
+					}
+				}
+			}
+		}	
 	}
 
 	.card-footer {
