@@ -6,7 +6,12 @@ export class FilterValueConverter {
       .filter(function (object) {
 
         for (let value of config.filterArray) {
-          if (object[config.propertyName] == value) {
+
+          if (object[config.propertyName]) {
+            if (object[config.propertyName] == value) {
+              return true;
+            }
+          }else if(value == "None"){
             return true;
           }
         }

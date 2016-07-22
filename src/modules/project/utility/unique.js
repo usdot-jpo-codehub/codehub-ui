@@ -3,7 +3,11 @@ export class UniqueValueConverter {
     let propertyArray = [];
 
     for (let object of array) {
-      propertyArray.push(object[config.propertyName]);
+      if(object[config.propertyName]) {
+        propertyArray.push(object[config.propertyName]);
+      }else{
+        propertyArray.push("None");
+      }
     }
 
     return Array.from(new Set(propertyArray));
