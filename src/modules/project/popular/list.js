@@ -13,6 +13,8 @@ export class List {
     this.router = router;
     this.projects = [];
     this.orgs = ["boozallen","netflix"];
+
+    this.selectedOrganizations = [];
   };
 
   getViewStrategy() {
@@ -33,8 +35,22 @@ export class List {
   getData() {
     return this.projectData.getAll().then(results => {
       this.projects = results;
+
+      this.selectedOrganizations = this.getUniqueValues(this.projects, 'organization');
+
       return this.projects;
     });
+  }
+
+  // Creates an array of unique values for one property in an array
+  getUniqueValues(array, property){
+
+    let propertyArray = [];
+    for (let object of array) {
+      propertyArray.push(object[property]);
+    }
+    return Array.from(new Set(propertyArray));
+
   }
 
 getEachProjectContributors(proj){
