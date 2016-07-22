@@ -1,0 +1,49 @@
+.media {
+  // Proper spacing between instances of .media
+  margin-top: 15px;
+  display: flex;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+// Media list variation
+//
+// Undo default ul/ol styles
+.media-list {
+  padding-left: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.media-list-users {
+  .list-group-item {
+    margin-top: 0;
+    padding: 15px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid @white;
+  }
+
+  .media-object {
+    width: 60px;
+    height: 60px;
+    margin-right: 30px;
+    border-radius: 100%;
+  }
+
+  .media-body-secondary {
+    color: @gray;
+  }
+
+  .media-body {
+    width: 100%;
+
+    p {
+      &:last-child {
+         margin-bottom :0;
+      }
+    }
+  }
+}

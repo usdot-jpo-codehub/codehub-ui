@@ -6138,6 +6138,7 @@ body {
 }
 .page-header {
   margin: 10px;
+  margin-bottom: 0;
   display: flex;
   justify-content: center;
 }
@@ -6173,6 +6174,10 @@ body {
 .display-input {
   width: 45px;
   color: #000000;
+}
+.sort-col p {
+  padding: 6px 0 6px 30px;
+  margin-bottom: 0;
 }
 .sort-col .form-inline {
   padding-right: 30px;
@@ -6366,6 +6371,10 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   font-size: .875rem;
   font-weight: normal;
 }
+.card .project-icon {
+  height: 25px;
+  width: 25px;
+}
 .card .card-header {
   padding: 0.25rem 1rem;
   margin-bottom: 0.5rem;
@@ -6398,13 +6407,13 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .card .card-block {
   padding: 0.25rem 1rem;
   display: flex;
-  min-height: 200px;
+  min-height: 225	px;
 }
 .card .card-block .repo-descrip {
-  flex-basis: 75%;
+  flex-basis: 70%;
 }
 .card .card-block .repo-stats {
-  flex-basis: 25%;
+  flex-basis: 30%;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -6458,6 +6467,35 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   list-style: none;
   -webkit-padding-start: 0;
   margin: 5px 0;
+}
+.card-details .card-block {
+  min-height: initial;
+  flex-direction: column;
+}
+.card-details .card-block .flex-block {
+  display: flex;
+  flex-direction: column;
+}
+.card-details .card-block .flex-links {
+  list-style: none;
+  -webkit-padding-start: 0;
+  margin: 5px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.card-details .card-block .flex-links .flex-item {
+  text-align: inherit;
+}
+.card-stats .card-block,
+.card-dependencies .card-block {
+  flex-direction: column;
+}
+.card-aside .card-header,
+.card-detail .card-header {
+  border-bottom: 1px solid #ffffff;
+}
+.card-aside .card-header h2 {
+  text-transform: uppercase;
 }
 .project-details .page-header {
   display: flex;
@@ -6517,4 +6555,38 @@ body ai-dialog-overlay.active {
 .label-info[href]:hover,
 .label-info[href]:focus {
   background-color: #0c333e;
+}
+.media {
+  margin-top: 15px;
+  display: flex;
+}
+.media:first-child {
+  margin-top: 0;
+}
+.media-list {
+  padding-left: 0;
+  list-style: none;
+  width: 100%;
+}
+.media-list-users .list-group-item {
+  margin-top: 0;
+  padding: 15px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #ffffff;
+}
+.media-list-users .media-object {
+  width: 60px;
+  height: 60px;
+  margin-right: 30px;
+  border-radius: 100%;
+}
+.media-list-users .media-body-secondary {
+  color: #555555;
+}
+.media-list-users .media-body {
+  width: 100%;
+}
+.media-list-users .media-body p:last-child {
+  margin-bottom: 0;
 }
