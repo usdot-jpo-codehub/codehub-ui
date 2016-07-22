@@ -6261,6 +6261,9 @@ fieldset[disabled] .btn-primary.active {
 a.btn {
   text-decoration: none;
 }
+label.btn > input[type='radio'] {
+  display: none;
+}
 .navbar-default {
   background-color: #005D6A;
   border: none;
