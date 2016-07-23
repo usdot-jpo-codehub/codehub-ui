@@ -13,6 +13,7 @@ System.config({
     "npm:*": "jspm_packages/npm/*"
   },
   baseUrl: "/",
+
   meta: {
     "bootstrap": {
       "deps": [
@@ -20,6 +21,7 @@ System.config({
       ]
     }
   },
+
   map: {
     "aurelia-animator-css": "npm:aurelia-animator-css@1.0.0-rc.1.0.0",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-rc.1.0.1",
@@ -47,6 +49,7 @@ System.config({
     "jquery-ui": "npm:jquery-ui@1.12.0",
     "numeral": "npm:numeral@1.5.3",
     "octicons": "npm:octicons@4.3.0",
+    "showdown": "github:showdownjs/showdown@1.4.2",
     "text": "github:systemjs/plugin-text@0.0.3",
     "github:distros/bootstrap-less@3.3.9": {
       "jquery": "github:components/jquery@3.1.0"

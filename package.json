@@ -89,6 +89,7 @@
       "jquery-ui": "npm:jquery-ui@^1.10.5",
       "numeral": "npm:numeral@^1.5.3",
       "octicons": "npm:octicons@^4.2.0",
+      "showdown": "github:showdownjs/showdown@^1.4.2",
       "text": "github:systemjs/plugin-text@^0.0.3"
     },
     "devDependencies": {
