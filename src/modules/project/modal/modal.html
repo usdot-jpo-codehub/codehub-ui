@@ -1,4 +1,5 @@
 <template>
+  <require from="../components/markdown"></require>
    <div tabindex="-1" role="dialog">
       <div class="modal-dialog modal-lg">
          <div class="modal-content">
@@ -6,8 +7,10 @@
                <button type="button" click.trigger="controller.cancel()" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                <h4 class="modal-title">Readme for ${repo.project_name}</h4>
             </div>
-            <div class="modal-body">
-               <p>${repo.project_description}</p>
+            <div class="modal-body markdown-body">
+
+              <div markdown.bind="repo.content"></div>
+
             </div>
             <div class="modal-footer">
                <button type="button" class="btn btn-default" click.trigger="controller.cancel()">Close</button>
