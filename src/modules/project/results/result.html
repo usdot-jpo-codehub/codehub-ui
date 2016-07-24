@@ -2,7 +2,7 @@
     <require from="../utility/sort"></require>
     <require from="../utility/pick"></require>
     <require from="../search/result-search"></require>
-    
+
     <div class="container-fluid bg_main">
         <div class="row">
             <result-search></result-search>
@@ -115,16 +115,18 @@
 
             <div class="col-lg-10">
                 <div class="row">
-                    <div class="col-lg-12 sort-col">
-                        <form class="form-inline pull-right" ref="sortForm">
-                            <div class="btn-group">
-                                <label class="${sortDirection == 'descending' ? 'btn btn-default active' : 'btn btn-default'}">
-                                    <input type="radio" name="sortDirection" checked.bind="$parent.sortDirection" autocomplete="off" value="descending"><i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    <div class="col-lg-12 sort-col clearfix">
+                        <p class="pull-left">We've found ${projects.length} results!</p>
+                        <form class="form-inline pull-right">
+                            <div class="btn-group" ref="sortDirection" data-toggle="buttons">
+                                <label class="btn btn-default">
+                                    <input type="checkbox" name="sortDirection" autocomplete="off" value="descending"><i class="fa fa-chevron-down" aria-hidden="true"></i> Descending
                                 </label>
-                                <label class="${sortDirection == 'ascending' ? 'btn btn-default active' : 'btn btn-default'}">
-                                    <input type="radio" name="sortDirection" checked.bind="$parent.sortDirection" autocomplete="off" value="ascending"><i class="fa fa-chevron-up" aria-hidden="true"></i>
+                                <label class="btn btn-default active">
+                                    <input type="checkbox" name="sortDirection" autocomplete="off" value="ascending"><i class="fa fa-chevron-up" aria-hidden="true"></i> Ascending
                                 </label>
                             </div>
+
                             <div class="form-group">
                                 <label for="sortProperty" class="sr-only">Sort</label>
                                 <select id="sortProperty" ref="sortProperty" class="form-control">
@@ -136,10 +138,9 @@
                                 </select>
                             </div>
                         </form>
-                  </div>
-
+                    </div>
                     <div class="col-lg-12">
-                        <div repeat.for="repo of projects | sort: { propertyName: 'total_score', direction: 'descending'} | pick:20" class="clearfix col-lg-6">
+                        <div repeat.for="repo of projects | sort: { propertyName: 'total_score', direction: 'descending'}" class="clearfix col-lg-6">
                             <div class="card">
                                 <div class="card-header">
                                     <h2 class="repo-name"><a route-href="route:project-details-popular">${repo.project_name}</a></h2>
@@ -185,7 +186,7 @@
                                 <div class="card-footer">
                                     <ul class="flex-footer">
                                         <li class="flex-item ">
-                                            <button class="btn btn-secondary btn-sm" click.trigger = "openModal(repo)"><span class="octicon octicon-book"></span> Readme</button>
+                                            <a href="${repo.readme_url}" target="_blank" class="card-link"><span class="octicon octicon-book"></span> Readme</a>
                                         </li>
                                     </ul>
                                 </div>
