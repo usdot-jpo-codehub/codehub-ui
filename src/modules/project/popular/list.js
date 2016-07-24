@@ -13,6 +13,9 @@ export class List {
     this.router = router;
     this.projects = [];
     this.orgs = ["boozallen","netflix"];
+
+    this.selectedOrganizations = [];
+    this.selectedLanguages = [];
   };
 
   getViewStrategy() {
@@ -33,8 +36,27 @@ export class List {
   getData() {
     return this.projectData.getAll().then(results => {
       this.projects = results;
+
+      this.selectedOrganizations = this.getUniqueValues(this.projects, 'organization');
+      this.selectedLanguages = this.getUniqueValues(this.projects, 'language');
+
       return this.projects;
     });
+  }
+
+  // Creates an array of unique values for one property in an array
+  getUniqueValues(array, property){
+
+    let propertyArray = [];
+    for (let object of array) {
+      if(object[property]) {
+        propertyArray.push(object[property]);
+      }else{
+        propertyArray.push("None");
+      }
+    }
+    return Array.from(new Set(propertyArray));
+
   }
 
 getEachProjectContributors(proj){

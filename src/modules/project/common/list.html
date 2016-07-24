@@ -1,6 +1,8 @@
 <template>
   <require from="../utility/sort"></require>
   <require from="../utility/pick"></require>
+  <require from="../utility/filter"></require>
+  <require from="../utility/unique"></require>
   <require from="../search/search-project"></require>
   <div class="container-fluid bg_main">
     <div class="row">
@@ -28,29 +30,11 @@
               <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">
                   <ul class="list-group">
-                    <li class="list-group-item">
+                    <li class="list-group-item" repeat.for="organization of projects | unique: { propertyName: 'organization'}">
                       <form>
                         <div class="checkbox">
                           <label>
-                            <input type="checkbox" checked> 18F
-                          </label>
-                        </div>
-                      </form>
-                    </li>
-                    <li class="list-group-item">
-                      <form>
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox" checked> Netflix
-                          </label>
-                        </div>
-                      </form>
-                    </li>
-                    <li class="list-group-item">
-                      <form>
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox" checked> Booz Allen
+                            <input type="checkbox" checked.bind="selectedOrganizations" value.bind="organization"> ${organization}
                           </label>
                         </div>
                       </form>
@@ -68,38 +52,11 @@
               <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">
                   <ul class="list-group">
-                    <li class="list-group-item">
+                    <li class="list-group-item" repeat.for="language of projects | unique: { propertyName: 'language'}">
                       <form>
                         <div class="checkbox">
                           <label>
-                            <input type="checkbox" checked> Ruby
-                          </label>
-                        </div>
-                      </form>
-                    </li>
-                    <li class="list-group-item">
-                      <form>
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox" checked> JAVA
-                          </label>
-                        </div>
-                      </form>
-                    </li>
-                    <li class="list-group-item">
-                      <form>
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox" checked> CSS
-                          </label>
-                        </div>
-                      </form>
-                    </li>
-                    <li class="list-group-item">
-                      <form>
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox" checked> HTML
+                            <input type="checkbox" checked.bind="selectedLanguages" value.bind="language"> ${language}
                           </label>
                         </div>
                       </form>
@@ -115,7 +72,7 @@
       <div class="col-lg-10">
         <div class="row">
           <div class="col-lg-12 sort-col">
-            <form class="form-inline pull-right" ref="sortForm">
+            <form class="form-inline pull-right">
               <div class="btn-group">
                 <label class="${sortDirection == 'descending' ? 'btn btn-default active' : 'btn btn-default'}">
                   <input type="radio" name="sortDirection" checked.bind="$parent.sortDirection" autocomplete="off" value="descending"><i class="fa fa-chevron-down" aria-hidden="true"></i>
@@ -138,7 +95,7 @@
           </div>
 
           <div class="col-lg-12">
-            <div repeat.for="repo of projects | sort: { propertyName: sortProperty.value, direction: sortDirection} | pick:20" class="clearfix col-lg-6">
+            <div repeat.for="repo of projects | sort: { propertyName: sortProperty.value, direction: sortDirection} | filter: { propertyName: 'organization', filterArray: selectedOrganizations}:selectedOrganizations.length | filter: { propertyName: 'language', filterArray: selectedLanguages}:selectedLanguages.length | pick:20" class="clearfix col-lg-6">
               <div class="card">
                 <div class="card-header">
                   <h2 class="repo-name"><a route-href="route:project-details-popular">${repo.project_name}</a></h2>
@@ -147,7 +104,7 @@
                     <span if.bind="repo.language === 'Ruby'"><img class="project-icon" alt="Ruby Icon" title="Ruby Icon" src="../../img/logos/ruby.svg"></span>
                     <span if.bind="repo.language === 'Java'"><img class="project-icon java-icon" alt="Java Icon" title="Java Icon" src="../../img/logos/java.svg"></span>
                     <span if.bind="repo.language === 'HTML'"><img class="project-icon" alt="HTML Icon" title="HTML Icon" src="../../img/logos/html5.svg"></span>
-                    <span if.bind="repo.language === 'Coffeescript'"><img class="project-icon coffee-icon" alt="Coffeescript Icon" title="Coffeescript Icon" src="../../img/logos/coffeescript.svg"></span>
+                    <span if.bind="repo.language === 'CoffeeScript'"><img class="project-icon coffee-icon" alt="Coffeescript Icon" title="Coffeescript Icon" src="../../img/logos/coffeescript.svg"></span>
                     <span if.bind="repo.language === 'Python'"><img class="project-icon" alt="Python Icon" title="Python Icon" src="../../img/logos/python.svg"></span>
                     <span if.bind="repo.language === 'Groovy'"><img class="project-icon groovy-icon" alt="Groovy Icon" title="Groovy Icon" src="../../img/logos/Groovy-logo.svg"></span>
                     <span if.bind="repo.language === 'Shell'"><img class="project-icon" alt="Shell Icon" title="Shell Icon" src="../../img/logos/terminal.svg"></span>
