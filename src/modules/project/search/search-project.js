@@ -8,7 +8,6 @@ export class SearchProject {
   constructor(searchProjectData, router) {
   		this.searchProjectData = searchProjectData;
       this.router = router;
-      this.projects = [];
 
   	}
   	executeSearch(searchText) {

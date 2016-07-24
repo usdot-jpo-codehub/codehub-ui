@@ -10,7 +10,7 @@ export class ResultSearch {
       this.router = router;
   	}
     executeSearch(searchText) {
-      this.router.navigateToRoute("result-ret",{searchText:searchText});
+      this.router.navigateToRoute("result-ret",{searchText:searchText, searchData:this.searchProjectData.getAll("api")});
     }
 
   }

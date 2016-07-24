@@ -1,9 +1,7 @@
 import {inject} from "aurelia-framework";
 import {HttpClient} from "aurelia-http-client";
 
-//let baseUrl = '/api/favorites';
-let baseUrl = 'https://api.github.com';
-let access_token = "?client_id=d59cc34b4839c118aeb1&client_secret=c0902736d0aeb9d02e1d4ea69113652979d68dd6";
+let baseUrl = '/api/projects';
 @inject(HttpClient)
 export class SearchProjectData {
 
@@ -41,20 +39,17 @@ export class SearchProjectData {
 
   }
 
-
-
   getAll() {
     return this.http.get(baseUrl)
       .then(response => {
         return response.content;
       });
   }
-  searchByName(searchText) {
-    //let adjusted_url = '/api/favorites' + '?filter={"where": {"name": {"inq": [' + '"'+searchText +'"'+ ']}}}';
-    let adjusted_url = baseUrl+'/search/repositories?q='+searchText+'&per_page=100&sort=stars&order=desc'+access_token;
-    return this.http.get(adjusted_url)
+  searchByProjectNameOrDescription(searchText) {
+    var adjusted_url = baseUrl+"/search/project_name:"+searchText+" OR "+"project_description:"+searchText
+    return this.http.post(adjusted_url)
       .then(response => {
-        return response;
+        return response.content;
       });
   }
 
