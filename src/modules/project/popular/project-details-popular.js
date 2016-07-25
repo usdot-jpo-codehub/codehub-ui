@@ -5,7 +5,6 @@ import {bindable} from 'aurelia-framework';
 
 @inject(SearchProjectData, Router)
 export class ProjectDetailsPopular {
-  heading = 'Projects List';
 
   constructor(searchProjectData, searchProject, searchText) {
 		this.searchProjectData = searchProjectData;
@@ -16,7 +15,7 @@ export class ProjectDetailsPopular {
         return '../common/project-details.html';
     }
 	activate(params, routeConfig, navigationInstruction) {
-    return this.searchProjectData.searchByName(params.searchText).then(projects=> {
+    return this.searchProjectData.searchByProjectNameOrDescription(params.id).then(projects=> {
 			this.projects = projects;
 		});
 
