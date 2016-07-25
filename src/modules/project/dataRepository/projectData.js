@@ -29,7 +29,7 @@ export class ProjectData {
   }
 
   getAll() {
-    return this.http.get(baseUrl)
+    return this.http.get(baseUrl + '/searchByPopularity')
       .then(response =>{
         return response.content;
       })

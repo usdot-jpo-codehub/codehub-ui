@@ -27,9 +27,9 @@ export class App {
 
   constructor(dialogService) {
       this.dialogService = dialogService;
-    
+
       // Default sorting direction for lists
-      this.sortDirection = "descending";
+      this.sortDirection = "descending"; // TODO move to list.js once views are reused
    }
 
    openModal(repo) {
