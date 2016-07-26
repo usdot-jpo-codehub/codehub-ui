@@ -46,7 +46,7 @@ export class SearchProjectData {
       });
   }
   searchByProjectNameOrDescription(searchText) {
-    var adjusted_url = baseUrl+"/search/project_name:"+searchText+" OR "+"project_description:"+searchText+" OR "+"content:"+searchText
+    var adjusted_url = baseUrl+"/search/project_name:"+searchText+"^3"+" OR "+"project_description:"+searchText+"^2"+" OR "+"content:"+searchText
     return this.http.post(adjusted_url)
       .then(response => {
         return response.content;
