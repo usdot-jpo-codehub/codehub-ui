@@ -34,6 +34,7 @@ getViewStrategy() {
   getData() {
     return this.projectsExplore.getAll()
       .then(projects => {
+        this.projects = JSON.parse(JSON.stringify(projects));
         this.selectedOrganizations = this.getUniqueValues(this.projects, 'organization');
         this.selectedLanguages = this.getUniqueValues(this.projects, 'language');
         console.log(this.projects);
