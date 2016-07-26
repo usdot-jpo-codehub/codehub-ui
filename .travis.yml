@@ -4,7 +4,7 @@ cache:
   timeout: 600
   directories:
   - node_modules
-  - jspm_modules
+  - jspm_packages
 env:
   global:
   - secure: Ch1QMswEx5wTrgn/TwEFjbMd7p2di9p7NgGTff43EcambfqZeP+NqQQ+RI+fnSXeJWLxrUopSVXZi+CIJEtey4B92lo6J+HetspzVvLygcdenpFzrB4PYiA6YQXj1V/MFzDHZQ75WbgaqWLeuQjR+XteTnWqI8Nd47xbehRELCn4LHsCX82+Ay3s1Ygc0pgwWv526yfmUt4oPj+dPv62KpHkL0tgBm/rcPQgKfJr3P+m5HkL7Mxl4j063KNOe1VksUgZCgdBe9QiVzKrUjPv7zCD2FKHQ/htsjAMATIi8fikL2din8KwAjRCeZ1H1cZMtANeAPyngUQoSrjUi40rUCe49cam2YddYxL00QcelizjR6gR6I9v2J+9jUVHumSbYR8/Z5ol+r3rNOB0IrfMIwdYVgWVRS1LqLMAw0GiUwqin1fi///lmH83LldIPLtT/AODi4Y2virO3+s5JmCJrxK3oQnHRFeEeH9ntUXcQ/YuHpjom2kjDuJifR6XOwPlT2Toap+EMBnagY0lyv/Lap+ENedjXzgVXbgSvINHpGCEyCIY6/2D1yOBnh37cPp7ChMcOtSdZQbqGgRvRlaoZ0xkFmeBSvBQybf5/awh+uaAa2plcXN+y8vAz47lwEjol67ewjNPa5l/cg04pB9WQ94LnNndZSpX1dkdwaJ7KGc=
