@@ -11,6 +11,7 @@ export class ProjectDetailsAll {
   constructor(searchProjectData, searchProject, searchText) {
 		this.searchProjectData = searchProjectData;
     this.searchProject = searchProject;
+    this.repo = {};
 	}
 
   getViewStrategy() {
@@ -18,8 +19,9 @@ export class ProjectDetailsAll {
     }
 
 	activate(params, routeConfig, navigationInstruction) {
-    return this.searchProjectData.searchAllByName(params.searchText).then(projects=> {
-			this.projects = projects;
+    return this.searchProjectData.findById(params.id).then(repo=> {
+      this.repo = repo;
+      return this.repo;
 		});
 
 	}

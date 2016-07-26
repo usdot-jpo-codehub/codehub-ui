@@ -18,7 +18,7 @@ export class ResultAll {
     }
 
 	activate(params, routeConfig, navigationInstruction) {
-    return this.searchProjectData.searchAllByName(params.searchText).then(projects=> {
+    return this.searchProjectData.searchByProjectNameOrDescription(params.searchText).then(projects=> {
 			this.projects = projects;
 		});
 

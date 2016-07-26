@@ -9,14 +9,16 @@ export class ProjectDetailsPopular {
   constructor(searchProjectData, searchProject, searchText) {
 		this.searchProjectData = searchProjectData;
     this.searchProject = searchProject;
+    this.repo = {};
 	}
 
   getViewStrategy() {
         return '../common/project-details.html';
     }
 	activate(params, routeConfig, navigationInstruction) {
-    return this.searchProjectData.searchByProjectNameOrDescription(params.id).then(projects=> {
-			this.projects = projects;
+    return this.searchProjectData.findById(params.id).then(repo => {
+			this.repo = repo;
+      return this.repo;
 		});
 
 	}
