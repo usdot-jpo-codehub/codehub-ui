@@ -1,26 +1,23 @@
 import {inject} from 'aurelia-framework';
-import {ProjectAllStaticData} from "../dataRepository/projectAllStaticData";
+import {ProjectsExplore} from "../dataRepository/projectsExplore";
 import {Router} from "aurelia-router";
 import {bindable} from 'aurelia-framework';
 
-@inject(ProjectAllStaticData, Router)
+@inject(ProjectsExplore, Router)
 export class ListAllProjects {
   heading = 'Projects List';
   projectsList = [];
   projects_readme = {};
-  projectTitle = "All Projects";
-
+  projectTitle = "All Projects yep";
 
 
 getViewStrategy() {
       return '../common/list.html';
   }
-  constructor(data, router) {
-    this.service = data;
-    this.currentPage = 0;
+  constructor(projectsExplore, router) {
+    this.projectsExplore = projectsExplore;
     this.router = router;
     this.projects = [];
-    this.orgs = ["boozallen", "booz-allen-hamilton", "netflix"];
   };
 
   gotoProject(project){
@@ -31,36 +28,16 @@ getViewStrategy() {
     this.router.navigateToRoute('create');
   };
 
-  getData(org) {
-    this.currentPage++;
-    return this.service.getAll(org)
-      .then(projects => {
-          this.projects = JSON.parse(JSON.stringify(projects));
-          return this.projects;
-     }).then(projects =>{
-        projects.forEach(proj =>{
-          this.getReadMeUrl(proj.full_name)
-          .then(readme_url =>{
-            proj.readme_url = readme_url;
-            return proj;
-          });
-        return projects;
-        })
-     });
 
+  getData() {
+    return this.projectsExplore.getAll()
+    then(results => {
+      this.projects = results;
+      console.log(this.projects);
+      return this.projects;
+    });
   }
-
-  getReadMeUrl(repo_full_name){
-    return this.service.getReadMeUrl(repo_full_name)
-      .then(projects_readme => {
-          return projects_readme;
-     })
-  }
-
   activate() {
-
-    for(var i=0;i<this.orgs.length; i++){
-      this.getData(this.orgs[i]);
-    }
+      this.getData();
   }
 }
