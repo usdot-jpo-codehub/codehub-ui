@@ -6232,7 +6232,7 @@ body {
 }
 a {
   color: #ffffff;
-  text-decoration: underline;
+  text-decoration: none;
 }
 a:hover,
 a:focus {
@@ -6504,7 +6504,10 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .card .card-sidebar .panel-default .panel-body .list-group .list-group-item {
   background-color: transparent;
   border: none;
-  padding: 0.25rem 1rem;
+  padding: 0.25rem 0.25rem;
+}
+.card .card-sidebar .panel-default .panel-body .list-group .list-group-item .checkbox {
+  margin: 0;
 }
 .card .card-footer {
   background-color: #626161;
@@ -6589,7 +6592,7 @@ body ai-dialog-overlay.active {
   color: #ffffff;
 }
 .modal-content {
-  background-color: #141414;
+  background-color: #575757;
   color: white;
 }
 .modal-header {
