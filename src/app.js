@@ -7,7 +7,7 @@ import {Modal} from './modules/project/modal/modal';
 export class App {
   configureRouter(config, router) {
     config.title = 'Stage';
-    config.options.pushState = false;
+    config.options.pushState = true;
     config.map([
       { route: '', name: 'project',  moduleId: 'modules/project/popular/list',   nav: true,  title: 'Popular' },
       { route: 'projects', name: 'projects',      moduleId: 'modules/project/all-projects/list-all-projects',   nav: true, title: 'Explore' },
