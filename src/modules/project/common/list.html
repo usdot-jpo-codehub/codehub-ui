@@ -98,8 +98,7 @@
             <div repeat.for="repo of projects | sort: { propertyName: sortProperty.value, direction: sortDirection} | filter: { propertyName: 'organization', filterArray: selectedOrganizations}:selectedOrganizations.length | filter: { propertyName: 'language', filterArray: selectedLanguages}:selectedLanguages.length" class="clearfix col-lg-6">
               <div class="card">
                 <div class="card-header">
-                  <h2 class="repo-name"><a route-href="route:project-details-popular;
-                                   params.bind: {id:repo.id}">${repo.project_name}</a></h2>
+                  <h2 class="repo-name"><a route-href="route:project-details-popular; params.bind: {id:repo.id}">${repo.project_name}</a></h2>
                   <h5 class="repo-language">
                     <span if.bind="repo.language === 'JavaScript'"><img class="project-icon" alt="JavaScript Icon" title="JavaScript Icon" src="../../img/logos/javascript.svg"></span>
                     <span if.bind="repo.language === 'Ruby'"><img class="project-icon" alt="Ruby Icon" title="Ruby Icon" src="../../img/logos/ruby.svg"></span>

@@ -8,8 +8,7 @@ export class ListAllProjects {
   heading = 'Projects List';
   projectsList = [];
   projects_readme = {};
-  projectTitle = "All Projects";
-
+  projectTitle = "All Projects yep";
 
 
 getViewStrategy() {
@@ -19,7 +18,6 @@ getViewStrategy() {
     this.projectsExplore = projectsExplore;
     this.router = router;
     this.projects = [];
-
     this.selectedOrganizations = [];
     this.selectedLanguages = [];
   };
@@ -32,15 +30,14 @@ getViewStrategy() {
     this.router.navigateToRoute('create');
   };
 
+
   getData() {
     return this.projectsExplore.getAll()
       .then(projects => {
-          this.projects = JSON.parse(JSON.stringify(projects));
-
+        this.projects = JSON.parse(JSON.stringify(projects));
         this.selectedOrganizations = this.getUniqueValues(this.projects, 'organization');
         this.selectedLanguages = this.getUniqueValues(this.projects, 'language');
-
-          return this.projects;
+        return this.projects;
      });
   }
 
@@ -58,7 +55,6 @@ getViewStrategy() {
     return Array.from(new Set(propertyArray));
 
   }
-
   activate() {
       this.getData();
   }
