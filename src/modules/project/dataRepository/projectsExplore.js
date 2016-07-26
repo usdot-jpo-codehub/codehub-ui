@@ -3,7 +3,6 @@ import {HttpClient} from "aurelia-http-client";
 
 let baseUrl = "/api/projects";
 
-
 @inject(HttpClient)
 export class ProjectsExplore {
 
@@ -36,4 +35,5 @@ export class ProjectsExplore {
         return response.content;
       });
   }
+
 }

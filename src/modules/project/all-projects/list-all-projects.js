@@ -18,6 +18,8 @@ getViewStrategy() {
     this.projectsExplore = projectsExplore;
     this.router = router;
     this.projects = [];
+    this.selectedOrganizations = [];
+    this.selectedLanguages = [];
   };
 
   gotoProject(project){
@@ -31,11 +33,27 @@ getViewStrategy() {
 
   getData() {
     return this.projectsExplore.getAll()
-    then(results => {
-      this.projects = results;
-      console.log(this.projects);
-      return this.projects;
-    });
+      .then(projects => {
+        this.projects = JSON.parse(JSON.stringify(projects));
+        this.selectedOrganizations = this.getUniqueValues(this.projects, 'organization');
+        this.selectedLanguages = this.getUniqueValues(this.projects, 'language');
+        return this.projects;
+     });
+  }
+
+  // Creates an array of unique values for one property in an array
+  getUniqueValues(array, property){
+
+    let propertyArray = [];
+    for (let object of array) {
+      if(object[property]) {
+        propertyArray.push(object[property]);
+      }else{
+        propertyArray.push("None");
+      }
+    }
+    return Array.from(new Set(propertyArray));
+
   }
   activate() {
       this.getData();
