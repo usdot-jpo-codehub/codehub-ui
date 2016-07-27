@@ -55,9 +55,19 @@ export class SearchProjectData {
 
   findById(id) {
     var adjusted_url = baseUrl+"/_id:"+id;
+    return this.http.get(adjusted_url)
+      .then(response => {
+        return response.content;
+      });
+  }
+
+  // TODO Temporary call to ES while relevance service is set up (will be by ID)
+  findByRelevance(language) {
+    var adjusted_url = baseUrl+"/language:"+language;
     console.log(adjusted_url);
     return this.http.get(adjusted_url)
       .then(response => {
+        console.log(response.content);
         return response.content;
       });
   }
