@@ -6622,25 +6622,33 @@ body ai-dialog-overlay.active {
   list-style: none;
   width: 100%;
 }
-.media-list-users .list-group-item {
+.media-list-users .list-group-item,
+.media-list-projects .list-group-item {
   margin-top: 0;
   padding: 15px;
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #ffffff;
 }
-.media-list-users .media-object {
+.media-list-users .media-object,
+.media-list-projects .media-object {
   width: 60px;
   height: 60px;
   margin-right: 30px;
   border-radius: 100%;
 }
-.media-list-users .media-body-secondary {
+.media-list-users .media-body-secondary,
+.media-list-projects .media-body-secondary {
   color: #555555;
 }
-.media-list-users .media-body {
+.media-list-users .media-body,
+.media-list-projects .media-body {
   width: 100%;
 }
-.media-list-users .media-body p:last-child {
+.media-list-users .media-body p:last-child,
+.media-list-projects .media-body p:last-child {
   margin-bottom: 0;
+}
+.media-list-projects .media-body-secondary {
+  color: #ffffff;
 }
