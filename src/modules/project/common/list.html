@@ -3,28 +3,25 @@
   <require from="../utility/pick"></require>
   <require from="../utility/filter"></require>
   <require from="../utility/unique"></require>
-  <require from="../search/search-project"></require>
-  <div class="container-fluid bg_main">
-    <div class="row">
-      <search-project></search-project>
-      <div class="col-lg-12">
-        <div class="page-header">
-          <h1>${projectTitle}</h1>
-        </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-lg-2">
-        <div class="card">
+
+  <div class="container-fluid title-wrapper">
+    <h2 class="page-title"><span>${projectTitle}</span></h2>
+  </div>
+
+  <div class="container-fluid">
+
+    <div class="row flex-row">
+      <div class="col-filters">
+        <div>
           <div class="card-header">
-            <h3>Filters</h3>
+            <h5>Filters</h5>
           </div>
           <div class="card-block card-sidebar">
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4>
-                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-plus"></i> Organizations</a>
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Organizations</a>
                 </h4>
               </div>
               <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
@@ -46,7 +43,7 @@
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4>
-                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"><i class="fa fa-plus"></i> Language</a>
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Language</a>
                 </h4>
               </div>
               <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
@@ -69,13 +66,11 @@
         </div>
       </div>
 
-
-
-      <div class="col-lg-10">
+      <div class="main-content">
         <div class="row">
-          <div class="col-lg-12 sort-col">
-            <span class="pull-left">We've found ${projects.length} repositories!</span>
-            <form class="form-inline pull-right">
+          <div class="col-lg-12 col-md-12 sort-col">
+            <p>We've found ${projects.length} repositories!</p>
+            <form class="form-inline">
               <div class="btn-group">
                 <label class="${sortDirection == 'descending' ? 'btn btn-default active' : 'btn btn-default'}">
                   <input type="radio" name="sortDirection" checked.bind="$parent.sortDirection" autocomplete="off" value="descending"><i class="fa fa-chevron-down" aria-hidden="true"></i>
@@ -97,23 +92,23 @@
             </form>
           </div>
 
-          <div class="col-lg-12">
-            <div repeat.for="repo of projects | sort: { propertyName: sortProperty.value, direction: sortDirection} | filter: { propertyName: 'organization', filterArray: selectedOrganizations}:selectedOrganizations.length | filter: { propertyName: 'language', filterArray: selectedLanguages}:selectedLanguages.length" class="clearfix col-lg-6">
+          <div class="col-lg-12 col-md-12 col-cards">
+            <div repeat.for="repo of projects | sort: { propertyName: sortProperty.value, direction: sortDirection} | filter: { propertyName: 'organization', filterArray: selectedOrganizations}:selectedOrganizations.length | filter: { propertyName: 'language', filterArray: selectedLanguages}:selectedLanguages.length | pick:20" class="clearfix col-lg-6">
               <div class="card">
                 <div class="card-header">
-                  <h2 class="repo-name"><a route-href="route:project-details-popular; params.bind: {id:repo.id}">${repo.project_name}</a></h2>
-                  <h5 class="repo-language">
-                    <span if.bind="repo.language === 'JavaScript'"><img class="project-icon" alt="JavaScript Icon" title="JavaScript Icon" src="../../img/logos/javascript.svg"></span>
-                    <span if.bind="repo.language === 'Ruby'"><img class="project-icon" alt="Ruby Icon" title="Ruby Icon" src="../../img/logos/ruby.svg"></span>
-                    <span if.bind="repo.language === 'Java'"><img class="project-icon java-icon" alt="Java Icon" title="Java Icon" src="../../img/logos/java.svg"></span>
-                    <span if.bind="repo.language === 'HTML'"><img class="project-icon" alt="HTML Icon" title="HTML Icon" src="../../img/logos/html5.svg"></span>
-                    <span if.bind="repo.language === 'CoffeeScript'"><img class="project-icon coffee-icon" alt="Coffeescript Icon" title="Coffeescript Icon" src="../../img/logos/coffeescript.svg"></span>
-                    <span if.bind="repo.language === 'Python'"><img class="project-icon" alt="Python Icon" title="Python Icon" src="../../img/logos/python.svg"></span>
-                    <span if.bind="repo.language === 'Groovy'"><img class="project-icon groovy-icon" alt="Groovy Icon" title="Groovy Icon" src="../../img/logos/Groovy-logo.svg"></span>
-                    <span if.bind="repo.language === 'Shell'"><img class="project-icon" alt="Shell Icon" title="Shell Icon" src="../../img/logos/terminal.svg"></span>
-                    <span if.bind="repo.language === 'Scala'"><img class="project-icon" alt="Scala Icon" title="Scala Icon" src="../../img/logos/scala.svg"></span>
-                    <span if.bind="repo.language === 'null'"></span>
-                  </h5>
+                  <h3 class="repo-name"><a route-href="route:project-details-popular; params.bind: {id:repo.id}">${repo.project_name}</a></h3>
+                  <span class="repo-language">
+                    <span class="text-uppercase text-muted" if.bind="repo.language === 'JavaScript'"><small>JavaScript</small></span>
+                    <span class="text-uppercase text-muted" if.bind="repo.language === 'Ruby'"><small>Ruby</small></span>
+                    <span class="text-uppercase text-muted" if.bind="repo.language === 'Java'"><small>Java</small></span>
+                    <span class="text-uppercase text-muted" if.bind="repo.language === 'HTML'"><small>HTML</small></span>
+                    <span class="text-uppercase text-muted" if.bind="repo.language === 'CoffeeScript'"><small>CoffeeScript</small></span>
+                    <span class="text-uppercase text-muted" if.bind="repo.language === 'Python'"><small>Python></small></span>
+                    <span class="text-uppercase text-muted" if.bind="repo.language === 'Groovy'"><small>Groovy</small></span>
+                    <span class="text-uppercase text-muted" if.bind="repo.language === 'Shell'"><small>Shell</small></span>
+                    <span class="text-uppercase text-muted" if.bind="repo.language === 'Scala'"><small>Scala</small></span>
+                    <span class="text-uppercase text-muted" if.bind="repo.language === 'null'"></span>
+                  </span>
                 </div>
 
                 <div class="card-subheader">
@@ -123,20 +118,20 @@
                 <div class="card-block">
                   <div class="repo-descrip">${repo.project_description}</div>
                   <ul class="repo-stats">
-                    <li class="flex-item">
-                      <span class="octicon octicon-star"></span> Stars <span class="badge">${repo.stars}</span>
+                    <li class="flex-item clearfix">
+                      <span class="octicon octicon-star"></span> Stars <span class="badge pull-right">${repo.stars}</span>
                     </li>
-                    <li class="flex-item">
-                      <span class="octicon octicon-organization"></span> Contributors <span class="badge">${repo.contributors}</span>
+                    <li class="flex-item clearfix">
+                      <span class="octicon octicon-organization"></span> Contributors <span class="badge pull-right">${repo.contributors}</span>
                     </li>
-                    <li class="flex-item">
-                      <span class="octicon octicon-eye"></span> Watchers <span class="badge">${repo.watchers}</span>
+                     <li class="flex-item clearfix">
+                      <span class="octicon octicon-eye"></span> Watchers <span class="badge pull-right">${repo.watchers}</span>
                     </li>
-                    <li class="flex-item">
-                      <span class="octicon octicon-git-commit"></span> Commits <span class="badge">${repo.commits}</span>
+                     <li class="flex-item clearfix">
+                      <span class="octicon octicon-git-commit"></span> Commits <span class="badge pull-right">${repo.commits}</span>
                     </li>
-                    <li class="flex-item">
-                      <span class="octicon octicon-tag"></span> Releases <span class="badge">${repo.releases}</span>
+                     <li class="flex-item clearfix">
+                      <span class="octicon octicon-tag"></span> Releases <span class="badge pull-right">${repo.releases}</span>
                     </li>
                   </ul>
                 </div>

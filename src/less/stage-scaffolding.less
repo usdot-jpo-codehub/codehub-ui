@@ -3,12 +3,15 @@
 // --------------------------------------------------
 
 html {
-	font-size: 16px;
+	font-size: 15px;
 }
 
 body {
-	color: @white;
+	color: @black;
 	background-color: @stage-body-bk;
+  	font-family: @font-family-base;
+  	font-size: @font-size-base;
+  	line-height: @line-height-base;
 }
 
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1,
@@ -27,8 +30,7 @@ body {
 }
 
 .card-details,
-.card-header,
-.col-search {
+.card-header{
 	.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1,
 	.col-xs-2, .col-sm-2, .col-md-2, .col-lg-2,
 	.col-xs-3, .col-sm-3, .col-md-3, .col-lg-3,
@@ -45,14 +47,108 @@ body {
 	}
 }
 
-.container-fluid {
-	> .row {
-		margin-bottom: 15px;
-		margin-left: 10px;
-		margin-right: 10px;
+
+.title-wrapper {
+	background-color: lighten(@light-gray,14%);
+
+	.page-title {
+		text-align: center;
+		margin: 0;
+		color: @stage-red;
+		line-height: 0 !important;
+		text-align: center;
+		padding: 10px 0;
+		margin: 15px 0;
+		max-width: 100%;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		font-size: 1.2em;
+		font-weight: bold;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		font-family: 'Roboto Condensed';
+		font-weight: bold;
+
+		span {
+			display: inline-block;
+			position: relative;
+
+			&:before,
+			&:after {
+				content: "";
+				position: absolute;
+				height: 5px;
+				border-top: 1px solid fade(@black, 8%);
+				top: 0;
+				width: 100px;
+			}
+
+			&:before {
+				right: 100%;
+				margin-right: 15px;
+			}
+
+			&:after {
+				left: 100%;
+				margin-left: 15px;
+			}
+		}
 	}
 }
- 
+
+.hero-banner {
+	background: @stage-banner-bk; /* Old browsers */
+	background: linear-gradient(45deg, @stage-banner-red 0%,@stage-banner-orange 100%);
+	position: relative;
+	overflow: hidden;
+
+	&:before {
+		content: "";
+		background-image: url("../../img/network-pattern.svg");
+		background-color: cover;
+		opacity: 0.3;
+		width: 100%;
+		height: 500px;
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 0;
+	}
+}
+
+.hero-jumbotron {
+	background-color: transparent;
+	margin-bottom: 15px;
+	padding-top: 0;
+	margin-top: 0;
+	text-shadow: 0 5px 10px rgba(0,0,0,0.2);
+
+	.container-fluid {
+		padding-top: 20px;
+
+		h1, p {
+			text-align: center;
+			color: @white;
+		}
+
+		h1 {
+			margin-top: 5px;
+			font-size: 3em;
+			font-weight: 700;
+		}
+
+		p {
+			font-size: 1.5em;
+			font-weight: 300;
+		}
+	}
+}
+
+.jumbotro-title {
+	padding: 0;
+}
+
 .page-title {
 	h1{
 		margin-top: 0;
@@ -60,23 +156,27 @@ body {
 }
 
 .sort-col {
+	margin-bottom: 5px;
+	padding: 10px 45px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+
 	.form-group {
 		margin: 0;
 	}
-}
 
-.page-header {
-	margin: 10px;
-	margin-bottom: 0;
-	display: flex;
-	justify-content: center;
-
-	h1 {
-		text-align: center;
-		display: inline-block;
-		margin: 0;
+	p {
+		// padding: 6px 0 6px 30px;
+		margin-bottom: 0;
+	}
+	.form-inline {
+		// padding-right: 30px;
 	}
 }
+
+
 
 .label {
 	.octicon{
@@ -88,6 +188,9 @@ body {
 // Base class
 .badge {
 	background-color:@stage-badge-bk-color;
+	text-transform: uppercase;
+	font-family: "Roboto Condensed";
+	font-weight: normal;
 }
 
 .flex {
@@ -117,14 +220,12 @@ body {
 	color: @black;
 }
 
-.sort-col {
-	p {
-		padding: 6px 0 6px 30px;
-		margin-bottom: 0;
-	}
-	.form-inline {
-		padding-right: 30px;
-	}
+
+
+// Forms
+
+input {
+	box-shadow: none !important;
 }
 
 // Links
@@ -136,7 +237,7 @@ a {
   &:hover,
   &:focus {
     color: @link-alt-hover-color;
-    text-decoration: @link-hover-decoration;
+    text-decoration: none;
   }
 
   &:focus {
@@ -144,10 +245,51 @@ a {
   }
 }
 
+.select-list {
+	li {
+		padding-right: 2px;
+	}
+}
+
+/* LESS Mixins */
+
+// .multiLineEllipsis(@stage-line-count: 1){
+//   overflow: hidden;
+//   position: relative;
+//   line-height: @line-height-base;
+//   max-height: 20px * @stage-line-count; 
+//   padding-right: 1em;
+
+//   // overflow: hidden;
+//   // position: relative;
+//   // line-height: $lineHeight;
+//   // max-height: $lineHeight * $lineCount; 
+//   // text-align: justify;
+//   // margin-right: -1em;
+//   // padding-right: 1em;
+
+//   &:before {
+//     content: '...';
+//     position: absolute;
+//     right: 0;
+//     bottom: 0;
+//   }
+
+//   &:after {
+//     content: '';
+//     position: absolute;
+//     right: 0;
+//     width: 1em;
+//     height: 1em;
+//     margin-top: 0.2em;
+//     background-color: @stage-card-bk;
+//   }
+// }
+
 /* Media queries */
 
-@media screen and (max-width: 1200px) {
-	.card-icon{
-		top: 15px;
+@media screen and (max-width: 992px) {
+	.sort-col {
+		min-height: 50px;
 	}
 }

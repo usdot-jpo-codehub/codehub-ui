@@ -1,9 +1,10 @@
-
 <template bindable="router">
 <nav class="navbar navbar-default">
   <div class="container-fluid">
       <div class="navbar-header">
-          <a class="navbar-brand" route-href="route:project"><img src="../../../../img/stage-logo.png" alt="Stage" id="logo"></a>
+          <a class="navbar-brand" route-href="route:project">
+            <img src="../../../../img/stage-logo-white.svg" alt="Stage" id="logo">
+          </a>
       </div>
       <div id="navbar">
         <ul class="nav navbar-nav">
@@ -14,7 +15,7 @@
         <div if.bind="projects.title = 'project-details-popular'">
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <a href="#" class="dropdown-toggle utility-nav" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <img src="../../../../img/04-Avatar-img.png" class="user-avatar"></i> Hello, Alexander <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
