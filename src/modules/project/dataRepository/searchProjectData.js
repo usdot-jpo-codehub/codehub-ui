@@ -20,7 +20,7 @@ export class SearchProjectData {
   }
 
   searchByProjectNameOrDescription(searchText) {
-    return this.http.fetch(baseUrl+'/search', {
+    return this.http.fetch(baseUrl + '/search', {
       method: "POST",
       body: json(searchText)
     })
@@ -31,7 +31,7 @@ export class SearchProjectData {
   }
 
   findById(id) {
-    var adjusted_url = baseUrl+"/_id:"+id;
+    var adjusted_url = baseUrl + "/_id:" + id;
     return this.http.fetch(adjusted_url)
       .then(response => {
         return response.content;
@@ -40,10 +40,11 @@ export class SearchProjectData {
 
   // TODO Temporary call to ES while relevance service is set up (will be by ID)
   findByRelevance(language) {
-    var adjusted_url = baseUrl+"/language:"+language;
+    var adjusted_url = baseUrl + "/language:" + language;
     console.log(adjusted_url);
-    return this.http.get(adjusted_url)
+    return this.http.fetch(adjusted_url)
       .then(response => {
         return response.content;
       });
   }
+}
