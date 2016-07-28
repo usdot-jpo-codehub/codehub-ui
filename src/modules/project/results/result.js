@@ -46,19 +46,19 @@ export class Result {
       if(!(params.searchText) || params.searchText == ''){
         return this.searchProjectData.getAll()
         .then( projects => {
-        this.projects = projects;
+          this.projects = projects;
           this.selectedOrganizations = this.getUniqueValues(this.projects, 'organization');
           this.selectedLanguages = this.getUniqueValues(this.projects, 'language');
-        return this.projects;
+          return this.projects;
       });
       }
       else{
         return this.searchProjectData.searchByProjectNameOrDescription(params.searchText)
         .then( projects => {
-        this.projects = projects;
+          this.projects = projects;
           this.selectedOrganizations = this.getUniqueValues(this.projects, 'organization');
           this.selectedLanguages = this.getUniqueValues(this.projects, 'language');
-        return this.projects;
+          return this.projects;
         });
       }
     }

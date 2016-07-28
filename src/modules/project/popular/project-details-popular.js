@@ -10,16 +10,23 @@ export class ProjectDetailsPopular {
 		this.searchProjectData = searchProjectData;
     this.searchProject = searchProject;
     this.repo = {};
+    this.relevant_results = {};
 	}
 
   getViewStrategy() {
         return '../common/project-details.html';
     }
 	activate(params, routeConfig, navigationInstruction) {
-    return this.searchProjectData.findById(params.id).then(repo => {
+
+    this.searchProjectData.findByRelevance("javascript").then(relevant_results => {
+      this.relevant_results = relevant_results;
+    });
+
+    this.searchProjectData.findById(params.id).then(repo => {
 			this.repo = repo;
-      return this.repo;
 		});
+
+
 
 	}
 
