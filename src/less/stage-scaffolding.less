@@ -144,10 +144,40 @@ a {
   }
 }
 
+.select-list {
+	li {
+		padding-right: 2px;
+	}
+}
+
+/* LESS Mixins */
+
+.multiLineEllipsis(@stage-line-count: 1){
+  overflow: hidden;
+  position: relative;
+  max-height: 20px * @stage-line-count; 
+  padding-right: 1em;
+
+  &:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+  }
+}
+
 /* Media queries */
 
-@media screen and (max-width: 1200px) {
-	.card-icon{
-		top: 15px;
+@media screen and (max-width: 992px) {
+	.sort-col {
+		min-height: 50px;
 	}
 }
