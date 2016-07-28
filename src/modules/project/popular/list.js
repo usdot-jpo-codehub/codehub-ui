@@ -36,13 +36,22 @@ export class List {
   getData() {
     return this.projectData.getAll().then(results => {
       this.projects = results;
-
       this.selectedOrganizations = this.getUniqueValues(this.projects, 'organization');
       this.selectedLanguages = this.getUniqueValues(this.projects, 'language');
-
       return this.projects;
     });
   }
+
+  getData() {
+    return this.projectData.getAll().then(results => {
+      this.projects = results;
+      this.selectedOrganizations = this.getUniqueValues(this.projects, 'organization');
+      this.selectedLanguages = this.getUniqueValues(this.projects, 'language');
+      return this.projects;
+    });
+  }
+
+
 
   // Creates an array of unique values for one property in an array
   getUniqueValues(array, property){
