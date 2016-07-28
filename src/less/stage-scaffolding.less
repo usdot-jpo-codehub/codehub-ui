@@ -3,12 +3,15 @@
 // --------------------------------------------------
 
 html {
-	font-size: 16px;
+	font-size: 15px;
 }
 
 body {
-	color: @white;
+	color: @black;
 	background-color: @stage-body-bk;
+  	font-family: @font-family-base;
+  	font-size: @font-size-base;
+  	line-height: @line-height-base;
 }
 
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1,
@@ -52,7 +55,37 @@ body {
 		margin-right: 10px;
 	}
 }
- 
+
+.hero-banner {
+	background: @stage-banner-bk; /* Old browsers */
+	background: linear-gradient(to right, @stage-banner-red 0%,@stage-banner-orange 100%);
+}
+
+.hero-jumbotron {
+	background-color: transparent;
+	margin-bottom: 15px;
+	padding-top: 0;
+	margin-top: 0;
+	text-shadow: 0 5px 5px rgba(0,0,0,0.2);
+
+	.container-fluid {
+		padding-top: 20px;
+
+		h1, p {
+			text-align: center;
+			color: @white;
+		}
+
+		h1 {
+			margin-top: 5px;
+		}
+	}
+}
+
+.jumbotro-title {
+	padding: 0;
+}
+
 .page-title {
 	h1{
 		margin-top: 0;
@@ -65,16 +98,47 @@ body {
 	}
 }
 
-.page-header {
-	margin: 10px;
-	margin-bottom: 0;
-	display: flex;
-	justify-content: center;
+.page-title {
+	text-align: center;
+	margin: 0;
+	color: @stage-red;
+	line-height: 0 !important;
+	text-align: center;
+	padding: 10px 0;
+	margin-top: 15px;
+	max-width: 100%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	font-size: 14px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	margin-bottom: 20px;
 
-	h1 {
-		text-align: center;
+	span {
 		display: inline-block;
-		margin: 0;
+		position: relative;
+
+		&:before,
+		&:after {
+			content: "";
+			position: absolute;
+			height: 5px;
+			border-top: 1px solid @stage-red;
+			top: 0;
+			width: 1200px;
+		}
+
+		&:before {
+			right: 100%;
+			margin-right: 15px;
+		}
+
+		&:after {
+			left: 100%;
+			margin-left: 15px;
+		}
 	}
 }
 
@@ -88,6 +152,8 @@ body {
 // Base class
 .badge {
 	background-color:@stage-badge-bk-color;
+	text-transform: uppercase;
+	font-weight: bold;
 }
 
 .flex {
@@ -152,6 +218,7 @@ a {
 
 /* LESS Mixins */
 
+<<<<<<< Updated upstream
 .multiLineEllipsis(@stage-line-count: 1){
   overflow: hidden;
   position: relative;
@@ -173,6 +240,39 @@ a {
     margin-top: 0.2em;
   }
 }
+
+// .multiLineEllipsis(@stage-line-count: 1){
+//   overflow: hidden;
+//   position: relative;
+//   line-height: @line-height-base;
+//   max-height: 20px * @stage-line-count; 
+//   padding-right: 1em;
+
+//   // overflow: hidden;
+//   // position: relative;
+//   // line-height: $lineHeight;
+//   // max-height: $lineHeight * $lineCount; 
+//   // text-align: justify;
+//   // margin-right: -1em;
+//   // padding-right: 1em;
+
+//   &:before {
+//     content: '...';
+//     position: absolute;
+//     right: 0;
+//     bottom: 0;
+//   }
+
+//   &:after {
+//     content: '';
+//     position: absolute;
+//     right: 0;
+//     width: 1em;
+//     height: 1em;
+//     margin-top: 0.2em;
+//     background-color: @stage-card-bk;
+//   }
+// }
 
 /* Media queries */
 

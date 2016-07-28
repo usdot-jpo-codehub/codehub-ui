@@ -1,18 +1,17 @@
 // Stage Variables
 
 //== Colors
-@white:#ffffff;
+@white:rgb(255,255,255); //#ffffff
 @gray:#555555;
 @light-gray:#C9C9C9;
-@black:#000000;
+@black:rgb(0,0,0); //#000
 @blue:#93ADD5;
 
 //== Stage Colors
 
-@stage-body-bk:#2E3234;
+@stage-body-bk:#F3F4F4;
 @stage-navbar-bk:#005D6A;
 @stage-card-bk:#575757;
-@stage-gray: #CCCCCC;
 @stage-color:#595959;
 @stage-code:#902144;
 @stage-component:#005d6a;
@@ -20,12 +19,24 @@
 @stage-card-hover-bk:#8E8E8E;
 @stage-blue:#155569;
 @stage-text-muted:#BDBDBD;
-@stage-footer:#626161;
+//@stage-footer:#626161;
 @stage-modal-border:#4c4d4d;
 @stage-modal-hd-bk:#141414;
 @stage-modal-content-bk:#2e3234;
 @stage-modal-footer-bk:#252525;
-@stage-badge-bk-color:#262626;
+@stage-badge-bk-color:rgb(188, 190, 192); //#BCBEC0
+
+
+//== Stage Nav Banner background color
+@stage-banner-bk: #f05154;
+@stage-banner-orange: rgb(255, 212, 101); //#ffd476
+@stage-banner-red: rgb(240, 81, 84); //#f05154
+
+@stage-red: rgb(242, 107, 100); //#F26B64
+
+@stage-gray: rgb(209, 211, 212); //#D1D3D4
+
+@stage-footer: rgb(248, 248, 249); //#F8F8F9
 
 //== Stage brand colors
 @brand-primary:         @stage-code;
@@ -47,11 +58,11 @@
 @btn-info-border:                darken(@btn-info-bg, 5%);
 
 //** Global textual link color.
-@link-color:            @white;
+@link-color:            rgb(0, 176, 188);
 //** Link hover color for navbar
-@link-hover-color:      @white;
+@link-hover-color:      darken(rgb(0, 176, 188), 10%);
 //** Standard Link hover color
-@link-alt-hover-color: @blue;
+@link-alt-hover-color: darken(rgb(0, 176, 188), 15%);
 //** Link hover decoration.
 @link-hover-decoration: underline;
 //** Info label background color
@@ -65,4 +76,19 @@
 @modal-backdrop-opacity:      .5;
 
 //** Stage Line count
-@stage-line-count: 2;
+@stage-line-count: 3;
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+@font-family-sans-serif:  'Roboto', sans-serif;
+@font-family-serif:       'Roboto', sans-serif;
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+@font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-base:        @font-family-sans-serif;
+
+//** Unit-less `line-height` for use in components like buttons.
+@line-height-base:        1.428571429; // 20/14
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px

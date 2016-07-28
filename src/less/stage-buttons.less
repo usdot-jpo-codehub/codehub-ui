@@ -3,15 +3,44 @@
 }
 
 .btn-secondary {
-	border: 1px solid @white;
+	border: 1px solid @stage-gray;
 	background-color: transparent;
 
 	&:hover,
 	&:focus,
 	&.focus {
-		background-color: @white;
-		color: @black;
+		background-color: @stage-red;
+		color: @white;
 		text-decoration: none;
+	}
+}
+
+.hero-jumbotron {
+
+
+
+	.input-lg {
+		height: 58px;
+
+		&::-webkit-input-placeholder,
+		&:-moz-placeholder
+		&::-moz-placeholder {
+			font-weight: 300;
+			font-size: 1.5em;
+		}
+
+	}
+
+	.stage-search-btn {
+		background-color: @white;
+		border: none;
+
+
+
+		.material-icons {
+			font-size: 40px;
+			color: @stage-red;
+		}
 	}
 }
 

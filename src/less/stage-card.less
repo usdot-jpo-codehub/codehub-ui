@@ -6,11 +6,11 @@
 	display: block;
 	margin: 0;
 	margin-bottom: 0.75rem;
-	color: @white;
-	background-color: @stage-card-bk;
+	color: @black;
+	background-color: @white;
 	border-radius: 0.25rem;
-	border: 1px solid @gray;
-	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+	border: 1px solid @stage-gray;
+	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	font-size: .875rem;
 	font-weight: normal;
 
@@ -54,10 +54,12 @@
 	.card-block {
 		padding: 0.25rem 1rem;
 		display: flex;
+		min-height: 180px;
 
 		.repo-descrip {
 			flex-basis: 70%;
-			.multiLineEllipsis(4);
+			//.multiLineEllipsis(@stage-line-count: 3);
+			//$lineHeight: 1.2em, $lineCount: 3)
 		}
 
 		.repo-stats {
@@ -125,7 +127,8 @@
 
 	.card-footer {
 		background-color: @stage-footer;
-		box-shadow: 0 0 0 1px @gray inset;
+		//box-shadow: 0 0 0 1px @gray inset;
+		border-top: 1px solid @stage-gray;
 		padding: 0.5rem;
 		display: flex;
 		justify-content: center;

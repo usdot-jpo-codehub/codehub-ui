@@ -3,16 +3,12 @@
   <require from="../utility/pick"></require>
   <require from="../utility/filter"></require>
   <require from="../utility/unique"></require>
-  <require from="../search/search-project"></require>
-  <div class="container-fluid bg_main">
-    <div class="row">
-      <search-project></search-project>
-      <div class="col-lg-12">
-        <div class="page-header">
-          <h1>${projectTitle}</h1>
-        </div>
-      </div>
-    </div>
+  
+  <div class="container-fluid">
+    <h2 class="page-title"><span>${projectTitle}</span></h2>
+  </div>
+
+  <div class="container-fluid">
 
     <div class="row">
       <div class="col-lg-3 col-md-12">
@@ -99,6 +95,7 @@
           <div class="col-lg-12 col-md-12 sort-col">
             <span class="pull-left">We've found ${projects.length} repositories!</span>
             <form class="form-inline pull-right">
+              
               <div class="btn-group">
                 <label class="${sortDirection == 'descending' ? 'btn btn-default active' : 'btn btn-default'}">
                   <input type="radio" name="sortDirection" checked.bind="$parent.sortDirection" autocomplete="off" value="descending"><i class="fa fa-chevron-down" aria-hidden="true"></i>

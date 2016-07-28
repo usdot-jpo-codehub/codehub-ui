@@ -1,10 +1,20 @@
 <template>
   <require from="nav-bar.html"></require>
   <require from="user-login"></require>
+  <require from="modules/project/search/search-project"></require>
 
-
-  <nav-bar router.bind="router"></nav-bar>
-  <user-login></user-login>
+<div class="hero-banner">
+	<nav-bar router.bind="router"></nav-bar>
+  	<user-login></user-login>
+  	<div class="jumbotron hero-jumbotron">
+	    <div class="container-fluid">
+	      <h1>Hello &amp; welcome to Stage...</h1>
+	      <p>Your one-stop shop for everything data science and open source code</p>
+	      <search-project></search-project>
+	    </div>
+    </div>
+  </div>
+  
   <div class="page-host">
     <router-view></router-view>
   </div>

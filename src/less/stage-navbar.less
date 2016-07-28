@@ -2,19 +2,27 @@
 
 // Default navbar
 .navbar-default {
-  background-color: @stage-navbar-bk;
-  border: none;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+	background-color: fade(@black, 20%);
+	text-shadow: 0 3px 4px rgba(0,0,0,0.2);
+
+  	border: none;
+  	border-radius: 0;
+  	margin-bottom: 0;
+
+  	.navbar-brand {
+		width: 150px;
+		padding-top: 8px;
+		padding-bottom: 8px;
+  	}
 
 	.navbar-nav {
 		> li > a {
-		  color: @link-color;
+		  color: fade(@white, 65%);
 		  text-decoration: none;
 
 		  &:hover,
 		  &:focus {
-		    color: @link-color;
+		    color: @white;
 		    text-decoration: none;
 		    background-color: transparent;
 		  }
@@ -23,7 +31,7 @@
 		  &,
 		  &:hover,
 		  &:focus {
-		    color: @link-color;
+		    color: @white;
 		    background-color: transparent;
 		    text-decoration: none;
 		    border-bottom: 4px solid @white;
