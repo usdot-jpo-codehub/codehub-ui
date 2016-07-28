@@ -6,10 +6,11 @@
 @light-gray:#C9C9C9;
 @black:rgb(0,0,0); //#000
 @blue:#93ADD5;
+@teal: rgb(0, 176, 188);
 
 //== Stage Colors
 
-@stage-body-bk:#F3F4F4;
+@stage-body-bk:#F1F2F2;
 @stage-navbar-bk:#005D6A;
 @stage-card-bk:#575757;
 @stage-color:#595959;
@@ -29,14 +30,14 @@
 
 //== Stage Nav Banner background color
 @stage-banner-bk: #f05154;
-@stage-banner-orange: rgb(255, 212, 101); //#ffd476
-@stage-banner-red: rgb(240, 81, 84); //#f05154
+@stage-banner-orange: rgb(255, 212, 118); //#ffb476
+@stage-banner-red: rgb(240, 79, 84); //#f04f54
 
 @stage-red: rgb(242, 107, 100); //#F26B64
 
 @stage-gray: rgb(209, 211, 212); //#D1D3D4
 
-@stage-footer: rgb(248, 248, 249); //#F8F8F9
+@stage-footer: rgb(246, 246, 246); //#F6F6F6
 
 //== Stage brand colors
 @brand-primary:         @stage-code;
@@ -58,11 +59,11 @@
 @btn-info-border:                darken(@btn-info-bg, 5%);
 
 //** Global textual link color.
-@link-color:            rgb(0, 176, 188);
+@link-color:            @teal;
 //** Link hover color for navbar
-@link-hover-color:      darken(rgb(0, 176, 188), 10%);
+@link-hover-color:      darken(@teal, 10%);
 //** Standard Link hover color
-@link-alt-hover-color: darken(rgb(0, 176, 188), 15%);
+@link-alt-hover-color: darken(@teal, 15%);
 //** Link hover decoration.
 @link-hover-decoration: underline;
 //** Info label background color

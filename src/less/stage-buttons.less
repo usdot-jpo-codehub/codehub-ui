@@ -1,41 +1,76 @@
+// Bootstrap button override
+.btn {
+	&:hover,
+	&:active,
+	&:focus {
+		outline: none !important;
+	}
+}
+
 .btn-primary {
 	.button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
 }
 
+// Bootstrap V4 Outline Btn
 .btn-secondary {
-	border: 1px solid @stage-gray;
+	color: @teal;
+	border: 1px solid @teal;
 	background-color: transparent;
 
+	&:active,
+	&.active,
 	&:hover,
 	&:focus,
 	&.focus {
-		background-color: @stage-red;
+		background-color: @teal;
 		color: @white;
 		text-decoration: none;
 	}
+
+	.octicon {
+		vertical-align: -2px;
+		padding-right: 3px;
+	}
 }
 
+// Hero Search Input
 .hero-jumbotron {
 
-
-
 	.input-lg {
-		height: 58px;
+		height: 60px;
+		font-weight: 300;
+		font-size: 1.5em;
+		border: none;
+		
+	}
 
-		&::-webkit-input-placeholder,
-		&:-moz-placeholder
-		&::-moz-placeholder {
-			font-weight: 300;
-			font-size: 1.5em;
+	.input-group-btn {
+		z-index: 1;
+	}
+
+	.input-group {
+		position: relative;
+
+		&:after {
+			//z-index: -1;
+			position: absolute;
+			content: "";
+			bottom: 20%;
+			right: auto;
+			left: 0;
+			top:50%;
+			width: 100%;
+			background: none;
+			box-shadow: 0 35px 50px fade(@black, 30%);
+			transform: scale(0.95);
 		}
-
 	}
 
 	.stage-search-btn {
+		height: 60px;
 		background-color: @white;
 		border: none;
-
-
+		padding: 10px;
 
 		.material-icons {
 			font-size: 40px;
@@ -44,11 +79,10 @@
 	}
 }
 
-a.btn{
+a.btn {
 	text-decoration: none;
 }
 
-label.btn > input[type='radio']
-{
+label.btn > input[type='radio'] {
   display: none;
 }
