@@ -1,7 +1,6 @@
-import {inject} from 'aurelia-framework';
-import {Router} from "aurelia-router";
+import {inject, bindable} from 'aurelia-framework';
+import {Router, activationStrategy} from "aurelia-router";
 import {SearchProjectData} from "../dataRepository/searchProjectData";
-import {bindable} from 'aurelia-framework';
 
 @inject(SearchProjectData, Router)
 export class ProjectDetailsPopular {
@@ -10,23 +9,28 @@ export class ProjectDetailsPopular {
 		this.searchProjectData = searchProjectData;
     this.searchProject = searchProject;
     this.repo = {};
-    this.relevant_results = {};
+    this.similarProjects= [];
 	}
 
   getViewStrategy() {
         return '../common/project-details.html';
     }
+
+  determineActivationStrategy() {
+    return activationStrategy.replace;
+  }
+
 	activate(params, routeConfig, navigationInstruction) {
 
-    this.searchProjectData.findByRelevance("javascript").then(relevant_results => {
-      this.relevant_results = relevant_results;
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+
+    this.searchProjectData.findSimilarProjects(params.id).then(similarProjects => {
+      this.similarProjects = similarProjects;
     });
 
     this.searchProjectData.findById(params.id).then(repo => {
 			this.repo = repo;
 		});
-
-
 
 	}
 
