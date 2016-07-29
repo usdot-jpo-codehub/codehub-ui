@@ -162,7 +162,6 @@ body {
 	justify-content: space-between;
 	align-items: center;
 
-
 	.form-group {
 		margin: 0;
 	}
@@ -174,22 +173,69 @@ body {
 	}
 }
 
-
-
+// Label Base class
 .label {
+	text-transform: uppercase;
+	font-family: "Roboto Condensed";
+	font-weight: normal;
+	font-size: 0.9em;
+	// padding: 5px 8px;
+	// border-radius: 8px;
+
+	// background-color: #777;
+    border-radius: 10px;
+    // color: #fff;
+    display: inline-block;
+    // font-size: 12px;
+    // font-weight: 700;
+    line-height: 1;
+    min-width: 10px;
+    padding: 3px 7px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+
 	.octicon{
 		font-size: 14px;
 		vertical-align: -8%;
 	}
 }
 
-// Base class
-.label {
-	text-transform: uppercase;
-	font-family: "Roboto Condensed";
-	font-weight: normal;
+.bg-amber {
+	background-color: #ffb300;
+	color: @black;
+}
+.text-amber {
+	color:#ffb300;
 }
 
+.bg-orange {
+	background-color: #ff5722;
+}
+.text-orange {
+	color:#ff5722;
+}
+
+.bg-indigo {
+	background-color: #3f51b5;
+}
+.text-indigo {
+	color:#3f51b5;
+}
+
+.bg-light-blue {
+	background-color: #03a9f4;
+}
+.text-light-blue {
+	color:#03a9f4;
+}
+
+.bg-purple {
+	background-color: #9c27b0;
+}
+.text-purple {
+	color:#9c27b0;
+}
 .flex {
 	display:flex;
 	justify-content: space-around;
@@ -217,7 +263,10 @@ body {
 	color: @black;
 }
 
-
+.project-icon {
+	height: 25px;
+	width: 25px;
+}
 
 // Forms
 

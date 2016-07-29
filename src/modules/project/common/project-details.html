@@ -2,12 +2,16 @@
     <require from="../search/search-project"></require>
     <require from="../utility/pick"></require>
 
-    <div class="container-fluid project-details bg_main">
-        <div class="row">
-            <search-project></search-project>
-            <div class="col-lg-12">
+    <div class="container-fluid title-wrapper">
+        <h2 class="page-title"><span>${repo.project_name}</span></h2>
+    </div>
+
+    <div class="container-fluid proj-details-wrapper">
+        <!-- <div class="row"> -->
+            <!-- <search-project></search-project> -->
+            <!-- <div class="col-lg-12">
                 <div class="page-header">
-                    <h1>${repo.project_name}</h1>
+                    <h1>Project Name ${repo.project_name}</h1>
                     <nav class="project-pager">
                         <ul class="pager">
                             <li class="display-count">Displaying <input class="display-input" type="number" value="1"> of 100</li>
@@ -16,8 +20,8 @@
                         </ul>
                     </nav>
                 </div>
-            </div>
-        </div>
+            </div> -->
+        <!-- </div> -->
 
         <div class="row">
             <div class="col-lg-8">
@@ -25,10 +29,10 @@
                     <div class="col-lg-6">
                         <div class="card card-details">
                             <div class="card-header">
-                                <h5 class="project-component-flex stage">
-                                    <span class="component-type text-uppercase">Project Details</span>
-                                    <small><a href="#"><i class="fa fa-star"> Favorite</i></a></small>
-                                </h5>
+                                <h3>
+                                    <span class="component-type">Project Details</span>
+                                </h3>
+                                <a href="#"><i class="fa fa-star"> Favorite</i></a>
                             </div>
                             <div class="card-block">
                                 <div class="row">
@@ -68,12 +72,6 @@
                                             <li class="flex-item">
                                                 <a href="#"><i class="octicon octicon-file"></i> Build File</a>
                                             </li>
-                                            <li class="flex-item">
-                                                <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/docker.svg"> Dockerfile</a>
-                                            </li>
-                                            <li class="flex-item">
-                                                <a href="#"><img class="project-icon vargant-icon" alt="JavaScript Icon" src="../../../../img/logos/vagrant.svg"> Vagrantfile</a>
-                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -84,27 +82,33 @@
                     <div class="col-lg-6">
                         <div class="card card-details">
                             <div class="card-header">
-                                <h5 class="project-component-flex stage">
-                                    <span class="component-type text-uppercase">Project Dependencies</span>
-                                </h5>
+                                <h3 class="project-component-flex">
+                                    <span class="component-type">Project Dependencies</span>
+                                </h3>
                             </div>
                             <div class="card-block">
-                                <h4>Dependents <small><a href="#">See More</a></small></h4>
+                                <div class="flex-subhead">
+                                    <h4>Dependents</h4>
+                                    <a href="#">See More</a>
+                                </div>
                                 <ul class="flex-links">
                                     <li class="flex-item"><a href="#">STAGE</a></li>
                                     <li class="flex-item"><a href="#">UX/UI Framework</a></li>
                                     <li class="flex-item"><a href="#">Project X</a></li>
                                 </ul>
-                                <h4>Dependencies <small><a href="#">See More</a></small></h4>
+                                <div class="flex-subhead">
+                                    <h4>Dependencies</h4>
+                                    <a href="#">See More</a>
+                                </div>
                                 <ul class="flex-links">
                                     <li class="flex-item">
-                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/nodejs-icon.svg"> NodeJS</a>
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/nodejs-icon.svg"> <span>NodeJS</span></a>
                                     </li>
                                     <li class="flex-item">
-                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/npm.svg"> NPM</a>
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/npm.svg"> <span>NPM</span></a>
                                     </li>
                                     <li class="flex-item">
-                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/gulp.svg"> Gulp</a>
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/gulp.svg"> <span>Gulp</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -114,9 +118,9 @@
                     <div class="col-lg-12">
                         <div class="card card-details">
                             <div class="card-header">
-                                <h5 class="project-component-flex stage">
-                                    <span class="component-type text-uppercase">Key Stats</span>
-                                </h5>
+                                <h3 class="project-component-flex">
+                                    <span class="component-type">Key Stats</span>
+                                </h3>
                             </div>
                             <div class="card-block">
                                 <div class="flex-block">
@@ -198,59 +202,59 @@
                     <div class="col-lg-12">
                         <div class="card card-details">
                             <div class="card-header">
-                                <h5 class="project-component-flex stage">
-                                    <span class="component-type text-uppercase">Key Technologies</span>
-                                </h5>
+                                <h3 class="project-component-flex">
+                                    <span class="component-type">Key Technologies</span>
+                                </h3>
                             </div>
                             <div class="card-block">
                                 <ul class="flex-links">
                                     <li class="flex-item">
-                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/nodejs-icon.svg"> NodeJS</a>
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/nodejs-icon.svg"> <span>NodeJS</span></a>
                                     </li>
                                     <li class="flex-item">
-                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/aurelia.svg"> Aurelia</a>
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/aurelia.svg"> <span>Aurelia</span></a>
                                     </li>
                                     <li class="flex-item">
-                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/lookback.svg"> Lookback</a>
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/lookback.svg"> <span>Lookback</span></a>
                                     </li>
                                     <li class="flex-item">
-                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/mocha.svg"> Mocha</a>
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/mocha.svg"> <span>Mocha</span></a>
                                     </li>
                                     <li class="flex-item">
-                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/chai.svg"> Chai</a>
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/chai.svg"> <span>Chai</span></a>
                                     </li>
                                     <li class="flex-item">
-                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/jasmine.svg"> Jasmine</a>
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/jasmine.svg"> <span>Jasmine</span></a>
                                     </li>
                                     <li class="flex-item">
-                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/gulp.svg"> Gulp</a>
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/gulp.svg"> <span>Gulp</span></a>
                                     </li>
                                     <li class="flex-item">
-                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/npm.svg"> NPM</a>
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/npm.svg"> <span>NPM</span></a>
                                     </li>
                                     <li class="flex-item">
-                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/mongodb.svg"> Mongodb</a>
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/mongodb.svg"> <span>Mongodb</span></a>
                                     </li>
                                     <li class="flex-item">
-                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/travis-ci.svg"> TravisCI</a>
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/travis-ci.svg"> <span>TravisCI</span></a>
                                     </li>
                                     <li class="flex-item">
-                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/code-climate-wedges-white.svg"> Code Climate</a>
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/code-climate-wedges-black.svg"> <span>Code Climate</span></a>
                                     </li>
                                     <li class="flex-item">
-                                        <a href="#"><img class="project-icon coveralls" alt="JavaScript Icon" src="../../../../img/logos/coveralls-custom.svg"> Coveralls</a>
+                                        <a href="#"><img class="project-icon coveralls" alt="JavaScript Icon" src="../../../../img/logos/coveralls-custom.svg"> <span>Coveralls</span></a>
                                     </li>
                                     <li class="flex-item">
-                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/aws-s3.svg"> AWS S3</a>
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/aws-s3.svg"> <span>AWS S3</span></a>
                                     </li>
                                     <li class="flex-item">
-                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/aws-codedeploy.svg"> AWS CodeDeploy</a>
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/aws-codedeploy.svg"> <span>AWS CodeDeploy</span></a>
                                     </li>
                                     <li class="flex-item">
-                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/tux.svg"> Linux</a>
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/tux.svg"> <span>Linux</span></a>
                                     </li>
                                     <li class="flex-item">
-                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/docker.svg"> Docker</a>
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/docker.svg"> <span>Docker</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -262,9 +266,9 @@
             <div class="col-lg-4">
                 <div class="card card-aside">
                     <div class="card-header">
-                        <h5 class="project-component-flex stage">
-                            <span class="component-type text-uppercase">Project Members</span>
-                        </h5>
+                        <h3 class="project-component-flex">
+                            <span class="component-type">Project Members</span>
+                        </h3>
                     </div>
                     <div class="card-block">
                         <div class="media-list media-list-users list-group">
@@ -317,9 +321,9 @@
             <div class="col-lg-4">
                 <div class="card card-aside">
                     <div class="card-header">
-                        <h5 class="project-component-flex stage">
-                            <span class="component-type text-uppercase">Project Members</span>
-                        </h5>
+                        <h3 class="project-component-flex">
+                            <span class="component-type">Project Members</span>
+                        </h3>
                     </div>
                     <div class="card-block">
                         <div class="media-list media-list-projects list-group">

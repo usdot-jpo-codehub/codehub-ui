@@ -6620,14 +6620,54 @@ body {
 .sort-col p {
   margin-bottom: 0;
 }
-.label .octicon {
-  font-size: 14px;
-  vertical-align: -8%;
-}
 .label {
   text-transform: uppercase;
   font-family: "Roboto Condensed";
   font-weight: normal;
+  font-size: 0.9em;
+  border-radius: 10px;
+  display: inline-block;
+  line-height: 1;
+  min-width: 10px;
+  padding: 3px 7px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.label .octicon {
+  font-size: 14px;
+  vertical-align: -8%;
+}
+.bg-amber {
+  background-color: #ffb300;
+  color: #000000;
+}
+.text-amber {
+  color: #ffb300;
+}
+.bg-orange {
+  background-color: #ff5722;
+}
+.text-orange {
+  color: #ff5722;
+}
+.bg-indigo {
+  background-color: #3f51b5;
+}
+.text-indigo {
+  color: #3f51b5;
+}
+.bg-light-blue {
+  background-color: #03a9f4;
+}
+.text-light-blue {
+  color: #03a9f4;
+}
+.bg-purple {
+  background-color: #9c27b0;
+}
+.text-purple {
+  color: #9c27b0;
 }
 .flex {
   display: flex;
@@ -6649,6 +6689,10 @@ body {
 .display-input {
   width: 45px;
   color: #000000;
+}
+.project-icon {
+  height: 25px;
+  width: 25px;
 }
 input {
   box-shadow: none !important;
@@ -6882,7 +6926,7 @@ label.btn > input[type='radio'] {
   margin-bottom: 0.75rem;
   color: #000000;
   background-color: #ffffff;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.07);
   font-size: .875rem;
   font-weight: normal;
@@ -6982,7 +7026,7 @@ label.btn > input[type='radio'] {
   display: flex;
   justify-content: center;
   padding: 0;
-  border-radius: 0 0 .5rem .5rem;
+  border-radius: 0 0 .3rem .3rem;
 }
 .card .card-footer .flex-footer {
   list-style: none;
@@ -7001,6 +7045,7 @@ label.btn > input[type='radio'] {
 .card-details .card-block .flex-links {
   list-style: none;
   -webkit-padding-start: 0;
+  padding-left: 0;
   margin: 5px 0;
   display: flex;
   flex-wrap: wrap;
@@ -7136,14 +7181,60 @@ label.btn > input[type='radio'] {
 .container-fluid .flex-row .main-content {
   flex-basis: 80%;
 }
+.proj-details-wrapper {
+  padding-top: 30px;
+}
+.proj-details-wrapper .card-header {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.proj-details-wrapper .card-header h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.5rem;
+}
+.proj-details-wrapper .card-header a {
+  text-align: center;
+  display: inline-block;
+  padding: 0 5px;
+}
+.proj-details-wrapper .card-header a span {
+  display: block;
+  margin-top: 5px;
+}
+.proj-details-wrapper .card-block .flex-subhead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.proj-details-wrapper .card-block .flex-subhead h4 {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #999999;
+}
+.proj-details-wrapper .card-block h4 {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #999999;
+}
+.proj-details-wrapper .card-block a {
+  text-align: center;
+  display: inline-block;
+  padding: 5px;
+}
+.proj-details-wrapper .card-block a span {
+  display: block;
+  margin-top: 5px;
+}
 .project-details .page-header {
   display: flex;
   justify-content: center;
   margin-top: 10px;
-}
-.project-details .page-header h1 {
-  flex-grow: 1;
-  margin-left: 289px;
 }
 .project-details .page-header .project-pager {
   margin-left: auto;
