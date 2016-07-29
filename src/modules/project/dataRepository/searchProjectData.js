@@ -44,8 +44,9 @@ export class SearchProjectData {
   findById(id) {
     var adjusted_url = baseUrl + "/_id:" + id;
     return this.http.fetch(adjusted_url)
-      .then(response => {
-        return response.content;
+      .then(response => response.json())
+      .then(data => {
+        return data;
       });
   }
 
