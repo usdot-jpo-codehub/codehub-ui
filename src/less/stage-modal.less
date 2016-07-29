@@ -3,30 +3,58 @@ body ai-dialog-overlay.active {
   	opacity:@modal-backdrop-opacity;
 }
 
-.modal-header button.close {
-  color: @white;
-}
-
-.modal > button {
- display: inherit;;
-}
-
-.modal-body > h4:first-child {
-  color: @white;
-}
-
-.modal-content {
-  // background-color: @stage-modal-hd-bk;
-  background-color: @stage-card-bk;
-  color: white;
-}
 
 .modal-header {
-  background-color: @stage-modal-content-bk;
-  border-bottom: 1px solid @stage-modal-border;
+  .close {
+    margin-top: 2px;
+  }
 }
 
-.modal-footer {
-  border-top: 1px solid @stage-modal-border;
-  background-color: @stage-modal-footer-bk;
+.modal-title {
+  font-weight: bold;
 }
+
+.modal-body {
+  h1{
+    font-size: 2em;
+    margin-top: 0;
+
+    a {
+      font-weight: bold;
+    }
+  }
+
+  h2{
+    font-size: 1.5em;
+    margin-top: 30px;
+  }
+}
+
+
+// .modal-header button.close {
+//   color: @white;
+// }
+
+// .modal > button {
+//  display: inherit;;
+// }
+
+// .modal-body > h4:first-child {
+//   color: @white;
+// }
+
+// .modal-content {
+//   // background-color: @stage-modal-hd-bk;
+//   background-color: @stage-card-bk;
+//   color: white;
+// }
+
+// .modal-header {
+//   background-color: @stage-modal-content-bk;
+//   border-bottom: 1px solid @stage-modal-border;
+// }
+
+// .modal-footer {
+//   border-top: 1px solid @stage-modal-border;
+//   background-color: @stage-modal-footer-bk;
+// }

@@ -47,6 +47,12 @@ body {
 	}
 }
 
+.page-title {
+	h1{
+		margin-top: 0;
+	}
+}
+
 
 .title-wrapper {
 	background-color: lighten(@light-gray,14%);
@@ -58,7 +64,7 @@ body {
 		line-height: 0 !important;
 		text-align: center;
 		padding: 10px 0;
-		margin: 15px 0;
+		margin: 15px 0 12px;
 		max-width: 100%;
 		text-overflow: ellipsis;
 		white-space: nowrap;
@@ -149,15 +155,9 @@ body {
 	padding: 0;
 }
 
-.page-title {
-	h1{
-		margin-top: 0;
-	}
-}
-
 .sort-col {
 	margin-bottom: 5px;
-	padding: 10px 45px;
+	padding: 10px 15px 10px 45px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -168,11 +168,9 @@ body {
 	}
 
 	p {
-		// padding: 6px 0 6px 30px;
 		margin-bottom: 0;
 	}
 	.form-inline {
-		// padding-right: 30px;
 	}
 }
 
@@ -186,8 +184,7 @@ body {
 }
 
 // Base class
-.badge {
-	background-color:@stage-badge-bk-color;
+.label {
 	text-transform: uppercase;
 	font-family: "Roboto Condensed";
 	font-weight: normal;
