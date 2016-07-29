@@ -15,6 +15,19 @@ export class Result {
     this.selectedOrganizations = [];
     this.selectedLanguages = [];
 
+    this.sortDirection = "descending";
+
+    this.selectedSort = 'default';
+    this.sortOptions = [
+      {value: 'rank', name: 'Rank'},
+      {value: 'default', name: 'Relevance'},
+      {value: 'stars', name: 'Stars'},
+      {value: 'watchers', name: 'Watchers'},
+      {value: 'releases', name: 'Releases'},
+      {value: 'commits', name: 'Commits'},
+      {value: 'contributors', name: 'Contributors'}
+    ];
+
 	}
 
   getViewStrategy() {
