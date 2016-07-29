@@ -38,13 +38,14 @@ export class SearchProjectData {
       });
   }
 
-  // TODO Temporary call to ES while relevance service is set up (will be by ID)
-  findByRelevance(language) {
-    var adjusted_url = baseUrl + "/language:" + language;
-    console.log(adjusted_url);
-    return this.http.fetch(adjusted_url)
-      .then(response => {
-        return response.content;
+  findSimilarProjects(id) {
+    var adjusted_url = baseUrl + "/findSimilarProjects/" + id;
+    return this.http.fetch(adjusted_url, {
+      method: "GET"
+    })
+      .then(response => response.json())
+      .then(data => {
+        return data;
       });
   }
 }
