@@ -72,16 +72,14 @@
                             </div>
                             <div class="card-block">
                                 <div class="flex-subhead">
-                                    <h4>Dependents</h4>
+                                    <h4>Dependencies</h4>
                                     <a href="#">See More</a>
                                 </div>
                                 <ul class="flex-links">
-                                    <li class="flex-item"><a href="#">STAGE</a></li>
-                                    <li class="flex-item"><a href="#">UX/UI Framework</a></li>
-                                    <li class="flex-item"><a href="#">Project X</a></li>
+                                    <li repeat.for="depend of dependencies" class="flex-item"><a href="#">${depend.artifactId}</a></li>
                                 </ul>
                                 <div class="flex-subhead">
-                                    <h4>Dependencies</h4>
+                                    <h4>Dependents</h4>
                                     <a href="#">See More</a>
                                 </div>
                                 <ul class="flex-links">
@@ -256,43 +254,15 @@
                     </div>
                     <div class="card-block">
                         <div class="media-list media-list-users list-group">
-                            <div class="list-group-item">
+                            <div repeat.for="contrib of contributors_list | pick:3" class="list-group-item">
                                 <div class="media">
                                     <span class="media-left">
-                                        <img class="img-circle media-object" src="../../../../img/01-Avatar-img.png">
+                                        <img class="img-circle media-object" src="https://github.com/${contrib.username}.png">
                                     </span>
                                     <div class="media-body clearfix">
-                                        Stacy Willows <span class="pull-right"><strong>OWNER</strong></span>
+                                        ${contrib.username}<span class="pull-right"></span>
                                         <div class="media-body-secondary">
-                                            <a href="#">stacy_willows@bah.com</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="list-group-item">
-                                <div class="media">
-                                    <span class="media-left">
-                                        <img class="img-circle media-object" src="../../../../img/02-Avatar-img.png">
-                                    </span>
-                                    <div class="media-body clearfix">
-                                        Rachel Gray
-                                        <div class="media-body-secondary">
-                                            <a href="#">rachel_gray@bah.com</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="list-group-item">
-                                <div class="media">
-                                    <span class="media-left">
-                                        <img class="img-circle media-object" src="../../../../img/05-Avatar-img.png">
-                                    </span>
-                                    <div class="media-body clearfix">
-                                        Richard Smith
-                                        <div class="media-body-secondary">
-                                            <a href="#">richard_smith@bah.com</a>
+                                            <a href="${contrib.profile_url}">${contrib.profile_url}</a>
                                         </div>
                                     </div>
                                 </div>
