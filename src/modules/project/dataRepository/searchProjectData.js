@@ -30,6 +30,17 @@ export class SearchProjectData {
       });
   }
 
+  findSuggestion(searchText) {
+    return this.http.fetch(baseUrl + '/findSuggestion', {
+      method: "POST",
+      body: json(searchText)
+    })
+      .then(response => response.json())
+      .then(data => {
+        return data;
+      });
+  }
+
     findById(id) {
     var adjusted_url = baseUrl + "/_id:" + id;
     return this.http.fetch(adjusted_url)
