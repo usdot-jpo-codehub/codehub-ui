@@ -7057,13 +7057,6 @@ label.btn > input[type='radio'] {
 .card-dependencies .card-block {
   flex-direction: column;
 }
-.card-aside .card-header,
-.card-detail .card-header {
-  border-bottom: 1px solid #ffffff;
-}
-.card-aside .card-header h2 {
-  text-transform: uppercase;
-}
 @media screen and (min-width: 1200px) and (max-width: 1382px) {
   .card .card-block .repo-descrip {
     flex-basis: 58%;
@@ -7200,6 +7193,7 @@ label.btn > input[type='radio'] {
   text-align: center;
   display: inline-block;
   padding: 0 5px;
+  font-family: "Roboto";
 }
 .proj-details-wrapper .card-header a span {
   display: block;
