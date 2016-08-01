@@ -327,13 +327,19 @@
                     </div>
                     <div class="card-block">
                         <div class="media-list media-list-projects list-group">
-                            <div repeat.for="project of similarProjects | pick:3" class="list-group-item">
+                            <div class="list-group-item">
+                                <div class="media">
+                                    <div class="media-body clearfix">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div repeat.for="project of similarProjects | pick:3" class="list-group-item">
                                 <div class="media">
                                     <div class="media-body clearfix">
                                         <span class="pull-right"><a route-href="route:project-details-popular; params.bind: {id:project.project_id}"><strong>${project.project_name} / ${project.project_org_name} </strong></a></span>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

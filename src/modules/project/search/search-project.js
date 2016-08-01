@@ -35,7 +35,7 @@ export class SearchProject {
       return $("<li>")
         .data("item.autocomplete", item)
         .append("<div>" + item.text + "</div>")
-        .appendTo(ul);
+        .appendTo("#autocomplete");
     };
 
   }
