@@ -49,8 +49,32 @@
     }
 }
 
-.media-list-projects {
-    .media-body-secondary {
-        color: @white;
-    } 
+.proj-details-wrapper {
+    .media-list-projects {
+        .list-group-item {
+            border-bottom: 1px solid lighten(@stage-gray,10%);
+
+            a {
+                display: block;
+                text-align: left;
+                
+
+                h5{
+                    font-size: 1.2em;
+                }
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+
+        
+    }
 }
+
+// .media-list-projects {
+//     .media-body-secondary {
+//         color: @white;
+//     } 
+// }
