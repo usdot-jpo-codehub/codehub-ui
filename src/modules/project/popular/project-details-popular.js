@@ -10,6 +10,7 @@ export class ProjectDetailsPopular {
     this.searchProject = searchProject;
     this.repo = {};
     this.similarProjects= [];
+    this.dependencies = [];
 	}
 
   getViewStrategy() {
@@ -30,6 +31,14 @@ export class ProjectDetailsPopular {
 
     this.searchProjectData.findById(params.id).then(repo => {
 			this.repo = repo;
+
+      if(repo.language == "Java") {
+        this.searchProjectData.getJavaDependencies(repo.organization, repo.project_name).then(dependencies => {
+          console.log(dependencies);
+          this.dependencies = dependencies;
+        });
+      }
+
 		});
 
 	}

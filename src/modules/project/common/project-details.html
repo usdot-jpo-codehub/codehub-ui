@@ -88,16 +88,14 @@
                             </div>
                             <div class="card-block">
                                 <div class="flex-subhead">
-                                    <h4>Dependents</h4>
+                                    <h4>Dependencies</h4>
                                     <a href="#">See More</a>
                                 </div>
                                 <ul class="flex-links">
-                                    <li class="flex-item"><a href="#">STAGE</a></li>
-                                    <li class="flex-item"><a href="#">UX/UI Framework</a></li>
-                                    <li class="flex-item"><a href="#">Project X</a></li>
+                                    <li repeat.for="depend of dependencies" class="flex-item"><a href="#">${depend.artifactId}</a></li>
                                 </ul>
                                 <div class="flex-subhead">
-                                    <h4>Dependencies</h4>
+                                    <h4>Dependents</h4>
                                     <a href="#">See More</a>
                                 </div>
                                 <ul class="flex-links">
