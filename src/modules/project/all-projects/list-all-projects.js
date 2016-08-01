@@ -20,6 +20,20 @@ getViewStrategy() {
     this.projects = [];
     this.selectedOrganizations = [];
     this.selectedLanguages = [];
+
+    this.sortDirection = "descending";
+
+    this.selectedSort = 'stars';
+    this.sortOptions = [
+      {value: 'rank', name: 'Rank'},
+      {value: 'default', name: 'Relevance'},
+      {value: 'stars', name: 'Stars'},
+      {value: 'watchers', name: 'Watchers'},
+      {value: 'releases', name: 'Releases'},
+      {value: 'commits', name: 'Commits'},
+      {value: 'contributors', name: 'Contributors'}
+    ];
+
   };
 
   gotoProject(project){
@@ -37,7 +51,6 @@ getViewStrategy() {
         this.projects = JSON.parse(JSON.stringify(projects));
         this.selectedOrganizations = this.getUniqueValues(this.projects, 'organization');
         this.selectedLanguages = this.getUniqueValues(this.projects, 'language');
-        console.log(this.projects);
         return this.projects;
      });
   }
