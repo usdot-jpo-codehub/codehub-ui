@@ -13,6 +13,7 @@ System.config({
     "npm:*": "jspm_packages/npm/*"
   },
   baseUrl: "/",
+
   meta: {
     "bootstrap": {
       "deps": [
@@ -20,6 +21,7 @@ System.config({
       ]
     }
   },
+
   map: {
     "aurelia-animator-css": "npm:aurelia-animator-css@1.0.0-rc.1.0.0",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-rc.1.0.1",
@@ -41,6 +43,7 @@ System.config({
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "bootstrap-less": "github:distros/bootstrap-less@3.3.9",
     "core-js": "npm:core-js@1.2.7",
+    "corejs-typeahead": "npm:corejs-typeahead@0.11.1",
     "fetch": "github:github/fetch@0.11.1",
     "font-awesome": "npm:font-awesome@4.6.3",
     "jquery": "npm:jquery@2.2.4",
@@ -49,6 +52,7 @@ System.config({
     "octicons": "npm:octicons@4.3.0",
     "showdown": "github:showdownjs/showdown@1.4.2",
     "text": "github:systemjs/plugin-text@0.0.3",
+    "typeahead.js": "npm:typeahead.js@0.11.1",
     "github:components/jqueryui@1.12.0": {
       "jquery": "npm:jquery@2.2.4"
     },
@@ -65,7 +69,7 @@ System.config({
       "path-browserify": "npm:path-browserify@0.0.0"
     },
     "github:jspm/nodelibs-process@0.1.2": {
-      "process": "npm:process@0.11.5"
+      "process": "npm:process@0.11.7"
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
@@ -228,6 +232,11 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
+    "npm:corejs-typeahead@0.11.1": {
+      "jquery": "npm:jquery@2.2.4",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "util": "github:jspm/nodelibs-util@0.1.0"
+    },
     "npm:font-awesome@4.6.3": {
       "css": "github:systemjs/plugin-css@0.1.23"
     },
@@ -243,10 +252,15 @@ System.config({
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:process@0.11.5": {
+    "npm:process@0.11.7": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "vm": "github:jspm/nodelibs-vm@0.1.0"
+    },
+    "npm:typeahead.js@0.11.1": {
+      "jquery": "npm:jquery@2.2.4",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:util@0.10.3": {
       "inherits": "npm:inherits@2.0.1",

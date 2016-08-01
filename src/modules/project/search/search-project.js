@@ -4,6 +4,9 @@ import {Router} from "aurelia-router";
 import $ from 'jquery';
 import {autocomplete} from "jquery-ui";
 
+import {typeahead, Bloodhound} from "corejs-typeahead";
+
+
 @inject(SearchProjectData, Router)
 export class SearchProject {
 
@@ -21,24 +24,29 @@ export class SearchProject {
 
     var search = this.searchProjectData;
 
-    $("#searchBox").autocomplete({
-      minLength: 3,
-      source: function (request, response) {
-        var term = request.term;
+    var suggestions = function (query, syncResults, asyncResults) {
 
-        search.findSuggestion(term).then(data => {
-          response(data);
-        });
+      search.findSuggestion(query).then(data => {
+        var matches = [];
+        for (var obj in data) {
+          matches.push(data[obj].text);
+        }
+        asyncResults(matches);
 
-      }
-    }).data("uiAutocomplete")._renderItem = function (ul, item) {
-      $(".autocomplete-block").addClass("active");
-      return $("<li>")
+      });
 
-        .data("item.autocomplete", item)
-        .append(item.text)
-        .appendTo("#autocomplete");
     };
+
+    $('#searchBox .typeahead').typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 1,
+        limit: 1000
+      },
+      {
+        name: 'suggestions',
+        source: suggestions
+      });
 
   }
 
