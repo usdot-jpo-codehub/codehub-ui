@@ -1,5 +1,8 @@
 // Bootstrap button override
 .btn {
+	border-radius: 4px;
+	transition: all 0.2s linear;
+
 	&:hover,
 	&:active,
 	&:focus {
@@ -15,7 +18,7 @@
 .btn-secondary {
 	color: @teal;
 	border: 1px solid @teal;
-	background-color: transparent;
+	background-color: @white;
 
 	&:active,
 	&.active,
