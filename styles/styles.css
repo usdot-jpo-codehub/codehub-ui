@@ -6085,6 +6085,7 @@ h6,
 .h6 {
   margin-top: 10px;
   margin-bottom: 10px;
+  font-weight: bold;
 }
 h4 small,
 .h4 small,
@@ -6364,7 +6365,7 @@ html {
 }
 body {
   color: #000000;
-  background-color: #F1F2F2;
+  background-color: #f1f2f2;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
@@ -7057,13 +7058,6 @@ label.btn > input[type='radio'] {
 .card-dependencies .card-block {
   flex-direction: column;
 }
-.card-aside .card-header,
-.card-detail .card-header {
-  border-bottom: 1px solid #ffffff;
-}
-.card-aside .card-header h2 {
-  text-transform: uppercase;
-}
 @media screen and (min-width: 1200px) and (max-width: 1382px) {
   .card .card-block .repo-descrip {
     flex-basis: 58%;
@@ -7200,6 +7194,7 @@ label.btn > input[type='radio'] {
   text-align: center;
   display: inline-block;
   padding: 0 5px;
+  font-family: "Roboto";
 }
 .proj-details-wrapper .card-header a span {
   display: block;
@@ -7247,12 +7242,12 @@ label.btn > input[type='radio'] {
 .pager li > a {
   color: #ffffff;
   border: 1px solid #ffffff;
-  background-color: #F1F2F2;
+  background-color: #f1f2f2;
 }
 .pager li > a:hover,
 .pager li > a:focus {
   background-color: #ffffff;
-  color: #F1F2F2;
+  color: #f1f2f2;
 }
 body ai-dialog-overlay.active {
   background-color: #000;
@@ -7321,6 +7316,46 @@ body ai-dialog-overlay.active {
 .media-list-projects .media-body p:last-child {
   margin-bottom: 0;
 }
-.media-list-projects .media-body-secondary {
-  color: #ffffff;
+.proj-details-wrapper .media-list-projects .list-group-item {
+  border-bottom: 1px solid #ebeced;
+}
+.proj-details-wrapper .media-list-projects .list-group-item a {
+  display: block;
+  text-align: left;
+}
+.proj-details-wrapper .media-list-projects .list-group-item a h5 {
+  font-size: 1.2em;
+}
+.proj-details-wrapper .media-list-projects .list-group-item:last-child {
+  border-bottom: none;
+}
+.autocomplete-block {
+  display: none;
+}
+.autocomplete-block.active {
+  display: block;
+}
+.autocomplete-block.active #autocomplete {
+  display: block;
+  background-color: #ffffff;
+  width: 100%;
+  margin: 0;
+  margin-top: 1px;
+  padding: 8px 0;
+  list-style: none;
+  position: relative;
+  z-index: 1;
+  padding-left: 0;
+  -webkit-padding-start: 0;
+  border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.autocomplete-block.active #autocomplete li {
+  padding: 8px 15px;
+  font-size: 1.5em;
+  text-shadow: none;
+  font-weight: 300;
+}
+.autocomplete-block.active #autocomplete li:hover {
+  background-color: #e8e8e8;
 }
