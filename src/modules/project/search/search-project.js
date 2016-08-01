@@ -32,9 +32,11 @@ export class SearchProject {
 
       }
     }).data("uiAutocomplete")._renderItem = function (ul, item) {
+      $(".autocomplete-block").addClass("active");
       return $("<li>")
+
         .data("item.autocomplete", item)
-        .append("<div>" + item.text + "</div>")
+        .append("item.text")
         .appendTo("#autocomplete");
     };
 

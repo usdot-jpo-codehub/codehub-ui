@@ -3,15 +3,16 @@
         <form submit.delegate="executeSearch(searchText)">
             <div class="form-group">
                 <label for="searchBar" class="control-label sr-only">Search</label>
-                <div class="col-lg-offset-3 col-lg-6">
+                <div class="col-lg-offset-3 col-lg-6 search-field">
                     <div class="input-group">
                         <input id="searchBox" type="text" class="form-control input-lg" value.bind="searchText" delay.bind="400" id="searchBar" placeholder="nodejs, jquery, bootstrap and more...">
                         <span class="input-group-btn">
                             <button class="btn stage-search-btn" type="submit" ><i class="material-icons">search</i><span class="sr-only">Search</span></button>
                         </span>
-
                     </div>
-                    <span class="autocomplete-block"><ul id="autocomplete"></ul></span>
+                    <span class="autocomplete-block">
+                        <ul id="autocomplete"></ul>
+                    </span>
                 </div>
             </div>
         </form>
