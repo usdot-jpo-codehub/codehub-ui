@@ -36,7 +36,7 @@ export class SearchProject {
       return $("<li>")
 
         .data("item.autocomplete", item)
-        .append("item.text")
+        .append(item.text)
         .appendTo("#autocomplete");
     };
 
