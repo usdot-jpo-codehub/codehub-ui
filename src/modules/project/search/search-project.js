@@ -40,7 +40,7 @@ export class SearchProject {
     $('#searchBox .typeahead').typeahead({
         hint: true,
         highlight: true,
-        minLength: 3,
+        minLength: 1,
         limit: 1000
       },
       {
