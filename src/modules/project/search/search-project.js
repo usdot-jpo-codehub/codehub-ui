@@ -33,6 +33,8 @@ export class SearchProject {
         }
         asyncResults(matches);
 
+      });
+
     };
 
     $('#searchBox .typeahead').typeahead({
@@ -45,5 +47,7 @@ export class SearchProject {
         name: 'suggestions',
         source: suggestions
       });
+
   }
+
 }
