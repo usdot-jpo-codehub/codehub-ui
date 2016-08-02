@@ -26,7 +26,6 @@ getViewStrategy() {
     this.selectedSort = 'stars';
     this.sortOptions = [
       {value: 'rank', name: 'Rank'},
-      {value: 'default', name: 'Relevance'},
       {value: 'stars', name: 'Stars'},
       {value: 'watchers', name: 'Watchers'},
       {value: 'releases', name: 'Releases'},
