@@ -48,30 +48,34 @@
 					h4 {
 						margin-top: 0;
 						margin-bottom: 0;
+						font-weight: normal;
+						font-size: 1.1rem;
+
+						a {
+							display: block;
+							padding: 10px 0;
+							color: lighten(@black, 50%);
+						}
+
+						a:after,
+						a:before {
+							background: #616161 ;
+							content: '';
+							height: .15rem;
+							position: absolute;
+							right: 0;
+							top: 1.20rem;
+							-webkit-transition: all 125ms;
+							transition: all 125ms;
+							width: 1rem;
+						}
+
+						a.collapsed:after {
+							-webkit-transform: rotate(90deg);
+							transform: rotate(90deg);
+						}
 					}
 
-					a {
-						display: block;
-						padding: 10px 0;
-					}
-
-					a:after,
-					a:before {
-						background: #616161 ;
-						content: '';
-						height: .15rem;
-						position: absolute;
-						right: 0;
-						top: 1.20rem;
-						-webkit-transition: all 125ms;
-						transition: all 125ms;
-						width: 1rem;
-					}
-
-					a.collapsed:after {
-						-webkit-transform: rotate(90deg);
-						transform: rotate(90deg);
-					}
 				}
 
 				.panel-body {
