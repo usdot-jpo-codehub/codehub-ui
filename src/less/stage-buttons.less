@@ -44,7 +44,6 @@
 		font-weight: 300;
 		font-size: 1.5em;
 		border: none;
-		
 	}
 
 	.input-group-btn {
@@ -55,16 +54,15 @@
 		position: relative;
 
 		&:after {
-			//z-index: -1;
 			position: absolute;
 			content: "";
-			bottom: 20%;
+			bottom: 30%;
 			right: auto;
 			left: 0;
 			top:50%;
 			width: 100%;
 			background: none;
-			box-shadow: 0 35px 50px fade(@black, 30%);
+			box-shadow: 0 35px 50px fade(@black, 40%);
 			transform: scale(0.95);
 		}
 	}
@@ -74,6 +72,10 @@
 		background-color: @white;
 		border: none;
 		padding: 10px;
+
+		&:last-child {
+			border-radius: 0 6px 6px 0;
+		}
 
 		.material-icons {
 			font-size: 40px;

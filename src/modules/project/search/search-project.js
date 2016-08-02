@@ -34,11 +34,14 @@ export class SearchProject {
     }).data("uiAutocomplete")._renderItem = function (ul, item) {
       $(".autocomplete-block").addClass("active");
       return $("<li>")
-
         .data("item.autocomplete", item)
         .append("item.text")
         .appendTo("#autocomplete");
     };
+
+    $("#searchBox").blur(function() {
+      $(".autocomplete-block").removeClass("active");
+    });
 
   }
 
