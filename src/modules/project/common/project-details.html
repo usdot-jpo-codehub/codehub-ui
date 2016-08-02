@@ -272,7 +272,7 @@
                     </div>
                     <div class="card-block">
                         <div class="media-list media-list-users list-group">
-                            <div repeat.for="contrib of contributors_list | pick:3" class="list-group-item">
+                            <div repeat.for="contrib of repo.contributors_list | pick:3" class="list-group-item">
                                 <div class="media">
                                     <span class="media-left">
                                         <img class="img-circle media-object" src="https://github.com/${contrib.username}.png">
