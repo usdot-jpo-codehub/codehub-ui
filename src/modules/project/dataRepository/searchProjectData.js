@@ -60,4 +60,16 @@ export class SearchProjectData {
         return data;
       });
   }
+
+  getJavaDependencies(org, name) {
+    var adjusted_url = baseUrl + "/findProjectDependencies/" + org + "/" + name;
+    return this.http.fetch(adjusted_url, {
+      method: "GET"
+    })
+      .then(response => response.json())
+      .then(data => {
+        return data;
+      });
+  }
+
 }
