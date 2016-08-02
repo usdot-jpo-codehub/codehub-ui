@@ -105,9 +105,13 @@ body {
 
 .hero-banner {
 	background: @stage-banner-bk; /* Old browsers */
-	background: linear-gradient(45deg, @stage-banner-red 0%,@stage-banner-orange 100%);
+	background: linear-gradient(135deg, darken(@stage-banner-red, 5%) 0%, darken(@stage-banner-orange, 5%) 100%);
 	position: relative;
 	overflow: hidden;
+
+	.inner {
+		
+	}
 
 	&:before {
 		content: "";

@@ -3310,7 +3310,9 @@ tbody.collapse.in {
 .dropdown-toggle:focus {
   outline: 0;
 }
-.dropdown-menu {
+.dropdown-menu,
+.twitter-typeahead .tt-menu,
+.twitter-typeahead .tt-dropdown-menu {
   position: absolute;
   top: 100%;
   left: 0;
@@ -3341,7 +3343,8 @@ tbody.collapse.in {
   overflow: hidden;
   background-color: #e5e5e5;
 }
-.dropdown-menu > li > a {
+.dropdown-menu > li > a,
+.twitter-typeahead .tt-suggestion {
   display: block;
   padding: 3px 20px;
   clear: both;
@@ -3358,7 +3361,10 @@ tbody.collapse.in {
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
-.dropdown-menu > .active > a:focus {
+.dropdown-menu > .active > a:focus,
+.twitter-typeahead .tt-suggestion.tt-cursor,
+.twitter-typeahead .tt-suggestion:hover,
+.twitter-typeahead .tt-suggestion:focus {
   color: #fff;
   text-decoration: none;
   outline: 0;
@@ -3620,7 +3626,8 @@ tbody.collapse.in {
 }
 .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
-.input-group-lg > .input-group-btn > .btn {
+.input-group-lg > .input-group-btn > .btn,
+.input-group.input-group-lg .twitter-typeahead .form-control {
   height: 46px;
   padding: 10px 16px;
   font-size: 18px;
@@ -3643,7 +3650,8 @@ select[multiple].input-group-lg > .input-group-btn > .btn {
 }
 .input-group-sm > .form-control,
 .input-group-sm > .input-group-addon,
-.input-group-sm > .input-group-btn > .btn {
+.input-group-sm > .input-group-btn > .btn,
+.input-group.input-group-sm .twitter-typeahead .form-control {
   height: 30px;
   padding: 5px 10px;
   font-size: 12px;
@@ -6562,7 +6570,7 @@ body {
 .hero-banner {
   background: #f05154;
   /* Old browsers */
-  background: linear-gradient(45deg, #f04f54 0%, #ffd476 100%);
+  background: linear-gradient(135deg, #ee383d 0%, #ffcc5d 100%);
   position: relative;
   overflow: hidden;
 }
@@ -6806,13 +6814,13 @@ fieldset[disabled] .btn-primary.active {
 .hero-jumbotron .input-group:after {
   position: absolute;
   content: "";
-  bottom: 20%;
+  bottom: 30%;
   right: auto;
   left: 0;
   top: 50%;
   width: 100%;
   background: none;
-  box-shadow: 0 35px 50px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 35px 50px rgba(0, 0, 0, 0.4);
   transform: scale(0.95);
 }
 .hero-jumbotron .stage-search-btn {
@@ -6820,6 +6828,9 @@ fieldset[disabled] .btn-primary.active {
   background-color: #ffffff;
   border: none;
   padding: 10px;
+}
+.hero-jumbotron .stage-search-btn:last-child {
+  border-radius: 0 6px 6px 0;
 }
 .hero-jumbotron .stage-search-btn .material-icons {
   font-size: 40px;
@@ -7325,33 +7336,29 @@ body ai-dialog-overlay.active {
 .proj-details-wrapper .media-list-projects .list-group-item:last-child {
   border-bottom: none;
 }
-.autocomplete-block {
-  display: none;
-}
-.autocomplete-block.active {
-  display: block;
-}
-.autocomplete-block.active #autocomplete {
-  display: block;
-  background-color: #ffffff;
+.twitter-typeahead {
   width: 100%;
-  margin: 0;
-  margin-top: 1px;
-  padding: 8px 0;
-  list-style: none;
-  position: relative;
-  z-index: 1;
-  padding-left: 0;
-  -webkit-padding-start: 0;
-  border-radius: 6px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
-.autocomplete-block.active #autocomplete li {
-  padding: 8px 15px;
-  font-size: 1.5em;
-  text-shadow: none;
-  font-weight: 300;
+.input-group .twitter-typeahead {
+  display: block !important;
 }
-.autocomplete-block.active #autocomplete li:hover {
-  background-color: #e8e8e8;
+.input-group .twitter-typeahead .tt-menu,
+.input-group .twitter-typeahead .tt-dropdown-menu {
+  top: 60px !important;
+  width: 110%;
+}
+.input-group .twitter-typeahead:not(:first-child):not(:last-child) .form-control {
+  border-radius: 0;
+}
+.input-group .twitter-typeahead:first-child .form-control {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-group .twitter-typeahead:last-child .form-control {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
