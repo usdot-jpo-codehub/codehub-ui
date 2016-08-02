@@ -48,6 +48,10 @@ export class SearchProject {
         source: suggestions
       });
 
+    $('#searchBox .typeahead').bind('typeahead:select', function(ev, suggestion) {
+      this.executeSearch(suggestion);
+    }.bind(this));
+
   }
 
 }
