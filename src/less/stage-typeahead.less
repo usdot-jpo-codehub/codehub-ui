@@ -1,18 +1,33 @@
 .twitter-typeahead {
 	width: 100%;
 
+	.tt-dataset,
+	.tt-suggestion{
+		text-shadow: none;
+	}
+
 	.tt-menu,
 	.tt-dropdown-menu {
 		&:extend(.dropdown-menu);
+		border-radius: 6px;
+		border: none;
+		font-size: 1.5em;
+		font-weight: 300;
 	}
 
 	.tt-suggestion {
-		&:extend(.dropdown-menu > li > a);
-		&.tt-cursor,
-		&:hover,
-		&:focus {
-			&:extend(.dropdown-menu > .active > a);
+		
+		padding: 8px 15px;
+		transition: all 0.2s linear;
+
+		&:hover {
+			background-color: lighten(@light-gray, 15%);
+			cursor: pointer;
 		}
+	}
+
+	.form-control {
+		//color: gray;
 	}
 
 	.input-group & {
