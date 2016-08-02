@@ -21,42 +21,52 @@
                             <div class="card-block">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <h4>Organization Name</h4>
+                                        <div class="section-wrap">
+                                            <h4>Organization Name</h4>
                                             <a href="#">${repo.organization}</a>
-                                        <h4>Description</h4>
-                                        <p>${repo.project_description}</p>
+                                        </div>
+                                        <div class="section-wrap">
+                                            <h4>Description</h4>
+                                            <p>${repo.project_description}</p>
+                                        </div>
                                     </div>
                                     <div class="col-lg-6">
-                                        <h4>Repository Name</h4>
+                                        <div class="section-wrap">
+                                            <h4>Repository Name</h4>
                                             <a href="#">${repo.project_name}</a>
-                                        <h4>Project Type</h4>
-                                        <h5 class="repo-language">
-                                          <span if.bind="repo.language === 'JavaScript'"><img class="project-icon" alt="JavaScript Icon" title="JavaScript Icon" src="../../img/logos/javascript.svg"></span>
-                                          <span if.bind="repo.language === 'Ruby'"><img class="project-icon" alt="Ruby Icon" title="Ruby Icon" src="../../img/logos/ruby.svg"></span>
-                                          <span if.bind="repo.language === 'Java'"><img class="project-icon java-icon" alt="Java Icon" title="Java Icon" src="../../img/logos/java.svg"></span>
-                                          <span if.bind="repo.language === 'HTML'"><img class="project-icon" alt="HTML Icon" title="HTML Icon" src="../../img/logos/html5.svg"></span>
-                                          <span if.bind="repo.language === 'CoffeeScript'"><img class="project-icon coffee-icon" alt="Coffeescript Icon" title="Coffeescript Icon" src="../../img/logos/coffeescript.svg"></span>
-                                          <span if.bind="repo.language === 'Python'"><img class="project-icon" alt="Python Icon" title="Python Icon" src="../../img/logos/python.svg"></span>
-                                          <span if.bind="repo.language === 'Groovy'"><img class="project-icon groovy-icon" alt="Groovy Icon" title="Groovy Icon" src="../../img/logos/Groovy-logo.svg"></span>
-                                          <span if.bind="repo.language === 'Shell'"><img class="project-icon" alt="Shell Icon" title="Shell Icon" src="../../img/logos/terminal.svg"></span>
-                                          <span if.bind="repo.language === 'Scala'"><img class="project-icon" alt="Scala Icon" title="Scala Icon" src="../../img/logos/scala.svg"></span>
-                                          <span if.bind="repo.language === 'null'"></span>
-                                          ${repo.language}
-                                        </h5>
+                                        </div>
+                                        <div class="section-wrap">
+                                            <h4>Project Type</h4>
+                                            <h5 class="repo-language">
+                                              <span if.bind="repo.language === 'JavaScript'"><img class="project-icon" alt="JavaScript Icon" title="JavaScript Icon" src="../../img/logos/javascript.svg"></span>
+                                              <span if.bind="repo.language === 'Ruby'"><img class="project-icon" alt="Ruby Icon" title="Ruby Icon" src="../../img/logos/ruby.svg"></span>
+                                              <span if.bind="repo.language === 'Java'"><img class="project-icon java-icon" alt="Java Icon" title="Java Icon" src="../../img/logos/java.svg"></span>
+                                              <span if.bind="repo.language === 'HTML'"><img class="project-icon" alt="HTML Icon" title="HTML Icon" src="../../img/logos/html5.svg"></span>
+                                              <span if.bind="repo.language === 'CoffeeScript'"><img class="project-icon coffee-icon" alt="Coffeescript Icon" title="Coffeescript Icon" src="../../img/logos/coffeescript.svg"></span>
+                                              <span if.bind="repo.language === 'Python'"><img class="project-icon" alt="Python Icon" title="Python Icon" src="../../img/logos/python.svg"></span>
+                                              <span if.bind="repo.language === 'Groovy'"><img class="project-icon groovy-icon" alt="Groovy Icon" title="Groovy Icon" src="../../img/logos/Groovy-logo.svg"></span>
+                                              <span if.bind="repo.language === 'Shell'"><img class="project-icon" alt="Shell Icon" title="Shell Icon" src="../../img/logos/terminal.svg"></span>
+                                              <span if.bind="repo.language === 'Scala'"><img class="project-icon" alt="Scala Icon" title="Scala Icon" src="../../img/logos/scala.svg"></span>
+                                              <span if.bind="repo.language === 'null'"></span>
+                                              ${repo.language}
+                                            </h5>
+                                        </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <h4>Key Artifacts</h4>
-                                        <ul class="flex-links">
-                                            <li class="flex-item">
-                                                <a href="${repo.readme_url}"><i class="octicon octicon-book"></i> Readme</a>
-                                            </li>
-                                            <li class="flex-item">
-                                                <a href="#"><i class="octicon octicon-tag"></i> Releases (${repo.releases})</a>
-                                            </li>
-                                            <li class="flex-item">
-                                                <a href="#"><i class="octicon octicon-file"></i> Build File</a>
-                                            </li>
-                                        </ul>
+                                        <div class="section-wrap">
+                                            <h4>Key Artifacts</h4>
+                                            <ul class="flex-links">
+                                                <li class="flex-item">
+                                                    <a href="#" click.trigger = "openModal(repo)"><i class="octicon octicon-book"></i> Readme</a>
+                                                </li>
+                                                <li class="flex-item">
+                                                    <a href="#"><i class="octicon octicon-tag"></i> Releases (${repo.releases})</a>
+                                                </li>
+                                                <li class="flex-item">
+                                                    <a href="#"><i class="octicon octicon-file"></i> Build File</a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -106,76 +116,87 @@
                             </div>
                             <div class="card-block">
                                 <div class="flex-block">
-                                    <h4>Project Health</h4>
-                                    <!--<ul class="flex-links">-->
-                                        <!--<li class="flex-item">-->
-                                            <!--<img src="https://img.shields.io/codeclimate/github/kabisaict/flow.svg?maxAge=2592000">-->
-                                        <!--</li>-->
-                                        <!--<li class="flex-item">-->
-                                            <!--<img src="https://img.shields.io/codeclimate/coverage/github/triAGENS/ashikawa-core.svg">-->
-                                        <!--</li>-->
-                                        <!--<li class="flex-item">-->
-                                            <!--<img src="https://img.shields.io/codeclimate/issues/github/me-and/mdf.svg">-->
-                                        <!--</li>-->
-                                        <!--<li class="flex-item">-->
-                                            <!--<img src="https://img.shields.io/npm/v/npm.svg">-->
-                                        <!--</li>-->
-                                        <!--<li class="flex-item">-->
-                                            <!--<img src="https://img.shields.io/node/v/gh-badges.svg">-->
-                                        <!--</li>-->
-                                    <!--</ul>-->
+                                    <div class="section-wrap">
+                                        <h4>Project Health</h4>
+                                        <ul class="flex-links">
+                                            <li class="flex-item">
+                                                <img src="https://img.shields.io/codeclimate/github/kabisaict/flow.svg?maxAge=2592000">
+                                            </li>
+                                            <li class="flex-item">
+                                                <img src="https://img.shields.io/codeclimate/coverage/github/triAGENS/ashikawa-core.svg">
+                                            </li>
+                                            <li class="flex-item">
+                                                <img src="https://img.shields.io/codeclimate/issues/github/me-and/mdf.svg">
+                                            </li>
+                                            <li class="flex-item">
+                                                <img src="https://img.shields.io/npm/v/npm.svg">
+                                            </li>
+                                            <li class="flex-item">
+                                                <img src="https://img.shields.io/node/v/gh-badges.svg">
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
 
                                 <div class="flex-block">
-                                    <h4>Github</h4>
-                                    <ul class="flex-links">
-                                        <li class="flex-item">
-                                            <span class="label label-info">
-                                                <i class="octicon octicon-star"></i> <span class="text-uppercase">Stars:</span> ${repo.stars}
-                                            </span>
-                                        </li>
-                                        <li class="flex-item">
-                                            <span class="label label-info">
-                                                <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> ${repo.forks}
-                                            </span>
-                                        </li>
-                                        <li class="flex-item">
-                                            <span class="label label-info">
-                                                <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commits:</span> ${repo.commits}
-                                            </span>
-                                        </li>
-                                        <li class="flex-item">
-                                            <span class="label label-info">
-                                                <i class="octicon octicon-code"></i> <span class="text-uppercase">Lines of Code:</span> 1200
-                                            </span>
-                                        </li>
-                                        <li class="flex-item">
-                                            <span class="label label-info">
-                                                <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> ${repo.releases}
-                                            </span>
-                                        </li>
-                                        <li class="flex-item">
-                                            <span class="label label-info">
-                                                <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> ${repo.contributors}
-                                            </span>
-                                        </li>
-                                    </ul>
+                                    <div class="section-wrap">
+                                        <h4>Github</h4>
+                                        <ul class="flex-links">
+                                            <li class="flex-item">
+                                                <span class="label bg-amber">
+                                                    <span class="octicon octicon-star"></span> Stars <span class="label bg-amber pull-right">${repo.stars}</span>
+                                                </span>
+                                            </li>
+                                            <li class="flex-item">
+                                                <span class="label bg-light-blue">
+                                                    <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> ${repo.contributors}
+                                                </span>
+                                            </li>
+                                            <li class="flex-item">
+                                                <span class="label bg-orange">
+                                                    <i class="octicon octicon-eye"></i> <span class="text-uppercase">Watchers:</span> ${repo.watchers}
+                                                </span>
+                                            </li>
+                                            <li class="flex-item">
+                                                <span class="label bg-indigo">
+                                                    <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commits:</span> ${repo.commits}
+                                                </span>
+                                            </li>
+                                            <li class="flex-item">
+                                                <span class="label bg-purple">
+                                                    <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> ${repo.releases}
+                                                </span>
+                                            </li>
+                                            <li class="flex-item">
+                                                <span class="label bg-med-blue">
+                                                    <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> ${repo.forks}
+                                                </span>
+                                            </li>
+                                            <li class="flex-item">
+                                                <span class="label bg-lime">
+                                                    <i class="octicon octicon-code"></i> <span class="text-uppercase">Lines of Code:</span> 1200
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
 
                                 <div class="flex-block">
-                                    <h4>Dockerhub</h4>
-                                    <ul class="flex-links">
-                                        <li class="flex-item">
-                                            <span class="label label-info">
-                                                <i class="octicon octicon-repo-pull"></i> <span class="text-uppercase">Stars:</span> 100ƒ
-                                            </span>
-                                        </li>
-                                        <li class="flex-item">
-                                            <span class="label label-info">
-                                                <i class="octicon octicon-star"></i> <span class="text-uppercase">Forks:</span> 25
-                                            </span>
-                                        </li>
-                                    </ul>
+                                    <div class="section-wrap">
+                                        <h4>Dockerhub</h4>
+                                        <ul class="flex-links">
+                                            <li class="flex-item">
+                                                <span class="label label-info">
+                                                    <i class="octicon octicon-repo-pull"></i> <span class="text-uppercase">Stars:</span> 100
+                                                </span>
+                                            </li>
+                                            <li class="flex-item">
+                                                <span class="label label-info">
+                                                    <i class="octicon octicon-star"></i> <span class="text-uppercase">Forks:</span> 25
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -284,7 +305,7 @@
                             <div repeat.for="project of similarProjects | pick:3" class="list-group-item">
                                 <div class="media">
                                     <div class="media-body clearfix">
-                                        <a route-href="route:project-details-popular; params.bind: {id:project.project_id}">
+                                        <a route-href="route:project-details-popular; params.bind: {id:project.project_id} ">
                                             <h5>${project.project_name}</h5>
                                             <div class="media-body-secondary">${project.project_org_name}</div>
                                         </a>
