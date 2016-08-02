@@ -53,6 +53,9 @@ body {
 	}
 }
 
+.form-control {
+	color: @stage-gray;
+}
 
 .title-wrapper {
 	background-color: lighten(@light-gray,14%);
@@ -107,24 +110,24 @@ body {
 	background: @stage-banner-bk; /* Old browsers */
 	background: linear-gradient(135deg, darken(@stage-banner-red, 5%) 0%, darken(@stage-banner-orange, 5%) 100%);
 	position: relative;
-	overflow: hidden;
+	height: 350px;
+	// overflow: hidden;
 
 	.inner {
-		
-	}
 
-	&:before {
-		content: "";
+	//&:before {
+		//content: "";
 		background-image: url("../../img/network-pattern.svg");
-		background-color: cover;
-		opacity: 0.3;
+		background-size: cover;
+		//opacity: 0.3;
 		width: 100%;
-		height: 500px;
-		position: absolute;
-		left: 0;
-		top: 0;
+		height: 350px;
+		//position: absolute;
+		// left: 0;
+		//top: 0;
 		z-index: 0;
 	}
+//}
 }
 
 .hero-jumbotron {
@@ -281,6 +284,7 @@ input {
 a {
   color: @link-color;
   text-decoration: none;
+  transition: all 0.2s linear;
 
   &:hover,
   &:focus {
