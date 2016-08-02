@@ -6523,7 +6523,7 @@ body {
   margin-top: 0;
 }
 .form-control {
-  color: #d1d3d4;
+  color: #505456;
 }
 .title-wrapper {
   background-color: #ededed;
@@ -6534,7 +6534,7 @@ body {
   line-height: 0 !important;
   text-align: center;
   padding: 10px 0;
-  margin: 15px 0 12px;
+  margin: 15px 0;
   max-width: 100%;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -6629,7 +6629,7 @@ body {
   display: inline-block;
   line-height: 1;
   min-width: 10px;
-  padding: 3px 7px;
+  padding: 5px 7px 3px;
   text-align: center;
   vertical-align: middle;
   white-space: nowrap;
@@ -6639,11 +6639,11 @@ body {
   vertical-align: -8%;
 }
 .bg-amber {
-  background-color: #ffb300;
+  background-color: #ffc107;
   color: #000000;
 }
 .text-amber {
-  color: #ffb300;
+  color: #ffc107;
 }
 .bg-orange {
   background-color: #ff5722;
@@ -6668,6 +6668,19 @@ body {
 }
 .text-purple {
   color: #9c27b0;
+}
+.bg-med-blue {
+  background-color: #3472ce;
+}
+.text-med-blue {
+  color: #3472ce;
+}
+.bg-lime {
+  background-color: #cfdd50;
+  color: #000000;
+}
+.text-lime {
+  color: #cfdd50;
 }
 .flex {
   display: flex;
@@ -7217,6 +7230,9 @@ label.btn > input[type='radio'] {
   border: none;
   padding-bottom: 0;
 }
+.proj-details-wrapper .card-block .section-wrap {
+  margin-bottom: 20px;
+}
 .proj-details-wrapper .card-block h4 {
   text-transform: uppercase;
   font-size: 0.9rem;
@@ -7358,9 +7374,6 @@ body ai-dialog-overlay.active {
 .twitter-typeahead .tt-suggestion:hover {
   background-color: #efefef;
   cursor: pointer;
-}
-.twitter-typeahead .form-control {
-  color: gray;
 }
 .input-group .twitter-typeahead {
   display: block !important;
