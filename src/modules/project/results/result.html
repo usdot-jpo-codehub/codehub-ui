@@ -143,7 +143,7 @@
                         <div repeat.for="repo of projects | sort: { propertyName: 'total_score', direction: 'descending'}" class="clearfix col-lg-6">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2 class="repo-name"><a route-href="route:project-details-popular">${repo.project_name}</a></h2>
+                                    <h2 class="repo-name"><a route-href="route:project-details">${repo.project_name}</a></h2>
                                     <h5 class="repo-language">
                                         <span if.bind="repo.language === 'JavaScript'"><img class="project-icon" alt="JavaScript Icon" title="JavaScript Icon" src="../../img/logos/javascript.svg"></span>
                                         <span if.bind="repo.language === 'Ruby'"><img class="project-icon" alt="Ruby Icon" title="Ruby Icon" src="../../img/logos/ruby.svg"></span>

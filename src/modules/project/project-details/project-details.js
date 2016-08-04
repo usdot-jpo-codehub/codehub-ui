@@ -35,8 +35,6 @@ export class ProjectDetailsPopular {
     this.searchProjectData.findById(params.id).then(repo => {
 			this.repo = repo;
 
-      console.log(this.repo.contributors_list);
-
       if(repo.language == "Java") {
         this.searchProjectData.getJavaDependencies(repo.organization, repo.project_name).then(dependencies => {
           this.dependencies = dependencies;
