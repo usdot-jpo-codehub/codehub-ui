@@ -9,3 +9,7 @@ gulp.task('lint', function() {
     .pipe(eslint.format())
     .pipe(eslint.failOnError());
 });
+
+gulp.task('default', ['lint'], function () {
+  // This will only run if the lint task is successful...
+});

@@ -1,5 +1,12 @@
 {
+  "parser": "babel-eslint",
   "rules": {
-    "no-alert": 0
-  }
+    "no-alert": 0,
+    "import/prefer-default-export" : "off", // Breaks with Aurelia
+    "import/no-unresolved" : "off", // JSPM packages arent detected yet
+    "import/no-extraneous-dependencies" : "off", // JSPM packages arent detected yet
+    "max-len" : "off", // Aurelia route formats tend to be very long
+    "no-param-reassign" : "off" // Aurelia convention
+  },
+  "extends": "airbnb-base"
 }
