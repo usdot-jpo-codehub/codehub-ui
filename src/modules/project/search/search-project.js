@@ -1,5 +1,6 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
+import $ from 'jquery';
 import { typeahead } from 'corejs-typeahead';
 import { SearchProjectData } from '../dataRepository/searchProjectData';
 
@@ -19,10 +20,9 @@ export class SearchProject {
   attached() {
     const search = this.searchProjectData;
 
-    const suggestions = function (query, syncResults, asyncResults) {
+    const suggestions = (query, syncResults, asyncResults) => {
       search.findSuggestion(query).then(data => {
         const matches = [];
-        console.log(Object.keys(data));
         for (const obj in data) {
           if ({}.hasOwnProperty.call(data, obj)) {
             matches.push(data[obj].text);
@@ -43,9 +43,9 @@ export class SearchProject {
         source: suggestions,
       });
 
-    $('#searchBox .typeahead').bind('typeahead:select', function (ev, suggestion) {
+    $('#searchBox .typeahead').bind('typeahead:select', (ev, suggestion) => {
       this.executeSearch(suggestion);
-    }.bind(this));
+    });
   }
 
 }

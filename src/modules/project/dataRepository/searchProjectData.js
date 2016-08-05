@@ -15,6 +15,13 @@ export class SearchProjectData {
       .then(response => response.json());
   }
 
+  getPopular() {
+    return this.http.fetch(`${baseUrl}/searchByPopularity`, {
+      method: 'GET',
+    })
+      .then(response => response.json());
+  }
+
   searchByProjectNameOrDescription(searchText) {
     return this.http.fetch(`${baseUrl}/search`, {
       method: 'POST',

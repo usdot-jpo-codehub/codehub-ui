@@ -10,5 +10,9 @@
     "no-unused-vars" : "off", // Importing jQuery libraries show as unused
     "no-restricted-syntax": "off" // Currently don't have a better way to iterate through objects so we are using for...in
   },
+  "env": {
+    "browser": true,
+    "node": true
+  },
   "extends": "airbnb-base"
 }
