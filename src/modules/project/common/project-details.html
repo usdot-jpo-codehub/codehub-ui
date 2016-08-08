@@ -302,7 +302,7 @@
                             <div repeat.for="project of similarProjects | pick:3" class="list-group-item">
                                 <div class="media">
                                     <div class="media-body clearfix">
-                                        <a route-href="route:project-details-popular; params.bind: {id:project.project_id} ">
+                                        <a route-href="route:project-details; params.bind: {id:project.project_id} ">
                                             <h5>${project.project_name}</h5>
                                             <div class="media-body-secondary">${project.project_org_name}</div>
                                         </a>
