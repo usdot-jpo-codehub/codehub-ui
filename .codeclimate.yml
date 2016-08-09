@@ -12,8 +12,6 @@ engines:
     enabled: true
   radon:
     enabled: true
-  eslint:
-    enabled: true
 ratings:
   paths:
   - src/**
