@@ -12,9 +12,16 @@ engines:
     enabled: true
   radon:
     enabled: true
+  eslint:
+    enabled: true
+    config:
+      config: src/.eslintrc
 ratings:
   paths:
+  - src/**
   - "**.css"
   - "**.inc"
   - "**.js"
-exclude_paths: []
+exclude_paths:
+- "build/"
+- "dist/"
