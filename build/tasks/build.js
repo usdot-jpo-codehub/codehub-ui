@@ -12,6 +12,7 @@ var compilerOptions = require('../babel-options');
 var assign = Object.assign || require('object.assign');
 var notify = require('gulp-notify');
 var browserSync = require('browser-sync');
+var eslint = require('gulp-eslint');
 
 // transpiles changed es6 files to SystemJS format
 // the plumber() call prevents 'pipe breaking' caused
@@ -20,6 +21,9 @@ var browserSync = require('browser-sync');
 gulp.task('build-system', function() {
   return gulp.src(paths.source)
     .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failOnError())
     .pipe(changed(paths.output, {extension: '.js'}))
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(to5(assign({}, compilerOptions.system())))
@@ -35,7 +39,7 @@ gulp.task('build-html', function() {
 });
 
 // ****DEV task only****
-// compiles all less files 
+// compiles all less files
 // and then copies the complied file
 // into the styles directory
 gulp.task('build-less', function() {
