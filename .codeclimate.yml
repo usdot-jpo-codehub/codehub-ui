@@ -14,8 +14,6 @@ engines:
     enabled: true
   eslint:
     enabled: true
-    config:
-      config: src/.eslintrc
 ratings:
   paths:
   - src/**
