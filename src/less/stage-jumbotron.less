@@ -1,0 +1,135 @@
+.hero-banner {
+	background: @stage-banner-bk; /* Old browsers */
+	background: linear-gradient(135deg, darken(@stage-banner-red, 5%) 0%, darken(@stage-banner-orange, 5%) 100%);
+	position: relative;
+
+	.inner {
+		background-image: url("../../img/network-pattern.svg");
+		background-size: cover;
+		width: 100%;
+		z-index: 0;
+	}
+
+	.tt-cursor {
+		background-color: lighten(@stage-gray, 10%);
+	}
+
+	.hero-jumbotron {
+		background-color: transparent;
+		margin-bottom: 0px;
+		padding-top: 20px;
+		text-shadow: 0 5px 10px rgba(0,0,0,0.2);
+
+		.input-lg {
+			height: 60px;
+			font-weight: 300;
+			font-size: 1.5em;
+			border: none;
+		}
+
+		.input-group-btn {
+			z-index: 1;
+		}
+
+		.input-group {
+			position: relative;
+
+			.tt-menu {
+				width: 100% !important;
+			}
+
+			&:after {
+				position: absolute;
+				content: "";
+				bottom: 30%;
+				right: auto;
+				left: 0;
+				top:50%;
+				width: 100%;
+				background: none;
+				box-shadow: 0 35px 50px fade(@black, 40%);
+				transform: scale(0.95);
+			}
+		}
+
+		.stage-search-btn {
+			height: 60px;
+			background-color: @white;
+			border: none;
+			padding: 10px;
+
+			&:last-child {
+				border-radius: 0 6px 6px 0;
+			}
+
+			.material-icons {
+				font-size: 40px;
+				color: @stage-red;
+			}
+		}
+
+		.container-fluid {
+			padding-top: 20px;
+
+			h1, p {
+				text-align: center;
+				color: @white;
+			}
+
+			h1 {
+				margin-top: 5px;
+				font-size: 3em;
+				font-weight: 700;
+			}
+
+			p {
+				font-size: 1.5em;
+				font-weight: 300;
+			}
+		}
+	}
+
+	&.secondary {
+		.hero-jumbotron {
+			padding: 0;
+
+			.input-group {
+				
+				.form-control {
+					background: none !important;
+					color: @white;
+					text-shadow: 0 3px 4px fade(@black, 20%);
+					padding: 0;
+
+					&::-webkit-input-placeholder {
+						color: @white;
+					}
+				}
+
+				&:after {
+					position: absolute;
+					content: "";
+					width: 100%;
+					height: 2px;
+					background-color: @white;
+					top: auto;
+					bottom: 0;
+					left: 0;
+					right: 0;
+					box-shadow: 0 3px 4px fade(@black, 20%);
+					transform: none;
+				}
+			}
+
+			.stage-search-btn {
+				border-radius: 0;
+				background: none;
+				text-shadow: 0 3px 4px fade(@black, 20%);				
+
+				.material-icons {
+					color: @white;
+				}
+			}
+		}
+	}
+}
