@@ -1,0 +1,75 @@
+<template>
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="ribbon-wrapper">
+        <div class="ribbon">
+          <span if.bind="repo.language === 'JavaScript'">JavaScript</span>
+          <span if.bind="repo.language === 'Ruby'">Ruby</span>
+          <span if.bind="repo.language === 'Java'">Java</span>
+          <span if.bind="repo.language === 'HTML'">HTML</span>
+          <span if.bind="repo.language === 'CoffeeScript'">CoffeeScript</span>
+          <span if.bind="repo.language === 'Python'">Python</span>
+          <span if.bind="repo.language === 'Groovy'">Groovy</span>
+          <span if.bind="repo.language === 'Shell'">Shell</span>
+          <span if.bind="repo.language === 'Scala'">Scala</span>
+          <span if.bind="repo.language === 'null'"></span>
+        </div>
+      </div>
+      <div class="card-header">
+        <div class="avatar"><img src="http://placehold.it/100x100"/></div>
+        <div class="card-title multiline">${repo.project_name}</div>
+        <div class="org-name">${repo.organization}</div>
+      </div>
+      <div class="proj-desc multiline">asdgfadga adg g sa gasd ;asdh ;adhs kjdagkjasgjka sdfasd adsfadsjkh jkdfa
+        klkjhd
+      </div>
+      <div class="text-muted last-updated">Updated 6 hours ago</div>
+      <div class="row github-stats">
+        <div class="col-md-4">
+          <span class="stat">
+            <span class="octicon octicon-star"></span>
+            <span class="num text-muted text-emphasized">${repo.stars}</span>
+            stars
+          </span>
+          <span class="stat">
+            <span class="octicon octicon-organization"></span>
+            <span class="num text-muted text-emphasized">${repo.contributors}</span>
+            contributors
+          </span>
+        </div>
+        <div class="col-md-4">
+          <span class="stat">
+            <span class="octicon octicon-eye"></span>
+            <span class="num text-muted text-emphasized">${repo.watchers}</span>
+            watchers
+          </span>
+          <span class="stat">
+            <span class="octicon octicon-git-commit"></span>
+            <span class="num text-muted text-emphasized">${repo.commits}</span>
+            commits
+          </span>
+        </div>
+        <div class="col-md-4">
+          <span class="stat">
+            <span class="octicon octicon-tag"></span>
+            <span class="num text-muted text-emphasized">${repo.releases}</span>
+            releases
+          </span>
+          <span class="stat">
+            <span class="octicon octicon-repo-forked"></span>
+            <span class="num text-muted text-emphasized">${repo.forks}</span>
+            forks
+          </span>
+        </div>
+      </div>
+      <div class="row card-btns">
+        <div class="col-md-6">
+          <a href="#">Preview Readme</a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" click.trigger="openModal(repo)">Preview Readme</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
