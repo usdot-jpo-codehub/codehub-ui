@@ -2,13 +2,13 @@
   "parser": "babel-eslint",
   "rules": {
     "no-alert": 0,
-    "import/prefer-default-export" : "off", // Breaks with Aurelia
-    "import/no-unresolved" : "off", // JSPM packages arent detected yet
-    "import/no-extraneous-dependencies" : "off", // JSPM packages arent detected yet
-    "max-len" : "off", // Aurelia route formats tend to be very long
-    "no-param-reassign" : "off", // Aurelia convention
-    "no-unused-vars" : "off", // Importing jQuery libraries show as unused
-    "no-restricted-syntax": "off" // Currently don't have a better way to iterate through objects so we are using for...in
+    "import/prefer-default-export" : 0, // Breaks with Aurelia
+    "import/no-unresolved" : 0, // JSPM packages arent detected yet
+    "import/no-extraneous-dependencies" : 0, // JSPM packages arent detected yet
+    "max-len" : 0, // Aurelia route formats tend to be very long
+    "no-param-reassign" : 0, // Aurelia convention
+    "no-unused-vars" : 0, // Importing jQuery libraries show as unused
+    "no-restricted-syntax": 0 // Currently don't have a better way to iterate through objects so we are using for...in
   },
   "env": {
     "browser": true,
