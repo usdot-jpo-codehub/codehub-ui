@@ -7252,6 +7252,8 @@ label.btn > input[type='radio'] {
 }
 .proj-details-wrapper .sidebar {
   background-color: #ffffff;
+  margin-top: -30px;
+  margin-bottom: 0;
 }
 /* Media queries */
 .aside {
