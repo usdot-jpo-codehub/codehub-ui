@@ -7115,6 +7115,144 @@ label.btn > input[type='radio'] {
   color: #ffffff;
   border-color: #00b0bc;
 }
+.proj-details-wrapper .card {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  margin-bottom: 0.75rem;
+  color: #000000;
+  background-color: #ffffff;
+  border-radius: 0.3rem;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.07);
+  font-size: .875rem;
+  font-weight: normal;
+}
+.proj-details-wrapper .card .card-header {
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #dee0e0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.proj-details-wrapper .card .card-header h3 {
+  margin: 0px;
+}
+.proj-details-wrapper .card .card-header .repo-name {
+  flex-basis: 85%;
+  margin: 0;
+  font-weight: bold;
+}
+.proj-details-wrapper .card .card-header .repo-language {
+  flex-basis: 15%;
+  margin: 0;
+  text-align: right;
+  align-self: center;
+}
+.proj-details-wrapper .card .card-subheader {
+  padding: 0 1rem;
+}
+.proj-details-wrapper .card .card-subheader .text-muted {
+  color: #b7babb;
+}
+.proj-details-wrapper .card .card-subheader .card-subtitle {
+  margin-top: 0;
+}
+.proj-details-wrapper .card .card-block {
+  padding: 0.25rem 1rem;
+  display: flex;
+}
+.proj-details-wrapper .card .card-block .repo-descrip {
+  flex-basis: 75%;
+}
+.proj-details-wrapper .card .card-block .repo-stats {
+  flex-basis: 25%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.proj-details-wrapper .card .card-block .repo-stats .flex-item {
+  text-align: left;
+  padding-left: 15px;
+}
+.proj-details-wrapper .card .card-sidebar {
+  display: block;
+}
+.proj-details-wrapper .card .card-sidebar h3 {
+  margin-top: 10px;
+}
+.proj-details-wrapper .card .card-sidebar .card-block {
+  min-height: initial;
+}
+.proj-details-wrapper .card .card-sidebar .panel-default {
+  border: none;
+  background-color: transparent;
+  border-radius: 0;
+  margin-bottom: 0;
+  box-shadow: none;
+}
+.proj-details-wrapper .card .card-sidebar .panel-default > .panel-heading {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #d1d3d4;
+  color: #ffffff;
+  padding: 0.25rem;
+}
+.proj-details-wrapper .card .card-sidebar .panel-default > .panel-heading h4 {
+  margin: 0;
+}
+.proj-details-wrapper .card .card-sidebar .panel-default .panel-body {
+  padding: 0.25rem 0rem;
+}
+.proj-details-wrapper .card .card-sidebar .panel-default .panel-body .list-group {
+  margin-bottom: 0;
+}
+.proj-details-wrapper .card .card-sidebar .panel-default .panel-body .list-group .list-group-item {
+  background-color: transparent;
+  border: none;
+  padding: 0.25rem 0.25rem;
+}
+.proj-details-wrapper .card .card-sidebar .panel-default .panel-body .list-group .list-group-item .checkbox {
+  margin: 0;
+}
+.proj-details-wrapper .card .card-footer {
+  border-top: 1px solid #d6d6d6;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  border-radius: 0 0 .3rem .3rem;
+}
+.proj-details-wrapper .card .card-footer .flex-footer {
+  list-style: none;
+  -webkit-padding-start: 0;
+  margin: 5px 0;
+  padding-left: 0;
+}
+.proj-details-wrapper .card-details .card-block {
+  min-height: initial;
+  flex-direction: column;
+}
+.proj-details-wrapper .card-details .card-block .flex-block {
+  display: flex;
+  flex-direction: column;
+}
+.proj-details-wrapper .card-details .card-block .flex-links {
+  list-style: none;
+  -webkit-padding-start: 0;
+  padding-left: 0;
+  margin: 5px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.proj-details-wrapper .card-details .card-block .flex-links .flex-item {
+  text-align: inherit;
+}
+.proj-details-wrapper .sidebar {
+  background-color: #ffffff;
+}
 /* Media queries */
 .aside {
   background-color: #ffffff;
@@ -7248,7 +7386,11 @@ body ai-dialog-overlay.active {
   padding: 15px;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #ffffff;
+  border-bottom: 1px solid #dee0e0;
+}
+.media-list-users .list-group-item:last-child,
+.media-list-projects .list-group-item:last-child {
+  border-bottom: none;
 }
 .media-list-users .media-object,
 .media-list-projects .media-object {
@@ -7268,19 +7410,6 @@ body ai-dialog-overlay.active {
 .media-list-users .media-body p:last-child,
 .media-list-projects .media-body p:last-child {
   margin-bottom: 0;
-}
-.proj-details-wrapper .media-list-projects .list-group-item {
-  border-bottom: 1px solid #dee0e0;
-}
-.proj-details-wrapper .media-list-projects .list-group-item a {
-  display: block;
-  text-align: left;
-}
-.proj-details-wrapper .media-list-projects .list-group-item a h5 {
-  font-size: 1.2em;
-}
-.proj-details-wrapper .media-list-projects .list-group-item:last-child {
-  border-bottom: none;
 }
 .twitter-typeahead {
   width: 100%;

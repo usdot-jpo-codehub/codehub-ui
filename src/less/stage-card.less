@@ -184,6 +184,184 @@
 	}
 }
 
+// Project Details Cards
+
+.proj-details-wrapper {
+	.card {
+		width: 100%;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		margin: 0;
+		margin-bottom: 0.75rem;
+		color: @black;
+		background-color: @white;
+		border-radius: 0.3rem;
+		box-shadow: 0 5px 8px rgba(0, 0, 0, 0.07);
+		font-size: .875rem;
+		font-weight: normal;
+
+		.card-header {
+			padding: 0.5rem 1rem;
+			margin-bottom: 0.5rem;
+			border-bottom: 1px solid lighten(@stage-gray,5%);
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+
+			h3 {
+				margin: 0px;
+			}
+
+			.repo-name {
+				flex-basis: 85%;
+				margin: 0;
+				font-weight: bold;
+			}
+
+			.repo-language {
+				flex-basis: 15%;
+				margin: 0;
+				text-align: right;
+				align-self: center;
+			}
+		}
+		
+		.card-subheader {
+			padding: 0 1rem;
+
+			.text-muted {
+				color: darken(@stage-gray, 10%);
+			}
+
+			.card-subtitle {
+				margin-top: 0;
+			}
+		}
+
+		.card-block {
+			padding: 0.25rem 1rem;
+			display: flex;
+
+			.repo-descrip {
+				flex-basis: 75%;
+			}
+
+			.repo-stats {
+				flex-basis: 25%;
+				list-style: none;
+				padding: 0;
+				margin: 0;
+
+				.flex-item {
+					text-align: left;
+					padding-left:15px;
+				}
+			}
+		}
+
+		.card-sidebar {
+			display: block;
+
+			h3 {
+				margin-top: 10px;
+			}
+
+			.card-block {
+				min-height: initial;
+			}
+
+			.panel-default {
+				border: none;
+				background-color: transparent;
+				border-radius: 0;
+				margin-bottom: 0;
+				box-shadow: none;
+
+
+				> .panel-heading {
+					background-color: transparent;
+					border: none;
+					border-bottom: 1px solid @stage-gray;
+					color: @white;
+					padding: 0.25rem;
+
+					h4 {
+						margin: 0;
+					}
+				}
+
+				.panel-body {
+					padding: 0.25rem 0rem;
+
+					.list-group {
+						margin-bottom: 0;
+
+						.list-group-item {
+							background-color: transparent;
+							border: none;
+							padding: 0.25rem 0.25rem;
+
+							.checkbox {
+								margin: 0;
+							}
+						}
+					}
+				}
+			}	
+		}
+
+		.card-footer {
+			border-top: 1px solid lighten(@light-gray, 5%);
+			padding: 0.5rem;
+			display: flex;
+			justify-content: center;
+			padding: 0;
+			border-radius: 0 0 .3rem .3rem;
+
+			.flex-footer {
+				list-style: none;
+				-webkit-padding-start: 0;
+				margin: 5px 0;
+				padding-left: 0;
+			}
+		}
+	}
+
+	.card-details {
+		.card-block {
+			min-height: initial;
+			flex-direction: column;
+
+			.flex-block {
+				display: flex;
+				flex-direction: column;
+			}
+			
+			.flex-links {
+				list-style: none;
+				-webkit-padding-start: 0;
+				padding-left: 0;
+				margin: 5px 0;
+				display: flex;
+				flex-wrap: wrap;
+
+				.flex-item {
+					text-align: inherit;
+				}
+
+				.extended-flex-item {
+				}
+
+			}
+		}
+	}
+
+	.sidebar {
+		background-color: @white;
+	}
+}
+
 /* Media queries */
 
 @media screen and (max-width: 1400px) and (min-width: 1200px) {
