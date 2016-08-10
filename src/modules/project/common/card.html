@@ -1,0 +1,62 @@
+<template>
+  <div if.bind = "repo" class="col-lg-4 col-md-12 col-sm-12">
+    <div class="card">
+      <div class="ribbon-wrapper">
+        <div class="ribbon">${repo.language}</div>
+      </div>
+      <div class="card-header">
+        <div class="avatar"><img src="http://placehold.it/100x100"/></div>
+        <div class="card-title multiline">${repo.project_name}</div>
+        <div class="org-name">${repo.organization}</div>
+      </div>
+      <div class="proj-desc multiline">${repo.project_description}</div>
+      <div class="text-muted last-updated">Updated 6 hours ago</div>
+      <div class="row github-stats">
+        <div class="col-md-4 col-sm-4">
+          <span class="stat">
+            <span class="octicon octicon-star"></span>
+            <span class="num text-muted text-emphasized">${repo.stars}</span>
+            stars
+          </span>
+          <span class="stat">
+            <span class="octicon octicon-organization"></span>
+            <span class="num text-muted text-emphasized">${repo.contributors}</span>
+            contributors
+          </span>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <span class="stat">
+            <span class="octicon octicon-eye"></span>
+            <span class="num text-muted text-emphasized">${repo.watchers}</span>
+            watchers
+          </span>
+          <span class="stat">
+            <span class="octicon octicon-git-commit"></span>
+            <span class="num text-muted text-emphasized">${repo.commits}</span>
+            commits
+          </span>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <span class="stat">
+            <span class="octicon octicon-tag"></span>
+            <span class="num text-muted text-emphasized">${repo.releases}</span>
+            releases
+          </span>
+          <span class="stat">
+            <span class="octicon octicon-repo-forked"></span>
+            <span class="num text-muted text-emphasized">${repo.forks}</span>
+            forks
+          </span>
+        </div>
+      </div>
+      <div class="row card-btns">
+        <div class="col-md-6">
+          <a href="#" click.trigger="openModal(repo)"><span class="octicon octicon-book"></span> Show Readme</a>
+        </div>
+        <div class="col-md-6">
+          <a route-href="route:project-details; params.bind: {id:repo.id}">Go to Details <span class="octicon octicon-chevron-right"></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

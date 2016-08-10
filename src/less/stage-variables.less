@@ -7,6 +7,7 @@
 @black: rgb(0,0,0); //#000
 @blue: rgb(147,173,213); //#93ADD5
 @teal: rgb(0, 176, 188);
+@yellow: rgb(255, 225, 91); //#ffe15b
 
 @amber: rgb(255,193,7); //#FFC107
 @orange: rgb(255,87,34); //#ff5722
@@ -20,11 +21,7 @@
 
 //== Stage Colors
 @stage-body-bk: rgb(225,225,225); //#E1E1E1
-@stage-navbar-bk: rgb(0,93,106); //#005D6A
-@stage-card-bk: rgb(87,87,87);//#575757
-@stage-card-hover-bk: rgb(142,142,142); //#8E8E8E
 @stage-blue: rgb(21,85,105); //#155569
-@stage-badge-bk-color: rgb(188, 190, 192); //#BCBEC0
 
 //== Stage Nav Banner background color
 @stage-banner-bk: rgb(240,81,84); //#f05154
@@ -37,6 +34,11 @@
 //== Stage brand colors
 @brand-primary:         @stage-banner-red;
 @brand-info:            @stage-blue;
+
+//== Stage
+@stage-transition: 0.2s;
+
+@stage-border-radius: 0.3rem;
 
 //== Buttons
 //
@@ -68,20 +70,37 @@
 //** Modal backdrop opacity
 @modal-backdrop-opacity:      .5;
 
-//** Stage Line count
-@stage-line-count: 3;
-
 //== Typography
 //
 //## Font, line-height, and color for body text, headings, and more.
 
 @font-family-sans-serif:  'Roboto', sans-serif;
-@font-family-serif:       'Roboto', sans-serif;
+@font-family-serif:       @font-family-sans-serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
+
+//** Stage font size
+@font-size-base:          15px;
+@font-size-large:         ceil((@font-size-base * 1.25)); // ~19px
+@font-size-small:         ceil((@font-size-base * 0.85)); // ~13px
+@font-size-smaller: 	  ceil((@font-size-base * 0.80)); // ~12px
+
+@font-size-h1:            floor((@font-size-base * 2.6)); // ~39px
+@font-size-h2:            floor((@font-size-base * 2.15)); // ~32px
+@font-size-h3:            ceil((@font-size-base * 1.7)); // ~26px
+@font-size-h4:            ceil((@font-size-base * 1.25)); // ~19px
+@font-size-h5:            @font-size-base;
+@font-size-h6:            ceil((@font-size-base * 0.85)); // ~13px
 
 //** Unit-less `line-height` for use in components like buttons.
 @line-height-base:        1.428571429; // 20/14
 //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
 @line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
+
+//== Components
+@line-height-large:         1.3333333; // extra decimals for Win 8.1 Chrome
+@line-height-small:         1.5;
+
+//** Line to show for multiline LESS
+@lines-to-show: 3;

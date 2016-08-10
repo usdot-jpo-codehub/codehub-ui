@@ -1,0 +1,44 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+
+      .red {fill:#f16b64}
+      .green {fill:#59c1a9}
+      .yellow {fill:#ffc767}
+      .purple {fill:#b58cbf}
+
+      .shuffle {
+      animation: shuffle 1s ease infinite;
+      }
+      .shuffle-rev {
+      animation: shuffle-rev 1s ease infinite;
+      }
+
+      .shuffle-delay {
+      animation: shuffle 1s ease-in infinite;
+      }
+
+      .shuffle-delay-alt {
+      animation: shuffle-rev 1s ease-in-out infinite;
+      }
+
+      @keyframes shuffle {
+      0% { transform: translateX(0px);}
+      50% {transform: translateX(5px);}
+      100% { transform: translateX(0px); }
+      }
+      @keyframes shuffle-rev {
+      0% { transform: translateX(5px);}
+      50% {transform: translateX(0px);}
+      100% { transform: translateX(5px); }
+      }
+
+    </style>
+  </defs>
+  <title>stage-logo-color</title>
+  <polygon class="shuffle-delay green" points="22.3 9.88 38.35 36.73 14.96 36.82 0 9.96 22.3 9.88"/>
+  <polygon class="shuffle-rev yellow" points="41.1 32.43 57.84 59.86 34.36 59.95 18.95 32.51 41.1 32.43"/>
+  <polygon class="shuffle-delay-alt red" points="16.6 45.14 34.9 45.07 17.7 17.18 0 17.24 16.6 45.14"/>
+  <polygon class="shuffle purple" points="44.01 0 60.61 28.18 36.96 28.27 19.93 0.08 44.01 0"/>
+  <polygon class="shuffle-delay-alt green" points="58.26 31.76 67.97 47.8 54.31 47.84 44.14 31.82 58.26 31.76"/>
+</svg>

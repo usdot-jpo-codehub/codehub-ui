@@ -1,151 +1,96 @@
 <template>
-  <require from="../utility/sort"></require>
-  <require from="../utility/pick"></require>
-  <require from="../utility/filter"></require>
-  <require from="../utility/unique"></require>
+    <require from="../utility/sort"></require>
+    <require from="../utility/pick"></require>
+    <require from="../utility/filter"></require>
+    <require from="../utility/unique"></require>
 
+    <div class="container-fluid title-wrapper">
+        <h2 class="page-title"><span>${projectTitle}</span></h2>
+    </div>
 
-  <div class="container-fluid title-wrapper">
-    <h2 class="page-title"><span>${projectTitle}</span></h2>
-  </div>
-
-  <div class="container-fluid">
-
-    <div class="row flex-row">
-      <div class="col-filters">
-        <div>
-          <div class="card-header">
-            <h5>Filters</h5>
-          </div>
-          <div class="card-block card-sidebar">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4>
-                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Organizations</a>
-                </h4>
-              </div>
-              <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                <div class="panel-body">
-                  <ul class="list-group">
-                    <li class="list-group-item" repeat.for="organization of projects | unique: { propertyName: 'organization'}">
-                      <form>
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox" checked.bind="selectedOrganizations" value.bind="organization"> ${organization}
-                          </label>
+    <div class="container-fluid">
+        <div class="row flex-row">
+            <!-- <div class="col-lg-3 aside">
+                <h5>Filters</h5>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Organizations</a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item" repeat.for="organization of projects | unique: { propertyName: 'organization'}">
+                                    <form>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" checked.bind="selectedOrganizations" value.bind="organization"> ${organization}
+                                            </label>
+                                        </div>
+                                    </form>
+                                </li>
+                            </ul>
                         </div>
-                      </form>
-                    </li>
-                  </ul>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4>
-                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Language</a>
-                </h4>
-              </div>
-              <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                <div class="panel-body">
-                  <ul class="list-group">
-                    <li class="list-group-item" repeat.for="language of projects | unique: { propertyName: 'language'}">
-                      <form>
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox" checked.bind="selectedLanguages" value.bind="language"> ${language}
-                          </label>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Language</a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item" repeat.for="language of projects | unique: { propertyName: 'language'}">
+                                    <form>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" checked.bind="selectedLanguages" value.bind="language"> ${language}
+                                            </label>
+                                        </div>
+                                    </form>
+                                </li>
+                            </ul>
                         </div>
-                      </form>
-                    </li>
-                  </ul>
+                    </div>
                 </div>
-              </div>
+            </div> -->
+
+            <div class="col-lg-12 cards-wrapper">
+                <div class="row flex-row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="cards-sorting">
+                            <p>We've found ${projects.length} repositories!</p>
+                            <form class="form-inline">
+                                <div class="btn-group">
+                                    <label class="${sortDirection == 'descending' ? 'btn btn-default active' : 'btn btn-default'}">
+                                        <input type="radio" name="sortDirection" checked.two-way="sortDirection" autocomplete="off" value="descending"><i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                    </label>
+                                    <label class="${sortDirection == 'ascending' ? 'btn btn-default active' : 'btn btn-default'}">
+                                        <input type="radio" name="sortDirection" checked.two-way="sortDirection" autocomplete="off" value="ascending"><i class="fa fa-chevron-up" aria-hidden="true"></i>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sortProperty" class="sr-only">Sort</label>
+                                    <select id="sortProperty" value.bind="selectedSort" class="form-control">
+                                        <option repeat.for="option of sortOptions" value="${option.value}">${option.name}</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+              <template repeat.for="repo of projects | sort: { propertyName: selectedSort, direction: sortDirection} | filter: { propertyName: 'organization', filterArray: selectedOrganizations}:selectedOrganizations.length | filter: { propertyName: 'language', filterArray: selectedLanguages}:selectedLanguages.length">
+                <div class="row" if.bind="$index % 3 == 0">
+                  <compose view-model="./card" model.bind="projects[$index]"></compose>
+                  <compose view-model="./card" model.bind="projects[$index+1]"></compose>
+                  <compose view-model="./card" model.bind="projects[$index+2]"></compose>
+                </div>
+                </template>
             </div>
-          </div>
         </div>
-      </div>
-
-      <div class="main-content">
-        <div class="row">
-          <div class="col-lg-12 col-md-12 sort-col">
-            <p>We've found ${projects.length} repositories!</p>
-            <form class="form-inline">
-              <div class="btn-group">
-                <label class="${sortDirection == 'descending' ? 'btn btn-default active' : 'btn btn-default'}">
-                  <input type="radio" name="sortDirection" checked.two-way="sortDirection" autocomplete="off" value="descending"><i class="fa fa-chevron-down" aria-hidden="true"></i>
-                </label>
-                <label class="${sortDirection == 'ascending' ? 'btn btn-default active' : 'btn btn-default'}">
-                  <input type="radio" name="sortDirection" checked.two-way="sortDirection" autocomplete="off" value="ascending"><i class="fa fa-chevron-up" aria-hidden="true"></i>
-                </label>
-              </div>
-              <div class="form-group">
-                <label for="sortProperty" class="sr-only">Sort</label>
-                <select id="sortProperty" value.bind="selectedSort" class="form-control">
-                  <option repeat.for="option of sortOptions" value="${option.value}">${option.name}</option>
-                </select>
-              </div>
-            </form>
-          </div>
-
-          <div class="col-lg-12 col-md-12 col-cards">
-            <div repeat.for="repo of projects | sort: { propertyName: selectedSort, direction: sortDirection} | filter: { propertyName: 'organization', filterArray: selectedOrganizations}:selectedOrganizations.length | filter: { propertyName: 'language', filterArray: selectedLanguages}:selectedLanguages.length" class="clearfix col-lg-6">
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="repo-name"><a route-href="route:project-details; params.bind: {id:repo.id}">${repo.project_name}</a></h3>
-                  <span class="repo-language">
-                    <span class="text-uppercase text-muted" if.bind="repo.language === 'JavaScript'"><small>JavaScript</small></span>
-                    <span class="text-uppercase text-muted" if.bind="repo.language === 'Ruby'"><small>Ruby</small></span>
-                    <span class="text-uppercase text-muted" if.bind="repo.language === 'Java'"><small>Java</small></span>
-                    <span class="text-uppercase text-muted" if.bind="repo.language === 'HTML'"><small>HTML</small></span>
-                    <span class="text-uppercase text-muted" if.bind="repo.language === 'CoffeeScript'"><small>CoffeeScript</small></span>
-                    <span class="text-uppercase text-muted" if.bind="repo.language === 'Python'"><small>Python</small></span>
-                    <span class="text-uppercase text-muted" if.bind="repo.language === 'Groovy'"><small>Groovy</small></span>
-                    <span class="text-uppercase text-muted" if.bind="repo.language === 'Shell'"><small>Shell</small></span>
-                    <span class="text-uppercase text-muted" if.bind="repo.language === 'Scala'"><small>Scala</small></span>
-                    <span class="text-uppercase text-muted" if.bind="repo.language === 'null'"></span>
-                  </span>
-                </div>
-
-                <div class="card-subheader">
-                  <h4 class="card-subtitle text-muted">${repo.organization}</h4>
-                </div>
-
-                <div class="card-block">
-                  <div class="repo-descrip">${repo.project_description}</div>
-                  <ul class="repo-stats">
-                    <li class="flex-item clearfix">
-                      <span class="octicon octicon-star text-amber"></span> Stars <span class="label bg-amber pull-right">${repo.stars}</span>
-                    </li>
-                    <li class="flex-item clearfix">
-                      <span class="octicon octicon-organization text-light-blue"></span> Contributors <span class="label bg-light-blue pull-right">${repo.contributors}</span>
-                    </li>
-                     <li class="flex-item clearfix">
-                      <span class="octicon octicon-eye text-orange"></span> Watchers <span class="label bg-orange pull-right">${repo.watchers}</span>
-                    </li>
-                     <li class="flex-item clearfix">
-                      <span class="octicon octicon-git-commit text-indigo"></span> Commits <span class="label bg-indigo pull-right">${repo.commits}</span>
-                    </li>
-                    <li class="flex-item clearfix">
-                      <span class="octicon octicon-tag text-purple"></span> Releases <span class="label bg-purple pull-right">${repo.releases}</span>
-                    </li>
-                    <!-- <li class="flex-item clearfix">
-                      <span class="octicon octicon-repo-forked"></span> Forks <span class="label pull-right">${repo.forks}</span>
-                    </li> -->
-                  </ul>
-                </div>
-
-                <div class="card-footer">
-                  <ul class="flex-footer">
-                    <li class="flex-item ">
-                      <button class="btn btn-secondary btn-sm" click.trigger = "openModal(repo)"><span class="octicon octicon-book"></span> Readme</button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-  </div>
+    </div>
 </template>
