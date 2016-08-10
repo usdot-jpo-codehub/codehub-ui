@@ -6970,7 +6970,7 @@ label.btn > input[type='radio'] {
   color: #ffffff;
 }
 .cards-wrapper > .row {
-  padding: 0 20px;
+  padding: 0 20px 10px;
 }
 .cards-wrapper > .row .cards-sorting {
   padding-top: 20px;
@@ -6998,7 +6998,8 @@ label.btn > input[type='radio'] {
   z-index: 0;
 }
 .cards-wrapper .card .ribbon-wrapper .ribbon {
-  font-size: 0.65em;
+  font-size: 12px;
+  font-family: 'Roboto Condensed';
   font-weight: bold;
   text-transform: uppercase;
   color: #000000;
@@ -7009,7 +7010,7 @@ label.btn > input[type='radio'] {
   -o-transform: rotate(45deg);
   position: relative;
   height: 28px;
-  line-height: 29px;
+  line-height: 29.4px;
   right: 6px;
   top: 14px;
   width: 110px;
@@ -7019,7 +7020,7 @@ label.btn > input[type='radio'] {
 .cards-wrapper .card .ribbon-wrapper .ribbon:before,
 .cards-wrapper .card .ribbon-wrapper .ribbon:after {
   content: "";
-  border-top: 4px solid #ffe15b;
+  border-top: 4px solid #f4c700;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   position: absolute;
@@ -7049,10 +7050,9 @@ label.btn > input[type='radio'] {
 }
 .cards-wrapper .card .card-header .card-title {
   padding: 15px 30px 0 90px;
-  font-size: 1.2em;
+  font-size: 19px;
   font-weight: bold;
-  line-height: 20px;
-  overflow-wrap: break-word;
+  line-height: 21px;
   z-index: 1;
   position: relative;
 }
@@ -7064,29 +7064,29 @@ label.btn > input[type='radio'] {
 }
 .cards-wrapper .card .proj-desc {
   padding-top: 10px;
-  overflow-wrap: break-word;
 }
 .cards-wrapper .card .last-updated {
   font-style: italic;
-  font-size: 85%;
-  font-size: 0.8em;
+  font-size: 12px;
   margin-top: 10px;
-  border-bottom: 1px solid #aaaaaa;
+  border-bottom: 1px solid #dddddd;
   padding-bottom: 10px;
 }
 .cards-wrapper .github-stats {
   padding: 10px 0;
 }
+.cards-wrapper .github-stats > [class*='col-'] {
+  margin-bottom: 0;
+}
 .cards-wrapper .github-stats .stat {
   display: block;
   padding: 8px 0;
   color: #999;
-}
-.cards-wrapper .github-stats .num {
-  font-size: 90%;
+  font-size: 12px;
 }
 .cards-wrapper .github-stats .text-emphasized {
-  font-weight: 600;
+  font-weight: 800;
+  color: #6a6a6a;
 }
 .cards-wrapper .card-btns {
   margin: 0 -15px;
@@ -7096,25 +7096,26 @@ label.btn > input[type='radio'] {
 .cards-wrapper .card-btns .col-md-6 {
   margin-bottom: 0;
 }
-.cards-wrapper .card-btns a {
+.cards-wrapper .card-btns .col-md-6:first-of-type a {
+  border-right: 1px solid #d0d0d0;
+}
+.cards-wrapper .card-btns .col-md-6 a {
   text-transform: uppercase;
   font-weight: bold;
   margin: 0 -15px;
-  border-top: 1px solid #aaaaaa;
+  border-top: 1px solid #dddddd;
   background: #ebeced;
   display: block;
   padding: 15px 0;
   text-align: center;
   transition: all 0.2s linear;
 }
-.cards-wrapper .card-btns a:first-of-type {
-  border-right: 1px solid #aaaaaa;
-}
-.cards-wrapper .card-btns a:hover {
+.cards-wrapper .card-btns .col-md-6 a:hover {
   background: #00b0bc;
   color: #ffffff;
   border-color: #00b0bc;
 }
+/* Media queries */
 .aside {
   background-color: #ffffff;
 }
@@ -7280,20 +7281,6 @@ body ai-dialog-overlay.active {
 }
 .proj-details-wrapper .media-list-projects .list-group-item:last-child {
   border-bottom: none;
-}
-.multiline {
-  display: block;
-  /* Fallback for non-webkit */
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.card-title {
-  max-height: 77px;
-}
-.proj-desc {
-  max-height: 50px;
 }
 .twitter-typeahead {
   width: 100%;
