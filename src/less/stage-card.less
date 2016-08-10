@@ -2,7 +2,7 @@
 
 .cards-wrapper {
 	>.row {
-		padding: 0 20px;
+		padding: 0 20px 10px;
 
 		.cards-sorting {
 			padding-top: 20px;
@@ -33,7 +33,9 @@
 			z-index:0;
 
 			.ribbon {
-				font-size: 0.65em;
+				//font-size: 0.8em; //~12px
+				font-size: @font-size-smaller;
+				font-family: 'Roboto Condensed';
 				font-weight: bold;
 				text-transform: uppercase;
 				color: @black;
@@ -44,7 +46,8 @@
 				-o-transform:      rotate(45deg);
 				position: relative;
 				height: 28px;
-				line-height: 29px;
+				//line-height: 29px;
+				line-height: @line-height-computed * 1.4; // ~29.5px
 				right: 6px;
 				top: 14px;
 				width: 110px;
@@ -54,7 +57,7 @@
 				&:before,
 				&:after {
 					content: "";
-				border-top:   4px solid @yellow;   
+				border-top:   4px solid darken(@yellow, 20%);   
 				border-left:  4px solid transparent;
 				border-right: 4px solid transparent;
 				position:absolute;
@@ -91,16 +94,19 @@
 
 			.card-title {
 				padding: 15px 30px 0 90px;
-				font-size: 1.2em;
+				// font-size: 1.2em; // ~18px;
+				font-size: @font-size-large;
 				font-weight: bold;
-				line-height: 20px;
-				overflow-wrap: break-word;
+				//line-height: 20px;
+				line-height: @line-height-computed; // ~20px
+				// overflow-wrap: break-word;
 				z-index: 1;
 				position: relative;
 			}
 
 			.org-name {
-				font-size: 13px;
+				//font-size: 13px;
+				font-size: @font-size-small;
 				margin-top:8px;
 				padding-left: 90px;
 				color: rgba(0,0,0,0.4);
@@ -109,15 +115,15 @@
 
 		.proj-desc {
 			padding-top: 10px;
-			overflow-wrap: break-word;
+			// overflow-wrap: break-word;
 		}
 
 		.last-updated {
 			font-style: italic;
-			font-size: 85%;
-			font-size: 0.8em;
+			//font-size: 0.8em; //~12px;
+			font-size: @font-size-smaller;
 			margin-top: 10px;
-			border-bottom: 1px solid @gray;
+			border-bottom: 1px solid lighten(@gray,20%);
 			padding-bottom: 10px;
 		}
 	}
@@ -125,18 +131,21 @@
 	.github-stats {
 		padding: 10px 0;
 
+		> [class*='col-'] {
+			margin-bottom: 0;
+		}
+
 		.stat {
 			display: block;
 			padding: 8px 0;
 			color: #999;
-		}
-
-		.num {
-			font-size: 90%
+			//font-size: 0.85em; //~12.75px
+			font-size: @font-size-smaller;
 		}
 
 		.text-emphasized {
-			font-weight: 600;
+			font-weight: 800;
+			color: darken(@gray,25%);
 		}
 	}
 
@@ -147,28 +156,42 @@
 
 		.col-md-6 {
 			margin-bottom: 0;
-		}
-
-		a {
-			text-transform: uppercase;
-			font-weight: bold;
-			margin:0 -15px;
-			border-top: 1px solid @gray;
-			background: lighten(@stage-gray, 10%);
-			display: block;
-			padding: 15px 0;
-			text-align: center;
-			transition: all 0.2s linear;
 
 			&:first-of-type {
-				border-right: 1px solid @gray;
+				a {
+					border-right: 1px solid lighten(@gray,15%);
+				}
 			}
 
-			&:hover {
-				background:@teal;
-				color: @white;
-				border-color:@teal;
+			a {
+				text-transform: uppercase;
+				font-weight: bold;
+				margin:0 -15px;
+				border-top: 1px solid lighten(@gray,20%);
+				background: lighten(@stage-gray, 10%);
+				display: block;
+				padding: 15px 0;
+				text-align: center;
+				transition: all 0.2s linear;
+
+				&:hover {
+					background:@teal;
+					color: @white;
+					border-color:@teal;
+				}
 			}
 		}
 	}
+}
+
+/* Media queries */
+
+@media screen and (max-width: 1400px) and (min-width: 1200px) {
+	.cards-wrapper {
+		.card{
+			.github-stats {
+				// border: 1px solid red;
+			}
+		}
+	}	
 }

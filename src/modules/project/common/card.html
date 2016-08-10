@@ -1,31 +1,18 @@
 <template>
-  <div class="col-lg-4">
+  <div class="col-lg-4 col-md-12 col-sm-12">
     <div class="card">
       <div class="ribbon-wrapper">
-        <div class="ribbon">
-          <span if.bind="repo.language === 'JavaScript'">JavaScript</span>
-          <span if.bind="repo.language === 'Ruby'">Ruby</span>
-          <span if.bind="repo.language === 'Java'">Java</span>
-          <span if.bind="repo.language === 'HTML'">HTML</span>
-          <span if.bind="repo.language === 'CoffeeScript'">CoffeeScript</span>
-          <span if.bind="repo.language === 'Python'">Python</span>
-          <span if.bind="repo.language === 'Groovy'">Groovy</span>
-          <span if.bind="repo.language === 'Shell'">Shell</span>
-          <span if.bind="repo.language === 'Scala'">Scala</span>
-          <span if.bind="repo.language === 'null'"></span>
-        </div>
+        <div class="ribbon">${repo.language}</div>
       </div>
       <div class="card-header">
         <div class="avatar"><img src="http://placehold.it/100x100"/></div>
         <div class="card-title multiline">${repo.project_name}</div>
         <div class="org-name">${repo.organization}</div>
       </div>
-      <div class="proj-desc multiline">asdgfadga adg g sa gasd ;asdh ;adhs kjdagkjasgjka sdfasd adsfadsjkh jkdfa
-        klkjhd
-      </div>
+      <div class="proj-desc multiline">${repo.project_description}</div>
       <div class="text-muted last-updated">Updated 6 hours ago</div>
       <div class="row github-stats">
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-4">
           <span class="stat">
             <span class="octicon octicon-star"></span>
             <span class="num text-muted text-emphasized">${repo.stars}</span>
@@ -37,7 +24,7 @@
             contributors
           </span>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-4">
           <span class="stat">
             <span class="octicon octicon-eye"></span>
             <span class="num text-muted text-emphasized">${repo.watchers}</span>
@@ -49,7 +36,7 @@
             commits
           </span>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-4">
           <span class="stat">
             <span class="octicon octicon-tag"></span>
             <span class="num text-muted text-emphasized">${repo.releases}</span>
@@ -64,10 +51,10 @@
       </div>
       <div class="row card-btns">
         <div class="col-md-6">
-          <a href="#">Preview Readme</a>
+          <a href="#" click.trigger="openModal(repo)"><span class="octicon octicon-book"></span> Show Readme</a>
         </div>
         <div class="col-md-6">
-          <a href="#" click.trigger="openModal(repo)">Preview Readme</a>
+          <a route-href="route:project-details; params.bind: {id:repo.id}">View Details <span class="octicon octicon-chevron-right"></span></a>
         </div>
       </div>
     </div>
