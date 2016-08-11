@@ -18,8 +18,8 @@ export class SearchBar {
     this.router.navigateToRoute('result', { searchText });
   }
 
-  activate(modelData) {
-    this.landing = modelData;
+  activate() {
+    this.landing = this.router.currentInstruction.fragment === '/';
   }
 
   attached() {
