@@ -19,7 +19,9 @@ export class SearchBar {
   }
 
   activate() {
-    this.landing = this.router.currentInstruction.fragment === '/';
+    if (this.router.currentInstruction.fragment) {
+      this.landing = this.router.currentInstruction.fragment === '/';
+    }
   }
 
   attached() {
