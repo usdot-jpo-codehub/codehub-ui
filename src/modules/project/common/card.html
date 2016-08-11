@@ -6,7 +6,7 @@
       </div>
       <div class="card-header">
         <div class="avatar"><img src="http://placehold.it/100x100"/></div>
-        <div class="card-title multiline"><a href="#" route-href="route:project-details; params.bind: {id:repo.id}"" title="${repo.project_name}">${repo.project_name}</a></div>
+        <div class="card-title multiline"><a href="#" route-href="route:project-details; params.bind: {id:repo.id}" title="${repo.project_name}">${repo.project_name}</a></div>
         <div class="org-name">${repo.organization}</div>
       </div>
       <div class="proj-desc multiline">${repo.project_description}</div>
@@ -15,7 +15,7 @@
         <div class="col-md-4 col-sm-4">
           <span class="stat">
             <span class="octicon octicon-star"></span>
-            <span class="num text-muted text-emphasized">${repo.stars}</span>
+            <span class="num text-muted text-emphasized">${nFormatter(repo.stars, 1)}</span>
             stars
           </span>
           <span class="stat">
