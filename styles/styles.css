@@ -7010,7 +7010,7 @@ label.btn > input[type='radio'] {
   -o-transform: rotate(45deg);
   position: relative;
   height: 28px;
-  line-height: 29.4px;
+  line-height: 29px;
   right: 6px;
   top: 14px;
   width: 110px;
@@ -7049,12 +7049,13 @@ label.btn > input[type='radio'] {
   height: 70px;
 }
 .cards-wrapper .card .card-header .card-title {
-  padding: 15px 30px 0 90px;
+  padding: 15px 34px 0 90px;
   font-size: 19px;
   font-weight: bold;
   line-height: 21px;
   z-index: 1;
   position: relative;
+  overflow-wrap: break-word;
 }
 .cards-wrapper .card .card-header .org-name {
   font-size: 13px;
@@ -7104,7 +7105,7 @@ label.btn > input[type='radio'] {
   font-weight: bold;
   margin: 0 -15px;
   border-top: 1px solid #dddddd;
-  background: #ebeced;
+  background: #f9f9f9;
   display: block;
   padding: 15px 0;
   text-align: center;
@@ -7114,6 +7115,16 @@ label.btn > input[type='radio'] {
   background: #00b0bc;
   color: #ffffff;
   border-color: #00b0bc;
+}
+.cards-wrapper .card-btns .col-md-6 a .mega-octicon {
+  font-size: 26px;
+  vertical-align: -4px;
+}
+.cards-wrapper .card-btns .col-md-6 a .octicon-book {
+  margin-right: 5px;
+}
+.cards-wrapper .card-btns .col-md-6 a .octicon-chevron-right {
+  margin-left: 5px;
 }
 /* Media queries */
 .aside {

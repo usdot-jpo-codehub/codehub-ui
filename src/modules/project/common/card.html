@@ -6,7 +6,7 @@
       </div>
       <div class="card-header">
         <div class="avatar"><img src="http://placehold.it/100x100"/></div>
-        <div class="card-title multiline">${repo.project_name}</div>
+        <div class="card-title multiline"><a href="#" route-href="route:project-details; params.bind: {id:repo.id}"" title="${repo.project_name}">${repo.project_name}</a></div>
         <div class="org-name">${repo.organization}</div>
       </div>
       <div class="proj-desc multiline">${repo.project_description}</div>
@@ -51,10 +51,10 @@
       </div>
       <div class="row card-btns">
         <div class="col-md-6">
-          <a href="#" click.trigger="openModal(repo)"><span class="octicon octicon-book"></span> Show Readme</a>
+          <a href="#" click.trigger="openModal(repo)"><span class="octicon mega-octicon octicon-book"></span> Show Readme</a>
         </div>
         <div class="col-md-6">
-          <a route-href="route:project-details; params.bind: {id:repo.id}">Go to Details <span class="octicon octicon-chevron-right"></span></a>
+          <a route-href="route:project-details; params.bind: {id:repo.id}">Go to Details <span class="octicon mega-octicon octicon-chevron-right"></span></a>
         </div>
       </div>
     </div>

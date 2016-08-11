@@ -47,7 +47,7 @@
 				position: relative;
 				height: 28px;
 				//line-height: 29px;
-				line-height: @line-height-computed * 1.4; // ~29.5px
+				line-height: floor((@line-height-computed * 1.4)); // ~29px
 				right: 6px;
 				top: 14px;
 				width: 110px;
@@ -93,7 +93,7 @@
 			}
 
 			.card-title {
-				padding: 15px 30px 0 90px;
+				padding: 15px 34px 0 90px;
 				// font-size: 1.2em; // ~18px;
 				font-size: @font-size-large;
 				font-weight: bold;
@@ -102,6 +102,7 @@
 				// overflow-wrap: break-word;
 				z-index: 1;
 				position: relative;
+				overflow-wrap: break-word;
 			}
 
 			.org-name {
@@ -168,7 +169,7 @@
 				font-weight: bold;
 				margin:0 -15px;
 				border-top: 1px solid lighten(@gray,20%);
-				background: lighten(@stage-gray, 10%);
+				background: lighten(@stage-gray, 15%);
 				display: block;
 				padding: 15px 0;
 				text-align: center;
@@ -178,6 +179,19 @@
 					background:@teal;
 					color: @white;
 					border-color:@teal;
+				}
+
+				.mega-octicon {
+					font-size: @font-size-h3;
+					vertical-align: -4px;
+				}
+
+				.octicon-book {
+					margin-right: 5px;
+				}
+
+				.octicon-chevron-right {
+					margin-left: 5px;
 				}
 			}
 		}
