@@ -31,6 +31,16 @@ gulp.task('build-system', function() {
     .pipe(gulp.dest(paths.output));
 });
 
+gulp.task('build-system-dev', function() {
+  return gulp.src(paths.source)
+    .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
+    .pipe(changed(paths.output, {extension: '.js'}))
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(to5(assign({}, compilerOptions.system())))
+    .pipe(sourcemaps.write('.', {includeContent: false, sourceRoot: '/src'}))
+    .pipe(gulp.dest(paths.output));
+});
+
 // copies changed html files to the output directory
 gulp.task('build-html', function() {
   return gulp.src(paths.html)
