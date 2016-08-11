@@ -6727,6 +6727,7 @@ a:focus {
   font-weight: 300;
   font-size: 1.5em;
   border: none;
+  background-color: #ffffff !important;
 }
 .hero-banner .hero-jumbotron .input-group-btn {
   z-index: 1;
@@ -6754,6 +6755,7 @@ a:focus {
   background-color: #ffffff;
   border: none;
   padding: 10px;
+  transition: none;
 }
 .hero-banner .hero-jumbotron .stage-search-btn:last-child {
   border-radius: 0 6px 6px 0;
@@ -6781,6 +6783,9 @@ a:focus {
 }
 .hero-banner.secondary .hero-jumbotron {
   padding: 0;
+}
+.hero-banner.secondary .hero-jumbotron .input-lg {
+  background-color: transparent !important;
 }
 .hero-banner.secondary .hero-jumbotron .input-group .form-control {
   background: none !important;
