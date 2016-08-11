@@ -6703,7 +6703,7 @@ a:focus {
   background-size: cover;
   background-position: center center;
 }
-.splash img {
+.splash .loading {
   position: absolute;
   top: 50%;
   right: 50%;
@@ -6712,6 +6712,13 @@ a:focus {
   width: 250px;
   margin-left: -125px;
   margin-top: -125px;
+  text-align: center;
+}
+.splash .loading .txt-loading {
+  font-family: roboto;
+  font-weight: 300;
+  font-size: 30px;
+  opacity: 0.3;
 }
 /* Media queries */
 @media screen and (max-width: 992px) {
