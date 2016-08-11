@@ -21,31 +21,31 @@
           </span>
           <span class="stat">
             <span class="octicon octicon-organization"></span>
-            <span class="num text-muted text-emphasized">${repo.contributors}</span>
+            <span class="num text-muted text-emphasized">${nFormatter(repo.contributors)}</span>
             <span class="stat-label">contributors</span>
           </span>
         </div>
         <div class="col-md-4 col-sm-4">
           <span class="stat">
             <span class="octicon octicon-eye"></span>
-            <span class="num text-muted text-emphasized">${repo.watchers}</span>
+            <span class="num text-muted text-emphasized">${nFormatter(repo.watchers)}</span>
             <span class="stat-label">watchers</span>
           </span>
           <span class="stat">
             <span class="octicon octicon-git-commit"></span>
-            <span class="num text-muted text-emphasized">${repo.commits}</span>
+            <span class="num text-muted text-emphasized">${nFormatter(repo.commits)}</span>
             <span class="stat-label">commits</span>
           </span>
         </div>
         <div class="col-md-4 col-sm-4">
           <span class="stat">
             <span class="octicon octicon-tag"></span>
-            <span class="num text-muted text-emphasized">${repo.releases}</span>
+            <span class="num text-muted text-emphasized">${nFormatter(repo.releases)}</span>
             <span class="stat-label">releases</span>
           </span>
           <span class="stat">
             <span class="octicon octicon-repo-forked"></span>
-            <span class="num text-muted text-emphasized">${repo.forks}</span>
+            <span class="num text-muted text-emphasized">${nFormatter(repo.forks)}</span>
             <span class="stat-label">forks</span>
           </span>
         </div>

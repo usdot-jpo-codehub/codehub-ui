@@ -7146,10 +7146,9 @@ label.btn > input[type='radio'] {
   margin-left: 5px;
 }
 /* Media queries */
-@media screen and (max-width: 1325px) {
+@media screen and (min-width: 1200px) and (max-width: 1325px) {
   .cards-wrapper .github-stats .stat {
     text-align: center;
-    color: blue;
   }
   .cards-wrapper .github-stats .stat .stat-label {
     display: block;
