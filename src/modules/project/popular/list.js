@@ -18,6 +18,7 @@ export class List {
     this.selectedLanguages = [];
 
     this.sortDirection = 'descending';
+    this.landing = true;
 
     this.selectedSort = 'rank';
     this.sortOptions = [
