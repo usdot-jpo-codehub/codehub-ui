@@ -7147,7 +7147,16 @@ label.btn > input[type='radio'] {
   color: #ffffff;
   border-color: #00b0bc;
 }
-<<<<<<< HEAD
+.cards-wrapper .card-btns .col-md-6 a .mega-octicon {
+  font-size: 24px;
+  vertical-align: -4px;
+}
+.cards-wrapper .card-btns .col-md-6 a .octicon-book {
+  margin-right: 5px;
+}
+.cards-wrapper .card-btns .col-md-6 a .octicon-chevron-right {
+  margin-left: 5px;
+}
 .proj-details-wrapper .card {
   width: 100%;
   position: relative;
@@ -7287,17 +7296,6 @@ label.btn > input[type='radio'] {
   background-color: #ffffff;
   margin-top: -30px;
   margin-bottom: 0;
-=======
-.cards-wrapper .card-btns .col-md-6 a .mega-octicon {
-  font-size: 24px;
-  vertical-align: -4px;
-}
-.cards-wrapper .card-btns .col-md-6 a .octicon-book {
-  margin-right: 5px;
-}
-.cards-wrapper .card-btns .col-md-6 a .octicon-chevron-right {
-  margin-left: 5px;
->>>>>>> master
 }
 /* Media queries */
 @media screen and (min-width: 1200px) and (max-width: 1325px) {
