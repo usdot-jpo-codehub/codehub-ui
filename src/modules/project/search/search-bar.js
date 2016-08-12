@@ -4,17 +4,24 @@ import $ from 'jquery';
 import { typeahead } from 'corejs-typeahead';
 import { SearchProjectData } from '../dataRepository/searchProjectData';
 
-
 @inject(SearchProjectData, Router)
-export class SearchProject {
+export class SearchBar {
 
   constructor(searchProjectData, router) {
     this.searchProjectData = searchProjectData;
     this.router = router;
+
+    this.landing = true;
   }
 
   executeSearch(searchText) {
     this.router.navigateToRoute('result', { searchText });
+  }
+
+  activate() {
+    if (this.router.currentInstruction.fragment) {
+      this.landing = this.router.currentInstruction.fragment === '/';
+    }
   }
 
   attached() {

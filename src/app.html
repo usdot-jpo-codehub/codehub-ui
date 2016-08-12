@@ -1,16 +1,12 @@
 <template>
   <require from="nav-bar.html"></require>
-  <require from="modules/project/search/search-project"></require>
-  <!-- <require from="modules/project/search/search-secondary"></require> -->
 
-  <div class="hero-banner">
-  <!-- <div class="hero-banner secondary"> -->
+  <div class="hero-banner ${router.currentInstruction.fragment == '/' ? '' : 'secondary'}">
     <div class="inner">
       <nav-bar router.bind="router"></nav-bar>
       <div class="jumbotron hero-jumbotron">
         <div class="container-fluid">
-          <search-project></search-project>
-          <!-- <search-secondary></search-secondary> -->
+          <compose view-model="modules/project/search/search-bar" model.bind="router.currentInstruction.fragment == '/'"></compose>
         </div>
       </div>
     </div>

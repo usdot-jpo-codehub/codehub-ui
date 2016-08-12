@@ -2,7 +2,7 @@
 
 .cards-wrapper {
 	>.row {
-		padding: 0 20px 10px;
+		padding: 0 20px 20px;
 
 		.cards-sorting {
 			padding-top: 20px;
@@ -33,7 +33,6 @@
 			z-index:0;
 
 			.ribbon {
-				//font-size: 0.8em; //~12px
 				font-size: @font-size-smaller;
 				font-family: 'Roboto Condensed';
 				font-weight: bold;
@@ -46,8 +45,7 @@
 				-o-transform:      rotate(45deg);
 				position: relative;
 				height: 28px;
-				//line-height: 29px;
-				line-height: @line-height-computed * 1.4; // ~29.5px
+				line-height: floor((@line-height-computed * 1.4)); // ~29px
 				right: 6px;
 				top: 14px;
 				width: 110px;
@@ -93,19 +91,16 @@
 			}
 
 			.card-title {
-				padding: 15px 30px 0 90px;
-				// font-size: 1.2em; // ~18px;
+				padding: 15px 34px 0 90px;
 				font-size: @font-size-large;
 				font-weight: bold;
-				//line-height: 20px;
 				line-height: @line-height-computed; // ~20px
-				// overflow-wrap: break-word;
 				z-index: 1;
 				position: relative;
+				overflow-wrap: break-word;
 			}
 
 			.org-name {
-				//font-size: 13px;
 				font-size: @font-size-small;
 				margin-top:8px;
 				padding-left: 90px;
@@ -115,12 +110,11 @@
 
 		.proj-desc {
 			padding-top: 10px;
-			// overflow-wrap: break-word;
+			overflow-wrap: break-word;
 		}
 
 		.last-updated {
 			font-style: italic;
-			//font-size: 0.8em; //~12px;
 			font-size: @font-size-smaller;
 			margin-top: 10px;
 			border-bottom: 1px solid lighten(@gray,20%);
@@ -139,7 +133,6 @@
 			display: block;
 			padding: 8px 0;
 			color: #999;
-			//font-size: 0.85em; //~12.75px
 			font-size: @font-size-smaller;
 		}
 
@@ -168,9 +161,9 @@
 				font-weight: bold;
 				margin:0 -15px;
 				border-top: 1px solid lighten(@gray,20%);
-				background: lighten(@stage-gray, 10%);
+				background: lighten(@stage-gray, 15%);
 				display: block;
-				padding: 15px 0;
+				padding: 10px 0;
 				text-align: center;
 				transition: all 0.2s linear;
 
@@ -178,6 +171,19 @@
 					background:@teal;
 					color: @white;
 					border-color:@teal;
+				}
+
+				.mega-octicon {
+					font-size: @font-size-h3;
+					vertical-align: -4px;
+				}
+
+				.octicon-book {
+					margin-right: 5px;
+				}
+
+				.octicon-chevron-right {
+					margin-left: 5px;
 				}
 			}
 		}
@@ -366,12 +372,16 @@
 
 /* Media queries */
 
-@media screen and (max-width: 1400px) and (min-width: 1200px) {
+@media screen and (min-width: 1200px) and (max-width: 1325px) {
 	.cards-wrapper {
-		.card{
-			.github-stats {
-				// border: 1px solid red;
+		.github-stats {
+			.stat {
+				text-align: center;
+
+				.stat-label {
+					display: block;
+				}
 			}
 		}
-	}	
+	}
 }
