@@ -82,14 +82,12 @@
                         </div>
                     </div>
                 </div>
-
-              <template repeat.for="repo of projects | sort: { propertyName: selectedSort, direction: sortDirection} | filter: { propertyName: 'organization', filterArray: selectedOrganizations}:selectedOrganizations.length | filter: { propertyName: 'language', filterArray: selectedLanguages}:selectedLanguages.length">
-                <div class="row" if.bind="$index % 3 == 0">
-                  <compose view-model="./card" model.bind="projects[$index]"></compose>
-                  <compose view-model="./card" model.bind="projects[$index+1]"></compose>
-                  <compose view-model="./card" model.bind="projects[$index+2]"></compose>
-                </div>
+              <div class="row">
+                <template repeat.for="repo of projects | sort: { propertyName: selectedSort, direction: sortDirection} | filter: { propertyName: 'organization', filterArray: selectedOrganizations}:selectedOrganizations.length | filter: { propertyName: 'language', filterArray: selectedLanguages}:selectedLanguages.length">
+                  <div class="clearfix" if.bind="$index % 3 == 0"></div>
+                  <compose view-model="./card" model.bind="repo"></compose>
                 </template>
+              </div>
             </div>
         </div>
     </div>
