@@ -16,11 +16,14 @@ export class SearchBar {
 
   executeSearch(searchText) {
     this.router.navigateToRoute('result', { searchText });
+    $('#searchBox .typeahead').typeahead('val', '');
   }
 
   activate() {
-    if (this.router.currentInstruction.fragment) {
+    if (this.router.currentInstruction) {
       this.landing = this.router.currentInstruction.fragment === '/';
+    } else {
+      this.landing = false;
     }
   }
 
