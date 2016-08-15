@@ -36,6 +36,7 @@
 				font-size: @font-size-smaller;
 				font-family: 'Roboto Condensed';
 				font-weight: bold;
+				letter-spacing: -0.25px;
 				text-transform: uppercase;
 				color: @black;
 				text-align: center;
@@ -98,6 +99,9 @@
 				z-index: 1;
 				position: relative;
 				overflow-wrap: break-word;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
 			}
 
 			.org-name {
@@ -111,6 +115,18 @@
 		.proj-desc {
 			padding-top: 10px;
 			overflow-wrap: break-word;
+
+			display: block; /* Fallback for non-webkit */
+			display: -webkit-box;
+			// max-width: 400px;
+			height: 50px; /* Fallback for non-webkit */
+			margin: 0 auto;
+			// font-size: @font-size;
+			line-height: @line-height-base;
+			-webkit-line-clamp: @lines-to-show;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
 
 		.last-updated {
