@@ -10,7 +10,7 @@
 
     <div class="container-fluid">
         <div class="row flex-row">
-            <div if.bind="!landing" class="col-lg-3 aside">
+            <div if.bind="!landing" class="col-lg-3 aside col-filters">
                 <h5>Filters</h5>
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -37,10 +37,10 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4>
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Language</a>
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" class="collapsed">Language</a>
                         </h4>
                     </div>
-                    <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
                             <ul class="list-group">
                                 <li class="list-group-item" repeat.for="language of projects | unique: { propertyName: 'language'}">
