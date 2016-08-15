@@ -56,6 +56,24 @@ export class List {
     });
   }
 
+  toggleOrg(source) {
+    if (document.getElementsByName('toggleOrg')[0].checked) {
+      this.selectedOrganizations = this.getUniqueValues(this.projects, 'organization');
+      return true;
+    }
+    this.selectedOrganizations = [];
+    return true;
+  }
+
+  toggleLang() {
+    if (document.getElementsByName('toggleLang')[0].checked) {
+      this.selectedLanguages = this.getUniqueValues(this.projects, 'language');
+      return true;
+    }
+    this.selectedLanguages = [];
+    return true;
+  }
+
   // Creates an array of unique values for one property in an array
   getUniqueValues(array, property) {
     const propertyArray = [];

@@ -21,11 +21,20 @@
                     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
                             <ul class="list-group">
+                              <li class="list-group-item">
+                                <form>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="toggleOrg" click.delegate="toggleOrg()" checked/> Show All<br/>
+                                    </label>
+                                  </div>
+                                </form>
+                              </li>
                                 <li class="list-group-item" repeat.for="organization of projects | unique: { propertyName: 'organization'}">
                                     <form>
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" checked.bind="selectedOrganizations" value.bind="organization"> ${organization}
+                                                <input type="checkbox" name="orgCheck" checked.bind="selectedOrganizations" value.bind="organization"> ${organization}
                                             </label>
                                         </div>
                                     </form>
@@ -43,6 +52,15 @@
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
                             <ul class="list-group">
+                              <li class="list-group-item">
+                                <form>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="toggleLang" click.delegate="toggleLang()" checked/> Show All<br/>
+                                    </label>
+                                  </div>
+                                </form>
+                              </li>
                                 <li class="list-group-item" repeat.for="language of projects | unique: { propertyName: 'language'}">
                                     <form>
                                         <div class="checkbox">
@@ -62,7 +80,8 @@
                 <div class="row flex-row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="cards-sorting">
-                            <p>We've found ${projects.length} repositories!</p>
+                            <p if.bind="!landing">We've found ${projects.length} repositories!</p>
+                            <p if.bind="landing"></p>
                             <form class="form-inline">
                                 <div class="btn-group">
                                     <label class="${sortDirection == 'descending' ? 'btn btn-default active' : 'btn btn-default'}">
