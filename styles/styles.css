@@ -7036,6 +7036,7 @@ label.btn > input[type='radio'] {
   font-size: 12px;
   font-family: 'Roboto Condensed';
   font-weight: bold;
+  letter-spacing: -0.25px;
   text-transform: uppercase;
   color: #000000;
   text-align: center;
@@ -7091,6 +7092,9 @@ label.btn > input[type='radio'] {
   z-index: 1;
   position: relative;
   overflow-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .cards-wrapper .card .card-header .org-name {
   font-size: 12px;
@@ -7101,6 +7105,17 @@ label.btn > input[type='radio'] {
 .cards-wrapper .card .proj-desc {
   padding-top: 10px;
   overflow-wrap: break-word;
+  display: block;
+  /* Fallback for non-webkit */
+  display: -webkit-box;
+  height: 50px;
+  /* Fallback for non-webkit */
+  margin: 0 auto;
+  line-height: 1.42857143;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .cards-wrapper .card .last-updated {
   font-style: italic;
@@ -7346,10 +7361,8 @@ label.btn > input[type='radio'] {
   background-color: #ffffff;
 }
 .col-filters {
-  flex-basis: 20%;
   background-color: #ffffff;
   padding: 0 20px 0 30px;
-  width: 100px;
 }
 .col-filters .panel-default {
   border: none;
