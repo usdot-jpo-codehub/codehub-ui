@@ -12,11 +12,13 @@ export class SearchBar {
     this.router = router;
 
     this.landing = true;
+
+    this.searchText = '';
   }
 
   executeSearch(searchText) {
     this.router.navigateToRoute('result', { searchText });
-    $('#searchBox .typeahead').typeahead('val', '');
+    $('#searchBox .typeahead').typeahead('close');
   }
 
   activate() {
@@ -55,6 +57,10 @@ export class SearchBar {
 
     $('#searchBox .typeahead').bind('typeahead:select', (ev, suggestion) => {
       this.executeSearch(suggestion);
+    });
+
+    $('#searchBox .typeahead').bind('typeahead:autocompleted', (ev, suggestion) => {
+      this.searchText = suggestion;
     });
   }
 
