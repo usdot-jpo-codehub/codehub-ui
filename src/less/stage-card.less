@@ -115,13 +115,10 @@
 		.proj-desc {
 			padding-top: 10px;
 			overflow-wrap: break-word;
-
 			display: block; /* Fallback for non-webkit */
 			display: -webkit-box;
-			// max-width: 400px;
-			height: 50px; /* Fallback for non-webkit */
+			max-height: 50px; /* Fallback for non-webkit */
 			margin: 0 auto;
-			// font-size: @font-size;
 			line-height: @line-height-base;
 			-webkit-line-clamp: @lines-to-show;
 			-webkit-box-orient: vertical;
@@ -241,7 +238,6 @@
 				margin: 0px;
 				font-size: @font-size-h3;
             	font-weight: bold;
-            	// line-height: 1.5rem;
 
 			}
 
@@ -429,6 +425,20 @@
 
 @media screen and (min-width: 1200px) and (max-width: 1325px) {
 	.cards-wrapper {
+		.github-stats {
+			.stat {
+				text-align: center;
+
+				.stat-label {
+					display: block;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1590px) {
+	.with-filters {
 		.github-stats {
 			.stat {
 				text-align: center;

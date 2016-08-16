@@ -7108,7 +7108,7 @@ label.btn > input[type='radio'] {
   display: block;
   /* Fallback for non-webkit */
   display: -webkit-box;
-  height: 50px;
+  max-height: 50px;
   /* Fallback for non-webkit */
   margin: 0 auto;
   line-height: 1.42857143;
@@ -7354,6 +7354,14 @@ label.btn > input[type='radio'] {
     text-align: center;
   }
   .cards-wrapper .github-stats .stat .stat-label {
+    display: block;
+  }
+}
+@media screen and (min-width: 1200px) and (max-width: 1590px) {
+  .with-filters .github-stats .stat {
+    text-align: center;
+  }
+  .with-filters .github-stats .stat .stat-label {
     display: block;
   }
 }
