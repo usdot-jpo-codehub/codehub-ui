@@ -9,6 +9,8 @@ export class DataContext {
     this.http = httpClient;
   }
 
+  // TODO Wrap API calls in promises to catch errors
+
   getAll() {
     return this.http.fetch(baseUrl, {
       method: 'GET',
