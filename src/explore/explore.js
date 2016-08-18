@@ -1,15 +1,9 @@
 import { inject, bindable } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
-import { SearchProjectData } from '../dataRepository/searchProjectData';
+import { DataContext } from '../services/datacontext';
 
-@inject(SearchProjectData, Router)
-export class ListAllProjects {
-  heading = 'Projects List';
-  projectsList = [];
-  // TODO API results ideally should be camelCase : https://google.github.io/styleguide/jsoncstyleguide.xml#Property_Name_Format
-  projects_readme = {}; // eslint-disable-line
-  projectTitle = 'All Projects';
-
+@inject(DataContext, Router)
+export class Explore {
   getViewStrategy() {
     return '../common/list.html';
   }
@@ -17,6 +11,9 @@ export class ListAllProjects {
   constructor(projectsExplore, router) {
     this.projectsExplore = projectsExplore;
     this.router = router;
+
+    this.projectTitle = 'Explore';
+
     this.projects = [];
     this.selectedOrganizations = [];
     this.selectedLanguages = [];

@@ -2,15 +2,15 @@
 
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
-import { SearchProjectData } from '../dataRepository/searchProjectData';
+import { DataContext } from '../services/datacontext';
 
-@inject(SearchProjectData, Router)
+@inject(DataContext, Router)
 export class List {
   heading = 'Projects List';
   projectTitle = 'Favorite Projects';
 
-  constructor(projectData, router) {
-    this.projectData = projectData;
+  constructor(dataContext, router) {
+    this.dataContext = dataContext;
     this.currentPage = 0;
     this.router = router;
     this.projects = [];
@@ -49,7 +49,7 @@ export class List {
   }
 
   getData() {
-    return this.projectData.getPopular().then(results => {
+    return this.dataContext.getPopular().then(results => {
       this.projects = results;
       this.selectedOrganizations = this.getUniqueValues(this.projects, 'organization');
       this.selectedLanguages = this.getUniqueValues(this.projects, 'language');

@@ -1,6 +1,6 @@
 import { DialogService } from 'aurelia-dialog';
 import { inject } from 'aurelia-framework';
-import { Modal } from './modules/project/modal/modal';
+import { Modal } from './modal/modal';
 
 @inject(DialogService)
 
@@ -9,11 +9,11 @@ export class App {
     config.title = 'Stage';
     config.options.pushState = false;
     config.map([
-      { route: '', name: 'project', moduleId: 'modules/project/popular/list', nav: true, title: 'Popular' },
-      { route: 'projects', name: 'projects', moduleId: 'modules/project/all-projects/list-all-projects', nav: true, title: 'Explore' },
-      { route: 'favorites', name: 'favorites', moduleId: 'modules/project/favorites/list-favorites', nav: true, title: 'Favorites' },
-      { route: 'result', name: 'result', moduleId: 'modules/project/results/result', nav: false, settings: 'data' },
-      { route: 'project-details', name: 'project-details', moduleId: 'modules/project/project-details/project-details', nav: false, title: 'project-details' },
+      { route: '', name: 'project', moduleId: 'popular/list', nav: true, title: 'Popular' },
+      { route: 'projects', name: 'projects', moduleId: 'explore/explore', nav: true, title: 'Explore' },
+      { route: 'favorites', name: 'favorites', moduleId: 'favorites/list-favorites', nav: true, title: 'Favorites' },
+      { route: 'result', name: 'result', moduleId: 'results/result', nav: false, settings: 'data' },
+      { route: 'project-details', name: 'project-details', moduleId: 'project-details/project-details', nav: false, title: 'project-details' },
     ]);
     this.router = router;
   }

@@ -1,28 +1,25 @@
-import { inject } from 'aurelia-framework';
-import { Router } from 'aurelia-router';
-import { SearchProjectData } from '../dataRepository/searchProjectData';
+import { inject, bindable } from 'aurelia-framework';
+import { Router, activationStrategy } from 'aurelia-router';
+import { DataContext } from '../services/datacontext';
 
-@inject(SearchProjectData, Router)
-export class List {
+@inject(DataContext, Router)
+export class Result {
   heading = 'Projects List';
-  projectTitle = 'Most Popular Projects';
 
-  constructor(projectData, router) {
-    this.projectData = projectData;
-    this.currentPage = 0;
-    this.router = router;
+  constructor(dataContext, searchText) {
+    this.dataContext = dataContext;
+
     this.projects = [];
-    this.orgs = ['boozallen', 'netflix'];
 
     this.selectedOrganizations = [];
     this.selectedLanguages = [];
 
     this.sortDirection = 'descending';
-    this.landing = true;
 
-    this.selectedSort = 'rank';
+    this.selectedSort = 'default';
     this.sortOptions = [
       { value: 'rank', name: 'Rank' },
+      { value: 'default', name: 'Relevance' },
       { value: 'stars', name: 'Stars' },
       { value: 'watchers', name: 'Watchers' },
       { value: 'releases', name: 'Releases' },
@@ -35,25 +32,8 @@ export class List {
     return '../common/list.html';
   }
 
-  gotoProject(project) {
-    this.router.navigateToRoute('edit', { id: project.id });
-  }
-
-  new() {
-    this.router.navigateToRoute('create');
-  }
-
-  attached() {
-
-  }
-
-  getData() {
-    return this.projectData.getPopular().then(results => {
-      this.projects = results;
-      this.selectedOrganizations = this.getUniqueValues(this.projects, 'organization');
-      this.selectedLanguages = this.getUniqueValues(this.projects, 'language');
-      return this.projects;
-    });
+  determineActivationStrategy() {
+    return activationStrategy.replace;
   }
 
   toggleOrg(source) {
@@ -87,8 +67,24 @@ export class List {
     return Array.from(new Set(propertyArray));
   }
 
-  activate() {
-    this.getData();
+  activate(params, routeConfig, navigationInstruction) {
+    if (!(params.searchText) || params.searchText === '') {
+      return this.dataContext.getAll()
+        .then(projects => {
+          this.projects = projects;
+          this.selectedOrganizations = this.getUniqueValues(this.projects, 'organization');
+          this.selectedLanguages = this.getUniqueValues(this.projects, 'language');
+          return this.projects;
+        });
+    }
+
+    return this.dataContext.searchByProjectNameOrDescription(params.searchText)
+      .then(projects => {
+        this.projects = projects;
+        this.selectedOrganizations = this.getUniqueValues(this.projects, 'organization');
+        this.selectedLanguages = this.getUniqueValues(this.projects, 'language');
+        return this.projects;
+      });
   }
 
 }
