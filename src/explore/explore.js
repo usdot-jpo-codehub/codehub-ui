@@ -11,14 +11,11 @@ export class Explore {
     this.router = router;
     this.filters = filters;
 
+    this.projects = [];
+
     this.projectTitle = 'Explore';
 
-    this.projects = [];
-    this.selectedOrganizations = [];
-    this.selectedLanguages = [];
-
     this.sortDirection = 'descending';
-
     this.selectedSort = 'stars';
     this.sortOptions = [
       { value: 'rank', name: 'Rank' },

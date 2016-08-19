@@ -8,8 +8,6 @@ import { Filters } from '../components/filters';
 @inject(DataContext, Router, Filters)
 export class Favorites {
 
-  projectTitle = 'Favorite Projects';
-
   constructor(dataContext, router, filters) {
     this.dataContext = dataContext;
     this.router = router;
@@ -17,8 +15,9 @@ export class Favorites {
 
     this.projects = [];
 
-    this.sortDirection = 'descending';
+    this.projectTitle = 'Favorite Projects';
 
+    this.sortDirection = 'descending';
     this.selectedSort = 'rank';
     this.sortOptions = [
       { value: 'rank', name: 'Rank' },

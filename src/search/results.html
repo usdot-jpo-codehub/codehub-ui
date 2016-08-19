@@ -19,7 +19,10 @@
 
         <div class="row">
           <template
-            repeat.for="repo of projects | sort: { propertyName: selectedSort, direction: sortDirection} | filter: { propertyName: 'organization', filterArray: selectedOrganizations}:selectedOrganizations.length | filter: { propertyName: 'language', filterArray: selectedLanguages}:selectedLanguages.length">
+            repeat.for="repo of projects |
+            sort: { propertyName: selectedSort, direction: sortDirection} |
+            filter: { propertyName: 'organization', filterArray: filters.selectedOrganizations}:filters.selectedOrganizations.length |
+            filter: { propertyName: 'language', filterArray: filters.selectedLanguages}:filters.selectedLanguages.length">
             <div class="clearfix" if.bind="$index % 3 == 0"></div>
             <compose view-model="../components/card" model.bind="repo"></compose>
           </template>

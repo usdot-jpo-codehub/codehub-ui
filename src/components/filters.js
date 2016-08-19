@@ -1,14 +1,11 @@
-import { transient } from 'aurelia-framework';
-
-@transient()
 export class Filters {
   constructor() {
     this.selectedOrganizations = [];
     this.selectedLanguages = [];
   }
 
-  activate(modelData) {
-    this.repo = modelData;
+  activate() {
+
   }
 
   getUniqueValues(array, property) {
