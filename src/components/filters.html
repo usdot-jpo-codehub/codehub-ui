@@ -1,5 +1,5 @@
 <template>
-  <require from="../utility/unique"></require>
+  <require from="../resources/value-converters/unique"></require>
   <div class="col-lg-2 col-sm-3 aside col-filters">
     <h5>Filters</h5>
     <div class="panel panel-default">
@@ -16,7 +16,7 @@
               <form>
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" name="toggleOrg" click.delegate="toggleOrg()" checked/> Show All<br/>
+                    <input type="checkbox" name="toggleOrg" click.delegate="filters.toggleOrg($event, projects)" checked/> Show All<br/>
                   </label>
                 </div>
               </form>
@@ -26,7 +26,7 @@
               <form>
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" name="orgCheck" checked.bind="selectedOrganizations"
+                    <input type="checkbox" name="orgCheck" checked.bind="filters.selectedOrganizations"
                            value.bind="organization"> ${organization}
                   </label>
                 </div>
@@ -50,7 +50,7 @@
               <form>
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" name="toggleLang" click.delegate="toggleLang()" checked/> Show All<br/>
+                    <input type="checkbox" name="toggleLang" click.delegate="filters.toggleLang($event, projects)" checked/> Show All<br/>
                   </label>
                 </div>
               </form>
@@ -59,7 +59,7 @@
               <form>
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" checked.bind="selectedLanguages" value.bind="language"> ${language}
+                    <input type="checkbox" checked.bind="filters.selectedLanguages" value.bind="language"> ${language}
                   </label>
                 </div>
               </form>

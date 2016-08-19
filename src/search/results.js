@@ -1,29 +1,24 @@
-// TODO Non-functional placeholder replica of most popular
-
-import { inject } from 'aurelia-framework';
-import { Router } from 'aurelia-router';
+import { inject, bindable } from 'aurelia-framework';
+import { Router, activationStrategy } from 'aurelia-router';
 import { DataContext } from '../services/datacontext';
 
 @inject(DataContext, Router)
-export class List {
-  heading = 'Projects List';
-  projectTitle = 'Favorite Projects';
+export class Results {
 
-  constructor(dataContext, router) {
+  constructor(dataContext, searchText) {
     this.dataContext = dataContext;
-    this.currentPage = 0;
-    this.router = router;
+
     this.projects = [];
-    this.orgs = ['boozallen', 'netflix'];
 
     this.selectedOrganizations = [];
     this.selectedLanguages = [];
 
     this.sortDirection = 'descending';
 
-    this.selectedSort = 'rank';
+    this.selectedSort = 'default';
     this.sortOptions = [
       { value: 'rank', name: 'Rank' },
+      { value: 'default', name: 'Relevance' },
       { value: 'stars', name: 'Stars' },
       { value: 'watchers', name: 'Watchers' },
       { value: 'releases', name: 'Releases' },
@@ -32,29 +27,8 @@ export class List {
     ];
   }
 
-  getViewStrategy() {
-    return '../common/list.html';
-  }
-
-  gotoProject(project) {
-    this.router.navigateToRoute('edit', { id: project.id });
-  }
-
-  new() {
-    this.router.navigateToRoute('create');
-  }
-
-  attached() {
-
-  }
-
-  getData() {
-    return this.dataContext.getPopular().then(results => {
-      this.projects = results;
-      this.selectedOrganizations = this.getUniqueValues(this.projects, 'organization');
-      this.selectedLanguages = this.getUniqueValues(this.projects, 'language');
-      return this.projects;
-    });
+  determineActivationStrategy() {
+    return activationStrategy.replace;
   }
 
   toggleOrg(source) {
@@ -88,8 +62,24 @@ export class List {
     return Array.from(new Set(propertyArray));
   }
 
-  activate() {
-    this.getData();
+  activate(params) {
+    if (!(params.searchText) || params.searchText === '') {
+      return this.dataContext.getAll()
+        .then(projects => {
+          this.projects = projects;
+          this.selectedOrganizations = this.getUniqueValues(this.projects, 'organization');
+          this.selectedLanguages = this.getUniqueValues(this.projects, 'language');
+          return this.projects;
+        });
+    }
+
+    return this.dataContext.searchByProjectNameOrDescription(params.searchText)
+      .then(projects => {
+        this.projects = projects;
+        this.selectedOrganizations = this.getUniqueValues(this.projects, 'organization');
+        this.selectedLanguages = this.getUniqueValues(this.projects, 'language');
+        return this.projects;
+      });
   }
 
 }

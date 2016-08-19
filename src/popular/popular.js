@@ -3,16 +3,14 @@ import { Router } from 'aurelia-router';
 import { DataContext } from '../services/datacontext';
 
 @inject(DataContext, Router)
-export class List {
-  heading = 'Projects List';
+export class Popular {
+
   projectTitle = 'Most Popular Projects';
 
   constructor(dataContext, router) {
     this.dataContext = dataContext;
-    this.currentPage = 0;
     this.router = router;
     this.projects = [];
-    this.orgs = ['boozallen', 'netflix'];
 
     this.selectedOrganizations = [];
     this.selectedLanguages = [];
@@ -29,22 +27,6 @@ export class List {
       { value: 'commits', name: 'Commits' },
       { value: 'contributors', name: 'Contributors' },
     ];
-  }
-
-  getViewStrategy() {
-    return '../common/list.html';
-  }
-
-  gotoProject(project) {
-    this.router.navigateToRoute('edit', { id: project.id });
-  }
-
-  new() {
-    this.router.navigateToRoute('create');
-  }
-
-  attached() {
-
   }
 
   getData() {

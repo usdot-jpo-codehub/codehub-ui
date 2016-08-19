@@ -17,7 +17,7 @@ export class SearchBar {
   }
 
   executeSearch(searchText) {
-    this.router.navigateToRoute('result', { searchText });
+    this.router.navigateToRoute('results', { searchText });
     $('#searchBox .typeahead').typeahead('close');
   }
 
