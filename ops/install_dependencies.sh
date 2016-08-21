@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # Client UI files already copied to /opt/heimdall - see ../appspec.yml
-if [ ! hash nginx 2>/dev/null ]
+
+# If nginx is not installed then install it:
+hash nginx 2>/dev/null
+if [ $? != 0 ]
 then
   yum -y install nginx
 fi
