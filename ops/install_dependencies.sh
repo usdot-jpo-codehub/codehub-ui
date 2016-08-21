@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Client UI files already copied to /opt/heimdall - see ../appspec.yml
 if [ ! hash nginx 2>/dev/null ]
 then
