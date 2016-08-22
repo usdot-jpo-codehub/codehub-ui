@@ -9,9 +9,11 @@
   </div>
 
   <div class="container-fluid">
-    <div class="row">
+    <div class="row flex-row">
 
-      <compose if.bind="!landing" view="../components/filters.html"></compose>
+      <div class="col-lg-2 col-sm-3 aside col-filters">
+        <compose if.bind="!landing" view="../components/filters.html"></compose>
+      </div>
 
       <div class="${landing ? 'col-lg-12' : 'col-lg-10 col-sm-9 with-filters'} cards-wrapper">
 
