@@ -6587,6 +6587,13 @@ body {
 .sort-col p {
   margin-bottom: 0;
 }
+.cards-sorting {
+  margin: 0;
+  margin-top: 10px;
+}
+.cards-sorting p {
+  margin: 0;
+}
 .label {
   text-transform: uppercase;
   font-family: "Roboto Condensed";

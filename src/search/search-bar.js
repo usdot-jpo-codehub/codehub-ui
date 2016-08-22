@@ -2,13 +2,13 @@ import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import $ from 'jquery';
 import { typeahead } from 'corejs-typeahead';
-import { SearchProjectData } from '../dataRepository/searchProjectData';
+import { DataContext } from '../services/datacontext';
 
-@inject(SearchProjectData, Router)
+@inject(DataContext, Router)
 export class SearchBar {
 
-  constructor(searchProjectData, router) {
-    this.searchProjectData = searchProjectData;
+  constructor(dataContext, router) {
+    this.dataContext = dataContext;
     this.router = router;
 
     this.landing = true;
@@ -17,7 +17,7 @@ export class SearchBar {
   }
 
   executeSearch(searchText) {
-    this.router.navigateToRoute('result', { searchText });
+    this.router.navigateToRoute('results', { searchText });
     $('#searchBox .typeahead').typeahead('close');
   }
 
@@ -30,7 +30,7 @@ export class SearchBar {
   }
 
   attached() {
-    const search = this.searchProjectData;
+    const search = this.dataContext;
 
     const suggestions = (query, syncResults, asyncResults) => {
       search.findSuggestion(query).then(data => {

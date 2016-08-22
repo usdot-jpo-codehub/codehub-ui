@@ -2,11 +2,14 @@ import { inject } from 'aurelia-framework';
 import { HttpClient, json } from 'aurelia-fetch-client';
 
 const baseUrl = '/api/projects';
+
 @inject(HttpClient)
-export class SearchProjectData {
+export class DataContext {
   constructor(httpClient) {
     this.http = httpClient;
   }
+
+  // TODO Wrap API calls in promises to catch errors
 
   getAll() {
     return this.http.fetch(baseUrl, {

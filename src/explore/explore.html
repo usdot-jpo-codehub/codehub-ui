@@ -1,0 +1,36 @@
+<template>
+  <require from="../resources/value-converters/sort"></require>
+  <require from="../resources/value-converters/pick"></require>
+  <require from="../resources/value-converters/filter"></require>
+  <require from="../resources/value-converters/unique"></require>
+
+  <div class="container-fluid title-wrapper">
+    <h2 class="page-title"><span>${projectTitle}</span></h2>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row flex-row">
+
+      <div class="col-lg-2 col-sm-3 aside col-filters">
+        <compose if.bind="!landing" view="../components/filters.html"></compose>
+      </div>
+
+      <div class="${landing ? 'col-lg-12' : 'col-lg-10 col-sm-9 with-filters'} cards-wrapper">
+
+        <compose view="../components/sorting.html"></compose>
+
+        <div class="row">
+          <template
+            repeat.for="repo of projects |
+            sort: { propertyName: selectedSort, direction: sortDirection} |
+            filter: { propertyName: 'organization', filterArray: filters.selectedOrganizations}:filters.selectedOrganizations.length |
+            filter: { propertyName: 'language', filterArray: filters.selectedLanguages}:filters.selectedLanguages.length">
+            <div class="clearfix" if.bind="$index % 3 == 0"></div>
+            <compose view-model="../components/card" model.bind="repo"></compose>
+          </template>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</template>
