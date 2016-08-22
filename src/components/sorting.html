@@ -1,10 +1,9 @@
 <template>
   <div class="row flex-row">
     <div class="col-lg-12 col-md-12 col-sm-12">
-      <div class="cards-sorting">
-        <p if.bind="!landing">We've found ${projects.length} repositories!</p>
-        <p if.bind="landing"></p>
-        <form class="form-inline">
+      <div class="cards-sorting clearfix">
+        <p class="pull-left" if.bind="!landing">We've found ${projects.length} repositories!</p>
+        <form class="form-inline pull-right">
           <div class="btn-group">
             <label class="${sortDirection == 'descending' ? 'btn btn-default active' : 'btn btn-default'}">
               <input type="radio" name="sortDirection" checked.two-way="sortDirection" autocomplete="off"
