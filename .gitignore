@@ -43,6 +43,7 @@ jspm_packages
 .DS_Store
 .idea
 .project
+*.iml
 
 # 'gulp build' output
 dist/*
