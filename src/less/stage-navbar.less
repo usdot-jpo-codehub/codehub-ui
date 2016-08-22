@@ -102,5 +102,62 @@
 				color: @white;
 			}
 		}
+		
+	}
+
+	.user-nav {
+		.utility-icons {
+			a{
+				padding-top: 10px;
+				padding-bottom: 10px;
+
+				.material-icons {
+					line-height: 30px;
+					font-size: @font-size-material;
+				}
+			}
+		}
+	}
+
+	.navbar-search {
+		.input-group {
+			height: 100%;
+			background-color: fade(@black, 20%);
+			line-height: 54px;
+			padding-left: 40px;
+
+			> .material-icons {
+				position: absolute;
+				color: fade(@white, 60%);
+				left: 10px;
+				top: 12px;
+				font-size: @font-size-material;
+			}
+
+			.form-control {
+				background-color: transparent;
+				border: none;
+				padding: 0 12px;
+				height: 100%;
+				line-height: 100%;
+				color: @white;
+
+				&::-webkit-input-placeholder {
+					color: fade(@white, 60%);
+				}
+			}
+
+			.input-group-btn {
+				.btn-default {
+					background-color: transparent;
+					color: @white;
+					border: none;
+
+					.material-icons {
+						font-size: @font-size-material;
+					}
+				}
+			}
+		}
 	}	
 }

@@ -14,9 +14,9 @@
           </li>
         </ul>
         <div if.bind="projects.title = 'project-details'">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#" id="searchBtn"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-          <li><a href="#">Notifications</a></li>
+        <ul class="nav navbar-nav navbar-right user-nav">
+          <li class="utility-icons"><a href="#" id="searchBtn"><i class="material-icons">search</i></a></li>
+          <li class="utility-icons"><a href="#"><i class="material-icons">notifications</i></a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle utility-nav" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <img src="../../../../img/04-Avatar-img.png" class="user-avatar"></i> Hello, Luke <span class="caret"></span>
@@ -30,11 +30,12 @@
           </li>
         </ul>
 
-        <form id="searchForm" class="custom-form hidden" role="search">
+        <form id="searchForm" class="navbar-search hidden" role="search">
           <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search">
+            <i class="material-icons">search</i>
+            <input type="text" class="form-control" placeholder="Search">
             <span class="input-group-btn">
-              <button class="btn btn-default" type="submit"><i class="fa fa-times"></i></button>
+              <button class="btn btn-default" type="submit"><i class="material-icons">close</i></button>
             </span>
           </div>
         </form>

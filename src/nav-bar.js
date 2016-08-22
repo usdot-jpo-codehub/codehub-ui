@@ -5,6 +5,7 @@ export class NavBar {
   attached() {
     $('#searchBtn').on('click', event => {
       $(this).addClass('hidden');
+      $('#searchBtn').parent().addClass('hidden');
       $('#titleBarNav').addClass('hidden');
       $(this).closest($('.container-fluid')).find($('#titleBarNav')).addClass('hidden');
       $('#searchForm').removeClass('hidden');
@@ -15,6 +16,7 @@ export class NavBar {
       $('#searchBtn').removeClass('hidden');
       $('#titleBarNav').removeClass('hidden');
       $('#searchForm').addClass('hidden');
+       $('#searchBtn').parent().removeClass('hidden');
     });
   }
 

@@ -7011,6 +7011,46 @@ label.btn > input[type='radio'] {
   background-color: rgba(0, 0, 0, 0.25);
   color: #ffffff;
 }
+.navbar-default .user-nav .utility-icons a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.navbar-default .user-nav .utility-icons a .material-icons {
+  line-height: 30px;
+  font-size: 28px;
+}
+.navbar-default .navbar-search .input-group {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  line-height: 54px;
+  padding-left: 40px;
+}
+.navbar-default .navbar-search .input-group > .material-icons {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.6);
+  left: 10px;
+  top: 12px;
+  font-size: 28px;
+}
+.navbar-default .navbar-search .input-group .form-control {
+  background-color: transparent;
+  border: none;
+  padding: 0 12px;
+  height: 100%;
+  line-height: 100%;
+  color: #ffffff;
+}
+.navbar-default .navbar-search .input-group .form-control::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+.navbar-default .navbar-search .input-group .input-group-btn .btn-default {
+  background-color: transparent;
+  color: #ffffff;
+  border: none;
+}
+.navbar-default .navbar-search .input-group .input-group-btn .btn-default .material-icons {
+  font-size: 28px;
+}
 .cards-wrapper > .row {
   padding: 0 20px 20px;
 }
