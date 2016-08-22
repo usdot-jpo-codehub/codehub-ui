@@ -1,9 +1,8 @@
 <template>
-  <require from="nav-bar.html"></require>
 
   <div class="hero-banner ${router.currentInstruction.fragment == '/' ? '' : 'secondary'}">
     <div class="inner">
-      <nav-bar router.bind="router"></nav-bar>
+      <compose view-model="nav-bar" router.bind="router"></compose>
       <div class="jumbotron hero-jumbotron">
         <div class="container-fluid">
           <compose view-model="search/search-bar" model.bind="router.currentInstruction.fragment == '/'"></compose>
