@@ -1,19 +1,25 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
+import { EventAggregator } from 'aurelia-event-aggregator';
 import $ from 'jquery';
 import { typeahead } from 'corejs-typeahead';
 import { DataContext } from '../services/datacontext';
 
-@inject(DataContext, Router)
+@inject(DataContext, Router, EventAggregator)
 export class SearchBar {
 
-  constructor(dataContext, router) {
+  constructor(dataContext, router, eventAggregator) {
     this.dataContext = dataContext;
     this.router = router;
+    this.eventAggregator = eventAggregator;
 
     this.landing = true;
 
     this.searchText = '';
+
+    this.subscriber = this.eventAggregator.subscribe('navSearch', searchText => {
+      this.searchText = searchText;
+    });
   }
 
   executeSearch(searchText) {
