@@ -6738,16 +6738,6 @@ a:focus {
     min-height: 50px;
   }
 }
-.stage-fadeOut {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s linear 300ms, opacity 300ms;
-}
-.stage-fadeIn {
-  visibility: visible;
-  opacity: 1;
-  transition: visibility 0s linear 0s, opacity 300ms;
-}
 .hero-banner {
   background: #f05154;
   /* Old browsers */
@@ -7052,6 +7042,18 @@ label.btn > input[type='radio'] {
 }
 .navbar-default .navbar-search .input-group .form-control::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.6);
+}
+.navbar-default .navbar-search .input-group .typeahead {
+  padding: 0 12px;
+  height: 100%;
+  line-height: 100%;
+  color: #ffffff;
+  position: relative !important;
+}
+.navbar-default .navbar-search .input-group .twitter-typeahead .tt-menu {
+  width: 105%;
+  top: 55px !important;
+  left: -38px !important;
 }
 .navbar-default .navbar-search .input-group .input-group-btn .btn-default {
   background-color: transparent;

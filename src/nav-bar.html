@@ -7,7 +7,7 @@
           </a>
       </div>
       <div id="navbar">
-        <ul id="titleBarNav" class="nav navbar-nav stage-fadeIn">
+        <ul id="titleBarNav" class="nav navbar-nav">
           <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : 'stage'}">
             <a href.bind="row.href">${row.title}</a>
           </li>
