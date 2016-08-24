@@ -17,8 +17,14 @@ export class SearchBar {
 
     this.searchText = '';
 
+    // On nav bar search update search text
     this.subscriber = this.eventAggregator.subscribe('navSearch', searchText => {
       this.searchText = searchText;
+    });
+
+    // When leaving the results page reset search text
+    this.subscriber = this.eventAggregator.subscribe('detachResults', searchText => {
+      this.searchText = '';
     });
   }
 

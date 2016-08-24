@@ -1,14 +1,16 @@
 import { inject, bindable } from 'aurelia-framework';
 import { activationStrategy } from 'aurelia-router';
+import { EventAggregator } from 'aurelia-event-aggregator';
 import { DataContext } from '../services/datacontext';
 import { Filters } from '../components/filters';
 
-@inject(DataContext, Filters)
+@inject(DataContext, Filters, EventAggregator)
 export class Results {
 
-  constructor(dataContext, filters) {
+  constructor(dataContext, filters, ea) {
     this.dataContext = dataContext;
     this.filters = filters;
+    this.ea = ea;
 
     this.projects = [];
 
@@ -51,6 +53,10 @@ export class Results {
         this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
         return this.projects;
       });
+  }
+
+  detached() {
+    this.ea.publish('detachResults');
   }
 
 }
