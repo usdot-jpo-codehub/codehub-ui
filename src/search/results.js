@@ -32,7 +32,7 @@ export class Results {
   }
 
   determineActivationStrategy() {
-    return activationStrategy.replace;
+    return activationStrategy.invokeLifecycle;
   }
 
   activate(params) {
