@@ -7204,37 +7204,58 @@ label.btn > input[type='radio'] {
   border-radius: 0 0 4px 4px;
   overflow: hidden;
 }
-.cards-wrapper .card-btns .col-md-6 {
+.cards-wrapper .card-btns .col-md-6,
+.cards-wrapper .card-btns .col-md-3 {
   margin-bottom: 0;
 }
-.cards-wrapper .card-btns .col-md-6:first-of-type a {
-  border-right: 1px solid #d0d0d0;
-}
-.cards-wrapper .card-btns .col-md-6 a {
+.cards-wrapper .card-btns .col-md-6 a,
+.cards-wrapper .card-btns .col-md-3 a {
   text-transform: uppercase;
   font-weight: bold;
   margin: 0 -15px;
   border-top: 1px solid #dddddd;
+  border-right: 1px solid #d0d0d0;
   background: #f9f9f9;
   display: block;
   padding: 10px 0;
   text-align: center;
   transition: all 0.2s linear;
 }
-.cards-wrapper .card-btns .col-md-6 a:hover {
+.cards-wrapper .card-btns .col-md-6 a:hover,
+.cards-wrapper .card-btns .col-md-3 a:hover {
   background: #00b0bc;
   color: #ffffff;
   border-color: #00b0bc;
 }
-.cards-wrapper .card-btns .col-md-6 a .mega-octicon {
+.cards-wrapper .card-btns .col-md-6 a .material-icons,
+.cards-wrapper .card-btns .col-md-3 a .material-icons {
+  vertical-align: -5px;
+  margin: 0 5px;
+}
+.cards-wrapper .card-btns .col-md-6 a .mega-octicon,
+.cards-wrapper .card-btns .col-md-3 a .mega-octicon {
   font-size: 24px;
   vertical-align: -4px;
 }
-.cards-wrapper .card-btns .col-md-6 a .octicon-book {
+.cards-wrapper .card-btns .col-md-6 a .octicon-book,
+.cards-wrapper .card-btns .col-md-3 a .octicon-book {
   margin-right: 5px;
 }
-.cards-wrapper .card-btns .col-md-6 a .octicon-chevron-right {
+.cards-wrapper .card-btns .col-md-6 a .octicon-chevron-right,
+.cards-wrapper .card-btns .col-md-3 a .octicon-chevron-right {
   margin-left: 5px;
+}
+.cards-wrapper .card-btns .col-md-6:first-of-type a {
+  border-right: 1px solid #d0d0d0;
+}
+.cards-wrapper .card-btns .col-md-6 a {
+  border-right: none;
+}
+.cards-wrapper .card-btns .col-md-3:last-of-type a {
+  border-right: none;
+}
+.cards-wrapper .card-search .last-updated {
+  border-bottom: none;
 }
 .proj-details-wrapper {
   padding-top: 30px;

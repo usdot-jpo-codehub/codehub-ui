@@ -5,7 +5,7 @@
         <form submit.delegate="executeSearch(searchText)">
             <div class="form-group">
                 <label for="searchBar" class="control-label sr-only">Search</label>
-                <div class="${landing ? 'col-lg-offset-3' : ''} col-lg-6 search-field">
+                <div class="${landing ? 'col-lg-offset-3 col-lg-6' : 'col-lg-12'} search-field">
                     <div id="searchBox" class="input-group">
                         <input type="text" class="typeahead form-control input-lg" value.bind="searchText" delay.bind="400" id="searchBar" placeholder="${landing ? 'nodejs, jquery, bootstrap and more...' : 'Search'}">
                         <span class="input-group-btn">
