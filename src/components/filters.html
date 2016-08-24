@@ -1,5 +1,15 @@
 <template>
   <require from="../resources/value-converters/unique"></require>
+
+<select id="example-getting-started" multiple="multiple">
+  <option value="cheese">Cheese</option>
+  <option value="tomatoes">Tomatoes</option>
+  <option value="mozarella">Mozzarella</option>
+  <option value="mushrooms">Mushrooms</option>
+  <option value="pepperoni">Pepperoni</option>
+  <option value="onions">Onions</option>
+</select>
+
   <!-- <div class="col-lg-2 col-sm-3 aside col-filters"> -->
     <h5>Filters</h5>
     <div class="panel panel-default">
@@ -11,7 +21,13 @@
       </div>
       <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
         <div class="panel-body">
-          <ul class="list-group">
+
+          <!-- <select id="stage-org" multiple="multiple">
+            <option repeat.for="organization of projects | unique: { propertyName: 'organization'}" value.bind="organization">${organization}</option>
+          </select>  -->  
+
+
+          <!-- <ul class="list-group">
             <li class="list-group-item">
               <form>
                 <div class="checkbox">
@@ -33,7 +49,7 @@
                 </div>
               </form>
             </li>
-          </ul>
+          </ul> -->
         </div>
       </div>
     </div>

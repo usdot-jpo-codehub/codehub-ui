@@ -1,3 +1,6 @@
+import $ from 'jquery';
+import { multiselect } from 'bootstrap-multiselect';
+
 export class Filters {
   constructor() {
     this.selectedOrganizations = [];
@@ -6,6 +9,12 @@ export class Filters {
 
   activate() {
 
+  }
+
+  attached() {
+    // $(document).ready(function() {
+      $('#example-getting-started').multiselect();
+    // });
   }
 
   getUniqueValues(array, property) {

@@ -88,6 +88,7 @@
       "aurelia-templating-router": "npm:aurelia-templating-router@^1.0.0-beta.1.1.2",
       "bootstrap": "github:twbs/bootstrap@^3.3.5",
       "bootstrap-less": "github:distros/bootstrap-less@^3.3.9",
+      "bootstrap-multiselect": "npm:bootstrap-multiselect@^0.9.13-1",
       "corejs-typeahead": "npm:corejs-typeahead@^0.11.1",
       "fetch": "github:github/fetch@^0.11.0",
       "font-awesome": "npm:font-awesome@^4.5.0",
