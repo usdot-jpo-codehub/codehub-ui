@@ -29,10 +29,10 @@
           </li>
         </ul>
 
-        <form id="searchForm" submit.delegate="executeSearch(searchText)" class="navbar-search hidden" role="search">
-          <div id="searchBox" class="input-group">
+        <form id="searchForm" submit.delegate="executeNavSearch(navSearchText)" class="navbar-search hidden" role="search">
+          <div id="navSearchBox" class="input-group">
             <i class="material-icons">search</i>
-            <input type="text" value.bind="searchText" class="typeahead form-control" placeholder="Search">
+            <input type="text" value.bind="navSearchText" class="typeahead form-control" placeholder="Search">
             <span class="input-group-btn">
               <button class="btn btn-default" type="submit"><i class="material-icons">close</i></button>
             </span>
