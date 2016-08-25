@@ -92,50 +92,68 @@
 	}
 
 	.secondary {
+		padding: 0;
 
-			padding: 0;
+		&.hero-jumbotron {
+			text-align: left;
+		}
 
-			.input-lg {
-				background-color: transparent !important;
+		.container-fluid {
+
+			h1, p {
+				text-align: left;
 			}
 
-			.input-group {
-
-				.form-control {
-					background: none !important;
-					color: @white;
-					text-shadow: 0 3px 4px fade(@black, 20%);
-					padding: 0;
-
-					&::-webkit-input-placeholder {
-						color: @white;
-					}
-				}
-
-				&:after {
-					position: absolute;
-					content: "";
-					width: 100%;
-					height: 2px;
-					background-color: @white;
-					top: auto;
-					bottom: 0;
-					left: 0;
-					right: 0;
-					box-shadow: 0 3px 4px fade(@black, 20%);
-					transform: none;
-				}
+			h1 {
+				margin-bottom: 0;
 			}
 
-			.stage-search-btn {
-				border-radius: 0;
-				background: none;
+			p {
+				font-size: @font-size-large;
+				margin-bottom: 30px;
+			}
+		}
+
+		.input-lg {
+			background-color: transparent !important;
+		}
+
+		.input-group {
+
+			.form-control {
+				background: none !important;
+				color: @white;
 				text-shadow: 0 3px 4px fade(@black, 20%);
+				padding: 0;
 
-				.material-icons {
+				&::-webkit-input-placeholder {
 					color: @white;
 				}
 			}
 
+			&:after {
+				position: absolute;
+				content: "";
+				width: 100%;
+				height: 2px;
+				background-color: @white;
+				top: auto;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				box-shadow: 0 3px 4px fade(@black, 20%);
+				transform: none;
+			}
+		}
+
+		.stage-search-btn {
+			border-radius: 0;
+			background: none;
+			text-shadow: 0 3px 4px fade(@black, 20%);
+
+			.material-icons {
+				color: @white;
+			}
+		}
 	}
 }

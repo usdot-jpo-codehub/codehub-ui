@@ -6844,6 +6844,20 @@ a:focus {
 .hero-banner .secondary {
   padding: 0;
 }
+.hero-banner .secondary.hero-jumbotron {
+  text-align: left;
+}
+.hero-banner .secondary .container-fluid h1,
+.hero-banner .secondary .container-fluid p {
+  text-align: left;
+}
+.hero-banner .secondary .container-fluid h1 {
+  margin-bottom: 0;
+}
+.hero-banner .secondary .container-fluid p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
 .hero-banner .secondary .input-lg {
   background-color: transparent !important;
 }

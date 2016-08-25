@@ -13,6 +13,7 @@ export class Filters {
 
   attached() {
     $('#example-getting-started').multiselect();
+    $('#stage-org').multiselect();
   }
 
   getUniqueValues(array, property) {
