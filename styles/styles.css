@@ -6841,22 +6841,22 @@ a:focus {
   font-size: 1.5em;
   font-weight: 300;
 }
-.hero-banner.secondary .hero-jumbotron {
+.hero-banner .secondary {
   padding: 0;
 }
-.hero-banner.secondary .hero-jumbotron .input-lg {
+.hero-banner .secondary .input-lg {
   background-color: transparent !important;
 }
-.hero-banner.secondary .hero-jumbotron .input-group .form-control {
+.hero-banner .secondary .input-group .form-control {
   background: none !important;
   color: #ffffff;
   text-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
   padding: 0;
 }
-.hero-banner.secondary .hero-jumbotron .input-group .form-control::-webkit-input-placeholder {
+.hero-banner .secondary .input-group .form-control::-webkit-input-placeholder {
   color: #ffffff;
 }
-.hero-banner.secondary .hero-jumbotron .input-group:after {
+.hero-banner .secondary .input-group:after {
   position: absolute;
   content: "";
   width: 100%;
@@ -6869,12 +6869,12 @@ a:focus {
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
   transform: none;
 }
-.hero-banner.secondary .hero-jumbotron .stage-search-btn {
+.hero-banner .secondary .stage-search-btn {
   border-radius: 0;
   background: none;
   text-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
 }
-.hero-banner.secondary .hero-jumbotron .stage-search-btn .material-icons {
+.hero-banner .secondary .stage-search-btn .material-icons {
   color: #ffffff;
 }
 .btn {

@@ -46,6 +46,8 @@ export class Results {
         });
     }
 
+    this.ea.publish('searchExecuted', params.searchText);
+
     return this.dataContext.searchByProjectNameOrDescription(params.searchText)
       .then(projects => {
         this.projects = projects;

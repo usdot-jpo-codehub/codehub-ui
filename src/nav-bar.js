@@ -16,7 +16,7 @@ export class NavBar {
   }
 
   executeNavSearch(searchText) {
-    this.eventAggregator.publish('navSearch', searchText);
+    this.eventAggregator.publish('searchExecuted', searchText);
 
     this.router.navigateToRoute('results', { searchText });
     $('#navSearchBox .typeahead').typeahead('close');
