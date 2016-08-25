@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import $ from 'bootstrap';
 import { multiselect } from 'bootstrap-multiselect';
 
 export class Filters {
@@ -12,9 +12,7 @@ export class Filters {
   }
 
   attached() {
-    // $(document).ready(function() {
-      $('#example-getting-started').multiselect();
-    // });
+    $('#example-getting-started').multiselect();
   }
 
   getUniqueValues(array, property) {
