@@ -6,7 +6,7 @@ import { typeahead } from 'corejs-typeahead';
 import { DataContext } from '../services/datacontext';
 
 @inject(DataContext, Router, EventAggregator)
-export class SearchBar {
+export class SearchBarSecondary {
 
   constructor(dataContext, router, eventAggregator) {
     this.dataContext = dataContext;
@@ -18,7 +18,7 @@ export class SearchBar {
     this.searchText = '';
 
     // On nav bar search update search text
-    this.subscriber = this.eventAggregator.subscribe('navSearch', searchText => {
+    this.subscriber = this.eventAggregator.subscribe('searchExecuted', searchText => {
       this.searchText = searchText;
     });
 

@@ -4,29 +4,40 @@
       <div class="navbar-header">
           <a class="navbar-brand" route-href="route:popular">
             <img src="../../../../img/stage-logo-color.svg" alt="Stage" id="logo">
-            <!-- <img src="../../../../img/stage-logo-white.svg" alt="Stage" id="logo"> -->
           </a>
       </div>
       <div id="navbar">
-        <ul class="nav navbar-nav">
+        <ul id="titleBarNav" class="nav navbar-nav">
           <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : 'stage'}">
             <a href.bind="row.href">${row.title}</a>
           </li>
         </ul>
         <div if.bind="projects.title = 'project-details'">
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right user-nav">
+          <li class="utility-icons"><a href="#" click.trigger="" id="searchBtn"><i class="material-icons">search</i></a></li>
+          <li class="utility-icons"><a href="#"><i class="material-icons">notifications</i></a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle utility-nav" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <img src="../../../../img/04-Avatar-img.png" class="user-avatar"></i> Hello, Luke <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
                 <li><a href="#">Profile</a></li>
-                <li><a href="#">Notifications</a></li>
+
                 <li role="separator" class="divider"></li>
                 <li><a href="#">Logout</a></li>
             </ul>
           </li>
         </ul>
+
+        <form id="searchForm" submit.delegate="executeNavSearch(navSearchText)" class="navbar-search hidden" role="search">
+          <div id="navSearchBox" class="input-group">
+            <i class="material-icons">search</i>
+            <input type="text" value.bind="navSearchText" class="typeahead form-control" placeholder="Search">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit"><i class="material-icons">close</i></button>
+            </span>
+          </div>
+        </form>
       </div>
     </div>
   </div>

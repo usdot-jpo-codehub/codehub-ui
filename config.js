@@ -24,6 +24,7 @@ System.config({
     "aurelia-animator-css": "npm:aurelia-animator-css@1.0.0-rc.1.0.0",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-rc.1.0.1",
     "aurelia-dialog": "npm:aurelia-dialog@1.0.0-beta.2.0.0",
+    "aurelia-event-aggregator": "npm:aurelia-event-aggregator@1.0.0",
     "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-rc.1.0.1",
     "aurelia-framework": "npm:aurelia-framework@1.0.0-rc.1.0.2",
     "aurelia-history-browser": "npm:aurelia-history-browser@1.0.0-rc.1.0.0",
@@ -40,6 +41,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "bootstrap-less": "github:distros/bootstrap-less@3.3.9",
+    "bootstrap-multiselect": "npm:bootstrap-multiselect@0.9.13-1",
     "core-js": "npm:core-js@1.2.7",
     "corejs-typeahead": "npm:corejs-typeahead@0.11.1",
     "fetch": "github:github/fetch@0.11.1",
@@ -67,7 +69,7 @@ System.config({
       "path-browserify": "npm:path-browserify@0.0.0"
     },
     "github:jspm/nodelibs-process@0.1.2": {
-      "process": "npm:process@0.11.7"
+      "process": "npm:process@0.11.8"
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
@@ -120,6 +122,9 @@ System.config({
       "aurelia-metadata": "npm:aurelia-metadata@1.0.0-rc.1.0.1",
       "aurelia-pal": "npm:aurelia-pal@1.0.0-rc.1.0.0",
       "aurelia-templating": "npm:aurelia-templating@1.0.0-rc.1.0.1"
+    },
+    "npm:aurelia-event-aggregator@1.0.0": {
+      "aurelia-logging": "npm:aurelia-logging@1.0.0"
     },
     "npm:aurelia-event-aggregator@1.0.0-rc.1.0.0": {
       "aurelia-logging": "npm:aurelia-logging@1.0.0-rc.1.0.1"
@@ -216,6 +221,9 @@ System.config({
     "npm:babel-runtime@5.8.38": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:bootstrap-multiselect@0.9.13-1": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:buffer@3.6.0": {
       "base64-js": "npm:base64-js@0.0.8",
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
@@ -250,7 +258,7 @@ System.config({
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:process@0.11.7": {
+    "npm:process@0.11.8": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "vm": "github:jspm/nodelibs-vm@0.1.0"
