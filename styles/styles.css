@@ -3194,7 +3194,8 @@ fieldset[disabled] .btn-danger.active {
   background-color: #fff;
 }
 .btn-link,
-.btn-filters {
+.btn-filters,
+.btn-cancel {
   color: #00b0bc;
   font-weight: normal;
   border-radius: 0;
@@ -3204,7 +3205,8 @@ fieldset[disabled] .btn-danger.active {
 .btn-link.active,
 .btn-link[disabled],
 fieldset[disabled] .btn-link,
-.btn-filters {
+.btn-filters,
+.btn-cancel {
   background-color: transparent;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -3213,7 +3215,8 @@ fieldset[disabled] .btn-link,
 .btn-link:hover,
 .btn-link:focus,
 .btn-link:active,
-.btn-filters {
+.btn-filters,
+.btn-cancel {
   border-color: transparent;
 }
 .btn-link:hover,
@@ -6970,6 +6973,13 @@ fieldset[disabled] .btn-primary.active {
 }
 .btn-filters.collapsed i {
   transform: rotate(0deg);
+}
+.btn-cancel {
+  position: absolute;
+  top: 10px;
+  z-index: 9999;
+  right: 50px;
+  color: #f26b64;
 }
 a.btn {
   text-decoration: none;
