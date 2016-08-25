@@ -36,6 +36,22 @@
 	}
 }
 
+.btn-filters {
+	&:extend(.btn-link);
+
+	i {
+		transform: rotate(180deg);
+		vertical-align: -7px;
+		transition: all 0.2s linear;
+	}
+
+	&.collapsed {
+		i {
+			transform: rotate(0deg);
+		}
+	}
+}
+
 a.btn {
 	text-decoration: none;
 }

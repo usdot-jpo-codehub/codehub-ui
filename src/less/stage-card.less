@@ -22,6 +22,7 @@
 		border-radius: @stage-border-radius;
 		box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
 		position: relative;
+		margin-bottom: 10px;
 
 		.ribbon-wrapper {
 			width: 77px;
@@ -222,10 +223,32 @@
 			}
 		}
 	}
+}
+
+.search-results {
+	.row {
+		padding: 0;
+	}
 
 	.card-search {
+
+		margin-bottom: 10px;
+
+		.proj-desc {
+			padding-top: 0;
+		}
+
+		.proj-desc,
+		.last-updated {
+			padding-left: 90px;
+		}
+
 		.last-updated {
 			border-bottom: none;
+		}
+
+		.col-lg-4 {
+			border-left: 1px solid lighten(@gray,25%);
 		}
 	}
 }
