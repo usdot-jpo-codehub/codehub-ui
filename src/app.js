@@ -13,7 +13,7 @@ export class App {
       { route: 'favorites', name: 'favorites', viewPorts: { mainContent: { moduleId: 'favorites/favorites' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: true, title: 'Bookmarks' },
       { route: 'favorites', name: 'favorites', viewPorts: { mainContent: { moduleId: 'favorites/favorites' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: true, title: 'Insights' },
       { route: 'results', name: 'results', viewPorts: { mainContent: { moduleId: 'search/results' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: false, title: 'Search Results' },
-      { route: 'project-details', name: 'project-details', viewPorts: { mainContent: { moduleId: 'project-details/project-details-secondary' }, headerContent: { moduleId: 'search/search-bar' } }, nav: false, title: 'Project Details' },
+      { route: 'project-details', name: 'project-details', viewPorts: { mainContent: { moduleId: 'project-details/project-details' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: false, title: 'Project Details' },
     ]);
     this.router = router;
   }

@@ -42,7 +42,7 @@ export class DataContext {
   }
 
   findById(id) {
-    const adjustedURL = `${baseUrl}/_id:${id}`;
+    const adjustedURL = `${baseUrl}/findById/${id}`;
     return this.http.fetch(adjustedURL)
       .then(response => response.json());
   }
