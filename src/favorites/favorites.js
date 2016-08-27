@@ -30,7 +30,7 @@ export class Favorites {
   }
 
   getData() {
-    return this.dataContext.getPopular().then(results => {
+    return this.dataContext.findPopular().then(results => {
       this.projects = results;
       this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
       this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
