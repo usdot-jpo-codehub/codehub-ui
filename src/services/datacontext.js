@@ -18,14 +18,14 @@ export class DataContext {
       .then(response => response.json());
   }
 
-  getPopular() {
-    return this.http.fetch(`${baseUrl}/searchByPopularity`, {
+  findPopular() {
+    return this.http.fetch(`${baseUrl}/findPopular`, {
       method: 'GET',
     })
       .then(response => response.json());
   }
 
-  searchByProjectNameOrDescription(searchText) {
+  search(searchText) {
     return this.http.fetch(`${baseUrl}/search`, {
       method: 'POST',
       body: json(searchText),
@@ -33,8 +33,8 @@ export class DataContext {
       .then(response => response.json());
   }
 
-  findSuggestion(searchText) {
-    return this.http.fetch(`${baseUrl}/findSuggestion`, {
+  findSuggestions(searchText) {
+    return this.http.fetch(`${baseUrl}/findSuggestions`, {
       method: 'POST',
       body: json(searchText),
     })
@@ -55,8 +55,8 @@ export class DataContext {
       .then(response => response.json());
   }
 
-  getJavaDependencies(org, name) {
-    const adjustedURL = `${baseUrl}/findProjectDependencies/${org}/${name}`;
+  findComponentDependencies(org, name) {
+    const adjustedURL = `${baseUrl}/findComponentDependencies/${org}/${name}`;
     return this.http.fetch(adjustedURL, {
       method: 'GET',
     })

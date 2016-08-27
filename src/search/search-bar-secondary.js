@@ -45,7 +45,7 @@ export class SearchBarSecondary {
     const search = this.dataContext;
 
     const suggestions = (query, syncResults, asyncResults) => {
-      search.findSuggestion(query).then(data => {
+      search.findSuggestions(query).then(data => {
         const matches = [];
         for (const obj in data) {
           if ({}.hasOwnProperty.call(data, obj)) {

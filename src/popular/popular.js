@@ -28,7 +28,7 @@ export class Popular {
   }
 
   getData() {
-    return this.dataContext.getPopular().then(results => {
+    return this.dataContext.findPopular().then(results => {
       this.projects = results;
       return this.projects;
     });
