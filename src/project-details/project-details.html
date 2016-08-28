@@ -89,7 +89,7 @@
                                         <a href="#">See More</a>
                                     </div>
                                     <ul class="flex-links">
-                                        <li repeat.for="depend of repo.project_dependency" class="flex-item"><a href="#">${depend.artifactId}</a></li>
+                                        <li repeat.for="depend of repo.componentDependencies" class="flex-item"><a href="#">${depend.artifactId}</a></li>
                                         <!-- <li class="flex-item">
                                             <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/nodejs-icon.svg"> <span>NodeJS</span></a>
                                         </li>
