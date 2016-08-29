@@ -11,7 +11,7 @@ export class App {
       { route: '', name: 'popular', viewPorts: { mainContent: { moduleId: 'popular/popular' }, headerContent: { moduleId: 'search/search-bar' } }, nav: true, title: 'Popular' },
       { route: 'explore', name: 'explore', viewPorts: { mainContent: { moduleId: 'explore/explore' }, headerContent: { moduleId: 'components/page-title-secondary' } }, nav: true, title: 'Explore' },
       { route: 'favorites', name: 'favorites', viewPorts: { mainContent: { moduleId: 'favorites/favorites' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: true, title: 'Bookmarks' },
-      { route: 'favorites', name: 'favorites', viewPorts: { mainContent: { moduleId: 'favorites/favorites' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: true, title: 'Insights' },
+      { route: 'favorites', name: 'favorites', viewPorts: { mainContent: { moduleId: 'favorites/favorites' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: true, title: 'Insight' },
       { route: 'results', name: 'results', viewPorts: { mainContent: { moduleId: 'search/results' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: false, title: 'Search Results' },
       { route: 'project-details', name: 'project-details', viewPorts: { mainContent: { moduleId: 'project-details/project-details' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: false, title: 'Project Details' },
     ]);

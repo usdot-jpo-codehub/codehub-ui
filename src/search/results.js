@@ -48,7 +48,7 @@ export class Results {
 
     this.ea.publish('searchExecuted', params.searchText);
 
-    return this.dataContext.searchByProjectNameOrDescription(params.searchText)
+    return this.dataContext.search(params.searchText)
       .then(projects => {
         this.projects = projects;
         this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
