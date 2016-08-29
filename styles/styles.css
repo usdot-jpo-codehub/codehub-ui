@@ -6898,6 +6898,8 @@ a:focus {
 }
 .hero-banner .secondary .stage-search-btn .material-icons {
   color: #ffffff;
+  font-size: 30px;
+  line-height: 46px;
 }
 .btn {
   border-radius: 4px;
