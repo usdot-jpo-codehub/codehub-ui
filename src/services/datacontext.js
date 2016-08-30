@@ -55,12 +55,4 @@ export class DataContext {
       .then(response => response.json());
   }
 
-  findComponentDependencies(org, name) {
-    const adjustedURL = `${baseUrl}/findComponentDependencies/${org}/${name}`;
-    return this.http.fetch(adjustedURL, {
-      method: 'GET',
-    })
-      .then(response => response.json());
-  }
-
 }
