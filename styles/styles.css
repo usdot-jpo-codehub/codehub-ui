@@ -6539,49 +6539,8 @@ body {
   color: #505456;
 }
 .title-wrapper {
-  background-color: #ededed;
-  padding-top: 15px;
-}
-.title-wrapper > [class*='col-'] {
-  margin-bottom: 0;
-}
-.title-wrapper .page-title {
-  margin: 0;
-  color: #f26b64;
-  line-height: 0 !important;
-  text-align: center;
-  padding: 10px 0;
-  margin: 15px 0;
-  max-width: 100%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  font-size: 1.2em;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-family: 'Roboto Condensed';
-  font-weight: bold;
-}
-.title-wrapper .page-title span {
-  display: inline-block;
-  position: relative;
-}
-.title-wrapper .page-title span:before,
-.title-wrapper .page-title span:after {
-  content: "";
-  position: absolute;
-  height: 5px;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  top: 0;
-  width: 100px;
-}
-.title-wrapper .page-title span:before {
-  right: 100%;
-  margin-right: 15px;
-}
-.title-wrapper .page-title span:after {
-  left: 100%;
-  margin-left: 15px;
+  background-color: #ffffff;
+  margin-bottom: 25px;
 }
 .search-results {
   padding-top: 25px;
@@ -6598,6 +6557,9 @@ body {
 }
 .sort-col p {
   margin-bottom: 0;
+}
+.col-btn {
+  text-align: center;
 }
 .cards-sorting {
   margin: 0;
@@ -6761,6 +6723,84 @@ a:focus {
     min-height: 50px;
   }
 }
+.home-tabs {
+  margin: 0 -15px;
+  border: none;
+}
+.home-tabs > li {
+  width: 50%;
+}
+.home-tabs > li > a {
+  border-radius: 0;
+  border: none;
+  border-bottom: 3px solid #ffffff;
+  background-color: transparent;
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.home-tabs > li > a .material-icons {
+  vertical-align: -7px;
+}
+.home-tabs > li > a:hover,
+.home-tabs > li > a:focus {
+  border: none;
+  border-bottom: 3px solid #00b0bc;
+  background-color: transparent;
+}
+.home-tabs > li.active > a {
+  color: #00b0bc;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  border-bottom: 3px solid #00b0bc;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.home-tabs > li.active > a:hover,
+.home-tabs > li.active > a:focus {
+  color: #00b0bc;
+  border: none;
+  border-radius: 0;
+  border-bottom: 3px solid #00b0bc;
+}
+.home-tabs li:first-of-type {
+  border-right: 1px solid #d0d0d0;
+}
+.row-btns {
+  margin: 0 -15px;
+}
+.row-btns .col-md-6 {
+  margin-bottom: 0;
+}
+.row-btns .col-md-6 a {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0 -15px;
+  border-right: 1px solid #d0d0d0;
+  display: block;
+  padding: 10px 0;
+  text-align: center;
+  transition: all 0.2s linear;
+}
+.row-btns .col-md-6 a:hover,
+.row-btns .col-md-6 a:active {
+  border-bottom: 2px solid #00b0bc;
+}
+.row-btns .col-md-6 a .material-icons {
+  vertical-align: -5px;
+  margin: 0 5px;
+}
+.row-btns .col-md-6:first-of-type a {
+  border-right: 1px solid #d0d0d0;
+}
+.row-btns .col-md-6 a {
+  border-right: none;
+}
+.col-btn .material-icons {
+  vertical-align: -7px;
+}
 .hero-banner {
   background: #f05154;
   /* Old browsers */
@@ -6899,6 +6939,18 @@ a:focus {
 .btn:active,
 .btn:focus {
   outline: none !important;
+}
+.btn-default {
+  color: #00b0bc;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px 25px;
+}
+.btn-default:hover,
+.btn-default:active,
+.btn-default:focus {
+  background-color: #00b0bc;
+  color: #ffffff;
 }
 .btn-primary {
   color: #fff;
@@ -7108,8 +7160,11 @@ label.btn > input[type='radio'] {
 .navbar-default .navbar-search .input-group .input-group-btn .btn-default .material-icons {
   font-size: 28px;
 }
+.cards-wrapper {
+  margin-bottom: 0;
+}
 .cards-wrapper > .row {
-  padding: 0 20px 20px;
+  padding: 0 20px 0;
 }
 .cards-wrapper > .row .cards-sorting {
   padding-top: 20px;
@@ -7277,19 +7332,6 @@ label.btn > input[type='radio'] {
 .cards-wrapper .card-btns .col-md-3 a .material-icons {
   vertical-align: -5px;
   margin: 0 5px;
-}
-.cards-wrapper .card-btns .col-md-6 a .mega-octicon,
-.cards-wrapper .card-btns .col-md-3 a .mega-octicon {
-  font-size: 24px;
-  vertical-align: -4px;
-}
-.cards-wrapper .card-btns .col-md-6 a .octicon-book,
-.cards-wrapper .card-btns .col-md-3 a .octicon-book {
-  margin-right: 5px;
-}
-.cards-wrapper .card-btns .col-md-6 a .octicon-chevron-right,
-.cards-wrapper .card-btns .col-md-3 a .octicon-chevron-right {
-  margin-left: 5px;
 }
 .cards-wrapper .card-btns .col-md-6:first-of-type a {
   border-right: 1px solid #d0d0d0;
