@@ -1,20 +1,22 @@
 <template>
   <div class="jumbotron hero-jumbotron secondary">
-    <div class="container-fluid">
-      <div class="col-lg-12">
-        <form submit.delegate="executeSearch(searchText)">
-          <div class="form-group">
-            <label for="searchBar" class="control-label sr-only">Search</label>
-            <div class="col-lg-12 search-field">
-              <div id="searchBox" class="input-group">
-                <input type="text" class="typeahead form-control input-lg" value.bind="searchText" delay.bind="400" id="searchBar" placeholder="Search">
-                <span class="input-group-btn">
-                  <button class="btn stage-search-btn" type="submit" ><i class="material-icons">search</i><span class="sr-only">Search</span></button>
-                </span>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <form submit.delegate="executeSearch(searchText)">
+            <div class="form-group">
+              <label for="searchBar" class="control-label sr-only">Search</label>
+              <div class="search-field">
+                <div id="searchBox" class="input-group">
+                  <input type="text" class="typeahead form-control input-lg" value.bind="searchText" delay.bind="400" id="searchBar" placeholder="Search">
+                  <span class="input-group-btn">
+                    <button class="btn stage-search-btn" type="submit" ><i class="material-icons">search</i><span class="sr-only">Search</span></button>
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>
