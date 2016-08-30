@@ -67,11 +67,11 @@ export class SearchBar {
         source: suggestions,
       });
 
-    $('#searchBox .typeahead').bind('typeahead:select', (ev, suggestion) => {
+    $('#searchBox .typeahead').on('typeahead:select', (ev, suggestion) => {
       this.executeSearch(suggestion);
     });
 
-    $('#searchBox .typeahead').bind('typeahead:autocompleted', (ev, suggestion) => {
+    $('#searchBox .typeahead').on('typeahead:autocompleted', (ev, suggestion) => {
       this.searchText = suggestion;
     });
   }
