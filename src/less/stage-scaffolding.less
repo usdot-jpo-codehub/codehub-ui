@@ -69,56 +69,7 @@ body {
 
 .title-wrapper {
 	background-color: @white;
-	padding-top: 15px;
-
-	> [class*='col-'] {
-		margin-bottom: 0;
-	}
-
-	.page-title {
-		text-align: center;
-		margin: 0;
-		color: @stage-red;
-		line-height: 0 !important;
-		text-align: center;
-		padding: 10px 0;
-		margin: 15px 0;
-		max-width: 100%;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		overflow: hidden;
-		font-size: 1.2em;
-		font-weight: bold;
-		text-transform: uppercase;
-		letter-spacing: 2px;
-		font-family: 'Roboto Condensed';
-		font-weight: bold;
-
-		span {
-			display: inline-block;
-			position: relative;
-
-			&:before,
-			&:after {
-				content: "";
-				position: absolute;
-				height: 5px;
-				border-top: 1px solid fade(@black, 8%);
-				top: 0;
-				width: 100px;
-			}
-
-			&:before {
-				right: 100%;
-				margin-right: 15px;
-			}
-
-			&:after {
-				left: 100%;
-				margin-left: 15px;
-			}
-		}
-	}
+	margin-bottom: 25px;
 }
 
 .search-results {
@@ -141,6 +92,10 @@ body {
 	}
 	.form-inline {
 	}
+}
+
+.col-btn {
+  text-align: center;
 }
 
 .cards-sorting {
@@ -191,27 +146,6 @@ body {
 		opacity: .65;
 	}
 }
-
-// Label Base class
-// .label {
-// 	text-transform: uppercase;
-// 	font-family: "Roboto Condensed";
-// 	font-weight: normal;
-// 	font-size: 0.9em;
-//     border-radius: 10px;
-//     display: inline-block;
-//     line-height: 1;
-//     min-width: 10px;
-//     padding: 5px 7px 3px;
-//     text-align: center;
-//     vertical-align: middle;
-//     white-space: nowrap;
-
-// 	.octicon{
-// 		font-size: 14px;
-// 		vertical-align: -8%;
-// 	}
-// }
 
 .bg-amber {
 	background-color: @amber;

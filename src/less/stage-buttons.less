@@ -11,6 +11,20 @@
 	}
 }
 
+.btn-default {
+	color: @teal;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 10px 25px;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: @teal;
+		color: @white;
+	}
+}
+
 .btn-primary {
 	.button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
 }

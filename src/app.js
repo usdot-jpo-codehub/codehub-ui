@@ -8,7 +8,7 @@ export class App {
     config.title = 'Stage';
     config.options.pushState = false;
     config.map([
-      { route: '', name: 'popular', viewPorts: { mainContent: { moduleId: 'popular/popular' }, headerContent: { moduleId: 'search/search-bar' } }, nav: true, title: 'Popular' },
+      { route: '', name: 'popular', viewPorts: { mainContent: { moduleId: 'popular/popular' }, headerContent: { moduleId: 'search/search-bar' } }, nav: true, title: 'Home' },
       { route: 'explore', name: 'explore', viewPorts: { mainContent: { moduleId: 'explore/explore' }, headerContent: { moduleId: 'components/page-title-secondary' } }, nav: true, title: 'Explore' },
       { route: 'favorites', name: 'favorites', viewPorts: { mainContent: { moduleId: 'favorites/favorites' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: true, title: 'Bookmarks' },
       { route: 'favorites', name: 'favorites', viewPorts: { mainContent: { moduleId: 'favorites/favorites' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: true, title: 'Insight' },
