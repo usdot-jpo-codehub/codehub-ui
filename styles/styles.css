@@ -6543,52 +6543,7 @@ body {
 }
 .title-wrapper {
   background-color: #ffffff;
-<<<<<<< HEAD
   margin-bottom: 25px;
-=======
-  padding-top: 15px;
-}
-.title-wrapper > [class*='col-'] {
-  margin-bottom: 0;
-}
-.title-wrapper .page-title {
-  margin: 0;
-  color: #f26b64;
-  line-height: 0 !important;
-  text-align: center;
-  padding: 10px 0;
-  margin: 15px 0;
-  max-width: 100%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  font-size: 1.2em;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-family: 'Roboto Condensed';
-  font-weight: bold;
-}
-.title-wrapper .page-title span {
-  display: inline-block;
-  position: relative;
-}
-.title-wrapper .page-title span:before,
-.title-wrapper .page-title span:after {
-  content: "";
-  position: absolute;
-  height: 5px;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  top: 0;
-  width: 100px;
-}
-.title-wrapper .page-title span:before {
-  right: 100%;
-  margin-right: 15px;
-}
-.title-wrapper .page-title span:after {
-  left: 100%;
-  margin-left: 15px;
->>>>>>> development
 }
 .search-results {
   padding-top: 25px;
