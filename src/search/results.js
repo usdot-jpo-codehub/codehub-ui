@@ -14,6 +14,8 @@ export class Results {
     this.filters = filters;
     this.ea = ea;
 
+    this.searchText = '';
+
     this.projects = [];
 
     this.selectedOrganizations = [];
@@ -39,16 +41,19 @@ export class Results {
 
   activate(params) {
     if (!(params.searchText) || params.searchText === '') {
+      this.searchText = 'Everything';
       return this.dataContext.getAll()
         .then(projects => {
           this.projects = projects;
           this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
           this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
-          this.rebuild(projects);
+          this.rebuildFilterOrg(projects);
+          this.rebuildFilterLang(projects);
           return this.projects;
         });
     }
 
+    this.searchText = params.searchText;
     this.ea.publish('searchExecuted', params.searchText);
 
     return this.dataContext.search(params.searchText)
@@ -56,12 +61,13 @@ export class Results {
         this.projects = projects;
         this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
         this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
-        this.rebuild(projects);
+        this.rebuildFilterOrg(projects);
+        this.rebuildFilterLang(projects);
         return this.projects;
       });
   }
 
-  rebuild(projects) {
+  rebuildFilterOrg(projects) {
     const options = [];
     const unique = this.getUniqueValues(projects, 'organization');
     for (const org of unique) {
@@ -70,14 +76,28 @@ export class Results {
     $('#filterOrg').multiselect('dataprovider', options);
   }
 
-  attached() {
+  rebuildFilterLang(projects) {
+    const options = [];
+    const unique = this.getUniqueValues(projects, 'language');
+    for (const lang of unique) {
+      options.push({ label: lang, title: lang, value: lang, selected: false });
+    }
+    $('#filterLang').multiselect('dataprovider', options);
+  }
+
+  setupFilterOrg() {
     $('#filterOrg').multiselect({
       includeSelectAllOption: true,
       enableFiltering: true,
       disableIfEmpty: true,
       enableCaseInsensitiveFiltering: true,
       buttonText(options, select) {
-        return `Organizations (${options.length})`;
+        if (options.length === 0) {
+          return 'Select Organizations';
+        } else if (options.length === options.prevObject.length) {
+          return 'Showing All Organizations';
+        }
+        return `Showing (${options.length}/${options.prevObject.length}) Organizations`;
       },
     });
 
@@ -88,8 +108,39 @@ export class Results {
         this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
       }
     });
+  }
 
-    this.rebuild(this.projects);
+  setupFilterLang() {
+    $('#filterLang').multiselect({
+      includeSelectAllOption: true,
+      enableFiltering: true,
+      disableIfEmpty: true,
+      enableCaseInsensitiveFiltering: true,
+      buttonText(options, select) {
+        if (options.length === 0) {
+          return 'Select Languages';
+        } else if (options.length === options.prevObject.length) {
+          return 'Showing All Languages';
+        }
+        return `Showing (${options.length}/${options.prevObject.length}) Languages`;
+      },
+    });
+
+    $('#filterLang').on('change', ev => {
+      if ($('#filterLang').val()) {
+        this.filters.selectedLanguages = $('#filterLang').val();
+      } else {
+        this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'Languages');
+      }
+    });
+  }
+
+  attached() {
+    this.setupFilterOrg();
+    this.setupFilterLang();
+
+    this.rebuildFilterOrg(this.projects);
+    this.rebuildFilterLang(this.projects);
   }
 
   detached() {
