@@ -1,6 +1,10 @@
 .twitter-typeahead {
 	width: 100%;
 
+	.tt-hint {
+		display: none;
+	}
+
 	.tt-dataset,
 	.tt-suggestion{
 		text-shadow: none;
@@ -26,13 +30,8 @@
 		}
 	}
 
-	.form-control {
-		//color: gray;
-	}
-
 	.input-group & {
 		display: block !important;
-		//height: @input-height-base;
 
 		.tt-menu,
 		.tt-dropdown-menu {
@@ -66,35 +65,14 @@
 	}
 
 	.input-group.input-group-sm & {
-		//height: @input-height-small;
-
-		.tt-menu,
-		.tt-dropdown-menu {
-			//top:@input-height-small !important;
-		}
-
 		.form-control {
 			&:extend(.input-group-sm > .form-control);
 		}
 	}
 
 	.input-group.input-group-lg & {
-		//height: @input-height-large;
-
-		.tt-menu,
-		.tt-dropdown-menu {
-			//top:@input-height-large !important;
-		}
-
 		.form-control {
 			&:extend(.input-group-lg > .form-control);
 		}
 	} 
 }
-
-
-// <div class="tt-dataset tt-dataset-suggestions">
-// 	<div class="tt-suggestion tt-selectable">dummy</div>
-// 	<div class="tt-suggestion tt-selectable">autocomplete</div>
-// 	<div class="tt-suggestion tt-selectable">data</div>
-// </div>

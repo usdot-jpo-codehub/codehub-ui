@@ -7,6 +7,7 @@
 	&:active,
 	&:focus {
 		outline: none !important;
+		box-shadow: none !important;
 	}
 }
 
@@ -38,6 +39,18 @@
 
 .btn-filters {
 	&:extend(.btn-link);
+	text-transform: uppercase;
+	color: lighten(@black, 30%);
+	text-decoration: none;
+
+	&:active,
+	&.active,
+	&:hover,
+	&:focus,
+	&.focus {
+		color: lighten(@black, 30%);
+		text-decoration: none;
+	}
 
 	i {
 		transform: rotate(180deg);
@@ -50,6 +63,15 @@
 			transform: rotate(0deg);
 		}
 	}
+}
+
+.btn-cancel {
+	&:extend(.btn-link);
+    position: absolute;
+    top: 10px;
+    z-index: 9999;
+    right: 50px;
+    color: @stage-red;
 }
 
 a.btn {

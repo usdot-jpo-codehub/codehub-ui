@@ -68,7 +68,7 @@ body {
 }
 
 .title-wrapper {
-	background-color: lighten(@light-gray,14%);
+	background-color: @white;
 	padding-top: 15px;
 
 	> [class*='col-'] {
@@ -157,6 +157,10 @@ body {
 
 	.list-inline {
 		margin: 0;
+
+		> li {
+			padding-right: 0;
+		}
 	}
 
 	.btn-filters{
