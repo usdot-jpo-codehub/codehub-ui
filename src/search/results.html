@@ -12,7 +12,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12">
           <div class="filter-wrapper clearfix">
             <ul class='list-inline pull-left'>
-              <li>2,554 results</li>
+              <li>2,554 results for:</li>
               <li>
                 <span class="stage-chip">Item 1 <small>(200)</small> <a href="#"><i class="material-icons">close</i></a></span>
                 </li>
@@ -23,11 +23,22 @@
                 <span class="stage-chip">Item 3 <small>(100)</small> <a href="#"><i class="material-icons">close</i></a></span>
               </li>
             </ul>
-            <a class="btn btn-link btn-filters pull-right collapsed" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Link with href <i class="material-icons">keyboard_arrow_down</i></a>
+
+            <a class="btn btn-link btn-filters pull-right collapsed" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">filters <i class="material-icons">keyboard_arrow_down</i></a>
           </div>
 
           <div class="collapse" id="collapseExample">
-            FILTERS
+            <div class="dropdown">
+              <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Languages
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dLabel">
+                <li><input type="checkbox"> HTML</li>
+                <li><input type="checkbox"> CSS</li>
+                <li><input type="checkbox"> Javascript</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
