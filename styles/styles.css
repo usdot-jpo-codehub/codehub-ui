@@ -6544,6 +6544,27 @@ body {
 .title-wrapper {
   background-color: #ffffff;
   margin-bottom: 25px;
+  padding-top: 10px;
+  padding-bottom: 0;
+}
+.title-wrapper .filter-wrapper {
+  padding-top: 6px;
+  margin-bottom: 0;
+}
+.title-wrapper .filter-wrapper .filter-result-bar {
+  padding-bottom: 8px;
+}
+.title-wrapper .filter-wrapper .list-inline {
+  margin-bottom: 0;
+}
+.title-wrapper .filter-wrapper .btn-filters {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.title-wrapper .filter-wrapper .in {
+  border-top: 1px solid #d0d0d0;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .search-results {
   padding-top: 25px;
@@ -6570,18 +6591,6 @@ body {
 }
 .cards-sorting p {
   margin: 0;
-}
-.filter-wrapper {
-  padding: 6px 12px;
-}
-.filter-wrapper .list-inline {
-  margin: 0;
-}
-.filter-wrapper .list-inline > li {
-  padding-right: 0;
-}
-.filter-wrapper .btn-filters {
-  padding: 0;
 }
 .stage-chip {
   font-family: "Roboto";
@@ -6737,6 +6746,7 @@ a:focus {
   width: 50%;
 }
 .home-tabs > li > a {
+  color: rgba(0, 176, 188, 0.65);
   border-radius: 0;
   border: none;
   border-bottom: 3px solid #ffffff;
@@ -6751,8 +6761,9 @@ a:focus {
 }
 .home-tabs > li > a:hover,
 .home-tabs > li > a:focus {
+  color: #00b0bc;
   border: none;
-  border-bottom: 3px solid #00b0bc;
+  border-bottom: 3px solid #ffffff;
   background-color: transparent;
 }
 .home-tabs > li.active > a {
@@ -6770,9 +6781,6 @@ a:focus {
   border: none;
   border-radius: 0;
   border-bottom: 3px solid #00b0bc;
-}
-.home-tabs li:first-of-type {
-  border-right: 1px solid #d0d0d0;
 }
 .row-btns {
   margin: 0 -15px;
@@ -7268,19 +7276,18 @@ label.btn > input[type='radio'] {
 }
 .cards-wrapper .card .card-header .avatar {
   position: absolute;
-  height: 70px;
-  width: 70px;
+  height: 60px;
+  width: 60px;
   border-radius: 100%;
   overflow: hidden;
-  border: 1px solid #aaaaaa;
   text-align: center;
 }
 .cards-wrapper .card .card-header .avatar img {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
 }
 .cards-wrapper .card .card-header .card-title {
-  padding: 15px 34px 0 90px;
+  padding: 15px 34px 0 80px;
   font-size: 18px;
   font-weight: bold;
   line-height: 20px;
@@ -7294,7 +7301,7 @@ label.btn > input[type='radio'] {
 .cards-wrapper .card .card-header .org-name {
   font-size: 12px;
   margin-top: 8px;
-  padding-left: 90px;
+  padding-left: 80px;
   color: rgba(0, 0, 0, 0.4);
 }
 .cards-wrapper .card .proj-desc {
@@ -7346,7 +7353,6 @@ label.btn > input[type='radio'] {
 }
 .cards-wrapper .card-btns .col-md-6 a,
 .cards-wrapper .card-btns .col-md-3 a {
-  text-transform: uppercase;
   font-weight: bold;
   margin: 0 -15px;
   border-top: 1px solid #dddddd;
@@ -7356,6 +7362,7 @@ label.btn > input[type='radio'] {
   padding: 10px 0;
   text-align: center;
   transition: all 0.2s linear;
+  color: #404040;
 }
 .cards-wrapper .card-btns .col-md-6 a:hover,
 .cards-wrapper .card-btns .col-md-3 a:hover {
@@ -7365,7 +7372,7 @@ label.btn > input[type='radio'] {
 }
 .cards-wrapper .card-btns .col-md-6 a .material-icons,
 .cards-wrapper .card-btns .col-md-3 a .material-icons {
-  vertical-align: -5px;
+  vertical-align: -7px;
   margin: 0 5px;
 }
 .cards-wrapper .card-btns .col-md-6:first-of-type a {
@@ -7388,7 +7395,7 @@ label.btn > input[type='radio'] {
 }
 .search-results .card-search .proj-desc,
 .search-results .card-search .last-updated {
-  padding-left: 90px;
+  padding-left: 80px;
 }
 .search-results .card-search .last-updated {
   border-bottom: none;
@@ -7669,15 +7676,21 @@ body ai-dialog-overlay.active {
   font-weight: bold;
 }
 .modal-body h1 {
-  font-size: 2em;
+  font-size: 36px;
   margin-top: 0;
+  font-weight: bold;
 }
 .modal-body h1 a {
   font-weight: bold;
 }
 .modal-body h2 {
-  font-size: 1.5em;
+  font-size: 30px;
   margin-top: 30px;
+  font-weight: bold;
+}
+.modal-body h3 {
+  font-size: 24px;
+  font-weight: bold;
 }
 .label-info {
   background-color: #155569;
@@ -7776,4 +7789,67 @@ body ai-dialog-overlay.active {
   border-bottom-left-radius: 0;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
+}
+.btn-group .multiselect {
+  border: none;
+  color: #404040;
+  text-transform: none;
+  padding: 8px 0;
+  margin-right: 20px;
+}
+.btn-group .multiselect:hover {
+  background-color: transparent;
+  color: #404040;
+}
+.btn-group .multiselect:focus {
+  background-color: transparent;
+  color: #f26b64;
+}
+.btn-group .multiselect .caret {
+  border-top-color: #d0d0d0;
+  border-width: 6px;
+  margin-left: 8px;
+}
+.btn-group.open .multiselect {
+  background-color: transparent;
+  color: #f26b64;
+  border: none;
+  box-shadow: none;
+}
+.btn-group.open .multiselect .caret {
+  border-top-color: #f26b64;
+}
+.multiselect-container {
+  min-width: 200px;
+}
+.multiselect-container .multiselect-search {
+  height: 42px;
+}
+.multiselect-container .multiselect-item .input-group {
+  margin-right: 0;
+}
+.multiselect-container .multiselect-item .input-group .input-group-addon {
+  display: none;
+}
+.multiselect-container .multiselect-item .input-group .multiselect-search {
+  border-radius: 6px;
+}
+.multiselect-container .multiselect-item .input-group .input-group-btn {
+  display: none;
+}
+.multiselect-container > li > a {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.multiselect-container > li > a:hover,
+.multiselect-container > li > a:focus {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.multiselect-container > li > a > label {
+  padding-left: 20px;
+  padding-right: 10px;
+}
+.multiselect-container.dropdown-menu > .active > a {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #000000;
 }
