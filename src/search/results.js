@@ -15,11 +15,15 @@ export class Results {
     this.ea = ea;
 
     this.searchText = '';
+    this.resultCount = 0;
 
     this.projects = [];
 
     this.selectedOrganizations = [];
     this.selectedLanguages = [];
+
+    this.filterLangEmpty = true;
+    this.filterOrgEmpty = true;
 
     this.sortDirection = 'descending';
 
@@ -45,6 +49,7 @@ export class Results {
       return this.dataContext.getAll()
         .then(projects => {
           this.projects = projects;
+          this.resultCount = this.projects.length;
           this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
           this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
           this.rebuildFilterOrg(projects);
@@ -53,12 +58,14 @@ export class Results {
         });
     }
 
+    this.resultCount = 0;
     this.searchText = params.searchText;
     this.ea.publish('searchExecuted', params.searchText);
 
     return this.dataContext.search(params.searchText)
       .then(projects => {
         this.projects = projects;
+        this.resultCount = this.projects.length;
         this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
         this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
         this.rebuildFilterOrg(projects);
@@ -73,7 +80,8 @@ export class Results {
     for (const org of unique) {
       options.push({ label: org, title: org, value: org, selected: false });
     }
-    $('#filterOrg').multiselect('dataprovider', options);
+    $('#filterOrg').multiselect('dataprovider', options)
+    $('#filterOrg').trigger('change');
   }
 
   rebuildFilterLang(projects) {
@@ -83,6 +91,7 @@ export class Results {
       options.push({ label: lang, title: lang, value: lang, selected: false });
     }
     $('#filterLang').multiselect('dataprovider', options);
+    $('#filterLang').trigger('change');
   }
 
   setupFilterOrg() {
@@ -104,9 +113,14 @@ export class Results {
     $('#filterOrg').on('change', ev => {
       if ($('#filterOrg').val()) {
         this.filters.selectedOrganizations = $('#filterOrg').val();
+        this.filterOrgEmpty = false;
       } else {
         this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
+        this.filterOrgEmpty = true;
       }
+
+      const fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
+      this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'organization').length;
     });
   }
 
@@ -129,9 +143,14 @@ export class Results {
     $('#filterLang').on('change', ev => {
       if ($('#filterLang').val()) {
         this.filters.selectedLanguages = $('#filterLang').val();
+        this.filterLangEmpty = false;
       } else {
-        this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'Languages');
+        this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
+        this.filterLangEmpty = true;
       }
+
+      const fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
+      this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'organization').length;
     });
   }
 
@@ -147,6 +166,11 @@ export class Results {
     this.ea.publish('detachResults');
   }
 
+  removePill(ms, value) {
+    $(ms).multiselect('deselect', value);
+    $(ms).trigger('change');
+  }
+
   getUniqueValues(array, property) {
     const propertyArray = [];
     for (const object of array) {
@@ -157,6 +181,23 @@ export class Results {
       }
     }
     return Array.from(new Set(propertyArray));
+  }
+
+  filterArray(array, filterArray, propertyName) {
+    return array
+      .slice(0)
+      .filter((object) => {
+        for (const value of filterArray) {
+          if (object[propertyName]) {
+            if (object[propertyName] === value) {
+              return true;
+            }
+          } else if (value === 'None') {
+            return true;
+          }
+        }
+        return false;
+      });
   }
 
 }
