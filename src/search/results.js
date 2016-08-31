@@ -93,11 +93,11 @@ export class Results {
       enableCaseInsensitiveFiltering: true,
       buttonText(options, select) {
         if (options.length === 0) {
-          return 'Select Organizations';
+          return 'Organizations';
         } else if (options.length === options.prevObject.length) {
-          return 'Showing All Organizations';
+          return `Organizations (${options.length})`;
         }
-        return `Showing (${options.length}/${options.prevObject.length}) Organizations`;
+        return `Organizations (${options.length}) `;
       },
     });
 
@@ -118,11 +118,11 @@ export class Results {
       enableCaseInsensitiveFiltering: true,
       buttonText(options, select) {
         if (options.length === 0) {
-          return 'Select Languages';
+          return 'Languages';
         } else if (options.length === options.prevObject.length) {
-          return 'Showing All Languages';
+          return `Languages (${options.length})`;
         }
-        return `Showing (${options.length}/${options.prevObject.length}) Languages`;
+        return `Languages (${options.length})`;
       },
     });
 
