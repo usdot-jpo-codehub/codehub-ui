@@ -6,6 +6,7 @@
     width: 50%;
 
     > a {
+      color: fade(@teal, 65%);
       border-radius: 0;
       border: none;
       border-bottom: 3px solid @white;
@@ -21,8 +22,9 @@
 
       &:hover,
       &:focus{
+        color: @teal;
         border: none;
-        border-bottom: 3px solid @teal;
+        border-bottom: 3px solid @white;
         background-color: transparent;
       }
     }
@@ -46,10 +48,6 @@
         border-bottom: 3px solid @teal;
       }
     }
-  }
-
-  li:first-of-type {
-    border-right: 1px solid lighten(@gray,15%);
   }
 }
 
