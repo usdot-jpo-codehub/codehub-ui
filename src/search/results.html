@@ -19,7 +19,7 @@
                   <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'organization', pill)})</small> <a href="javascript:$('#filterOrg').multiselect('deselect', '${pill}');$('#filterOrg').trigger('change');"><i class="material-icons">close</i></a></span>
                 </li>
                 <li>
-                  <a if.bind="!filterLangEmpty || !filterOrgEmpty" href="#" click.delegate="clearAllFilters()">Clear All</a>
+                  <a class="clear-btn" if.bind="!filterLangEmpty || !filterOrgEmpty" href="#" click.delegate="clearAllFilters()">Clear All</a>
                 </li>
               </ul>
             </div>

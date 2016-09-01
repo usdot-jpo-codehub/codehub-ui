@@ -24,7 +24,7 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-12 col-chips">
         <ul if.bind="!filterLangEmpty || !filterOrgEmpty" class='list-inline'>
           <li>${resultCount} results</li>
           <li if.bind="!filterLangEmpty" repeat.for="pill of filters.selectedLanguages">
@@ -34,7 +34,7 @@
             <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'organization', pill)})</small> <a href="javascript:$('#filterOrg').multiselect('deselect', '${pill}');$('#filterOrg').trigger('change');"><i class="material-icons">close</i></a></span>
           </li>
           <li>
-            <a href="#" click.delegate="clearAllFilters()">Clear All</a>
+            <a class="clear-btn" href="#" click.delegate="clearAllFilters()">Clear All</a>
           </li>
         </ul>
       </div>

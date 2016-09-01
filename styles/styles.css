@@ -6613,10 +6613,18 @@ body {
 }
 .cards-sorting {
   margin: 0;
-  margin-top: 10px;
 }
-.cards-sorting p {
-  margin: 0;
+.cards-sorting .material-icons {
+  vertical-align: -7px;
+  margin-right: 5px;
+  color: #404040;
+}
+.cards-sorting label {
+  margin-right: 8px;
+  font-weight: normal;
+}
+.col-chips .list-inline > li {
+  margin-bottom: 5px;
 }
 .stage-chip {
   font-family: "Roboto";
@@ -7088,6 +7096,13 @@ fieldset[disabled] .btn-primary.active {
 .btn-filters.collapsed i {
   transform: rotate(0deg);
 }
+.clear-btn {
+  color: #404040;
+}
+.clear-btn:hover,
+.clear-btn:focus {
+  color: #404040;
+}
 .btn-cancel {
   position: absolute;
   top: 10px;
@@ -7241,15 +7256,6 @@ label.btn > input[type='radio'] {
 }
 .cards-wrapper > .row {
   padding: 0 20px 0;
-}
-.cards-wrapper > .row .cards-sorting {
-  padding-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.cards-wrapper > .row .cards-sorting p {
-  margin: 0;
 }
 .cards-wrapper .card {
   padding: 15px 15px 0;
@@ -7829,6 +7835,7 @@ body ai-dialog-overlay.active {
   text-transform: none;
   padding: 8px 0;
   margin-right: 20px;
+  box-shadow: none;
 }
 .btn-group .multiselect:hover {
   background-color: transparent;
