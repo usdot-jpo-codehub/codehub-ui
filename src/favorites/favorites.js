@@ -15,7 +15,7 @@ export class Favorites {
 
     this.projects = [];
 
-    this.projectTitle = 'Favorite Projects';
+    this.projectTitle = 'Insight';
 
     this.sortDirection = 'descending';
     this.selectedSort = 'rank';
