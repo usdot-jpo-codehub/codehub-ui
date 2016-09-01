@@ -7064,6 +7064,7 @@ fieldset[disabled] .btn-primary.active {
   text-transform: uppercase;
   color: #4d4d4d;
   text-decoration: none;
+  font-weight: bold;
 }
 .btn-filters:active,
 .btn-filters.active,
@@ -7846,10 +7847,14 @@ body ai-dialog-overlay.active {
   border-top-color: #f26b64;
 }
 .multiselect-container {
-  min-width: 200px;
+  min-width: 250px;
 }
 .multiselect-container .multiselect-search {
-  height: 42px;
+  height: auto;
+}
+.multiselect-container .multiselect-item .input-group {
+  position: relative;
+  width: 95%;
 }
 .multiselect-container .multiselect-item .input-group .input-group-addon {
   display: none;
@@ -7860,19 +7865,32 @@ body ai-dialog-overlay.active {
 .multiselect-container .multiselect-item .input-group .input-group-btn {
   display: none;
 }
+.multiselect-container .multiselect-item .input-group:after {
+  content: "search";
+  font-family: 'Material Icons';
+  position: absolute;
+  z-index: 2;
+  right: 7px;
+  top: 1px;
+  color: #d0d0d0;
+  font-size: 24px;
+}
 .multiselect-container > li > a {
   padding-left: 10px;
   padding-right: 10px;
 }
 .multiselect-container > li > a:hover,
 .multiselect-container > li > a:focus {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
 }
 .multiselect-container > li > a > label {
   padding-left: 20px;
   padding-right: 10px;
 }
+.multiselect-container > li .multiselect-all {
+  font-weight: normal;
+}
 .multiselect-container.dropdown-menu > .active > a {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
   color: #000000;
 }
