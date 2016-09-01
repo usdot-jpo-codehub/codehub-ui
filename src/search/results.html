@@ -13,10 +13,10 @@
               <ul class='list-inline'>
                 <li>${resultCount} results for <strong>`${searchText}`</strong></li>
                 <li if.bind="!filterLangEmpty" repeat.for="pill of filters.selectedLanguages">
-                  <span class="stage-chip">${pill} <small>(200)</small> <a href="javascript:$('#filterLang').multiselect('deselect', '${pill}');$('#filterLang').trigger('change');"><i class="material-icons">close</i></a></span>
+                  <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'language', pill)})</small> <a href="javascript:$('#filterLang').multiselect('deselect', '${pill}');$('#filterLang').trigger('change');"><i class="material-icons">close</i></a></span>
                 </li>
                 <li if.bind="!filterOrgEmpty" repeat.for="pill of filters.selectedOrganizations">
-                  <span class="stage-chip">${pill} <small>(200)</small> <a href="javascript:$('#filterOrg').multiselect('deselect', '${pill}');$('#filterOrg').trigger('change');"><i class="material-icons">close</i></a></span>
+                  <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'organization', pill)})</small> <a href="javascript:$('#filterOrg').multiselect('deselect', '${pill}');$('#filterOrg').trigger('change');"><i class="material-icons">close</i></a></span>
                 </li>
               </ul>
             </div>

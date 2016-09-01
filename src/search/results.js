@@ -78,7 +78,7 @@ export class Results {
     const options = [];
     const unique = this.getUniqueValues(projects, 'organization');
     for (const org of unique) {
-      options.push({ label: org, title: org, value: org, selected: false });
+      options.push({ label: `${org} <small>(${this.countUniqueValues(projects, 'organization', org)})</small>`, title: org, value: org, selected: false });
     }
     $('#filterOrg').multiselect('dataprovider', options);
     $('#filterOrg').trigger('change');
@@ -88,7 +88,7 @@ export class Results {
     const options = [];
     const unique = this.getUniqueValues(projects, 'language');
     for (const lang of unique) {
-      options.push({ label: lang, title: lang, value: lang, selected: false });
+      options.push({ label: `${lang} <small>(${this.countUniqueValues(projects, 'language', lang)})</small>`, title: lang, value: lang, selected: false });
     }
     $('#filterLang').multiselect('dataprovider', options);
     $('#filterLang').trigger('change');
@@ -101,6 +101,7 @@ export class Results {
       disableIfEmpty: true,
       enableCaseInsensitiveFiltering: true,
       maxHeight: 250,
+      enableHTML: true,
       buttonText(options, select) {
         if (options.length === 0) {
           return 'Organizations';
@@ -132,6 +133,7 @@ export class Results {
       disableIfEmpty: true,
       enableCaseInsensitiveFiltering: true,
       maxHeight: 250,
+      enableHTML: true,
       buttonText(options, select) {
         if (options.length === 0) {
           return 'Languages';
@@ -183,6 +185,18 @@ export class Results {
       }
     }
     return Array.from(new Set(propertyArray));
+  }
+
+  // Counts number of results with a value for a certain property
+  // (e.g. number of results with 'java' as a 'language' would be countUniqueValues(results, 'language', 'java')
+  countUniqueValues(array, property, value) {
+    let count = 0;
+    for (const object of array) {
+      if (object[property] === value) {
+        count++;
+      }
+    }
+    return count;
   }
 
   filterArray(array, filterArray, propertyName) {
