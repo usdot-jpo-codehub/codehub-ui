@@ -63,9 +63,7 @@
       text-transform: uppercase;
       font-weight: bold;
       margin:0 -15px;
-      // border-top: 1px solid lighten(@gray,20%);
-      border-right: 1px solid lighten(@gray,15%);
-      // background: lighten(@stage-gray, 15%);
+      border-right: 1px solid lighten(@gray,@stage-gray-precentage);
       display: block;
       padding: 10px 0;
       text-align: center;
@@ -89,7 +87,7 @@
   .col-md-6 {
     &:first-of-type {
       a {
-        border-right: 1px solid lighten(@gray,15%);
+        border-right: 1px solid lighten(@gray,@stage-gray-precentage);
       }
     }
 
