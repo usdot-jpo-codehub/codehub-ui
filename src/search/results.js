@@ -158,6 +158,15 @@ export class Results {
     });
   }
 
+  clearAllFilters() {
+    $('#filterLang').multiselect('deselectAll', false);
+    $('#filterOrg').multiselect('deselectAll', false);
+    $('#filterLang').trigger('change');
+    $('#filterOrg').trigger('change');
+    this.rebuildFilterOrg(this.projects);
+    this.rebuildFilterLang(this.projects);
+  }
+
   attached() {
     this.setupFilterOrg();
     this.setupFilterLang();
@@ -193,6 +202,8 @@ export class Results {
     let count = 0;
     for (const object of array) {
       if (object[property] === value) {
+        count++;
+      } else if (object[property] === null && value === 'None') {
         count++;
       }
     }
