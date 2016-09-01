@@ -6,8 +6,6 @@
     padding: 8px 0;
     margin-right: 20px;
 
-
-
     &:hover {
       background-color: transparent;
       color: lighten(@black, 25%);
@@ -41,6 +39,12 @@
 
 .multiselect-container {
   min-width: 250px;
+  margin-top: 6px;
+  border-top: none;
+  border-radius: @stage-border-radius;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.175);
 
   .multiselect-search {
     height: auto;
@@ -91,8 +95,11 @@
         padding-right: 10px;
       }
     }
-    .multiselect-all {
-      font-weight: normal;
+
+    a.multiselect-all {
+      label {
+        font-weight: normal;
+      }
     }
   }
 
