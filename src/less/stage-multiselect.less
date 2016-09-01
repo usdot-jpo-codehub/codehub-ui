@@ -37,64 +37,53 @@
   }
 }
 
-// .multiselect {
-  .multiselect-container {
-    min-width: 200px;
+.multiselect-container {
+  min-width: 200px;
 
-    .multiselect-search {
-      height: 42px;
-    }
-
-    .multiselect-item {
-      .input-group {
-        margin-right: 0;
-
-        .input-group-addon {
-          display: none;
-        }
-
-        .multiselect-search {
-          border-radius: 6px;
-        }
-
-        .input-group-btn {
-          display: none;
-          // .btn-default {
-          //   padding: 10px;
-
-          //   i {
-          //     color: lighten(@black, 25%);
-          //   }
-          // }
-        }
-      }
-    }
-
-    > li {
-      > a {
-        padding-left: 10px;
-        padding-right: 10px;
-
-        &:hover,
-        &:focus {
-          background-color: fade(@black, 05%);
-        }
-
-        > label {
-          padding-left: 20px;
-          padding-right: 10px;
-        }
-      }
-    }
-
-    &.dropdown-menu {
-      > .active {
-        > a {
-          background-color: fade(@black, 05%);
-          color: @black;
-        }
-      }
-    }
-  // }
+  .multiselect-search {
+    height: 42px;
   }
-// }
+
+  .multiselect-item {
+    .input-group {
+
+      .input-group-addon {
+        display: none;
+      }
+
+      .multiselect-search {
+        border-radius: 6px;
+      }
+
+      .input-group-btn {
+        display: none;
+      }
+    }
+  }
+
+  > li {
+    > a {
+      padding-left: 10px;
+      padding-right: 10px;
+
+      &:hover,
+      &:focus {
+        background-color: fade(@black, 05%);
+      }
+
+      > label {
+        padding-left: 20px;
+        padding-right: 10px;
+      }
+    }
+  }
+
+  &.dropdown-menu {
+    > .active {
+      > a {
+        background-color: fade(@black, 05%);
+        color: @black;
+      }
+    }
+  }
+}
