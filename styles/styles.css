@@ -6547,12 +6547,12 @@ body {
 .title-wrapper {
   background-color: #ffffff;
   margin-bottom: 25px;
-  padding-top: 10px;
+  padding-top: 12px;
   padding-bottom: 0;
 }
 .title-wrapper .filter-wrapper,
 .title-wrapper .explore-filter-wrapper {
-  padding-top: 6px;
+  padding-top: 0px;
   margin-bottom: 0;
 }
 .title-wrapper .filter-wrapper .filter-result-bar,
@@ -6781,9 +6781,13 @@ a:focus {
   text-align: center;
   font-weight: bold;
   text-transform: uppercase;
+  font-family: "Roboto Condensed";
+  letter-spacing: 2px;
 }
 .home-tabs > li > a .material-icons {
-  vertical-align: -7px;
+  vertical-align: -11px;
+  font-size: 36px;
+  margin-right: 5px;
 }
 .home-tabs > li > a:hover,
 .home-tabs > li > a:focus {
@@ -6990,6 +6994,8 @@ a:focus {
   font-weight: bold;
   text-transform: uppercase;
   padding: 10px 25px;
+  border: none;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }
 .btn-default:hover,
 .btn-default:active,
@@ -7848,6 +7854,12 @@ body ai-dialog-overlay.active {
 }
 .multiselect-container {
   min-width: 250px;
+  margin-top: 6px;
+  border-top: none;
+  border-radius: 0.3rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.175);
 }
 .multiselect-container .multiselect-search {
   height: auto;
@@ -7887,7 +7899,7 @@ body ai-dialog-overlay.active {
   padding-left: 20px;
   padding-right: 10px;
 }
-.multiselect-container > li .multiselect-all {
+.multiselect-container > li a.multiselect-all label {
   font-weight: normal;
 }
 .multiselect-container.dropdown-menu > .active > a {
