@@ -15,11 +15,15 @@ export class Results {
     this.ea = ea;
 
     this.searchText = '';
+    this.resultCount = 0;
 
     this.projects = [];
 
     this.selectedOrganizations = [];
     this.selectedLanguages = [];
+
+    this.filterLangEmpty = true;
+    this.filterOrgEmpty = true;
 
     this.sortDirection = 'descending';
 
@@ -45,6 +49,7 @@ export class Results {
       return this.dataContext.getAll()
         .then(projects => {
           this.projects = projects;
+          this.resultCount = this.projects.length;
           this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
           this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
           this.rebuildFilterOrg(projects);
@@ -53,12 +58,14 @@ export class Results {
         });
     }
 
+    this.resultCount = 0;
     this.searchText = params.searchText;
     this.ea.publish('searchExecuted', params.searchText);
 
     return this.dataContext.search(params.searchText)
       .then(projects => {
         this.projects = projects;
+        this.resultCount = this.projects.length;
         this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
         this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
         this.rebuildFilterOrg(projects);
@@ -71,18 +78,20 @@ export class Results {
     const options = [];
     const unique = this.getUniqueValues(projects, 'organization');
     for (const org of unique) {
-      options.push({ label: org, title: org, value: org, selected: false });
+      options.push({ label: `${org} <small>(${this.countUniqueValues(projects, 'organization', org)})</small>`, title: org, value: org, selected: false });
     }
     $('#filterOrg').multiselect('dataprovider', options);
+    $('#filterOrg').trigger('change');
   }
 
   rebuildFilterLang(projects) {
     const options = [];
     const unique = this.getUniqueValues(projects, 'language');
     for (const lang of unique) {
-      options.push({ label: lang, title: lang, value: lang, selected: false });
+      options.push({ label: `${lang} <small>(${this.countUniqueValues(projects, 'language', lang)})</small>`, title: lang, value: lang, selected: false });
     }
     $('#filterLang').multiselect('dataprovider', options);
+    $('#filterLang').trigger('change');
   }
 
   setupFilterOrg() {
@@ -91,6 +100,8 @@ export class Results {
       enableFiltering: true,
       disableIfEmpty: true,
       enableCaseInsensitiveFiltering: true,
+      maxHeight: 250,
+      enableHTML: true,
       buttonText(options, select) {
         if (options.length === 0) {
           return 'Organizations';
@@ -104,9 +115,14 @@ export class Results {
     $('#filterOrg').on('change', ev => {
       if ($('#filterOrg').val()) {
         this.filters.selectedOrganizations = $('#filterOrg').val();
+        this.filterOrgEmpty = false;
       } else {
         this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
+        this.filterOrgEmpty = true;
       }
+
+      const fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
+      this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'organization').length;
     });
   }
 
@@ -116,6 +132,8 @@ export class Results {
       enableFiltering: true,
       disableIfEmpty: true,
       enableCaseInsensitiveFiltering: true,
+      maxHeight: 250,
+      enableHTML: true,
       buttonText(options, select) {
         if (options.length === 0) {
           return 'Languages';
@@ -129,10 +147,24 @@ export class Results {
     $('#filterLang').on('change', ev => {
       if ($('#filterLang').val()) {
         this.filters.selectedLanguages = $('#filterLang').val();
+        this.filterLangEmpty = false;
       } else {
-        this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'Languages');
+        this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
+        this.filterLangEmpty = true;
       }
+
+      const fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
+      this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'organization').length;
     });
+  }
+
+  clearAllFilters() {
+    $('#filterLang').multiselect('deselectAll', false);
+    $('#filterOrg').multiselect('deselectAll', false);
+    $('#filterLang').trigger('change');
+    $('#filterOrg').trigger('change');
+    this.rebuildFilterOrg(this.projects);
+    this.rebuildFilterLang(this.projects);
   }
 
   attached() {
@@ -147,6 +179,11 @@ export class Results {
     this.ea.publish('detachResults');
   }
 
+  removePill(ms, value) {
+    $(ms).multiselect('deselect', value);
+    $(ms).trigger('change');
+  }
+
   getUniqueValues(array, property) {
     const propertyArray = [];
     for (const object of array) {
@@ -157,6 +194,37 @@ export class Results {
       }
     }
     return Array.from(new Set(propertyArray));
+  }
+
+  // Counts number of results with a value for a certain property
+  // (e.g. number of results with 'java' as a 'language' would be countUniqueValues(results, 'language', 'java')
+  countUniqueValues(array, property, value) {
+    let count = 0;
+    for (const object of array) {
+      if (object[property] === value) {
+        count++;
+      } else if (object[property] === null && value === 'None') {
+        count++;
+      }
+    }
+    return count;
+  }
+
+  filterArray(array, filterArray, propertyName) {
+    return array
+      .slice(0)
+      .filter((object) => {
+        for (const value of filterArray) {
+          if (object[propertyName]) {
+            if (object[propertyName] === value) {
+              return true;
+            }
+          } else if (value === 'None') {
+            return true;
+          }
+        }
+        return false;
+      });
   }
 
 }

@@ -9,9 +9,8 @@ export class App {
     config.options.pushState = false;
     config.map([
       { route: '', name: 'popular', viewPorts: { mainContent: { moduleId: 'popular/popular' }, headerContent: { moduleId: 'search/search-bar' } }, nav: true, title: 'Home' },
-      { route: 'explore', name: 'explore', viewPorts: { mainContent: { moduleId: 'explore/explore' }, headerContent: { moduleId: 'components/page-title-secondary' } }, nav: true, title: 'Explore' },
-      { route: 'favorites', name: 'favorites', viewPorts: { mainContent: { moduleId: 'favorites/favorites' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: true, title: 'Bookmarks' },
-      { route: 'favorites', name: 'favorites', viewPorts: { mainContent: { moduleId: 'favorites/favorites' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: true, title: 'Insight' },
+      { route: 'explore', name: 'explore', viewPorts: { mainContent: { moduleId: 'explore/explore' }, headerContent: { moduleId: 'components/headers/explore-title-secondary' } }, nav: true, title: 'Explore' },
+      { route: 'favorites', name: 'favorites', viewPorts: { mainContent: { moduleId: 'favorites/favorites' }, headerContent: { moduleId: 'components/headers/insights-title-secondary' } }, nav: true, title: 'Insight' },
       { route: 'results', name: 'results', viewPorts: { mainContent: { moduleId: 'search/results' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: false, title: 'Search Results' },
       { route: 'project-details', name: 'project-details', viewPorts: { mainContent: { moduleId: 'project-details/project-details' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: false, title: 'Project Details' },
     ]);

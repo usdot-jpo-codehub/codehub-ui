@@ -16,6 +16,8 @@
 	font-weight: bold;
 	text-transform: uppercase;
 	padding: 10px 25px;
+  border: none;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.1);
 
 	&:hover,
 	&:active,
@@ -56,6 +58,7 @@
 	text-transform: uppercase;
 	color: lighten(@black, 30%);
 	text-decoration: none;
+  font-weight: bold;
 
 	&:active,
 	&.active,
@@ -76,6 +79,15 @@
 		i {
 			transform: rotate(0deg);
 		}
+	}
+}
+
+.clear-btn {
+	color: lighten(@black, 25%);
+
+	&:hover,
+	&:focus {
+		color: lighten(@black, 25%);
 	}
 }
 

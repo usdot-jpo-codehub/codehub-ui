@@ -6535,6 +6535,9 @@ body {
 .card-header .col-lg-12 {
   margin-bottom: 0;
 }
+.insight-wrapper {
+  margin-top: 25px;
+}
 .page-title h1 {
   margin-top: 0;
 }
@@ -6544,27 +6547,50 @@ body {
 .title-wrapper {
   background-color: #ffffff;
   margin-bottom: 25px;
-  padding-top: 10px;
+  padding-top: 12px;
   padding-bottom: 0;
 }
-.title-wrapper .filter-wrapper {
-  padding-top: 6px;
+.title-wrapper .filter-wrapper,
+.title-wrapper .explore-filter-wrapper {
+  padding-top: 0px;
   margin-bottom: 0;
 }
-.title-wrapper .filter-wrapper .filter-result-bar {
+.title-wrapper .filter-wrapper .filter-result-bar,
+.title-wrapper .explore-filter-wrapper .filter-result-bar {
   padding-bottom: 8px;
 }
-.title-wrapper .filter-wrapper .list-inline {
+.title-wrapper .filter-wrapper .filter-result-bar > [class*='col-'],
+.title-wrapper .explore-filter-wrapper .filter-result-bar > [class*='col-'] {
   margin-bottom: 0;
 }
-.title-wrapper .filter-wrapper .btn-filters {
+.title-wrapper .filter-wrapper .list-inline,
+.title-wrapper .explore-filter-wrapper .list-inline {
+  margin-bottom: 0;
+}
+.title-wrapper .filter-wrapper .list-inline > li,
+.title-wrapper .explore-filter-wrapper .list-inline > li {
+  margin-bottom: 5px;
+}
+.title-wrapper .filter-wrapper .btn-filters,
+.title-wrapper .explore-filter-wrapper .btn-filters {
   padding-top: 0;
   padding-bottom: 0;
 }
-.title-wrapper .filter-wrapper .in {
+.title-wrapper .filter-wrapper .collapse,
+.title-wrapper .explore-filter-wrapper .collapse {
+  border: 1px solid #ffffff;
+}
+.title-wrapper .filter-wrapper .in,
+.title-wrapper .explore-filter-wrapper .in {
   border-top: 1px solid #d0d0d0;
   padding-top: 5px;
   padding-bottom: 5px;
+}
+.title-wrapper .explore-filter-wrapper {
+  padding-bottom: 6px;
+}
+.home-wrapper {
+  padding-top: 0;
 }
 .search-results {
   padding-top: 25px;
@@ -6587,10 +6613,18 @@ body {
 }
 .cards-sorting {
   margin: 0;
-  margin-top: 10px;
 }
-.cards-sorting p {
-  margin: 0;
+.cards-sorting .material-icons {
+  vertical-align: -7px;
+  margin-right: 5px;
+  color: #404040;
+}
+.cards-sorting label {
+  margin-right: 8px;
+  font-weight: normal;
+}
+.col-chips .list-inline > li {
+  margin-bottom: 5px;
 }
 .stage-chip {
   font-family: "Roboto";
@@ -6755,9 +6789,13 @@ a:focus {
   text-align: center;
   font-weight: bold;
   text-transform: uppercase;
+  font-family: "Roboto Condensed";
+  letter-spacing: 2px;
 }
 .home-tabs > li > a .material-icons {
-  vertical-align: -7px;
+  vertical-align: -11px;
+  font-size: 36px;
+  margin-right: 5px;
 }
 .home-tabs > li > a:hover,
 .home-tabs > li > a:focus {
@@ -6964,6 +7002,8 @@ a:focus {
   font-weight: bold;
   text-transform: uppercase;
   padding: 10px 25px;
+  border: none;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }
 .btn-default:hover,
 .btn-default:active,
@@ -7038,6 +7078,7 @@ fieldset[disabled] .btn-primary.active {
   text-transform: uppercase;
   color: #4d4d4d;
   text-decoration: none;
+  font-weight: bold;
 }
 .btn-filters:active,
 .btn-filters.active,
@@ -7054,6 +7095,13 @@ fieldset[disabled] .btn-primary.active {
 }
 .btn-filters.collapsed i {
   transform: rotate(0deg);
+}
+.clear-btn {
+  color: #404040;
+}
+.clear-btn:hover,
+.clear-btn:focus {
+  color: #404040;
 }
 .btn-cancel {
   position: absolute;
@@ -7209,15 +7257,6 @@ label.btn > input[type='radio'] {
 .cards-wrapper > .row {
   padding: 0 20px 0;
 }
-.cards-wrapper > .row .cards-sorting {
-  padding-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.cards-wrapper > .row .cards-sorting p {
-  margin: 0;
-}
 .cards-wrapper .card {
   padding: 15px 15px 0;
   background: #ffffff;
@@ -7323,7 +7362,7 @@ label.btn > input[type='radio'] {
   font-style: italic;
   font-size: 12px;
   margin-top: 10px;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #d0d0d0;
   padding-bottom: 10px;
 }
 .cards-wrapper .github-stats {
@@ -7355,7 +7394,7 @@ label.btn > input[type='radio'] {
 .cards-wrapper .card-btns .col-md-3 a {
   font-weight: bold;
   margin: 0 -15px;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #d0d0d0;
   border-right: 1px solid #d0d0d0;
   background: #f9f9f9;
   display: block;
@@ -7401,7 +7440,7 @@ label.btn > input[type='radio'] {
   border-bottom: none;
 }
 .search-results .card-search .col-lg-4 {
-  border-left: 1px solid #eaeaea;
+  border-left: 1px solid #d0d0d0;
 }
 .proj-details-wrapper {
   padding-top: 30px;
@@ -7796,6 +7835,7 @@ body ai-dialog-overlay.active {
   text-transform: none;
   padding: 8px 0;
   margin-right: 20px;
+  box-shadow: none;
 }
 .btn-group .multiselect:hover {
   background-color: transparent;
@@ -7820,13 +7860,20 @@ body ai-dialog-overlay.active {
   border-top-color: #f26b64;
 }
 .multiselect-container {
-  min-width: 200px;
+  min-width: 250px;
+  margin-top: 6px;
+  border-top: none;
+  border-radius: 0.3rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.175);
 }
 .multiselect-container .multiselect-search {
-  height: 42px;
+  height: auto;
 }
 .multiselect-container .multiselect-item .input-group {
-  margin-right: 0;
+  position: relative;
+  width: 95%;
 }
 .multiselect-container .multiselect-item .input-group .input-group-addon {
   display: none;
@@ -7837,19 +7884,32 @@ body ai-dialog-overlay.active {
 .multiselect-container .multiselect-item .input-group .input-group-btn {
   display: none;
 }
+.multiselect-container .multiselect-item .input-group:after {
+  content: "search";
+  font-family: 'Material Icons';
+  position: absolute;
+  z-index: 2;
+  right: 7px;
+  top: 1px;
+  color: #d0d0d0;
+  font-size: 24px;
+}
 .multiselect-container > li > a {
   padding-left: 10px;
   padding-right: 10px;
 }
 .multiselect-container > li > a:hover,
 .multiselect-container > li > a:focus {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
 }
 .multiselect-container > li > a > label {
   padding-left: 20px;
   padding-right: 10px;
 }
+.multiselect-container > li a.multiselect-all label {
+  font-weight: normal;
+}
 .multiselect-container.dropdown-menu > .active > a {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
   color: #000000;
 }

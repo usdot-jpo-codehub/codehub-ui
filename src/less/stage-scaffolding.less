@@ -57,6 +57,10 @@ body {
 	}
 }
 
+.insight-wrapper{
+  margin-top: 25px;
+}
+
 .page-title {
 	h1{
 		margin-top: 0;
@@ -70,19 +74,28 @@ body {
 .title-wrapper {
 	background-color: @white;
 	margin-bottom: 25px;
-  padding-top: 10px;
+  padding-top: 12px;
   padding-bottom: 0;
 
-  .filter-wrapper {
-    padding-top: 6px;
+  .filter-wrapper,
+  .explore-filter-wrapper {
+    padding-top: 0px;
     margin-bottom: 0;
 
     .filter-result-bar {
       padding-bottom: 8px;
+
+      > [class*='col-'] {
+        margin-bottom: 0;
+      }
     }
 
     .list-inline {
       margin-bottom: 0;
+
+      > li {
+        margin-bottom: 5px;
+      }
     }
 
     .btn-filters {
@@ -90,12 +103,24 @@ body {
       padding-bottom: 0;
     }
 
+    .collapse {
+      border: 1px solid @white;
+    }
+
     .in {
-      border-top: 1px solid lighten(@gray, 15%);
+      border-top: 1px solid lighten(@gray, @stage-gray-precentage);
       padding-top: 5px;
       padding-bottom: 5px;
     }
   }
+
+  .explore-filter-wrapper {
+    padding-bottom: 6px;
+  }
+}
+
+.home-wrapper {
+  padding-top: 0;
 }
 
 .search-results {
@@ -126,11 +151,25 @@ body {
 
 .cards-sorting {
 	margin: 0;
-	margin-top: 10px;
 
-	p {
-		margin: 0;
-	}
+  .material-icons {
+    vertical-align: -7px;
+    margin-right: 5px;
+    color: lighten(@black, 25%);
+  }
+
+  label {
+    margin-right: 8px;
+    font-weight: normal;
+  }
+}
+
+.col-chips {
+  .list-inline {
+    > li {
+      margin-bottom: 5px;
+    }
+  }
 }
 
 .stage-chip {
