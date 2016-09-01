@@ -80,7 +80,7 @@ export class Results {
     for (const org of unique) {
       options.push({ label: org, title: org, value: org, selected: false });
     }
-    $('#filterOrg').multiselect('dataprovider', options)
+    $('#filterOrg').multiselect('dataprovider', options);
     $('#filterOrg').trigger('change');
   }
 
