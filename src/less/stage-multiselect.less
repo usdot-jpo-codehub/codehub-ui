@@ -6,6 +6,8 @@
     padding: 8px 0;
     margin-right: 20px;
 
+
+
     &:hover {
       background-color: transparent;
       color: lighten(@black, 25%);
@@ -38,14 +40,16 @@
 }
 
 .multiselect-container {
-  min-width: 200px;
+  min-width: 250px;
 
   .multiselect-search {
-    height: 42px;
+    height: auto;
   }
 
   .multiselect-item {
     .input-group {
+      position: relative;
+      width:95%;
 
       .input-group-addon {
         display: none;
@@ -58,6 +62,17 @@
       .input-group-btn {
         display: none;
       }
+
+      &:after {
+        content:"search";
+        font-family: 'Material Icons';
+        position: absolute;
+        z-index: 2;
+        right: 7px;
+        top: 1px;
+        color: lighten(@gray, @stage-gray-precentage);
+        font-size: @font-size-h3;
+      }
     }
   }
 
@@ -68,7 +83,7 @@
 
       &:hover,
       &:focus {
-        background-color: fade(@black, 05%);
+        background-color: @white;
       }
 
       > label {
@@ -76,12 +91,15 @@
         padding-right: 10px;
       }
     }
+    .multiselect-all {
+      font-weight: normal;
+    }
   }
 
   &.dropdown-menu {
     > .active {
       > a {
-        background-color: fade(@black, 05%);
+        background-color: @white;
         color: @black;
       }
     }
