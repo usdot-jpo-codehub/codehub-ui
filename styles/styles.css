@@ -6561,10 +6561,16 @@ body {
   padding-top: 0;
   padding-bottom: 0;
 }
+.title-wrapper .filter-wrapper .collapse {
+  border: 1px solid #ffffff;
+}
 .title-wrapper .filter-wrapper .in {
   border-top: 1px solid #d0d0d0;
   padding-top: 5px;
   padding-bottom: 5px;
+}
+.home-wrapper {
+  padding-top: 0;
 }
 .search-results {
   padding-top: 25px;
@@ -7824,9 +7830,6 @@ body ai-dialog-overlay.active {
 }
 .multiselect-container .multiselect-search {
   height: 42px;
-}
-.multiselect-container .multiselect-item .input-group {
-  margin-right: 0;
 }
 .multiselect-container .multiselect-item .input-group .input-group-addon {
   display: none;
