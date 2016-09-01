@@ -6547,30 +6547,44 @@ body {
   padding-top: 10px;
   padding-bottom: 0;
 }
-.title-wrapper .filter-wrapper {
+.title-wrapper .filter-wrapper,
+.title-wrapper .explore-filter-wrapper {
   padding-top: 6px;
   margin-bottom: 0;
 }
-.title-wrapper .filter-wrapper .filter-result-bar {
+.title-wrapper .filter-wrapper .filter-result-bar,
+.title-wrapper .explore-filter-wrapper .filter-result-bar {
   padding-bottom: 8px;
 }
-.title-wrapper .filter-wrapper .list-inline {
+.title-wrapper .filter-wrapper .filter-result-bar > [class*='col-'],
+.title-wrapper .explore-filter-wrapper .filter-result-bar > [class*='col-'] {
   margin-bottom: 0;
 }
-.title-wrapper .filter-wrapper .list-inline > li {
+.title-wrapper .filter-wrapper .list-inline,
+.title-wrapper .explore-filter-wrapper .list-inline {
+  margin-bottom: 0;
+}
+.title-wrapper .filter-wrapper .list-inline > li,
+.title-wrapper .explore-filter-wrapper .list-inline > li {
   margin-bottom: 5px;
 }
-.title-wrapper .filter-wrapper .btn-filters {
+.title-wrapper .filter-wrapper .btn-filters,
+.title-wrapper .explore-filter-wrapper .btn-filters {
   padding-top: 0;
   padding-bottom: 0;
 }
-.title-wrapper .filter-wrapper .collapse {
+.title-wrapper .filter-wrapper .collapse,
+.title-wrapper .explore-filter-wrapper .collapse {
   border: 1px solid #ffffff;
 }
-.title-wrapper .filter-wrapper .in {
+.title-wrapper .filter-wrapper .in,
+.title-wrapper .explore-filter-wrapper .in {
   border-top: 1px solid #d0d0d0;
   padding-top: 5px;
   padding-bottom: 5px;
+}
+.title-wrapper .explore-filter-wrapper {
+  padding-bottom: 6px;
 }
 .home-wrapper {
   padding-top: 0;
