@@ -73,12 +73,17 @@ body {
   padding-top: 10px;
   padding-bottom: 0;
 
-  .filter-wrapper {
+  .filter-wrapper,
+  .explore-filter-wrapper {
     padding-top: 6px;
     margin-bottom: 0;
 
     .filter-result-bar {
       padding-bottom: 8px;
+
+      > [class*='col-'] {
+        margin-bottom: 0;
+      }
     }
 
     .list-inline {
@@ -99,10 +104,14 @@ body {
     }
 
     .in {
-      border-top: 1px solid lighten(@gray, 15%);
+      border-top: 1px solid lighten(@gray, @stage-gray-precentage);
       padding-top: 5px;
       padding-bottom: 5px;
     }
+  }
+
+  .explore-filter-wrapper {
+    padding-bottom: 6px;
   }
 }
 
