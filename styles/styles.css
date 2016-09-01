@@ -6535,6 +6535,9 @@ body {
 .card-header .col-lg-12 {
   margin-bottom: 0;
 }
+.insight-wrapper {
+  margin-top: 25px;
+}
 .page-title h1 {
   margin-top: 0;
 }
