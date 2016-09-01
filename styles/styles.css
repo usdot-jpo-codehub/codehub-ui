@@ -6557,6 +6557,9 @@ body {
 .title-wrapper .filter-wrapper .list-inline {
   margin-bottom: 0;
 }
+.title-wrapper .filter-wrapper .list-inline > li {
+  margin-bottom: 5px;
+}
 .title-wrapper .filter-wrapper .btn-filters {
   padding-top: 0;
   padding-bottom: 0;

@@ -100,6 +100,7 @@ export class Results {
       enableFiltering: true,
       disableIfEmpty: true,
       enableCaseInsensitiveFiltering: true,
+      maxHeight: 250,
       buttonText(options, select) {
         if (options.length === 0) {
           return 'Organizations';
@@ -130,6 +131,7 @@ export class Results {
       enableFiltering: true,
       disableIfEmpty: true,
       enableCaseInsensitiveFiltering: true,
+      maxHeight: 250,
       buttonText(options, select) {
         if (options.length === 0) {
           return 'Languages';
