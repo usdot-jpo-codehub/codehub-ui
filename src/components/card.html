@@ -1,0 +1,139 @@
+<template>
+  <div if.bind="repo" class="col-lg-4 col-md-12 col-sm-12">
+    <div class="card">
+      <div class="ribbon-wrapper">
+        <div class="ribbon">${repo.language}</div>
+      </div>
+      <div class="card-header">
+        <div class="avatar">
+          <span if.bind="repo.language === 'ActionScript'">
+            <img src="img/actionscript.svg">
+          </span>
+          <span if.bind="repo.language === 'C'">
+            <img src="img/c.svg">
+          </span>
+          <span if.bind="repo.language === 'C++'">
+            <img src="img/c_plus_plus.svg">
+          </span>
+          <span if.bind="repo.language === 'C#'">
+            <img src="img/c_sharp.svg">
+          </span>
+          <span if.bind="repo.language === 'CoffeScript'">
+            <img src="img/coffescript.svg">
+          </span>
+          <span if.bind="repo.language === 'CSS'">
+            <img src="img/css.svg">
+          </span>
+          <span if.bind="repo.language === 'Go'">
+            <img src="img/go.svg">
+          </span>
+          <span if.bind="repo.language === 'Groovy'">
+            <img src="img/groovy.svg">
+          </span>
+          <span if.bind="repo.language === 'HTML'">
+            <img src="img/html.svg">
+          </span>
+          <span if.bind="repo.language === 'Java'">
+            <img src="img/java.svg">
+          </span>
+          <span if.bind="repo.language === 'JavaScript'">
+            <img src="img/js.svg">
+          </span>
+          <span if.bind="repo.language === 'Jupyter Notebook'">
+            <img src="img/jupyter.svg">
+          </span>
+          <span if.bind="repo.language === 'nodejs'">
+            <img src="img/nodejs.svg">
+          </span>
+          <span if.bind="repo.language === 'Objective-C'">
+            <img src="img/obj_c.svg">
+          </span>
+          <span if.bind="repo.language === 'PHP'">
+            <img src="img/php.svg">
+          </span>
+          <span if.bind="repo.language === 'PowerShell'">
+            <img src="img/powershell.svg">
+          </span>
+          <span if.bind="repo.language === 'Python'">
+            <img src="img/python.svg">
+          </span>
+          <span if.bind="repo.language === 'Ruby'">
+            <img src="img/ruby.svg">
+          </span>
+          <span if.bind="repo.language === 'Scala'">
+            <img src="img/scala.svg">
+          </span>
+          <span if.bind="repo.language === 'Shell'">
+            <img src="img/shell.svg">
+          </span>
+          <span if.bind="repo.language === 'Swift'">
+            <img src="img/swift.svg">
+          </span>
+          <span if.bind="repo.language === 'TypeScript'">
+            <img src="img/typescript.svg">
+          </span>
+          <span if.bind="repo.language === 'XSLT'">
+            <img src="img/xslt.svg">
+          </span>
+          <span if.bind="repo.language === null">
+            <img src="img/default.svg">
+          </span>
+        </div>
+        <div class="card-title multiline">
+          <a href="#" route-href="route:project-details; params.bind: {id:repo.id}" title="${repo.project_name}">${repo.project_name}</a>
+        </div>
+        <div class="org-name">${repo.organization}</div>
+      </div>
+      <div class="proj-desc multiline">${repo.project_description}</div>
+      <div class="text-muted last-updated">Updated 6 hours ago</div>
+      <div class="row github-stats">
+        <div class="col-md-4 col-sm-4">
+          <span class="stat">
+
+            <span class="octicon octicon-star"></span>
+            <span class="num text-muted text-emphasized">${nFormatter(repo.stars)}</span>
+            <span class="stat-label">stars</span>
+          </span>
+          <span class="stat">
+            <span class="octicon octicon-organization"></span>
+            <span class="num text-muted text-emphasized">${nFormatter(repo.contributors)}</span>
+            <span class="stat-label">contributors</span>
+          </span>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <span class="stat">
+            <span class="octicon octicon-eye"></span>
+            <span class="num text-muted text-emphasized">${nFormatter(repo.watchers)}</span>
+            <span class="stat-label">watchers</span>
+          </span>
+          <span class="stat">
+            <span class="octicon octicon-git-commit"></span>
+            <span class="num text-muted text-emphasized">${nFormatter(repo.commits)}</span>
+            <span class="stat-label">commits</span>
+          </span>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <span class="stat">
+            <span class="octicon octicon-tag"></span>
+            <span class="num text-muted text-emphasized">${nFormatter(repo.releases)}</span>
+            <span class="stat-label">releases</span>
+          </span>
+          <span class="stat">
+            <span class="octicon octicon-repo-forked"></span>
+            <span class="num text-muted text-emphasized">${nFormatter(repo.forks)}</span>
+            <span class="stat-label">forks</span>
+          </span>
+        </div>
+      </div>
+      <div class="row card-btns">
+        <div class="col-md-6">
+          <a href="#" click.trigger="openModal(repo)"><i class="material-icons">library_books</i> Show
+            README</a>
+        </div>
+        <div class="col-md-6">
+          <a route-href="route:project-details; params.bind: {id:repo.id}">Go to Details <i class="material-icons">chevron_right</i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

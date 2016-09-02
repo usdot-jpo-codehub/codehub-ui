@@ -1,19 +1,14 @@
 <template>
-  <require from="nav-bar.html"></require>
 
-  <div class="hero-banner ${router.currentInstruction.fragment == '/' ? '' : 'secondary'}">
+  <div class="hero-banner">
     <div class="inner">
-      <nav-bar router.bind="router"></nav-bar>
-      <div class="jumbotron hero-jumbotron">
-        <div class="container-fluid">
-          <compose view-model="modules/project/search/search-bar" model.bind="router.currentInstruction.fragment == '/'"></compose>
-        </div>
-      </div>
+      <compose view-model="nav-bar" router.bind="router"></compose>
+      <router-view name="headerContent"></router-view>
     </div>
   </div>
 
   <div class="page-host">
-    <router-view></router-view>
+    <router-view name="mainContent"></router-view>
   </div>
 
 </template>

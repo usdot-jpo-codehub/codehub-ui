@@ -1,0 +1,455 @@
+<template>
+    <require from="../search/search-bar"></require>
+    <require from="../resources/value-converters/pick"></require>
+
+    <div class="container-fluid title-wrapper proj-details-title-wrapper">
+        <h2 class="page-title"><span>${repo.project_name}</span></h2>
+    </div>
+
+    <div class="container-fluid proj-details-wrapper">
+        <div class="row flex-row">
+            <div class="col-lg-9 col-md-8 col-proj-details">
+                <div class="row proj-details">
+                    <div class="col-lg-6">
+                        <div class="card card-details">
+                            <div class="card-header">
+                                <h3>
+                                    <span class="component-type">Project Details</span>
+                                </h3>
+                                <a href="#"><i class="fa fa-star"></i> Favorite</a>
+                            </div>
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="section-wrap">
+                                            <h4>Organization Name</h4>
+                                            <a href="${repo.organizationUrl}" target="_blank">${repo.organization}</a>
+                                        </div>
+                                        <div class="section-wrap">
+                                            <h4>Description</h4>
+                                            <p>${repo.project_description}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="section-wrap">
+                                            <h4>Repository Name</h4>
+                                            <a href="${repo.repositoryUrl}" target="_blank">${repo.project_name}</a>
+                                        </div>
+                                        <div class="section-wrap">
+                                            <h4>Project Type</h4>
+                                            <h5 class="repo-language">
+                                              <span if.bind="repo.language === 'JavaScript'"><img class="project-icon" alt="JavaScript Icon" title="JavaScript Icon" src="../../img/logos/javascript.svg"></span>
+                                              <span if.bind="repo.language === 'Ruby'"><img class="project-icon" alt="Ruby Icon" title="Ruby Icon" src="../../img/logos/ruby.svg"></span>
+                                              <span if.bind="repo.language === 'Java'"><img class="project-icon java-icon" alt="Java Icon" title="Java Icon" src="../../img/logos/java.svg"></span>
+                                              <span if.bind="repo.language === 'HTML'"><img class="project-icon" alt="HTML Icon" title="HTML Icon" src="../../img/logos/html5.svg"></span>
+                                              <span if.bind="repo.language === 'CoffeeScript'"><img class="project-icon coffee-icon" alt="Coffeescript Icon" title="Coffeescript Icon" src="../../img/logos/coffeescript.svg"></span>
+                                              <span if.bind="repo.language === 'Python'"><img class="project-icon" alt="Python Icon" title="Python Icon" src="../../img/logos/python.svg"></span>
+                                              <span if.bind="repo.language === 'Groovy'"><img class="project-icon groovy-icon" alt="Groovy Icon" title="Groovy Icon" src="../../img/logos/Groovy-logo.svg"></span>
+                                              <span if.bind="repo.language === 'Shell'"><img class="project-icon" alt="Shell Icon" title="Shell Icon" src="../../img/logos/terminal.svg"></span>
+                                              <span if.bind="repo.language === 'Scala'"><img class="project-icon" alt="Scala Icon" title="Scala Icon" src="../../img/logos/scala.svg"></span>
+                                              <span if.bind="repo.language === 'null'"></span>
+                                              ${repo.language}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="section-wrap">
+                                            <h4>Key Artifacts</h4>
+                                            <ul class="flex-links">
+                                                <li class="flex-item">
+                                                    <a href="#" click.trigger = "openModal(repo)"><i class="octicon octicon-book"></i> Readme</a>
+                                                </li>
+                                                <li class="flex-item">
+                                                    <a href="#"><i class="octicon octicon-tag"></i> Releases (${repo.releases})</a>
+                                                </li>
+                                                <li class="flex-item">
+                                                    <a href="#"><i class="octicon octicon-file"></i> Build File</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- </div>
+
+                <div class="row proj-details"> -->
+                    <div class="col-lg-6">
+                        <div class="card card-details">
+                            <div class="card-header">
+                                <h3 class="project-component-flex">
+                                    <span class="component-type">Project Dependencies</span>
+                                </h3>
+                            </div>
+                            <div class="card-block">
+                                <div class="section-wrap">
+                                    <div class="flex-subhead">
+                                        <h4>Dependencies</h4>
+                                        <a href="#">See More</a>
+                                    </div>
+                                    <ul class="flex-links">
+                                        <li repeat.for="depend of repo.componentDependencies" class="flex-item"><a href="#">${depend.artifactId}</a></li>
+                                        <!-- <li class="flex-item">
+                                            <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/nodejs-icon.svg"> <span>NodeJS</span></a>
+                                        </li>
+                                        <li class="flex-item">
+                                            <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/npm.svg"> <span>NPM</span></a>
+                                        </li>
+                                        <li class="flex-item">
+                                            <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/gulp.svg"> <span>Gulp</span></a>
+                                        </li> -->
+                                    </ul>
+                                </div>
+                                <div class="section-wrap">
+                                    <div class="flex-subhead">
+                                        <h4>Dependents</h4>
+                                        <a href="#">See More</a>
+                                    </div>
+                                    <ul class="flex-links">
+                                        <li class="flex-item">
+                                            <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/nodejs-icon.svg"> <span>NodeJS</span></a>
+                                        </li>
+                                        <li class="flex-item">
+                                            <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/npm.svg"> <span>NPM</span></a>
+                                        </li>
+                                        <li class="flex-item">
+                                            <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/gulp.svg"> <span>Gulp</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-details">
+                            <div class="card-header">
+                                <h3 class="project-component-flex">
+                                    <span class="component-type">Key Stats</span>
+                                </h3>
+                            </div>
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="flex-block">
+                                            <div class="section-wrap">
+                                                <h4>Project Health</h4>
+                                                <ul class="flex-links">
+                                                    <li class="flex-item">
+                                                        <img src="img/flow.svg">
+                                                    </li>
+                                                    <li class="flex-item">
+                                                        <img src="img/ashikawa-core.svg">
+                                                    </li>
+                                                    <li class="flex-item">
+                                                        <img src="img/npm.svg">
+                                                    </li>
+                                                    <li class="flex-item">
+                                                        <img src="img/gh-badges.svg">
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="flex-block">
+                                            <div class="section-wrap">
+                                                <h4>Github</h4>
+                                                <ul class="flex-links">
+                                                    <li class="flex-item">
+                                                        <span class="label bg-amber">
+                                                            <i class="octicon octicon-star"></i> Stars: <span class="bg-amber text-uppercase">${repo.stars}</span>
+                                                        </span>
+                                                    </li>
+                                                    <li class="flex-item">
+                                                        <span class="label bg-light-blue">
+                                                            <i class="octicon octicon-organization"></i> <span class="text-uppercase">Contributors:</span> ${repo.contributors}
+                                                        </span>
+                                                    </li>
+                                                    <li class="flex-item">
+                                                        <span class="label bg-orange">
+                                                            <i class="octicon octicon-eye"></i> <span class="text-uppercase">Watchers:</span> ${repo.watchers}
+                                                        </span>
+                                                    </li>
+                                                    <li class="flex-item">
+                                                        <span class="label bg-indigo">
+                                                            <i class="octicon octicon-git-commit"></i> <span class="text-uppercase">Commits:</span> ${repo.commits}
+                                                        </span>
+                                                    </li>
+                                                    <li class="flex-item">
+                                                        <span class="label bg-purple">
+                                                            <i class="octicon octicon-tag"></i> <span class="text-uppercase">Releases:</span> ${repo.releases}
+                                                        </span>
+                                                    </li>
+                                                    <li class="flex-item">
+                                                        <span class="label bg-med-blue">
+                                                            <i class="octicon octicon-repo-forked"></i> <span class="text-uppercase">Forks:</span> ${repo.forks}
+                                                        </span>
+                                                    </li>
+                                                    <li class="flex-item">
+                                                        <span class="label bg-lime">
+                                                            <i class="octicon octicon-code"></i> <span class="text-uppercase">Lines of Code:</span> 1200
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="flex-block">
+                                            <div class="section-wrap">
+                                                <h4>Dockerhub</h4>
+                                                <ul class="flex-links">
+                                                    <li class="flex-item">
+                                                        <span class="label label-info">
+                                                            <i class="octicon octicon-repo-pull"></i> <span class="text-uppercase">Stars:</span> 100
+                                                        </span>
+                                                    </li>
+                                                    <li class="flex-item">
+                                                        <span class="label label-info">
+                                                            <i class="octicon octicon-star"></i> <span class="text-uppercase">Forks:</span> 25
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-details">
+                            <div class="card-header">
+                                <h3 class="project-component-flex">
+                                    <span class="component-type">Key Technologies</span>
+                                </h3>
+                            </div>
+                            <div class="card-block">
+                                <ul class="flex-links">
+                                    <li class="flex-item">
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/nodejs-icon.svg"> <span>NodeJS</span></a>
+                                    </li>
+                                    <li class="flex-item">
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/aurelia.svg"> <span>Aurelia</span></a>
+                                    </li>
+                                    <li class="flex-item">
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/lookback.svg"> <span>Lookback</span></a>
+                                    </li>
+                                    <li class="flex-item">
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/mocha.svg"> <span>Mocha</span></a>
+                                    </li>
+                                    <li class="flex-item">
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/chai.svg"> <span>Chai</span></a>
+                                    </li>
+                                    <li class="flex-item">
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/jasmine.svg"> <span>Jasmine</span></a>
+                                    </li>
+                                    <li class="flex-item">
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/gulp.svg"> <span>Gulp</span></a>
+                                    </li>
+                                    <li class="flex-item">
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/npm.svg"> <span>NPM</span></a>
+                                    </li>
+                                    <li class="flex-item">
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/mongodb.svg"> <span>Mongodb</span></a>
+                                    </li>
+                                    <li class="flex-item">
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/travis-ci.svg"> <span>TravisCI</span></a>
+                                    </li>
+                                    <li class="flex-item">
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/code-climate-wedges-black.svg"> <span>Code Climate</span></a>
+                                    </li>
+                                    <li class="flex-item">
+                                        <a href="#"><img class="project-icon coveralls" alt="JavaScript Icon" src="../../../../img/logos/coveralls-custom.svg"> <span>Coveralls</span></a>
+                                    </li>
+                                    <li class="flex-item">
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/aws-s3.svg"> <span>AWS S3</span></a>
+                                    </li>
+                                    <li class="flex-item">
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/aws-codedeploy.svg"> <span>AWS CodeDeploy</span></a>
+                                    </li>
+                                    <li class="flex-item">
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/tux.svg"> <span>Linux</span></a>
+                                    </li>
+                                    <li class="flex-item">
+                                        <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/docker.svg"> <span>Docker</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 sidebar">
+                <div class="row flex-row">
+                    <div class="col-lg-12">
+                        <h3 class="project-component-flex">
+                            <span class="component-type">Project Members</span>
+                        </h3>
+                        <div class="media-list media-list-users list-group">
+
+                            <div repeat.for="contrib of repo.contributors_list | pick:3" class="list-group-item">
+                                <div class="media">
+                                    <span class="media-left">
+                                        <img class="img-circle media-object" src="https://github.com/${contrib.username}.png">
+                                    </span>
+                                    <div class="media-body clearfix">
+                                        ${contrib.username}<span class="pull-right"></span>
+                                        <div class="media-body-secondary">
+                                            <a href="${contrib.profile_url}">${contrib.profile_url}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- <div class="list-group-item">
+                                <div class="media">
+                                    <span class="media-left">
+                                        <img class="img-circle media-object" src="../../img/01-Avatar-img.png">
+                                    </span>
+                                    <div class="media-body clearfix">
+                                        Rachel Smith<span class="pull-right"></span>
+                                        <div class="media-body-secondary">
+                                            <a href="${contrib.profile_url}">Rachel.smith@example.com</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="media">
+                                    <span class="media-left">
+                                        <img class="img-circle media-object" src="../../img/02-Avatar-img.png">
+                                    </span>
+                                    <div class="media-body clearfix">
+                                        Rachel Smith<span class="pull-right"></span>
+                                        <div class="media-body-secondary">
+                                            <a href="${contrib.profile_url}">Rachel.smith@example.com</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="media">
+                                    <span class="media-left">
+                                        <img class="img-circle media-object" src="../../img/03-Avatar-img.png">
+                                    </span>
+                                    <div class="media-body clearfix">
+                                        Rachel Smith<span class="pull-right"></span>
+                                        <div class="media-body-secondary">
+                                            <a href="${contrib.profile_url}">Rachel.smith@example.com</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="media">
+                                    <span class="media-left">
+                                        <img class="img-circle media-object" src="../../img/04-Avatar-img.png">
+                                    </span>
+                                    <div class="media-body clearfix">
+                                        Rachel Smith<span class="pull-right"></span>
+                                        <div class="media-body-secondary">
+                                            <a href="${contrib.profile_url}">Rachel.smith@example.com</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="media">
+                                    <span class="media-left">
+                                        <img class="img-circle media-object" src="../../img/05-Avatar-img.png">
+                                    </span>
+                                    <div class="media-body clearfix">
+                                        Rachel Smith<span class="pull-right"></span>
+                                        <div class="media-body-secondary">
+                                            <a href="${contrib.profile_url}">Rachel.smith@example.com</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+
+                        <h3 class="project-component-flex">
+                            <span class="component-type">Similar Projects</span>
+                        </h3>
+                        <div class="media-list media-list-projects list-group">
+
+                             <div repeat.for="project of similarProjects | pick:3" class="list-group-item">
+                                <div class="media">
+                                    <div class="media-body clearfix">
+                                        <a route-href="route:project-details; params.bind: {id:project.project_id} ">
+                                            <h5>${project.project_name}</h5>
+                                            <div class="media-body-secondary">${project.project_org_name}</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- <div class="list-group-item">
+                                <div class="media">
+                                    <div class="media-body clearfix">
+                                        <a href="#">
+                                            <h5>Bootstrap</h5>
+                                            <div class="media-body-secondary">18F</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="media">
+                                    <div class="media-body clearfix">
+                                        <a href="#">
+                                            <h5>Bootstrap</h5>
+                                            <div class="media-body-secondary">18F</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="media">
+                                    <div class="media-body clearfix">
+                                        <a href="#">
+                                            <h5>Bootstrap</h5>
+                                            <div class="media-body-secondary">18F</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="media">
+                                    <div class="media-body clearfix">
+                                        <a href="#">
+                                            <h5>Bootstrap</h5>
+                                            <div class="media-body-secondary">18F</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="media">
+                                    <div class="media-body clearfix">
+                                        <a href="#">
+                                            <h5>Bootstrap</h5>
+                                            <div class="media-body-secondary">18F</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

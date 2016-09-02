@@ -1,0 +1,115 @@
+.btn-group {
+  .multiselect {
+    border: none;
+    color: lighten(@black, 25%);
+    text-transform: none;
+    padding: 8px 0;
+    margin-right: 20px;
+    box-shadow: none;
+
+    &:hover {
+      background-color: transparent;
+      color: lighten(@black, 25%);
+    }
+
+    &:focus {
+      background-color: transparent;
+      color: @stage-red;
+    }
+
+    .caret {
+      border-top-color: lighten(@gray, @stage-gray-precentage);
+      border-width: 6px;
+      margin-left: 8px;
+    }
+  }
+}
+
+.btn-group.open {
+  .multiselect {
+    background-color: transparent;
+    color: @stage-red;
+    border: none;
+    box-shadow: none;
+
+    .caret {
+      border-top-color: @stage-red;
+    }
+  }
+}
+
+.multiselect-container {
+  min-width: 250px;
+  margin-top: 6px;
+  border-top: none;
+  border-radius: @stage-border-radius;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.175);
+
+  .multiselect-search {
+    height: auto;
+  }
+
+  .multiselect-item {
+    .input-group {
+      position: relative;
+      width:95%;
+
+      .input-group-addon {
+        display: none;
+      }
+
+      .multiselect-search {
+        border-radius: 6px;
+      }
+
+      .input-group-btn {
+        display: none;
+      }
+
+      &:after {
+        content:"search";
+        font-family: 'Material Icons';
+        position: absolute;
+        z-index: 2;
+        right: 7px;
+        top: 1px;
+        color: lighten(@gray, @stage-gray-precentage);
+        font-size: @font-size-h3;
+      }
+    }
+  }
+
+  > li {
+    > a {
+      padding-left: 10px;
+      padding-right: 10px;
+
+      &:hover,
+      &:focus {
+        background-color: @white;
+      }
+
+      > label {
+        padding-left: 20px;
+        padding-right: 10px;
+      }
+    }
+
+    a.multiselect-all {
+      label {
+        font-weight: normal;
+      }
+    }
+  }
+
+  &.dropdown-menu {
+    > .active {
+      > a {
+        background-color: @white;
+        color: @black;
+      }
+    }
+  }
+}

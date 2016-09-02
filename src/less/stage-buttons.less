@@ -7,6 +7,23 @@
 	&:active,
 	&:focus {
 		outline: none !important;
+		box-shadow: none !important;
+	}
+}
+
+.btn-default {
+	color: @teal;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 10px 25px;
+  border: none;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: @teal;
+		color: @white;
 	}
 }
 
@@ -34,6 +51,53 @@
 		vertical-align: -2px;
 		padding-right: 3px;
 	}
+}
+
+.btn-filters {
+	&:extend(.btn-link);
+	text-transform: uppercase;
+	color: lighten(@black, 30%);
+	text-decoration: none;
+  font-weight: bold;
+
+	&:active,
+	&.active,
+	&:hover,
+	&:focus,
+	&.focus {
+		color: lighten(@black, 30%);
+		text-decoration: none;
+	}
+
+	i {
+		transform: rotate(180deg);
+		vertical-align: -7px;
+		transition: all 0.2s linear;
+	}
+
+	&.collapsed {
+		i {
+			transform: rotate(0deg);
+		}
+	}
+}
+
+.clear-btn {
+	color: lighten(@black, 25%);
+
+	&:hover,
+	&:focus {
+		color: lighten(@black, 25%);
+	}
+}
+
+.btn-cancel {
+	&:extend(.btn-link);
+    position: absolute;
+    top: 10px;
+    z-index: 9999;
+    right: 50px;
+    color: @stage-red;
 }
 
 a.btn {
