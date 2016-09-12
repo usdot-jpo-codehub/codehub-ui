@@ -4,14 +4,17 @@
 
 html {
 	font-size: @font-size-base;
+  position: relative;
+  min-height: 100%;
 }
 
 body {
 	color: @black;
 	background-color: @stage-body-bk;
-  	font-family: @font-family-base;
-  	font-size: @font-size-base;
-  	line-height: @line-height-base;
+	font-family: @font-family-base;
+	font-size: @font-size-base;
+	line-height: @line-height-base;
+  margin-bottom: 70px;
 }
 
 .flex-row {
@@ -83,7 +86,7 @@ body {
     margin-bottom: 0;
 
     .filter-result-bar {
-      padding-bottom: 8px;
+      padding-bottom: 10px;
 
       > [class*='col-'] {
         margin-bottom: 0;
@@ -349,6 +352,26 @@ a {
 		}
 	}
 }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  // border-top: 1px solid #555555;
+  margin-top: 20px;
+  padding-top: 20px;
+  background-color: @white;
+
+  .list-inline {
+    text-align: center;
+  }
+
+  .bah-logo{
+    width: 180px;
+    margin-right: 10px;
+  }
+}
+
 /* Media queries */
 
 @media screen and (max-width: 992px) {

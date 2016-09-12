@@ -6371,6 +6371,8 @@ address {
 }
 html {
   font-size: 14px;
+  position: relative;
+  min-height: 100%;
 }
 body {
   color: #000000;
@@ -6378,6 +6380,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
+  margin-bottom: 70px;
 }
 .flex-row {
   display: flex;
@@ -6557,7 +6560,7 @@ body {
 }
 .title-wrapper .filter-wrapper .filter-result-bar,
 .title-wrapper .explore-filter-wrapper .filter-result-bar {
-  padding-bottom: 8px;
+  padding-bottom: 10px;
 }
 .title-wrapper .filter-wrapper .filter-result-bar > [class*='col-'],
 .title-wrapper .explore-filter-wrapper .filter-result-bar > [class*='col-'] {
@@ -6765,6 +6768,21 @@ a:focus {
   letter-spacing: 3px;
   font-size: 21px;
   opacity: 0.4;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-top: 20px;
+  padding-top: 20px;
+  background-color: #ffffff;
+}
+footer .list-inline {
+  text-align: center;
+}
+footer .bah-logo {
+  width: 180px;
+  margin-right: 10px;
 }
 /* Media queries */
 @media screen and (max-width: 992px) {
@@ -7198,6 +7216,7 @@ label.btn > input[type='radio'] {
 .navbar-default .user-nav .utility-icons a {
   padding-top: 10px;
   padding-bottom: 10px;
+  color: #ffffff;
 }
 .navbar-default .user-nav .utility-icons a .material-icons {
   line-height: 30px;
@@ -7247,6 +7266,8 @@ label.btn > input[type='radio'] {
   background-color: transparent;
   color: #ffffff;
   border: none;
+  box-shadow: none;
+  padding: 10px 15px;
 }
 .navbar-default .navbar-search .input-group .input-group-btn .btn-default .material-icons {
   font-size: 28px;
@@ -7738,12 +7759,19 @@ body ai-dialog-overlay.active {
   font-size: 24px;
   font-weight: bold;
 }
+.modal-footer {
+  border-radius: 0 0 4px 4px;
+  background-color: #f2f2f2;
+}
 .label-info {
   background-color: #155569;
 }
 .label-info[href]:hover,
 .label-info[href]:focus {
   background-color: #0c333e;
+}
+.markdown-body img {
+  max-width: 100%;
 }
 .media {
   margin-top: 15px;
