@@ -6560,7 +6560,7 @@ body {
 }
 .title-wrapper .filter-wrapper .filter-result-bar,
 .title-wrapper .explore-filter-wrapper .filter-result-bar {
-  padding-bottom: 8px;
+  padding-bottom: 10px;
 }
 .title-wrapper .filter-wrapper .filter-result-bar > [class*='col-'],
 .title-wrapper .explore-filter-wrapper .filter-result-bar > [class*='col-'] {
@@ -7265,6 +7265,7 @@ label.btn > input[type='radio'] {
   background-color: transparent;
   color: #ffffff;
   border: none;
+  box-shadow: none;
 }
 .navbar-default .navbar-search .input-group .input-group-btn .btn-default .material-icons {
   font-size: 28px;
@@ -7755,6 +7756,10 @@ body ai-dialog-overlay.active {
 .modal-body h3 {
   font-size: 24px;
   font-weight: bold;
+}
+.modal-footer {
+  border-radius: 0 0 4px 4px;
+  background-color: #f2f2f2;
 }
 .label-info {
   background-color: #155569;
