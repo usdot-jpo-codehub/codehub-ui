@@ -19,7 +19,7 @@ install:
 - jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
 - jspm install -y
 script:
-- sed -i "s/\@\@BUILD_LABEL\@\@/$HEIMDALL_BUILD_LABEL/g" stage.conf
+- sed -i "s/{BUILD_LABEL}/$HEIMDALL_BUILD_LABEL/" stageConf.js
 - gulp build
 - npm prune --production
 before_deploy:
