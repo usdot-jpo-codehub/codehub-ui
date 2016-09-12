@@ -6766,6 +6766,15 @@ a:focus {
   font-size: 21px;
   opacity: 0.4;
 }
+footer {
+  width: 100%;
+  margin-top: 20px;
+  padding-top: 20px;
+  background-color: #ffffff;
+}
+footer .list-inline {
+  text-align: center;
+}
 /* Media queries */
 @media screen and (max-width: 992px) {
   .sort-col {
