@@ -4,14 +4,17 @@
 
 html {
 	font-size: @font-size-base;
+  position: relative;
+  min-height: 100%;
 }
 
 body {
 	color: @black;
 	background-color: @stage-body-bk;
-  	font-family: @font-family-base;
-  	font-size: @font-size-base;
-  	line-height: @line-height-base;
+	font-family: @font-family-base;
+	font-size: @font-size-base;
+	line-height: @line-height-base;
+  margin-bottom: 70px;
 }
 
 .flex-row {
@@ -351,8 +354,8 @@ a {
 }
 
 footer {
-  // position: absolute;
-  // bottom: 0;
+  position: absolute;
+  bottom: 0;
   width: 100%;
   // border-top: 1px solid #555555;
   margin-top: 20px;
@@ -361,6 +364,11 @@ footer {
 
   .list-inline {
     text-align: center;
+  }
+
+  .bah-logo{
+    width: 180px;
+    margin-right: 10px;
   }
 }
 
