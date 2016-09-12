@@ -7216,6 +7216,7 @@ label.btn > input[type='radio'] {
 .navbar-default .user-nav .utility-icons a {
   padding-top: 10px;
   padding-bottom: 10px;
+  color: #ffffff;
 }
 .navbar-default .user-nav .utility-icons a .material-icons {
   line-height: 30px;
@@ -7266,6 +7267,7 @@ label.btn > input[type='radio'] {
   color: #ffffff;
   border: none;
   box-shadow: none;
+  padding: 10px 15px;
 }
 .navbar-default .navbar-search .input-group .input-group-btn .btn-default .material-icons {
   font-size: 28px;
