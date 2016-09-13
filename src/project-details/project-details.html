@@ -1,9 +1,161 @@
 <template>
-    <require from="../search/search-bar"></require>
-    <require from="../resources/value-converters/pick"></require>
+  <require from="../resources/value-converters/pick"></require>
 
-    <div class="container-fluid proj-details-wrapper">
-        <div class="row flex-row">
+  <div class="container-fluid cards-wrapper proj-details-wrapper">
+    <div class="row">
+      <div class="col-lg-9 col-content">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="ribbon-wrapper">
+              <div class="ribbon">${repo.language}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="lined-header">
+                  <a class="pull-right btn btn-link" href="#"><i class="material-icons">open_in_new</i>View on Github</a>
+                  <h2 class=""><span>overview</span></h2>
+                  
+                </div>
+                <div class="proj-desc">${repo.project_description}</div>
+                <div class="text-muted last-updated">Build by <a href="https://github.com/${repo.organization}">${repo.organization}</a> &nbsp; | &nbsp; Updated 6 hours ago</div>
+              </div>
+              <div class="col-lg-4 col-github-stats">
+                <div class="row github-stats">
+                  <div class="col-md-6 col-sm-6">
+                    <span class="stat">
+                      <span class="octicon octicon-star"></span>
+                      <span class="num text-muted text-emphasized">${nFormatter(repo.stars)}</span>
+                      <span class="stat-label">stars</span>
+                    </span>
+                    <span class="stat">
+                      <span class="octicon octicon-organization"></span>
+                      <span class="num text-muted text-emphasized">${nFormatter(repo.contributors)}</span>
+                      <span class="stat-label">contributors</span>
+                    </span>
+                    <span class="stat">
+                      <span class="octicon octicon-eye"></span>
+                      <span class="num text-muted text-emphasized">${nFormatter(repo.watchers)}</span>
+                      <span class="stat-label">watchers</span>
+                    </span>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+                    <span class="stat">
+                      <span class="octicon octicon-git-commit"></span>
+                      <span class="num text-muted text-emphasized">${nFormatter(repo.commits)}</span>
+                      <span class="stat-label">commits</span>
+                    </span>
+                    <span class="stat">
+                      <span class="octicon octicon-tag"></span>
+                      <span class="num text-muted text-emphasized">${nFormatter(repo.releases)}</span>
+                      <span class="stat-label">releases</span>
+                    </span>
+                    <span class="stat">
+                      <span class="octicon octicon-repo-forked"></span>
+                      <span class="num text-muted text-emphasized">${nFormatter(repo.forks)}</span>
+                      <span class="stat-label">forks</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-sidebar">
+        <div class="row card-btns">
+          <div class="col-md-6">
+            <a href="#"><i class="material-icons">bookmark_border</i> Bookmark</a>
+          </div>
+          <div class="col-md-6">
+            <a href="#"><i class="material-icons">share</i> Share</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <h3>Contributors</h3>
+            <div class="media-list media-list-users list-group">
+              <div repeat.for="contrib of repo.contributors_list | pick:3" class="list-group-item">
+                <div class="media">
+                  <span class="media-left">
+                    <img class="img-circle media-object" src="https://github.com/${contrib.username}.png">
+                  </span>
+                  <div class="media-body clearfix">
+                    ${contrib.username}<span class="pull-right"></span>
+                    <div class="media-body-secondary">
+                      <a href="${contrib.profile_url}">${contrib.profile_url}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h3>Similar Projects</h3>
+            <div class="media-list media-list-projects list-group">
+              <!-- <div repeat.for="project of similarProjects | pick:3" class="list-group-item">
+                <div class="media">
+                  <span class="media-left">
+                    <img class="img-circle media-object" src="https://github.com/${project.project_org_name}">
+                  </span>
+                  <div class="media-body clearfix">
+                    <a route-href="route:project-details; params.bind: {id:project.project_id} ">
+                      <h5>${project.project_name}</h5>
+                      <div class="media-body-secondary">${project.project_org_name}</div>
+                    </a>
+                  </div>
+                </div>
+              </div> -->
+
+              <div class="list-group-item">
+                <div class="media">
+                  <span class="media-left">
+                    <img class="img-circle media-object" src="http://www.github.com/18f.png">
+                  </span>
+                  <div class="media-body clearfix">
+                    <a href="#">
+                      <h5>Bootstrap</h5>
+                      <div class="media-body-secondary">18F</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="list-group-item">
+                <div class="media">
+                  <span class="media-left">
+                    <img class="img-circle media-object" src="http://www.github.com/18f.png">
+                  </span>
+                  <div class="media-body clearfix">
+                    <a href="#">
+                      <h5>Bootstrap</h5>
+                      <div class="media-body-secondary">18F</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="list-group-item">
+                <div class="media">
+                  <span class="media-left">
+                    <img class="img-circle media-object" src="http://www.github.com/18f.png">
+                  </span>
+                  <div class="media-body clearfix">
+                    <a href="#">
+                      <h5>Bootstrap</h5>
+                      <div class="media-body-secondary">18F</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+
+
+        <!-- <div class="row flex-row">
             <div class="col-lg-9 col-md-8 col-proj-details">
                 <div class="row proj-details">
                     <div class="col-lg-6">
@@ -68,9 +220,9 @@
                             </div>
                         </div>
                     </div>
-                <!-- </div>
+                </div>
 
-                <div class="row proj-details"> -->
+                <div class="row proj-details">
                     <div class="col-lg-6">
                         <div class="card card-details">
                             <div class="card-header">
@@ -86,15 +238,7 @@
                                     </div>
                                     <ul class="flex-links">
                                         <li repeat.for="depend of repo.componentDependencies" class="flex-item"><a href="#">${depend.artifactId}</a></li>
-                                        <!-- <li class="flex-item">
-                                            <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/nodejs-icon.svg"> <span>NodeJS</span></a>
-                                        </li>
-                                        <li class="flex-item">
-                                            <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/npm.svg"> <span>NPM</span></a>
-                                        </li>
-                                        <li class="flex-item">
-                                            <a href="#"><img class="project-icon" alt="JavaScript Icon" src="../../../../img/logos/gulp.svg"> <span>Gulp</span></a>
-                                        </li> -->
+                                       
                                     </ul>
                                 </div>
                                 <div class="section-wrap">
@@ -309,71 +453,7 @@
                                 </div>
                             </div>
 
-                            <!-- <div class="list-group-item">
-                                <div class="media">
-                                    <span class="media-left">
-                                        <img class="img-circle media-object" src="../../img/01-Avatar-img.png">
-                                    </span>
-                                    <div class="media-body clearfix">
-                                        Rachel Smith<span class="pull-right"></span>
-                                        <div class="media-body-secondary">
-                                            <a href="${contrib.profile_url}">Rachel.smith@example.com</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list-group-item">
-                                <div class="media">
-                                    <span class="media-left">
-                                        <img class="img-circle media-object" src="../../img/02-Avatar-img.png">
-                                    </span>
-                                    <div class="media-body clearfix">
-                                        Rachel Smith<span class="pull-right"></span>
-                                        <div class="media-body-secondary">
-                                            <a href="${contrib.profile_url}">Rachel.smith@example.com</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list-group-item">
-                                <div class="media">
-                                    <span class="media-left">
-                                        <img class="img-circle media-object" src="../../img/03-Avatar-img.png">
-                                    </span>
-                                    <div class="media-body clearfix">
-                                        Rachel Smith<span class="pull-right"></span>
-                                        <div class="media-body-secondary">
-                                            <a href="${contrib.profile_url}">Rachel.smith@example.com</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list-group-item">
-                                <div class="media">
-                                    <span class="media-left">
-                                        <img class="img-circle media-object" src="../../img/04-Avatar-img.png">
-                                    </span>
-                                    <div class="media-body clearfix">
-                                        Rachel Smith<span class="pull-right"></span>
-                                        <div class="media-body-secondary">
-                                            <a href="${contrib.profile_url}">Rachel.smith@example.com</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list-group-item">
-                                <div class="media">
-                                    <span class="media-left">
-                                        <img class="img-circle media-object" src="../../img/05-Avatar-img.png">
-                                    </span>
-                                    <div class="media-body clearfix">
-                                        Rachel Smith<span class="pull-right"></span>
-                                        <div class="media-body-secondary">
-                                            <a href="${contrib.profile_url}">Rachel.smith@example.com</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
+                            
                         </div>
 
                         <h3 class="project-component-flex">
@@ -392,56 +472,7 @@
                                 </div>
                             </div>
 
-                            <!-- <div class="list-group-item">
-                                <div class="media">
-                                    <div class="media-body clearfix">
-                                        <a href="#">
-                                            <h5>Bootstrap</h5>
-                                            <div class="media-body-secondary">18F</div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list-group-item">
-                                <div class="media">
-                                    <div class="media-body clearfix">
-                                        <a href="#">
-                                            <h5>Bootstrap</h5>
-                                            <div class="media-body-secondary">18F</div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list-group-item">
-                                <div class="media">
-                                    <div class="media-body clearfix">
-                                        <a href="#">
-                                            <h5>Bootstrap</h5>
-                                            <div class="media-body-secondary">18F</div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list-group-item">
-                                <div class="media">
-                                    <div class="media-body clearfix">
-                                        <a href="#">
-                                            <h5>Bootstrap</h5>
-                                            <div class="media-body-secondary">18F</div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list-group-item">
-                                <div class="media">
-                                    <div class="media-body clearfix">
-                                        <a href="#">
-                                            <h5>Bootstrap</h5>
-                                            <div class="media-body-secondary">18F</div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div> -->
+    
                         </div>
                     </div>
                 </div>
@@ -449,3 +480,4 @@
         </div>
     </div>
 </template>
+ -->

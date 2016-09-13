@@ -5,7 +5,7 @@
         <div class="ribbon">${repo.language}</div>
       </div>
       <div class="card-header">
-        <div class="avatar">
+        <div class="lang-logo">
           <span if.bind="repo.language === 'ActionScript'">
             <img src="img/actionscript.svg">
           </span>
@@ -19,7 +19,7 @@
             <img src="img/c_sharp.svg">
           </span>
           <span if.bind="repo.language === 'CoffeScript'">
-            <img src="img/coffescript.svg">
+            <img src="img/coffee_script.svg">
           </span>
           <span if.bind="repo.language === 'CSS'">
             <img src="img/css.svg">
@@ -82,10 +82,10 @@
         <div class="card-title multiline">
           <a href="#" route-href="route:project-details; params.bind: {id:repo.id}" title="${repo.project_name}">${repo.project_name}</a>
         </div>
-        <div class="org-name">${repo.organization}</div>
+        <div class="org-name">${repo.language}</div>
       </div>
       <div class="proj-desc multiline">${repo.project_description}</div>
-      <div class="text-muted last-updated">Updated 6 hours ago</div>
+      <div class="text-muted last-updated">Build by <a href="https://github.com/${repo.organization}">${repo.organization}</a> &nbsp; | &nbsp; Updated 6 hours ago</div>
       <div class="row github-stats">
         <div class="col-md-4 col-sm-4">
           <span class="stat">
