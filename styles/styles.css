@@ -1170,7 +1170,7 @@ h2,
 }
 h3,
 .h3 {
-  font-size: 24px;
+  font-size: 17px;
 }
 h4,
 .h4 {
@@ -6123,7 +6123,7 @@ h2,
 }
 h3,
 .h3 {
-  font-size: 24px;
+  font-size: 17px;
 }
 h4,
 .h4 {
@@ -6544,6 +6544,15 @@ body {
 .page-title h1 {
   margin-top: 0;
 }
+h3 {
+  font-size: 17px;
+  letter-spacing: 1px;
+  margin-top: 0;
+  text-transform: uppercase;
+  font-family: "Roboto Condensed";
+  font-weight: bold;
+  color: #808080;
+}
 .form-control {
   color: #505456;
 }
@@ -6660,6 +6669,7 @@ body {
 .col-github-stats .github-stats {
   border-left: 1px solid #d0d0d0;
   padding: 10px 0;
+  padding-left: 20px;
 }
 .col-github-stats .github-stats > [class*='col-'] {
   margin-bottom: 0;
@@ -6674,66 +6684,25 @@ body {
   font-weight: 800;
   color: #6a6a6a;
 }
-.bg-amber {
-  background-color: #ffc107;
-  color: #000000;
+.card-default .col-github-stats .github-stats {
+  border-left: none;
 }
-.text-amber {
-  color: #ffc107;
-}
-.bg-orange {
-  background-color: #ff5722;
-}
-.text-orange {
-  color: #ff5722;
-}
-.bg-indigo {
-  background-color: #3f51b5;
-}
-.text-indigo {
-  color: #3f51b5;
-}
-.bg-light-blue {
-  background-color: #03a9f4;
-}
-.text-light-blue {
-  color: #03a9f4;
-}
-.bg-purple {
-  background-color: #9c27b0;
-}
-.text-purple {
-  color: #9c27b0;
-}
-.bg-med-blue {
-  background-color: #3472ce;
-}
-.text-med-blue {
-  color: #3472ce;
-}
-.bg-lime {
-  background-color: #cfdd50;
-  color: #000000;
-}
-.text-lime {
-  color: #cfdd50;
-}
-.flex {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding: .75rem 1rem;
-}
-.flex-item {
+.empty-state {
   text-align: center;
-  padding: 5px 0;
-  font-size: 12px;
-  margin: 0 5px;
+  padding: 20px;
 }
-.list-footer .flex-item {
-  text-align: center;
-  padding: 5px 0;
-  font-size: 12px;
+.empty-state > * {
+  display: block;
+}
+.empty-state .material-icons {
+  font-size: 145px;
+  color: #eaeaea;
+}
+.empty-state em {
+  margin-bottom: 10px;
+}
+.empty-state a {
+  font-weight: bold;
 }
 .display-input {
   width: 45px;
@@ -7096,12 +7065,17 @@ footer .bah-logo {
 .btn {
   border-radius: 4px;
   transition: all 0.2s linear;
+  font-weight: bold;
+  padding: 10px 25px;
 }
 .btn:hover,
 .btn:active,
 .btn:focus {
   outline: none !important;
   box-shadow: none !important;
+}
+.btn .material-icons {
+  vertical-align: -7px;
 }
 .btn-link:hover,
 .btn-link:active,
@@ -7110,9 +7084,6 @@ footer .bah-logo {
 }
 .btn-default {
   color: #00b0bc;
-  font-weight: bold;
-  text-transform: uppercase;
-  padding: 10px 25px;
   border: none;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }
@@ -7520,6 +7491,10 @@ label.btn > input[type='radio'] {
 .cards-wrapper .card-btns .col-md-3:last-of-type a {
   border-right: none;
 }
+.cards-wrapper .full-width .last-updated {
+  border-bottom: none;
+  margin-bottom: 15px;
+}
 .search-results .row {
   padding: 0;
 }
@@ -7535,6 +7510,9 @@ label.btn > input[type='radio'] {
 }
 .search-results .card-search .last-updated {
   border-bottom: none;
+}
+.search-results .card-search .col-github-stats .github-stats {
+  padding-left: 20px;
 }
 /* Media queries */
 @media screen and (min-width: 1200px) and (max-width: 1325px) {
@@ -7629,9 +7607,18 @@ label.btn > input[type='radio'] {
 .proj-details-wrapper .col-content .card .proj-desc {
   padding-top: 0;
 }
+.proj-details-wrapper .proj-overview-row {
+  display: flex;
+}
+.proj-details-wrapper .proj-overview-row .col-lg-4:not(:first-child) {
+  border-left: 1px solid #d0d0d0;
+}
 .proj-details-wrapper .col-sidebar {
   background-color: #ffffff;
   margin-bottom: 0;
+}
+.proj-details-wrapper .col-sidebar h3 {
+  margin-top: 20px;
 }
 .proj-details-wrapper .col-sidebar .card-btns {
   border-radius: 0;
@@ -7675,7 +7662,7 @@ body ai-dialog-overlay.active {
   font-weight: bold;
 }
 .modal-body h3 {
-  font-size: 24px;
+  font-size: 17px;
   font-weight: bold;
 }
 .modal-footer {
@@ -7846,7 +7833,7 @@ body ai-dialog-overlay.active {
   right: 7px;
   top: 1px;
   color: #d0d0d0;
-  font-size: 24px;
+  font-size: 17px;
 }
 .multiselect-container > li > a {
   padding-left: 10px;

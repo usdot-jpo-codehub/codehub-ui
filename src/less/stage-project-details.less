@@ -16,9 +16,23 @@
     }
   }
 
+  .proj-overview-row {
+    display: flex;
+    
+    .col-lg-4 {
+      &:not(:first-child){
+        border-left: 1px solid lighten(@gray,@stage-gray-precentage);
+      }
+    }
+  }
+
   .col-sidebar {
     background-color: @white;
     margin-bottom: 0;
+
+    h3{
+      margin-top: 20px;
+    }
 
     .card-btns {
       border-radius: 0;

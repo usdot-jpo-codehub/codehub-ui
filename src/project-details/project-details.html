@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-lg-9 col-content">
         <div class="col-lg-12">
-          <div class="card">
+          <div class="card full-width">
             <div class="ribbon-wrapper">
               <div class="ribbon">${repo.language}</div>
             </div>
@@ -14,10 +14,14 @@
                 <div class="lined-header">
                   <a class="pull-right btn btn-link" href="#"><i class="material-icons">open_in_new</i>View on Github</a>
                   <h2 class=""><span>overview</span></h2>
-
                 </div>
                 <div class="proj-desc">${repo.project_description}</div>
                 <div class="text-muted last-updated">Build by <a href="https://github.com/${repo.organization}">${repo.organization}</a> &nbsp; | &nbsp; Updated 6 hours ago</div>
+
+                <ul class="list-inline">
+                  <li><button class="btn btn-secondary"><i class="material-icons">library_books</i> Show README</button></li>
+                  <li><button class="btn btn-link"><i class="material-icons">insert_drive_file</i> Show Build File</button></li>
+                </ul>
               </div>
               <div class="col-lg-4 col-github-stats">
                 <div class="row github-stats">
@@ -55,6 +59,31 @@
                       <span class="stat-label">forks</span>
                     </span>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row proj-overview-row">
+              <div class="col-lg-4">
+                <h3>Projects that we use</h3>
+                <div class="empty-state">
+                  <i class="material-icons">access_time</i>
+                  <em class="text-muted">Coming soon</em>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <h3>Projects that use us</h3>
+                <div class="empty-state">
+                  <i class="material-icons">sentiment_dissatisfied</i>
+                  <em class="text-muted">None found</em>
+                  <a href="#">Make Project Reusable</a>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <h3>Key technologies</h3>
+                <div class="empty-state">
+                  <i class="material-icons">access_time</i>
+                  <em class="text-muted">Coming soon</em>
                 </div>
               </div>
             </div>
