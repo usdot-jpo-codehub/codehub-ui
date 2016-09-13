@@ -18,24 +18,6 @@ export class ProjectDetails {
     // this.contributors_list = JSON.parse('[{"username":"mparker4","profile_url":"https://github.com/mparker4"},{"username":"507006","profile_url":"https://github.com/507006"},{"username":"maggie-lagos","profile_url":"https://github.com/maggie-lagos"}]');
   }
 
-  nFormatter(num, digits) {
-    const si = [
-      { value: 1E18, symbol: 'E' },
-      { value: 1E15, symbol: 'P' },
-      { value: 1E12, symbol: 'T' },
-      { value: 1E9, symbol: 'G' },
-      { value: 1E6, symbol: 'M' },
-      { value: 1E3, symbol: 'k' },
-    ];
-    const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
-    for (let i = 0; i < si.length; i++) {
-      if (num >= si[i].value) {
-        return (num / si[i].value).toFixed(digits).replace(rx, '$1') + si[i].symbol;
-      }
-    }
-    return num.toFixed(digits).replace(rx, '$1');
-  }
-
   determineActivationStrategy() {
     return activationStrategy.replace;
   }
@@ -53,6 +35,25 @@ export class ProjectDetails {
     this.dataContext.findById(params.id).then(repo => {
       this.repo = repo;
     });
+  }
+
+  nFormatter(num, digits) {
+    if (!num) { return 'Loading...'; }
+    const si = [
+      { value: 1E18, symbol: 'E' },
+      { value: 1E15, symbol: 'P' },
+      { value: 1E12, symbol: 'T' },
+      { value: 1E9, symbol: 'G' },
+      { value: 1E6, symbol: 'M' },
+      { value: 1E3, symbol: 'k' },
+    ];
+    const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
+    for (let i = 0; i < si.length; i++) {
+      if (num >= si[i].value) {
+        return (num / si[i].value).toFixed(digits).replace(rx, '$1') + si[i].symbol;
+      }
+    }
+    return num.toFixed(digits).replace(rx, '$1');
   }
 
 }
