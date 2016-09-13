@@ -8,7 +8,6 @@ export class CardSearch {
   }
 
   nFormatter(num, digits) {
-    if (!num) { return 'Loading...'; }
     const si = [
       { value: 1E18, symbol: 'E' },
       { value: 1E15, symbol: 'P' },
