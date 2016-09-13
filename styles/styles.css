@@ -7005,6 +7005,28 @@ footer .bah-logo {
   font-size: 30px;
   line-height: 46px;
 }
+.hero-banner .details .avatar {
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+.hero-banner .details .avatar img {
+  width: 60px;
+  height: 60px;
+}
+.hero-banner .details .container-fluid {
+  padding-top: 0;
+}
+.hero-banner .details .container-fluid h1 {
+  padding-left: 80px;
+}
+.hero-banner .details .container-fluid p {
+  margin-bottom: 0;
+  padding-left: 80px;
+}
 .btn {
   border-radius: 4px;
   transition: all 0.2s linear;
@@ -7714,13 +7736,6 @@ label.btn > input[type='radio'] {
 }
 .col-filters .panel-default:last-child {
   border-bottom: 1px solid #d6d6d6;
-}
-.proj-details-title-wrapper {
-  padding: 12px 0;
-  margin-bottom: 0;
-}
-.proj-details-title-wrapper h2 {
-  margin: 0 15px;
 }
 .pager li > a {
   color: #ffffff;
