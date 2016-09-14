@@ -7526,6 +7526,29 @@ label.btn > input[type='radio'] {
 .search-results .card-search .col-github-stats .github-stats {
   padding-left: 20px;
 }
+.search-results .card-search .card-links {
+  border-top: 1px solid #d0d0d0;
+  padding-top: 10px;
+  background: #f9f9f9;
+  border-radius: 0 0 4px 4px;
+}
+.search-results .card-search .card-links .list-inline > li:last-child {
+  float: right;
+}
+.search-results .card-search .card-links .list-inline > li a {
+  font-weight: bold;
+  transition: all 0.2s linear;
+  color: #404040;
+  padding: 4px 10px;
+}
+.search-results .card-search .card-links .list-inline > li a:hover {
+  background: none;
+  color: #00b0bc;
+}
+.search-results .card-search .card-links .list-inline > li a .material-icons {
+  vertical-align: -7px;
+  margin: 0 5px;
+}
 /* Media queries */
 @media screen and (min-width: 1200px) and (max-width: 1325px) {
   .cards-wrapper .github-stats .stat {
