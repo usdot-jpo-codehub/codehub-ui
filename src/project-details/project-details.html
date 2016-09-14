@@ -1,5 +1,6 @@
 <template>
   <require from="../resources/value-converters/pick"></require>
+  <require from="../resources/value-converters/num"></require>
 
   <div class="container-fluid cards-wrapper proj-details-wrapper">
     <div class="row">
@@ -28,34 +29,34 @@
                   <div class="col-md-6 col-sm-6">
                     <span class="stat">
                       <span class="octicon octicon-star"></span>
-                      <span class="num text-muted text-emphasized">${nFormatter(repo.stars)}</span>
+                      <span class="num text-muted text-emphasized">${repo.stars | num}</span>
                       <span class="stat-label">stars</span>
                     </span>
                     <span class="stat">
                       <span class="octicon octicon-organization"></span>
-                      <span class="num text-muted text-emphasized">${nFormatter(repo.contributors)}</span>
+                      <span class="num text-muted text-emphasized">${repo.contributors | num}</span>
                       <span class="stat-label">contributors</span>
                     </span>
                     <span class="stat">
                       <span class="octicon octicon-eye"></span>
-                      <span class="num text-muted text-emphasized">${nFormatter(repo.watchers)}</span>
+                      <span class="num text-muted text-emphasized">${repo.watchers | num}</span>
                       <span class="stat-label">watchers</span>
                     </span>
                   </div>
                   <div class="col-md-6 col-sm-6">
                     <span class="stat">
                       <span class="octicon octicon-git-commit"></span>
-                      <span class="num text-muted text-emphasized">${nFormatter(repo.commits)}</span>
+                      <span class="num text-muted text-emphasized">${repo.commits | num:1}</span>
                       <span class="stat-label">commits</span>
                     </span>
                     <span class="stat">
                       <span class="octicon octicon-tag"></span>
-                      <span class="num text-muted text-emphasized">${nFormatter(repo.releases)}</span>
+                      <span class="num text-muted text-emphasized">${repo.releases | num}</span>
                       <span class="stat-label">releases</span>
                     </span>
                     <span class="stat">
                       <span class="octicon octicon-repo-forked"></span>
-                      <span class="num text-muted text-emphasized">${nFormatter(repo.forks)}</span>
+                      <span class="num text-muted text-emphasized">${repo.forks | num}</span>
                       <span class="stat-label">forks</span>
                     </span>
                   </div>
