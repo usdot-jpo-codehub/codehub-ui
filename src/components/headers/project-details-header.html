@@ -3,8 +3,8 @@
     <div class="container-fluid">
       <div class="proj-title">
         <div class="lang-logo">
-          <img if.bind="repo.language !== null" src="img/language-icons/${repo.language.toLowerCase()}.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';">
-          <img if.bind="repo.language === null" src="img/language-icons/default.svg">
+          <img if.bind="repo.language != null" src="img/language-icons/${repo.language.toLowerCase()}.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';">
+          <img if.bind="repo.language == null" src="img/language-icons/default.svg">
         </div>
         <h1>${repo.project_name}</h1>
         <p>${repo.language}</p>
