@@ -19,12 +19,6 @@ body {
 
 .flex-row {
 	display: flex;
-	flex-wrap: wrap;
-
-	> [class*='col-'] {
-		display: flex;
-		flex-direction: column;
-	}
 }
 
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1,
@@ -244,34 +238,27 @@ h3{
 }
 
 .card-default {
-  .col-github-stats {
-    .github-stats {
-      border-left: none;
+  .github-stats {
+    border-left: none;
+    padding: 10px 0;
+
+    > [class*='col-'] {
+      margin-bottom: 0;
+    }
+
+    .stat {
+      display: block;
+      padding: 8px 0;
+      color: #999;
+      font-size: @font-size-smaller;
+    }
+
+    .text-emphasized {
+      font-weight: 800;
+      color: darken(@gray,25%);
     }
   }
 }
-
-// .flex {
-// 	display:flex;
-// 	justify-content: space-around;
-// 	flex-wrap: wrap;
-// 	padding: .75rem 1rem;
-// }
-
-// .flex-item {
-// 	text-align: center;
-// 	padding: 5px 0;
-// 	font-size: 12px;
-// 	margin: 0 5px;
-// }
-
-// .list-footer {
-// 	.flex-item{
-// 		text-align: center;
-// 		padding: 5px 0;
-// 		font-size: 12px;
-// 	}
-// }
 
 .empty-state {
   text-align: center;

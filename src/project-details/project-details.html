@@ -3,7 +3,7 @@
   <require from="../resources/value-converters/num"></require>
 
   <div class="container-fluid cards-wrapper proj-details-wrapper">
-    <div class="row">
+    <div class="row flex-row">
       <div class="col-lg-9 col-content">
         <div class="col-lg-12">
           <div class="card full-width">
@@ -67,10 +67,33 @@
             <div class="row proj-overview-row">
               <div class="col-lg-4">
                 <h3>Projects that we use</h3>
-                <div class="empty-state">
-                  <i class="material-icons">access_time</i>
-                  <em class="text-muted">Coming soon</em>
+                <!-- <ul class="flex-links">
+                  <li repeat.for="depend of repo.componentDependencies" class="flex-item"><a href="#">${depend.artifactId}</a></li>
+                </ul> -->
+
+                <div class="row">
+                  <div class="col-lg-6">
+                    <ul class="list-unstyled">
+                      <li><strong>guava</strong><small class="text-muted">Version</small></li>
+                      <li><strong>guava</strong><small class="text-muted">Version</small></li>
+                      <li><strong>guava</strong><small class="text-muted">Version</small></li>
+                      <li><strong>guava</strong><small class="text-muted">Version</small></li>
+                      <li><strong>guava</strong><small class="text-muted">Version</small></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-6">
+                    <ul class="list-unstyled">
+                      <li><strong>guava</strong><small class="text-muted">Version</small></li>
+                      <li><strong>guava</strong><small class="text-muted">Version</small></li>
+                      <li><strong>guava</strong><small class="text-muted">Version</small></li>
+                      <li><strong>guava</strong><small class="text-muted">Version</small></li>
+                      <li><strong>guava</strong><small class="text-muted">Version</small></li>
+                    </ul>
+                  </div>
                 </div>
+
+                <button id="showMoreBtn" class="btn btn-link btn-sm">Show More <i class="material-icons">expand_more</i></button>
+
               </div>
               <div class="col-lg-4">
                 <h3>Projects that use us</h3>
@@ -86,6 +109,38 @@
                   <i class="material-icons">access_time</i>
                   <em class="text-muted">Coming soon</em>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card full-width">
+            <div class="lined-header">
+              <h2 class=""><span>Health Statistics</span></h2>
+            </div>
+            <div class="row proj-overview-row">
+              <div class="col-lg-4">
+                <h3>Build</h3>
+                <div class="empty-state">
+                  <i class="material-icons">access_time</i>
+                  <em class="text-muted">Coming soon</em>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <h3>Quality</h3>
+                <div class="empty-state">
+                  <i class="material-icons">sentiment_dissatisfied</i>
+                  <em class="text-muted">Coming soon</em>
+                </div>
+                <a class="btn btn-link" href="#"><i class="material-icons">open_in_new</i> View on SonarQube</a>
+              </div>
+              <div class="col-lg-4">
+                <h3>Security</h3>
+                
+                <div class="empty-state">
+                  <i class="material-icons">access_time</i>
+                  <em class="text-muted">Coming soon</em>
+                </div>
+                <a class="btn btn-link" href="#"><i class="material-icons">open_in_new</i> View on Fortify</a>
               </div>
             </div>
           </div>
