@@ -2,7 +2,7 @@
   <require from="../resources/value-converters/num"></require>
 
   <div if.bind="repo" class="col-lg-4 col-md-12 col-sm-12">
-    <div class="card card-default">
+    <div class="card card-default hover-card">
       
       <div class="ribbon-wrapper">
         <div class="ribbon">${repo.language}</div>
@@ -22,7 +22,7 @@
         <div class="org-name">${repo.language}</div>
       </div>
       <div class="proj-desc multiline">${repo.project_description}</div>
-      <div class="text-muted last-updated">By <a href="https://github.com/${repo.organization}" data-toggle="tooltip" data-placement="top" title="View ${repo.organization}'s Github page">${repo.organization}</a> &nbsp; | &nbsp; Updated 6 hours ago</div>
+      <div class="text-muted last-updated clearfix">By <a href="https://github.com/${repo.organization}" data-toggle="tooltip" data-placement="top" title="View ${repo.organization}'s Github page">${repo.organization}</a> &nbsp; | &nbsp; Updated 6 hours ago <span class="pull-right"><i class="material-icons">public</i> Public</span></div>
 
       <div class="row github-stats">
         <div class="col-md-4 col-sm-4">
@@ -67,7 +67,7 @@
         <ul class="list-inline pull-left">
           <li><a href="#" click.trigger="openModal(repo)"><i class="material-icons">library_books</i> Show README</a></li>
         </ul>
-        <ul class="list-inline pull-right">
+        <ul class="list-inline actions-icons pull-right">
           <li><a href="#" data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a></li>
           <li><a href="#" data-toggle="tooltip" data-placement="top" title="Bookmark"><i class="material-icons">bookmark_border</i></a></li>
         </ul>

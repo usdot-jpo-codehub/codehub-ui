@@ -166,76 +166,37 @@
           <div class="col-lg-12">
             <h3>Contributors</h3>
             <div class="media-list media-list-users list-group">
-              <div repeat.for="contrib of repo.contributors_list | pick:3" class="list-group-item">
-                <div class="media">
-                  <span class="media-left">
-                    <img class="img-circle media-object" src="${contrib.profile_url ? contrib.profile_url + '.png' : 'https://github.com/' + contrib.username + '.png'}" onError="this.onerror=null;this.src='/img/language-icons/unknown-user.svg';">
+              <template repeat.for="contrib of repo.contributors_list | pick:3">
+                <a href="${contrib.profile_url}" target="_blank" class="list-group-item">
+                  <span class="media">
+                    <span class="media-left">
+                      <img class="img-circle media-object" src="${contrib.profile_url ? contrib.profile_url + '.png' : 'https://github.com/' + contrib.username + '.png'}" onError="this.onerror=null;this.src='/img/language-icons/unknown-user.svg';">
+                    </span>
+                    <span class="media-body clearfix">
+                      <h5>${contrib.username}<span class="pull-right"></span></h5>
+                      <span class="media-body-secondary">${contrib.profile_url}</span>
+                    </span>
                   </span>
-                  <div class="media-body clearfix">
-                    ${contrib.username}<span class="pull-right"></span>
-                    <div class="media-body-secondary">
-                      <a href="${contrib.profile_url}">${contrib.profile_url}</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                </a>
+              </template>
             </div>
-            <h3>Similar Projects</h3>
-            <div class="media-list media-list-projects list-group">
-              <!-- <div repeat.for="project of similarProjects | pick:3" class="list-group-item">
-                <div class="media">
-                  <span class="media-left">
-                    <img class="img-circle media-object" src="https://github.com/${project.project_org_name} nError="this.onerror=null;this.src='/img/language-icons/organization-default.svg';"">
-                  </span>
-                  <div class="media-body clearfix">
-                    <a route-href="route:project-details; params.bind: {id:project.project_id} ">
-                      <h5>${project.project_name}</h5>
-                      <div class="media-body-secondary">${project.project_org_name}</div>
-                    </a>
-                  </div>
-                </div>
-              </div> -->
 
-              <div class="list-group-item">
-                <div class="media">
-                  <span class="media-left">
-                    <img class="img-circle media-object" src="/img/language-icons/organization-default.svg">
+            <h3>Similar Projects</h3>
+            <!-- <div class="media-list media-list-projects list-group">
+              <template repeat.for="project of similarProjects | pick:3">
+                <a route-href="route:project-details; params.bind: {id:project.project_id} target="_blank" class="list-group-item">
+                  <span class="media">
+                    <span class="media-left">
+                      <img class="img-circle media-object" src="https://github.com/${project.project_org_name} nError="this.onerror=null;this.src='/img/language-icons/organization-default.svg';"">
+                    </span>
+                    <span class="media-body clearfix">
+                      <h5>${project.project_name}</h5>
+                      <span class="media-body-secondary">${project.project_org_name}</span>
+                    </span>
                   </span>
-                  <div class="media-body clearfix">
-                    <a href="#">
-                      <h5>18F</h5>
-                      <div class="media-body-secondary">18F</div>
-                    </a>
-                  </div>
                 </div>
-              </div>
-              <div class="list-group-item">
-                <div class="media">
-                  <span class="media-left">
-                    <img class="img-circle media-object" src="http://www.github.com/Netflix.png">
-                  </span>
-                  <div class="media-body clearfix">
-                    <a href="#">
-                      <h5>Netflix</h5>
-                      <div class="media-body-secondary">Netflix</div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="list-group-item">
-                <div class="media">
-                  <span class="media-left">
-                    <img class="img-circle media-object" src="http://www.github.com/Bootstrap.png">
-                  </span>
-                  <div class="media-body clearfix">
-                    <a href="#">
-                      <h5>Bootstrap</h5>
-                      <div class="media-body-secondary">Bootstrap</div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+              </template>
+            </div> -->
           </div>
         </div>
       </div>
