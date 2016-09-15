@@ -7916,9 +7916,9 @@ body ai-dialog-overlay.active {
   position: absolute;
   z-index: 2;
   right: 7px;
-  top: 1px;
+  top: 5px;
   color: #d0d0d0;
-  font-size: 17px;
+  font-size: 18px;
 }
 .multiselect-container > li > a {
   padding-left: 10px;
