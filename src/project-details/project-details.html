@@ -99,7 +99,10 @@
 
                 </div>
 
-                <button id="showMoreBtn" class="btn btn-link btn-sm" data-toggle="collapse" href="#collapseDepend">Show More <i class="material-icons">expand_more</i></button>
+                <button if.bind="repo.componentDependencies.length > 4" id="showMoreBtn" class="btn btn-link btn-sm" data-toggle="collapse" click.delegate="dependCollapsed = dependCollapsed !== true" href="#collapseDepend">
+                  <template if.bind="dependCollapsed">Show More <i class="material-icons">expand_more</i></template>
+                  <template if.bind="!dependCollapsed">Show Less <i class="material-icons">expand_less</i></template>
+                </button>
 
               </div>
               <div class="col-lg-4">
