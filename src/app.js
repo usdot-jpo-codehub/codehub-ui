@@ -28,7 +28,7 @@ export class App {
     this.dialogService.open({ viewModel: Modal, model: repo });
   }
 
-  activate() {
+  attached() {
     $('[data-toggle="tooltip"]').tooltip();
   }
 }
