@@ -1,6 +1,6 @@
 <template>
   <require from="../resources/value-converters/pick"></require>
-  <require from="../resources/value-converters/slice"></require>
+  <require from="../resources/value-converters/skip"></require>
   <require from="../resources/value-converters/num"></require>
 
   <div class="container-fluid cards-wrapper proj-details-wrapper">
@@ -87,12 +87,12 @@
                   <div class="collapse" id="collapseDepend">
                     <div class="col-lg-6">
                       <ul class="list-unstyled">
-                        <li repeat.for="depend of repo.componentDependencies | slice:4" if.bind = "$even"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
+                        <li repeat.for="depend of repo.componentDependencies | skip:4" if.bind = "$even"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
                       </ul>
                     </div>
                     <div class="col-lg-6">
                       <ul class="list-unstyled">
-                        <li repeat.for="depend of repo.componentDependencies | slice:4" if.bind = "$odd"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
+                        <li repeat.for="depend of repo.componentDependencies | skip:4" if.bind = "$odd"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
                       </ul>
                     </div>
                   </div>
@@ -170,7 +170,7 @@
               <div repeat.for="contrib of repo.contributors_list | pick:3" class="list-group-item">
                 <div class="media">
                   <span class="media-left">
-                    <img class="img-circle media-object" src="https://github.com/${contrib.username}.png" onError="this.onerror=null;this.src='/img/language-icons/default.svg';">
+                    <img class="img-circle media-object" src="${contrib.profile_url ? contrib.profile_url + '.png' : 'https://github.com/' + contrib.username + '.png'}" onError="this.onerror=null;this.src='/img/language-icons/default.svg';">
                   </span>
                   <div class="media-body clearfix">
                     ${contrib.username}<span class="pull-right"></span>

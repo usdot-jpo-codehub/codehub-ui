@@ -34,6 +34,7 @@ export class ProjectDetails {
 
     this.dataContext.findById(params.id).then(repo => {
       this.repo = repo;
+      console.log(repo.contributors_list);
     });
   }
 
