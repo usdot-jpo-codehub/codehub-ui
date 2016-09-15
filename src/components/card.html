@@ -3,6 +3,7 @@
 
   <div if.bind="repo" class="col-lg-4 col-md-12 col-sm-12">
     <div class="card card-default">
+      
       <div class="ribbon-wrapper">
         <div class="ribbon">${repo.language}</div>
       </div>
@@ -21,11 +22,11 @@
         <div class="org-name">${repo.language}</div>
       </div>
       <div class="proj-desc multiline">${repo.project_description}</div>
-      <div class="text-muted last-updated">By <a href="https://github.com/${repo.organization}">${repo.organization}</a> &nbsp; | &nbsp; Updated 6 hours ago</div>
+      <div class="text-muted last-updated">By <a href="https://github.com/${repo.organization}" title="View ${repo.organization}'s Github page">${repo.organization}</a> &nbsp; | &nbsp; Updated 6 hours ago</div>
+
       <div class="row github-stats">
         <div class="col-md-4 col-sm-4">
           <span class="stat">
-
             <span class="octicon octicon-star"></span>
             <span class="num text-muted text-emphasized">${repo.stars | num}</span>
             <span class="stat-label">stars</span>
@@ -61,15 +62,18 @@
           </span>
         </div>
       </div>
-      <div class="row card-btns">
-        <div class="col-md-6">
-          <a href="#" click.trigger="openModal(repo)"><i class="material-icons">library_books</i> Show
-            README</a>
-        </div>
-        <div class="col-md-6">
-          <a route-href="route:project-details; params.bind: {id:repo.id}">Go to Details <i class="material-icons">chevron_right</i></a>
-        </div>
+
+      <div class="row card-links clearfix">
+        <ul class="list-inline pull-left">
+          <li><a href="#" click.trigger="openModal(repo)"><i class="material-icons">library_books</i> Show README</a></li>
+        </ul>
+        <ul class="list-inline pull-right">
+          <li><a href="#" data-toggle="tooltip" data-placement="top" title=“Share”><i class="material-icons">share</i></a></li>
+          <li><a href="#" data-toggle="tooltip" data-placement="top" title=“Bookmark”><i class="material-icons">bookmark_border</i></a></li>
+        </ul>
       </div>
+
+      <a class="card-link" href="#" route-href="route:project-details; params.bind: {id:repo.id}" title="${repo.project_name}"></a>
     </div>
   </div>
 </template>

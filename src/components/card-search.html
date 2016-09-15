@@ -3,10 +3,10 @@
 
   <div if.bind="repo" class="col-lg-12 col-md-12 col-sm-12">
     <div class="card card-search">
+
       <div class="ribbon-wrapper">
         <div class="ribbon">${repo.language}</div>
       </div>
-
       <div class="row">
         <div class="col-lg-8">
           <div class="card-header">
@@ -22,8 +22,9 @@
             <div class="org-name">${repo.language}</div>
           </div>
           <div class="proj-desc multiline">${repo.project_description}</div>
-          <div class="text-muted last-updated">By <a href="https://github.com/${repo.organization}">${repo.organization}</a> &nbsp; | &nbsp; Updated 6 hours ago</div>
+          <div class="text-muted last-updated">By <a href="https://github.com/${repo.organization}" title="View ${repo.organization}'s Github page">${repo.organization}</a> &nbsp; | &nbsp; Updated 6 hours ago</div>
         </div>
+
         <div class="col-lg-4 col-github-stats">
           <div class="row github-stats">
             <div class="col-md-6 col-sm-6">
@@ -63,13 +64,16 @@
         </div>
       </div>
     </div>
+
     <div class="row card-links">
-      <ul class="list-inline">
+      <ul class="list-inline clearfix">
         <li><a href="#" click.trigger="openModal(repo)"><i class="material-icons">library_books</i> Show README</a></li>
         <li><a href="#"><i class="material-icons">bookmark_border</i> Bookmark</a></li>
         <li><a href="#"><i class="material-icons">share</i> Share</a></li>
-        <li><a route-href="route:project-details; params.bind: {id:repo.id}">Go to Details <i class="material-icons">chevron_right</i></a></li>
+        <li class="pull-right"><a route-href="route:project-details; params.bind: {id:repo.id}">Go to Details <i class="material-icons">chevron_right</i></a></li>
       </ul>
     </div>
+
+    <a class="card-link" href="#" route-href="route:project-details; params.bind: {id:repo.id}" title="${repo.project_name}"></a>
   </div>
 </template>
