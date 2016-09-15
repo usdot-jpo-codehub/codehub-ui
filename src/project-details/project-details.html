@@ -182,21 +182,21 @@
             </div>
 
             <h3>Similar Projects</h3>
-            <!-- <div class="media-list media-list-projects list-group">
+              <a class="media-list media-list-projects list-group">
               <template repeat.for="project of similarProjects | pick:3">
-                <a route-href="route:project-details; params.bind: {id:project.project_id} target="_blank" class="list-group-item">
+                <a route-href="route:project-details; params.bind: {id:project.project_id}" target="_blank" class="list-group-item">
                   <span class="media">
                     <span class="media-left">
-                      <img class="img-circle media-object" src="https://github.com/${project.project_org_name} nError="this.onerror=null;this.src='/img/language-icons/organization-default.svg';"">
+                      <img class="img-circle media-object" src="https://github.com/${project.project_org_name}.png" onError="this.onerror=null;this.src='/img/language-icons/organization-default.svg';">
                     </span>
                     <span class="media-body clearfix">
                       <h5>${project.project_name}</h5>
                       <span class="media-body-secondary">${project.project_org_name}</span>
                     </span>
                   </span>
-                </div>
+                </a>
               </template>
-            </div> -->
+            </div>
           </div>
         </div>
       </div>
