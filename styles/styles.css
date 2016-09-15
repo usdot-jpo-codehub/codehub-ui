@@ -7345,7 +7345,7 @@ label.btn > input[type='radio'] {
   position: absolute;
   height: 100%;
   width: 100%;
-  box-shadow: 0 0 15px #00b0bc;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
   border-radius: 0.3rem;
   opacity: 0;
   transition: all 0.2s linear;
@@ -7403,6 +7403,10 @@ label.btn > input[type='radio'] {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
   margin-bottom: 10px;
+  transition: all 0.2s linear;
+}
+.cards-wrapper .card:hover {
+  transform: translateY(-5px);
 }
 .cards-wrapper .card .last-updated a,
 .cards-wrapper .card .card-btns a {
