@@ -1,6 +1,5 @@
 import { DialogService } from 'aurelia-dialog';
 import { inject } from 'aurelia-framework';
-import $ from 'bootstrap';
 import { Modal } from './components/modal';
 import { StageConfig } from '../stageConf';
 
@@ -26,9 +25,5 @@ export class App {
 
   openModal(repo) {
     this.dialogService.open({ viewModel: Modal, model: repo });
-  }
-
-  attached() {
-    $('[data-toggle="tooltip"]').tooltip();
   }
 }
