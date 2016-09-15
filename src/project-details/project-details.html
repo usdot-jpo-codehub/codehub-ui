@@ -71,31 +71,31 @@
                 <div class="row">
                   <div class="col-lg-6">
                     <ul class="list-unstyled">
-                      <li repeat.for="depend of repo.componentDependencies | pick:4" if.bind = "$even"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
+                      <li repeat.for="depend of repo.componentDependencies | pick:numDepends" if.bind = "$even"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
                     </ul>
                   </div>
                   <div class="col-lg-6">
                     <ul class="list-unstyled">
-                      <li repeat.for="depend of repo.componentDependencies | pick:4" if.bind = "$odd"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
+                      <li repeat.for="depend of repo.componentDependencies | pick:numDepends" if.bind = "$odd"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
                     </ul>
                   </div>
 
                   <div class="collapse" id="collapseDepend">
                     <div class="col-lg-6">
                       <ul class="list-unstyled">
-                        <li repeat.for="depend of repo.componentDependencies | skip:4" if.bind = "$even"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
+                        <li repeat.for="depend of repo.componentDependencies | skip:numDepends" if.bind = "$even"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
                       </ul>
                     </div>
                     <div class="col-lg-6">
                       <ul class="list-unstyled">
-                        <li repeat.for="depend of repo.componentDependencies | skip:4" if.bind = "$odd"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
+                        <li repeat.for="depend of repo.componentDependencies | skip:numDepends" if.bind = "$odd"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
                       </ul>
                     </div>
                   </div>
 
                 </div>
 
-                <button if.bind="repo.componentDependencies.length > 4" id="showMoreBtn" class="btn btn-link btn-sm" data-toggle="collapse" click.delegate="dependCollapsed = dependCollapsed !== true" href="#collapseDepend">
+                <button if.bind="repo.componentDependencies.length > numDepends" id="showMoreBtn" class="btn btn-link btn-sm" data-toggle="collapse" click.delegate="dependCollapsed = dependCollapsed !== true" href="#collapseDepend">
                   <template if.bind="dependCollapsed">Show More <i class="material-icons">expand_more</i></template>
                   <template if.bind="!dependCollapsed">Show Less <i class="material-icons">expand_less</i></template>
                 </button>
