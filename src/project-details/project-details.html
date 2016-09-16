@@ -180,9 +180,29 @@
                   </span>
                 </a>
               </template>
+
+              <div class="collapse" id="collapseContrib">
+                <template repeat.for="contrib of repo.contributors_list | skip:3">
+                  <a href="${contrib.profile_url}" target="_blank" class="list-group-item">
+                  <span class="media">
+                    <span class="media-left">
+                      <img class="img-circle media-object" src="${contrib.avatar_url}" onError="this.onerror=null;this.src='/img/language-icons/unknown-user.svg';">
+                    </span>
+                    <span class="media-body clearfix">
+                      <h5>${contrib.username}<span class="pull-right"></span></h5>
+                      <span class="media-body-secondary">${contrib.profile_url}</span>
+                    </span>
+                  </span>
+                  </a>
+                </template>
+              </div>
+
             </div>
             <div class="clearfix">
-              <button class="pull-right btn btn-link btn-sm">Show More <i class="material-icons">expand_more</i></button>
+              <button if.bind="repo.componentDependencies.length > 3" class="pull-right btn btn-link btn-sm" data-toggle="collapse" click.delegate="contribCollapsed = contribCollapsed !== true" href="#collapseContrib">
+                <template if.bind="contribCollapsed">Show More <i class="material-icons">expand_more</i></template>
+                <template if.bind="!contribCollapsed">Show Less <i class="material-icons">expand_less</i></template>
+              </button>
             </div>
 
             <h3>Similar Projects</h3>

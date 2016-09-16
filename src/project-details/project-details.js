@@ -14,6 +14,7 @@ export class ProjectDetails {
     this.repo.componentDependencies = [];
 
     this.dependCollapsed = true;
+    this.contribCollapsed = true;
     this.numDepends = 8;
 
     // ** Dummy data for offline testing **
