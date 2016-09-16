@@ -1,5 +1,6 @@
 <template>
   <require from="../resources/value-converters/num"></require>
+  <require from="../resources/value-converters/ago"></require>
   <require from="../resources/custom-attributes/bootstrap-tooltip"></require>
 
   <div if.bind="repo" class="col-lg-12 col-md-12 col-sm-12">
@@ -23,7 +24,7 @@
             <div class="org-name">${repo.language}</div>
           </div>
           <div class="proj-desc multiline">${repo.project_description}</div>
-          <div class="text-muted last-updated clearfix">By <a href="https://github.com/${repo.organization}" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="View on Github">${repo.organization}</a> &nbsp; | &nbsp; Updated 6 hours ago <span class="pull-right"><i class="material-icons">public</i> Public</span></div>
+          <div class="text-muted last-updated clearfix">By <a href="https://github.com/${repo.organization}" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="View on Github">${repo.organization}</a> &nbsp; | &nbsp; Updated ${repo.updatedAt | ago} <span class="pull-right"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> ${repo.origin}</span></div>
         </div>
 
         <div class="col-lg-4 col-github-stats">
