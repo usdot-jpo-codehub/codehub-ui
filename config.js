@@ -48,6 +48,7 @@ System.config({
     "font-awesome": "npm:font-awesome@4.6.3",
     "jquery": "npm:jquery@2.2.4",
     "jquery-ui": "github:components/jqueryui@1.12.0",
+    "moment": "npm:moment@2.15.0",
     "numeral": "npm:numeral@1.5.3",
     "octicons": "npm:octicons@4.3.0",
     "showdown": "github:showdownjs/showdown@1.4.2",

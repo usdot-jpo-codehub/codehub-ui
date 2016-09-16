@@ -1,22 +1,106 @@
 // Card Styles -- based on Google Material Design
 
+// Global Clickable Cards
+.card-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+
+  &:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 10px 10px fade(@black,10%);
+    border-radius: @stage-border-radius;
+    opacity: 0;
+    transition: all 0.2s linear;
+    z-index: -5;
+  }
+
+  &:hover {
+    &:before {
+      opacity: 1;
+    }
+  }
+}
+
+// Global Default Card Styles
+.card-default {
+  .github-stats {
+    border-left: none;
+    padding: 10px 0;
+    pointer-events: none;
+
+    > [class*='col-'] {
+      margin-bottom: 0;
+    }
+
+    .stat {
+      display: block;
+      padding: 8px 0;
+      color: #999;
+      font-size: @font-size-smaller;
+    }
+
+    .text-emphasized {
+      font-weight: 800;
+      color: darken(@gray,25%);
+    }
+  }
+}
+
+// Global Github Stats
+.col-github-stats {
+  .github-stats {
+    border-left: 1px solid lighten(@gray,@stage-gray-precentage);
+    padding: 10px 0;
+    padding-left: 20px;
+
+    > [class*='col-'] {
+      margin-bottom: 0;
+    }
+
+    .stat {
+      display: block;
+      padding: 8px 0;
+      color: #999;
+      font-size: @font-size-smaller;
+    }
+
+    .text-emphasized {
+      font-weight: 800;
+      color: darken(@gray,25%);
+    }
+  }
+}
+
 .cards-wrapper {
 	margin-bottom: 0;
 
 	>.row {
 		padding: 0 20px 0;
-
-		// .cards-sorting {
-		// 	padding-top: 20px;
-		// 	display: flex;
-		// 	justify-content: space-between;
-		// 	align-items: center;
-
-		// 	p {
-		// 		margin: 0;
-		// 	}
-		// }
 	}
+
+  .hover-card {
+    transition: all 0.2s linear;
+
+    &:hover { 
+      transform: translateY(-5px);
+
+      .card-header {
+
+        .card-title {
+          a {
+            color: @teal;
+          }
+        }
+      }
+    }
+  }
 
 	.card {
 		padding:15px 15px 0;
@@ -25,6 +109,44 @@
 		box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
 		position: relative;
 		margin-bottom: 10px;
+    
+
+    .last-updated {
+      line-height: @font-size-larger;
+
+      .material-icons {
+        vertical-align: -6px;
+        font-size:@font-size-larger;
+      }
+    }
+
+		.last-updated,
+		.card-btns {
+			a {
+				position: relative;
+				z-index: 2;
+			}
+		}
+
+		.card-links {
+			padding-top: 10px;
+
+      .actions-icons {
+        margin-right: 10px; 
+      }
+
+			.pull-right {
+				> li {
+					padding-left: 0px;
+					padding-right: 0px;
+
+					a {
+						padding-left: 0;
+						padding-right: 0;
+					}
+				}
+			}
+		}
 
 		.ribbon-wrapper {
 			width: 77px;
@@ -33,7 +155,8 @@
 			position: absolute;
 			top: -5px;
 			right: -5px;
-			z-index:0;
+			z-index: 0;
+			pointer-events: none;
 
 			.ribbon {
 				font-size: @font-size-smaller;
@@ -79,7 +202,7 @@
 		.card-header {
 			margin-bottom: 10px;
 
-			.avatar {
+			.lang-logo {
 				position: absolute;
 				height: 60px;
 				width: 60px;
@@ -98,12 +221,14 @@
 				font-size: @font-size-large;
 				font-weight: bold;
 				line-height: @line-height-computed; // ~20px
-				z-index: 1;
-				position: relative;
 				overflow-wrap: break-word;
 				white-space: nowrap;
 				overflow: hidden;
 				text-overflow: ellipsis;
+
+        a {
+          color: lighten(@black,20%);
+        }
 			}
 
 			.org-name {
@@ -129,31 +254,10 @@
 		}
 
 		.last-updated {
-			font-style: italic;
 			font-size: @font-size-smaller;
 			margin-top: 10px;
 			border-bottom: 1px solid lighten(@gray,@stage-gray-precentage);
 			padding-bottom: 10px;
-		}
-	}
-
-	.github-stats {
-		padding: 10px 0;
-
-		> [class*='col-'] {
-			margin-bottom: 0;
-		}
-
-		.stat {
-			display: block;
-			padding: 8px 0;
-			color: #999;
-			font-size: @font-size-smaller;
-		}
-
-		.text-emphasized {
-			font-weight: 800;
-			color: darken(@gray,25%);
 		}
 	}
 
@@ -163,7 +267,7 @@
 		overflow: hidden;
 
 		.col-md-6,
-		.col-md-3 {
+		.col-md-4 {
 			margin-bottom: 0;
 
 			a {
@@ -211,6 +315,15 @@
 			}
 		}
 	}
+
+	.full-width {
+		margin-top: 25px;
+		
+		.last-updated {
+			border-bottom: none;
+			margin-bottom: 15px;
+		}
+	}
 }
 
 .search-results {
@@ -219,12 +332,11 @@
 	}
 
 	.card-search {
-
 		margin-bottom: 10px;
 
 		.proj-desc {
 			padding-top: 0;
-		}
+    }
 
 		.proj-desc,
 		.last-updated {
@@ -235,226 +347,12 @@
 			border-bottom: none;
 		}
 
-		.col-lg-4 {
-			border-left: 1px solid lighten(@gray,@stage-gray-precentage);
+		.col-github-stats {
+			.github-stats {
+				padding-left: 20px;
+		  }
 		}
 	}
-}
-
-// Project Details Cards
-
-.proj-details-wrapper {
-	padding-top: 30px;
-
-
-	.card {
-		width: 100%;
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		margin: 0;
-		margin-bottom: 0.75rem;
-		color: @black;
-		background-color: @white;
-		border-radius: 0.3rem;
-		box-shadow: 0 5px 8px rgba(0, 0, 0, 0.07);
-		font-size: .875rem;
-		font-weight: normal;
-
-		.card-header {
-			padding: 1rem 1rem;
-			margin-bottom: 0.5rem;
-			border-bottom: 1px solid lighten(@stage-gray,5%);
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: space-between;
-
-			h3 {
-				margin: 0px;
-				font-size: @font-size-h3;
-            	font-weight: bold;
-
-			}
-
-			a {
-		            text-align: center;
-		            display: inline-block;
-		            padding: 0 5px;
-		            font-family: "Roboto";
-
-		            span {
-		                display: block;
-		                margin-top: 5px;
-		            }
-		        }
-		}
-
-		.card-block {
-			padding: 0.25rem 1rem;
-			display: flex;
-
-	        .flex-subhead {
-	            display: flex;
-	            align-items: center;
-	            justify-content: space-between;
-	            border-bottom: 1px solid lighten(@stage-gray,5%);
-	            padding-bottom: 0px;
-
-	            h4{
-	                text-transform: uppercase;
-	                font-size: 0.9rem;
-	                font-weight: bold;
-	                color: lighten(@black, 20%);
-	                border: none;
-	                padding-bottom: 0;
-	            }
-	        }
-
-	        .section-wrap {
-	            margin-bottom: 20px;
-	        }
-
-	        h4{
-	            text-transform: uppercase;
-	            font-size: 0.9rem;
-	            font-weight: bold;
-	            color: lighten(@black, 20%);
-	            border-bottom: 1px solid lighten(@stage-gray,5%);
-	            padding-bottom: 8px;
-	        }
-
-	        a {
-	            text-align: center;
-	            display: inline-block;
-	            padding: 5px;
-
-	            span {
-	                display: block;
-	                margin-top: 5px;
-	            }
-	        }
-	    }
-
-		.card-sidebar {
-			display: block;
-
-			h3 {
-				margin-top: 10px;
-			}
-
-			.card-block {
-				min-height: initial;
-			}
-
-			.panel-default {
-				border: none;
-				background-color: transparent;
-				border-radius: 0;
-				margin-bottom: 0;
-				box-shadow: none;
-
-
-				> .panel-heading {
-					background-color: transparent;
-					border: none;
-					border-bottom: 1px solid @stage-gray;
-					color: @white;
-					padding: 0.25rem;
-
-					h4 {
-						margin: 0;
-					}
-				}
-
-				.panel-body {
-					padding: 0.25rem 0rem;
-
-					.list-group {
-						margin-bottom: 0;
-
-						.list-group-item {
-							background-color: transparent;
-							border: none;
-							padding: 0.25rem 0.25rem;
-
-							.checkbox {
-								margin: 0;
-							}
-						}
-					}
-				}
-			}
-		}
-
-		.card-footer {
-			border-top: 1px solid lighten(@light-gray, 5%);
-			padding: 0.5rem;
-			display: flex;
-			justify-content: center;
-			padding: 0;
-			border-radius: 0 0 .3rem .3rem;
-
-			.flex-footer {
-				list-style: none;
-				-webkit-padding-start: 0;
-				margin: 5px 0;
-				padding-left: 0;
-			}
-		}
-	}
-
-	.card-details {
-		.card-block {
-			min-height: initial;
-			flex-direction: column;
-
-			.flex-block {
-				display: flex;
-				flex-direction: column;
-			}
-
-			.flex-links {
-				list-style: none;
-				-webkit-padding-start: 0;
-				padding-left: 0;
-				margin: 5px 0;
-				display: flex;
-				flex-wrap: wrap;
-
-				.flex-item {
-					text-align: inherit;
-				}
-			}
-		}
-	}
-
-	.sidebar {
-		background-color: @white;
-		margin-top: -30px;
-		margin-bottom: 0;
-
-		h3{
-			font-size: @font-size-h3;
-			font-weight: bold;
-			border-bottom: 1px solid @stage-gray;
-			padding-bottom: 1rem;
-		}
-	}
-}
-
-.col-proj-details {
-
-	>.row {
-		padding-right: 20px;
-		padding-left: 20px;
-	}
-}
-
-.proj-details {
-    .card-details {
-        min-height: 400px;
-    }
 }
 
 /* Media queries */

@@ -2,6 +2,8 @@
 .btn {
 	border-radius: 4px;
 	transition: all 0.2s linear;
+	font-weight: bold;
+	padding: 10px 25px;
 
 	&:hover,
 	&:active,
@@ -9,13 +11,22 @@
 		outline: none !important;
 		box-shadow: none !important;
 	}
+
+	.material-icons {
+		vertical-align: -7px;	
+	}
+}
+
+.btn-link {
+	&:hover,
+	&:active,
+	&:focus {
+		text-decoration: none;
+	}
 }
 
 .btn-default {
 	color: @teal;
-	font-weight: bold;
-	text-transform: uppercase;
-	padding: 10px 25px;
   border: none;
   box-shadow: 0 3px 5px rgba(0,0,0,0.1);
 
