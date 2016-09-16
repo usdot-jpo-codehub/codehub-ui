@@ -7805,6 +7805,9 @@ body ai-dialog-overlay.active {
   border-bottom: 1px solid #dee0e0;
   margin-bottom: 35px;
 }
+.media-list-users {
+  margin-bottom: 10px;
+}
 .media-list-users .list-group-item,
 .media-list-projects .list-group-item {
   display: block;
