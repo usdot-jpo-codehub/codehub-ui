@@ -32,7 +32,6 @@ export class ProjectDetails {
       // TODO should be using promises to catch errors
       if (!similarProjects.error) {
         this.similarProjects = similarProjects;
-        console.log(similarProjects);
       }
     });
 

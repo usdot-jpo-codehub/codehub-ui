@@ -5,7 +5,7 @@
 
   <div class="container-fluid cards-wrapper proj-details-wrapper">
     <div class="row flex-row">
-      <div class="col-lg-9 col-content">
+      <div class="col-lg-9 col-md-9 col-content">
         <div class="col-lg-12">
           <div class="card full-width">
             <div class="ribbon-wrapper">
@@ -152,7 +152,7 @@
         </div>
       </div>
 
-      <div class="col-lg-3 col-sidebar">
+      <div class="col-lg-3 col-md-3 col-sidebar">
         <div class="row card-btns">
           <div class="col-md-6">
             <a href="#"><i class="material-icons">bookmark_border</i> Bookmark</a>
@@ -182,7 +182,7 @@
             </div>
 
             <h3>Similar Projects</h3>
-            <a class="media-list media-list-projects list-group">
+            <div class="media-list media-list-projects list-group">
               <template repeat.for="project of similarProjects | pick:3">
                 <a route-href="route:project-details; params.bind: {id:project.project_id}" target="_blank" class="list-group-item">
                   <span class="media">
@@ -194,9 +194,9 @@
                       <span class="media-body-secondary">${project.project_org_name}</span>
                     </span>
                   </span>
-                </span>
+                </a>
               </template>
-            </a>
+            </div>
           </div>
         </div>
       </div>
