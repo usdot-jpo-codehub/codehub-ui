@@ -6380,7 +6380,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
-  margin-bottom: 65px;
+  margin-bottom: 50px;
 }
 .flex-row {
   display: flex;
@@ -6617,6 +6617,7 @@ h3 {
 }
 .col-btn {
   text-align: center;
+  margin-bottom: 25px;
 }
 .cards-sorting {
   margin: 0;
@@ -6800,12 +6801,16 @@ footer {
   margin-top: 20px;
   padding-top: 20px;
   background-color: #f7f7f7;
+  font-size: 12px;
+}
+footer .row > [class*='col-'] {
+  margin-bottom: 5px;
 }
 footer .list-inline {
   text-align: center;
 }
 footer .bah-logo {
-  width: 180px;
+  width: 140px;
   margin-right: 10px;
 }
 /* Media queries */
@@ -7273,6 +7278,14 @@ label.btn > input[type='radio'] {
   background-color: rgba(0, 0, 0, 0.25);
   color: #ffffff;
 }
+.navbar-default .main-nav > li > a {
+  border-bottom: 4px solid transparent;
+}
+.navbar-default .main-nav > .active > a,
+.navbar-default .main-nav > .active > a:hover,
+.navbar-default .main-nav > .active > a:focus {
+  border-bottom: 4px solid #ffffff;
+}
 .navbar-default .user-nav .utility-icons a {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -7281,6 +7294,19 @@ label.btn > input[type='radio'] {
 .navbar-default .user-nav .utility-icons a .material-icons {
   line-height: 30px;
   font-size: 28px;
+}
+.navbar-default .user-nav .dropdown-menu > li a {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.navbar-default .user-nav .dropdown-menu > li .material-icons {
+  vertical-align: -6px;
+  margin-right: 4px;
+}
+.navbar-default .user-nav .dropdown-menu .divider {
+  margin-top: 0;
+  margin-bottom: 0;
+  opacity: .3;
 }
 .navbar-default .navbar-search .input-group {
   height: 100%;
@@ -7411,7 +7437,11 @@ label.btn > input[type='radio'] {
   border-radius: 0.3rem;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+}
+.cards-wrapper .card .repo-status {
+  font-family: "Roboto Condensed";
+  font-weight: 500;
 }
 .cards-wrapper .card .last-updated {
   line-height: 21px;
@@ -7585,6 +7615,9 @@ label.btn > input[type='radio'] {
 .cards-wrapper .full-width {
   margin-top: 25px;
 }
+.cards-wrapper .full-width:first-child {
+  margin-top: 0;
+}
 .cards-wrapper .full-width .last-updated {
   border-bottom: none;
   margin-bottom: 15px;
@@ -7691,6 +7724,15 @@ label.btn > input[type='radio'] {
 }
 .proj-details-wrapper > .row {
   padding: 0;
+}
+.proj-details-wrapper .proj-nav .col-lg-12 {
+  margin-bottom: 0;
+}
+.proj-details-wrapper .proj-nav .col-lg-12 .btn {
+  padding-left: 0px;
+}
+.proj-details-wrapper .proj-content .col-lg-12 {
+  margin-top: 0;
 }
 .proj-details-wrapper .col-content {
   margin-bottom: 0;

@@ -19,12 +19,14 @@
 		  color: fade(@white, 65%);
 		  text-decoration: none;
 		  transition: all 0.25s ease-in-out;
+		  // border-bottom: 4px solid transparent;
 
 		  &:hover,
 		  &:focus {
 		    color: @white;
 		    text-decoration: none;
 		    background-color: transparent;
+
 		  }
 		}
 		> .active > a {
@@ -101,7 +103,20 @@
 				color: @white;
 			}
 		}
-		
+	}
+
+	.main-nav {
+		> li > a {
+		  border-bottom: 4px solid transparent;
+	  }
+
+	  > .active > a {
+		  &,
+		  &:hover,
+		  &:focus {
+		    border-bottom: 4px solid @white;
+		  }
+		}
 	}
 
 	.user-nav {
@@ -116,6 +131,26 @@
 					font-size: @font-size-material;
 				}
 			}
+		}
+
+		.dropdown-menu {
+			> li{
+				a {
+					padding-top: 6px;
+					padding-bottom: 6px;
+				}
+				
+				.material-icons {
+					vertical-align: -6px;
+					margin-right: 4px;
+				}
+			}
+
+			.divider {
+				margin-top: 0;
+				margin-bottom: 0;
+				opacity: .3;
+			}	
 		}
 	}
 

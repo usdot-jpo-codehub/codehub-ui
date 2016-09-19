@@ -7,7 +7,7 @@
           </a>
       </div>
       <div id="navbar">
-        <ul id="titleBarNav" class="nav navbar-nav">
+        <ul id="titleBarNav" class="nav navbar-nav main-nav">
           <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : 'stage'}">
             <a href.bind="row.href">${row.title}</a>
           </li>
@@ -21,8 +21,9 @@
                 <img src="../../../../img/04-Avatar-img.png" class="user-avatar"></i> Hello, Luke <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Bookmarks</a></li>
+                <li><a href="#"><i class="material-icons">account_circle</i> Profile</a></li>
+                <li><a href="#"><i class="material-icons">bookmark_border</i> Bookmarks</a></li>
+                <li><a href="mailto:stage_feedback@bah.com?Subject=Feedback"><i class="material-icons">feedback</i> Give Feedback</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#">Logout</a></li>
             </ul>

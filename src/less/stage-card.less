@@ -108,8 +108,12 @@
 		border-radius: @stage-border-radius;
 		box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
 		position: relative;
-		margin-bottom: 10px;
+		margin-bottom: 20px;
     
+    .repo-status {
+      font-family: "Roboto Condensed";
+      font-weight: 500;
+    }
 
     .last-updated {
       line-height: @font-size-larger;
@@ -318,6 +322,10 @@
 
 	.full-width {
 		margin-top: 25px;
+
+    &:first-child {
+      margin-top: 0;
+    }
 		
 		.last-updated {
 			border-bottom: none;
