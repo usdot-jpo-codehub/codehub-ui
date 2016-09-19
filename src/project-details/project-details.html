@@ -10,7 +10,7 @@
         <div class="row proj-nav">
           <div class="col-lg-12">
             <span class="pull-left">
-              <button class="btn btn-link btn-sm"><i class="material-icons">chevron_left</i> Back to something</button>
+              <button onclick="window.history.go(-1); return false;" class="btn btn-link btn-sm"><i class="material-icons">chevron_left</i> Back to something</button>
             </span>
             <span class="pull-right"></span>
           </div>
@@ -31,7 +31,7 @@
                   <div class="text-muted last-updated">By <a href="https://github.com/${repo.organization}" target="_blanks">${repo.organization}</a> &nbsp; | &nbsp; Updated ${repo.updatedAt | ago} <span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> ${repo.origin}</span></div>
 
                   <ul class="list-inline">
-                    <li><button class="btn btn-secondary"><i class="material-icons">library_books</i> Show README</button></li>
+                    <li><button click.trigger="openModal(repo)" class="btn btn-secondary"><i class="material-icons">library_books</i> Show README</button></li>
                     <li><button class="btn btn-link"><i class="material-icons">insert_drive_file</i> Show Build File</button></li>
                   </ul>
                 </div>
