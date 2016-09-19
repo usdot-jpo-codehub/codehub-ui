@@ -7,9 +7,9 @@
         <div class="modal-header">
           <button type="button" click.trigger="controller.cancel()" class="close" aria-label="Close"><span
             aria-hidden="true"><i class="material-icons md-48">close</i></span></button>
-          <h4 class="modal-title"><span class="text-uppercase">Contributors for ${repo.name}</span></h4>
+          <h4 class="modal-title"><span class="text-uppercase">Contributors for ${repo.project_name}</span></h4>
         </div>
-        <div class="modal-body">
+        <div class="modal-body contributors-modal">
           <div class="media-list media-list-users list-group">
             <template repeat.for="contrib of contribs | chunk: 2">
               <div class="row">

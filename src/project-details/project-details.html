@@ -191,9 +191,7 @@
 
             </div>
             <div class="clearfix">
-              <button if.bind="repo.contributors_list.length > 5" class="pull-right btn btn-link btn-sm" click.delegate="openContribModal(repo.contributors_list)">
-                View All <i class="material-icons">expand_more</i>
-              </button>
+              <a if.bind="repo.contributors_list.length > 5" href="#" click.delegate="openContribModal(repo.contributors_list)" class="">View All</a>
             </div>
 
             <h3>Similar Projects</h3>

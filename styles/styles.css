@@ -7826,6 +7826,14 @@ body ai-dialog-overlay.active {
   font-size: 17px;
   font-weight: bold;
 }
+.modal-body .btn-secondary .material-icons {
+  margin-right: 5px;
+}
+.contributors-modal {
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 .modal-footer {
   border-radius: 0 0 4px 4px;
   background-color: #f2f2f2;
@@ -7882,10 +7890,12 @@ body ai-dialog-overlay.active {
   height: 60px;
   margin-right: 15px;
   border-radius: 100%;
+  border: 1px solid #ebeced;
 }
 .media-list-users .media-body-secondary,
 .media-list-projects .media-body-secondary {
   color: #aaaaaa;
+  font-size: 12px;
 }
 .media-list-users .media-body,
 .media-list-projects .media-body {
@@ -7898,6 +7908,15 @@ body ai-dialog-overlay.active {
 .media-list-users .media-body p:last-child,
 .media-list-projects .media-body p:last-child {
   margin-bottom: 0;
+}
+.modal-body .media-list .col-lg-6:first-child {
+  border-right: 1px solid #dee0e0;
+}
+.modal-body .media-list .col-lg-6 {
+  margin-bottom: 0;
+}
+.modal-body .media-list .list-group-item {
+  border-radius: 0;
 }
 .twitter-typeahead {
   width: 100%;
