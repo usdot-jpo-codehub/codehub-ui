@@ -10,7 +10,7 @@ export class ContributorsModal {
     controller.settings.lock = false;
   }
 
-  activate(contribs) {
-    this.contribs = contribs;
+  activate(repo) {
+    this.repo = repo;
   }
 }

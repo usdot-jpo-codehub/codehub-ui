@@ -10,7 +10,7 @@
         <div class="row proj-nav">
           <div class="col-lg-12">
             <span class="pull-left">
-              <button onclick="window.history.go(-1); return false;" class="btn btn-link btn-sm"><i class="material-icons">chevron_left</i> Back to something</button>
+              <button onclick="window.history.go(-1); return false;" class="btn btn-link btn-sm"><i class="material-icons">chevron_left</i> Back</button>
             </span>
             <span class="pull-right"></span>
           </div>
@@ -24,7 +24,7 @@
               <div class="row">
                 <div class="col-lg-8">
                   <div class="lined-header">
-                    <a class="pull-right btn btn-link" href="#" target="_blank"><i class="material-icons">open_in_new</i>View on Github</a>
+                    <a class="pull-right btn btn-link" href="${repositoryUrl}" target="_blank"><i class="material-icons">open_in_new</i>View on Github</a>
                     <h2 class=""><span>overview</span></h2>
                   </div>
                   <div class="proj-desc">${repo.project_description}</div>
@@ -191,7 +191,7 @@
 
             </div>
             <div class="clearfix">
-              <a if.bind="repo.contributors_list.length > 5" href="#" click.delegate="openContribModal(repo.contributors_list)" class="">View All</a>
+              <a if.bind="repo.contributors_list.length > 5" href="#" click.delegate="openContribModal(repo)" class="">View All</a>
             </div>
 
             <h3>Similar Projects</h3>

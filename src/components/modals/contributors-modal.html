@@ -11,7 +11,7 @@
         </div>
         <div class="modal-body contributors-modal">
           <div class="media-list media-list-users list-group">
-            <template repeat.for="contrib of contribs | chunk: 2">
+            <template repeat.for="contrib of repo.contributors_list | chunk: 2">
               <div class="row">
                 <div class="col-lg-6">
                   <a href="${contrib[0].profile_url}" target="_blank" class="list-group-item">
