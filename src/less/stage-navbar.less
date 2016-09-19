@@ -19,7 +19,6 @@
 		  color: fade(@white, 65%);
 		  text-decoration: none;
 		  transition: all 0.25s ease-in-out;
-		  // border-bottom: 4px solid transparent;
 
 		  &:hover,
 		  &:focus {
@@ -76,6 +75,12 @@
 
 		.dropdown-menu { 
 			width: 100%;
+			margin-top: 0;
+			margin-bottom: 0;
+			padding-top: 0;
+			padding-bottom: 0;
+			overflow: hidden;
+			border: none;
 
 			> li > a {
 				color: @white;
@@ -84,7 +89,7 @@
 				
 				&:hover,
 	  			&:focus {
-	  				background-color:fade(@black, 5%);
+	  				background-color:fade(@black, 10%);
 
 	  				color: @white;
 	  				text-shadow: none;
@@ -95,11 +100,11 @@
 
 		.open.dropdown {
 			> a.utility-nav {
-				background-color: fade(@black, 10%);
+				background-color: fade(@black,9.5%);
 			}
 
 			.dropdown-menu {
-				background-color: fade(@black, 25%);
+				background-color: fade(@black, 29%);
 				color: @white;
 			}
 		}
@@ -122,8 +127,7 @@
 	.user-nav {
 		.utility-icons {
 			a{
-				padding-top: 10px;
-				padding-bottom: 10px;
+				padding: 10px;
 				color: @white;
 
 				.material-icons {
@@ -141,6 +145,7 @@
 				}
 				
 				.material-icons {
+					font-size: @font-size-larger;
 					vertical-align: -6px;
 					margin-right: 4px;
 				}
@@ -215,6 +220,7 @@
 
 					.material-icons {
 						font-size: @font-size-material;
+						vertical-align: 0px;
 					}
 				}
 			}

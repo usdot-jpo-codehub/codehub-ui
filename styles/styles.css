@@ -7258,6 +7258,12 @@ label.btn > input[type='radio'] {
 }
 .navbar-default .navbar-nav .dropdown-menu {
   width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+  border: none;
 }
 .navbar-default .navbar-nav .dropdown-menu > li > a {
   color: #ffffff;
@@ -7266,16 +7272,16 @@ label.btn > input[type='radio'] {
 }
 .navbar-default .navbar-nav .dropdown-menu > li > a:hover,
 .navbar-default .navbar-nav .dropdown-menu > li > a:focus {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.1);
   color: #ffffff;
   text-shadow: none;
   text-decoration: none;
 }
 .navbar-default .navbar-nav .open.dropdown > a.utility-nav {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.095);
 }
 .navbar-default .navbar-nav .open.dropdown .dropdown-menu {
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.29);
   color: #ffffff;
 }
 .navbar-default .main-nav > li > a {
@@ -7287,8 +7293,7 @@ label.btn > input[type='radio'] {
   border-bottom: 4px solid #ffffff;
 }
 .navbar-default .user-nav .utility-icons a {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px;
   color: #ffffff;
 }
 .navbar-default .user-nav .utility-icons a .material-icons {
@@ -7300,6 +7305,7 @@ label.btn > input[type='radio'] {
   padding-bottom: 6px;
 }
 .navbar-default .user-nav .dropdown-menu > li .material-icons {
+  font-size: 21px;
   vertical-align: -6px;
   margin-right: 4px;
 }
@@ -7357,6 +7363,7 @@ label.btn > input[type='radio'] {
 }
 .navbar-default .navbar-search .input-group .input-group-btn .btn-default .material-icons {
   font-size: 28px;
+  vertical-align: 0px;
 }
 .card-link {
   position: absolute;
