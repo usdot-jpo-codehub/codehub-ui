@@ -31,7 +31,7 @@
                   <div class="text-muted last-updated">By <a href="https://github.com/${repo.organization}" target="_blanks">${repo.organization}</a> &nbsp; | &nbsp; Updated ${repo.updatedAt | ago} <span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> ${repo.origin}</span></div>
 
                   <ul class="list-inline">
-                    <li><button click.trigger="openModal(repo)" class="btn btn-secondary"><i class="material-icons">library_books</i> Show README</button></li>
+                    <li><button click.trigger="openReadmeModal(repo)" class="btn btn-secondary"><i class="material-icons">library_books</i> Show README</button></li>
                     <li><button class="btn btn-link"><i class="material-icons">insert_drive_file</i> Show Build File</button></li>
                   </ul>
                 </div>
@@ -89,7 +89,6 @@
                         <li repeat.for="depend of repo.componentDependencies | pick:numDepends" if.bind = "$odd"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
                       </ul>
                     </div>
-
                     <div class="collapse" id="collapseDepend">
                       <div class="col-lg-6">
                         <ul class="list-unstyled">
@@ -102,7 +101,6 @@
                         </ul>
                       </div>
                     </div>
-
                   </div>
 
                   <button if.bind="repo.componentDependencies.length > numDepends" id="showMoreBtn" class="btn btn-link btn-sm" data-toggle="collapse" click.delegate="dependCollapsed = dependCollapsed !== true" href="#collapseDepend">
@@ -177,7 +175,7 @@
           <div class="col-lg-12">
             <h3>Contributors</h3>
             <div class="media-list media-list-users list-group">
-              <template repeat.for="contrib of repo.contributors_list | pick:3">
+              <template repeat.for="contrib of repo.contributors_list | pick:5">
                 <a href="${contrib.profile_url}" target="_blank" class="list-group-item">
                   <span class="media">
                     <span class="media-left">
@@ -191,27 +189,10 @@
                 </a>
               </template>
 
-              <div class="collapse" id="collapseContrib">
-                <template repeat.for="contrib of repo.contributors_list | skip:3">
-                  <a href="${contrib.profile_url}" target="_blank" class="list-group-item">
-                  <span class="media">
-                    <span class="media-left">
-                      <img class="img-circle media-object" src="${contrib.avatar_url}" onError="this.onerror=null;this.src='/img/language-icons/unknown-user.svg';">
-                    </span>
-                    <span class="media-body clearfix">
-                      <h5>${contrib.username}<span class="pull-right"></span></h5>
-                      <span class="media-body-secondary">${contrib.profile_url}</span>
-                    </span>
-                  </span>
-                  </a>
-                </template>
-              </div>
-
             </div>
             <div class="clearfix">
-              <button if.bind="repo.componentDependencies.length > 3" class="pull-right btn btn-link btn-sm" data-toggle="collapse" click.delegate="contribCollapsed = contribCollapsed !== true" href="#collapseContrib">
-                <template if.bind="contribCollapsed">Show More <i class="material-icons">expand_more</i></template>
-                <template if.bind="!contribCollapsed">Show Less <i class="material-icons">expand_less</i></template>
+              <button if.bind="repo.contributors_list.length > 5" class="pull-right btn btn-link btn-sm" click.delegate="openContribModal(repo.contributors_list)">
+                View All <i class="material-icons">expand_more</i>
               </button>
             </div>
 

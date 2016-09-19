@@ -1,0 +1,53 @@
+<template>
+  <require from="resources/value-converters/chunk"></require>
+  <require from="resources/custom-elements/markdown"></require>
+
+  <div tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" click.trigger="controller.cancel()" class="close" aria-label="Close"><span
+            aria-hidden="true"><i class="material-icons md-48">close</i></span></button>
+          <h4 class="modal-title"><span class="text-uppercase">Contributors for ${repo.name}</span></h4>
+        </div>
+        <div class="modal-body">
+          <div class="media-list media-list-users list-group">
+            <template repeat.for="contrib of contribs | chunk: 2">
+              <div class="row">
+                <div class="col-lg-6">
+                  <a href="${contrib[0].profile_url}" target="_blank" class="list-group-item">
+                    <span class="media">
+                      <span class="media-left">
+                        <img class="img-circle media-object" src="${contrib[0].avatar_url}" onError="this.onerror=null;this.src='/img/language-icons/unknown-user.svg';">
+                      </span>
+                      <span class="media-body clearfix">
+                        <h5>${contrib[0].username}<span class="pull-right"></span></h5>
+                        <span class="media-body-secondary">${contrib[0].profile_url}</span>
+                      </span>
+                    </span>
+                  </a>
+                </div>
+                <div class="col-lg-6">
+                  <a href="${contrib[1].profile_url}" target="_blank" class="list-group-item">
+                    <span class="media">
+                      <span class="media-left">
+                        <img class="img-circle media-object" src="${contrib[1].avatar_url}" onError="this.onerror=null;this.src='/img/language-icons/unknown-user.svg';">
+                      </span>
+                      <span class="media-body clearfix">
+                        <h5>${contrib[1].username}<span class="pull-right"></span></h5>
+                        <span class="media-body-secondary">${contrib[1].profile_url}</span>
+                      </span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" click.trigger="controller.cancel()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

@@ -20,7 +20,7 @@
         <div class="card-title multiline">
           <a href="#" route-href="route:project-details; params.bind: {id:repo.id}" title="${repo.project_name}">${repo.project_name}</a>
         </div>
-        <div class="org-name">${repo.language}</div>
+        <div class="org-name">${repo.language ? repo.language : stageConfig.NO_LANG}</div>
       </div>
       <div class="proj-desc multiline">${repo.project_description}</div>
       <div class="text-muted last-updated">By <a href="https://github.com/${repo.organization}" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="View on Github" target="_blank">${repo.organization}</a> &nbsp; | &nbsp; Updated ${repo.updatedAt | ago} <span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> ${repo.origin}</span></div>
@@ -65,7 +65,7 @@
 
       <div class="row card-links clearfix">
         <ul class="list-inline pull-left">
-          <li><a href="#" click.trigger="openModal(repo)"><i class="material-icons">library_books</i> Show README</a></li>
+          <li><a href="#" click.trigger="openReadmeModal(repo)"><i class="material-icons">library_books</i> Show README</a></li>
         </ul>
         <ul class="list-inline pull-right">
           <li><a href="#" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a></li>
