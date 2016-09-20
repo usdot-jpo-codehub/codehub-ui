@@ -7,7 +7,7 @@
           <img if.bind="repo.language == null" src="img/language-icons/default.svg">
         </div>
         <h1>${repo.project_name}</h1>
-        <p>${repo.language}</p>
+        <p>${repo.language ? repo.language : stageConfig.NO_LANG}</p>
       </div>
     </div>
   </div>

@@ -3,7 +3,7 @@ import { DialogController } from 'aurelia-dialog';
 
 @inject(DialogController)
 
-export class Modal {
+export class ReadmeModal {
   constructor(controller) {
     this.controller = controller;
     controller.settings.centerHorizontalOnly = true;

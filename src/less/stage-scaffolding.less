@@ -14,7 +14,7 @@ body {
 	font-family: @font-family-base;
 	font-size: @font-size-base;
 	line-height: @line-height-base;
-  margin-bottom: 65px;
+  margin-bottom: 50px;
 }
 
 .flex-row {
@@ -154,6 +154,7 @@ h3{
 
 .col-btn {
   text-align: center;
+  margin-bottom: 25px;
 }
 
 .cards-sorting {
@@ -389,13 +390,20 @@ footer {
   margin-top: 20px;
   padding-top: 20px;
   background-color: darken(@white, 3%);
+  font-size: @font-size-smaller;
+
+  .row {
+    > [class*='col-'] {
+      margin-bottom: 5px;
+    }
+  }  
 
   .list-inline {
     text-align: center;
   }
 
   .bah-logo{
-    width: 180px;
+    width: 140px;
     margin-right: 10px;
   }
 }

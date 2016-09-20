@@ -1,6 +1,8 @@
 import { DialogService } from 'aurelia-dialog';
 import { inject } from 'aurelia-framework';
-import { Modal } from './components/modal';
+import { ReadmeModal } from './components/modals/readme-modal';
+import { ContributorsModal } from './components/modals/contributors-modal.js';
+import { FeedbackModal } from './components/modals/feedback-modal.js';
 import { StageConfig } from '../stageConf';
 
 @inject(DialogService, StageConfig)
@@ -23,7 +25,15 @@ export class App {
     this.stageConfig = StageConfig;
   }
 
-  openModal(repo) {
-    this.dialogService.open({ viewModel: Modal, model: repo });
+  openReadmeModal(repo) {
+    this.dialogService.open({ viewModel: ReadmeModal, model: repo });
+  }
+
+  openContribModal(repo) {
+    this.dialogService.open({ viewModel: ContributorsModal, model: repo });
+  }
+
+  openFeedbackModal() {
+    this.dialogService.open({ viewModel: FeedbackModal });
   }
 }
