@@ -16,7 +16,7 @@ export class ProjectDetails {
     this.dependCollapsed = true;
     this.numDepends = 8;
 
-    this.health = JSON.parse('{ "violations" : { "val" : 106.0, "frmt_val" : "106", "key" : "violations" }, "security_rating" : { "val" : 3.0, "frmt_val" : "C", "data" : "C", "key" : "security_rating" }, "sqale_rating" : { "val" : 1.0, "frmt_val" : "A", "data" : "A", "key" : "sqale_rating" }, "code_smells" : { "val" : 81.0, "frmt_val" : "81", "key" : "code_smells" }, "new_violations" : { }, "bugs" : { "val" : 24.0, "frmt_val" : "24", "key" : "bugs" }, "new_code_smells" : { }, "complexity" : { "val" : 203.0, "frmt_val" : "203", "key" : "complexity" }, "new_vulnerabilities" : { }, "vulnerabilities" : { "val" : 1.0, "frmt_val" : "1", "key" : "vulnerabilities" }, "new_bugs" : { }, "reliability_rating" : { "val" : 3.0, "frmt_val" : "C", "data" : "C", "key" : "reliability_rating" } }');
+    this.health = {}; //JSON.parse('{ "violations" : { "val" : 106.0, "frmt_val" : "106", "key" : "violations" }, "security_rating" : { "val" : 3.0, "frmt_val" : "C", "data" : "C", "key" : "security_rating" }, "sqale_rating" : { "val" : 1.0, "frmt_val" : "A", "data" : "A", "key" : "sqale_rating" }, "code_smells" : { "val" : 81.0, "frmt_val" : "81", "key" : "code_smells" }, "new_violations" : { }, "bugs" : { "val" : 24.0, "frmt_val" : "24", "key" : "bugs" }, "new_code_smells" : { }, "complexity" : { "val" : 203.0, "frmt_val" : "203", "key" : "complexity" }, "new_vulnerabilities" : { }, "vulnerabilities" : { "val" : 1.0, "frmt_val" : "1", "key" : "vulnerabilities" }, "new_bugs" : { }, "reliability_rating" : { "val" : 3.0, "frmt_val" : "C", "data" : "C", "key" : "reliability_rating" } }');
 
     // ** Dummy data for offline testing **
     // this.dependencies = JSON.parse('[ { "groupId": "com.googlecode.jmockit", "artifactId": "jmockit", "version": "${jmockit.version}" }, { "groupId": "com.bah.jmockit.com.googlecode.jmockit", "artifactId": "jmockit-coverage", "version": "${jmockit.coverage.version}" }, { "groupId": "org.apache.maven", "artifactId": "maven-plugin-api", "version": "2.0" }, { "groupId": "org.apache.maven.plugin-tools", "artifactId": "maven-plugin-annotations", "version": "3.2" }, { "groupId": "org.apache.maven.shared", "artifactId": "file-management", "version": "1.2.1" }, { "groupId": "org.codehaus.plexus", "artifactId": "plexus-utils", "version": "3.0.8" }, { "groupId": "junit", "artifactId": "junit", "version": "4.8.2" }, { "groupId": "org.apache.maven", "artifactId": "maven-core", "version": "3.0.1" } ]');
@@ -39,6 +39,10 @@ export class ProjectDetails {
 
     this.dataContext.findById(params.id).then(repo => {
       this.repo = repo;
+    });
+
+    this.dataContext.getHealthById(params.id).then(health => {
+      this.health = health;
     });
   }
 
