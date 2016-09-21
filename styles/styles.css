@@ -7741,6 +7741,49 @@ label.btn > input[type='radio'] {
 .proj-details-wrapper .proj-content .col-lg-12 {
   margin-top: 0;
 }
+.proj-details-wrapper .grade-wrapper {
+  text-align: center;
+}
+.proj-details-wrapper .grade-wrapper .grade-circle {
+  height: 100px;
+  width: 100px;
+  margin: 0 auto;
+  border-radius: 100px;
+  text-align: center;
+  line-height: 100px;
+  background-color: #d1d3d4;
+  color: #ffffff;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.proj-details-wrapper .grade-wrapper .rating-A {
+  background-color: #0a0;
+  color: #ffffff;
+}
+.proj-details-wrapper .grade-wrapper .rating-B {
+  background-color: #80cc00;
+  color: #ffffff;
+}
+.proj-details-wrapper .grade-wrapper .rating-C {
+  background-color: #fe0;
+  color: #333333;
+}
+.proj-details-wrapper .grade-wrapper .rating-D {
+  background-color: #f77700;
+  color: #ffffff;
+}
+.proj-details-wrapper .grade-wrapper .empty-circle {
+  background-color: #ffffff;
+  line-height: 14px;
+  font-size: 14px;
+}
+.proj-details-wrapper .grade-wrapper .empty-circle .material-icons {
+  font-size: 100px;
+  color: #dddddd;
+}
+.proj-details-wrapper .grade-wrapper .list-unstyled {
+  color: #333333;
+}
 .proj-details-wrapper .col-content {
   margin-bottom: 0;
 }
@@ -7759,8 +7802,9 @@ label.btn > input[type='radio'] {
   display: flex;
   margin-top: 15px;
 }
-.proj-details-wrapper .proj-overview-row .col-lg-4:not(:first-child) {
+.proj-details-wrapper .proj-overview-row .col-lg-6 {
   border-left: 1px solid #d0d0d0;
+  border-right: 1px solid #d0d0d0;
 }
 .proj-details-wrapper .proj-overview-row .list-unstyled > li {
   margin-bottom: 10px;
