@@ -55,4 +55,12 @@ export class DataContext {
       .then(response => response.json());
   }
 
+  getHealthById(id) {
+    const adjustedURL = `${baseUrl}/findSonarHealthMetrics/${id}`;
+    return this.http.fetch(adjustedURL, {
+      method: 'GET',
+    })
+      .then(response => response.json());
+  }
+
 }

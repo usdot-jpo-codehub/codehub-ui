@@ -132,22 +132,58 @@
                 <h2 class=""><span>Health Statistics</span></h2>
               </div>
               <div class="row proj-overview-row">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                   <h3>Build</h3>
                   <div class="empty-state">
                     <i class="material-icons">access_time</i>
                     <em class="text-muted">Coming soon</em>
                   </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                   <h3>Quality</h3>
-                  <div class="empty-state">
-                    <i class="material-icons">sentiment_dissatisfied</i>
-                    <em class="text-muted">Coming soon</em>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-6 grade-wrapper">
+                      <h5>Releasability</h5>
+                      <div class="grade-circle empty-circle">
+                        <i class="material-icons">access_time</i>
+                      </div>
+                      <ul class="list-unstyled">
+                        <li>Coming Soon</li>
+                      </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 grade-wrapper">
+                      <h5>Maintainability</h5>
+                      <div class="grade-circle rating-${health.sqale_rating.data}">
+                        ${health.sqale_rating.data}
+                      </div>
+                      <ul class="list-unstyled">
+                        <li>${health.code_smells.val} code smells</li>
+                        <li>${health.complexity.val} complexity</li>
+                      </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 grade-wrapper">
+                      <h5>Security</h5>
+                      <div class="grade-circle rating-${health.security_rating.data}">
+                        ${health.security_rating.data}
+                      </div>
+                      <ul class="list-unstyled">
+                        <li>${health.vulnerabilities.val} vulnerabilities</li>
+                      </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 grade-wrapper">
+                      <h5>Reliability</h5>
+                      <div class="grade-circle rating-${health.reliability_rating.data}">
+                        ${health.reliability_rating.data}
+                      </div>
+                      <ul class="list-unstyled">
+                        <li>${health.bugs.val} bugs</li>
+                        <li>${health.violations.val} violations</li>
+                      </ul>
+                    </div>
                   </div>
-                  <a class="btn btn-link" href="#" target="_blank"><i class="material-icons">open_in_new</i> View on SonarQube</a>
+                  <a class="btn btn-link" href="http://54.173.204.117:9000/" target="_blank"><i class="material-icons">open_in_new</i> View on SonarQube</a>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                   <h3>Security</h3>
                   <div class="empty-state">
                     <i class="material-icons">access_time</i>
