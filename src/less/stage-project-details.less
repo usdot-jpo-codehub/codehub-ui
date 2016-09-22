@@ -20,58 +20,6 @@
     }
   }
 
-  .grade-wrapper {
-    text-align: center;
-
-    .grade-circle {
-      height: 75px;
-      width: 75px;
-      margin: 0 auto;
-      border-radius: 100px;
-      text-align: center;
-      line-height: 75px;
-      background-color: @stage-gray;
-      color: @white;
-      font-size: @font-size-h2;
-      margin-bottom: 10px;
-    }
-
-    .rating-A {
-      background-color: @sonarqube-rating-a;
-      color: @white;
-    }
-
-    .rating-B {
-      background-color: @sonarqube-rating-b;
-      color: @white;
-    }
-
-    .rating-C {
-      background-color: @sonarqube-rating-c;
-      color: @stage-body;
-    }
-
-    .rating-D {
-      background-color: @sonarqube-rating-d;
-      color: @white;
-    }
-
-    .empty-circle {
-      background-color: @white;
-      line-height: @font-size-base;
-      font-size: @font-size-base;
-
-      .material-icons {
-        font-size: 75px;
-        color: lighten(@gray, 20%)
-      }
-    }
-
-    .list-unstyled {
-      color: @stage-body;
-    }
-  }
-
   .col-content {
     margin-bottom: 0;
 
@@ -115,6 +63,68 @@
 
     .btn-link {
       padding: 5px 0;
+    }
+
+    .grade-wrapper {
+      text-align: center;
+
+      .grade-circle {
+        height: 75px;
+        width: 75px;
+        margin: 0 auto;
+        border-radius: 100px;
+        text-align: center;
+        line-height: 75px;
+        background-color: @stage-gray;
+        color: @white;
+        font-size: @font-size-h2;
+        margin-bottom: 10px;
+      }
+
+      .rating-A {
+        background-color: @sonarqube-rating-a;
+        color: @white;
+      }
+
+      .rating-B {
+        background-color: @sonarqube-rating-b;
+        color: @white;
+      }
+
+      .rating-C {
+        background-color: @sonarqube-rating-c;
+        color: @stage-body;
+      }
+
+      .rating-D {
+        background-color: @sonarqube-rating-d;
+        color: @white;
+      }
+
+      .rating-E {
+        background-color: @sonarqube-rating-e;
+        color: @white;
+      }
+
+      .empty-circle {
+        background-color: @white;
+        line-height: @font-size-base;
+        font-size: @font-size-base;
+
+        .material-icons {
+          font-size: 75px;
+          color: lighten(@gray, 20%)
+        }
+      }
+
+      .list-unstyled {
+        color: @gray;
+        font-size: @font-size-small;
+
+        > li {
+          margin-bottom: 5px;
+        }
+      }
     }
   }
 
