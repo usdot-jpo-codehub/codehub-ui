@@ -1,6 +1,8 @@
 import { DialogService } from 'aurelia-dialog';
 import { inject } from 'aurelia-framework';
-import { Modal } from './components/modal';
+import { ReadmeModal } from './components/modals/readme-modal';
+import { ContributorsModal } from './components/modals/contributors-modal.js';
+import { FeedbackModal } from './components/modals/feedback-modal.js';
 import { StageConfig } from '../stageConf';
 
 @inject(DialogService, StageConfig)
@@ -10,10 +12,10 @@ export class App {
     config.options.pushState = false;
     config.map([
       { route: '', name: 'popular', viewPorts: { mainContent: { moduleId: 'popular/popular' }, headerContent: { moduleId: 'search/search-bar' } }, nav: true, title: 'Home' },
-      { route: 'explore', name: 'explore', viewPorts: { mainContent: { moduleId: 'explore/explore' }, headerContent: { moduleId: 'components/headers/explore-title-secondary' } }, nav: true, title: 'Explore' },
-      { route: 'favorites', name: 'favorites', viewPorts: { mainContent: { moduleId: 'favorites/favorites' }, headerContent: { moduleId: 'components/headers/insights-title-secondary' } }, nav: true, title: 'Insight' },
+      { route: 'explore', name: 'explore', viewPorts: { mainContent: { moduleId: 'explore/explore' }, headerContent: { moduleId: 'components/headers/generic-title' } }, nav: true, title: 'Explore', settings: { desc: 'Browse 100s of projects and discover your InnerSource' } },
+      { route: 'favorites', name: 'favorites', viewPorts: { mainContent: { moduleId: 'favorites/favorites' }, headerContent: { moduleId: 'components/headers/generic-title' } }, nav: true, title: 'Insight', settings: { desc: 'Software Oriented Data Analysis (SODA)' } },
       { route: 'results', name: 'results', viewPorts: { mainContent: { moduleId: 'search/results' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: false, title: 'Search Results' },
-      { route: 'project-details', name: 'project-details', viewPorts: { mainContent: { moduleId: 'project-details/project-details' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: false, title: 'Project Details' },
+      { route: 'project-details', name: 'project-details', viewPorts: { mainContent: { moduleId: 'project-details/project-details' }, headerContent: { moduleId: 'components/headers/project-details-header' } }, nav: false, title: 'Project Details' },
     ]);
     this.router = router;
   }
@@ -23,7 +25,15 @@ export class App {
     this.stageConfig = StageConfig;
   }
 
-  openModal(repo) {
-    this.dialogService.open({ viewModel: Modal, model: repo });
+  openReadmeModal(repo) {
+    this.dialogService.open({ viewModel: ReadmeModal, model: repo });
+  }
+
+  openContribModal(repo) {
+    this.dialogService.open({ viewModel: ContributorsModal, model: repo });
+  }
+
+  openFeedbackModal() {
+    this.dialogService.open({ viewModel: FeedbackModal });
   }
 }

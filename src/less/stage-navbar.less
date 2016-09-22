@@ -25,6 +25,7 @@
 		    color: @white;
 		    text-decoration: none;
 		    background-color: transparent;
+
 		  }
 		}
 		> .active > a {
@@ -68,12 +69,19 @@
 					border-radius: 100%;
 					background-color: @white;
 					box-shadow: 0 3px 4px rgba(0,0,0,0.2);
+					border: 1px solid @white;
 				}
 			}
 		}
 
 		.dropdown-menu { 
 			width: 100%;
+			margin-top: 0;
+			margin-bottom: 0;
+			padding-top: 0;
+			padding-bottom: 0;
+			overflow: hidden;
+			border: none;
 
 			> li > a {
 				color: @white;
@@ -82,7 +90,7 @@
 				
 				&:hover,
 	  			&:focus {
-	  				background-color:fade(@black, 5%);
+	  				background-color:fade(@black, 10%);
 
 	  				color: @white;
 	  				text-shadow: none;
@@ -93,22 +101,34 @@
 
 		.open.dropdown {
 			> a.utility-nav {
-				background-color: fade(@black, 10%);
+				background-color: fade(@black,9.5%);
 			}
 
 			.dropdown-menu {
-				background-color: fade(@black, 25%);
+				background-color: fade(@black, 29%);
 				color: @white;
 			}
 		}
-		
+	}
+
+	.main-nav {
+		> li > a {
+		  border-bottom: 4px solid transparent;
+	  }
+
+	  > .active > a {
+		  &,
+		  &:hover,
+		  &:focus {
+		    border-bottom: 4px solid @white;
+		  }
+		}
 	}
 
 	.user-nav {
 		.utility-icons {
 			a{
-				padding-top: 10px;
-				padding-bottom: 10px;
+				padding: 10px;
 				color: @white;
 
 				.material-icons {
@@ -116,6 +136,27 @@
 					font-size: @font-size-material;
 				}
 			}
+		}
+
+		.dropdown-menu {
+			> li{
+				a {
+					padding-top: 6px;
+					padding-bottom: 6px;
+				}
+				
+				.material-icons {
+					font-size: @font-size-larger;
+					vertical-align: -6px;
+					margin-right: 4px;
+				}
+			}
+
+			.divider {
+				margin-top: 0;
+				margin-bottom: 0;
+				opacity: .3;
+			}	
 		}
 	}
 
@@ -180,6 +221,7 @@
 
 					.material-icons {
 						font-size: @font-size-material;
+						vertical-align: 0px;
 					}
 				}
 			}

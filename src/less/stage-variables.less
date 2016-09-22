@@ -22,6 +22,8 @@
 @stage-body-bk: rgb(225,225,225); //#E1E1E1
 @stage-blue: rgb(21,85,105); //#155569
 
+@stage-body: lighten(@black,20%);
+
 //== Stage Nav Banner background color
 @stage-banner-bk: rgb(240,81,84); //#f05154
 @stage-banner-orange: rgb(255, 212, 118); //#ffb476
@@ -38,6 +40,12 @@
 @stage-transition: 0.2s;
 @stage-border-radius: 0.3rem;
 @stage-gray-precentage: 15%;
+
+@sonarqube-rating-a: #0a0;
+@sonarqube-rating-b: #80cc00;
+@sonarqube-rating-c: #fe0;
+@sonarqube-rating-d: #f77700;
+@sonarqube-rating-e: #e00;
 
 //== Buttons
 //
@@ -91,7 +99,7 @@
 
 @font-size-h1:            floor((@font-size-base * 2.6)); // ~39px
 @font-size-h2:            floor((@font-size-base * 2.15)); // ~32px
-@font-size-h3:            ceil((@font-size-base * 1.7)); // ~26px
+@font-size-h3:            ceil((@font-size-base * 1.15)); // ~17px
 @font-size-h4:            ceil((@font-size-base * 1.25)); // ~19px
 @font-size-h5:            @font-size-base;
 @font-size-h6:            ceil((@font-size-base * 0.85)); // ~13px
