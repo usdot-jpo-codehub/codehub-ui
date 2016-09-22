@@ -7775,11 +7775,6 @@ label.btn > input[type='radio'] {
 .proj-details-wrapper .proj-overview-row .btn-link {
   padding: 5px 0;
 }
-<<<<<<< HEAD
-.proj-details-wrapper .proj-health .col-lg-6 {
-  border-left: 1px solid #d0d0d0;
-  border-right: 1px solid #d0d0d0;
-=======
 .proj-details-wrapper .proj-overview-row .grade-wrapper {
   text-align: center;
 }
@@ -7830,7 +7825,10 @@ label.btn > input[type='radio'] {
 }
 .proj-details-wrapper .proj-overview-row .grade-wrapper .list-unstyled > li {
   margin-bottom: 5px;
->>>>>>> 5f480365d2ba03709f6136211678dd1ae56d0c4a
+}
+.proj-details-wrapper .proj-health .col-lg-6 {
+  border-left: 1px solid #d0d0d0;
+  border-right: 1px solid #d0d0d0;
 }
 .proj-details-wrapper .col-sidebar {
   background-color: #ffffff;
