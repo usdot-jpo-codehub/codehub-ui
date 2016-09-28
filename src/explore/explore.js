@@ -45,8 +45,10 @@ export class Explore {
         this.projects = JSON.parse(JSON.stringify(projects));
         this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
         this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
+        this.filters.selectedOrigins = this.filters.getUniqueValues(this.projects, 'origin');
         this.rebuildFilterOrg(projects);
         this.rebuildFilterLang(projects);
+        this.rebuildFilterOrigin(projects);
         return this.projects;
       });
   }
@@ -60,9 +62,11 @@ export class Explore {
   attached() {
     this.setupFilterOrg();
     this.setupFilterLang();
+    this.setupFilterOrigin();
 
     this.rebuildFilterOrg(this.projects);
     this.rebuildFilterLang(this.projects);
+    this.rebuildFilterOrigin(this.projects);
   }
 
   rebuildFilterOrg(projects) {
@@ -83,6 +87,16 @@ export class Explore {
     }
     $('#filterLang').multiselect('dataprovider', options);
     $('#filterLang').trigger('change');
+  }
+
+  rebuildFilterOrigin(projects) {
+    const options = [];
+    const unique = this.getUniqueValues(projects, 'origin');
+    for (const origin of unique) {
+      options.push({ label: `${origin} <small>(${this.countUniqueValues(projects, 'origin', origin)})</small>`, title: origin, value: origin, selected: false });
+    }
+    $('#filterOrigin').multiselect('dataprovider', options);
+    $('#filterOrigin').trigger('change');
   }
 
   setupFilterOrg() {
@@ -112,7 +126,8 @@ export class Explore {
         this.filterOrgEmpty = true;
       }
 
-      const fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
+      let fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
+      fitlerArr = this.filterArray(fitlerArr, this.filters.selectedOrigins, 'origin');
       this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'organization').length;
     });
   }
@@ -144,7 +159,40 @@ export class Explore {
         this.filterLangEmpty = true;
       }
 
-      const fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
+      let fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
+      fitlerArr = this.filterArray(fitlerArr, this.filters.selectedOrigins, 'origin');
+      this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'organization').length;
+    });
+  }
+
+  setupFilterOrigin() {
+    $('#filterOrigin').multiselect({
+      enableFiltering: true,
+      disableIfEmpty: true,
+      enableCaseInsensitiveFiltering: true,
+      maxHeight: 250,
+      enableHTML: true,
+      buttonText(options, select) {
+        if (options.length === 0) {
+          return 'Origin';
+        } else if (options.length === options.prevObject.length) {
+          return `Origin (${options.length})`;
+        }
+        return `Origin (${options.length})`;
+      },
+    });
+
+    $('#filterOrigin').on('change', ev => {
+      if ($('#filterOrigin').val()) {
+        this.filters.selectedOrigins = $('#filterOrigin').val();
+        this.filterOriginEmpty = false;
+      } else {
+        this.filters.selectedOrigins = this.filters.getUniqueValues(this.projects, 'origin');
+        this.filterOriginEmpty = true;
+      }
+
+      let fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
+      fitlerArr = this.filterArray(fitlerArr, this.filters.selectedOrigins, 'origin');
       this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'organization').length;
     });
   }
@@ -152,10 +200,15 @@ export class Explore {
   clearAllFilters() {
     $('#filterLang').multiselect('deselectAll', false);
     $('#filterOrg').multiselect('deselectAll', false);
+    $('#filterOrigin').multiselect('deselectAll', false);
+
     $('#filterLang').trigger('change');
     $('#filterOrg').trigger('change');
+    $('#filterOrigin').trigger('change');
+
     this.rebuildFilterOrg(this.projects);
     this.rebuildFilterLang(this.projects);
+    this.rebuildFilterOrigin(this.projects);
   }
 
   removePill(ms, value) {
