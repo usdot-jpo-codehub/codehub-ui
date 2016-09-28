@@ -7826,18 +7826,15 @@ label.btn > input[type='radio'] {
 .proj-details-wrapper .proj-overview-row .grade-wrapper .list-unstyled > li {
   margin-bottom: 5px;
 }
+.proj-details-wrapper .proj-overview-row .col-qual .col-lg-4 {
+  border: none;
+}
 .proj-details-wrapper .proj-health .col-lg-5 {
   border-left: 1px solid #d0d0d0;
   border-right: 1px solid #d0d0d0;
 }
 .proj-details-wrapper .col-sec .col-lg-6 {
   border: none;
-}
-.proj-details-wrapper .col-sec .empty-state {
-  padding-top: 0;
-}
-.proj-details-wrapper .col-sec .empty-state .material-icons {
-  font-size: 100px;
 }
 .proj-details-wrapper .col-sidebar {
   background-color: #ffffff;
