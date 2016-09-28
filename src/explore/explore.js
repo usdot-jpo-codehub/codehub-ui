@@ -45,8 +45,10 @@ export class Explore {
         this.projects = JSON.parse(JSON.stringify(projects));
         this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
         this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
+        this.filters.selectedOrigins = this.filters.getUniqueValues(this.projects, 'origin');
         this.rebuildFilterOrg(projects);
         this.rebuildFilterLang(projects);
+        this.rebuildFilterOrigin(projects);
         return this.projects;
       });
   }
@@ -60,28 +62,20 @@ export class Explore {
   attached() {
     this.setupFilterOrg();
     this.setupFilterLang();
+    this.setupFilterOrigin();
 
     this.rebuildFilterOrg(this.projects);
     this.rebuildFilterLang(this.projects);
+    this.rebuildFilterOrigin(this.projects);
   }
 
   rebuildFilterOrg(projects) {
-    const optionsPub = [];
-    const optionsEnt = [];
-
-    const uniquePub = this.getUniqueValuesOrgOrgin(projects, 'organization', 'PUBLIC');
-    const uniqueEnt = this.getUniqueValuesOrgOrgin(projects, 'organization', 'ENTERPRISE');
-    for (const org of uniquePub) {
-      optionsPub.push({ label: `${org} <small>(${this.countUniqueValues(projects, 'organization', org)})</small>`, title: org, value: org, selected: false });
+    const options = [];
+    const unique = this.getUniqueValues(projects, 'organization');
+    for (const org of unique) {
+      options.push({ label: `${org} <small>(${this.countUniqueValues(projects, 'organization', org)})</small>`, title: org, value: org, selected: false });
     }
-
-    for (const org of uniqueEnt) {
-      optionsEnt.push({ label: `${org} <small>(${this.countUniqueValues(projects, 'organization', org)})</small>`, title: org, value: org, selected: false });
-    }
-
-    const groupOpt = [{ label: 'Enterprise', children: optionsEnt }, { label: 'Public', children: optionsPub }];
-
-    $('#filterOrg').multiselect('dataprovider', groupOpt);
+    $('#filterOrg').multiselect('dataprovider', options);
     $('#filterOrg').trigger('change');
   }
 
@@ -95,10 +89,18 @@ export class Explore {
     $('#filterLang').trigger('change');
   }
 
+  rebuildFilterOrigin(projects) {
+    const options = [];
+    const unique = this.getUniqueValues(projects, 'origin');
+    for (const origin of unique) {
+      options.push({ label: `${origin} <small>(${this.countUniqueValues(projects, 'origin', origin)})</small>`, title: origin, value: origin, selected: false });
+    }
+    $('#filterOrigin').multiselect('dataprovider', options);
+    $('#filterOrigin').trigger('change');
+  }
+
   setupFilterOrg() {
     $('#filterOrg').multiselect({
-      enableClickableOptGroups: true,
-      enableCollapsibleOptGroups: true,
       includeSelectAllOption: true,
       enableFiltering: true,
       disableIfEmpty: true,
@@ -124,7 +126,8 @@ export class Explore {
         this.filterOrgEmpty = true;
       }
 
-      const fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
+      let fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
+      fitlerArr = this.filterArray(this.projects, this.filters.selectedOrigins, 'origin');
       this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'organization').length;
     });
   }
@@ -156,7 +159,41 @@ export class Explore {
         this.filterLangEmpty = true;
       }
 
-      const fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
+      let fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
+      fitlerArr = this.filterArray(this.projects, this.filters.selectedOrigins, 'origin');
+      this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'organization').length;
+    });
+  }
+
+  setupFilterOrigin() {
+    $('#filterOrigin').multiselect({
+      includeSelectAllOption: true,
+      enableFiltering: true,
+      disableIfEmpty: true,
+      enableCaseInsensitiveFiltering: true,
+      maxHeight: 250,
+      enableHTML: true,
+      buttonText(options, select) {
+        if (options.length === 0) {
+          return 'Origins';
+        } else if (options.length === options.prevObject.length) {
+          return `Origins (${options.length})`;
+        }
+        return `Origins (${options.length})`;
+      },
+    });
+
+    $('#filterOrigin').on('change', ev => {
+      if ($('#filterOrigin').val()) {
+        this.filters.selectedOrigins = $('#filterOrigin').val();
+        this.filterOriginEmpty = false;
+      } else {
+        this.filters.selectedOrigins = this.filters.getUniqueValues(this.projects, 'origin');
+        this.filterOriginEmpty = true;
+      }
+
+      let fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
+      fitlerArr = this.filterArray(this.projects, this.filters.selectedOrigins, 'origin');
       this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'organization').length;
     });
   }
@@ -164,10 +201,15 @@ export class Explore {
   clearAllFilters() {
     $('#filterLang').multiselect('deselectAll', false);
     $('#filterOrg').multiselect('deselectAll', false);
+    $('#filterOrigin').multiselect('deselectAll', false);
+
     $('#filterLang').trigger('change');
     $('#filterOrg').trigger('change');
+    $('#filterOrigin').trigger('change');
+
     this.rebuildFilterOrg(this.projects);
     this.rebuildFilterLang(this.projects);
+    this.rebuildFilterOrigin(this.projects);
   }
 
   removePill(ms, value) {
@@ -182,20 +224,6 @@ export class Explore {
         propertyArray.push(object[property]);
       } else {
         propertyArray.push('None');
-      }
-    }
-    return Array.from(new Set(propertyArray));
-  }
-
-  getUniqueValuesOrgOrgin(array, property, origin) {
-    const propertyArray = [];
-    for (const object of array) {
-      if (object.origin === origin) {
-        if (object[property]) {
-          propertyArray.push(object[property]);
-        } else {
-          propertyArray.push('None');
-        }
       }
     }
     return Array.from(new Set(propertyArray));
