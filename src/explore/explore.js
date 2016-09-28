@@ -127,7 +127,7 @@ export class Explore {
       }
 
       let fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
-      fitlerArr = this.filterArray(this.projects, this.filters.selectedOrigins, 'origin');
+      fitlerArr = this.filterArray(fitlerArr, this.filters.selectedOrigins, 'origin');
       this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'organization').length;
     });
   }
@@ -160,14 +160,13 @@ export class Explore {
       }
 
       let fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
-      fitlerArr = this.filterArray(this.projects, this.filters.selectedOrigins, 'origin');
+      fitlerArr = this.filterArray(fitlerArr, this.filters.selectedOrigins, 'origin');
       this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'organization').length;
     });
   }
 
   setupFilterOrigin() {
     $('#filterOrigin').multiselect({
-      includeSelectAllOption: true,
       enableFiltering: true,
       disableIfEmpty: true,
       enableCaseInsensitiveFiltering: true,
@@ -175,11 +174,11 @@ export class Explore {
       enableHTML: true,
       buttonText(options, select) {
         if (options.length === 0) {
-          return 'Origins';
+          return 'Origin';
         } else if (options.length === options.prevObject.length) {
-          return `Origins (${options.length})`;
+          return `Origin (${options.length})`;
         }
-        return `Origins (${options.length})`;
+        return `Origin (${options.length})`;
       },
     });
 
@@ -193,7 +192,7 @@ export class Explore {
       }
 
       let fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
-      fitlerArr = this.filterArray(this.projects, this.filters.selectedOrigins, 'origin');
+      fitlerArr = this.filterArray(fitlerArr, this.filters.selectedOrigins, 'origin');
       this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'organization').length;
     });
   }
