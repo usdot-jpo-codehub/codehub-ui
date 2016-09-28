@@ -66,12 +66,22 @@ export class Explore {
   }
 
   rebuildFilterOrg(projects) {
-    const options = [];
-    const unique = this.getUniqueValues(projects, 'organization');
-    for (const org of unique) {
-      options.push({ label: `${org} <small>(${this.countUniqueValues(projects, 'organization', org)})</small>`, title: org, value: org, selected: false });
+    const optionsPub = [];
+    const optionsEnt = [];
+
+    const uniquePub = this.getUniqueValuesOrgOrgin(projects, 'organization', 'PUBLIC');
+    const uniqueEnt = this.getUniqueValuesOrgOrgin(projects, 'organization', 'ENTERPRISE');
+    for (const org of uniquePub) {
+      optionsPub.push({ label: `${org} <small>(${this.countUniqueValues(projects, 'organization', org)})</small>`, title: org, value: org, selected: false });
     }
-    $('#filterOrg').multiselect('dataprovider', options);
+
+    for (const org of uniqueEnt) {
+      optionsEnt.push({ label: `${org} <small>(${this.countUniqueValues(projects, 'organization', org)})</small>`, title: org, value: org, selected: false });
+    }
+
+    const groupOpt = [{ label: 'Enterprise', children: optionsEnt }, { label: 'Public', children: optionsPub }];
+
+    $('#filterOrg').multiselect('dataprovider', groupOpt);
     $('#filterOrg').trigger('change');
   }
 
@@ -87,6 +97,8 @@ export class Explore {
 
   setupFilterOrg() {
     $('#filterOrg').multiselect({
+      enableClickableOptGroups: true,
+      enableCollapsibleOptGroups: true,
       includeSelectAllOption: true,
       enableFiltering: true,
       disableIfEmpty: true,
@@ -170,6 +182,20 @@ export class Explore {
         propertyArray.push(object[property]);
       } else {
         propertyArray.push('None');
+      }
+    }
+    return Array.from(new Set(propertyArray));
+  }
+
+  getUniqueValuesOrgOrgin(array, property, origin) {
+    const propertyArray = [];
+    for (const object of array) {
+      if (object.origin === origin) {
+        if (object[property]) {
+          propertyArray.push(object[property]);
+        } else {
+          propertyArray.push('None');
+        }
       }
     }
     return Array.from(new Set(propertyArray));
