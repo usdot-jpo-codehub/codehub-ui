@@ -18,8 +18,11 @@
                 <li if.bind="!filterOrgEmpty" repeat.for="pill of filters.selectedOrganizations">
                   <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'organization', pill)})</small> <a href="javascript:$('#filterOrg').multiselect('deselect', '${pill}');$('#filterOrg').trigger('change');"><i class="material-icons">close</i></a></span>
                 </li>
+                <li if.bind="!filterOriginEmpty" repeat.for="pill of filters.selectedOrigins">
+                  <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'origin', pill)})</small> <a href="javascript:$('#filterOrigin').multiselect('deselect', '${pill}');$('#filterOrigin').trigger('change');"><i class="material-icons">close</i></a></span>
+                </li>
                 <li>
-                  <a class="clear-btn" if.bind="!filterLangEmpty || !filterOrgEmpty" href="#" click.delegate="clearAllFilters()">Clear All</a>
+                  <a class="clear-btn" if.bind="!filterLangEmpty || !filterOrgEmpty || !filterOriginEmpty" href="#" click.delegate="clearAllFilters()">Clear All</a>
                 </li>
               </ul>
             </div>
@@ -31,6 +34,7 @@
           <div class="collapse" id="collapseExample">
             <select id="filterOrg" multiple="multiple"></select>
             <select id="filterLang" multiple="multiple"></select>
+            <select id="filterOrigin" multiple="multiple"></select>
           </div>
         </div>
       </div>
@@ -44,6 +48,7 @@
           virtual-repeat.for="repo of projects |
           sort: { propertyName: selectedSort, direction: sortDirection} |
           filter: { propertyName: 'organization', filterArray: filters.selectedOrganizations}:filters.selectedOrganizations.length |
+          filter: { propertyName: 'origin', filterArray: filters.selectedOrigins}:filters.selectedOrigins.length |
           filter: { propertyName: 'language', filterArray: filters.selectedLanguages}:filters.selectedLanguages.length">
           <compose view-model="../components/card-search" model.bind="repo"></compose>
         </div>
