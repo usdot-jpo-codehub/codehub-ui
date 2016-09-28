@@ -10,6 +10,19 @@
 
       .btn {
         padding-left: 0px;
+        font-size: @font-size-base;
+        color: lighten(@black, 25%);
+
+        .material-icons {
+          transition: all 0.1s linear;
+          transform: translateX(2px);
+        }
+
+        &:hover {
+          .material-icons {
+            transform: translateX(-2px);
+          }
+        }
       }
     }
   }
@@ -132,20 +145,17 @@
         border: none;
       }
     }
+
+    .col-sec {
+      .col-lg-6 {
+        border: none;
+      }
+    }
   }
 
   .proj-health {
     .col-lg-5 {
       border-left: 1px solid lighten(@gray,@stage-gray-precentage);
-      border-right: 1px solid lighten(@gray,@stage-gray-precentage);
-    }
-  }
-
-
-
-  .col-sec {
-    .col-lg-6 {
-      border: none;
     }
   }
 

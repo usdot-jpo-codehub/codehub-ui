@@ -7738,6 +7738,15 @@ label.btn > input[type='radio'] {
 }
 .proj-details-wrapper .proj-nav .col-lg-12 .btn {
   padding-left: 0px;
+  font-size: 14px;
+  color: #404040;
+}
+.proj-details-wrapper .proj-nav .col-lg-12 .btn .material-icons {
+  transition: all 0.1s linear;
+  transform: translateX(2px);
+}
+.proj-details-wrapper .proj-nav .col-lg-12 .btn:hover .material-icons {
+  transform: translateX(-2px);
 }
 .proj-details-wrapper .proj-content .col-lg-12 {
   margin-top: 0;
@@ -7829,12 +7838,11 @@ label.btn > input[type='radio'] {
 .proj-details-wrapper .proj-overview-row .col-qual .col-lg-4 {
   border: none;
 }
+.proj-details-wrapper .proj-overview-row .col-sec .col-lg-6 {
+  border: none;
+}
 .proj-details-wrapper .proj-health .col-lg-5 {
   border-left: 1px solid #d0d0d0;
-  border-right: 1px solid #d0d0d0;
-}
-.proj-details-wrapper .col-sec .col-lg-6 {
-  border: none;
 }
 .proj-details-wrapper .col-sidebar {
   background-color: #ffffff;
