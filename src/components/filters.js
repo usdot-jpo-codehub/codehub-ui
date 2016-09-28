@@ -5,15 +5,7 @@ export class Filters {
   constructor() {
     this.selectedOrganizations = [];
     this.selectedLanguages = [];
-  }
-
-  activate() {
-
-  }
-
-  attached() {
-    $('#example-getting-started').multiselect();
-    $('#stage-org').multiselect();
+    this.selectedOrigins = [];
   }
 
   getUniqueValues(array, property) {

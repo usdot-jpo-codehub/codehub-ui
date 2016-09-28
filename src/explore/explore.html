@@ -13,6 +13,7 @@
             <div class="col-lg-9 col-md-9 col-sm-9">
               <select id="filterOrg" multiple="multiple"></select>
               <select id="filterLang" multiple="multiple"></select>
+              <select id="filterOrigin" multiple="multiple"></select>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3">
               <compose view="../components/sorting.html"></compose>
@@ -35,6 +36,9 @@
             <li if.bind="!filterOrgEmpty" repeat.for="pill of filters.selectedOrganizations">
               <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'organization', pill)})</small> <a href="javascript:$('#filterOrg').multiselect('deselect', '${pill}');$('#filterOrg').trigger('change');"><i class="material-icons">close</i></a></span>
             </li>
+            <li if.bind="!filterOriginEmpty" repeat.for="pill of filters.selectedOrigins">
+              <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'origins', pill)})</small> <a href="javascript:$('#filterOrigin').multiselect('deselect', '${pill}');$('#filterOrigin').trigger('change');"><i class="material-icons">close</i></a></span>
+            </li>
             <li>
               <a class="clear-btn" href="#" click.delegate="clearAllFilters()">Clear All</a>
             </li>
@@ -47,6 +51,7 @@
             sort: { propertyName: selectedSort, direction: sortDirection} |
             filter: { propertyName: 'organization', filterArray: filters.selectedOrganizations}:filters.selectedOrganizations.length |
             filter: { propertyName: 'language', filterArray: filters.selectedLanguages}:filters.selectedLanguages.length |
+            filter: { propertyName: 'origin', filterArray: filters.selectedOrigins}:filters.selectedOrigins.length |
             chunk: 3">
               <compose view-model="../components/card" model.bind="repo[0]"></compose>
               <compose view-model="../components/card" model.bind="repo[1]"></compose>
