@@ -42,14 +42,16 @@ export class Explore {
   getData() {
     return this.dataContext.getAll()
       .then(projects => {
-        this.projects = JSON.parse(JSON.stringify(projects));
-        this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
-        this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
-        this.filters.selectedOrigins = this.filters.getUniqueValues(this.projects, 'origin');
-        this.rebuildFilterOrg(projects);
-        this.rebuildFilterLang(projects);
-        this.rebuildFilterOrigin(projects);
-        return this.projects;
+        setTimeout(() => {
+          this.projects = JSON.parse(JSON.stringify(projects));
+          this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
+          this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
+          this.filters.selectedOrigins = this.filters.getUniqueValues(this.projects, 'origin');
+          this.rebuildFilterOrg(projects);
+          this.rebuildFilterLang(projects);
+          this.rebuildFilterOrigin(projects);
+          return this.projects;
+        }, 1000);
       });
   }
 

@@ -237,6 +237,7 @@
 
             <h3>Similar Projects</h3>
             <div class="media-list media-list-projects list-group">
+
               <template repeat.for="project of similarProjects | pick:3">
                 <a route-href="route:project-details; params.bind: {id:project.project_id}" target="_blank" class="list-group-item">
                   <span class="media">
@@ -251,6 +252,11 @@
                 </a>
               </template>
             </div>
+
+            <div if.bind="similarProjects.length < 1" class="loader" width="100%" height="100%" align="center" valign="center">
+              <img src="img/loading.svg" width="100px" alt="Loading...">
+            </div>
+
           </div>
         </div>
       </div>
