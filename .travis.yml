@@ -15,7 +15,7 @@ install:
 - npm install -g gulp
 - npm install -g jspm
 - npm install -g coveralls
-- npm install
+- npm install --production
 - jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
 - jspm install -y
 script:
