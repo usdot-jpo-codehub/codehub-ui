@@ -29,8 +29,10 @@ export class Popular {
 
   getData() {
     return this.dataContext.findPopular().then(results => {
-      this.projects = results;
-      return this.projects;
+      setTimeout(() => {
+        this.projects = results;
+        return this.projects;
+      }, 500);
     });
   }
 

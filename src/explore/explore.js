@@ -51,7 +51,7 @@ export class Explore {
           this.rebuildFilterLang(projects);
           this.rebuildFilterOrigin(projects);
           return this.projects;
-        }, 1000);
+        }, 500);
       });
   }
 

@@ -35,7 +35,7 @@ export class ProjectDetails {
       if (!similarProjects.error) {
         setTimeout(() => {
           this.similarProjects = similarProjects;
-        }, 1000);
+        }, 500);
       }
     });
 
