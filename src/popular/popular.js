@@ -1,6 +1,6 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
-import { DataContext } from '../services/datacontext';
+import { DataContext } from 'services/datacontext';
 
 @inject(DataContext, Router)
 export class Popular {

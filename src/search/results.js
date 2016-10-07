@@ -3,8 +3,8 @@ import { activationStrategy } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import $ from 'bootstrap';
 import { multiselect } from 'bootstrap-multiselect';
-import { DataContext } from '../services/datacontext';
-import { Filters } from '../components/filters';
+import { DataContext } from 'services/datacontext';
+import { Filters } from 'components/filters';
 
 @inject(DataContext, Filters, EventAggregator)
 export class Results {

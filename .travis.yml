@@ -10,17 +10,19 @@ env:
   - secure: TXnv6nOdslOopR2rDC0SCMOyOSFxBvtGZBR2tZvpjxiBDGQ+G4SVwIAT/Mrenha5xfIZ1TAaRyy36mMzuw40c/SR0aXbAP3ehLgnn4Ik/IGMUasklLhnRMMn2VA1Set3dctEaNqyJ/JNvsivZfFTMLpCH/VfyXmiCaAaaVVyH3BYxXBaScD4SQKLUazPf5JumXI0PTzJmVcFryz0gJGUvSIE0LR/OlaouDxZKASq5174FurW+ChjGrEZki85goMvUsvF1djRqzKJkS+Vp/Rg5xJtA/Wjw6ENPsRJ7zTNCeY/PZmXe08YQsoCzzc3JhYrcwLgHfL/jAqa9uC5NIeUKc0MDQ6MwdW594W7gLGOlHNBMQ+bkHc+laP0DC2vHNFmBlxXw5Bd9B143hzQFYas73+8+MMGFB4OkevF0j6zCz5XWVnNrNyxob6AItk5PsT3h6QYCfzK7vt6FZLzlqjFHeQ1bXuBJ18y86HhmiBYGuHH2jL3xqw4Qow1qj4MXEl+rNvQh865qs0F23M1sXmfTeby6SofyJq1XC4GtZtsHSbVxronBCwlm2Zixiros69OqU1L5I9wckNzVCjiTyIO46Baj96T4mrWlbMq4YAH5YPRuEAhreghcDgbQi3fEIZw3WlVHmJtCfsrAu4PQHM1qnYqaUf8bjWT7VOJtuZ8Y68=
   - HEIMDALL_VERSION_NUMBER=1.0.0
   - HEIMDALL_BUILD_LABEL=$HEIMDALL_VERSION_NUMBER.$TRAVIS_BUILD_NUMBER-pre-alpha-$TRAVIS_BRANCH
+  - HEIMDALL_BRANCH=$TRAVIS_BRANCH
   - HEIMDALL_PACKAGE_NAME=heimdall-ui-dev-$HEIMDALL_BUILD_LABEL.zip
 install:
 - npm install -g gulp
 - npm install -g jspm
 - npm install -g coveralls
-- npm install --production
+- npm install
 - jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
 - jspm install -y
 script:
 - sed -i "s@{BUILD_LABEL}@$HEIMDALL_BUILD_LABEL@" stageConf.js
-- gulp build
+- sed -i "s@{BRANCH}@$HEIMDALL_BRANCH@" src/main.js
+- gulp bundle
 - npm prune --production
 before_deploy:
 - zip -rq $HEIMDALL_PACKAGE_NAME *

@@ -2,8 +2,8 @@ import { inject, bindable } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import $ from 'bootstrap';
 import { multiselect } from 'bootstrap-multiselect';
-import { DataContext } from '../services/datacontext';
-import { Filters } from '../components/filters';
+import { DataContext } from 'services/datacontext';
+import { Filters } from 'components/filters';
 
 @inject(DataContext, Router, Filters)
 export class Explore {
