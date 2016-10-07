@@ -51,7 +51,7 @@ System.config({
     "font-awesome": "npm:font-awesome@4.6.3",
     "jquery": "npm:jquery@2.2.4",
     "jquery-ui": "github:components/jqueryui@1.12.1",
-    "material-design-icons": "github:google/material-design-icons@3.0.1",
+    "material-design-icons-iconfont": "npm:material-design-icons-iconfont@3.0.1",
     "moment": "npm:moment@2.15.1",
     "numeral": "npm:numeral@1.5.3",
     "octicons": "npm:octicons@4.4.0",
@@ -243,7 +243,7 @@ System.config({
       "base64-js": "npm:base64-js@0.0.8",
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "ieee754": "npm:ieee754@1.1.6",
+      "ieee754": "npm:ieee754@1.1.8",
       "isarray": "npm:isarray@1.0.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -263,6 +263,12 @@ System.config({
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:material-design-icons-iconfont@3.0.1": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "readline": "github:jspm/nodelibs-readline@0.1.0"
     },
     "npm:numeral@1.5.3": {
       "fs": "github:jspm/nodelibs-fs@0.1.2"
