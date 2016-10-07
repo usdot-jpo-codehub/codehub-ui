@@ -3,8 +3,8 @@ import { activationStrategy } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import $ from 'bootstrap';
 import { multiselect } from 'bootstrap-multiselect';
-import { DataContext } from '../services/datacontext';
-import { Filters } from '../components/filters';
+import { DataContext } from 'services/datacontext';
+import { Filters } from 'components/filters';
 
 @inject(DataContext, Filters, EventAggregator)
 export class Results {
@@ -41,19 +41,23 @@ export class Results {
   }
 
   activate(params) {
+    this.projects = [];
+
     if (!(params.searchText) || params.searchText === '') {
       this.searchText = 'Everything';
       return this.dataContext.getAll()
         .then(projects => {
-          this.projects = projects;
-          this.resultCount = this.projects.length;
-          this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
-          this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
-          this.filters.selectedOrigins = this.filters.getUniqueValues(this.projects, 'origin');
-          this.rebuildFilterOrg(projects);
-          this.rebuildFilterLang(projects);
-          this.rebuildFilterOrigin(projects);
-          return this.projects;
+          setTimeout(() => {
+            this.projects = projects;
+            this.resultCount = this.projects.length;
+            this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
+            this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
+            this.filters.selectedOrigins = this.filters.getUniqueValues(this.projects, 'origin');
+            this.rebuildFilterOrg(projects);
+            this.rebuildFilterLang(projects);
+            this.rebuildFilterOrigin(projects);
+            return this.projects;
+          }, 200);
         });
     }
 
@@ -63,15 +67,17 @@ export class Results {
 
     return this.dataContext.search(params.searchText)
       .then(projects => {
-        this.projects = projects;
-        this.resultCount = this.projects.length;
-        this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
-        this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
-        this.filters.selectedOrigins = this.filters.getUniqueValues(this.projects, 'origin');
-        this.rebuildFilterOrg(projects);
-        this.rebuildFilterLang(projects);
-        this.rebuildFilterOrigin(projects);
-        return this.projects;
+        setTimeout(() => {
+          this.projects = projects;
+          this.resultCount = this.projects.length;
+          this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
+          this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
+          this.filters.selectedOrigins = this.filters.getUniqueValues(this.projects, 'origin');
+          this.rebuildFilterOrg(projects);
+          this.rebuildFilterLang(projects);
+          this.rebuildFilterOrigin(projects);
+          return this.projects;
+        }, 200);
       });
   }
 

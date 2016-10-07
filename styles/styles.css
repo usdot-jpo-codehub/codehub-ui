@@ -6544,7 +6544,7 @@ h3 {
   letter-spacing: 1px;
   margin-top: 0;
   text-transform: uppercase;
-  font-family: "Roboto Condensed";
+  font-family: Roboto-Condensed;
   font-weight: bold;
   color: #808080;
 }
@@ -6731,12 +6731,21 @@ a:focus {
   margin-bottom: 10px;
 }
 .splash .loading .txt-loading {
-  font-family: 'Roboto Condensed';
+  font-family: Roboto-Condensed;
   font-style: italic;
   font-weight: bold;
   letter-spacing: 3px;
   font-size: 21px;
   opacity: 0.4;
+}
+.loader {
+  text-align: center;
+  top: 50%;
+  left: 50%;
+}
+.loading-wrapper .loader img {
+  width: 200px;
+  margin-top: 50px;
 }
 .lined-header .btn-link {
   padding-top: 3px;
@@ -6836,7 +6845,7 @@ footer .bah-logo {
   text-align: center;
   font-weight: bold;
   text-transform: uppercase;
-  font-family: "Roboto Condensed";
+  font-family: Roboto-Condensed;
   letter-spacing: 2px;
 }
 .home-tabs > li > a .material-icons {
@@ -7448,7 +7457,7 @@ label.btn > input[type='radio'] {
   margin-bottom: 20px;
 }
 .cards-wrapper .card .repo-status {
-  font-family: "Roboto Condensed";
+  font-family: Roboto-Condensed;
   font-weight: 500;
 }
 .cards-wrapper .card .last-updated {
@@ -7489,7 +7498,7 @@ label.btn > input[type='radio'] {
 }
 .cards-wrapper .card .ribbon-wrapper .ribbon {
   font-size: 12px;
-  font-family: 'Roboto Condensed';
+  font-family: Roboto-Condensed;
   font-weight: bold;
   letter-spacing: -0.25px;
   text-transform: uppercase;
