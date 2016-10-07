@@ -13,6 +13,7 @@ System.config({
     "npm:*": "jspm_packages/npm/*"
   },
   baseUrl: "/",
+
   meta: {
     "bootstrap": {
       "deps": [
@@ -20,6 +21,7 @@ System.config({
       ]
     }
   },
+
   map: {
     "aurelia-animator-css": "npm:aurelia-animator-css@1.0.1",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0",
@@ -49,9 +51,11 @@ System.config({
     "font-awesome": "npm:font-awesome@4.6.3",
     "jquery": "npm:jquery@2.2.4",
     "jquery-ui": "github:components/jqueryui@1.12.1",
+    "material-design-icons": "github:google/material-design-icons@3.0.1",
     "moment": "npm:moment@2.15.1",
     "numeral": "npm:numeral@1.5.3",
     "octicons": "npm:octicons@4.4.0",
+    "roboto-fontface": "npm:roboto-fontface@0.6.0",
     "showdown": "github:showdownjs/showdown@1.4.3",
     "text": "github:systemjs/plugin-text@0.0.3",
     "typeahead.js": "npm:typeahead.js@0.11.1",
