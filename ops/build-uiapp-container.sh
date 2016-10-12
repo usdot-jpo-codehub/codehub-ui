@@ -7,17 +7,15 @@
 #
 # Pre-Conditions:
 #   1: Latest Node 4.x is installed
-#   2: Run this script from the root of the project
+#   2: Run this script from the root of the project because it expects the Dockerfile at the root of the project and
+#      the files it copies are relative to the root.
 #
 # Arguments:
 #   1: $1 STAGE_UIAPP_VERSION - The version for this application (e.g. 0.1.0).
-#   2: $2 DOCKERFILE_LOCATION - The location (e.g ops/docker/) of the file relative to script execution location
-#      (e.g. project root). Ensure the last forward slash is present for the direction location.
 #
 ########################################################################################################################
 
 STAGE_UIAPP_VERSION=$1
-DOCKERFILE_LOCATION=$2
 
 npm install
 jspm install -y
@@ -25,4 +23,4 @@ gulp clean
 gulp bundle
 npm prune --production
 
-docker build -t stage/uiapp:$STAGE_UIAPP_VERSION $DOCKERFILE_LOCATION
+docker build -t stage/uiapp:$STAGE_UIAPP_VERSION .

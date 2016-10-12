@@ -8,7 +8,7 @@
 #
 # Arguments (in order):
 #   1: $1 LOCAL_HOST_PORT (numeric) - The HTTP Port you'll be connecting to on the host running the Docker Container.
-#   2: $2 STAGE_API_HOST (host name or ip) - The Stage API Server that the UI will communicate with for data.
+#   2: $2 STAGE_API_HOST_NAME (host name or ip) - The Stage API Server that the UI will communicate with for data.
 #   3: $3 STAGE_API_HOST_PORT (numeric) - The Stage API Server's Port that the UI will communicate with for data.
 #   4: $4 STAGE_UIAPP_NAME (alphanumeric) - The name for this running container. Must be locally unique.
 #   5: $5 STAGE_UIAPP_VERSION (alphanumeric) - The version for the application.  Must match the image version.
@@ -17,7 +17,7 @@
 
 
 LOCAL_HOST_PORT=$1
-STAGE_API_HOST=$2
+STAGE_API_HOST_NAME=$2
 STAGE_API_HOST_PORT=$3
 STAGE_UIAPP_NAME=$4
 STAGE_UIAPP_VERSION=$5
