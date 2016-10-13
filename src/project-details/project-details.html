@@ -28,7 +28,7 @@
                     <h2 class=""><span>overview</span></h2>
                   </div>
                   <div class="proj-desc">${repo.project_description}</div>
-                  <div class="text-muted last-updated">By <a href="https://github.com/${repo.organization}" target="_blanks">${repo.organization}</a> &nbsp; | &nbsp; Updated ${repo.updatedAt | ago} <span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> ${repo.origin}</span></div>
+                  <div class="text-muted last-updated">By <a href="${repo.organizationUrl}" target="_blanks">${repo.organization}</a> &nbsp; | &nbsp; Updated ${repo.updatedAt | ago} <span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> ${repo.origin}</span></div>
 
                   <ul class="list-inline">
                     <li><button click.trigger="openReadmeModal(repo)" class="btn btn-secondary"><i class="material-icons">library_books</i> Show README</button></li>
