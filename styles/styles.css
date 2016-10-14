@@ -7587,6 +7587,38 @@ label.btn > input[type='radio'] {
   border-bottom: 1px solid #d0d0d0;
   padding-bottom: 10px;
 }
+.cards-wrapper .card-insight h2 {
+  text-transform: none;
+  font-size: 21px;
+  margin-top: 0;
+  font-weight: 900;
+  line-height: 0 !important;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 15px 0;
+}
+.cards-wrapper .card-insight p {
+  padding-bottom: 15px;
+}
+.cards-wrapper .card-insight .health-tiles {
+  text-transform: uppercase;
+  font-size: 15px;
+  margin-top: 0;
+  font-weight: 900;
+  padding: 15px 0;
+  color: #00b0bc;
+}
+.cards-wrapper .card-insight .health-num {
+  font-size: 50px;
+}
+.cards-wrapper .card-insight span em {
+  color: #d0d0d0;
+}
+.cards-wrapper .card-insight span .btn {
+  padding-left: 5px;
+  padding-right: 5px;
+}
 .cards-wrapper .card-btns {
   margin: 0 -15px;
   border-radius: 0 0 4px 4px;

@@ -265,6 +265,48 @@
 		}
 	}
 
+	.card-insight {
+		h2 {
+    	text-transform: none;
+    	font-size: @font-size-larger;
+    	margin-top: 0;
+    	font-weight: 900;
+    	line-height: 0 !important;
+    	max-width: 100%;
+    	overflow: hidden;
+    	white-space: nowrap;
+    	padding: 15px 0;
+		}
+
+		p {
+			padding-bottom: 15px;
+		}
+
+		.health-tiles {
+			text-transform: uppercase;
+    	font-size: @font-size-medium;
+    	margin-top: 0;
+    	font-weight: 900;
+    	padding: 15px 0;
+    	color: @teal;
+		}
+
+		.health-num {
+			font-size: @font-size-largest;
+		}
+
+		span {
+			em {
+				color: lighten(@gray,@stage-gray-precentage);
+			}
+
+			.btn {
+				padding-left: 5px;
+				padding-right: 5px;
+			}
+		}
+	}
+
 	.card-btns {
 		margin: 0 -15px;
 		border-radius: 0 0 4px 4px;
