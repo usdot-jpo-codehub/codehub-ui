@@ -1,7 +1,7 @@
 <template>
   <div class="jumbotron hero-jumbotron secondary">
     <div class="container-fluid">
-      <h1>${router.currentInstruction.config.title}</h1>
+      <h1>${router.currentInstruction.config.settings.altTitle ? router.currentInstruction.config.settings.altTitle : router.currentInstruction.config.title}</h1>
       <p>${router.currentInstruction.config.settings.desc}</p>
     </div>
   </div>

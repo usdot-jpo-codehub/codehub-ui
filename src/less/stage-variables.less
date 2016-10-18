@@ -18,6 +18,8 @@
 @lime: rgb(207,221,80); //#cddc39
 @cyan: rgb(0,172,193); //#00acc1
 
+@green: #39b54a;
+
 //== Stage Colors
 @stage-body-bk: rgb(225,225,225); //#E1E1E1
 @stage-blue: rgb(21,85,105); //#155569
@@ -43,7 +45,7 @@
 
 @sonarqube-rating-a: #0a0;
 @sonarqube-rating-b: #80cc00;
-@sonarqube-rating-c: #fe0;
+@sonarqube-rating-c: rgb(255,207,71); //#ffcf47
 @sonarqube-rating-d: #f77700;
 @sonarqube-rating-e: #e00;
 
@@ -89,8 +91,10 @@
 
 //** Stage font size
 @font-size-base:          14px;
+@font-size-largest:       ceil((@font-size-base * 3.90)); // ~55px
 @font-size-larger:        ceil((@font-size-base * 1.50)); // ~21px
 @font-size-large:         ceil((@font-size-base * 1.25)); // ~19px
+@font-size-medium:        ceil((@font-size-base * 1.05)); // ~15px
 @font-size-small:         ceil((@font-size-base * 0.85)); // ~13px
 @font-size-smaller: 	  ceil((@font-size-base * 0.80)); // ~12px
 @font-size-smallest: 	  ceil((@font-size-base * 0.70)); // ~10px

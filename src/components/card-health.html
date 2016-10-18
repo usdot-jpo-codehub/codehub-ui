@@ -23,46 +23,22 @@
       <div class="text-muted last-updated">By <a href="${repo.organizationUrl}" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="View on Github" target="_blank">${repo.organization}</a> &nbsp; | &nbsp; Updated ${repo.updatedAt | ago} <span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> ${repo.origin}</span></div>
 
       <div class="card-stats lined-header">
-        <span class="pull-right"><em class="text-muted">Source: <a href="#" target="_blank">Github™</a></em></span>
-        <h4 class=""><span>Project Stats</span></h4>
-      </div>
+        <span class="pull-right"><em class="text-muted">Source: <a href="#" target="_blank">SonarQube™</a></em></span>
+        <h4 class=""><span>Health Stats</span></h4>
+      </div>                    
 
-      <div class="row github-stats">
-        <div class="col-md-4 col-sm-4">
-          <span class="stat">
-            <span class="octicon octicon-star"></span>
-            <span class="num text-muted text-emphasized">${repo.stars | num}</span>
-            <span class="stat-label">stars</span>
-          </span>
-          <span class="stat">
-            <span class="octicon octicon-organization"></span>
-            <span class="num text-muted text-emphasized">${repo.contributors | num}</span>
-            <span class="stat-label">contributors</span>
-          </span>
+      <div class="row health-stats text-center">      
+        <div class="col-lg-4">
+          <h3 class="health-tiles">Reliabilty</h3>
+          <span class="num text-muted text-emphasized">23</span><span class="text-muted"> bugs <span class="rating rating-C">C</span></span>
         </div>
-        <div class="col-md-4 col-sm-4">
-          <span class="stat">
-            <span class="octicon octicon-eye"></span>
-            <span class="num text-muted text-emphasized">${repo.watchers | num}</span>
-            <span class="stat-label">watchers</span>
-          </span>
-          <span class="stat">
-            <span class="octicon octicon-git-commit"></span>
-            <span class="num text-muted text-emphasized">${repo.commits | num:1}</span>
-            <span class="stat-label">commits</span>
-          </span>
+        <div class="col-lg-4">
+          <h3 class="health-tiles">Security</h3>
+          <span class="num text-muted text-emphasized">0</span><span class="text-muted"> vulnerabilities <span class="rating rating-A">A</span></span>
         </div>
-        <div class="col-md-4 col-sm-4">
-          <span class="stat">
-            <span class="octicon octicon-tag"></span>
-            <span class="num text-muted text-emphasized">${repo.releases | num}</span>
-            <span class="stat-label">releases</span>
-          </span>
-          <span class="stat">
-            <span class="octicon octicon-repo-forked"></span>
-            <span class="num text-muted text-emphasized">${repo.forks | num}</span>
-            <span class="stat-label">forks</span>
-          </span>
+        <div class="col-lg-4">
+          <h3 class="health-tiles">Techincal Debt</h3>
+          <span class="num text-muted text-emphasized">7</span><span class="text-muted"> days <span class="rating rating-B">B</span></span>
         </div>
       </div>
 
