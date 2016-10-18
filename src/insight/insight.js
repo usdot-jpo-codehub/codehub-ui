@@ -2,11 +2,11 @@
 
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
-import { DataContext } from '../services/datacontext';
-import { Filters } from '../components/filters';
+import { DataContext } from 'services/datacontext';
+import { Filters } from 'components/filters';
 
 @inject(DataContext, Router, Filters)
-export class Favorites {
+export class Insight {
 
   constructor(dataContext, router, filters) {
     this.dataContext = dataContext;

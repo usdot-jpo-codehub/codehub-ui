@@ -69,7 +69,7 @@ h3{
   letter-spacing: 1px;
   margin-top: 0;
   text-transform: uppercase;
-  font-family: "Roboto Condensed";
+  font-family: Roboto-Condensed;
   font-weight: bold;
   color: lighten(@black, 50%);
 }
@@ -301,7 +301,7 @@ a {
 		}
 
 		.txt-loading {
-			font-family: 'Roboto Condensed';
+			font-family: Roboto-Condensed;
 			font-style: italic;
 			font-weight: bold;
 			letter-spacing: 3px;
@@ -309,6 +309,21 @@ a {
 			opacity: 0.4;
 		}
 	}
+}
+
+.loader {
+  text-align: center;
+  top: 50%;
+  left: 50%;
+}
+
+.loading-wrapper {
+  .loader {
+    img {
+      width: 200px;
+      margin-top: 50px;
+    }
+  }
 }
 
 .lined-header {
@@ -322,7 +337,7 @@ a {
     }
   }
 
-  h2 {
+  h2, h4 {
     text-transform: uppercase;
     font-size: @font-size-larger;
     margin-top: 0;
@@ -349,6 +364,20 @@ a {
         margin-left: 15px;
       }
     }
+  }
+
+  h4 {
+    font-size: @font-size-medium;
+    text-transform: none;
+    margin-bottom: 0;
+  }
+}
+
+.card-stats {
+  .text-muted {
+    padding-left: 10px;
+    padding-top: 5px;
+    display: block;
   }
 }
 
@@ -383,6 +412,59 @@ a {
   }
 }
 
+.text-emphasized {
+  font-weight: 800;
+  color: darken(@gray,25%);
+}
+
+.view-all {
+  padding: 10px 0;
+  font-weight: bold;
+  text-align: center;
+
+  a {
+    display: block;
+  }
+}
+
+.grade-circle {
+  height: 75px;
+  width: 75px;
+  margin: 0 auto;
+  border-radius: 100px;
+  text-align: center;
+  line-height: 75px;
+  background-color: @stage-gray;
+  color: @white;
+  font-size: @font-size-h2;
+  margin-bottom: 10px;
+}
+
+.rating-A {
+  background-color: @sonarqube-rating-a;
+  color: @white;
+}
+
+.rating-B {
+  background-color: @sonarqube-rating-b;
+  color: @white;
+}
+
+.rating-C {
+  background-color: @sonarqube-rating-c;
+  color: @stage-body;
+}
+
+.rating-D {
+  background-color: @sonarqube-rating-d;
+  color: @white;
+}
+
+.rating-E {
+  background-color: @sonarqube-rating-e;
+  color: @white;
+}
+
 footer {
   position: absolute;
   bottom: 0;
@@ -396,7 +478,7 @@ footer {
     > [class*='col-'] {
       margin-bottom: 5px;
     }
-  }  
+  }
 
   .list-inline {
     text-align: center;
