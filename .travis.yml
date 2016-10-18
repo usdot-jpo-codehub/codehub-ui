@@ -12,7 +12,6 @@ env:
   - HEIMDALL_BUILD_LABEL=$HEIMDALL_VERSION_NUMBER.$TRAVIS_BUILD_NUMBER-pre-alpha-$TRAVIS_BRANCH
   - HEIMDALL_BRANCH=$TRAVIS_BRANCH
   - HEIMDALL_PACKAGE_NAME=heimdall-ui-prod-$HEIMDALL_BUILD_LABEL.zip
->>>>>>> development
 install:
 - npm install -g gulp
 - npm install -g jspm
