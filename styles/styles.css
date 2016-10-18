@@ -6755,7 +6755,8 @@ a:focus {
   vertical-align: -7px;
   margin-right: 6px;
 }
-.lined-header h2 {
+.lined-header h2,
+.lined-header h4 {
   text-transform: uppercase;
   font-size: 21px;
   margin-top: 0;
@@ -6766,12 +6767,15 @@ a:focus {
   white-space: nowrap;
   padding: 15px 0;
 }
-.lined-header h2 span {
+.lined-header h2 span,
+.lined-header h4 span {
   position: relative;
   display: inline-block;
 }
 .lined-header h2 span:after,
-.lined-header h2 span:before {
+.lined-header h4 span:after,
+.lined-header h2 span:before,
+.lined-header h4 span:before {
   border-top: 1px solid #d0d0d0;
   content: "";
   height: 5px;
@@ -6780,6 +6784,16 @@ a:focus {
   width: 2000px;
   left: 100%;
   margin-left: 15px;
+}
+.lined-header h4 {
+  font-size: 15px;
+  text-transform: none;
+  margin-bottom: 0;
+}
+.card-stats .text-muted {
+  padding-left: 10px;
+  padding-top: 5px;
+  display: block;
 }
 .card-links {
   border-top: 1px solid #d0d0d0;
@@ -6836,7 +6850,7 @@ a:focus {
   color: #ffffff;
 }
 .rating-C {
-  background-color: #fe0;
+  background-color: #ffcf47;
   color: #333333;
 }
 .rating-D {
@@ -6953,6 +6967,15 @@ footer .bah-logo {
 }
 .source-tab {
   padding: 20px 0;
+}
+.rating {
+  display: inline-block;
+  width: 1.3em;
+  height: 1.3em;
+  line-height: 1.3;
+  font-weight: 300;
+  text-align: center;
+  text-transform: uppercase;
 }
 .row-btns {
   margin: 0 -15px;
@@ -7477,11 +7500,11 @@ label.btn > input[type='radio'] {
 }
 .card-default .health-stats h3 {
   margin-top: 10px;
-  font-size: 15px;
+  font-size: 14px;
 }
 .card-default .github-stats {
   border-left: none;
-  padding: 10px 0;
+  padding: 0  0 10px 0;
   pointer-events: none;
 }
 .card-default .github-stats > [class*='col-'] {
@@ -7658,8 +7681,10 @@ label.btn > input[type='radio'] {
 .cards-wrapper .card .last-updated {
   font-size: 12px;
   margin-top: 10px;
-  border-bottom: 1px solid #d0d0d0;
   padding-bottom: 10px;
+}
+.cards-wrapper .card-insight {
+  padding-bottom: 15px;
 }
 .cards-wrapper .card-insight h2 {
   text-transform: none;
