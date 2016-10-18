@@ -2,8 +2,8 @@ import { inject, bindable } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import $ from 'bootstrap';
 import { multiselect } from 'bootstrap-multiselect';
-import { DataContext } from '../services/datacontext';
-import { Filters } from '../components/filters';
+import { DataContext } from 'services/datacontext';
+import { Filters } from 'components/filters';
 
 @inject(DataContext, Router, Filters)
 export class Explore {
@@ -42,14 +42,16 @@ export class Explore {
   getData() {
     return this.dataContext.getAll()
       .then(projects => {
-        this.projects = JSON.parse(JSON.stringify(projects));
-        this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
-        this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
-        this.filters.selectedOrigins = this.filters.getUniqueValues(this.projects, 'origin');
-        this.rebuildFilterOrg(projects);
-        this.rebuildFilterLang(projects);
-        this.rebuildFilterOrigin(projects);
-        return this.projects;
+        setTimeout(() => {
+          this.projects = JSON.parse(JSON.stringify(projects));
+          this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
+          this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
+          this.filters.selectedOrigins = this.filters.getUniqueValues(this.projects, 'origin');
+          this.rebuildFilterOrg(projects);
+          this.rebuildFilterLang(projects);
+          this.rebuildFilterOrigin(projects);
+          return this.projects;
+        }, 500);
       });
   }
 

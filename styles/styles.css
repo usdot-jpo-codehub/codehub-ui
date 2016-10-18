@@ -6544,7 +6544,7 @@ h3 {
   letter-spacing: 1px;
   margin-top: 0;
   text-transform: uppercase;
-  font-family: "Roboto Condensed";
+  font-family: Roboto-Condensed;
   font-weight: bold;
   color: #808080;
 }
@@ -6731,12 +6731,21 @@ a:focus {
   margin-bottom: 10px;
 }
 .splash .loading .txt-loading {
-  font-family: 'Roboto Condensed';
+  font-family: Roboto-Condensed;
   font-style: italic;
   font-weight: bold;
   letter-spacing: 3px;
   font-size: 21px;
   opacity: 0.4;
+}
+.loader {
+  text-align: center;
+  top: 50%;
+  left: 50%;
+}
+.loading-wrapper .loader img {
+  width: 200px;
+  margin-top: 50px;
 }
 .lined-header .btn-link {
   padding-top: 3px;
@@ -6746,7 +6755,8 @@ a:focus {
   vertical-align: -7px;
   margin-right: 6px;
 }
-.lined-header h2 {
+.lined-header h2,
+.lined-header h4 {
   text-transform: uppercase;
   font-size: 21px;
   margin-top: 0;
@@ -6757,12 +6767,15 @@ a:focus {
   white-space: nowrap;
   padding: 15px 0;
 }
-.lined-header h2 span {
+.lined-header h2 span,
+.lined-header h4 span {
   position: relative;
   display: inline-block;
 }
 .lined-header h2 span:after,
-.lined-header h2 span:before {
+.lined-header h4 span:after,
+.lined-header h2 span:before,
+.lined-header h4 span:before {
   border-top: 1px solid #d0d0d0;
   content: "";
   height: 5px;
@@ -6771,6 +6784,16 @@ a:focus {
   width: 2000px;
   left: 100%;
   margin-left: 15px;
+}
+.lined-header h4 {
+  font-size: 15px;
+  text-transform: none;
+  margin-bottom: 0;
+}
+.card-stats .text-muted {
+  padding-left: 10px;
+  padding-top: 5px;
+  display: block;
 }
 .card-links {
   border-top: 1px solid #d0d0d0;
@@ -6793,6 +6816,50 @@ a:focus {
 .card-links .list-inline > li a .material-icons {
   vertical-align: -7px;
   margin: 0 5px;
+}
+.text-emphasized {
+  font-weight: 800;
+  color: #6a6a6a;
+}
+.view-all {
+  padding: 10px 0;
+  font-weight: bold;
+  text-align: center;
+}
+.view-all a {
+  display: block;
+}
+.grade-circle {
+  height: 75px;
+  width: 75px;
+  margin: 0 auto;
+  border-radius: 100px;
+  text-align: center;
+  line-height: 75px;
+  background-color: #d1d3d4;
+  color: #ffffff;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.rating-A {
+  background-color: #0a0;
+  color: #ffffff;
+}
+.rating-B {
+  background-color: #80cc00;
+  color: #ffffff;
+}
+.rating-C {
+  background-color: #ffcf47;
+  color: #333333;
+}
+.rating-D {
+  background-color: #f77700;
+  color: #ffffff;
+}
+.rating-E {
+  background-color: #e00;
+  color: #ffffff;
 }
 footer {
   position: absolute;
@@ -6819,39 +6886,46 @@ footer .bah-logo {
     min-height: 50px;
   }
 }
-.home-tabs {
+.home-tabs,
+.source-tabs {
   margin: 0 -15px;
   border: none;
 }
-.home-tabs > li {
+.home-tabs > li,
+.source-tabs > li {
   width: 50%;
 }
-.home-tabs > li > a {
+.home-tabs > li > a,
+.source-tabs > li > a {
   color: rgba(0, 176, 188, 0.65);
   border-radius: 0;
   border: none;
-  border-bottom: 3px solid #ffffff;
+  border-bottom: 3px solid transparent;
   background-color: transparent;
   margin: 0;
   text-align: center;
   font-weight: bold;
   text-transform: uppercase;
-  font-family: "Roboto Condensed";
+  font-family: Roboto-Condensed;
   letter-spacing: 2px;
 }
-.home-tabs > li > a .material-icons {
+.home-tabs > li > a .material-icons,
+.source-tabs > li > a .material-icons {
   vertical-align: -11px;
-  font-size: 36px;
+  font-size: 30px;
   margin-right: 5px;
 }
 .home-tabs > li > a:hover,
-.home-tabs > li > a:focus {
+.source-tabs > li > a:hover,
+.home-tabs > li > a:focus,
+.source-tabs > li > a:focus {
   color: #00b0bc;
   border: none;
-  border-bottom: 3px solid #ffffff;
+  border-bottom: 3px solid transparent;
   background-color: transparent;
 }
-.home-tabs > li.active > a {
+.home-tabs > li.active > a,
+.source-tabs > li.active > a {
   color: #00b0bc;
   background-color: transparent;
   border: none;
@@ -6861,11 +6935,47 @@ footer .bah-logo {
   text-transform: uppercase;
 }
 .home-tabs > li.active > a:hover,
-.home-tabs > li.active > a:focus {
+.source-tabs > li.active > a:hover,
+.home-tabs > li.active > a:focus,
+.source-tabs > li.active > a:focus {
   color: #00b0bc;
   border: none;
   border-radius: 0;
   border-bottom: 3px solid #00b0bc;
+}
+.source-tabs {
+  margin: 0;
+  border-bottom: 1px solid #d1d3d4;
+}
+.source-tabs > li {
+  width: 25%;
+}
+.source-tabs > li > a {
+  color: rgba(0, 0, 0, 0.55);
+  letter-spacing: 1px;
+}
+.source-tabs > li > a .grade-circle {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  font-size: 18px;
+  font-weight: 300;
+  font-family: Roboto;
+  line-height: 35px;
+  margin-right: 10px;
+  margin-bottom: 0;
+}
+.source-tab {
+  padding: 20px 0;
+}
+.rating {
+  display: inline-block;
+  width: 1.3em;
+  height: 1.3em;
+  line-height: 1.3;
+  font-weight: 300;
+  text-align: center;
+  text-transform: uppercase;
 }
 .row-btns {
   margin: 0 -15px;
@@ -7388,9 +7498,13 @@ label.btn > input[type='radio'] {
 .card-link:hover:before {
   opacity: 1;
 }
+.card-default .health-stats h3 {
+  margin-top: 10px;
+  font-size: 14px;
+}
 .card-default .github-stats {
   border-left: none;
-  padding: 10px 0;
+  padding: 0  0 10px 0;
   pointer-events: none;
 }
 .card-default .github-stats > [class*='col-'] {
@@ -7401,10 +7515,6 @@ label.btn > input[type='radio'] {
   padding: 8px 0;
   color: #999;
   font-size: 12px;
-}
-.card-default .github-stats .text-emphasized {
-  font-weight: 800;
-  color: #6a6a6a;
 }
 .col-github-stats .github-stats {
   border-left: 1px solid #d0d0d0;
@@ -7419,10 +7529,6 @@ label.btn > input[type='radio'] {
   padding: 8px 0;
   color: #999;
   font-size: 12px;
-}
-.col-github-stats .github-stats .text-emphasized {
-  font-weight: 800;
-  color: #6a6a6a;
 }
 .cards-wrapper {
   margin-bottom: 0;
@@ -7448,7 +7554,7 @@ label.btn > input[type='radio'] {
   margin-bottom: 20px;
 }
 .cards-wrapper .card .repo-status {
-  font-family: "Roboto Condensed";
+  font-family: Roboto-Condensed;
   font-weight: 500;
 }
 .cards-wrapper .card .last-updated {
@@ -7489,7 +7595,7 @@ label.btn > input[type='radio'] {
 }
 .cards-wrapper .card .ribbon-wrapper .ribbon {
   font-size: 12px;
-  font-family: 'Roboto Condensed';
+  font-family: Roboto-Condensed;
   font-weight: bold;
   letter-spacing: -0.25px;
   text-transform: uppercase;
@@ -7575,8 +7681,78 @@ label.btn > input[type='radio'] {
 .cards-wrapper .card .last-updated {
   font-size: 12px;
   margin-top: 10px;
-  border-bottom: 1px solid #d0d0d0;
   padding-bottom: 10px;
+}
+.cards-wrapper .card-insight {
+  padding-bottom: 15px;
+}
+.cards-wrapper .card-insight h2 {
+  text-transform: none;
+  font-size: 18px;
+  margin-top: 0;
+  font-weight: 900;
+  line-height: 0 !important;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 15px 0;
+}
+.cards-wrapper .card-insight p:last-child {
+  padding-bottom: 15px;
+}
+.cards-wrapper .card-insight .health-tiles {
+  text-transform: uppercase;
+  font-size: 15px;
+  margin-top: 0;
+  font-weight: 900;
+  padding: 15px 0;
+  color: #00b0bc;
+  letter-spacing: 2px;
+  margin-bottom: 0;
+}
+.cards-wrapper .card-insight .health-num {
+  font-size: 55px;
+  font-weight: 300;
+  margin-bottom: 0;
+  line-height: 60px;
+}
+.cards-wrapper .card-insight .material-icons {
+  font-size: 30px;
+  line-height: 14px;
+  vertical-align: -10px;
+}
+.cards-wrapper .card-insight .negative {
+  color: #f26b64;
+}
+.cards-wrapper .card-insight .positive {
+  color: #39b54a;
+}
+.cards-wrapper .card-insight .temp-img {
+  text-align: center;
+}
+.cards-wrapper .card-insight .temp-img img {
+  height: 75%;
+  width: 75%;
+  margin: 0 auto;
+}
+.cards-wrapper .card-insight .media-body-secondary {
+  font-weight: bold;
+}
+.cards-wrapper .card-insight .media-body-secondary span {
+  font-weight: normal;
+}
+.cards-wrapper .card-insight span {
+  padding-top: 3px;
+}
+.cards-wrapper .card-insight span em {
+  padding-left: 10px;
+}
+.cards-wrapper .card-insight span .btn {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.cards-wrapper .card-insight .media-list {
+  margin-bottom: 0;
 }
 .cards-wrapper .card-btns {
   margin: 0 -15px;
@@ -7787,38 +7963,6 @@ label.btn > input[type='radio'] {
 .proj-details-wrapper .proj-overview-row .grade-wrapper {
   text-align: center;
 }
-.proj-details-wrapper .proj-overview-row .grade-wrapper .grade-circle {
-  height: 75px;
-  width: 75px;
-  margin: 0 auto;
-  border-radius: 100px;
-  text-align: center;
-  line-height: 75px;
-  background-color: #d1d3d4;
-  color: #ffffff;
-  font-size: 30px;
-  margin-bottom: 10px;
-}
-.proj-details-wrapper .proj-overview-row .grade-wrapper .rating-A {
-  background-color: #0a0;
-  color: #ffffff;
-}
-.proj-details-wrapper .proj-overview-row .grade-wrapper .rating-B {
-  background-color: #80cc00;
-  color: #ffffff;
-}
-.proj-details-wrapper .proj-overview-row .grade-wrapper .rating-C {
-  background-color: #fe0;
-  color: #333333;
-}
-.proj-details-wrapper .proj-overview-row .grade-wrapper .rating-D {
-  background-color: #f77700;
-  color: #ffffff;
-}
-.proj-details-wrapper .proj-overview-row .grade-wrapper .rating-E {
-  background-color: #e00;
-  color: #ffffff;
-}
 .proj-details-wrapper .proj-overview-row .grade-wrapper .empty-circle {
   background-color: #ffffff;
   line-height: 14px;
@@ -7850,6 +7994,16 @@ label.btn > input[type='radio'] {
 }
 .proj-details-wrapper .col-sidebar h3 {
   margin-top: 20px;
+}
+.proj-details-wrapper .col-sidebar .view-all {
+  text-align: left;
+}
+.proj-details-wrapper .col-sidebar .view-all .material-icons {
+  vertical-align: -6px;
+}
+.proj-details-wrapper .col-sidebar .media-list-users .media-object,
+.proj-details-wrapper .col-sidebar .media-list-projects .media-object {
+  border: 1px solid #b7babb;
 }
 .proj-details-wrapper .col-sidebar .card-btns {
   border-radius: 0;
@@ -7939,7 +8093,7 @@ body ai-dialog-overlay.active {
 .media-list-projects .list-group-item {
   display: block;
   margin-top: 0;
-  padding: 10px 15px;
+  padding: 10px;
   background-color: transparent;
   border: none;
   border-top: 1px solid #dee0e0;
@@ -7950,14 +8104,18 @@ body ai-dialog-overlay.active {
 .media-list-projects .list-group-item:focus {
   background-color: #effeff;
 }
+.media-list-users .list-group-item:first-child,
+.media-list-projects .list-group-item:first-child {
+  border-radius: 0;
+}
 .media-list-users .list-group-item:last-child,
 .media-list-projects .list-group-item:last-child {
   border-bottom: none;
 }
 .media-list-users .media-object,
 .media-list-projects .media-object {
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   margin-right: 15px;
   border-radius: 100%;
   border: 1px solid #ebeced;

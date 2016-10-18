@@ -1,6 +1,6 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
-import { DataContext } from '../services/datacontext';
+import { DataContext } from 'services/datacontext';
 
 @inject(DataContext, Router)
 export class Popular {
@@ -29,8 +29,10 @@ export class Popular {
 
   getData() {
     return this.dataContext.findPopular().then(results => {
-      this.projects = results;
-      return this.projects;
+      setTimeout(() => {
+        this.projects = results;
+        return this.projects;
+      }, 500);
     });
   }
 

@@ -1,6 +1,6 @@
 import { inject, bindable } from 'aurelia-framework';
 import { Router, activationStrategy } from 'aurelia-router';
-import { DataContext } from '../services/datacontext';
+import { DataContext } from 'services/datacontext';
 
 @inject(DataContext, Router)
 export class ProjectDetails {
@@ -33,7 +33,9 @@ export class ProjectDetails {
     this.dataContext.findSimilarProjects(params.id).then(similarProjects => {
       // TODO should be using promises to catch errors
       if (!similarProjects.error) {
-        this.similarProjects = similarProjects;
+        setTimeout(() => {
+          this.similarProjects = similarProjects;
+        }, 500);
       }
     });
 

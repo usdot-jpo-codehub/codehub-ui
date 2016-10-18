@@ -3,7 +3,7 @@ import { Router } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import $ from 'jquery';
 import { typeahead } from 'corejs-typeahead';
-import { DataContext } from '../services/datacontext';
+import { DataContext } from 'services/datacontext';
 
 @inject(DataContext, Router, EventAggregator)
 export class SearchBar {

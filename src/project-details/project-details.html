@@ -28,7 +28,7 @@
                     <h2 class=""><span>overview</span></h2>
                   </div>
                   <div class="proj-desc">${repo.project_description}</div>
-                  <div class="text-muted last-updated">By <a href="https://github.com/${repo.organization}" target="_blanks">${repo.organization}</a> &nbsp; | &nbsp; Updated ${repo.updatedAt | ago} <span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> ${repo.origin}</span></div>
+                  <div class="text-muted last-updated">By <a href="${repo.organizationUrl}" target="_blanks">${repo.organization}</a> &nbsp; | &nbsp; Updated ${repo.updatedAt | ago} <span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> ${repo.origin}</span></div>
 
                   <ul class="list-inline">
                     <li><button click.trigger="openReadmeModal(repo)" class="btn btn-secondary"><i class="material-icons">library_books</i> Show README</button></li>
@@ -172,7 +172,7 @@
                       </ul>
                     </div>
                   </div>
-                  <a class="btn btn-link" href="http://54.173.204.117:9000/" target="_blank"><i class="material-icons">open_in_new</i> View on SonarQube</a>
+                  <a class="btn btn-link" href="#" target="_blank"><i class="material-icons">open_in_new</i> View on SonarQube</a>
                 </div>
                 <div class="col-lg-4 col-sec">
                   <h3>Security</h3>
@@ -231,14 +231,15 @@
               </template>
 
             </div>
-            <div class="clearfix">
-              <a if.bind="repo.contributors_list.length > 5" href="#" click.delegate="openContribModal(repo)" class="">View All</a>
+            <div class="view-all clearfix">
+              <a if.bind="repo.contributors_list.length > 5" href="#" click.delegate="openContribModal(repo)" class="">View All Projects <i class="material-icons">keyboard_arrow_right</i></a>
             </div>
 
             <h3>Similar Projects</h3>
             <div class="media-list media-list-projects list-group">
+
               <template repeat.for="project of similarProjects | pick:3">
-                <a route-href="route:project-details; params.bind: {id:project.project_id}" target="_blank" class="list-group-item">
+                <a route-href="route:project-details; params.bind: {id:project.project_id}" class="list-group-item">
                   <span class="media">
                     <span class="media-left">
                       <img class="img-circle media-object" src="https://github.com/${project.project_org_name}.png" onError="this.onerror=null;this.src='/img/language-icons/organization-default.svg';">
@@ -251,6 +252,11 @@
                 </a>
               </template>
             </div>
+
+            <div if.bind="similarProjects.length < 1" class="loader" width="100%" height="100%" align="center" valign="center">
+              <img src="img/loading.svg" width="100px" alt="Loading...">
+            </div>
+
           </div>
         </div>
       </div>
