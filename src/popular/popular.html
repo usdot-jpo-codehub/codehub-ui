@@ -5,7 +5,7 @@
   <div class="container-fluid title-wrapper home-wrapper">
     <ul class="nav nav-tabs home-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#popular" aria-controls="popular" role="tab" data-toggle="tab"><i class="material-icons">star</i> Most Popular</a></li>
-      <li role="presentation"><a href="#trending" aria-controls="trending" role="tab" data-toggle="tab"><i class="material-icons">trending_up</i> Trending Right Now</a></li>
+      <li role="presentation"><a href="#trending" aria-controls="trending" role="tab" data-toggle="tab"><i class="material-icons">favorite</i> Healthiest Projects</a></li>
     </ul>
   </div>
 
@@ -26,9 +26,54 @@
               </template>
             </div>
             <div role="tabpanel" class="tab-pane" id="trending">
-              <div class="card" style="padding-bottom:10px;">
-                <h2 class='text-center'>TRENDING</h2>
-                <p class="text-center">Coming soon!</p>
+              <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                  <div class="card card-default hover-card">
+                    <div class="ribbon-wrapper">
+                      <div class="ribbon">Gamification</div>
+                    </div>
+                    <div class="card-header">
+                      <div class="lang-logo">
+                        <span>
+                          <img src="/img/language-icons/default.svg">
+                        </span>
+                      </div>
+                      <div class="card-title multiline">
+                        <a href="#" title="${repo.project_name}">Project-Name</a>
+                      </div>
+                      <div class="org-name">Java</div>
+                    </div>
+                    <div class="proj-desc multiline">Project Name</div>
+                    <div class="text-muted last-updated">By <a href="" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="View on Github" target="_blank">Booz Allen</a> &nbsp; | &nbsp; Updated 5 Days <span class="pull-right repo-status"><i class="material-icons">public</i> Public</span></div>
+
+                    <div class="row health-stats">
+                      <div class="col-lg-4">
+                        <h3 class="text-center health-tiles">Bugs</h3>
+                        <p class="text-center">19</p>
+                      </div>
+                      <div class="col-lg-4">
+                        <h3 class="text-center health-tiles">Vulnerabilites</h3>
+                        <p class="text-center">200</p>
+                      </div>
+                      <div class="col-lg-4">
+                        <h3 class="text-center health-tiles">Techincal Debt</h3>
+                        <p class="text-center">20</p>
+                      </div>
+                    </div>
+
+                    <div class="row card-links clearfix">
+                      <ul class="list-inline pull-left">
+                        <li><a href="#"><i class="material-icons">library_books</i> Show README</a></li>
+                      </ul>
+                      <ul class="list-inline pull-right">
+                        <li><a href="#" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a></li>
+                        <li><a href="#" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="Bookmark"><i class="material-icons">bookmark_border</i></a></li>
+                      </ul>
+                    </div>
+
+                    <a class="card-link" href="#" route-href="route:project-details; params.bind: {id:repo.id}"></a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
