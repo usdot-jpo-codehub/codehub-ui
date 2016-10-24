@@ -1,17 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 20.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="HTML5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 255.8 256" style="enable-background:new 0 0 255.8 256;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#DDDDDD;}
-	.st1{fill:#AAAAAA;}
-</style>
-<title>unknown</title>
-<rect class="st0" width="255.8" height="256"/>
-<path class="st1" d="M127.9,93.8H196v95.6H59.8V66.6h68.1L127.9,93.8L127.9,93.8z M87,93.8V80.4H73.2v13.4H87z M87,121.3v-13.8H73.2
-	v13.7L87,121.3L87,121.3z M87,148.5v-13.8H73.2v13.7L87,148.5L87,148.5z M87,175.6v-13.4H73.2v13.4L87,175.6L87,175.6z M114.2,93.8
-	V80.4h-13.5v13.4L114.2,93.8L114.2,93.8z M114.2,121.3v-13.8h-13.5v13.7L114.2,121.3L114.2,121.3z M114.2,148.5v-13.8h-13.5v13.7
-	L114.2,148.5L114.2,148.5z M114.2,175.7v-13.4h-13.5v13.4L114.2,175.7L114.2,175.7z M182.6,175.7v-68.1h-54.7v13.7h13.7v13.4h-13.7
-	v13.8h13.7v13.7h-13.7v13.4L182.6,175.7L182.6,175.7z M168.8,121.3v13.4h-13.8v-13.4L168.8,121.3L168.8,121.3z M168.8,148.5v13.7
-	h-13.8v-13.8L168.8,148.5L168.8,148.5z"/>
-</svg>
+<svg id="HTML5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255.82 256"><defs><style>.cls-1{fill:#bbb;}.cls-2{fill:#848688;}</style></defs><title>unknown</title><rect class="cls-1" width="255.82" height="256"/><path class="cls-2" d="M127.91,85.37h84.87V204.5H43V51.5h84.87V85.37Zm-51,0V68.63H59.78V85.37H76.91Zm0,34.27V102.5H59.78v17.13H76.91Zm0,33.87V136.37H59.78V153.5H76.91Zm0,33.87V170.63H59.78v16.73H76.91Zm33.87-102V68.63H94V85.37h16.73Zm0,34.27V102.5H94v17.13h16.73Zm0,33.87V136.37H94V153.5h16.73Zm0,33.87V170.63H94v16.73h16.73Zm85.27,0V102.5H127.91v17.13H145v16.73H127.91V153.5H145v17.13H127.91v16.73H196Zm-17.13-67.73v16.73H161.78V119.63h17.13Zm0,33.87v17.13H161.78V153.5h17.13Z" transform="translate(0 0)"/></svg>
