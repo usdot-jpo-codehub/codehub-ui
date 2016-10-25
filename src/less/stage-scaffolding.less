@@ -431,6 +431,7 @@ a {
 
   a {
     display: block;
+    text-transform: uppercase;
   }
 }
 
@@ -470,6 +471,87 @@ a {
 .rating-E {
   background-color: @sonarqube-rating-e;
   color: @white;
+}
+
+.cd-top {
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  position: fixed;
+  bottom: 0px;
+  right: 5px;
+  text-align: center;
+  background-color: @white;
+  border-radius: 100%;
+  z-index: 200;
+  box-shadow: 0 3px 6px fade(@black, 25%);
+  transition: all 0.2s linear;
+  
+  &:hover {
+    color: @white;
+    background-color: @teal;
+
+  }
+}
+
+.fab-container {
+  margin: 1em;
+  position: fixed;
+  right: 0;
+  z-index: 500;
+
+  .fab {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: @white;
+    box-shadow: 0 3px 6px fade(@black, 25%);
+    position: relative;
+    cursor: pointer;
+    transition: .3s;
+    
+
+    &:before {
+      content: attr(tooltip);
+      background: @teal;
+      padding: 4px 8px;
+      margin-right: 10px;
+      border-radius: 2px;
+      position: absolute;
+      top: 0px;
+      right: 100%;
+      color: @white;
+      font-weight: 400;
+      opacity: 0;
+      visibility: hidden;
+      white-space: nowrap;
+      transition: .3s;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2), 0 3px 8px rgba(0, 0, 0, 0.12);
+    
+      &:before {
+        right: 110%;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    .material-icons {
+      font-size: @font-size-large;
+      line-height: 25px;
+      display: block;
+      text-align: center;
+    }
+  }
+}
+
+.label-default {
+  font-weight: normal;
+  font-size: @font-size-small;
+  padding: 3px 10px;
 }
 
 footer {

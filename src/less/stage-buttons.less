@@ -4,12 +4,14 @@
 	transition: all 0.2s linear;
 	font-weight: bold;
 	padding: 10px 25px;
+	text-transform: uppercase;
 
 	&:hover,
 	&:active,
 	&:focus {
 		outline: none !important;
-		box-shadow: none !important;
+		// box-shadow: none !important;
+		box-shadow: 0 5px 7px rgba(0,0,0,0.1);
 	}
 
 	.material-icons {
@@ -22,6 +24,7 @@
 	&:active,
 	&:focus {
 		text-decoration: none;
+		box-shadow: none;
 	}
 }
 
@@ -35,6 +38,7 @@
 	&:focus {
 		background-color: @teal;
 		color: @white;
+		box-shadow: 0 5px 7px rgba(0,0,0,0.1);
 	}
 }
 
