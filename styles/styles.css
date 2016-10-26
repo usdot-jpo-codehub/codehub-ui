@@ -8160,6 +8160,11 @@ body ai-dialog-overlay.active {
 .modal-title {
   font-weight: bold;
 }
+.modal-body {
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 .modal-body h1 {
   font-size: 36px;
   margin-top: 0;
@@ -8181,7 +8186,7 @@ body ai-dialog-overlay.active {
   margin-right: 5px;
 }
 .contributors-modal {
-  max-height: 400px;
+  max-height: 500px;
   overflow-y: auto;
   overflow-x: hidden;
 }
