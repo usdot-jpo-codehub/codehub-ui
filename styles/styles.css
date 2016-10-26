@@ -7066,8 +7066,15 @@ footer .bah-logo {
 .source-tab {
   padding: 20px 0;
 }
+.profile-tabs {
+  margin-bottom: 15px;
+}
 .profile-tabs > li {
   width: auto;
+}
+.profile-tabs > li > a {
+  padding-left: 30px;
+  padding-right: 30px;
 }
 .rating {
   display: inline-block;
@@ -7993,8 +8000,15 @@ label.btn > input[type='radio'] {
 .profile-wrapper .user-avatar {
   border-radius: 100%;
   margin: 0 auto;
-  height: 160px;
-  width: 160px;
+  height: 130px;
+  width: 130px;
+}
+.profile-wrapper .form-group label {
+  margin-bottom: 0;
+}
+.profile-wrapper .form-group .form-control-static {
+  padding-top: 3.5px;
+  padding-bottom: 3.5px;
 }
 .profile-wrapper .form-group a {
   display: block;
