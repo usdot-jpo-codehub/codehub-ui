@@ -1,1 +1,14 @@
-<svg id="Ruby_big" data-name="Ruby big" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><defs><style>.cls-1{fill:#fff;}</style></defs><title>ruby</title><rect width="256" height="256"/><path class="cls-1" d="M57.77,53.79a5.93,5.93,0,0,0-8.38,8.38L67.53,80.32,49.4,98.45a5.93,5.93,0,0,0,4.17,10.13,5.74,5.74,0,0,0,4.22-1.75L77.94,86.65q6.35-6.32,0-12.68L57.77,53.79h0Zm79,44.69a5.77,5.77,0,0,0-4.23-1.75H93.64a6,6,0,0,0,0,11.95h38.92a6,6,0,0,0,4.23-10.2h0Z" transform="translate(0 0)"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Ruby_big" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 256 256" style="enable-background:new 0 0 256 256;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+</style>
+<title>ruby</title>
+<rect width="256" height="256"/>
+<path class="st0" d="M71.8,67.8c-2.4-2.2-6.2-2.1-8.4,0.3c-2.1,2.3-2.1,5.8,0,8.1l18.1,18.2l-18.1,18.1c-2.3,2.3-2.3,6.1,0,8.4
+	c1.1,1.1,2.6,1.7,4.2,1.7c1.6,0,3.1-0.6,4.2-1.8l20.2-20.2c4.2-4.2,4.2-8.4,0-12.7L71.8,67.8L71.8,67.8z M150.8,112.5
+	c-1.1-1.1-2.6-1.8-4.2-1.8h-38.9c-3.3,0.3-5.7,3.2-5.4,6.5c0.3,2.9,2.5,5.2,5.4,5.4h38.9c3.3,0,6-2.7,5.9-6.1
+	C152.5,115.1,151.9,113.6,150.8,112.5L150.8,112.5L150.8,112.5z"/>
+</svg>

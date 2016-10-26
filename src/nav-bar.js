@@ -77,6 +77,27 @@ export class NavBar {
     $('#navSearchBox .typeahead').bind('typeahead:autocompleted', (ev, suggestion) => {
       this.navSearchText = suggestion;
     });
-  }
 
+    /*eslint-disable */
+    var pxScrolled = 100;
+    var duration = 500;
+
+    $(window).scroll(function() {
+      if ($(this).scrollTop() > pxScrolled) {
+        $('.navbar').addClass('sticky-header');
+        //$('.fab-back-top').removeClass('hidden');
+        $('.fab-container').css({'bottom': '0px', 'transition': '.05s'});
+      } else {
+        $('.navbar').removeClass('sticky-header');
+        //$('.fab-back-top').addClass('hidden');
+        $('.fab-container').css({'bottom': '-72px'});
+      } 
+    });
+
+    $('#backToTop').click(function(e) {
+      e.preventDefault();
+      $('body').animate({scrollTop: 0}, duration);
+    });
+    /*eslint-enable */
+  }
 }

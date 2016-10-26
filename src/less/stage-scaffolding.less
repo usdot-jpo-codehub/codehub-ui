@@ -80,7 +80,7 @@ h3{
 
 .title-wrapper {
 	background-color: @white;
-	margin-bottom: 25px;
+	margin-bottom: 15px;
   padding-top: 12px;
   padding-bottom: 0;
 
@@ -122,7 +122,7 @@ h3{
   }
 
   .explore-filter-wrapper {
-    padding-bottom: 6px;
+    padding-bottom: 3px;
   }
 }
 
@@ -148,8 +148,6 @@ h3{
 	p {
 		margin-bottom: 0;
 	}
-	.form-inline {
-	}
 }
 
 .col-btn {
@@ -163,7 +161,7 @@ h3{
   .material-icons {
     vertical-align: -7px;
     margin-right: 5px;
-    color: lighten(@black, 25%);
+    color: lighten(@black, 75%);
   }
 
   label {
@@ -173,9 +171,13 @@ h3{
 }
 
 .col-chips {
+  margin-bottom: 10px;
+
   .list-inline {
+  padding: 0 20px;
+    
     > li {
-      margin-bottom: 5px;
+      margin-bottom: 0px;
 
       &:first-child {
         padding-left: 0;
@@ -184,7 +186,6 @@ h3{
       .project-counter {
         font-size: @font-size-larger;
         font-weight: bold;
-        margin-left: 25px;
       }
     }
   }
@@ -366,6 +367,10 @@ a {
     }
   }
 
+  h2 {
+    text-transform: none;
+  }
+
   h4 {
     font-size: @font-size-medium;
     text-transform: none;
@@ -374,9 +379,11 @@ a {
 }
 
 .card-stats {
+  font-size: @font-size-small;
+  
   .text-muted {
     padding-left: 10px;
-    padding-top: 5px;
+    padding-top: 7px;
     display: block;
   }
 }
@@ -424,6 +431,7 @@ a {
 
   a {
     display: block;
+    text-transform: uppercase;
   }
 }
 
@@ -465,13 +473,94 @@ a {
   color: @white;
 }
 
+.cd-top {
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  position: fixed;
+  bottom: 0px;
+  right: 5px;
+  text-align: center;
+  background-color: @white;
+  border-radius: 100%;
+  z-index: 200;
+  box-shadow: 0 3px 6px fade(@black, 25%);
+  transition: all 0.2s linear;
+  
+  &:hover {
+    color: @white;
+    background-color: @teal;
+
+  }
+}
+
+.fab-container {
+  margin: 1em;
+  position: fixed;
+  right: 0;
+  z-index: 500;
+
+  .fab {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: @white;
+    box-shadow: 0 3px 6px fade(@black, 25%);
+    position: relative;
+    cursor: pointer;
+    transition: .3s;
+    
+
+    &:before {
+      content: attr(tooltip);
+      background: @teal;
+      padding: 4px 8px;
+      margin-right: 10px;
+      border-radius: 2px;
+      position: absolute;
+      top: 0px;
+      right: 100%;
+      color: @white;
+      font-weight: 400;
+      opacity: 0;
+      visibility: hidden;
+      white-space: nowrap;
+      transition: .3s;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2), 0 3px 8px rgba(0, 0, 0, 0.12);
+    
+      &:before {
+        right: 110%;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    .material-icons {
+      font-size: @font-size-large;
+      line-height: 25px;
+      display: block;
+      text-align: center;
+    }
+  }
+}
+
+.label-default {
+  font-weight: normal;
+  font-size: @font-size-small;
+  padding: 3px 10px;
+}
+
 footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   margin-top: 20px;
   padding-top: 20px;
-  background-color: darken(@white, 3%);
+  background-color: darken(@white, 4%);
   font-size: @font-size-smaller;
 
   .row {
