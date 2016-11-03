@@ -7158,9 +7158,6 @@ footer .bah-logo {
   font-size: 40px;
   color: #f26b64;
 }
-.hero-banner .hero-jumbotron .container-fluid {
-  padding-top: 20px;
-}
 .hero-banner .hero-jumbotron .container-fluid h1,
 .hero-banner .hero-jumbotron .container-fluid p {
   text-align: center;
@@ -7177,6 +7174,7 @@ footer .bah-logo {
 }
 .hero-banner .secondary {
   padding: 20px;
+  padding-top: 45px;
 }
 .hero-banner .secondary.hero-jumbotron {
   text-align: left;
@@ -7190,7 +7188,6 @@ footer .bah-logo {
 }
 .hero-banner .secondary .container-fluid p {
   font-size: 18px;
-  margin-bottom: 30px;
 }
 .hero-banner .secondary .input-lg {
   background-color: transparent !important;
@@ -7228,7 +7225,6 @@ footer .bah-logo {
   line-height: 46px;
 }
 .hero-banner .details {
-  padding-top: 30px;
   padding-bottom: 40px;
 }
 .hero-banner .details .proj-title {
