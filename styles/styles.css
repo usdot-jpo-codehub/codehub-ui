@@ -7383,6 +7383,11 @@ fieldset[disabled] .btn-primary.active {
   right: 50px;
   color: #f26b64;
 }
+.stage-search-btn:hover,
+.stage-search-btn:active,
+.stage-search-btn:focus {
+  box-shadow: none;
+}
 a.btn {
   text-decoration: none;
 }
