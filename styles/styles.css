@@ -7182,10 +7182,6 @@ footer .bah-logo {
   font-size: 40px;
   color: #f26b64;
 }
-.hero-banner .hero-jumbotron .container-fluid,
-.hero-banner .hero-jumbotron .container {
-  padding-top: 20px;
-}
 .hero-banner .hero-jumbotron .container-fluid h1,
 .hero-banner .hero-jumbotron .container h1,
 .hero-banner .hero-jumbotron .container-fluid p,
@@ -7206,6 +7202,7 @@ footer .bah-logo {
 }
 .hero-banner .secondary {
   padding: 20px;
+  padding-top: 45px;
 }
 .hero-banner .secondary.hero-jumbotron {
   text-align: left;
@@ -7215,6 +7212,7 @@ footer .bah-logo {
 .hero-banner .secondary .container-fluid p,
 .hero-banner .secondary .container p {
   text-align: left;
+  color: #ffffff;
 }
 .hero-banner .secondary .container-fluid h1,
 .hero-banner .secondary .container h1 {
@@ -7223,7 +7221,6 @@ footer .bah-logo {
 .hero-banner .secondary .container-fluid p,
 .hero-banner .secondary .container p {
   font-size: 18px;
-  margin-bottom: 30px;
 }
 .hero-banner .secondary .input-lg {
   background-color: transparent !important;
@@ -7261,7 +7258,6 @@ footer .bah-logo {
   line-height: 46px;
 }
 .hero-banner .details {
-  padding-top: 30px;
   padding-bottom: 40px;
 }
 .hero-banner .details .proj-title {
@@ -7419,6 +7415,11 @@ fieldset[disabled] .btn-primary.active {
   z-index: 9999;
   right: 50px;
   color: #f26b64;
+}
+.stage-search-btn:hover,
+.stage-search-btn:active,
+.stage-search-btn:focus {
+  box-shadow: none;
 }
 a.btn {
   text-decoration: none;
