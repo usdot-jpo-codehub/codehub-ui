@@ -17,7 +17,9 @@
           </a>
 	      </div>
 	      <ul class="nav navbar-nav navbar-right user-nav explore-nav">
-          <li class="utility-icons"><a href="#" class="btn btn-link">Explore Stage <i class="material-icons">keyboard_arrow_right</i></a></li>
+          <li class="utility-icons">
+          	<a href="#" class="btn btn-link">Explore Stage <i class="material-icons">keyboard_arrow_right</i></a>
+        	</li>
         </ul>
 	    </div>
 		</nav>
@@ -32,13 +34,17 @@
 				<div id="particles-js"></div>
 			</div>
 			<div data-depth="0.3" class="layer">
-				<div class="some-more-space"><a href="#" target="_blank">Learn More</a></div>
+				<div class="some-more-space">
+					<a data-scroll href="#learnMore" href="#" target="_blank">Learn More</a>
+					<!-- <a data-scroll href="#bazinga">Anchor Link</a> -->
+				</div>
 			</div>
 		</div>
 
+		<span id="learnMore"></span>
 		<div id="content">
 
-			<div class="container">
+			<div  class="container">
 				<div class="row">
 					<div class="col-lg-12">
 						<h2>The "Open" Movement</h2>
@@ -193,9 +199,12 @@
 		<script src='about/js/jquery.min.js'></script>
 		<script src='about/js/particles.min.js'></script>
 		<script src='about/js/jquery.parallax.js'></script>
+		<script src="about/js/smooth-scroll.min.js"></script>
 		<script src="about/js/index.js"></script>
 
 		<script>
+
+			smoothScroll.init();
 
 			var pxScrolled = 100;
     	var duration = 500;
