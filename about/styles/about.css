@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700,700i|Roboto:400,400i,500,500i,700,700i,900,900i');
+
+body {
+  font-family: "Roboto";
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  background-color: white;
+  margin-bottom: 40px;
+}
+
+img {
+  max-width: 100%;
+}
+
+h2, p{
+  text-align: center;
+}
+
+h2{
+  margin-bottom: 25px;
+}
+
+h3{
+  font-family: "Roboto Condensed";
+  font-size: 1.4em;
+  color: #333333;
+}
+
+.navbar {
+  min-height: 60px;
+}
+
+.navbar-default .navbar-brand {
+  width: 170px;
+  padding-top: 5px;
+}
+
+.navbar-default .explore-nav .btn {
+  font-size: 1.1em;
+}
+
+.navbar-default .explore-nav .btn .material-icons {
+  vertical-align: -8px;
+}
+
+.navbar-default .explore-nav .utility-icons a {
+  padding: 14px 20px 14px 25px;
+  border-radius: 0;
+}
+
+#particles-js, #parallax, .layer, .some-space, .some-more-space {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+#parallax {
+  height: 600px;
+  background: linear-gradient(135deg, #ee383d 0%, #ffcc5d 100%);
+  position: relative;
+}
+
+#particles-js {
+  opacity: 0.6;
+}
+
+#parallax h1 {
+  text-shadow: 0 5px 9px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: 3.5em;
+  font-weight: 900;
+  position: absolute;
+  top: 33%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  text-align: center;
+  max-width: 630px;
+}
+
+#parallax a {
+  text-transform: uppercase;
+  border-radius: 4px;
+  color: white;
+  background: rgba(0,0,0,0.15);
+  box-shadow: 0 7px 12px rgba(0, 0, 0, 0.15);
+  font-size: 1.2em;
+  font-weight: bold;
+  border: 2px solid white;
+  display: table;
+  position: absolute;
+  top: 78%;
+  left: 50%;
+  letter-spacing: 0.05em;
+  transform: translate3d(-50%, -50%, 0);
+  text-decoration: none;
+  transition: all 200ms ease;
+  padding: 10px 45px;
+}
+
+#parallax a:hover {
+  background: white;
+  color: #f48c4f;
+}
+
+#parallax p {
+  text-shadow: 0 5px 9px rgba(0, 0, 0, 0.2);
+  line-height: 1.3em;
+  font-size: 1.4em;
+  text-align: center;
+  width: 100%;
+  top: 55%;
+  left: 50%;
+  margin-left: -315px;
+  color: white;
+  position: absolute;
+  max-width: 630px;
+}
+
+#parallax .some-space {
+  z-index: 10000;
+  animation: rotate 18s 0.5s infinite linear reverse;
+}
+
+#parallax .some-more-space {
+  animation: rotate 15s 0.1s infinite linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg) translate3d(0, 1.5%, 0) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg) translate3d(0, 1.5%, 0) rotateZ(-360deg);
+  }
+}
+
+#content {
+  position: relative;
+}
+
+#stageUsers,
+#featuresStages,
+#userDefined,
+#callAction {
+  background-color: #F5F5F5;
+  text-align: center;
+  padding: 30px 0;
+}
+
+#stageUsers {
+  background-image: url("../img/network-pattern-gray.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-bottom: 78px;
+  position: relative;
+}
+
+#stageUsers .img-circle {
+  box-shadow: 0 5px 11px rgba(0, 0, 0, 0.1);
+  border: 4px solid white;
+  max-width: 200px;
+  margin-bottom: 20px;
+}
+
+#whatPurpose .col-lg-4 {
+  padding-right: 100px;
+}
+
+.homepage-screenshot {
+  background-image: url("../img/homepage-screenshot.png");
+  background-repeat: no-repeat;
+  background-size: 105%;
+  background-position: -78px -30px;
+  height: 600px;
+}
+
+#featuresStages .col-lg-4 {
+  padding-left: 100px;
+}
+
+#featuresStages {
+  background-color: #EDF7FF;
+  text-align: left;
+}
+
+#featuresStages p{
+  text-align: left;
+}
+
+.insight-screenshot {
+  background-image: url("../img/insight-screenshot.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 144px -20px;
+  height: 600px;
+}
+
+#userDefined {
+  background-color: #00B0BC;
+  background-image: url("../img/network-pattern-alt.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-bottom: 78px;
+  position: relative;
+}
+
+#userDefined h2 {
+  color: white;
+}
+
+#userDefined .circle{
+  height: 225px;
+  width: 225px;
+  background-color: white;
+  border-radius: 100%;
+  box-shadow: 0 7px 12px rgba(0,0,0,0.1);
+  padding: 15px;
+  position: relative;
+}
+
+#userDefined .col-lg-3 .circle:after{
+  content: "arrow_forward";
+  font-family: "Material Icons";
+  position: absolute;
+  color: white;
+  opacity: 0.4;
+  right: -60px;
+  top: 50%;
+  margin-top: -30px;
+  font-size: 48px;
+}
+
+#userDefined .col-lg-3:nth-child(4) .circle:after{
+  display: none;
+}
+
+#userDefined .circle .material-icons{
+  font-size: 50px;
+  color: #F67A4B;
+  margin-top: 7px;
+  margin-bottom: 15px;
+}
+
+#userDefined .circle p {
+  font-size: 0.85em;
+  line-height: 1.2em;
+}
+
+#userDefined .publish-arrow {
+  background-image: url("../img/publish-arrow.svg");
+  background-repeat: no-repeat;
+  width: 600px;
+  height: 58px;
+  position: absolute;
+  bottom: 20px;
+  left: 245px;
+}
+
+#userDefined .publish-arrow span{
+  display: block;
+  margin-top: 18px;
+  color: white;
+  opacity: 0.5;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 1px;
+  font-size: 1.2em;
+}
+
+#callAction {
+  background-color: white;
+}
+
+#callAction h4 {
+  font-style: italic;
+  margin-bottom: 30px;
+  font-size: 1.5em;
+}
