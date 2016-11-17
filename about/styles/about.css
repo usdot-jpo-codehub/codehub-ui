@@ -331,7 +331,8 @@ h3{
   background-image: url("../img/network-pattern-alt.svg");
   background-size: cover;
   background-repeat: no-repeat;
-  padding-bottom: 78px;
+  padding-top: 40px;
+  padding-bottom: 98px;
   position: relative;
 }
 
@@ -383,7 +384,7 @@ h3{
   width: 600px;
   height: 58px;
   position: absolute;
-  bottom: 20px;
+  bottom: 40px;
   left: 245px;
 }
 
@@ -410,6 +411,7 @@ h3{
 
 #callAction {
   background-color: white;
+  padding-bottom: 40px;
 }
 
 #callAction h4 {
