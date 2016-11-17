@@ -176,23 +176,23 @@ h3{
   max-width: 630px;
 }
 
-#parallax .some-space {
-  z-index: 10000;
-  animation: rotate 18s 0.5s infinite linear reverse;
-}
+// #parallax .some-space {
+//   z-index: 10000;
+//   animation: rotate 18s 0.5s infinite linear reverse;
+// }
 
-#parallax .some-more-space {
-  animation: rotate 15s 0.1s infinite linear;
-}
+// #parallax .some-more-space {
+//   animation: rotate 15s 0.1s infinite linear;
+// }
 
-@keyframes rotate {
-  0% {
-    transform: rotateZ(0deg) translate3d(0, 1.5%, 0) rotateZ(0deg);
-  }
-  100% {
-    transform: rotateZ(360deg) translate3d(0, 1.5%, 0) rotateZ(-360deg);
-  }
-}
+// @keyframes rotate {
+//   0% {
+//     transform: rotateZ(0deg) translate3d(0, 1.5%, 0) rotateZ(0deg);
+//   }
+//   100% {
+//     transform: rotateZ(360deg) translate3d(0, 1.5%, 0) rotateZ(-360deg);
+//   }
+// }
 
 #content {
   position: relative;
@@ -215,11 +215,17 @@ h3{
   padding: 120px 0;
 }
 
-#intro p {
-  max-width: 500px;
+#intro p,
+#intro .check-list {
+  max-width: 700px;
   margin: 0 auto;
   font-size: 1.3em;
+}
 
+#intro .check-list {
+  max-width: 500px;
+  margin-top: 25px;
+  font-size: 1.1em;
 }
 
 #stageUsers {
@@ -238,7 +244,7 @@ h3{
 }
 
 #stageUsers p {
-  padding: 0 20px;
+  padding: 0 15px;
 }
 
 #whatPurpose {
@@ -478,8 +484,8 @@ h3{
 }
 
 #b0-5 {
-  top:565px;
-  left:303px;
+  top:645px;
+  left:123px;
 }
 
 #b1-1 {
@@ -491,16 +497,16 @@ h3{
   left:0px;
 }
 #b1-3 {
-  top:421px;
-  right:161px;
+  top: 511px;
+  right: 91px;
 }
 #b1-4 {
   top:-115px;
   left:-100px;
 }
 #b1-5 {
-  top:650px;
-  left:221px;
+  top:750px;
+  left:-49px;
 }
 
 #b2-1 {
@@ -508,12 +514,12 @@ h3{
   right:-10px;
 }
 #b2-2 {
-  top:600px;
-  left:130px;
+  top: 680px;
+  left: 40px;
 }
 #b2-3 {
   top:550px;
-  left:605px;
+  left:925px;
 }
 #b2-4 {
   top: 526px;

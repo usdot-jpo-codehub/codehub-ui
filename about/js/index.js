@@ -1,9 +1,9 @@
- $('#parallax').parallax({
-	invertX: true,
-	invertY: true,
-	scalarX: 10,
-	 frictionY: .1
-});
+ // $('#parallax').parallax({
+	// invertX: true,
+	// invertY: true,
+	// scalarX: 10,
+	 // frictionY: .1
+// });
 
 
 particlesJS("particles-js", {
