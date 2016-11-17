@@ -13,6 +13,7 @@ System.config({
     "npm:*": "jspm_packages/npm/*"
   },
   baseUrl: "/",
+
   meta: {
     "bootstrap": {
       "deps": [
@@ -20,6 +21,7 @@ System.config({
       ]
     }
   },
+
   map: {
     "aurelia-animator-css": "npm:aurelia-animator-css@1.0.1",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0",
@@ -45,7 +47,7 @@ System.config({
     "bootstrap-multiselect": "npm:bootstrap-multiselect@0.9.13-1",
     "core-js": "npm:core-js@1.2.7",
     "corejs-typeahead": "npm:corejs-typeahead@0.11.1",
-    "fetch": "github:github/fetch@0.11.1",
+    "fetch": "github:github/fetch@2.0.1",
     "font-awesome": "npm:font-awesome@4.6.3",
     "jquery": "npm:jquery@2.2.4",
     "jquery-ui": "github:components/jqueryui@1.12.1",
