@@ -14,8 +14,24 @@
 	.navbar-brand {
 		width: 150px;
 		padding-top: 8px;
+		padding-right: 30px;
 		padding-bottom: 8px;
-		margin-right: 10px;
+		margin-right: 35px;
+		position: relative;
+
+		&:after {
+			content: "beta";
+			text-transform: uppercase;
+			position: absolute;
+			color: white;
+			opacity: 0.6;
+			right: 0px;
+			bottom: 9px;
+			font-weight: bold;
+			font-size: @font-size-smallest;
+			letter-spacing: 1px;
+			text-shadow: 0 5px 10px rgba(0,0,0,0.75);
+		}
 	}
 
 	.navbar-nav {
