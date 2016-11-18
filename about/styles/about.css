@@ -212,7 +212,7 @@ h3{
 #intro {
   background-color: white;
   overflow: hidden;
-  padding: 120px 0;
+  padding: 100px 0;
 }
 
 #intro p,
@@ -317,6 +317,7 @@ h3{
   background-color: white;
   color: #00B0BC;
   font-size: 20px;
+  font-weight: 900;
   border: 1px solid #ddd;
   left: -52px;
   top: -5px;
@@ -476,7 +477,7 @@ h3{
 }
 #b0-3 {
   top:56px;
-  left:-150px;
+  left:-140px;
 }
 #b0-4 {
   top:137px;
@@ -489,7 +490,7 @@ h3{
 }
 
 #b1-1 {
-  top:-127px;
+  top:-107px;
   right:200px;
 }
 #b1-2 {
@@ -515,7 +516,7 @@ h3{
 }
 #b2-2 {
   top: 680px;
-  left: 40px;
+  left: -165px;
 }
 #b2-3 {
   top:550px;
