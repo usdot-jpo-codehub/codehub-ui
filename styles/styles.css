@@ -7415,17 +7415,17 @@ label.btn > input[type='radio'] {
   position: relative;
 }
 .navbar-default .navbar-brand:after {
-  content: "beta";
+  content: "alpha";
   text-transform: uppercase;
   position: absolute;
   color: white;
   opacity: 0.6;
-  right: 0px;
+  left: 120px;
   bottom: 9px;
   font-weight: bold;
   font-size: 10px;
   letter-spacing: 1px;
-  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.75);
+  text-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
 }
 .navbar-default .navbar-nav > li > a {
   color: rgba(255, 255, 255, 0.65);
