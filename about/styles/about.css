@@ -18,6 +18,11 @@ body {
   bottom: 7px;
 }
 
+.text-variant {
+  font-weight: 100;
+  font-size: 80%;
+}
+
 img {
   max-width: 100%;
 }
@@ -134,11 +139,11 @@ h3{
   font-size: 3.5em;
   font-weight: 900;
   position: absolute;
-  top: 33%;
+  top: 30%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
   text-align: center;
-  max-width: 630px;
+  max-width: 588px;
 }
 
 #parallax a {
@@ -152,7 +157,7 @@ h3{
   border: 2px solid white;
   display: table;
   position: absolute;
-  top: 78%;
+  top: 80%;
   left: 50%;
   letter-spacing: 0.05em;
   transform: translate3d(-50%, -50%, 0);
