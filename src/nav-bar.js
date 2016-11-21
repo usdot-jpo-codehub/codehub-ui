@@ -79,7 +79,7 @@ export class NavBar {
     });
 
     /*eslint-disable */
-    var pxScrolled = 100;
+    var pxScrolled = 25;
     var duration = 500;
 
     $(window).scroll(function() {
