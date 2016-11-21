@@ -7468,6 +7468,12 @@ fieldset[disabled] .btn-primary.active {
 .btn-filters.collapsed i {
   transform: rotate(0deg);
 }
+.btn-icon-right {
+  padding-right: 10px;
+}
+.btn-icon-left {
+  padding-left: 10px;
+}
 .clear-btn {
   color: #404040;
 }
@@ -8243,7 +8249,7 @@ body ai-dialog-overlay.active {
   font-weight: bold;
 }
 .modal-body {
-  max-height: 500px;
+  max-height: 460px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -8268,13 +8274,19 @@ body ai-dialog-overlay.active {
   margin-right: 5px;
 }
 .contributors-modal {
-  max-height: 500px;
+  max-height: 460px;
   overflow-y: auto;
   overflow-x: hidden;
 }
 .modal-footer {
   border-radius: 0 0 4px 4px;
   background-color: #f2f2f2;
+}
+.modal-footer .btn + .btn {
+  margin-left: 10px;
+}
+.modal-footer .btn .material-icons {
+  line-height: 0.6;
 }
 .markdown-body img {
   max-width: 100%;
