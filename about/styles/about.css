@@ -13,6 +13,11 @@ body {
   margin-bottom: 40px;
 }
 
+.navbar-default .navbar-brand:after {
+  left: 138px;
+  bottom: 7px;
+}
+
 img {
   max-width: 100%;
 }
