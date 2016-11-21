@@ -6533,7 +6533,8 @@ body {
 .card-header .col-lg-12 {
   margin-bottom: 0;
 }
-.insight-wrapper {
+.insight-wrapper,
+.profile-container {
   margin-top: 25px;
 }
 .page-title h1 {
@@ -6970,16 +6971,19 @@ footer .bah-logo {
   }
 }
 .home-tabs,
-.source-tabs {
+.source-tabs,
+.profile-tabs {
   margin: 0 -15px;
   border: none;
 }
 .home-tabs > li,
-.source-tabs > li {
+.source-tabs > li,
+.profile-tabs > li {
   width: 50%;
 }
 .home-tabs > li > a,
-.source-tabs > li > a {
+.source-tabs > li > a,
+.profile-tabs > li > a {
   color: rgba(0, 0, 0, 0.55);
   border-radius: 0;
   border: none;
@@ -6993,22 +6997,26 @@ footer .bah-logo {
   letter-spacing: 2px;
 }
 .home-tabs > li > a .material-icons,
-.source-tabs > li > a .material-icons {
+.source-tabs > li > a .material-icons,
+.profile-tabs > li > a .material-icons {
   vertical-align: -11px;
   font-size: 30px;
   margin-right: 5px;
 }
 .home-tabs > li > a:hover,
 .source-tabs > li > a:hover,
+.profile-tabs > li > a:hover,
 .home-tabs > li > a:focus,
-.source-tabs > li > a:focus {
+.source-tabs > li > a:focus,
+.profile-tabs > li > a:focus {
   color: #00b0bc;
   border: none;
   border-bottom: 3px solid transparent;
   background-color: transparent;
 }
 .home-tabs > li.active > a,
-.source-tabs > li.active > a {
+.source-tabs > li.active > a,
+.profile-tabs > li.active > a {
   color: #00b0bc;
   background-color: transparent;
   border: none;
@@ -7019,25 +7027,31 @@ footer .bah-logo {
 }
 .home-tabs > li.active > a:hover,
 .source-tabs > li.active > a:hover,
+.profile-tabs > li.active > a:hover,
 .home-tabs > li.active > a:focus,
-.source-tabs > li.active > a:focus {
+.source-tabs > li.active > a:focus,
+.profile-tabs > li.active > a:focus {
   color: #00b0bc;
   border: none;
   border-radius: 0;
   border-bottom: 3px solid #00b0bc;
 }
-.source-tabs {
+.source-tabs,
+.profile-tabs {
   margin: 0;
   border-bottom: 1px solid #d1d3d4;
 }
-.source-tabs > li {
+.source-tabs > li,
+.profile-tabs > li {
   width: 25%;
 }
-.source-tabs > li > a {
+.source-tabs > li > a,
+.profile-tabs > li > a {
   color: rgba(0, 0, 0, 0.55);
   letter-spacing: 1px;
 }
-.source-tabs > li > a .grade-circle {
+.source-tabs > li > a .grade-circle,
+.profile-tabs > li > a .grade-circle {
   display: inline-block;
   width: 35px;
   height: 35px;
@@ -7051,6 +7065,16 @@ footer .bah-logo {
 }
 .source-tab {
   padding: 20px 0;
+}
+.profile-tabs {
+  margin-bottom: 15px;
+}
+.profile-tabs > li {
+  width: auto;
+}
+.profile-tabs > li > a {
+  padding-left: 30px;
+  padding-right: 30px;
 }
 .rating {
   display: inline-block;
@@ -7159,16 +7183,20 @@ footer .bah-logo {
   color: #f26b64;
 }
 .hero-banner .hero-jumbotron .container-fluid h1,
-.hero-banner .hero-jumbotron .container-fluid p {
+.hero-banner .hero-jumbotron .container h1,
+.hero-banner .hero-jumbotron .container-fluid p,
+.hero-banner .hero-jumbotron .container p {
   text-align: center;
   color: #ffffff;
 }
-.hero-banner .hero-jumbotron .container-fluid h1 {
+.hero-banner .hero-jumbotron .container-fluid h1,
+.hero-banner .hero-jumbotron .container h1 {
   margin-top: 5px;
   font-size: 3em;
   font-weight: 700;
 }
-.hero-banner .hero-jumbotron .container-fluid p {
+.hero-banner .hero-jumbotron .container-fluid p,
+.hero-banner .hero-jumbotron .container p {
   font-size: 1.5em;
   font-weight: 300;
 }
@@ -7180,13 +7208,18 @@ footer .bah-logo {
   text-align: left;
 }
 .hero-banner .secondary .container-fluid h1,
-.hero-banner .secondary .container-fluid p {
+.hero-banner .secondary .container h1,
+.hero-banner .secondary .container-fluid p,
+.hero-banner .secondary .container p {
   text-align: left;
+  color: #ffffff;
 }
-.hero-banner .secondary .container-fluid h1 {
+.hero-banner .secondary .container-fluid h1,
+.hero-banner .secondary .container h1 {
   margin-bottom: 0;
 }
-.hero-banner .secondary .container-fluid p {
+.hero-banner .secondary .container-fluid p,
+.hero-banner .secondary .container p {
   font-size: 18px;
 }
 .hero-banner .secondary .input-lg {
@@ -7262,6 +7295,12 @@ footer .bah-logo {
 .btn:focus {
   outline: none !important;
   box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+}
+.btn.disabled,
+.btn[disabled],
+fieldset[disabled] .btn {
+  opacity: 0.3;
+  filter: alpha(opacity=30);
 }
 .btn .material-icons {
   vertical-align: -7px;
@@ -7409,8 +7448,23 @@ label.btn > input[type='radio'] {
 .navbar-default .navbar-brand {
   width: 150px;
   padding-top: 8px;
+  padding-right: 30px;
   padding-bottom: 8px;
-  margin-right: 10px;
+  margin-right: 35px;
+  position: relative;
+}
+.navbar-default .navbar-brand:after {
+  content: "alpha";
+  text-transform: uppercase;
+  position: absolute;
+  color: white;
+  opacity: 0.6;
+  left: 120px;
+  bottom: 9px;
+  font-weight: bold;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
 }
 .navbar-default .navbar-nav > li > a {
   color: rgba(255, 255, 255, 0.65);
@@ -7965,6 +8019,25 @@ label.btn > input[type='radio'] {
 .search-results .card-search .col-github-stats .github-stats {
   padding-left: 20px;
 }
+.profile-wrapper .user-avatar {
+  border-radius: 100%;
+  margin: 0 auto;
+  height: 130px;
+  width: 130px;
+}
+.profile-wrapper .form-group label {
+  margin-bottom: 0;
+}
+.profile-wrapper .form-group .form-control-static {
+  padding-top: 3.5px;
+  padding-bottom: 3.5px;
+}
+.profile-wrapper .form-group a {
+  display: block;
+}
+.profile-wrapper .profile-tab {
+  padding-bottom: 25px;
+}
 /* Media queries */
 @media screen and (min-width: 1200px) and (max-width: 1325px) {
   .cards-wrapper .github-stats .stat {
@@ -8109,6 +8182,11 @@ body ai-dialog-overlay.active {
 .modal-title {
   font-weight: bold;
 }
+.modal-body {
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 .modal-body h1 {
   font-size: 36px;
   margin-top: 0;
@@ -8130,7 +8208,7 @@ body ai-dialog-overlay.active {
   margin-right: 5px;
 }
 .contributors-modal {
-  max-height: 400px;
+  max-height: 500px;
   overflow-y: auto;
   overflow-x: hidden;
 }

@@ -17,6 +17,7 @@ export class App {
       { route: 'insight', name: 'insight', viewPorts: { mainContent: { moduleId: 'insight/insight' }, headerContent: { moduleId: 'components/headers/insight-title' } }, nav: true, title: 'Insight', settings: { desc: 'Software Oriented Data Analysis (SODA)', altTitle: 'Enterprise Insight' } },
       { route: 'results', name: 'results', viewPorts: { mainContent: { moduleId: 'search/results' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: false, title: 'Search Results' },
       { route: 'project-details', name: 'project-details', viewPorts: { mainContent: { moduleId: 'project-details/project-details' }, headerContent: { moduleId: 'components/headers/project-details-header' } }, nav: false, title: 'Project Details' },
+      { route: 'profile', name: 'profile', viewPorts: { mainContent: { moduleId: 'profile/profile' }, headerContent: { moduleId: 'components/headers/secondary-title' } }, nav: false, title: 'Your Account', settings: { desc: 'View and manage your account settings' } },
     ]);
     this.router = router;
   }
