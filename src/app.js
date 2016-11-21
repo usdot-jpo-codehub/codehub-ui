@@ -22,9 +22,9 @@ export class App {
     this.router = router;
   }
 
-  constructor(dialogService) {
+  constructor(dialogService, stageConfig) {
     this.dialogService = dialogService;
-    this.stageConfig = StageConfig;
+    this.stageConfig = stageConfig;
   }
 
   openReadmeModal(repo) {

@@ -45,6 +45,7 @@ System.config({
     "bootstrap-multiselect": "npm:bootstrap-multiselect@0.9.13-1",
     "core-js": "npm:core-js@1.2.7",
     "corejs-typeahead": "npm:corejs-typeahead@0.11.1",
+    "detect-browser": "npm:detect-browser@1.5.0",
     "fetch": "github:github/fetch@2.0.1",
     "font-awesome": "npm:font-awesome@4.6.3",
     "jquery": "npm:jquery@2.2.4",
@@ -255,6 +256,9 @@ System.config({
       "jquery": "npm:jquery@2.2.4",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:detect-browser@1.5.0": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:font-awesome@4.6.3": {
       "css": "github:systemjs/plugin-css@0.1.27"
