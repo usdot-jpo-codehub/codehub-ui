@@ -41,13 +41,13 @@ body ai-dialog-overlay.active {
     }
   }
 
-  max-height: 500px;
+  max-height: 460px;
   overflow-y: auto;
   overflow-x: hidden;
 }
 
 .contributors-modal {
-    max-height: 500px;
+    max-height: 460px;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -55,4 +55,14 @@ body ai-dialog-overlay.active {
 .modal-footer {
   border-radius: 0 0 4px 4px;
   background-color: lighten(@black, 95%);
+
+  .btn + .btn {
+    margin-left: 10px;
+  }
+
+  .btn {
+    .material-icons {
+      line-height: 0.6;
+    }
+  }
 }
