@@ -7448,8 +7448,23 @@ label.btn > input[type='radio'] {
 .navbar-default .navbar-brand {
   width: 150px;
   padding-top: 8px;
+  padding-right: 30px;
   padding-bottom: 8px;
-  margin-right: 10px;
+  margin-right: 35px;
+  position: relative;
+}
+.navbar-default .navbar-brand:after {
+  content: "alpha";
+  text-transform: uppercase;
+  position: absolute;
+  color: white;
+  opacity: 0.6;
+  left: 120px;
+  bottom: 9px;
+  font-weight: bold;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
 }
 .navbar-default .navbar-nav > li > a {
   color: rgba(255, 255, 255, 0.65);
