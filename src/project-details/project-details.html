@@ -9,30 +9,28 @@
       <div class="col-lg-9 col-md-9 col-content">
         <div class="row proj-nav">
           <div class="col-lg-12">
-            <span class="pull-left">
-              <button onclick="window.history.go(-1); return false;" class="btn btn-link btn-sm"><i class="material-icons">chevron_left</i>Back</button>
-            </span>
-            <span class="pull-right"></span>
+            <ul class="list-inline">
+              <li><button onclick="window.history.go(-1); return false;" class="btn btn-link btn-sm"><i class="material-icons">chevron_left</i>Back</button></li>
+              <li><a class="btn btn-link btn-sm" href="${repo.repositoryUrl}" target="_blank">View on Github<i class="material-icons">chevron_right</i></a></li>
+            </ul>
           </div>
         </div>
         <div class="row proj-content">
           <div class="col-lg-12">
             <div class="card full-width">
-              <div class="ribbon-wrapper">
+              <!-- <div class="ribbon-wrapper">
                 <div class="ribbon">Gamification</div>
-              </div>
+              </div> -->
               <div class="row">
                 <div class="col-lg-8">
                   <div class="lined-header">
-                    <a class="pull-right btn btn-link" href="${repo.repositoryUrl}" target="_blank"><i class="material-icons">open_in_new</i>View on Github</a>
-                    <h2 class=""><span>overview</span></h2>
+                    <h2 class=""><span>Overview</span></h2>
                   </div>
                   <div class="proj-desc">${repo.project_description}</div>
                   <div class="text-muted last-updated">By <a href="${repo.organizationUrl}" target="_blanks">${repo.organization}</a> &nbsp; | &nbsp; Updated ${repo.updatedAt | ago} <span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> ${repo.origin}</span></div>
 
                   <ul class="list-inline">
                     <li><button click.trigger="openReadmeModal(repo)" class="btn btn-secondary"><i class="material-icons">library_books</i> Show README</button></li>
-                    <li><button class="btn btn-link"><i class="material-icons">insert_drive_file</i> Show Build File</button></li>
                   </ul>
                 </div>
                 <div class="col-lg-4 col-github-stats">
@@ -126,7 +124,11 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
+        <div class="row proj-content">
+          <div class="col-lg-12">
             <div class="card full-width">
               <div class="lined-header">
                 <h2 class=""><span>Health Statistics</span></h2>
@@ -205,10 +207,10 @@
       <div class="col-lg-3 col-md-3 col-sidebar">
         <div class="row card-btns">
           <div class="col-md-6">
-            <a href="#"><i class="material-icons">bookmark_border</i> Bookmark</a>
+            <a href="#" class="disabled"><i class="material-icons">bookmark_border</i> Bookmark</a>
           </div>
           <div class="col-md-6">
-            <a href="#"><i class="material-icons">share</i> Share</a>
+            <a href="#" class="disabled"><i class="material-icons">share</i> Share</a>
           </div>
         </div>
 
@@ -232,7 +234,7 @@
 
             </div>
             <div class="view-all clearfix">
-              <a if.bind="repo.contributors_list.length > 5" href="#" click.delegate="openContribModal(repo)" class="">View All Projects <i class="material-icons">keyboard_arrow_right</i></a>
+              <a if.bind="repo.contributors_list.length > 5" href="#" click.delegate="openContribModal(repo)" class="">View All Contributors <i class="material-icons">keyboard_arrow_right</i></a>
             </div>
 
             <h3>Similar Projects</h3>

@@ -5,9 +5,9 @@
 
   <div if.bind="repo" class="col-lg-4 col-md-12 col-sm-12">
     <div class="card card-default hover-card">
-      <div class="ribbon-wrapper">
+      <!-- <div class="ribbon-wrapper">
         <div class="ribbon">Gamification</div>
-      </div>
+      </div> -->
       <div class="card-header">
         <div class="lang-logo">
           <span>
@@ -28,15 +28,15 @@
       </div>                    
 
       <div class="row health-stats text-center">      
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-md-4 col-sm-4">
           <h3 class="health-tiles">Reliabilty</h3>
           <span class="num text-muted text-emphasized">23</span><span class="text-muted"> bugs <span class="rating rating-C">C</span></span>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-md-4 col-sm-4">
           <h3 class="health-tiles">Security</h3>
           <span class="num text-muted text-emphasized">0</span><span class="text-muted"> vulnerabilities <span class="rating rating-A">A</span></span>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-md-4 col-sm-4">
           <h3 class="health-tiles">Techincal Debt</h3>
           <span class="num text-muted text-emphasized">7</span><span class="text-muted"> days <span class="rating rating-B">B</span></span>
         </div>
@@ -47,8 +47,8 @@
           <li><a href="#" click.trigger="openReadmeModal(repo)"><i class="material-icons">library_books</i> Show README</a></li>
         </ul>
         <ul class="list-inline pull-right">
-          <li><a href="#" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a></li>
-          <li><a href="#" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="Bookmark"><i class="material-icons">bookmark_border</i></a></li>
+          <li><a href="#" class="disabled" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a></li>
+          <li><a href="#" class="disabled" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="Bookmark"><i class="material-icons">bookmark_border</i></a></li>
         </ul>
       </div>
 

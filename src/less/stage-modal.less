@@ -1,6 +1,6 @@
 body ai-dialog-overlay.active {
 	background-color: @modal-backdrop-bg;
-  	opacity:@modal-backdrop-opacity;
+  opacity:@modal-backdrop-opacity;
 }
 
 .modal-header {
@@ -40,10 +40,14 @@ body ai-dialog-overlay.active {
       margin-right: 5px;
     }
   }
+
+  max-height: 460px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .contributors-modal {
-    max-height: 400px;
+    max-height: 460px;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -51,4 +55,14 @@ body ai-dialog-overlay.active {
 .modal-footer {
   border-radius: 0 0 4px 4px;
   background-color: lighten(@black, 95%);
+
+  .btn + .btn {
+    margin-left: 10px;
+  }
+
+  .btn {
+    .material-icons {
+      line-height: 0.6;
+    }
+  }
 }

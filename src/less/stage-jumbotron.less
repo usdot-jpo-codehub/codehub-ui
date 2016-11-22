@@ -8,6 +8,7 @@
 		background-size: cover;
 		width: 100%;
 		z-index: 0;
+		padding-top: 35px;
 	}
 
 	.tt-cursor {
@@ -17,7 +18,7 @@
 	.hero-jumbotron {
 		background-color: transparent;
 		margin-bottom: 0px;
-		padding-top: 20px;
+		padding-top: 40px;
 		text-shadow: 0 5px 10px rgba(0,0,0,0.2);
 
 		.input-lg {
@@ -70,9 +71,8 @@
 			}
 		}
 
-		.container-fluid {
-			padding-top: 20px;
-
+		.container-fluid,
+		.container {
 			h1, p {
 				text-align: center;
 				color: @white;
@@ -92,16 +92,19 @@
 	}
 
 	.secondary {
-		padding: 20px 0 10px 15px;
+		padding: 20px;
+		padding-top: 45px;
 
 		&.hero-jumbotron {
 			text-align: left;
 		}
 
-		.container-fluid {
+		.container-fluid,
+		.container {
 
 			h1, p {
 				text-align: left;
+				color: @white;
 			}
 
 			h1 {
@@ -110,7 +113,6 @@
 
 			p {
 				font-size: @font-size-large;
-				margin-bottom: 30px;
 			}
 		}
 
@@ -160,7 +162,6 @@
 	}
 
   .details {
-  	padding-top: 30px;
 		padding-bottom: 40px;
 
 		.proj-title {
@@ -168,18 +169,13 @@
 
 	    .lang-logo {
 	      position: absolute;
-	      height: 50px;
-	      width: 50px;
+	      height: 60px;
+	      width: 60px;
 	      border-radius: 100%;
 	      overflow: hidden;
 	      text-align: center;
 	      border: 1px solid @white;
 	      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-
-	      img {
-	        width: 50px;
-	        height: 50px;
-	      }
 	    }
     }
 

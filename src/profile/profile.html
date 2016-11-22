@@ -1,0 +1,69 @@
+<template>
+  
+  <div class="container profile-container loading-wrapper">
+    <div class="row">
+      <div class="col-md-4 cards-wrapper profile-wrapper">
+        <div class="card">
+          <div class="lined-header">
+            <h2 class=""><span>Profile</span></h2>
+          </div>
+          <div class="row">
+            <div class="col-md-6 text-center">
+              <p class="text-center"><strong>Profile Picture</strong></p>
+              <img src="../../../../img/heimdall.jpeg" class="user-avatar">
+            </div>
+            <div class="col-md-6">
+              <form class="form">
+                <div class="form-group">
+                  <label>First Name</label>
+                  <p class="form-control-static">John</p>
+                </div>
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <p class="form-control-static">Heimdall</p>
+                </div>
+                <div class="form-group">
+                  <label>Email</label>
+                  <a href="#" class="form-control-static">heimdall.j@exmple.com</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 cards-wrapper profile-wrapper">
+        <div class="card">
+          <ul class="nav nav-tabs profile-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#projects" aria-controls="projects" role="tab" data-toggle="tab">My Projects</a></li>
+            <li role="presentation"><a href="#contributed" aria-controls="contributed" role="tab" data-toggle="tab">Projects I contributed to</a></li>
+            <li role="presentation"><a href="#bookmarks" aria-controls="bookmarks" role="tab" data-toggle="tab">Recent Bookmarks</a></li>
+          </ul>
+          <div class="profile-tab tab-content text-center">
+            <div role="tabpanel" class="tab-pane active" id="projects">
+              <h3>My Project's</h3>
+              <div class="empty-state">
+                <i class="material-icons">access_time</i>
+                <em class="text-muted">Coming soon</em>
+              </div>
+              <button class="btn btn-secondary disabled" disabled="disabled"><i class="material-icons">add</i>Create new Project</button>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="contributed">
+              <h3>Projects I contributed to</h3>
+              <div class="empty-state">
+                <i class="material-icons">access_time</i>
+                <em class="text-muted">Coming soon</em>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="bookmarks">
+              <h3>Recently Bookmarked</h3>
+              <div class="empty-state">
+                <i class="material-icons">access_time</i>
+                <em class="text-muted">Coming soon</em>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

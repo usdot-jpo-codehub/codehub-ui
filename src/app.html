@@ -1,6 +1,7 @@
 <template>
+  <require from="resources/custom-elements/browser-alert"></require>
 
-  <div class="hero-banner">
+  <div id="top" class="hero-banner">
     <div class="inner">
       <compose view-model="nav-bar" router.bind="router"></compose>
       <router-view name="headerContent"></router-view>
@@ -9,6 +10,12 @@
 
   <div class="page-host">
     <router-view name="mainContent"></router-view>
+  </div>
+
+  <browser-alert></browser-alert>
+
+  <div class="fab-container">
+    <a href="#top" id="backToTop" tooltip="Back To Top" class="fab"><i class="material-icons">arrow_upward</i></a>
   </div>
 
   <footer>
@@ -20,6 +27,8 @@
         <div class="col-lg-6 col-md-5">
           <ul class="list-inline">
             <li><a href="#">Build ${stageConfig.BUILD_LABEL}</a></li>
+            <li><span class="text-muted">|</span></li>
+            <li><a href="/about" target="_self">About Stage</a></li>
           </ul>
         </div>
         <div class="col-lg-3 col-md-3">
