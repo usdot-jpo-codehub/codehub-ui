@@ -14,7 +14,7 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default btn-icon-right">View Project <i class="material-icons">chevron_right</i></button>
+          <button if.bind="router.currentInstruction.config.name != 'project-details'" type="button" class="btn btn-default btn-icon-right" click.delegate="navigateAndClose()" >View Project <i class="material-icons">chevron_right</i></button>
           <button type="button" class="btn btn-default" click.trigger="controller.cancel()">Close</button>
         </div>
       </div>
