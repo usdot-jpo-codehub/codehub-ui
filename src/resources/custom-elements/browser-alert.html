@@ -1,0 +1,6 @@
+<template>
+  <div id="browser-alert" if.bind="!compat" class="toaster-notification">
+  	<button type="button" class="close" data-dismiss="alert" aria-label="Close" click.delegate="dismiss()"><span aria-hidden="true"><i class="material-icons">close</i></span></button>
+  	<p><i class="material-icons warning-icon">warning</i> Stage has been optimized for <a href="https://www.google.com/chrome/browser/desktop/" target="_blank" class="btn btn-link">Chrome</a> and <a href="https://www.mozilla.org/en-US/firefox/products/" target="_blank" class="btn btn-link">Firefox</a></p>
+  </div>
+</template>

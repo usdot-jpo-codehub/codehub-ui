@@ -1,14 +1,15 @@
 .home-tabs,
-.source-tabs {
+.source-tabs,
+.profile-tabs {
   margin: 0 -15px;
   border: none;
   
-
   >li {
     width: 50%;
 
     > a {
-      color: fade(@teal, 65%);
+      // color: fade(@teal, 65%);
+      color: fade(@black, 55%);
       border-radius: 0;
       border: none;
       border-bottom: 3px solid transparent;
@@ -57,7 +58,8 @@
   }
 }
 
-.source-tabs {
+.source-tabs,
+.profile-tabs {
   margin: 0;
   border-bottom: 1px solid @stage-gray;
 
@@ -78,6 +80,7 @@
         line-height: 35px;
         margin-right: 10px;
         margin-bottom: 0;
+        letter-spacing: 0;
       }
     }
   }
@@ -87,10 +90,23 @@
   padding: 20px 0;
 }
 
+.profile-tabs {
+  margin-bottom: 15px;
+
+  >li {
+    width: auto;
+
+    >a {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+}
+
 .rating {
   display: inline-block;
   width: 1.3em;
-  height: 1.3em;
+  height: 1.15em;
   line-height: 1.3;
   font-weight: 300;
   text-align: center;
@@ -115,9 +131,6 @@
 
       &:hover,
       &:active {
-        // background:@teal;
-        // color: @white;
-        // border-color:@teal;
         border-bottom: 2px solid @teal;
       }
 

@@ -37,7 +37,7 @@ export class Results {
   }
 
   determineActivationStrategy() {
-    return activationStrategy.invokeLifecycle;
+    return activationStrategy.replace; // Must be replace due to virtualization
   }
 
   activate(params) {
