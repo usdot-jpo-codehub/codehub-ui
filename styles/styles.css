@@ -7641,6 +7641,10 @@ label.btn > input[type='radio'] {
   text-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
   background-color: rgba(0, 0, 0, 0.1);
 }
+.navbar-default .user-nav .utility-icons a.disabled:hover,
+.navbar-default .user-nav .utility-icons a.disabled:focus {
+  color: #ffffff !important;
+}
 .navbar-default .user-nav .dropdown-menu > li a {
   padding-top: 6px;
   padding-bottom: 6px;
@@ -7847,7 +7851,7 @@ label.btn > input[type='radio'] {
   margin-right: 10px;
 }
 .cards-wrapper .card .card-links .pull-right {
-  margin-right: 10px;
+  margin-right: 0px;
 }
 .cards-wrapper .card .card-links .pull-right > li {
   padding-left: 0px;
@@ -8292,6 +8296,7 @@ body ai-dialog-overlay.active {
 }
 .modal-footer {
   border-radius: 0 0 4px 4px;
+  padding: 10px 15px;
   background-color: #f2f2f2;
 }
 .modal-footer .btn + .btn {
