@@ -6982,6 +6982,10 @@ a.disabled:hover {
 .toaster-notification .warning-icon {
   color: #fdbc59;
 }
+.toaster-notification .btn-link {
+  padding-left: 5px;
+  padding-right: 5px;
+}
 .toaster-notification .btn-link:hover,
 .toaster-notification .btn-link:focus {
   color: #ffffff;
@@ -7535,7 +7539,7 @@ label.btn > input[type='radio'] {
   opacity: 0.6;
   left: 120px;
   bottom: 9px;
-  font-weight: bold;
+  font-weight: 900;
   font-size: 10px;
   letter-spacing: 1px;
   text-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
