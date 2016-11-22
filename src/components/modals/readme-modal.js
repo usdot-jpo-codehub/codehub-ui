@@ -6,7 +6,7 @@ import { Router } from 'aurelia-router';
 export class ReadmeModal {
   constructor(controller, router) {
     this.controller = controller;
-    //this.controller.settings.centerHorizontalOnly = true;
+    // this.controller.settings.centerHorizontalOnly = true;
     this.controller.settings.lock = false;
 
     this.router = router;
@@ -17,7 +17,7 @@ export class ReadmeModal {
   }
 
   navigateAndClose() {
-    this.router.navigateToRoute('project-details', {id:this.repo.id});
+    this.router.navigateToRoute('project-details', { id: this.repo.id });
     this.controller.cancel();
   }
 
