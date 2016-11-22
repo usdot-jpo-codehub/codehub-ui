@@ -6953,6 +6953,66 @@ a.disabled:hover {
   font-size: 12px;
   padding: 3px 10px;
 }
+.toaster-notification {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  background-color: #262626;
+  height: 50px;
+  line-height: 49px;
+  color: #ffffff;
+  font-size: 15px;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  transform: translateY(200px);
+  -moz-transform: translateY(200px);
+  -ms-transform: translateY(200px);
+  -o-transform: translateY(200px);
+  -webkit-transform: translateY(200px);
+  -webkit-animation: comeDown 1.25s 1.0s ease forwards;
+  -moz-animation: comeDown 1.25s 1.0s ease forwards;
+  -ms-animation: comeDown 1.25s 1.0s ease forwards;
+}
+.toaster-notification .material-icons {
+  vertical-align: -10px;
+  margin-right: 12px;
+  font-size: 30px;
+}
+.toaster-notification .warning-icon {
+  color: #fdbc59;
+}
+.toaster-notification .btn-link:hover,
+.toaster-notification .btn-link:focus {
+  color: #ffffff;
+}
+.toaster-notification .close {
+  right: 25px;
+  position: absolute;
+  float: none;
+  top: 10px;
+  color: #ffffff;
+  text-shadow: none;
+  opacity: 0.7;
+}
+.toaster-notification .close .material-icons {
+  margin-right: 0;
+}
+@-webkit-keyframes comeDown {
+  100% {
+    -webkit-transform: translateY(0);
+  }
+}
+@-moz-keyframes comeDown {
+  100% {
+    -moz-transform: translateY(0);
+  }
+}
+@-ms-keyframes comeDown {
+  100% {
+    -ms-transform: translateY(0);
+  }
+}
 footer {
   position: absolute;
   bottom: 0;
@@ -7415,6 +7475,12 @@ fieldset[disabled] .btn-primary.active {
 }
 .btn-filters.collapsed i {
   transform: rotate(0deg);
+}
+.btn-icon-right {
+  padding-right: 10px;
+}
+.btn-icon-left {
+  padding-left: 10px;
 }
 .clear-btn {
   color: #404040;
@@ -8191,7 +8257,7 @@ body ai-dialog-overlay.active {
   font-weight: bold;
 }
 .modal-body {
-  max-height: 500px;
+  max-height: 460px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -8216,13 +8282,19 @@ body ai-dialog-overlay.active {
   margin-right: 5px;
 }
 .contributors-modal {
-  max-height: 500px;
+  max-height: 460px;
   overflow-y: auto;
   overflow-x: hidden;
 }
 .modal-footer {
   border-radius: 0 0 4px 4px;
   background-color: #f2f2f2;
+}
+.modal-footer .btn + .btn {
+  margin-left: 10px;
+}
+.modal-footer .btn .material-icons {
+  line-height: 0.6;
 }
 .markdown-body img {
   max-width: 100%;

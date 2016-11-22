@@ -1,5 +1,6 @@
 import { DialogService } from 'aurelia-dialog';
 import { inject } from 'aurelia-framework';
+import 'fetch';
 import { ReadmeModal } from 'components/modals/readme-modal';
 import { ContributorsModal } from 'components/modals/contributors-modal.js';
 import { FeedbackModal } from 'components/modals/feedback-modal.js';
@@ -21,9 +22,9 @@ export class App {
     this.router = router;
   }
 
-  constructor(dialogService) {
+  constructor(dialogService, stageConfig) {
     this.dialogService = dialogService;
-    this.stageConfig = StageConfig;
+    this.stageConfig = stageConfig;
   }
 
   openReadmeModal(repo) {
