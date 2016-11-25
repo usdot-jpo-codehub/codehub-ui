@@ -9,7 +9,9 @@
     <title>Stage | About Stage</title>
 		<link rel="stylesheet" href="styles/styles.css">
 		<link rel="stylesheet" href="about/styles/about.css">
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="jspm_packages/npm/roboto-fontface@0.6.0/css/roboto/roboto-fontface.css" rel="stylesheet">
+    <link href="jspm_packages/npm/roboto-fontface@0.6.0/css/roboto-condensed/roboto-condensed-fontface.css" rel="stylesheet">
+    <link href="jspm_packages/npm/material-design-icons-iconfont@3.0.1/dist/material-design-icons.css" rel="stylesheet">
 	</head>
 
 	<body class="welcome">
@@ -65,6 +67,7 @@
 								<div id="b0-3" class="bubble size2"><img src="img/language-icons/php.svg"/></div>
 								<div id="b0-4" class="bubble size4"><img src="img/language-icons/python.svg"/></div>
 								<div id="b0-5" class="bubble size2"><img src="img/language-icons/typescript.svg"/></div>
+								<div id="b2-1" class="bubble size2"><img src="img/language-icons/ruby.svg"/></div>
 							</div>
 
 							<div id="parallax-lvl-1">
@@ -76,7 +79,7 @@
   						</div>
 
   						<div id="parallax-lvl-2">
-    						<div id="b2-1" class="bubble size2"><img src="img/language-icons/ruby.svg"/></div>
+    						
 								<div id="b2-2" class="bubble size3"><img src="img/language-icons/swift.svg"/></div>
 								<div id="b1-4" class="bubble size3"><img src="img/language-icons/sass.svg"/></div>
 								<div id="b2-4" class="bubble size1"><img src="img/language-icons/groovy.svg"/></div>
@@ -230,22 +233,20 @@
 	    <div class="container-fluid">
 	      <div class="row">
 	      	<div class="col-lg-12">
-	      		<p class="text-center">© Booz Allen Hamliton 2016</p>
+	      		<p class="text-center clearfix">© Booz Allen Hamliton 2016 <button type="button" class="btn btn-link pull-right" data-toggle="modal" data-target="#stageTeamModal">Stage Team</button></p>
       		</div>
 	      </div>
 	    </div>
     </footer>
-
-
 
 		<script src='about/js/jquery.min.js'></script>
 		<script src='about/js/particles.min.js'></script>
 		<script src='about/js/jquery.parallax.js'></script>
 		<script src="about/js/smooth-scroll.min.js"></script>
 		<script src="about/js/index.js"></script>
+		<script src="jspm_packages/github/twbs/bootstrap@3.3.7/js/bootstrap.min.js"></script>
 
 		<script>
-
 			smoothScroll.init();
 
 			$(window).bind('scroll',function(e){
@@ -275,5 +276,184 @@
 	      }
 	    });
 		</script>
+
+		<div id="stageTeamModal" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">The Stage Team <small>(Marking Booz Allen Great Again!)</h4>
+					</div>
+					<div class="modal-body">
+						<div class="media-list media-list-users list-group">
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="list-group-item">
+										<span class="media">
+											<span class="media-left">
+												<img class="img-circle media-object" src="img/language-icons/unknown-user.svg">
+											</span>
+											<span class="media-body clearfix">
+												<h5>Ki Lee<span class="pull-right"></span></h5>
+												<span class="media-body-secondary">Product Owner</span>
+											</span>
+										</span>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="list-group-item">
+										<span class="media">
+											<span class="media-left">
+												<img class="img-circle media-object" src="https://avatars.githubusercontent.com/terpbrc">
+											</span>
+											<span class="media-body clearfix">
+												<h5>Bradley Cohen<span class="pull-right"></span></h5>
+												<span class="media-body-secondary">Communications Manager</span>
+											</span>
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="list-group-item">
+										<span class="media">
+											<span class="media-left">
+												<img class="img-circle media-object" src="img/language-icons/unknown-user.svg">
+											</span>
+											<span class="media-body clearfix">
+												<h5>Sue Kim<span class="pull-right"></span></h5>
+												<span class="media-body-secondary">Program Manager</span>
+											</span>
+										</span>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="list-group-item">
+										<span class="media">
+											<span class="media-left">
+												<img class="img-circle media-object" src="https://avatars.githubusercontent.com/camelspeed">
+											</span>
+											<span class="media-body clearfix">
+												<h5>Johnny Mohseni<span class="pull-right"></span></h5>
+												<span class="media-body-secondary">Tech Lead</span>
+											</span>
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="list-group-item">
+										<span class="media">
+											<span class="media-left">
+												<img class="img-circle media-object" src="https://avatars.githubusercontent.com/jthapliya">
+											</span>
+											<span class="media-body clearfix">
+												<h5>Janaki Barakoti Thapliya<span class="pull-right"></span></h5>
+												<span class="media-body-secondary">Developer</span>
+											</span>
+										</span>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="list-group-item">
+										<span class="media">
+											<span class="media-left">
+												<img class="img-circle media-object" src="img/language-icons/unknown-user.svg">
+											</span>
+											<span class="media-body clearfix">
+												<h5>Nathaniel Solomon<span class="pull-right"></span></h5>
+												<span class="media-body-secondary">Developer</span>
+											</span>
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="list-group-item">
+										<span class="media">
+											<span class="media-left">
+												<img class="img-circle media-object" src="https://avatars.githubusercontent.com/onetrickwolf">
+											</span>
+											<span class="media-body clearfix">
+												<h5>Brent Conn<span class="pull-right"></span></h5>
+												<span class="media-body-secondary">Developer</span>
+											</span>
+										</span>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="list-group-item">
+										<span class="media">
+											<span class="media-left">
+												<img class="img-circle media-object" src="https://avatars.githubusercontent.com/leedaniel2">
+											</span>
+											<span class="media-body clearfix">
+												<h5>Daniel Lee<span class="pull-right"></span></h5>
+												<span class="media-body-secondary">Data Scientist</span>
+											</span>
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="list-group-item">
+										<span class="media">
+											<span class="media-left">
+												<img class="img-circle media-object" src="https://avatars.githubusercontent.com/MelvinDunn">
+											</span>
+											<span class="media-body clearfix">
+												<h5>Melvin Dunn<span class="pull-right"></span></h5>
+												<span class="media-body-secondary">Data Scientist</span>
+											</span>
+										</span>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="list-group-item">
+										<span class="media">
+											<span class="media-left">
+												<img class="img-circle media-object" src="https://avatars.githubusercontent.com/btrayn">
+											</span>
+											<span class="media-body clearfix">
+												<h5>Ben Traynham<span class="pull-right"></span></h5>
+												<span class="media-body-secondary">UX Designer</span>
+											</span>
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="list-group-item">
+										<span class="media">
+											<span class="media-left">
+												<img class="img-circle media-object" src="https://avatars.githubusercontent.com/herrjosua">
+											</span>
+											<span class="media-body clearfix">
+												<h5>Joshua Bock<span class="pull-right"></span></h5>
+												<span class="media-body-secondary">UX Designer</span>
+											</span>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
