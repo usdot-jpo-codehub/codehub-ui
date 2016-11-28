@@ -1,9 +1,9 @@
 .home-tabs,
-.source-tabs {
+.source-tabs,
+.profile-tabs {
   margin: 0 -15px;
   border: none;
   
-
   >li {
     width: 50%;
 
@@ -58,7 +58,8 @@
   }
 }
 
-.source-tabs {
+.source-tabs,
+.profile-tabs {
   margin: 0;
   border-bottom: 1px solid @stage-gray;
 
@@ -87,6 +88,19 @@
 
 .source-tab {
   padding: 20px 0;
+}
+
+.profile-tabs {
+  margin-bottom: 15px;
+
+  >li {
+    width: auto;
+
+    >a {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
 }
 
 .rating {

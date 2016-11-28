@@ -14,8 +14,24 @@
 	.navbar-brand {
 		width: 150px;
 		padding-top: 8px;
+		padding-right: 30px;
 		padding-bottom: 8px;
-		margin-right: 10px;
+		margin-right: 35px;
+		position: relative;
+
+		&:after {
+			content: "alpha";
+			text-transform: uppercase;
+			position: absolute;
+			color: white;
+			opacity: 0.6;
+			left: 120px;
+			bottom: 9px;
+			font-weight: 900;
+			font-size: @font-size-smallest;
+			letter-spacing: 1px;
+			text-shadow: 0 3px 4px rgba(0,0,0,0.2);
+		}
 	}
 
 	.navbar-nav {
@@ -144,6 +160,13 @@
 				&:focus {
 					text-shadow: 0 3px 4px rgba(0,0,0,0.2);
 					background-color: fade(@black, 10%);
+				}
+			}
+
+			a.disabled {
+				&:hover,
+				&:focus {
+					color: @white !important;
 				}
 			}
 		}

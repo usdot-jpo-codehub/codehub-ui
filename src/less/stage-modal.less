@@ -40,15 +40,30 @@ body ai-dialog-overlay.active {
       margin-right: 5px;
     }
   }
+
+  max-height: 460px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .contributors-modal {
-    max-height: 400px;
+    max-height: 460px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
 .modal-footer {
   border-radius: 0 0 4px 4px;
+  padding: 10px 15px;
   background-color: lighten(@black, 95%);
+
+  .btn + .btn {
+    margin-left: 10px;
+  }
+
+  .btn {
+    .material-icons {
+      line-height: 0.6;
+    }
+  }
 }
