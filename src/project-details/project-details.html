@@ -245,11 +245,11 @@
                 <a route-href="route:project-details; params.bind: {id:project.project_id}" class="list-group-item">
                   <span class="media">
                     <span class="media-left">
-                      <img class="img-circle media-object" src="https://github.com/${project.project_org_name}.png" onError="this.onerror=null;this.src='/img/language-icons/organization-default.svg';">
+                      <img class="img-circle media-object" src="https://github.com/${project.project_org_name.organization}.png" onError="this.onerror=null;this.src='/img/language-icons/organization-default.svg';">
                     </span>
                     <span class="media-body clearfix">
                       <h5>${project.project_name}</h5>
-                      <span class="media-body-secondary">${project.project_org_name}</span>
+                      <span class="media-body-secondary">${project.project_org_name.organization}</span>
                     </span>
                   </span>
                 </a>
