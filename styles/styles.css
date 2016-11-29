@@ -8101,6 +8101,9 @@ label.btn > input[type='radio'] {
 .search-results .card-search .col-github-stats .github-stats {
   padding-left: 20px;
 }
+.search-results .no-results .empty-state {
+  padding-top: 10px;
+}
 .profile-wrapper .user-avatar {
   border-radius: 100%;
   margin: 0 auto;
