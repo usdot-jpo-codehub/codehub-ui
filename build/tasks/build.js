@@ -23,7 +23,7 @@ gulp.task('build-system', function() {
     .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
     .pipe(eslint())
     .pipe(eslint.format())
-    .pipe(eslint.failOnError())
+    .pipe(eslint.failAfterError())
     .pipe(changed(paths.output, {extension: '.js'}))
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(to5(assign({}, compilerOptions.system())))
