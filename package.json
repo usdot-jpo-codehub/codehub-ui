@@ -89,6 +89,7 @@
       "bootstrap": "github:twbs/bootstrap@^3.3.5",
       "bootstrap-less": "github:distros/bootstrap-less@^3.3.9",
       "bootstrap-multiselect": "npm:bootstrap-multiselect@0.9.13-1",
+      "c3": "npm:c3@^0.4.11",
       "corejs-typeahead": "npm:corejs-typeahead@^0.11.1",
       "detect-browser": "npm:detect-browser@^1.5.0",
       "fetch": "github:github/fetch@^2.0.1",

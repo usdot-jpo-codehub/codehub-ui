@@ -13,6 +13,7 @@ System.config({
     "npm:*": "jspm_packages/npm/*"
   },
   baseUrl: "/",
+
   meta: {
     "bootstrap": {
       "deps": [
@@ -20,6 +21,7 @@ System.config({
       ]
     }
   },
+
   map: {
     "aurelia-animator-css": "npm:aurelia-animator-css@1.0.1",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0",
@@ -43,6 +45,7 @@ System.config({
     "bootstrap": "github:twbs/bootstrap@3.3.7",
     "bootstrap-less": "github:distros/bootstrap-less@3.3.9",
     "bootstrap-multiselect": "npm:bootstrap-multiselect@0.9.13-1",
+    "c3": "npm:c3@0.4.11",
     "core-js": "npm:core-js@1.2.7",
     "corejs-typeahead": "npm:corejs-typeahead@0.11.1",
     "detect-browser": "npm:detect-browser@1.5.0",
@@ -245,6 +248,10 @@ System.config({
       "ieee754": "npm:ieee754@1.1.8",
       "isarray": "npm:isarray@1.0.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:c3@0.4.11": {
+      "css": "github:systemjs/plugin-css@0.1.32",
+      "d3": "npm:d3@3.5.17"
     },
     "npm:core-js@1.2.7": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",

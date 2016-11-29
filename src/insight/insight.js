@@ -1,7 +1,6 @@
-// TODO Non-functional placeholder replica of most popular
-
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
+import * as c3 from 'c3';
 import { DataContext } from 'services/datacontext';
 import { Filters } from 'components/filters';
 
@@ -40,6 +39,37 @@ export class Insight {
 
   activate() {
     this.getData();
+  }
+
+  attached() {
+    const chart = c3.generate({
+      bindto: '#chart',
+      legend: {
+        position: 'inset',
+        inset: {
+          anchor: 'top-left',
+        },
+      },
+      data: {
+        columns: [
+          ['data1', 30],
+          ['data2', 120],
+        ],
+        type: 'donut',
+        // onclick: function (d, i) {
+        //   console.log('onclick', d, i);
+        // },
+        // onmouseover: function (d, i) {
+        //   console.log('onmouseover', d, i);
+        // },
+        // onmouseout: function (d, i) {
+        //   console.log('onmouseout', d, i);
+        // }
+      },
+      donut: {
+        title: 'Iris Petal Width',
+      },
+    });
   }
 
 }
