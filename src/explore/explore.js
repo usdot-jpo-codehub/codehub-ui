@@ -31,14 +31,6 @@ export class Explore {
     ];
   }
 
-  gotoProject(project) {
-    this.router.navigateToRoute('edit', { id: project.id });
-  }
-
-  new() {
-    this.router.navigateToRoute('create');
-  }
-
   getData() {
     return this.dataContext.getAll()
       .then(projects => {

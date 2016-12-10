@@ -22,6 +22,7 @@ install:
 script:
 - sed -i "s@{BUILD_LABEL}@$HEIMDALL_BUILD_LABEL@" stageConf.js
 - sed -i "s@{BRANCH}@$HEIMDALL_BRANCH@" src/main.js
+- gulp lint
 - gulp bundle
 - npm prune --production
 before_deploy:
