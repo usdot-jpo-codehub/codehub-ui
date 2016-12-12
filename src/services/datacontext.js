@@ -26,7 +26,7 @@ export class DataContext {
   }
 
   getSSOData() {
-    return this.http.fetch('/sso.cgi', {
+    return this.http.fetch('/sso/sso.cgi', {
       method: 'GET',
     })
       .then(response => response.json());
