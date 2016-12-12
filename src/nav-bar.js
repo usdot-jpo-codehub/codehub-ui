@@ -13,7 +13,16 @@ export class NavBar {
     this.router = router;
     this.eventAggregator = eventAggregator;
 
+    this.userObject = '';
+
     this.navSearchText = '';
+  }
+
+  activate() {
+    return this.dataContext.getSSOData().then(results => {
+      this.userObject = results;
+      return this.userObject;
+    });
   }
 
   executeNavSearch(searchText) {
@@ -91,7 +100,7 @@ export class NavBar {
         $('.navbar').removeClass('sticky-header');
         //$('.fab-back-top').addClass('hidden');
         $('.fab-container').css({'bottom': '-72px'});
-      } 
+      }
     });
 
     $('#backToTop').click(function(e) {

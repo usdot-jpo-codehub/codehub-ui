@@ -25,6 +25,13 @@ export class DataContext {
       .then(response => response.json());
   }
 
+  getSSOData() {
+    return this.http.fetch('/sso.cgi', {
+      method: 'GET',
+    })
+      .then(response => response.json());
+  }
+
   search(searchText) {
     return this.http.fetch(`${baseUrl}/search`, {
       method: 'POST',
