@@ -21,6 +21,7 @@ export class NavBar {
   activate() {
     return this.dataContext.getSSOData().then(results => {
       this.userObject = results;
+	console.log(results);
       return this.userObject;
     });
   }
