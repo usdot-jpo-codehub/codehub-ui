@@ -13,17 +13,7 @@ export class NavBar {
     this.router = router;
     this.eventAggregator = eventAggregator;
 
-    this.userObject = '';
-
     this.navSearchText = '';
-  }
-
-  activate() {
-    return this.dataContext.getSSOData().then(results => {
-      this.userObject = results;
-	console.log(results);
-      return this.userObject;
-    });
   }
 
   executeNavSearch(searchText) {
