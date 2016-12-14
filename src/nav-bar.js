@@ -13,6 +13,8 @@ export class NavBar {
     this.router = router;
     this.eventAggregator = eventAggregator;
 
+    this.PF_AUTH_GIVENNAME = PF_AUTH_GIVENNAME !== '' ? PF_AUTH_GIVENNAME : 'Guest'; // eslint-disable-line
+
     this.navSearchText = '';
   }
 
