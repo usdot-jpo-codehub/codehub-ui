@@ -11,7 +11,6 @@ export class ProjectDetails {
     this.repo = {};
     this.repo.contributors_list = [];
     this.similarProjects = [];
-    console.log(this.repo);
     this.componentDependencies = [];
 
     this.dependCollapsed = true;
@@ -49,8 +48,6 @@ export class ProjectDetails {
     });
 
     this.dataContext.getComponentDependencies(params.id).then(depends => {
-      console.log("***DEP******");
-      console.log(depends);
       this.componentDependencies = depends.componentDependencies;
     });
   }
