@@ -7,14 +7,6 @@
   <div class="container-fluid cards-wrapper proj-details-wrapper">
     <div class="row flex-row">
       <div class="col-lg-9 col-md-9 col-content">
-        <div class="row proj-nav">
-          <div class="col-lg-12">
-            <ul class="list-inline">
-              <li><button onclick="window.history.go(-1); return false;" class="btn btn-link btn-sm"><i class="material-icons">chevron_left</i>Back</button></li>
-              <li><a class="btn btn-link btn-sm" href="${repo.repositoryUrl}" target="_blank">View on Github<i class="material-icons">chevron_right</i></a></li>
-            </ul>
-          </div>
-        </div>
         <div class="row proj-content">
           <div class="col-lg-12">
             <div class="card full-width">
@@ -69,57 +61,6 @@
                         <span class="stat-label">forks</span>
                       </span>
                     </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row proj-overview-row">
-                <div class="col-lg-4">
-                  <h3>Projects that we use</h3>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <ul class="list-unstyled">
-                        <li repeat.for="depend of repo.componentDependencies | pick:numDepends" if.bind = "$even"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
-                      </ul>
-                    </div>
-                    <div class="col-lg-6">
-                      <ul class="list-unstyled">
-                        <li repeat.for="depend of repo.componentDependencies | pick:numDepends" if.bind = "$odd"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
-                      </ul>
-                    </div>
-                    <div class="collapse" id="collapseDepend">
-                      <div class="col-lg-6">
-                        <ul class="list-unstyled">
-                          <li repeat.for="depend of repo.componentDependencies | skip:numDepends" if.bind = "$even"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
-                        </ul>
-                      </div>
-                      <div class="col-lg-6">
-                        <ul class="list-unstyled">
-                          <li repeat.for="depend of repo.componentDependencies | skip:numDepends" if.bind = "$odd"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  <button if.bind="repo.componentDependencies.length > numDepends" id="showMoreBtn" class="btn btn-link btn-sm" data-toggle="collapse" click.delegate="dependCollapsed = dependCollapsed !== true" href="#collapseDepend">
-                    <template if.bind="dependCollapsed">Show More <i class="material-icons">expand_more</i></template>
-                    <template if.bind="!dependCollapsed">Show Less <i class="material-icons">expand_less</i></template>
-                  </button>
-
-                </div>
-                <div class="col-lg-4">
-                  <h3>Projects that use us</h3>
-                  <div class="empty-state">
-                    <i class="material-icons">sentiment_dissatisfied</i>
-                    <em class="text-muted">Coming soon</em>
-                    <a href="#">Make Project Reusable</a>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <h3>Key technologies</h3>
-                  <div class="empty-state">
-                    <i class="material-icons">access_time</i>
-                    <em class="text-muted">Coming soon</em>
                   </div>
                 </div>
               </div>
@@ -203,6 +144,65 @@
           </div>
         </div>
 
+        <div class="row proj-content">
+          <div class="col-lg-12">
+            <div class="card full-width">
+              <div class="lined-header">
+                <h2 class=""><span>Dependencies</span></h2>
+              </div>
+              <div class="row proj-overview-row">
+                <div class="col-lg-4">
+                  <h3>Projects that we use</h3>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <ul class="list-unstyled">
+                        <li repeat.for="depend of componentDependencies | pick:numDepends" if.bind = "$even"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
+                      </ul>
+                    </div>
+                    <div class="col-lg-6">
+                      <ul class="list-unstyled">
+                        <li repeat.for="depend of componentDependencies | pick:numDepends" if.bind = "$odd"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
+                      </ul>
+                    </div>
+                    <div class="collapse" id="collapseDepend">
+                      <div class="col-lg-6">
+                        <ul class="list-unstyled">
+                          <li repeat.for="depend of componentDependencies | skip:numDepends" if.bind = "$even"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
+                        </ul>
+                      </div>
+                      <div class="col-lg-6">
+                        <ul class="list-unstyled">
+                          <li repeat.for="depend of componentDependencies | skip:numDepends" if.bind = "$odd"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button if.bind="componentDependencies.length > numDepends" id="showMoreBtn" class="btn btn-link btn-sm" data-toggle="collapse" click.delegate="dependCollapsed = dependCollapsed !== true" href="#collapseDepend">
+                    <template if.bind="dependCollapsed">Show More <i class="material-icons">expand_more</i></template>
+                    <template if.bind="!dependCollapsed">Show Less <i class="material-icons">expand_less</i></template>
+                  </button>
+
+                </div>
+                <div class="col-lg-4">
+                  <h3>Projects that use us</h3>
+                  <div class="empty-state">
+                    <i class="material-icons">sentiment_dissatisfied</i>
+                    <em class="text-muted">Coming soon</em>
+                    <a href="#">Make Project Reusable</a>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <h3>Key technologies</h3>
+                  <div class="empty-state">
+                    <i class="material-icons">access_time</i>
+                    <em class="text-muted">Coming soon</em>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="col-lg-3 col-md-3 col-sidebar">
@@ -245,11 +245,11 @@
                 <a route-href="route:project-details; params.bind: {id:project.project_id}" class="list-group-item">
                   <span class="media">
                     <span class="media-left">
-                      <img class="img-circle media-object" src="https://github.com/${project.project_org_name.organization}.png" onError="this.onerror=null;this.src='/img/language-icons/organization-default.svg';">
+                      <img class="img-circle media-object" src="https://github.com/${project.project_org_name.organization}}.png" onError="this.onerror=null;this.src='/img/language-icons/organization-default.svg';">
                     </span>
                     <span class="media-body clearfix">
                       <h5>${project.project_name}</h5>
-                      <span class="media-body-secondary">${project.project_org_name.organization}</span>
+                      <span class="media-body-secondary">${project.project_org_name.organization}}</span>
                     </span>
                   </span>
                 </a>

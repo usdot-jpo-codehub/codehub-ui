@@ -16,6 +16,7 @@ export class Results {
 
     this.searchText = '';
     this.resultCount = 0;
+    this.searchDone = false;
 
     this.projects = [];
 
@@ -42,6 +43,7 @@ export class Results {
 
   activate(params) {
     this.projects = [];
+    this.searchDone = false;
 
     if (!(params.searchText) || params.searchText === '') {
       this.searchText = 'Everything';
@@ -50,6 +52,7 @@ export class Results {
           setTimeout(() => {
             this.projects = projects;
             this.resultCount = this.projects.length;
+            this.searchDone = true;
             this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
             this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
             this.filters.selectedOrigins = this.filters.getUniqueValues(this.projects, 'origin');
@@ -70,6 +73,7 @@ export class Results {
         setTimeout(() => {
           this.projects = projects;
           this.resultCount = this.projects.length;
+          this.searchDone = true;
           this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
           this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
           this.filters.selectedOrigins = this.filters.getUniqueValues(this.projects, 'origin');
