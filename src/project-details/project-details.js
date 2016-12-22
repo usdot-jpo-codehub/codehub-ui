@@ -40,6 +40,7 @@ export class ProjectDetails {
     });
 
     this.dataContext.findById(params.id).then(repo => {
+      console.log(repo);
       this.repo = repo;
     });
 
