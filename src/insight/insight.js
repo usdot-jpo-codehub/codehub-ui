@@ -1,5 +1,3 @@
-// TODO Non-functional placeholder replica of most popular
-
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { DataContext } from 'services/datacontext';
