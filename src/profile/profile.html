@@ -1,5 +1,5 @@
 <template>
-  
+
   <div class="container profile-container loading-wrapper">
     <div class="row">
       <div class="col-md-4 cards-wrapper profile-wrapper">
@@ -16,15 +16,15 @@
               <form class="form">
                 <div class="form-group">
                   <label>First Name</label>
-                  <p class="form-control-static">John</p>
+                  <p class="form-control-static">${PF_AUTH_GIVENNAME}</p>
                 </div>
                 <div class="form-group">
                   <label>Last Name</label>
-                  <p class="form-control-static">Heimdall</p>
+                  <p class="form-control-static">${PF_AUTH_SN}</p>
                 </div>
                 <div class="form-group">
                   <label>Email</label>
-                  <a href="#" class="form-control-static">heimdall.j@exmple.com</a>
+                  <a href="#" class="form-control-static">${PF_AUTH_SUBJECT}</a>
                 </div>
               </form>
             </div>
