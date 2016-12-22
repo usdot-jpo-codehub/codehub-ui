@@ -22,4 +22,7 @@ STAGE_API_HOST_PORT=$3
 STAGE_UIAPP_NAME=$4
 STAGE_UIAPP_VERSION=$5
 
+# Add if trying to connect to services running directly on docker host
+# --net="host"
+
 docker run -d -p $LOCAL_HOST_PORT:80 -e STAGE_API_HOST_NAME=$STAGE_API_HOST_NAME -e STAGE_API_HOST_PORT=$STAGE_API_HOST_PORT --name $STAGE_UIAPP_NAME stage/uiapp:$STAGE_UIAPP_VERSION
