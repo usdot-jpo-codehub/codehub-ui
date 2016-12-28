@@ -24,7 +24,7 @@ STAGE_UIAPP_VERSION=$5
 
 # Add if trying to connect to services running directly on docker host
 # --net="host"
-# e.g. if your API was on localhost: sudo ./ops/run-uiapp-container.sh 80 127.0.0.1 3000 stage-ui 0.1.0
+# e.g. if your API was on localhost: sudo ./ops/run-uiapp-container.sh 80 127.0.0.1 3000 stage-uiapp 0.1.0
 # you would need --net="host"
 
 docker run -d -p $LOCAL_HOST_PORT:80 -e STAGE_API_HOST_NAME=$STAGE_API_HOST_NAME -e STAGE_API_HOST_PORT=$STAGE_API_HOST_PORT --name $STAGE_UIAPP_NAME stage/uiapp:$STAGE_UIAPP_VERSION

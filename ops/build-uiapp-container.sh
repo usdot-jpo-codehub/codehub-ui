@@ -17,10 +17,11 @@
 
 STAGE_UIAPP_VERSION=$1
 
+npm install -g gulp
+npm install -g jspm
+npm install -g coveralls
 npm install
+jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
 jspm install -y
-gulp clean
-gulp bundle
-npm prune --production
 
 docker build -t stage/uiapp:$STAGE_UIAPP_VERSION .
