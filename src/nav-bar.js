@@ -13,6 +13,8 @@ export class NavBar {
     this.router = router;
     this.eventAggregator = eventAggregator;
 
+    this.PF_AUTH_GIVENNAME = PF_AUTH_GIVENNAME !== '' ? PF_AUTH_GIVENNAME : 'Guest'; // eslint-disable-line
+
     this.navSearchText = '';
   }
 
@@ -91,7 +93,7 @@ export class NavBar {
         $('.navbar').removeClass('sticky-header');
         //$('.fab-back-top').addClass('hidden');
         $('.fab-container').css({'bottom': '-72px'});
-      } 
+      }
     });
 
     $('#backToTop').click(function(e) {
