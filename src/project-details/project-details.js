@@ -11,7 +11,7 @@ export class ProjectDetails {
     this.repo = {};
     this.repo.contributors_list = [];
     this.similarProjects = [];
-    this.repo.componentDependencies = [];
+    this.componentDependencies = [];
 
     this.dependCollapsed = true;
     this.numDepends = 8;
@@ -40,11 +40,16 @@ export class ProjectDetails {
     });
 
     this.dataContext.findById(params.id).then(repo => {
+      console.log(repo);
       this.repo = repo;
     });
 
     this.dataContext.getHealthById(params.id).then(health => {
       this.health = health;
+    });
+
+    this.dataContext.getComponentDependencies(params.id).then(depends => {
+      this.componentDependencies = depends.componentDependencies;
     });
   }
 
