@@ -24,7 +24,7 @@ os: linux
 #   may cause associated deployments to fail.
 files:
   - source: /
-    destination: /opt/heimdall
+    destination: /opt/heimdall/src
 # For deployments to Amazon Linux, Ubuntu Server, or RHEL instances,
 #   you can specify a "permissions"
 #   section here that describes special permissions to apply to the files
@@ -93,9 +93,9 @@ hooks:
 #      runas:
 # During the AfterInstall deployment lifecycle event, run the commands
 #   in the script specified in "location".
-  AfterInstall:
-    - location: ops/install_dependencies.sh
-      timeout: 300
+#  AfterInstall:
+#    - location:
+#      timeout:
 # During the ApplicationStart deployment lifecycle event, run the commands
 #   in the script specified in "location".
   ApplicationStart:
