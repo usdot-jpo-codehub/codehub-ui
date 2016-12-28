@@ -1,8 +1,6 @@
 sudo: required
 language: node_js
 node_js: 4.5.0
-services:
-  - docker
 cache:
   timeout: 600
   directories:
@@ -22,7 +20,6 @@ install:
   - npm install
   - jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
   - jspm install -y
-  - docker build -t stage/uiapp:$STAGE_UIAPP_VERSION .
 script:
   - sed -i "s@{BUILD_LABEL}@$HEIMDALL_BUILD_LABEL@" stageConf.js
   - sed -i "s@{BRANCH}@$HEIMDALL_BRANCH@" src/main.js
