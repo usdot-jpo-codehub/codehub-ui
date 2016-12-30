@@ -1,8 +1,12 @@
 #!/bin/bash
 
 # If nginx is installed then try to gracefully stop it
-hash nginx 2>/dev/null
+hash docker 2>/dev/null
 if [ $? = 0 ]
 then
-  nginx -s quit
+  docker stop stage-uiapp
+  if [ $? -eq 0 ]
+  then
+    docker rm stage-uiapp
+  fi
 fi
