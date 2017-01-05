@@ -51,7 +51,7 @@ export class ProjectDetails {
       this.componentDependencies = depends.componentDependencies;
 
       // TODO this fix should be done API side
-      let i = this.componentDependencies.length;
+      let i = depends.componentDependencies.length;
       while (i--) {
         if (this.componentDependencies[i].artifactId === undefined) {
           this.componentDependencies.splice(i, 1);
