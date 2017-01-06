@@ -7049,18 +7049,21 @@ footer .bah-logo {
 }
 .home-tabs,
 .source-tabs,
-.profile-tabs {
+.profile-tabs,
+.search-tabs {
   margin: 0 -15px;
   border: none;
 }
 .home-tabs > li,
 .source-tabs > li,
-.profile-tabs > li {
+.profile-tabs > li,
+.search-tabs > li {
   width: 50%;
 }
 .home-tabs > li > a,
 .source-tabs > li > a,
-.profile-tabs > li > a {
+.profile-tabs > li > a,
+.search-tabs > li > a {
   color: rgba(0, 0, 0, 0.55);
   border-radius: 0;
   border: none;
@@ -7075,7 +7078,8 @@ footer .bah-logo {
 }
 .home-tabs > li > a .material-icons,
 .source-tabs > li > a .material-icons,
-.profile-tabs > li > a .material-icons {
+.profile-tabs > li > a .material-icons,
+.search-tabs > li > a .material-icons {
   vertical-align: -11px;
   font-size: 30px;
   margin-right: 5px;
@@ -7083,9 +7087,11 @@ footer .bah-logo {
 .home-tabs > li > a:hover,
 .source-tabs > li > a:hover,
 .profile-tabs > li > a:hover,
+.search-tabs > li > a:hover,
 .home-tabs > li > a:focus,
 .source-tabs > li > a:focus,
-.profile-tabs > li > a:focus {
+.profile-tabs > li > a:focus,
+.search-tabs > li > a:focus {
   color: #00b0bc;
   border: none;
   border-bottom: 3px solid transparent;
@@ -7093,7 +7099,8 @@ footer .bah-logo {
 }
 .home-tabs > li.active > a,
 .source-tabs > li.active > a,
-.profile-tabs > li.active > a {
+.profile-tabs > li.active > a,
+.search-tabs > li.active > a {
   color: #00b0bc;
   background-color: transparent;
   border: none;
@@ -7105,9 +7112,11 @@ footer .bah-logo {
 .home-tabs > li.active > a:hover,
 .source-tabs > li.active > a:hover,
 .profile-tabs > li.active > a:hover,
+.search-tabs > li.active > a:hover,
 .home-tabs > li.active > a:focus,
 .source-tabs > li.active > a:focus,
-.profile-tabs > li.active > a:focus {
+.profile-tabs > li.active > a:focus,
+.search-tabs > li.active > a:focus {
   color: #00b0bc;
   border: none;
   border-radius: 0;
@@ -7122,13 +7131,13 @@ footer .bah-logo {
 .profile-tabs > li {
   width: 25%;
 }
-.source-tabs > li > a,
-.profile-tabs > li > a {
+.source-tabs > li search > a,
+.profile-tabs > li search > a {
   color: rgba(0, 0, 0, 0.55);
   letter-spacing: 1px;
 }
-.source-tabs > li > a .grade-circle,
-.profile-tabs > li > a .grade-circle {
+.source-tabs > li search > a .grade-circle,
+.profile-tabs > li search > a .grade-circle {
   display: inline-block;
   width: 35px;
   height: 35px;
@@ -7140,8 +7149,16 @@ footer .bah-logo {
   margin-bottom: 0;
   letter-spacing: 0;
 }
-.source-tab {
+.source-tab,
+.search-tab {
   padding: 20px 0;
+}
+.search-tab {
+  padding-bottom: 0px;
+}
+.search-tab .col-lg-6,
+.search-tab .col-lg-12 {
+  margin-bottom: 0px;
 }
 .profile-tabs {
   margin-bottom: 15px;
