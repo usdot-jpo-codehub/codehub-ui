@@ -71,4 +71,20 @@ export class DataContext {
       .then(response => response.json());
   }
 
+  // myPostData = {
+  //   id: 101,
+  // }
+  //
+  // postUsedProject(postObject) {
+  //   httpClient.fetch('http://jsonplaceholder.typicode.com/posts', {
+  //     method: "POST",
+  //     body: JSON.stringify(postObject)
+  //   })
+  //
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       console.log(data);
+  //     });
+  // }
+
 }

@@ -48,13 +48,15 @@ export class ProjectDetails {
     });
 
     this.dataContext.getComponentDependencies(params.id).then(depends => {
-      this.componentDependencies = depends.componentDependencies;
+      if(depends.componentDependencies) {
+        this.componentDependencies = depends.componentDependencies;
 
-      // TODO this fix should be done API side
-      let i = depends.componentDependencies.length;
-      while (i--) {
-        if (this.componentDependencies[i].artifactId === undefined) {
-          this.componentDependencies.splice(i, 1);
+        // TODO this fix should be done API side
+        let i = depends.componentDependencies.length;
+        while (i--) {
+          if (this.componentDependencies[i].artifactId === undefined) {
+            this.componentDependencies.splice(i, 1);
+          }
         }
       }
     });

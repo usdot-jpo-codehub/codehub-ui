@@ -54,7 +54,7 @@
             </span>
             <span class="stat">
               <span class="octicon octicon-repo-forked"></span>
-              <span class="num text-muted text-emphasized">${repo.forks | num}</span>
+              <span class="num text-muted text-emphasized">${(repo.forks.forkedRepos.length + repo.forks.userForkedRepos.length) | num}</span>
               <span class="stat-label">forks</span>
             </span>
           </div>
