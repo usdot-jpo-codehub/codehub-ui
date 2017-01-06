@@ -6668,16 +6668,21 @@ h3 {
   vertical-align: -4px;
   opacity: .65;
 }
-.empty-state {
+.text-center {
   text-align: center;
+}
+.empty-state {
   padding: 20px;
 }
 .empty-state > * {
   display: block;
 }
-.empty-state .material-icons {
+.empty-state .large-icon {
   font-size: 145px;
   color: #eaeaea;
+}
+.empty-state .material-icons {
+  vertical-align: -7px;
 }
 .empty-state em {
   margin-bottom: 10px;
