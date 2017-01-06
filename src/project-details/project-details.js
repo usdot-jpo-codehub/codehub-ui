@@ -48,7 +48,7 @@ export class ProjectDetails {
     });
 
     this.dataContext.getComponentDependencies(params.id).then(depends => {
-      if(depends.componentDependencies) {
+      if (depends.componentDependencies) {
         this.componentDependencies = depends.componentDependencies;
 
         // TODO this fix should be done API side
