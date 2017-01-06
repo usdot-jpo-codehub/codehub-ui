@@ -9,8 +9,4 @@ export class AddProjectsModal {
     controller.settings.centerHorizontalOnly = true;
     controller.settings.lock = false;
   }
-
-  activate(repo) {
-    this.repo = repo;
-  }
 }
