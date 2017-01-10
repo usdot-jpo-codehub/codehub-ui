@@ -43,7 +43,7 @@ export class Explore {
           this.rebuildFilterLang(projects);
           this.rebuildFilterOrigin(projects);
           return this.projects;
-        }, 500);
+        }, 10);
       });
   }
 
