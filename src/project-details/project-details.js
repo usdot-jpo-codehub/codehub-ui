@@ -12,6 +12,7 @@ export class ProjectDetails {
     this.repo.contributors_list = [];
     this.similarProjects = [];
     this.componentDependencies = [];
+    this.projectsThatUseUs = [];
 
     this.dependCollapsed = true;
     this.numDepends = 8;
@@ -35,12 +36,13 @@ export class ProjectDetails {
       if (!similarProjects.error) {
         setTimeout(() => {
           this.similarProjects = similarProjects;
-        }, 500);
+        }, 10);
       }
     });
 
     this.dataContext.findById(params.id).then(repo => {
       this.repo = repo;
+      this.projectsThatUseUs = repo.forks.forkedRepos.concat(repo.forks.userForkedRepos);
     });
 
     this.dataContext.getHealthById(params.id).then(health => {
