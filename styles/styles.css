@@ -8181,6 +8181,28 @@ label.btn > input[type='radio'] {
   margin-top: 25px;
   margin-bottom: 0;
 }
+.proj-details-wrapper .proj-content .multi-column {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  -ms-column-count: 2;
+  -o-column-count: 2;
+  column-count: 2;
+  -webkit-column-gap: 15px;
+  -moz-column-gap: 15px;
+  -ms-column-gap: 15px;
+  -o-column-gap: 15px;
+  column-gap: 15px;
+  columns: 2;
+}
+.proj-details-wrapper .proj-content .multi-column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.proj-details-wrapper .proj-content .multi-column ul > li {
+  display: inline-block;
+  width: 100%;
+}
 .proj-details-wrapper .col-content {
   margin-bottom: 0;
 }

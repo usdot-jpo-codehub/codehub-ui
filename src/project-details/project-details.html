@@ -111,20 +111,29 @@
                 <div class="col-lg-6">
                   <h3>Projects reusing us</h3>
                   <div class="row">
-                    <div class="col-lg-6">
+                    <div class="multi-column col-lg-6"">
                       <ul class="list-unstyled">
-                        <li><strong>projectjellyfish</strong><small>boozallen</small></li>
-                        <li><strong>culvert</strong><small>booz-allen-hamilton</small></li>
-                        <li><strong>fedspendingransparency</strong><small>fedspendingtransparency</small></li>
+                        <li repeat.for="uses of projectsThatUseUs"><strong>${uses.name}</strong>
+                          <ul>
+                            <li><small>${uses.org_name}</small></li>
+                          </ul>
+                        </li>
                       </ul>
                     </div>
-                    <div class="col-lg-6">
-                      <ul class="list-unstyled">
-                        <li><strong>ads=final</strong><small>fedspendingtransparency</small></li>
-                        <li><strong>USASpending-Issue-Tracker</strong><small>fedspendingtransparency</small></li>
-                        <li><strong>DOD-cac-auth</strong><small>james-smith</small></li>
-                      </ul>
-                    </div>
+                    <!--<div class="col-lg-6">-->
+                      <!--<ul class="list-unstyled">-->
+                        <!--<li><strong>projectjellyfish</strong><small>boozallen</small></li>-->
+                        <!--<li><strong>culvert</strong><small>booz-allen-hamilton</small></li>-->
+                        <!--<li><strong>fedspendingransparency</strong><small>fedspendingtransparency</small></li>-->
+                      <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div class="col-lg-6">-->
+                      <!--<ul class="list-unstyled">-->
+                        <!--<li><strong>ads=final</strong><small>fedspendingtransparency</small></li>-->
+                        <!--<li><strong>USASpending-Issue-Tracker</strong><small>fedspendingtransparency</small></li>-->
+                        <!--<li><strong>DOD-cac-auth</strong><small>james-smith</small></li>-->
+                      <!--</ul>-->
+                    <!--</div>-->
                   </div>
 
                   <button class="btn btn-link btn-sm">Show More <i class="material-icons">expand_more</i></button>

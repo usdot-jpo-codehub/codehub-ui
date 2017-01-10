@@ -1,5 +1,5 @@
 .proj-details-wrapper {
-  
+
   > .row {
     padding: 0;
   }
@@ -8,6 +8,34 @@
     .col-lg-12 {
       margin-top: 25px;
       margin-bottom: 0;
+    }
+
+    .multi-column {
+      ul {
+        list-style: none;
+        margin:0;
+        padding:0;
+      }
+      ul > li {
+        display: inline-block;
+        width: 100%;
+      }
+      ul > li > ul >li {
+
+      }
+
+      -webkit-column-count:2;
+      -moz-column-count:2;
+      -ms-column-count:2;
+      -o-column-count:2;
+      column-count:2;
+      -webkit-column-gap:15px;
+      -moz-column-gap:15px;
+      -ms-column-gap:15px;
+      -o-column-gap:15px;
+      column-gap:15px;
+      columns:2;
+
     }
   }
 
