@@ -41,6 +41,7 @@ h1 strong {
 .btn-error {
 	border: 2px solid #FFFFFF;
 	background: transparent;
+	color: #ffffff;
 }
 
 .btn-error:hover,
