@@ -51,11 +51,14 @@ export class AddProjectsModal {
     }
     $('#selectProjects').multiselect('dataprovider', options);
     $('#selectProjects').trigger('change');
+    $('.multiselect-container').css('display', 'block');
+    $('.multiselect').click(e => {
+      e.stopPropagation();
+    });
   }
 
   setupProjectSelect() {
     $('#selectProjects').multiselect({
-      includeSelectAllOption: true,
       enableFiltering: true,
       disableIfEmpty: true,
       enableCaseInsensitiveFiltering: true,
@@ -65,15 +68,15 @@ export class AddProjectsModal {
         if (options.length === 0) {
           return 'Projects';
         } else if (options.length === options.prevObject.length) {
-          return `Projects (${options.length})`;
+          return 'Projects';
         }
-        return `Projects (${options.length}) `;
+        return 'Projects';
       },
     });
 
     $('#selectProjects').on('change', ev => {
       if ($('#selectProjects').val()) {
-        parent.selectedProjects = $('#filterOrg').val();
+        parent.selectedProjects = $('#selectProject').val();
         parent.selectedProjectsEmpty = false;
       } else {
         parent.selectedProjects = [];
@@ -81,4 +84,6 @@ export class AddProjectsModal {
       }
     });
   }
+
+
 }

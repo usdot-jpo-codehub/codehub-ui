@@ -43,7 +43,7 @@ export class ProjectDetails {
 
     this.dataContext.findById(params.id).then(repo => {
       this.repo = repo;
-      this.projectsThatUseUs = repo.forks.forkedRepos.concat(repo.forks.userForkedRepos);
+      this.projectsThatUseUs = repo.forkedRepos.concat(repo.userForkedRepos);
     });
 
     this.dataContext.getHealthById(params.id).then(health => {

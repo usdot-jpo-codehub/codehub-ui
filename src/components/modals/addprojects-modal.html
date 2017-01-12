@@ -14,14 +14,15 @@
 
           <ul class="nav nav-tabs search-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#search" aria-controls="search" role="tab" data-toggle="tab">Search Existing Projects</a></li>
-            <li role="presentation"><a href="#manual" aria-controls="manual" role="tab" data-toggle="tab">Manually Add projects</a></li>
+            <!--<li role="presentation"><a href="#manual" aria-controls="manual" role="tab" data-toggle="tab">Manually Add projects</a></li>-->
           </ul>
           <div class="search-tab tab-content">
             <div role="tabpanel" class="tab-pane active" id="search">
               <div style="height: 300px;">
-                <select id="selectProjects" multiple="multiple"></select>
+                <select id="selectProjects"></select>
               </div>
             </div>
+            <div role="tabpanel" class="tab-pane" id="manual">
             <div role="tabpanel" class="tab-pane" id="manual">
               <form>
                 <div class="row">
@@ -59,7 +60,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default"><i class="material-icons">add_circle</i>Add Project</button>
+          <button type="button" click.trigger="addProject()" class="btn btn-default"><i class="material-icons">add_circle</i>Add Project</button>
           <button type="button" class="btn btn-default" click.trigger="controller.cancel()">Close</button>
         </div>
       </div>
