@@ -12,8 +12,10 @@ export class ProjectDetails {
     this.repo.contributors_list = [];
     this.similarProjects = [];
     this.componentDependencies = [];
+    this.projectsThatUseUs = [];
 
     this.dependCollapsed = true;
+    this.useUsCollapsed = true;
     this.numDepends = 8;
 
     this.health = {}; // JSON.parse('{ "violations" : { "val" : 106.0, "frmt_val" : "106", "key" : "violations" }, "security_rating" : { "val" : 3.0, "frmt_val" : "C", "data" : "C", "key" : "security_rating" }, "sqale_rating" : { "val" : 1.0, "frmt_val" : "A", "data" : "A", "key" : "sqale_rating" }, "code_smells" : { "val" : 81.0, "frmt_val" : "81", "key" : "code_smells" }, "new_violations" : { }, "bugs" : { "val" : 24.0, "frmt_val" : "24", "key" : "bugs" }, "new_code_smells" : { }, "complexity" : { "val" : 203.0, "frmt_val" : "203", "key" : "complexity" }, "new_vulnerabilities" : { }, "vulnerabilities" : { "val" : 1.0, "frmt_val" : "1", "key" : "vulnerabilities" }, "new_bugs" : { }, "reliability_rating" : { "val" : 3.0, "frmt_val" : "C", "data" : "C", "key" : "reliability_rating" } }');
@@ -35,12 +37,13 @@ export class ProjectDetails {
       if (!similarProjects.error) {
         setTimeout(() => {
           this.similarProjects = similarProjects;
-        }, 500);
+        }, 10);
       }
     });
 
     this.dataContext.findById(params.id).then(repo => {
       this.repo = repo;
+      this.projectsThatUseUs = repo.forkedRepos.concat(repo.userForkedRepos);
     });
 
     this.dataContext.getHealthById(params.id).then(health => {
@@ -48,7 +51,17 @@ export class ProjectDetails {
     });
 
     this.dataContext.getComponentDependencies(params.id).then(depends => {
-      this.componentDependencies = depends.componentDependencies;
+      if (depends.componentDependencies) {
+        this.componentDependencies = depends.componentDependencies;
+
+        // TODO this fix should be done API side
+        let i = depends.componentDependencies.length;
+        while (i--) {
+          if (this.componentDependencies[i].artifactId === undefined) {
+            this.componentDependencies.splice(i, 1);
+          }
+        }
+      }
     });
   }
 

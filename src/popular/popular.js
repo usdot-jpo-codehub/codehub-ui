@@ -32,7 +32,7 @@ export class Popular {
       setTimeout(() => {
         this.projects = results;
         return this.projects;
-      }, 500);
+      }, 10);
     });
   }
 
