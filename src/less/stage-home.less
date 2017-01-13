@@ -1,6 +1,7 @@
 .home-tabs,
 .source-tabs,
-.profile-tabs {
+.profile-tabs,
+.search-tabs {
   margin: 0 -15px;
   border: none;
   
@@ -78,7 +79,7 @@
   border-bottom: 1px solid @stage-gray;
 
   >li {
-    width: 25%;
+    width: 25%;search
 
     >a {
       color: fade(@black, 55%);
@@ -100,8 +101,18 @@
   }
 }
 
-.source-tab {
+.source-tab,
+.search-tab {
   padding: 20px 0;
+}
+
+.search-tab {
+  padding-bottom: 0px;
+
+  .col-lg-6,
+  .col-lg-12 {
+    margin-bottom: 0px;
+  }
 }
 
 .profile-tabs {
