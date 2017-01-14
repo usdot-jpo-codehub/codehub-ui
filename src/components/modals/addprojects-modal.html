@@ -1,0 +1,69 @@
+<template>
+  <require from="resources/value-converters/chunk"></require>
+
+  <div tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" click.trigger="controller.cancel()" class="close" aria-label="Close"><span
+            aria-hidden="true"><i class="material-icons md-48">close</i></span></button>
+          <h4 class="modal-title"><span class="text-uppercase">Add Your Project</span></h4>
+        </div>
+        <div class="modal-body">
+          <p>Search for existing projects, or manually add your project.
+
+          <ul class="nav nav-tabs search-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#search" aria-controls="search" role="tab" data-toggle="tab">Search Existing Projects</a></li>
+            <!--<li role="presentation"><a href="#manual" aria-controls="manual" role="tab" data-toggle="tab">Manually Add projects</a></li>-->
+          </ul>
+          <div class="search-tab tab-content">
+            <div role="tabpanel" class="tab-pane active" id="search">
+              <div style="height: 300px;">
+                <select id="selectProjects"></select>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="manual">
+            <div role="tabpanel" class="tab-pane" id="manual">
+              <form>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="organization">Organization</label>
+                      <input type="text" class="form-control" id="organization" placeholder="Organization">
+                    </div>
+                    <div class="form-group">
+                      <label for="name">Project Name</label>
+                      <input type="text" class="form-control" id="name" placeholder="Project Name">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="owner">Owner</label>
+                      <input type="text" class="form-control" id="owner" placeholder="John P. Hemidall">
+                    </div>
+                    <div class="form-group">
+                      <label for="owner-email">Owner Email</label>
+                      <input type="email" class="form-control" id="email" placeholder="hemidall.john@bah.com">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for="description">Project Description</label>
+                      <textarea class="form-control" rows="3" placeholder="Project Description"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" click.trigger="addProject()" class="btn btn-default"><i class="material-icons">add_circle</i>Add Project</button>
+          <button type="button" class="btn btn-default" click.trigger="controller.cancel()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
