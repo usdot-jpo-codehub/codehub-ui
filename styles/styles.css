@@ -6815,6 +6815,10 @@ a.disabled:hover {
   text-transform: none;
   margin-bottom: 0;
 }
+.lined-header .text-muted {
+  padding-left: 10px;
+  vertical-align: -4px;
+}
 .card-stats {
   font-size: 12px;
 }
@@ -7171,8 +7175,8 @@ footer .bah-logo {
   width: auto;
 }
 .profile-tabs > li > a {
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .rating {
   display: inline-block;
@@ -8062,6 +8066,9 @@ label.btn > input[type='radio'] {
   padding-top: 5px;
   padding-left: 10px;
 }
+.cards-wrapper .card-insight .lined-header .pull-right .text-muted {
+  vertical-align: -4px;
+}
 .cards-wrapper .card-insight .media-list {
   margin-bottom: 0;
 }
@@ -8145,8 +8152,8 @@ label.btn > input[type='radio'] {
 .profile-wrapper .user-avatar {
   border-radius: 100%;
   margin: 0 auto;
-  height: 130px;
-  width: 130px;
+  height: 110px;
+  width: 110px;
 }
 .profile-wrapper .form-group label {
   margin-bottom: 0;
