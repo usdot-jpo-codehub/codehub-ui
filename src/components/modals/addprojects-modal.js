@@ -1,18 +1,22 @@
 import { inject } from 'aurelia-framework';
 import { DialogController } from 'aurelia-dialog';
+import { Router } from 'aurelia-router';
 import $ from 'bootstrap';
 import { multiselect } from 'bootstrap-multiselect';
 import { DataContext } from 'services/datacontext';
 
-@inject(DialogController, DataContext)
+@inject(DialogController, DataContext, Router)
 export class AddProjectsModal {
-  constructor(controller, dataContext) {
+  constructor(controller, dataContext, router) {
     this.controller = controller;
     controller.settings.centerHorizontalOnly = true;
     controller.settings.lock = false;
 
     this.dataContext = dataContext;
     this.projects = [];
+
+    this.router = router;
+    this.repo = [];
 
     this.selectedProjects = [];
     this.selectedProjectsEmpty = true;
@@ -30,7 +34,8 @@ export class AddProjectsModal {
       });
   }
 
-  activate() {
+  activate(repo) {
+    this.repo = repo;
     this.getData();
   }
 
@@ -41,11 +46,11 @@ export class AddProjectsModal {
 
   rebuildProjectSelect(projects) {
     const options = [];
-    for (const project of projects) {
+    for (let i = 0; i < projects.length; i++) {
       options.push({
-        label: `${project.project_name} <small>(${project.organization})</small>`,
-        title: project.project_name,
-        value: project,
+        label: `${projects[i].project_name} <small>(${projects[i].organization})</small>`,
+        title: projects[i].project_name,
+        value: i,
         selected: false,
       });
     }
@@ -82,6 +87,20 @@ export class AddProjectsModal {
         parent.selectedProjects = [];
         parent.selectedProjectsEmpty = true;
       }
+    });
+  }
+
+  addProject() {
+    const proj = this.projects[$('#selectProjects').val()];
+
+    const postData = {
+      id: proj.id,
+      name: proj.project_name,
+      org_name: proj.organization,
+    };
+
+    this.dataContext.postUsedProject(postData, this.repo.id).then(response => {
+      this.router.navigateToRoute('project-details', { id: this.repo.id });
     });
   }
 

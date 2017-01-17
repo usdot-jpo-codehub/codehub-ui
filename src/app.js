@@ -32,8 +32,8 @@ export class App {
     this.dialogService.open({ viewModel: ReadmeModal, model: repo });
   }
 
-  openAddProjectModal() {
-    this.dialogService.open({ viewModel: AddProjectsModal });
+  openAddProjectModal(repo) {
+    this.dialogService.open({ viewModel: AddProjectsModal, model: repo });
   }
 
   openContribModal(repo) {
