@@ -26,6 +26,10 @@
                   </ul>
                 </div>
                 <div class="col-lg-4 col-github-stats">
+                  <div class="lined-header">
+                    <span class="pull-right"><em class="text-muted">Source: <a href="#" target="_blank">Github™</a></em></span>
+                    <h4 class=""><span>Project Stats</span></h4>
+                  </div>
                   <div class="row github-stats">
                     <div class="col-md-6 col-sm-6">
                       <span class="stat">
@@ -154,17 +158,19 @@
                 <h2 class=""><span>Health Statistics</span></h2>
               </div>
               <div class="row proj-overview-row proj-health">
-                <div class="col-lg-3">
+                <!-- <div class="col-lg-2">
                   <h3>Build</h3>
                   <div class="empty-state text-center">
                     <i class="material-icons large-icon">access_time</i>
                     <em class="text-muted">Coming soon</em>
                   </div>
-                </div>
-                <div class="col-lg-5 col-qual">
-                  <h3>Quality</h3>
+                </div> -->
+                <div class="col-lg-8 col-qual">
+                  <span class="pull-right"><em class="text-muted">Source: <a href="#" target="_blank">SonarQube™</a></em></span>
+                  <h3>SonarQube</h3>
+                  <p>Is an open source platform for continuous inspection of code quality.</p>
                   <div class="row">
-                    <div class="col-lg-4 col-md-6 grade-wrapper">
+                    <div class="col-lg-3 col-md-6 grade-wrapper">
                       <h5>Releasability</h5>
                       <div class="grade-circle empty-circle">
                         <i class="material-icons">access_time</i>
@@ -173,7 +179,7 @@
                         <li>Coming Soon</li>
                       </ul>
                     </div>
-                    <div class="col-lg-4 col-md-6 grade-wrapper">
+                    <div class="col-lg-3 col-md-6 grade-wrapper">
                       <h5>Maintainability</h5>
                       <div class="grade-circle rating-${health.sqale_rating.data}">
                         ${health.sqale_rating.data}
@@ -183,7 +189,7 @@
                         <li>${health.complexity.val} complexity</li>
                       </ul>
                     </div>
-                    <div class="col-lg-4 col-md-6 grade-wrapper">
+                    <div class="col-lg-3 col-md-6 grade-wrapper">
                       <h5>Reliability</h5>
                       <div class="grade-circle rating-${health.reliability_rating.data}">
                         ${health.reliability_rating.data}
@@ -193,10 +199,29 @@
                         <li>${health.violations.val} violations</li>
                       </ul>
                     </div>
+                    <div class="col-lg-3 col-md-6 grade-wrapper">
+                      <h5>Security</h5>
+                      <div class="grade-circle rating-${health.security_rating.data}">
+                        ${health.security_rating.data}
+                      </div>
+                      <ul class="list-unstyled">
+                        <li>${health.vulnerabilities.val} vulnerabilities</li>
+                      </ul>
+                    </div>
                   </div>
-                  <a class="btn btn-link" href="#" target="_blank"><i class="material-icons">open_in_new</i> View on SonarQube</a>
                 </div>
-                <div class="col-lg-4 col-sec">
+                <div class="col-lg-4 col-qual">
+                  <h3>Fortify</h3>
+                  <p>A platform to idenfity security vulnerabilities.</p>
+                  <div class="empty-state text-center">
+                    <i class="material-icons large-icon">access_time</i>
+                    <em class="text-muted">Coming soon</em>
+                    <p>Want this feature sooner?</p>
+                    <a href="#" click.trigger="openFeedbackModal()"><i class="material-icons">chat</i> Get Involved with Stage</a>
+                  </div>
+                  
+                </div>
+                <!-- <div class="col-lg-6 col-sec">
                   <h3>Security</h3>
                   <div class="col-lg-6 col-md-6 grade-wrapper">
                     <h5>SonarQube</h5>
@@ -216,8 +241,7 @@
                       <li>Coming Soon</li>
                     </ul>
                   </div>
-                  <a class="btn btn-link" href="#" target="_blank"><i class="material-icons">open_in_new</i> View on Fortify</a>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>

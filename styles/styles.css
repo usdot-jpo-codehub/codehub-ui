@@ -6687,6 +6687,9 @@ h3 {
 .empty-state em {
   margin-bottom: 10px;
 }
+.empty-state p {
+  margin: 0;
+}
 .empty-state a {
   font-weight: bold;
 }
@@ -6856,9 +6859,10 @@ a.disabled:hover {
   text-transform: uppercase;
 }
 .grade-circle {
-  height: 75px;
-  width: 75px;
+  height: 85px;
+  width: 85px;
   margin: 0 auto;
+  margin-top: 25px;
   border-radius: 100px;
   text-align: center;
   line-height: 75px;
@@ -8268,7 +8272,7 @@ label.btn > input[type='radio'] {
 .proj-details-wrapper .proj-overview-row .col-sec .col-lg-6 {
   border: none;
 }
-.proj-details-wrapper .proj-health .col-lg-5 {
+.proj-details-wrapper .proj-health .col-lg-4 {
   border-left: 1px solid #d0d0d0;
 }
 .proj-details-wrapper .col-sidebar {
@@ -8331,6 +8335,12 @@ body ai-dialog-overlay.active {
   max-height: 460px;
   overflow-y: auto;
   overflow-x: hidden;
+}
+.feedback-modal {
+  overflow: initial;
+}
+.feedback-modal .list-inline {
+  margin-bottom: 35px;
 }
 .modal-footer {
   border-radius: 0 0 4px 4px;
