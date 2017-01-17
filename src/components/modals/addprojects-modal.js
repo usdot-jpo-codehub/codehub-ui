@@ -1,22 +1,18 @@
 import { inject } from 'aurelia-framework';
 import { DialogController } from 'aurelia-dialog';
-import { Router } from 'aurelia-router';
 import $ from 'bootstrap';
 import { multiselect } from 'bootstrap-multiselect';
 import { DataContext } from 'services/datacontext';
 
-@inject(DialogController, DataContext, Router)
+@inject(DialogController, DataContext)
 export class AddProjectsModal {
-  constructor(controller, dataContext, router) {
+  constructor(controller, dataContext) {
     this.controller = controller;
     controller.settings.centerHorizontalOnly = true;
     controller.settings.lock = false;
 
     this.dataContext = dataContext;
     this.projects = [];
-
-    this.router = router;
-    this.repo = [];
 
     this.selectedProjects = [];
     this.selectedProjectsEmpty = true;
@@ -34,8 +30,7 @@ export class AddProjectsModal {
       });
   }
 
-  activate(repo) {
-    this.repo = repo;
+  activate() {
     this.getData();
   }
 
@@ -99,9 +94,7 @@ export class AddProjectsModal {
       org_name: proj.organization,
     };
 
-    this.dataContext.postUsedProject(postData, this.repo.id).then(response => {
-      this.router.navigateToRoute('project-details', { id: this.repo.id });
-    });
+    this.controller.ok(postData);
   }
 
 
