@@ -7154,6 +7154,7 @@ footer .bah-logo {
   padding: 20px 0;
 }
 .search-tab {
+  padding-top: 10px;
   padding-bottom: 0px;
 }
 .search-tab .col-lg-6,
@@ -8342,6 +8343,18 @@ body ai-dialog-overlay.active {
 }
 .modal-footer .btn .material-icons {
   line-height: 0.6;
+}
+#search .multiselect {
+  display: none;
+  margin: 0;
+}
+#search .multiselect-container {
+  min-width: initial;
+  max-height: initial;
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+  margin-top: 0;
 }
 .markdown-body img {
   max-width: 100%;
