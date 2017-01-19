@@ -71,20 +71,12 @@ export class DataContext {
       .then(response => response.json());
   }
 
-  // myPostData = {
-  //   id: 101,
-  // }
-  //
-  // postUsedProject(postObject) {
-  //   httpClient.fetch('http://jsonplaceholder.typicode.com/posts', {
-  //     method: "POST",
-  //     body: JSON.stringify(postObject)
-  //   })
-  //
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       console.log(data);
-  //     });
-  // }
+  postUsedProject(postObject, id) {
+    return this.http.fetch(`${baseUrl}/addForkedProjects/${id}`, {
+      method: 'POST',
+      body: json(postObject),
+    })
+      .then(response => response.json());
+  }
 
 }

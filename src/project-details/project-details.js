@@ -1,12 +1,15 @@
 import { inject, bindable } from 'aurelia-framework';
 import { Router, activationStrategy } from 'aurelia-router';
+import { DialogService } from 'aurelia-dialog';
 import { DataContext } from 'services/datacontext';
+import { AddProjectsModal } from 'components/modals/addprojects-modal.js';
 
-@inject(DataContext, Router)
+@inject(DataContext, Router, DialogService)
 export class ProjectDetails {
 
-  constructor(dataContext) {
+  constructor(dataContext, router, dialogService) {
     this.dataContext = dataContext;
+    this.dialogService = dialogService;
 
     this.repo = {};
     this.repo.contributors_list = [];
@@ -43,7 +46,11 @@ export class ProjectDetails {
 
     this.dataContext.findById(params.id).then(repo => {
       this.repo = repo;
-      this.projectsThatUseUs = repo.forkedRepos.concat(repo.userForkedRepos);
+      if (repo.userForkedRepos) {
+        this.projectsThatUseUs = repo.forkedRepos.concat(repo.userForkedRepos);
+      } else {
+        this.projectsThatUseUs = repo.forkedRepos;
+      }
     });
 
     this.dataContext.getHealthById(params.id).then(health => {
@@ -61,6 +68,16 @@ export class ProjectDetails {
             this.componentDependencies.splice(i, 1);
           }
         }
+      }
+    });
+  }
+
+  openAddProjectModal() {
+    this.dialogService.open({ viewModel: AddProjectsModal, model: this.repo }).then(response => {
+      if (!response.wasCancelled) {
+        this.dataContext.postUsedProject(response.output, this.repo.id).then(data => {
+          this.projectsThatUseUs.push(response.output);
+        });
       }
     });
   }
