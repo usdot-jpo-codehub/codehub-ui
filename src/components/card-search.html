@@ -23,6 +23,10 @@
         </div>
 
         <div class="col-lg-4 col-github-stats">
+          <div class="card-stats lined-header">
+            <span class="pull-right"><em class="text-muted">Source: <a href="${repo.repositoryUrl}"  target="_blank">Github™</a></em></span>
+            <h4 class=""><span>Project Stats</span></h4>
+          </div>
           <div class="row github-stats">
             <div class="col-md-6 col-sm-6">
               <span class="stat">
@@ -54,7 +58,7 @@
             </span>
             <span class="stat">
               <span class="octicon octicon-repo-forked"></span>
-              <span class="num text-muted text-emphasized">${repo.forks | num}</span>
+              <span class="num text-muted text-emphasized">${(repo.forkedRepos.length + repo.userForkedRepos.length) | num}</span>
               <span class="stat-label">forks</span>
             </span>
           </div>

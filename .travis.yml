@@ -1,3 +1,4 @@
+sudo: required
 language: node_js
 node_js: 4.5.0
 cache:
@@ -9,32 +10,32 @@ env:
   global:
   - secure: M3U6JYQhZeLHwu6JPjwGJvhre+2eDwrgniY0RfXFHAeIQXtaFXP226odkw6GOreYYxxmfDY3Fo7xljmdSZIGhqJ0ETr2jOh7/lz0tbQxrAeJBDJcwCQa9XdUuuEciiHlPD/ysfeDltq3Mo1elXFDDVDQmX8kxHZuCqwFKoYrZ/lhXI7JRk9EigcomDunnAmNFFcOycBFPnOmYHXLPpOsye6ilnGr6SNvT5O8l84pegHudytDpd7VRvcYr5677YmJbmPbK133yPYJY4kt95z51/EDiGh3J5zSB+7plcti3vGuVKTv8IgC+oAdNKoa25nV3NI6Ye+Kyu3ubSaTW2GLuO06x0uNeEcGmHK5DvtigBPM4DfKh5aC5VjWdNAXhRAE1L6+bmap7kBQqQH07Y04WpKg8eIh62XoyVhKEurXXhUW6j+cPVYYX4FXiGllnTcfUW1pcxgFrkjHwT2VX92hkL8vfC1fU2kfXg5CVaRMY0NMFh3/fAJKtgSPMcdEHYOVZfLz0u2/Yxc95p82cPHnrHbZq3W5TsTPDl3Lfh6wM0osfIkrj87bDaELjt+bIvzNqw1XKgePEW6+POO2GbCxS+B6exFtm4Xri4x7duK8OKJLyDhbRjSYIU/J4BHApaeVPrkjVYtRql173tUV0uTxUiyuiBSdYRssPmYIoQtRxsA=
   - HEIMDALL_VERSION_NUMBER=1.0.0
-  - HEIMDALL_BUILD_LABEL=$HEIMDALL_VERSION_NUMBER.$TRAVIS_BUILD_NUMBER-pre-alpha-$TRAVIS_BRANCH
   - HEIMDALL_BRANCH=$TRAVIS_BRANCH
+  - HEIMDALL_BUILD_LABEL=$HEIMDALL_VERSION_NUMBER.$TRAVIS_BUILD_NUMBER-pre-alpha-$HEIMDALL_BRANCH
   - HEIMDALL_PACKAGE_NAME=heimdall-ui-prod-$HEIMDALL_BUILD_LABEL.zip
 install:
-- npm install -g gulp
-- npm install -g jspm
-- npm install -g coveralls
-- npm install
-- jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
-- jspm install -y
+  - npm install -g gulp
+  - npm install -g jspm
+  - npm install -g coveralls
+  - npm install
+  - jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
+  - jspm install -y
 script:
-- sed -i "s@{BUILD_LABEL}@$HEIMDALL_BUILD_LABEL@" stageConf.js
-- sed -i "s@{BRANCH}@$HEIMDALL_BRANCH@" src/main.js
-- gulp lint
-- gulp bundle
-- npm prune --production
+  - sed -i "s@{BUILD_LABEL}@$HEIMDALL_BUILD_LABEL@" stageConf.js
+  - sed -i "s@{BRANCH}@$HEIMDALL_BRANCH@" src/main.js
+  - gulp lint
+  - gulp bundle
+  - npm prune --production
 before_deploy:
-- zip -rq $HEIMDALL_PACKAGE_NAME *
-- mkdir -p dpl_cd_upload
-- mv $HEIMDALL_PACKAGE_NAME dpl_cd_upload/$HEIMDALL_PACKAGE_NAME
+  - zip -rq $HEIMDALL_PACKAGE_NAME *
+  - mkdir -p dpl_cd_upload
+  - mv $HEIMDALL_PACKAGE_NAME dpl_cd_upload/$HEIMDALL_PACKAGE_NAME
 deploy:
 - provider: s3
   access_key_id: &1
-    secure: aBwmxnCAV7An271TMQQT0i4NJXyezaU0Nyjo2Wfh5Byl/wPILpaeuhB3Ce0bIhz2KW6ujB5wBU4xRBTvQW0LqwQqiAoJ6PoYxJhgygnmhHil+osfmS7foXGmedvzdWVuNqFlCmbv7VhX56K7/kdHbz94Nag6TaRC6pgV0Z6JL3k/6n7jQrTh2V+DvALsHqYFTrSfk6ayhCazDfjPf8m+ia3Vysi/GsMi/xt6wcmaNBdHTJO+kZJhdFiTEMhhbAcLjrs5Y3AlImmh0dzKkdyrp7BWrrSE2XYGhL5cx/KI1MT5zgP2RCZbY0MCP0GhJAB0ngIJl2Rpg4qAEXlXrDjNdhfsHF+5XmV+OHp5tIWdKH1zTv8hqGT1fI9XhCyz/cef9dUFcj+j77yGABPTBB+XgEc3L7y99xjOyueb1QV94gF/eMqfdiagRhTt7OxLRt6CgUuaj8rN6sWR2P3dqv4eBjlGAn37GfJWkytjJb3PtZ7hnUHqVpZGmAH0KaSCurZ4fqxv7EyngbnQ0gXzYwe/QwlFzmYM9hXLqoPZ24TEiF1VEaSImZ1kx7oEED38nQRm5OPLJ2WTEUyQq6AB8UquA53LeryffyF1Ys56+vegz63WK3EihZvwpfYDz/RmOWbEZohVRhVXczMHM6r2R4LtWDTl5b7FkrSMAVyRO9F967o=
+    secure: POUFWbooXUT0sxej9NVu/89O+WqUCVwCuQumB+3vH5eU4qMa3DQy4tFUPw7R19/wzAxDwm+62Jhge+xvlZbKj/tb3coLYXfeTELv8KnWsNZYkavTfU3QbWYzGJv1TMiboNKXOXEExvqNTJPG6uoSS1MvhKchTQKwBge7cdA4MJC3rxjNdVsAyug+UHbLtJqlCpfbkONWWSzzceGh5GuPl8NrbuevScJUBZ/IPGu0uDHbOBeFI/zyk6g14gvF6Ftyww7BNTDCtrebeURljD+oBxjbM3Tfaj7raUYtRYP5vNC+P6SHHjZznJ1h0+FeGSfgfQLBCfpVCfSea7/sSw4xuxmgXKO4N2oDBvbHZqq2AwlvRsZqpq2R3X91YIRvaHDb6BkGgJeKCmNzkyrjruI/qYh5PmoNohhkkv4ilv27Vzney4m87fylRPOWl8c0W1lIE3FoocRABzCh7X9eXOzCoBVtF2IIhj3VKjtxo5MchgDxSxBLrxn2OsRiI93QN+8mbTpGwqtzQpj5yclG57Tu2JiMBDKr3V5+Hdr1i0N3sz8cLJHLR49rvWBEbLrHnsTunGiyVSYWASmoEX+F2FutBBTFuBzyKHlliC4q8CKJwUNfyeBL8lnUY+4oTOJcz2XFO0P96N5m+372pWVC9qgvD8h8e/Ow+0yKjtAMhUt7roA=
   secret_access_key: &2
-    secure: XIcS3ufwKVj0lhl4UV5V3ankosFIJS1SjLqeRxwR//KDs6wV4tIOYQV3Ok2E+YJsXAVj4y6DQ2Qxoq3ef872XIMLmfwIQF5k0colHptH+M2odUh+SlKm3zC0wLPn3xE4udDTLolYhO3t3U2OWnoaqcZFIh9VQjgPavC+C2WOEMsJspEUqSAVjE9KIQvWhz59a5ey5kap74fVNdBoNU1ajLhj5H1v0KGoF6g8Y/leKaI2poSFGEnIeYMp7U7dWU5Nl1HJTItpfe6ZVW26Wl4lcvywmEmUq00kdOf/jR3P0rMkkeXhlLA2G7qZMWZZKmhkOakQsElgx4mnorrWOQXI5D5NVC9gmwC4NFTFp07g3LoCw2Xd6jIniA414SSv7GcNFUmlAA7j855x3xG74nMtNlx5xDfn//IFXpkiwNXxE86yZEQKk/2oyrVR9Pg1i7kVeRjR58Id06GUvwAp7TZPcTHkCjpeaTZcy4blsJ67jm+seeBf/hgHkc6ZfZ3A7+XbNAvRkyOkKhe7CgKV06+vgdGOepMoe0jr9rPP7BR9LocccMmk3DUet1m79l/yU6hMJEQUO8AGL+G+WMW4eLQ894Q8j/rSeDphp41o1n97QlX0bqMs6t9BjWwTRUewpZ4gPqc5sHLmPvbKVhO64J+9WTnF21QMWMlRnKMiWx4g+Ro=
+    secure: MhWw0YgMOoscnZRkx2nuRNeETumNjdj1cxiBiWTpwLbuA8+SBSBRrym/gNsxnWdiJcfnTZV/MHQD/DQjzmfz/vRQ57diEsBfdwJ5qJZw47ajX8SEn+ts0IKBk6OOShziYA3mMGpWbv4elnHe8KEMCFO2Qu3La+E1hCAtMoyslaWds49ix7IRcy12TpU+PRKsSMnSnyROMIXQHobsMPdvJ9JeG7rCR99ziX405sPrXP9o5D44ilOKak+Tqyp/nrmFhXm/uzB3Uap5vqWcvIgetYVlsucBH/O53wcpNy60+NKoFLTVCsdhD7559sfiCt9cbVnujze94H61KLh0S8vmrYxGaP+ei+Rhd0c8sdI60vMQ/bmWgAs12ENKlm4JEXYK7dqZXemRbOYytrG/vR4IVZpoCw5EdeTSCRNPx9rRMKZQpfw/zaQiRKk/75UXQ3GaWbgUsx6VgNq/CnF/vHeYW/3u2j8HRNfLriZJY3q5Ce1tDzC5tf7ihTREOqyzOt6aclT7w3LaTzIUIqBmXCgeDaARHgVBVw3eRlggZb4mPc07fOALMvmPvl+mn0frZddG1D8jswMCfs4HKGWTREvliB8ELOxoD9D7g8Jp0BP2B+Cg0oYRyDPk6NYD1TP5Xvek8onlAsxE86/w7CgfhHjRpTyLLlqZcsmpvQZT0Sroydw"
   local_dir: dpl_cd_upload
   on: &3
     repo: Project-Heimdall/heimdall-uiapp
