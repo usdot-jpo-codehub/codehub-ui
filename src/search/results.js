@@ -60,7 +60,7 @@ export class Results {
             this.rebuildFilterLang(projects);
             this.rebuildFilterOrigin(projects);
             return this.projects;
-          }, 200);
+          }, 10);
         });
     }
 
@@ -81,7 +81,7 @@ export class Results {
           this.rebuildFilterLang(projects);
           this.rebuildFilterOrigin(projects);
           return this.projects;
-        }, 200);
+        }, 10);
       });
   }
 

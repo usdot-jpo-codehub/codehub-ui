@@ -23,7 +23,7 @@
       <div class="text-muted last-updated">By <a href="${repo.organizationUrl}" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="View on Github" target="_blank">${repo.organization}</a> &nbsp; | &nbsp; Updated ${repo.updatedAt | ago} <span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> ${repo.origin}</span></div>
 
       <div class="card-stats lined-header">
-        <span class="pull-right"><em class="text-muted">Source: <a href="#" target="_blank">Github™</a></em></span>
+        <span class="pull-right"><em class="text-muted">Source: <a href="${repo.repositoryUrl}"  target="_blank">Github™</a></em></span>
         <h4 class=""><span>Project Stats</span></h4>
       </div>
 
@@ -60,7 +60,7 @@
           </span>
           <span class="stat">
             <span class="octicon octicon-repo-forked"></span>
-            <span class="num text-muted text-emphasized">${repo.forks | num}</span>
+            <span class="num text-muted text-emphasized">${(repo.forkedRepos.length + repo.userForkedRepos.length) | num}</span>
             <span class="stat-label">forks</span>
           </span>
         </div>

@@ -26,6 +26,10 @@
                   </ul>
                 </div>
                 <div class="col-lg-4 col-github-stats">
+                  <div class="lined-header">
+                    <span class="pull-right"><em class="text-muted">Source: <a href="${repo.repositoryUrl}" target="_blank">Github™</a></em></span>
+                    <h4 class=""><span>Project Stats</span></h4>
+                  </div>
                   <div class="row github-stats">
                     <div class="col-md-6 col-sm-6">
                       <span class="stat">
@@ -57,7 +61,7 @@
                       </span>
                       <span class="stat">
                         <span class="octicon octicon-repo-forked"></span>
-                        <span class="num text-muted text-emphasized">${repo.forks | num}</span>
+                        <span class="num text-muted text-emphasized">${(repo.forkedRepos.length + repo.userForkedRepos.length) | num}</span>
                         <span class="stat-label">forks</span>
                       </span>
                     </div>
@@ -72,20 +76,101 @@
           <div class="col-lg-12">
             <div class="card full-width">
               <div class="lined-header">
+                <h2 class=""><span>Dependencies</span></h2>
+              </div>
+              <div class="row proj-overview-row">
+                <div class="col-lg-6">
+                  <h3>Projects Reused by us</h3>
+                  <div class="row">
+                    <div class="multi-column">
+                      <ul class="list-unstyled">
+                        <li repeat.for="depend of componentDependencies | pick:numDepends"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
+                      </ul>
+                    </div>
+                    <div class="collapse" id="collapseDepend">
+                      <div class="multi-column">
+                        <ul class="list-unstyled">
+                          <li repeat.for="depend of componentDependencies | skip:numDepends"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button if.bind="componentDependencies.length > numDepends" id="showMoreBtn" class="btn btn-link btn-sm" data-toggle="collapse" click.delegate="dependCollapsed = dependCollapsed !== true" href="#collapseDepend">
+                    <template if.bind="dependCollapsed">Show More <i class="material-icons">expand_more</i></template>
+                    <template if.bind="!dependCollapsed">Show Less <i class="material-icons">expand_less</i></template>
+                  </button>
+
+                  <div if.bind="componentDependencies.length < 1" class="empty-state text-center">
+                    <i class="material-icons large-icon">add_circle</i>
+                    <em class="text-muted">None Found</em>
+                  </div>
+
+                </div>
+                <div class="col-lg-6">
+                  <h3>Projects reusing us</h3>
+                  <div class="row">
+                    <div class="multi-column">
+                      <ul class="list-unstyled">
+                        <li repeat.for="uses of projectsThatUseUs | pick:numDepends"><strong>${uses.name}</strong>
+                          <ul>
+                            <li><small>${uses.org_name}</small></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="collapse" id="collapseUseUs">
+                      <div class="multi-column">
+                        <ul class="list-unstyled">
+                          <li repeat.for="uses of projectsThatUseUs | skip:numDepends"><strong>${uses.name}</strong>
+                            <ul>
+                              <li><small>${uses.org_name}</small></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button if.bind="projectsThatUseUs.length > numDepends" id="showMoreUseBtn" class="btn btn-link btn-sm" data-toggle="collapse" click.delegate="useUsCollapsed = useUsCollapsed !== true" href="#collapseUseUs">
+                    <template if.bind="useUsCollapsed">Show More <i class="material-icons">expand_more</i></template>
+                    <template if.bind="!useUsCollapsed">Show Less <i class="material-icons">expand_less</i></template>
+                  </button>
+
+                  <div if.bind="projectsThatUseUs.length < 1" class="empty-state text-center">
+                    <i class="material-icons large-icon">add_circle</i>
+                    <em class="text-muted">None Found</em>
+                  </div>
+
+                  <div class="text-center">
+                    <button class="btn btn-link" click.trigger="openAddProjectModal()"><i class="material-icons">add_circle</i> Are you using this project?</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row proj-content">
+          <div class="col-lg-12">
+            <div class="card full-width">
+              <div class="lined-header">
                 <h2 class=""><span>Health Statistics</span></h2>
               </div>
               <div class="row proj-overview-row proj-health">
-                <div class="col-lg-3">
+                <!-- <div class="col-lg-2">
                   <h3>Build</h3>
-                  <div class="empty-state">
-                    <i class="material-icons">access_time</i>
+                  <div class="empty-state text-center">
+                    <i class="material-icons large-icon">access_time</i>
                     <em class="text-muted">Coming soon</em>
                   </div>
-                </div>
-                <div class="col-lg-5 col-qual">
-                  <h3>Quality</h3>
+                </div> -->
+                <div class="col-lg-8 col-qual">
+                  <span class="pull-right"><em class="text-muted">Source: <a href="#" target="_blank">SonarQube™</a></em></span>
+                  <h3>SonarQube</h3>
+                  <p>Is an open source platform for continuous inspection of code quality.</p>
                   <div class="row">
-                    <div class="col-lg-4 col-md-6 grade-wrapper">
+                    <div class="col-lg-3 col-md-6 grade-wrapper">
                       <h5>Releasability</h5>
                       <div class="grade-circle empty-circle">
                         <i class="material-icons">access_time</i>
@@ -94,7 +179,7 @@
                         <li>Coming Soon</li>
                       </ul>
                     </div>
-                    <div class="col-lg-4 col-md-6 grade-wrapper">
+                    <div class="col-lg-3 col-md-6 grade-wrapper">
                       <h5>Maintainability</h5>
                       <div class="grade-circle rating-${health.sqale_rating.data}">
                         ${health.sqale_rating.data}
@@ -104,7 +189,7 @@
                         <li>${health.complexity.val} complexity</li>
                       </ul>
                     </div>
-                    <div class="col-lg-4 col-md-6 grade-wrapper">
+                    <div class="col-lg-3 col-md-6 grade-wrapper">
                       <h5>Reliability</h5>
                       <div class="grade-circle rating-${health.reliability_rating.data}">
                         ${health.reliability_rating.data}
@@ -114,10 +199,29 @@
                         <li>${health.violations.val} violations</li>
                       </ul>
                     </div>
+                    <div class="col-lg-3 col-md-6 grade-wrapper">
+                      <h5>Security</h5>
+                      <div class="grade-circle rating-${health.security_rating.data}">
+                        ${health.security_rating.data}
+                      </div>
+                      <ul class="list-unstyled">
+                        <li>${health.vulnerabilities.val} vulnerabilities</li>
+                      </ul>
+                    </div>
                   </div>
-                  <a class="btn btn-link" href="#" target="_blank"><i class="material-icons">open_in_new</i> View on SonarQube</a>
                 </div>
-                <div class="col-lg-4 col-sec">
+                <div class="col-lg-4 col-qual">
+                  <h3>Fortify</h3>
+                  <p>A platform to idenfity security vulnerabilities.</p>
+                  <div class="empty-state text-center">
+                    <i class="material-icons large-icon">access_time</i>
+                    <em class="text-muted">Coming soon</em>
+                    <p>Want this feature sooner?</p>
+                    <a href="#" click.trigger="openFeedbackModal()"><i class="material-icons">chat</i> Get Involved with Stage</a>
+                  </div>
+                  
+                </div>
+                <!-- <div class="col-lg-6 col-sec">
                   <h3>Security</h3>
                   <div class="col-lg-6 col-md-6 grade-wrapper">
                     <h5>SonarQube</h5>
@@ -137,72 +241,13 @@
                       <li>Coming Soon</li>
                     </ul>
                   </div>
-                  <a class="btn btn-link" href="#" target="_blank"><i class="material-icons">open_in_new</i> View on Fortify</a>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
         </div>
 
-        <div class="row proj-content">
-          <div class="col-lg-12">
-            <div class="card full-width">
-              <div class="lined-header">
-                <h2 class=""><span>Dependencies</span></h2>
-              </div>
-              <div class="row proj-overview-row">
-                <div class="col-lg-4">
-                  <h3>Projects that we use</h3>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <ul class="list-unstyled">
-                        <li repeat.for="depend of repo.componentDependencies | pick:numDepends" if.bind = "$even"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
-                      </ul>
-                    </div>
-                    <div class="col-lg-6">
-                      <ul class="list-unstyled">
-                        <li repeat.for="depend of repo.componentDependencies | pick:numDepends" if.bind = "$odd"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
-                      </ul>
-                    </div>
-                    <div class="collapse" id="collapseDepend">
-                      <div class="col-lg-6">
-                        <ul class="list-unstyled">
-                          <li repeat.for="depend of repo.componentDependencies | skip:numDepends" if.bind = "$even"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
-                        </ul>
-                      </div>
-                      <div class="col-lg-6">
-                        <ul class="list-unstyled">
-                          <li repeat.for="depend of repo.componentDependencies | skip:numDepends" if.bind = "$odd"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
 
-                  <button if.bind="repo.componentDependencies.length > numDepends" id="showMoreBtn" class="btn btn-link btn-sm" data-toggle="collapse" click.delegate="dependCollapsed = dependCollapsed !== true" href="#collapseDepend">
-                    <template if.bind="dependCollapsed">Show More <i class="material-icons">expand_more</i></template>
-                    <template if.bind="!dependCollapsed">Show Less <i class="material-icons">expand_less</i></template>
-                  </button>
-
-                </div>
-                <div class="col-lg-4">
-                  <h3>Projects that use us</h3>
-                  <div class="empty-state">
-                    <i class="material-icons">sentiment_dissatisfied</i>
-                    <em class="text-muted">Coming soon</em>
-                    <a href="#">Make Project Reusable</a>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <h3>Key technologies</h3>
-                  <div class="empty-state">
-                    <i class="material-icons">access_time</i>
-                    <em class="text-muted">Coming soon</em>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div class="col-lg-3 col-md-3 col-sidebar">

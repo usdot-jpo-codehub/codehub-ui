@@ -63,4 +63,20 @@ export class DataContext {
       .then(response => response.json());
   }
 
+  getComponentDependencies(id) {
+    const adjustedURL = `${baseUrl}/findComponentDependencies/${id}`;
+    return this.http.fetch(adjustedURL, {
+      method: 'GET',
+    })
+      .then(response => response.json());
+  }
+
+  postUsedProject(postObject, id) {
+    return this.http.fetch(`${baseUrl}/addForkedProjects/${id}`, {
+      method: 'POST',
+      body: json(postObject),
+    })
+      .then(response => response.json());
+  }
+
 }

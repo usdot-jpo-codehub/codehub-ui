@@ -1,4 +1,12 @@
 #!/bin/bash
 
-# Start up nginx. By this time it is assumed that nginx is has been installed.  See ../appspec.yml file for lifecycle.
-nginx
+LOCAL_DOCKER_HOST_PORT=80
+STAGE_API_HOST_NAME=172.31.20.77
+STAGE_API_HOST_PORT=3001
+STAGE_UIAPP_CONTAINER_NAME=stage-uiapp
+STAGE_UIAPP_IMAGE_NAME=stage/uiapp
+STAGE_UIAPP_IMAGE_VERSION=0.3.0
+CONTAINER_HEIMDALL_VOLUME=/usr/local/apache2/htdocs/
+MOUNT_HEIMDALL_SRC_DIR=/opt/heimdall/src
+
+docker run -d -p $LOCAL_DOCKER_HOST_PORT:80 -e STAGE_API_HOST_NAME=$STAGE_API_HOST_NAME -e STAGE_API_HOST_PORT=$STAGE_API_HOST_PORT --name $STAGE_UIAPP_CONTAINER_NAME -v $MOUNT_HEIMDALL_SRC_DIR:$CONTAINER_HEIMDALL_VOLUME stage/uiapp:$STAGE_UIAPP_IMAGE_VERSION
