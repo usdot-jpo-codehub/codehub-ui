@@ -41,11 +41,11 @@ export class AddProjectsModal {
 
   rebuildProjectSelect(projects) {
     const options = [];
-    for (const project of projects) {
+    for (let i = 0; i < projects.length; i++) {
       options.push({
-        label: `${project.project_name} <small>(${project.organization})</small>`,
-        title: project.project_name,
-        value: project,
+        label: `${projects[i].project_name} <small>(${projects[i].organization})</small>`,
+        title: projects[i].project_name,
+        value: i,
         selected: false,
       });
     }
@@ -83,6 +83,18 @@ export class AddProjectsModal {
         parent.selectedProjectsEmpty = true;
       }
     });
+  }
+
+  addProject() {
+    const proj = this.projects[$('#selectProjects').val()];
+
+    const postData = {
+      id: proj.id,
+      name: proj.project_name,
+      org_name: proj.organization,
+    };
+
+    this.controller.ok(postData);
   }
 
 

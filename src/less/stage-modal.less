@@ -52,6 +52,14 @@ body ai-dialog-overlay.active {
     overflow-x: hidden;
 }
 
+.feedback-modal {
+  overflow: initial;
+  
+  .list-inline {
+    margin-bottom: 35px;
+  }
+}
+
 .modal-footer {
   border-radius: 0 0 4px 4px;
   padding: 10px 15px;
@@ -65,5 +73,21 @@ body ai-dialog-overlay.active {
     .material-icons {
       line-height: 0.6;
     }
+  }
+}
+
+#search {
+  .multiselect {
+    display: none;
+    margin: 0;
+  }
+
+  .multiselect-container {
+    min-width: initial;
+    max-height: initial;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    margin-top: 0;
   }
 }
