@@ -1,7 +1,7 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { DataContext } from 'services/datacontext';
-import { StageConfig } from '/stageConf';
+import { StageConfig } from '../../stageConf';
 
 @inject(DataContext, Router, StageConfig)
 export class Popular {
