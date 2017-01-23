@@ -1,15 +1,18 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { DataContext } from 'services/datacontext';
+import { StageConfig } from '/stageConf';
 
-@inject(DataContext, Router)
+@inject(DataContext, Router, StageConfig)
 export class Popular {
 
-  constructor(dataContext, router) {
+  constructor(dataContext, router, stageConfig) {
     this.dataContext = dataContext;
     this.router = router;
+    this.fp = stageConfig.FEATURED_PROJECTS;
 
     this.projects = [];
+    this.featured = [];
 
     this.projectTitle = 'Most Popular Projects';
 
@@ -28,12 +31,18 @@ export class Popular {
   }
 
   getData() {
-    return this.dataContext.findPopular().then(results => {
+    this.dataContext.findPopular().then(results => {
       setTimeout(() => {
         this.projects = results;
         return this.projects;
       }, 10);
     });
+
+    for (let i = 0; i < this.fp.length; i++) {
+      this.dataContext.findById(this.fp[i]).then(repo => {
+        this.featured.push(repo);
+      });
+    }
   }
 
   activate() {
