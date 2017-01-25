@@ -14,6 +14,9 @@ export class AddProjectsModal {
     this.dataContext = dataContext;
     this.projects = [];
 
+    this.orgFormInput = '';
+    this.nameFormInput = '';
+
     this.selectedProjects = [];
     this.selectedProjectsEmpty = true;
   }
@@ -86,15 +89,24 @@ export class AddProjectsModal {
   }
 
   addProject() {
-    const proj = this.projects[$('#selectProjects').val()];
+    if ($('.nav-tabs .active').attr('id') === 'search_select') {
+      const proj = this.projects[$('#selectProjects').val()];
 
-    const postData = {
-      id: proj.id,
-      name: proj.project_name,
-      org_name: proj.organization,
-    };
+      const postData = {
+        id: proj.id,
+        name: proj.project_name,
+        org_name: proj.organization,
+      };
 
-    this.controller.ok(postData);
+      this.controller.ok(postData);
+    } else {
+      const postData = {
+        name: this.nameFormInput,
+        org_name: this.orgFormInput,
+      };
+
+      this.controller.ok(postData);
+    }
   }
 
 
