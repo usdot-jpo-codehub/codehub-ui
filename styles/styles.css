@@ -7130,6 +7130,14 @@ footer .bah-logo {
   border-radius: 0;
   border-bottom: 3px solid #00b0bc;
 }
+.home-tabs > li {
+  width: 33%;
+}
+.home-tabs .featured .material-icons {
+  -ms-transform: rotate(125deg);
+  -webkit-transform: rotate(125deg);
+  transform: rotate(125deg);
+}
 .source-tabs,
 .profile-tabs {
   margin: 0;
