@@ -49,7 +49,24 @@ export class SearchBarSecondary {
         const matches = [];
         for (const obj in data) {
           if ({}.hasOwnProperty.call(data, obj)) {
-            matches.push(data[obj].text);
+            const array = data[obj].source;
+            let lastWord;
+            const matchObj = {};
+
+            if (array.length > 1) {
+              lastWord = ` and${array.pop()}`;
+              if (array.length > 1) {
+                lastWord = `,${lastWord}`;
+              }
+            } else {
+              lastWord = '';
+            }
+            const found = array.join(',') + lastWord;
+
+            matchObj.text = data[obj].text;
+            matchObj.found = found;
+
+            matches.push(matchObj);
           }
         }
         asyncResults(matches);
@@ -58,21 +75,27 @@ export class SearchBarSecondary {
 
     $('#searchBox .typeahead').typeahead({
       hint: true,
-      highlight: true,
       minLength: 1,
       limit: 1000,
     },
       {
         name: 'suggestions',
         source: suggestions,
+        display: 'text',
+        templates: {
+          empty() { return '<div class="tt-suggestion tt-selectable">No results found</div>'; },
+          suggestion(data) {
+            return `<div class="tt-suggestion tt-selectable"> ${data.text} <span class="tt-source"><strong>${data._query}</strong> found in project ${data.found}</span></div>`; // eslint-disable-line
+          },
+        },
       });
 
     $('#searchBox .typeahead').bind('typeahead:select', (ev, suggestion) => {
-      this.executeSearch(suggestion);
+      this.executeSearch(suggestion.text);
     });
 
     $('#searchBox .typeahead').bind('typeahead:autocompleted', (ev, suggestion) => {
-      this.searchText = suggestion;
+      this.searchText = suggestion.text;
     });
   }
 
