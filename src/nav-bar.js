@@ -54,7 +54,24 @@ export class NavBar {
         const matches = [];
         for (const obj in data) {
           if ({}.hasOwnProperty.call(data, obj)) {
-            matches.push(data[obj].text);
+            const array = data[obj].source;
+            let lastWord;
+            const matchObj = {};
+
+            if (array.length > 1) {
+              lastWord = ` and${array.pop()}`;
+              if (array.length > 1) {
+                lastWord = `,${lastWord}`;
+              }
+            } else {
+              lastWord = '';
+            }
+            const found = array.join(',') + lastWord;
+
+            matchObj.text = data[obj].text;
+            matchObj.found = found;
+
+            matches.push(matchObj);
           }
         }
         asyncResults(matches);
@@ -63,21 +80,27 @@ export class NavBar {
 
     $('#navSearchBox .typeahead').typeahead({
       hint: true,
-      highlight: true,
       minLength: 1,
       limit: 1000,
     },
       {
         name: 'suggestions',
+        display: 'text',
         source: suggestions,
+        templates: {
+          empty() { return '<div class="tt-suggestion tt-selectable">No results found</div>'; },
+          suggestion(data) {
+            return `<div class="tt-suggestion tt-selectable"> ${data.text} <span class="tt-source"><strong>${data._query}</strong> found in project ${data.found}</span></div>`;
+          },
+        },
       });
 
     $('#navSearchBox .typeahead').bind('typeahead:select', (ev, suggestion) => {
-      this.executeNavSearch(suggestion);
+      this.executeNavSearch(suggestion.text);
     });
 
     $('#navSearchBox .typeahead').bind('typeahead:autocompleted', (ev, suggestion) => {
-      this.navSearchText = suggestion;
+      this.navSearchText = suggestion.text;
     });
 
     /*eslint-disable */

@@ -27,14 +27,14 @@
 			background-color: lighten(@light-gray, 15%);
 			cursor: pointer;
 		}
-
-		.tt-source {
-	    float: right;
-	    margin-right: 20px;
-	    color: @text-muted;
-		  font-size: 80%;
-	  }
 	}
+
+  .tt-source {
+    float: right;
+    margin-right: 20px;
+    color: @text-muted;
+    font-size: 80%;
+  }
 
 	.input-group & {
 		display: block !important;
@@ -44,11 +44,11 @@
 			top:60px !important;
 			width: 110%;
 		}
-		
+
 		&:not(:first-child):not(:last-child) {
 			.form-control {
 				border-radius: 0;
-			} 
+			}
 		}
 
 		&:first-child {
@@ -80,5 +80,5 @@
 		.form-control {
 			&:extend(.input-group-lg > .form-control);
 		}
-	} 
+	}
 }

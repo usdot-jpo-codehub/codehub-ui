@@ -8503,6 +8503,12 @@ body ai-dialog-overlay.active {
   background-color: #efefef;
   cursor: pointer;
 }
+.twitter-typeahead .tt-source {
+  float: right;
+  margin-right: 20px;
+  color: #b0b0b0;
+  font-size: 80%;
+}
 .input-group .twitter-typeahead {
   display: block !important;
 }
