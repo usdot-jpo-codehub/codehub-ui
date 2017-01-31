@@ -7139,21 +7139,25 @@ footer .bah-logo {
   transform: rotate(125deg);
 }
 .source-tabs,
-.profile-tabs {
+.profile-tabs,
+.search-tabs {
   margin: 0;
   border-bottom: 1px solid #d1d3d4;
 }
 .source-tabs > li,
-.profile-tabs > li {
+.profile-tabs > li,
+.search-tabs > li {
   width: 25%;
 }
 .source-tabs > li search > a,
-.profile-tabs > li search > a {
+.profile-tabs > li search > a,
+.search-tabs > li search > a {
   color: rgba(0, 0, 0, 0.55);
   letter-spacing: 1px;
 }
 .source-tabs > li search > a .grade-circle,
-.profile-tabs > li search > a .grade-circle {
+.profile-tabs > li search > a .grade-circle,
+.search-tabs > li search > a .grade-circle {
   display: inline-block;
   width: 35px;
   height: 35px;
@@ -7164,6 +7168,9 @@ footer .bah-logo {
   margin-right: 10px;
   margin-bottom: 0;
   letter-spacing: 0;
+}
+.search-tabs > li {
+  width: 50%;
 }
 .source-tab,
 .search-tab {
@@ -8385,6 +8392,7 @@ body ai-dialog-overlay.active {
 }
 .modal-footer .btn .material-icons {
   line-height: 0.6;
+  margin-right: 3px;
 }
 #search .multiselect {
   display: none;
