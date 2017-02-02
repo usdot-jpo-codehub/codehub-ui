@@ -84,6 +84,7 @@ export class SearchBarSecondary {
         display: 'text',
         templates: {
           empty() { return '<div class="tt-suggestion tt-selectable">No results found</div>'; },
+          pending() { return '<div class="tt-suggestion tt-selectable">Loading...</div>'; },
           suggestion(data) {
             return `<div class="tt-suggestion tt-selectable"> ${data.text} <span class="tt-source"><strong>${data._query}</strong> found in project ${data.found}</span></div>`; // eslint-disable-line
           },
