@@ -16,7 +16,7 @@
               <img src="img/language-icons/${repo.language.toLowerCase() ? repo.language.toLowerCase() : 'default'}.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';">
             </div>
             <div class="card-title multiline"><a href="#" route-href="route:project-details; params.bind: {id:repo.id}" title="${repo.project_name}" innerhtml.bind="repo.highlight.project_name ? repo.highlight.project_name : repo.project_name"></a></div>
-            <div class="org-name" innerhtml.bind="repo.highlight.language ? repo.highlight.language : repo.language"></div>
+            <div class="org-name">${repo.language}</div>
           </div>
           <div class="proj-desc multiline" innerhtml.bind="repo.highlight.project_description ? repo.highlight.project_description : repo.project_description"></div>
           <div class="text-muted last-updated clearfix">By <a href="${repo.organizationUrl}" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="View on Github" target="_blanks">${repo.organization}</a> &nbsp; | &nbsp; Updated ${repo.updatedAt | ago} <span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> ${repo.origin}</span></div>
