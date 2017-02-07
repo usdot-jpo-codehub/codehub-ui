@@ -7030,6 +7030,10 @@ a.disabled:hover {
     -ms-transform: translateY(0);
   }
 }
+.search-highlight {
+  background-color: #ffe15b;
+  padding: 5px;
+}
 footer {
   position: absolute;
   bottom: 0;
