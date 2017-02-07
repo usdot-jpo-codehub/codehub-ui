@@ -10,7 +10,7 @@
         </div>
         <div class="modal-body markdown-body">
 
-          <div markdown.bind="repo.content"></div>
+          <div markdown.bind="repo.highlight['readMe.content'][0] ? repo.highlight['readMe.content'][0] : repo.content"></div>
 
         </div>
         <div class="modal-footer">
