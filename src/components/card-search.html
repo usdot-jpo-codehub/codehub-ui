@@ -68,7 +68,7 @@
 
     <div class="row card-links">
       <ul class="list-inline clearfix">
-        <li if.bind="repo.highlight['readMe.content'][0]"><a href="#" click.trigger="openReadmeModal(repo)"><i class="material-icons">library_books</i> <em class="search-hightlight">Show README</em> </a></li>
+        <li if.bind="repo.highlight['readMe.content'][0]"><a href="#" click.trigger="openReadmeModal(repo)"><em class="search-highlight"><i class="material-icons">library_books</i> Show README</em></a></li>
         <li if.bind="!repo.highlight['readMe.content'][0]"><a href="#" click.trigger="openReadmeModal(repo)"><i class="material-icons">library_books</i> Show README </a></li>
         <li><a href="#" class="disabled"><i class="material-icons">bookmark_border</i> Bookmark</a></li>
         <li><a href="#" class="disabled"><i class="material-icons">share</i> Share</a></li>
