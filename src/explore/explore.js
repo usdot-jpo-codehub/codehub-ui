@@ -14,6 +14,7 @@ export class Explore {
     this.filters = filters;
 
     this.resultCount = 0;
+    this.searchDone = false;
 
     this.projects = [];
 
@@ -42,12 +43,14 @@ export class Explore {
           this.rebuildFilterOrg(projects);
           this.rebuildFilterLang(projects);
           this.rebuildFilterOrigin(projects);
+          this.searchDone = true;
           return this.projects;
         }, 10);
       });
   }
 
   activate() {
+    this.searchDone = false;
     this.getData();
   }
 
@@ -229,7 +232,7 @@ export class Explore {
     for (const object of array) {
       if (object[property] === value) {
         count++;
-      } else if (object[property] === null && value === 'None') {
+      } else if (object[property] === undefined && value === 'None') {
         count++;
       }
     }
