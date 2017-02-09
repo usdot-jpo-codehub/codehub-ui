@@ -7188,6 +7188,12 @@ footer .bah-logo {
 .search-tab .col-lg-12 {
   margin-bottom: 0px;
 }
+.search-tab .btn-group {
+  display: block;
+}
+.search-tab .multiselect-container {
+  width: 50%;
+}
 .profile-tabs {
   margin-bottom: 15px;
 }
