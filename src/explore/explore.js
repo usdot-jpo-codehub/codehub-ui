@@ -232,7 +232,7 @@ export class Explore {
     for (const object of array) {
       if (object[property] === value) {
         count++;
-      } else if (object[property] === undefined && value === 'None') {
+      } else if ((object[property] === null || object[property] === undefined) && value === 'None') {
         count++;
       }
     }
