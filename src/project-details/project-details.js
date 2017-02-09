@@ -17,6 +17,8 @@ export class ProjectDetails {
     this.componentDependencies = [];
     this.projectsThatUseUs = [];
 
+    this.sonarLink;
+
     this.dependCollapsed = true;
     this.useUsCollapsed = true;
     this.numDepends = 8;
@@ -46,6 +48,7 @@ export class ProjectDetails {
 
     this.dataContext.findById(params.id).then(repo => {
       this.repo = repo;
+      this.sonarLink = `${window.location.hostname}:9000/dashboard/index/${repo.project_name}`;
       if (repo.userForkedRepos) {
         this.projectsThatUseUs = repo.forkedRepos.concat(repo.userForkedRepos);
       } else {
