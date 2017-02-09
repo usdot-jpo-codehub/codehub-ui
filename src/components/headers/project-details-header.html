@@ -9,7 +9,7 @@
         <h1>${repo.project_name}</h1>
         <p>${repo.language ? repo.language : stageConfig.NO_LANG}</p>
         <div class="btn-group">
-          <a class="btn btn-secondary btn-sm" href="#" onclick="history.go(-1)"><i class="material-icons">chevron_left</i>Back</a>
+          <a class="btn btn-secondary btn-sm" click.delegate="goBack()"><i class="material-icons">chevron_left</i>Back</a>
           <a class="btn btn-secondary btn-sm" href="${repo.repositoryUrl}" target="_blank">View on Github<i class="material-icons">chevron_right</i></a>
         </div>
       </div>

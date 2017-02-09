@@ -25,4 +25,8 @@ export class ProjectDetailsHeader {
     });
   }
 
+  goBack() {
+    history.back();
+  }
+
 }
