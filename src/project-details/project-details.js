@@ -17,7 +17,7 @@ export class ProjectDetails {
     this.componentDependencies = [];
     this.projectsThatUseUs = [];
 
-    this.sonarLink;
+    this.sonarLink = '';
 
     this.dependCollapsed = true;
     this.useUsCollapsed = true;
