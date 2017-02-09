@@ -8178,11 +8178,11 @@ label.btn > input[type='radio'] {
 .search-results .card-search .col-github-stats .github-stats {
   padding-left: 20px;
 }
-.search-results .no-results .empty-state {
+.no-results .empty-state {
   padding-top: 10px;
   text-align: center;
 }
-.search-results .no-results .empty-state .material-icons {
+.no-results .empty-state .material-icons {
   font-size: 150px;
   color: #b0b0b0;
 }
