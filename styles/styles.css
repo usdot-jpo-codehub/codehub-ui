@@ -7030,6 +7030,10 @@ a.disabled:hover {
     -ms-transform: translateY(0);
   }
 }
+.search-highlight {
+  background-color: #ffe15b;
+  padding: 5px;
+}
 footer {
   position: absolute;
   bottom: 0;
@@ -7183,6 +7187,12 @@ footer .bah-logo {
 .search-tab .col-lg-6,
 .search-tab .col-lg-12 {
   margin-bottom: 0px;
+}
+.search-tab .btn-group {
+  display: block;
+}
+.search-tab .multiselect-container {
+  width: 50%;
 }
 .profile-tabs {
   margin-bottom: 15px;
@@ -8174,11 +8184,11 @@ label.btn > input[type='radio'] {
 .search-results .card-search .col-github-stats .github-stats {
   padding-left: 20px;
 }
-.search-results .no-results .empty-state {
+.no-results .empty-state {
   padding-top: 10px;
   text-align: center;
 }
-.search-results .no-results .empty-state .material-icons {
+.no-results .empty-state .material-icons {
   font-size: 150px;
   color: #b0b0b0;
 }
