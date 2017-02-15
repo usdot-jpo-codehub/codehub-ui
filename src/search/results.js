@@ -263,7 +263,7 @@ export class Results {
     for (const object of array) {
       if (object[property] === value) {
         count++;
-      } else if (object[property] === null && value === 'None') {
+      } else if ((object[property] === null || object[property] === undefined) && value === 'None') {
         count++;
       }
     }
