@@ -2,38 +2,23 @@ import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import * as c3 from 'c3';
 import { DataContext } from 'services/datacontext';
-import { Filters } from 'components/filters';
 
-@inject(DataContext, Router, Filters)
+@inject(DataContext, Router)
 export class Insight {
 
-  constructor(dataContext, router, filters) {
+  constructor(dataContext, router) {
     this.dataContext = dataContext;
     this.router = router;
-    this.filters = filters;
 
-    this.projects = [];
+    this.insights = [];
 
-    this.projectTitle = 'Insight';
-
-    this.sortDirection = 'descending';
-    this.selectedSort = 'rank';
-    this.sortOptions = [
-      { value: 'rank', name: 'Rank' },
-      { value: 'stars', name: 'Stars' },
-      { value: 'watchers', name: 'Watchers' },
-      { value: 'releases', name: 'Releases' },
-      { value: 'commits', name: 'Commits' },
-      { value: 'contributors', name: 'Contributors' },
-    ];
+    this.mostUsedLanguages = {};
   }
 
   getData() {
-    return this.dataContext.findPopular().then(results => {
-      this.projects = results;
-      this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
-      this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
-      return this.projects;
+    return this.dataContext.findEnterpriseInsight().then(results => {
+      this.insights = results;
+      this.buildCharts();
     });
   }
 
@@ -41,35 +26,18 @@ export class Insight {
     this.getData();
   }
 
-  attached() {
-    const chart = c3.generate({
-      bindto: '#chart',
-      legend: {
-        position: 'inset',
-        inset: {
-          anchor: 'top-left',
-        },
-      },
+  buildCharts() {
+    this.mostUsedLanguages = c3.generate({
+      bindto: '#mostUsedLanguages',
       data: {
-        columns: [
-          ['data1', 30],
-          ['data2', 120],
-        ],
+        columns: Object.entries(this.insights.language_counts_stat),
         type: 'donut',
-        // onclick: function (d, i) {
-        //   console.log('onclick', d, i);
-        // },
-        // onmouseover: function (d, i) {
-        //   console.log('onmouseover', d, i);
-        // },
-        // onmouseout: function (d, i) {
-        //   console.log('onmouseout', d, i);
-        // }
-      },
-      donut: {
-        title: 'Iris Petal Width',
       },
     });
+  }
+
+  deactivate() {
+    this.mostUsedLanguages.destroy();
   }
 
 }
