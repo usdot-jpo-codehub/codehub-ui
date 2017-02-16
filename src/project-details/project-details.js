@@ -48,7 +48,7 @@ export class ProjectDetails {
 
     this.dataContext.findById(params.id).then(repo => {
       this.repo = repo;
-      this.sonarLink = `${window.location.hostname}:9000/dashboard/index/${repo.project_name}`;
+      this.sonarLink = `52.90.146.208:9000/dashboard/index/${repo.project_name}`;
       if (repo.userForkedRepos) {
         this.projectsThatUseUs = repo.forkedRepos.concat(repo.userForkedRepos);
       } else {
