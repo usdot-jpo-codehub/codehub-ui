@@ -14,22 +14,22 @@
           <div class="div col-lg-3">
             <div class="card card-insight">
               <h2 class="text-center health-tiles">Projects</h2>
-              <div class="text-center health-num">28.7k</div>
-              <div class="text-center"><i class="material-icons positive">arrow_drop_up</i><span class="num text-muted text-emphasized">7.4%</span><span class="text-muted"> over the past week</span></div>
+              <div class="text-center health-num">${insights.number_of_projects}</div>
+              <!--<div class="text-center"><i class="material-icons positive">arrow_drop_up</i><span class="num text-muted text-emphasized">7.4%</span><span class="text-muted"> over the past week</span></div>-->
             </div>
           </div>
           <div class="div col-lg-3">
             <div class="card card-insight">
               <h2 class="text-center health-tiles">Bugs &#38; Vulnerabilities</h2>
-              <div class="text-center health-num">1,523</div>
-              <div class="text-center"><i class="material-icons negative">arrow_drop_up</i><span class="num text-muted text-emphasized">3.1%</span><span class="text-muted"> over the past week</span></div>
+              <div class="text-center health-num">${insights.bugs_vulnerabilities}</div>
+              <!--<div class="text-center"><i class="material-icons negative">arrow_drop_up</i><span class="num text-muted text-emphasized">3.1%</span><span class="text-muted"> over the past week</span></div>-->
             </div>
           </div>
           <div class="div col-lg-3">
             <div class="card card-insight">
               <h2 class="text-center health-tiles">Technical Debt</h2>
-              <div class="text-center health-num">997</div>
-              <div class="text-center"><i class="material-icons positive">arrow_drop_down</i><span class="num text-muted text-emphasized">1.5%</span><span class="text-muted"> over the past week</span></div>
+              <div class="text-center health-num">${insights.technical_debt}</div>
+              <!--<div class="text-center"><i class="material-icons positive">arrow_drop_down</i><span class="num text-muted text-emphasized">1.5%</span><span class="text-muted"> over the past week</span></div>-->
             </div>
           </div>
         </div>
@@ -39,8 +39,8 @@
               <div class="lined-header">
                 <h2 class=""><span>Most Used Languages</span></h2>
               </div>
-              <div class="temp-img">
-                <img src="../../img/most-used-donut.jpg"/>
+              <div id="mostUsedLanguages" class="">
+
               </div>
             </div>
           </div>
@@ -127,7 +127,7 @@
                 <span class="pull-right"><em class="text-muted">Source: <a href="${repo.repositoryUrl}" target="_blank">SonarQube™</a></em></span>
                 <h2 class=""><span>Overall Source Code Health</span></h2>
               </div>
-              
+
               <ul class="nav nav-tabs source-tabs" role="tablist">
                 <li role="presentation" class="active">
                   <a href="#Releasability" aria-controls="Releasability" role="tab" data-toggle="tab"><div class="grade-circle rating-E">E</div>Releasability</a>

@@ -1,43 +1,60 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
+import * as c3 from 'c3';
 import { DataContext } from 'services/datacontext';
-import { Filters } from 'components/filters';
 
-@inject(DataContext, Router, Filters)
+@inject(DataContext, Router)
 export class Insight {
 
-  constructor(dataContext, router, filters) {
+  constructor(dataContext, router) {
     this.dataContext = dataContext;
     this.router = router;
-    this.filters = filters;
 
-    this.projects = [];
+    this.insights = [];
 
-    this.projectTitle = 'Insight';
-
-    this.sortDirection = 'descending';
-    this.selectedSort = 'rank';
-    this.sortOptions = [
-      { value: 'rank', name: 'Rank' },
-      { value: 'stars', name: 'Stars' },
-      { value: 'watchers', name: 'Watchers' },
-      { value: 'releases', name: 'Releases' },
-      { value: 'commits', name: 'Commits' },
-      { value: 'contributors', name: 'Contributors' },
-    ];
+    this.mostUsedLanguages = {};
   }
 
   getData() {
-    return this.dataContext.findPopular().then(results => {
-      this.projects = results;
-      this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
-      this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
-      return this.projects;
+    return this.dataContext.findEnterpriseInsight().then(results => {
+      this.insights = results;
+      this.buildCharts();
     });
   }
 
   activate() {
     this.getData();
+  }
+
+  buildCharts() {
+    let mul = this.insights.language_counts_stat;
+    mul = Object.entries(mul);
+    mul.sort(this.multiArraySecondColumnDesc);
+    const mulTop = mul.slice(0, 5);
+    const mulBot = mul.slice(6, mul.length);
+
+    const mulOther = mulBot.reduce((a, b) => b[1] + a, 0);
+
+    mulTop.push([`Other(${mulBot.length})`, mulOther]);
+
+    this.mostUsedLanguages = c3.generate({
+      bindto: '#mostUsedLanguages',
+      data: {
+        columns: mulTop,
+        type: 'donut',
+      },
+    });
+  }
+
+  deactivate() {
+    this.mostUsedLanguages.destroy();
+  }
+
+  multiArraySecondColumnDesc(a, b) {
+    if (a[1] === b[1]) {
+      return 0;
+    }
+    return (a[1] > b[1]) ? -1 : 1;
   }
 
 }
