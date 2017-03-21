@@ -29,10 +29,24 @@
       const PF_AUTH_SN = '<!--#echo var="PF_AUTH_SN" -->';
       const PF_AUTH_SUBJECT = '<!--#echo var="PF_AUTH_SUBJECT" -->';
     </script>
+    <script type="text/javascript" src="https://ecomfe.github.io/echarts-examples/public/vendors/echarts/echarts-all-3.js?_v_=undefined"></script>
+    <script type="text/javascript" src="https://ecomfe.github.io/echarts-examples/public/vendors/echarts/extension/dataTool.js?_v_=undefined"></script>
 
     <script src="jspm_packages/system.js"></script>
+
     <script src="config.js"></script>
     <script>
+      var systemLocate = System.locate;
+      System.locate = function(load) {
+        var System = this;
+        return Promise.resolve(systemLocate.call(this, load)).then(function(address) {
+          if(address.lastIndexOf("html.js") > -1) return address;
+          if(address.lastIndexOf("css.js") > -1) return address;
+          return address + System.cacheBust;
+        });
+      };
+      System.cacheBust = '?bust=' + Date.now();
+
       System.import('aurelia-bootstrapper');
     </script>
   </body>
