@@ -48,6 +48,7 @@ System.config({
     "core-js": "npm:core-js@1.2.7",
     "corejs-typeahead": "npm:corejs-typeahead@0.11.1",
     "detect-browser": "npm:detect-browser@1.5.0",
+    "echarts": "npm:echarts@3.4.0",
     "fetch": "github:github/fetch@2.0.1",
     "font-awesome": "npm:font-awesome@4.7.0",
     "jquery": "npm:jquery@2.2.4",
@@ -285,6 +286,10 @@ System.config({
     "npm:detect-browser@1.5.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:echarts@3.4.0": {
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "zrender": "npm:zrender@3.3.0"
+    },
     "npm:font-awesome@4.7.0": {
       "css": "github:systemjs/plugin-css@0.1.32"
     },
@@ -331,6 +336,9 @@ System.config({
     },
     "npm:vm-browserify@0.0.4": {
       "indexof": "npm:indexof@0.0.1"
+    },
+    "npm:zrender@3.3.0": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     }
   }
 });
