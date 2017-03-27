@@ -128,8 +128,8 @@ export class Insight {
           magicType: {
             show: true,
             title: {
-              line: 'line',
-              bar: 'bar',
+              line: 'Line',
+              bar: 'Bar',
             },
             type: ['line', 'bar'],
           },
@@ -218,8 +218,8 @@ export class Insight {
           magicType: {
             show: true,
             title: {
-              line: 'line',
-              bar: 'bar',
+              line: 'Line',
+              bar: 'Bar',
             },
             type: ['line', 'bar'],
           },
