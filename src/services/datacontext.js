@@ -26,7 +26,7 @@ export class DataContext {
   }
 
   findEnterpriseInsight() {
-    return this.http.fetch(`${baseUrl}/findEnterpriseInsight`, {
+    return this.http.fetch('/api/codes/findEnterpriseInsight', {
       method: 'GET',
     })
       .then(response => response.json());
