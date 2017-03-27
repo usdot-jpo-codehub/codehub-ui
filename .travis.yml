@@ -22,6 +22,7 @@ install:
   - jspm install -y
 script:
   - sed -i "s@{BUILD_LABEL}@$HEIMDALL_BUILD_LABEL@" stageConf.js
+  - sed -i "s@{BUILD_LABEL}@$HEIMDALL_BUILD_LABEL@" index.html
   - sed -i "s@{BRANCH}@$HEIMDALL_BRANCH@" src/main.js
   - gulp lint
   - gulp bundle

@@ -10,7 +10,7 @@ module.exports = {
         "inject": true,
         "minify": true,
         "depCache": true,
-        "rev": true
+        "rev": false
       }
     },
     "dist/aurelia": {
@@ -30,7 +30,8 @@ module.exports = {
         "bootstrap",
         "bootstrap/css/bootstrap.css!text",
         "fetch",
-        "jquery"
+        "jquery",
+        "echarts"
       ],
       "options": {
         "inject": true,

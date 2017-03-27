@@ -11,8 +11,8 @@
     <link href="styles/styles.css" rel="stylesheet">
     <link href="styles/font-awesome.css" rel="stylesheet">
     <link href="jspm_packages/npm/octicons@4.4.0/build/font/octicons.css" rel="stylesheet">
-    <link href="jspm_packages/npm/roboto-fontface@0.6.0/css/roboto/roboto-fontface.css" rel="stylesheet">
-    <link href="jspm_packages/npm/roboto-fontface@0.6.0/css/roboto-condensed/roboto-condensed-fontface.css" rel="stylesheet">
+    <link href="jspm_packages/npm/roboto-fontface@0.6.1/css/roboto/roboto-fontface.css" rel="stylesheet">
+    <link href="jspm_packages/npm/roboto-fontface@0.6.1/css/roboto-condensed/roboto-condensed-fontface.css" rel="stylesheet">
     <link href="jspm_packages/npm/material-design-icons-iconfont@3.0.3/dist/material-design-icons.css" rel="stylesheet">
 </head>
 
@@ -29,8 +29,6 @@
       const PF_AUTH_SN = '<!--#echo var="PF_AUTH_SN" -->';
       const PF_AUTH_SUBJECT = '<!--#echo var="PF_AUTH_SUBJECT" -->';
     </script>
-    <script type="text/javascript" src="https://ecomfe.github.io/echarts-examples/public/vendors/echarts/echarts-all-3.js?_v_=undefined"></script>
-    <script type="text/javascript" src="https://ecomfe.github.io/echarts-examples/public/vendors/echarts/extension/dataTool.js?_v_=undefined"></script>
 
     <script src="jspm_packages/system.js"></script>
 
@@ -45,7 +43,7 @@
           return address + System.cacheBust;
         });
       };
-      System.cacheBust = '?bust=' + Date.now();
+      System.cacheBust = '?bust=' + '{BUILD_LABEL}';
 
       System.import('aurelia-bootstrapper');
     </script>
