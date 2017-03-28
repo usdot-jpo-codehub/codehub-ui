@@ -155,14 +155,14 @@ export class Insight {
       yAxis: [
         {
           type: 'category',
-          data: arr1.slice(16),
+          data: arr1.slice(-10),
         },
       ],
       series: [
         {
           name: 'Projects',
           type: 'bar',
-          data: arr2.slice(16),
+          data: arr2.slice(-10),
         },
       ],
     });
