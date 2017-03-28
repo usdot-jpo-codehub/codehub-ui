@@ -12,7 +12,7 @@ env:
   - HEIMDALL_VERSION_NUMBER=1.0.0
   - HEIMDALL_BRANCH=$TRAVIS_BRANCH
   - HEIMDALL_BUILD_LABEL=$HEIMDALL_VERSION_NUMBER.$TRAVIS_BUILD_NUMBER-pre-alpha-$HEIMDALL_BRANCH
-  - HEIMDALL_PACKAGE_NAME=heimdall-ui-prod-$HEIMDALL_BUILD_LABEL.zip
+  - HEIMDALL_PACKAGE_NAME=heimdall-ui-$HEIMDALL_BRANCH-$HEIMDALL_BUILD_LABEL.zip
 install:
   - npm install -g gulp
   - npm install -g jspm
@@ -22,6 +22,7 @@ install:
   - jspm install -y
 script:
   - sed -i "s@{BUILD_LABEL}@$HEIMDALL_BUILD_LABEL@" stageConf.js
+  - sed -i "s@{BUILD_LABEL}@$HEIMDALL_BUILD_LABEL@" index.html
   - sed -i "s@{BRANCH}@$HEIMDALL_BRANCH@" src/main.js
   - gulp lint
   - gulp bundle
@@ -31,29 +32,54 @@ before_deploy:
   - mkdir -p dpl_cd_upload
   - mv $HEIMDALL_PACKAGE_NAME dpl_cd_upload/$HEIMDALL_PACKAGE_NAME
 deploy:
-- provider: s3
-  access_key_id: &1
-    secure: UNjp09kRNU64BGid/WLBsObq0riTFDiCd8kY6NoSt5o8rfIvNG0EhGqi3/RV+r3rvxE6U+FWlJReE59SYuAXp5zy1B+xpmrUvrc1CY5AH+KmaDNkbf8ngHd5bZM8U99Yql8woXs/7XMmffcUnQ2Xv6xjwOjcrjzPNtx4FlXyqosGAqs5AlCwze6Mgz6E7cJPb0tAqM1DZxPRXx7lH2oouryuoqCaAHZyfveppvmpOOR3VmkQPXy885pnT3Kr2gHOrpatGPPHZ73meFaYZ1l9l+Armxl13UiotVSU7s1KWEMict7doZ0rxV+mDHEvp0BrRBw8+GmenuvODvYSslrfEJR+c9bjA72Na6vF0dAgzPFCds0A6/Y38DzZovamRGcFibSgYP+8I34F7N8ymNwfiWMKLE7j0JowYtj/Tduj5IvEJ/Qt52Ta3BNP/dks4igXEJWeym+vSEuI+bnDCqB4Da28ULJZc3+eLTFPf4p93Zsc3r7K0cF49Lh1p9bR+QvpnULSonrfQwREw0HwmJXNv+Irpvdi+HdPdgOPblsdinN1SMbF2vsUJ3vaKpZjVmWHQOepnprnkPqH8ztRpBwNnvcl32PT47QVXkEno6lhhKnZdCo4t9ggXHhb8RzUmjziH5a50wpwB47cRT4oA0NAMU+LntLjRfllmVFczWV0g7w=
-  secret_access_key: &2
-    secure: dWywxTxQqX1W2WU4c3XzhdFIWxvjUWNYovKCAMzoLu7E63q64NP0kFCkhbKLVjnvYeorgdM/KD4CgcK9W01wYDyNy74VIuuIpYldY8u5uPzrfT4ObFlZ7UPJ6biFE2YKD0xm0ISMyFsFmIo2hUBhF/sFqJh4Xp5G+5CvuBx/2Rl2S/vbUqI7IcGtf3wJ9Lmerob9ns0wA9fKs0GflBOY6TLA7cRIvlh+F5+O/1RWY98lEN8na8qtegIRlG8M/Vvu/zpThHzI96jdUceSKRHi1OHMUKVoNXhjM3qT51iEhAbIVzcJqMbjB3u9pDnBEed3PnVvk7KOFH/cXMyVMaWt2VfD3YEPs/n3qOfBF/iEVhBRGOWjgCjTh9Dncmgj0dGTnWrLtR5YxmYEtI3Le7pZ4fPnWmqlK4SJlTK4BBPDR7RqAgVMDI8KcQuvojMEsDkRQcXyghN1noyQ5/sHPLT0xQ0CuPQK4vOolexlXmkDvYWn2fsXAh2y/MMu14FnctITYIMiq3vpSPxAZRnLb+NKVh10cZ8Zju7d3VgH0uHyK+93VGJozmDBTfJ83gd5wiSjL2qwpZ0Vlqmv2qmTionYc58CJVJbMJpf476gm2cfWO+zq5jJzRt2oeRlaWdL8pd8fX/m0NmdtvcsHWlUniOdbO9N1z9lPzloAl4zN5v5q9k=
-  local_dir: dpl_cd_upload
-  on: &3
-    repo: Project-Heimdall/heimdall-uiapp
-    branch: master
-  bucket: prod-heimdall-ui-codedeploy
-  region: us-west-2
-  skip_cleanup: true
-- provider: codedeploy
-  access_key_id: *1
-  secret_access_key: *2
-  bucket: prod-heimdall-ui-codedeploy
-  key: $HEIMDALL_PACKAGE_NAME
-  bundle_type: zip
-  application: prod-heimdall-ui-app
-  deployment_group: prod-heimdall-ui-group
-  region: us-east-1
-  on: *3
-  skip_cleanup: true
+# Development
+  - provider: s3
+    access_key_id: &1
+      secure: eppFdNSgdITos2FjRjfsNXQtFVVb0ersV+eLK0ll4cZmlXgkckUQi0lDaAgNyp/seeOxCoIqdEs4hvmPeznognnG6McIGHnntShNbsk+c4jwuCxGb4OpoxshNQr6/3FEXmSLSe2XO93H2zrWxyxmHchuqXav2m/b6bDG2mIdhqK5Xs0OZTSbF2AGOguZBZopb0V5RV4IVZGzx1Kj7x1bN0m14JDGtcnGwN2KsxiK46UizeKjcbsUH1DeyZatUrCKx5jiVcXHj6LP1ydxXYeG5asELf8uORdhMbLTou/k743qDeruFNzYWproJiCxyhao9f7Ktpu+2EPKt1lasoDgr4qzp8Fr5r3+lx9HS7KZmKNUVmTNyHc6+DG5ErjKg+zePgP7iaA02cPmxn7p7UEes6O17kDfrogSvDrhINfJ1bIeUmeOuhZ9do92FE70i3y/Laek/n9CfxI0KVp2dqGSPQRqohn8MCXk2YaKJF1/n/aO6QvcA9Y3rPtuzYDzTHAOrBTMS+7u7ZMe7ViQATPOQs16vR9mDts0759LNYDnLcFLmsv9Ekb1PRy9Gzde1bAoP02khfeN8GcdwhnDS5OePhRCrkrN3a5GDi2m/F6dC8GOvOvr+Mmj1TitvR+F24tnMEeBlqsvpV0gsVIDIQK7aOYazlkR9z3xgB83kd2yR+c=
+    secret_access_key: &2
+      secure: szRS6akDk/QF+Q9ScLBILeAYqffuNq1FqUUtF+/pRkSlP8h67BzelwCsKoytCipA+FGE+eSmq6Bjvxs7F86qgbjeSyMo3WW/qcQEHRrQKyrUhbKekIZWGCmJBewM/GxxKMHc/55q5hKmvxIBkM7Q6ByDE5IZE1OP2otnjj8pbYlvpYOo3g7g1LlMKQ3f4WB44ieREqjiBIKuP0E6e3t5/Zbz90pSWPTpTvAGiLwpTQiLDZOhXGQdlqndg5VFSUQ6g1miTb8xcF5itPdpMxn2tG1pmD6QfBwEa1Q78W9XMMYTzoKtX4y2UD+wTfwO8MSP51vw18iIjV9/654//VzS+jc1GHD8U+13Cpjr5tY/v09uNZKtOjM7BdCVy8/pudRAlsqK9tqFUIo8jOf0UYpqlGQwJDWaS+qD/dSLGyNeggeA2i7I4UrCcJnX6cSL6ycYtuq5iNGHJEwdXEmyIHStH4DPE89i9m169CSzI0+01sQje7UQYi5W75Pa2c17nyDeBhbLXyJ6Q6YGQ9Ul9XS1BJvpfoAqeBsSMRxjkCMVTXOWhKPP0XQ5QVrxP6TeIH1x3tivk2r0Vi5xC5QW29C0Y2ydwUcvV84bJRu+7unmLinVHHAAymvMn9Hnl8RMdzOQIGOI8y4cVp8pq/a6L31mxe5+IlD6ZwzzCIVt/xpazis=
+    local_dir: dpl_cd_upload
+    on: &3
+      repo: Project-Heimdall/heimdall-uiapp
+      branch: development
+    bucket: dev-stage-ui-codedeploy
+    region: us-west-2
+    skip_cleanup: true
+  - provider: codedeploy
+    access_key_id: *1
+    secret_access_key: *2
+    bucket: dev-stage-ui-codedeploy
+    key: $HEIMDALL_PACKAGE_NAME
+    bundle_type: zip
+    application: dev-stage-ui-app
+    deployment_group: dev-stage-ui-group
+    region: us-east-1
+    on: *3
+    skip_cleanup: true
+# Production
+  - provider: s3
+    access_key_id: &1
+      secure: eppFdNSgdITos2FjRjfsNXQtFVVb0ersV+eLK0ll4cZmlXgkckUQi0lDaAgNyp/seeOxCoIqdEs4hvmPeznognnG6McIGHnntShNbsk+c4jwuCxGb4OpoxshNQr6/3FEXmSLSe2XO93H2zrWxyxmHchuqXav2m/b6bDG2mIdhqK5Xs0OZTSbF2AGOguZBZopb0V5RV4IVZGzx1Kj7x1bN0m14JDGtcnGwN2KsxiK46UizeKjcbsUH1DeyZatUrCKx5jiVcXHj6LP1ydxXYeG5asELf8uORdhMbLTou/k743qDeruFNzYWproJiCxyhao9f7Ktpu+2EPKt1lasoDgr4qzp8Fr5r3+lx9HS7KZmKNUVmTNyHc6+DG5ErjKg+zePgP7iaA02cPmxn7p7UEes6O17kDfrogSvDrhINfJ1bIeUmeOuhZ9do92FE70i3y/Laek/n9CfxI0KVp2dqGSPQRqohn8MCXk2YaKJF1/n/aO6QvcA9Y3rPtuzYDzTHAOrBTMS+7u7ZMe7ViQATPOQs16vR9mDts0759LNYDnLcFLmsv9Ekb1PRy9Gzde1bAoP02khfeN8GcdwhnDS5OePhRCrkrN3a5GDi2m/F6dC8GOvOvr+Mmj1TitvR+F24tnMEeBlqsvpV0gsVIDIQK7aOYazlkR9z3xgB83kd2yR+c=
+    secret_access_key: &2
+      secure: szRS6akDk/QF+Q9ScLBILeAYqffuNq1FqUUtF+/pRkSlP8h67BzelwCsKoytCipA+FGE+eSmq6Bjvxs7F86qgbjeSyMo3WW/qcQEHRrQKyrUhbKekIZWGCmJBewM/GxxKMHc/55q5hKmvxIBkM7Q6ByDE5IZE1OP2otnjj8pbYlvpYOo3g7g1LlMKQ3f4WB44ieREqjiBIKuP0E6e3t5/Zbz90pSWPTpTvAGiLwpTQiLDZOhXGQdlqndg5VFSUQ6g1miTb8xcF5itPdpMxn2tG1pmD6QfBwEa1Q78W9XMMYTzoKtX4y2UD+wTfwO8MSP51vw18iIjV9/654//VzS+jc1GHD8U+13Cpjr5tY/v09uNZKtOjM7BdCVy8/pudRAlsqK9tqFUIo8jOf0UYpqlGQwJDWaS+qD/dSLGyNeggeA2i7I4UrCcJnX6cSL6ycYtuq5iNGHJEwdXEmyIHStH4DPE89i9m169CSzI0+01sQje7UQYi5W75Pa2c17nyDeBhbLXyJ6Q6YGQ9Ul9XS1BJvpfoAqeBsSMRxjkCMVTXOWhKPP0XQ5QVrxP6TeIH1x3tivk2r0Vi5xC5QW29C0Y2ydwUcvV84bJRu+7unmLinVHHAAymvMn9Hnl8RMdzOQIGOI8y4cVp8pq/a6L31mxe5+IlD6ZwzzCIVt/xpazis=
+    local_dir: dpl_cd_upload
+    on: &3
+      repo: Project-Heimdall/heimdall-uiapp
+      branch: master
+    bucket: prod-stage-ui-codedeploy
+    region: us-west-2
+    skip_cleanup: true
+  - provider: codedeploy
+    access_key_id: *1
+    secret_access_key: *2
+    bucket: prod-stage-ui-codedeploy
+    key: $HEIMDALL_PACKAGE_NAME
+    bundle_type: zip
+    application: prod-stage-ui-app
+    deployment_group: prod-stage-ui-group
+    region: us-east-1
+    on: *3
+    skip_cleanup: true
 notifications:
   slack:
     secure: ohVGL0X/we+oymPIh+UYef2pdvfqwAzMAVrmJ8+P4J+hojiGUmTQVLeh0gcLw+eDg4E+IfYG0IfJzlIvxZj68unm+kMjy7Oa52BwcJhVBGCExfEf9QljM0Iv0XC6j/Hj3F6Qd7yywv18HEYhBi32f8tQRwRbfgc+aqWg/N1w8QuPWRnaEvsw+dLd0xCkBZ14fUl9A2jh2ey+LMf0KDBVi+2cltykruOTMaRdxHrSiW85gSEBzI68ihAZZBT+/YayXuFPRPFXaqxlfiLJN9Jo3RYcpq4gMFxRv/8Yxuxt5SANcqz+aDBjCioEiRxitwTYiMxLaIvvdunT5VUN+YZbkD/bHaF3dcqTN0EHmBC4CW+RHXeps6aQVfyrU1F/P+2DD1hAZGibTcQ3uC3gBYYOJj6MNGYTAqlscjvDiXzb5ZAd9rOdi0dqCkHFmZOXBJEe5U7LgGTUIh4ab9lt0LDbX1v25ExJA9p7CSgjBZtfEatGpctXS2IVJ2bwhUbui3C7aactlB7fEi0O3+RIRU15NHfTdiqXUOZf5w9x7zYyXaWnqjfu/LkGvlnlGkktcqlh17rPQQ/69NfAP3HZiU/tbcIhLF/5ItkZQm7logtWGbf05f7D/o/pJ9ZPyd1JPln4buQpKWg+574okEHbXEfKphNQt6/HYxbeROPGhoThy+o=
