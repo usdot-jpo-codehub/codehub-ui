@@ -58,27 +58,27 @@ deploy:
     skip_cleanup: true
 # Production
   - provider: s3
-    access_key_id: &1
+    access_key_id: &4
       secure: eppFdNSgdITos2FjRjfsNXQtFVVb0ersV+eLK0ll4cZmlXgkckUQi0lDaAgNyp/seeOxCoIqdEs4hvmPeznognnG6McIGHnntShNbsk+c4jwuCxGb4OpoxshNQr6/3FEXmSLSe2XO93H2zrWxyxmHchuqXav2m/b6bDG2mIdhqK5Xs0OZTSbF2AGOguZBZopb0V5RV4IVZGzx1Kj7x1bN0m14JDGtcnGwN2KsxiK46UizeKjcbsUH1DeyZatUrCKx5jiVcXHj6LP1ydxXYeG5asELf8uORdhMbLTou/k743qDeruFNzYWproJiCxyhao9f7Ktpu+2EPKt1lasoDgr4qzp8Fr5r3+lx9HS7KZmKNUVmTNyHc6+DG5ErjKg+zePgP7iaA02cPmxn7p7UEes6O17kDfrogSvDrhINfJ1bIeUmeOuhZ9do92FE70i3y/Laek/n9CfxI0KVp2dqGSPQRqohn8MCXk2YaKJF1/n/aO6QvcA9Y3rPtuzYDzTHAOrBTMS+7u7ZMe7ViQATPOQs16vR9mDts0759LNYDnLcFLmsv9Ekb1PRy9Gzde1bAoP02khfeN8GcdwhnDS5OePhRCrkrN3a5GDi2m/F6dC8GOvOvr+Mmj1TitvR+F24tnMEeBlqsvpV0gsVIDIQK7aOYazlkR9z3xgB83kd2yR+c=
-    secret_access_key: &2
+    secret_access_key: &5
       secure: szRS6akDk/QF+Q9ScLBILeAYqffuNq1FqUUtF+/pRkSlP8h67BzelwCsKoytCipA+FGE+eSmq6Bjvxs7F86qgbjeSyMo3WW/qcQEHRrQKyrUhbKekIZWGCmJBewM/GxxKMHc/55q5hKmvxIBkM7Q6ByDE5IZE1OP2otnjj8pbYlvpYOo3g7g1LlMKQ3f4WB44ieREqjiBIKuP0E6e3t5/Zbz90pSWPTpTvAGiLwpTQiLDZOhXGQdlqndg5VFSUQ6g1miTb8xcF5itPdpMxn2tG1pmD6QfBwEa1Q78W9XMMYTzoKtX4y2UD+wTfwO8MSP51vw18iIjV9/654//VzS+jc1GHD8U+13Cpjr5tY/v09uNZKtOjM7BdCVy8/pudRAlsqK9tqFUIo8jOf0UYpqlGQwJDWaS+qD/dSLGyNeggeA2i7I4UrCcJnX6cSL6ycYtuq5iNGHJEwdXEmyIHStH4DPE89i9m169CSzI0+01sQje7UQYi5W75Pa2c17nyDeBhbLXyJ6Q6YGQ9Ul9XS1BJvpfoAqeBsSMRxjkCMVTXOWhKPP0XQ5QVrxP6TeIH1x3tivk2r0Vi5xC5QW29C0Y2ydwUcvV84bJRu+7unmLinVHHAAymvMn9Hnl8RMdzOQIGOI8y4cVp8pq/a6L31mxe5+IlD6ZwzzCIVt/xpazis=
     local_dir: dpl_cd_upload
-    on: &3
+    on: &6
       repo: Project-Heimdall/heimdall-uiapp
       branch: master
     bucket: prod-stage-ui-codedeploy
     region: us-west-2
     skip_cleanup: true
   - provider: codedeploy
-    access_key_id: *1
-    secret_access_key: *2
+    access_key_id: *4
+    secret_access_key: *5
     bucket: prod-stage-ui-codedeploy
     key: $HEIMDALL_PACKAGE_NAME
     bundle_type: zip
     application: prod-stage-ui-app
     deployment_group: prod-stage-ui-group
     region: us-east-1
-    on: *3
+    on: *6
     skip_cleanup: true
 notifications:
   slack:
