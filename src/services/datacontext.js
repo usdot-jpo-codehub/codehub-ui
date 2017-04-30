@@ -32,6 +32,13 @@ export class DataContext {
       .then(response => response.json());
   }
 
+  getLastProcessedDateTime() {
+    return this.http.fetch('/api/codes/getLastProcessedDateTime', {
+      method: 'GET',
+    })
+      .then(response => response.json());
+  }
+
   search(searchText) {
     return this.http.fetch(`${baseUrl}/search`, {
       method: 'POST',
