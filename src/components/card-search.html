@@ -13,7 +13,8 @@
         <div class="col-lg-8">
           <div class="card-header">
             <div class="lang-logo">
-              <img src="img/language-icons/${repo.language.toLowerCase() ? repo.language.toLowerCase() : 'default'}.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';">
+              <img if.bind="repo.organization != 'foundation'" src="img/language-icons/${repo.language.toLowerCase() ? repo.language.toLowerCase() : 'default'}.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';">
+              <img if.bind="repo.organization == 'foundation'" src="img/language-icons/foundation.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';">
             </div>
             <div class="card-title multiline"><a href="#" route-href="route:project-details; params.bind: {id:repo.id}" title="${repo.project_name}" innerhtml.bind="repo.highlight.project_name ? repo.highlight.project_name : repo.project_name"></a></div>
             <div class="org-name">${repo.language ? repo.language : stageConfig.NO_LANG}</div>
