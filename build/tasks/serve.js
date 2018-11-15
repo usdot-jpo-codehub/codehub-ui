@@ -11,7 +11,7 @@ gulp.task('serve', ['build'], function(done) {
     port: 9000,
     // Expecting a proxy to be present that will proxy to an API Server
     proxy: {
-      target: 'localhost:8080',
+      target: 'localhost:8083',
       middleware: function(req, res, next) {
         res.setHeader('Access-Control-Allow-Origin', '*');
         next();
