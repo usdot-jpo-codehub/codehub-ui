@@ -9,6 +9,7 @@ gulp.task('test', function(done) {
     configFile: __dirname + '/../../karma.conf.js',
     singleRun: true
   }, function() { done(); }).start();
+  done();
 });
 
 /**
@@ -18,6 +19,7 @@ gulp.task('tdd', function(done) {
   new Karma({
     configFile: __dirname + '/../../karma.conf.js'
   }, function() { done(); }).start();
+  done();
 });
 
 /**
@@ -46,4 +48,5 @@ gulp.task('cover', function(done) {
       ]
     }
   }, done).start();
+  done();
 });

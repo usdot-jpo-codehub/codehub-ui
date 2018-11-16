@@ -9,8 +9,12 @@ var config = {
   bundles: bundles.bundles
 };
 
-gulp.task('bundle', ['build'], function() {
+function bundleWorker(){
   return bundler.bundle(config);
+}
+
+gulp.task('bundle', function(done){
+  gulp.series(['build'], bundleWorker)(done);
 });
 
 gulp.task('unbundle', function() {
