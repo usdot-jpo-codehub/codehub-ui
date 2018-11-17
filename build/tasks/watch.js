@@ -18,9 +18,9 @@ function browserSyncWorker(done){
 
 gulp.task('watch', function(done){
   gulp.series(['serve'], function(done) {
-    gulp.watch(paths.source, gulp.parallel(['build-system-dev', browserSyncWorker])(done)).on('change', reportChange);
-    gulp.watch(paths.html, gulp.parallel(['build-html', browserSyncWorker])(done)).on('change', reportChange);
-    gulp.watch(paths.css, gulp.parallel(['build-css'])(done)).on('change', reportChange);
+    gulp.watch(paths.source, gulp.parallel(['build-system', browserSyncWorker])).on('change', reportChange);
+    gulp.watch(paths.html, gulp.parallel(['build-html', browserSyncWorker])).on('change', reportChange);
+    gulp.watch(paths.css, gulp.parallel(['build-css'])).on('change', reportChange);
     gulp.watch(paths.style, gulp.parallel(function() {
       return gulp.src(paths.style).pipe(browserSync.stream());
     })(done)).on('change', reportChange);
