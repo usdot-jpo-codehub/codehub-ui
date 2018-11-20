@@ -42,7 +42,7 @@ function normalizeExportPaths() {
 
 // deletes all files in the output path
 gulp.task('clean-export', function() {
-  return gulp.src([ paths.exportSrv ])
+  return gulp.src([ paths.exportSrv ], {allowEmpty:true})
     .pipe(vinylPaths(del));
 });
 
@@ -53,18 +53,17 @@ gulp.task('export-copy', function() {
 
 gulp.task('export-normalized-resources', function() {
   return normalizeExportPaths().then(normalizedPaths => {
-    return gulp.src(normalizedPaths, { base: '.' })
+    return gulp.src(normalizedPaths, { base: '.' , allowEmpty: true})
       .pipe(gulp.dest(paths.exportSrv));
   });
 });
 
 // use after prepare-release
-gulp.task('export', function(callback) {
-  return runSequence(
-    'bundle',
-    'clean-export',
-    'export-normalized-resources',
-    'export-copy',
-    callback
-  );
+gulp.task('export', function(done) {
+    gulp.series(
+      'bundle',
+      'clean-export',
+      'export-normalized-resources',
+      'export-copy'
+    )(done);
 });

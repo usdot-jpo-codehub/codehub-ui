@@ -10,6 +10,10 @@ gulp.task('lint', function() {
     .pipe(eslint.failAfterError());
 });
 
-gulp.task('default', ['lint'], function () {
-  // This will only run if the lint task is successful...
-});
+gulp.task('default', function(done){
+    gulp.series(['lint'], function (done) {
+      // This will only run if the lint task is successful...
+      done();
+    })(done);
+  }
+);

@@ -58,14 +58,16 @@ gulp.task('build-less', function() {
     .pipe(less({
       paths: [paths.less]
     }))
-    .pipe(gulp.dest('./styles/'))
+    .pipe(gulp.dest('./styles/'));
   });
 
 // ****DEV Task only****
 // watches the src/less directory for any changes
 // and then calls the build-less task
-gulp.task('watch-less', function() {
-  gulp.watch('./src/less/*.less', ['build-less']);
+gulp.task('watch-less', function(done) {
+  gulp.series(function(done){
+    gulp.watch('./src/less/*.less', gulp.parallel(['build-less'])(done));
+  })(done);
 });
 
 // copies changed css files to the output directory
@@ -78,12 +80,9 @@ gulp.task('build-css', function() {
 
 // this task calls the clean task (located
 // in ./clean.js), then runs the build-system
-// and build-html tasks in parallel
-// https://www.npmjs.com/package/gulp-run-sequence
-gulp.task('build', function(callback) {
-  return runSequence(
-    'clean',
-    ['build-system', 'build-html', 'build-css'],
-    callback
-  );
+// build-html tasks in parallel
+gulp.task('build', function(done){
+  gulp.series(['clean'],
+    gulp.parallel(['build-system', 'build-html', 'build-css', 'build-less'])
+  )(done);
 });

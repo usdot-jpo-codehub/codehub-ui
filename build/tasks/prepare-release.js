@@ -16,25 +16,27 @@ gulp.task('bump-version', function() {
 
 // generates the CHANGELOG.md file based on commit
 // from git commit messages
-gulp.task('changelog', function(callback) {
+gulp.task('changelog', function(done) {
   var pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
 
-  return changelog({
-    repository: pkg.repository.url,
-    version: pkg.version,
-    file: paths.doc + '/CHANGELOG.md'
-  }, function(err, log) {
-    fs.writeFileSync(paths.doc + '/CHANGELOG.md', log);
+  changelog({
+      repository: pkg.repository.url,
+      version: pkg.version,
+      file: paths.doc + '/CHANGELOG.md'
+    }, function(err, log) {
+      fs.writeFileSync(paths.doc + '/CHANGELOG.md', log);
   });
+
+  done();
+
 });
 
 // calls the listed sequence of tasks in order
-gulp.task('prepare-release', function(callback) {
-  return runSequence(
+gulp.task('prepare-release', function(done) {
+  gulp.series(
     'build',
     'lint',
     'bump-version',
-    'changelog',
-    callback
-  );
+    'changelog'
+  )(done);
 });
