@@ -21,6 +21,7 @@ gulp.task('watch', function(done){
     gulp.watch(paths.source, gulp.parallel(['build-system', browserSyncWorker])).on('change', reportChange);
     gulp.watch(paths.html, gulp.parallel(['build-html', browserSyncWorker])).on('change', reportChange);
     gulp.watch(paths.css, gulp.parallel(['build-css'])).on('change', reportChange);
+    gulp.watch(paths.less, gulp.parallel(['build-less'])).on('change', reportChange);
     gulp.watch(paths.style, gulp.parallel(function() {
       return gulp.src(paths.style).pipe(browserSync.stream());
     })(done)).on('change', reportChange);

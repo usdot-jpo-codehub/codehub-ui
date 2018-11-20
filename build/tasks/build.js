@@ -83,6 +83,6 @@ gulp.task('build-css', function() {
 // build-html tasks in parallel
 gulp.task('build', function(done){
   gulp.series(['clean'],
-    gulp.parallel(['build-system', 'build-html', 'build-css'])
+    gulp.parallel(['build-system', 'build-html', 'build-css', 'build-less'])
   )(done);
 });
