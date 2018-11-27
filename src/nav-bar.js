@@ -14,6 +14,7 @@ export class NavBar {
     this.eventAggregator = eventAggregator;
 
     this.PF_AUTH_GIVENNAME = PF_AUTH_GIVENNAME !== '' ? PF_AUTH_GIVENNAME : 'Guest'; // eslint-disable-line
+    this.PF_AUTH_GIVENNAME = this.PF_AUTH_GIVENNAME === '<!--#echo var="PF_AUTH_GIVENNAME" -->' ? 'Guest' : this.PF_AUTH_GIVENNAME; // in case that the SSI variables are not set
 
     this.navSearchText = '';
   }
