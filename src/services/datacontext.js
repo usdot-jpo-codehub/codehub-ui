@@ -36,7 +36,12 @@ export class DataContext {
     return this.http.fetch('/api/codes/getLastProcessedDateTime', {
       method: 'GET',
     })
-      .then(response => response.json());
+      .then(response => {
+        if (response && response.ok) {
+          return response.json();
+        }
+        return null;
+      });
   }
 
   search(searchText) {
@@ -52,13 +57,23 @@ export class DataContext {
       method: 'POST',
       body: json(searchText),
     })
-      .then(response => response.json());
+      .then(response => {
+        if (response && response.ok) {
+          return response.json();
+        }
+        return null;
+      });
   }
 
   findById(id) {
     const adjustedURL = `${baseUrl}/findById/${id}`;
     return this.http.fetch(adjustedURL)
-      .then(response => response.json());
+      .then(response => {
+        if (response && response.ok) {
+          return response.json();
+        }
+        return null;
+      });
   }
 
   findSimilarProjects(id) {
@@ -66,7 +81,12 @@ export class DataContext {
     return this.http.fetch(adjustedURL, {
       method: 'GET',
     })
-      .then(response => response.json());
+      .then(response => {
+        if (response && response.ok) {
+          return response.json();
+        }
+        return null;
+      });
   }
 
   getHealthById(id) {
