@@ -13,6 +13,7 @@ export class Popular {
 
     this.projects = [];
     this.featured = [];
+    this.healthiest = [];
 
     this.projectTitle = 'Most Popular Projects';
 
@@ -43,6 +44,10 @@ export class Popular {
         this.featured.push(repo);
       });
     }
+
+    this.dataContext.findHealthiest().then((results) => {
+      this.healthiest = results;
+    });
   }
 
   activate() {

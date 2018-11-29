@@ -113,4 +113,16 @@ export class DataContext {
       .then(response => response.json());
   }
 
+  findHealthiest() {
+    return this.http.fetch('/api/codes/findHealthiest', {
+      method: 'GET',
+    })
+      .then((response) => {
+        if (response && response.ok) {
+          return response.json();
+        }
+        return null;
+      });
+  }
+
 }
