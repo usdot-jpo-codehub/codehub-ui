@@ -9,7 +9,7 @@ import { StageConfig } from '../stageConf';
 @inject(DialogService, StageConfig)
 export class App {
   configureRouter(config, router) {
-    config.title = 'Stage';
+    config.title = 'ITS CodeHub';
     config.options.pushState = false;
     config.map([
       { route: '', name: 'popular', viewPorts: { mainContent: { moduleId: 'popular/popular' }, headerContent: { moduleId: 'search/search-bar' } }, nav: true, title: 'Home' },
