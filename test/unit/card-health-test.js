@@ -3,8 +3,7 @@ import { bootstrap } from 'aurelia-bootstrapper';
 import { MockCodeHealthiestData } from '../mockdata/mock-code-healthiest-data';
 import { AgoValueConverter } from '../../src/resources/value-converters/ago';
 import { NumValueConverter } from '../../src/resources/value-converters/num';
-import { DaysValueConverter } from '../../src/resources/value-converters/days';
-
+import { StageConfig } from '../../stageConf';
 
 describe('Test - Card Health : ', () => {
 
@@ -40,7 +39,8 @@ describe('Test - Card Health : ', () => {
   it('Expect language name', (done) => {
     component.create(bootstrap).then( () => {
       const element = document.querySelector('.org-name');
-      expect(element.innerHTML).toEqual(MockCodeHealthiestData[0].language);
+      let language = MockCodeHealthiestData[0].language;
+      expect(element.innerHTML).toEqual(language && language !== undefined ? language : StageConfig.NO_LANG);
       done();
     }).catch( e => { console.log(e.toString()) });
   });

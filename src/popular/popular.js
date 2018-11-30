@@ -9,6 +9,7 @@ export class Popular {
   constructor(dataContext, router, stageConfig) {
     this.dataContext = dataContext;
     this.router = router;
+    this.stageConfig = stageConfig;
     this.fp = stageConfig.FEATURED_PROJECTS;
 
     this.projects = [];
