@@ -46,7 +46,20 @@ export class Popular {
     }
 
     this.dataContext.findHealthiest().then((results) => {
-      this.healthiest = results;
+      // Injecting project_description and organizationUrl.
+      if (results && results.length > 0) {
+        results.forEach((element) => {
+          if (element && element.id) {
+            this.dataContext.findById(element.id).then(proj => {
+              if (proj) {
+                element.project_description = proj.project_description;
+                element.organizationUrl = proj.organizationUrl;
+                this.healthiest.push(element);
+              }
+            });
+          }
+        });
+      }
     });
   }
 
