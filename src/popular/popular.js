@@ -55,6 +55,7 @@ export class Popular {
               if (proj) {
                 element.project_description = proj.project_description;
                 element.organizationUrl = proj.organizationUrl;
+                element.content = proj.content;
                 this.healthiest.push(element);
               }
             });
