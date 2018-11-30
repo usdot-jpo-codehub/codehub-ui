@@ -20,7 +20,21 @@ export class Insight {
       this.dataContext.getAll()]).then((values) => {
         this.insights = values[0];
         this.projects = JSON.parse(JSON.stringify(values[1]));
-        this.projects = this.projects.sort((a, b) => Number(b.forkedRepos.length) - Number(a.forkedRepos.length));
+        this.projects = this.projects.sort((a, b) => {
+          if (b.forkedRepos && a.forkedRepos) {
+            return Number(b.forkedRepos.length) - Number(a.forkedRepos.length);
+          }
+
+          if (b.forkedRepos) {
+            return b;
+          }
+
+          if (a.forkedRepos) {
+            return a;
+          }
+
+          return null;
+        });
         this.projects = this.projects.slice(0, 9);
         this.projects = this.projects.reverse();
         this.buildCharts();

@@ -216,10 +216,12 @@ export class Explore {
   getUniqueValues(array, property) {
     const propertyArray = [];
     for (const object of array) {
-      if (object[property]) {
-        propertyArray.push(object[property]);
-      } else {
-        propertyArray.push('None');
+      if (object) {
+        if (property in object) {
+          propertyArray.push(object[property]);
+        } else {
+          propertyArray.push('None');
+        }
       }
     }
     return Array.from(new Set(propertyArray));
@@ -230,10 +232,12 @@ export class Explore {
   countUniqueValues(array, property, value) {
     let count = 0;
     for (const object of array) {
-      if (object[property] === value) {
-        count++;
-      } else if ((object[property] === null || object[property] === undefined) && value === 'None') {
-        count++;
+      if (object) {
+        if (object[property] === value) {
+          count++;
+        } else if ((object[property] === null || object[property] === undefined) && value === 'None') {
+          count++;
+        }
       }
     }
     return count;

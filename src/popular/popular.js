@@ -9,10 +9,12 @@ export class Popular {
   constructor(dataContext, router, stageConfig) {
     this.dataContext = dataContext;
     this.router = router;
+    this.stageConfig = stageConfig;
     this.fp = stageConfig.FEATURED_PROJECTS;
 
     this.projects = [];
     this.featured = [];
+    this.healthiest = [];
 
     this.projectTitle = 'Most Popular Projects';
 
@@ -43,6 +45,24 @@ export class Popular {
         this.featured.push(repo);
       });
     }
+
+    this.dataContext.findHealthiest().then((results) => {
+      // Injecting project_description and organizationUrl.
+      if (results && results.length > 0) {
+        results.forEach((element) => {
+          if (element && element.id) {
+            this.dataContext.findById(element.id).then(proj => {
+              if (proj) {
+                element.project_description = proj.project_description;
+                element.organizationUrl = proj.organizationUrl;
+                element.content = proj.content;
+                this.healthiest.push(element);
+              }
+            });
+          }
+        });
+      }
+    });
   }
 
   activate() {
