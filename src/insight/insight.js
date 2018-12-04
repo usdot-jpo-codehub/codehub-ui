@@ -274,6 +274,12 @@ export class Insight {
     // / 3 radius
     // /
     const myChart2 = echarts.init(document.getElementById('main2'));
+    const reliabilityData = this.getDataForRadarChart(this.insights.metrics_summary.reliability);
+    const maxReliability = reliabilityData && reliabilityData.length > 0 ? Math.max(...reliabilityData) : 10;
+    const securityData = this.getDataForRadarChart(this.insights.metrics_summary.security);
+    const maxSecurity = securityData && securityData.length > 0 ? Math.max(...securityData) : 10;
+    const maintainabilityData = this.getDataForRadarChart(this.insights.metrics_summary.maintainability);
+    const maxMaintainability = maintainabilityData && maintainabilityData.length > 0 ? Math.max(...maintainabilityData) : 10;
     myChart2.setOption({
       title: [{
         text: 'Reliability',
@@ -297,33 +303,33 @@ export class Insight {
       radar: [
         {
           indicator: [
-            { text: 'A', max: 50 },
-            { text: 'B', max: 50 },
-            { text: 'C', max: 50 },
-            { text: 'D', max: 50 },
-            { text: 'E', max: 50 },
+            { text: 'A', max: maxReliability },
+            { text: 'B', max: maxReliability },
+            { text: 'C', max: maxReliability },
+            { text: 'D', max: maxReliability },
+            { text: 'E', max: maxReliability },
           ],
           center: ['25%', '55%'],
           radius: 80,
         },
         {
           indicator: [
-            { text: 'A', max: 65 },
-            { text: 'B', max: 65 },
-            { text: 'C', max: 65 },
-            { text: 'D', max: 65 },
-            { text: 'E', max: 65 },
+            { text: 'A', max: maxSecurity },
+            { text: 'B', max: maxSecurity },
+            { text: 'C', max: maxSecurity },
+            { text: 'D', max: maxSecurity },
+            { text: 'E', max: maxSecurity },
           ],
           radius: 80,
           center: ['50%', '55%'],
         },
         {
           indicator: [
-            { text: 'A', max: 250 },
-            { text: 'B', max: 50 },
-            { text: 'C', max: 50 },
-            { text: 'D', max: 50 },
-            { text: 'E', max: 50 },
+            { text: 'A', max: maxMaintainability },
+            { text: 'B', max: maxMaintainability },
+            { text: 'C', max: maxMaintainability },
+            { text: 'D', max: maxMaintainability },
+            { text: 'E', max: maxMaintainability },
           ],
           center: ['75%', '55%'],
           radius: 80,
@@ -338,7 +344,7 @@ export class Insight {
           itemStyle: { normal: { areaStyle: { type: 'default' } } },
           data: [
             {
-              value: [50, 2, 25, 31, 14],
+              value: reliabilityData,
               name: 'Projects',
             },
           ],
@@ -352,7 +358,7 @@ export class Insight {
           radarIndex: 1,
           data: [
             {
-              value: [63, 4, 32, 15, 8],
+              value: securityData,
               name: 'Projects',
             },
           ],
@@ -366,13 +372,27 @@ export class Insight {
           itemStyle: { normal: { areaStyle: { type: 'default' } } },
           data: [
             {
-              value: [238, 4, 2, 0, 0],
+              value: maintainabilityData,
               name: 'Projects',
             },
           ],
         },
       ],
     });
+  }
+
+  getDataForRadarChart(obj) {
+    const result = [];
+
+    if (!obj) {
+      return result;
+    }
+
+    Object.keys(obj).forEach((x) => {
+      result.push(obj[x]);
+    });
+
+    return result;
   }
 
   multiArraySecondColumnDesc(a, b) {
