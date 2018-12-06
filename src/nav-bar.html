@@ -15,8 +15,10 @@
         <div if.bind="projects.title = 'project-details'">
         <ul class="nav navbar-nav navbar-right user-nav">
           <li class="utility-icons"><a href="#" click.trigger="" id="searchBtn" title="Search"><i class="material-icons">search</i></a></li>
-          <li class="utility-icons"><a href="https://pages.github.boozallencsn.com/Stage/support/" target="_blank" title="Get Help"><i class="material-icons">help</i></a></li>
-          <li class="utility-icons"><a href="#" class="disabled"><i class="material-icons">notifications</i></a></li>
+          <li class="utility-icons utility-icons-external-links"><a href="https://www.transportation.gov/mission/about-us" target="_blank" >ABOUT DOT&emsp;&nbsp;|</a></li>
+          <li class="utility-icons utility-icons-external-links"><a href="https://www.transportation.gov/briefingroom" target="_blank" >&emsp;&nbsp;BRIEFING ROOM&emsp;&nbsp;|</a></li>
+          <li class="utility-icons utility-icons-external-links"><a href="https://www.transportation.gov/our-activities" target="_blank" >&emsp;&nbsp;OUR ACTIVITIES&emsp;&nbsp;</a></li>
+<!--      Hiding User profile
           <li class="dropdown">
             <a href="#" class="dropdown-toggle utility-nav" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <img src="../../../../img/language-icons/user.svg" class="user-avatar"></i> Hello, ${PF_AUTH_GIVENNAME} <span class="caret"></span>
@@ -28,7 +30,7 @@
                 <li><a href="https://github.boozallencsn.com/Stage/support/wiki" target="_blank"><i class="material-icons">import_contacts</i> User Guide</a></li>
                 <li><a href="https://github.boozallencsn.com/Stage/support/wiki/Future-Development-Roadmap" target="_blank"><i class="material-icons">new_releases</i> What's New</a></li>
             </ul>
-          </li>
+          </li> -->
         </ul>
 
         <form id="searchForm" submit.delegate="executeNavSearch(navSearchText)" class="navbar-search hidden" role="search">
