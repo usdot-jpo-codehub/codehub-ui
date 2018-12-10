@@ -273,14 +273,14 @@ export class Insight {
     // /
     // / 3 radius
     // /
-    const myChart2 = echarts.init(document.getElementById('main2'));
+    this.myChart2 = echarts.init(document.getElementById('main2'));
     const reliabilityData = this.getDataForRadarChart(this.insights.metrics_summary.reliability);
     const maxReliability = reliabilityData && reliabilityData.length > 0 ? Math.max(...reliabilityData) : 10;
     const securityData = this.getDataForRadarChart(this.insights.metrics_summary.security);
     const maxSecurity = securityData && securityData.length > 0 ? Math.max(...securityData) : 10;
     const maintainabilityData = this.getDataForRadarChart(this.insights.metrics_summary.maintainability);
     const maxMaintainability = maintainabilityData && maintainabilityData.length > 0 ? Math.max(...maintainabilityData) : 10;
-    myChart2.setOption({
+    this.myChart2.setOption({
       title: [{
         text: 'Reliability',
         subtext: 'All Projects By Reliability Grade',
