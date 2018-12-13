@@ -180,7 +180,7 @@ describe('Explore : ', () => {
       setTimeout(() => {
         let element = document.querySelector('.cards-wrapper');
         let rows = element.getElementsByClassName('row');
-        expect(rows.length).toEqual(MockProjectData.length+2); //2 - Number of Products and No Result Divs
+        expect(rows.length).toEqual(MockProjectData.length+5); //5 - rows based on card layout
         done();
       }, 200);
     }).catch( e => { console.log(e.toString())} );

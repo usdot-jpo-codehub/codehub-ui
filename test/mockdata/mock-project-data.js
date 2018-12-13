@@ -375,7 +375,8 @@ export const MockProjectData = [
     "rank": 8136,
     "repositoryUrl": "https://github.com/fedspendingtransparency/usaspending-api",
     "updatedAt": "2018-11-07T15:31:09Z",
-    "id": "8397762_65394827"
+    "id": "8397762_65394827",
+    "downloads": 10
   },
   {
     "organization": "fedspendingtransparency",
@@ -665,7 +666,8 @@ export const MockProjectData = [
     "rank": 6928,
     "repositoryUrl": "https://github.com/fedspendingtransparency/data-act-broker-backend",
     "updatedAt": "2018-11-07T16:53:33Z",
-    "id": "8397762_57313310"
+    "id": "8397762_57313310",
+    "downloads": 10
   },
   {
     "organization": "fedspendingtransparency",
@@ -959,7 +961,8 @@ export const MockProjectData = [
     "rank": 4395,
     "repositoryUrl": "https://github.com/fedspendingtransparency/usaspending-website",
     "updatedAt": "2018-11-06T23:06:35Z",
-    "id": "8397762_65394770"
+    "id": "8397762_65394770",
+    "downloads": 10
   },
   {
     "organization": "fedspendingtransparency",
@@ -1736,7 +1739,8 @@ export const MockProjectData = [
     "rank": 3178,
     "repositoryUrl": "https://github.com/fedspendingtransparency/fedspendingtransparency.github.io",
     "updatedAt": "2018-11-07T21:15:50Z",
-    "id": "8397762_24609061"
+    "id": "8397762_24609061",
+    "downloads": 10
   },
   {
     "organization": "fedspendingtransparency",
@@ -2031,7 +2035,8 @@ export const MockProjectData = [
     "rank": 3160,
     "repositoryUrl": "https://github.com/fedspendingtransparency/data-act-broker-web-app",
     "updatedAt": "2018-11-07T19:59:51Z",
-    "id": "8397762_47277547"
+    "id": "8397762_47277547",
+    "downloads": 10
   },
   {
     "organization": "usdot-jpo-ode",
@@ -2196,6 +2201,7 @@ export const MockProjectData = [
     "rank": 2501,
     "repositoryUrl": "https://github.com/usdot-jpo-ode/jpo-ode",
     "updatedAt": "2018-11-14T20:55:31Z",
-    "id": "23056647_72044729"
+    "id": "23056647_72044729",
+    "downloads": 10
   }
 ];

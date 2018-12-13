@@ -155,6 +155,15 @@ describe('Test - Card : ', () => {
     }).catch( e => { console.log(e.toString()) });
   });
 
+  it('Expect project number of dowloads', (done) => {
+    component.create(bootstrap).then( () => {
+      let num = new NumValueConverter();
+      const element = document.querySelector('#card-popular-project-downloads');
+      expect(element.innerHTML).toEqual(''+num.toView(MockProjectData[0].downloads));
+      done();
+    }).catch( e => { console.log(e.toString()) });
+  });
+
   it('Expect project readme click trigger', (done) => {
     component.create(bootstrap).then( () => { 
       let num = new NumValueConverter();     
