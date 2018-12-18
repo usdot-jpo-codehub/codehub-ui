@@ -1,5 +1,6 @@
 <template>
   <require from="resources/custom-elements/browser-alert"></require>
+  <require from="resources/custom-elements/message-alert"></require>
 
   <div id="top" class="hero-banner">
     <div class="inner">
@@ -13,6 +14,7 @@
   </div>
 
   <browser-alert></browser-alert>
+  <message-alert active.bind="stageConfig.IS_BETA" icon.bind="stageConfig.BETA_ICON" message.bind="stageConfig.BETA_MESSAGE"></message-alert>
 
   <div class="fab-container">
     <a href="#top" id="backToTop" tooltip="Back To Top" class="fab"><i class="material-icons">arrow_upward</i></a>
