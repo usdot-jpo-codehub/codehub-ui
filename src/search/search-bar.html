@@ -1,7 +1,7 @@
 <template>
   <div class="jumbotron hero-jumbotron">
     <div class="container-fluid">
-      <h1>Hello &amp; Welcome to ITS CodeHub<span class="beta-message"></span>…</h1>
+      <h1>Hello &amp; Welcome to ITS CodeHub<span if.bind="stageConfig.IS_BETA" class="beta-message">&nbsp;${stageConfig.IS_BETA ? "BETA" : ""}</span>…</h1>
       <p>Department of Transportation Intelligent Transportation Systems Joint Program Office Code<br/>
         Welcome to the ITS JPO's public access point for ITS code
       </p>

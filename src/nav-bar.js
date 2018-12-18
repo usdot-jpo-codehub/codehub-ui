@@ -4,14 +4,16 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 import $ from 'jquery';
 import { typeahead } from 'corejs-typeahead';
 import { DataContext } from 'services/datacontext';
+import { StageConfig } from '../stageConf';
 
-@inject(DataContext, Router, EventAggregator)
+@inject(DataContext, Router, EventAggregator, StageConfig)
 export class NavBar {
 
-  constructor(dataContext, router, eventAggregator) {
+  constructor(dataContext, router, eventAggregator, stageConfig) {
     this.dataContext = dataContext;
     this.router = router;
     this.eventAggregator = eventAggregator;
+    this.stageConfig = stageConfig;
 
     this.PF_AUTH_GIVENNAME = PF_AUTH_GIVENNAME !== '' ? PF_AUTH_GIVENNAME : 'Guest'; // eslint-disable-line
     this.PF_AUTH_GIVENNAME = this.PF_AUTH_GIVENNAME === '<!--#echo var="PF_AUTH_GIVENNAME" -->' ? 'Guest' : this.PF_AUTH_GIVENNAME; // in case that the SSI variables are not set

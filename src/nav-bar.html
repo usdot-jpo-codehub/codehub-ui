@@ -44,8 +44,8 @@
             </form>
           </div>
         </div>
-        <div class="main-nav-beta-message" >
-          BETA Release
+        <div if.bind="stageConfig.IS_BETA" class="main-nav-beta-message" >
+          ${stageConfig.IS_BETA? "BETA Release" : ""}
         </div>
     </div>
   </nav>
