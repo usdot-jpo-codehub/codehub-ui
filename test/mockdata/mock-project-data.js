@@ -376,7 +376,7 @@ export const MockProjectData = [
         "id": "13113227",
         "name": "1.0",
         "tag_name": null,
-        "assests": [
+        "assets": [
           {
             "id": "8856824",
             "name": "mock-linux.tar.gz",
@@ -405,7 +405,7 @@ export const MockProjectData = [
         "id": "13113228",
         "name": "2.0",
         "tag_name": null,
-        "assests": [
+        "assets": [
           {
             "id": "8856825",
             "name": "mock-linux.tar.gz",
@@ -718,7 +718,7 @@ export const MockProjectData = [
         "id": "13113227",
         "name": "1.1",
         "tag_name": null,
-        "assests": [
+        "assets": [
           {
             "id": "8856824",
             "name": "mock-linux.tar.gz",
@@ -1028,7 +1028,7 @@ export const MockProjectData = [
         "id": "13113229",
         "name": "5.1.3",
         "tag_name": "5.1.3",
-        "assests": [
+        "assets": [
           {
             "id": "88568278",
             "name": "mock-win-x86.exe",
@@ -2116,7 +2116,7 @@ export const MockProjectData = [
         "id": "253113229",
         "name": "3.1",
         "tag_name": "",
-        "assests": [],
+        "assets": [],
         "total_downloads": 0
       }
     ],
@@ -2289,7 +2289,7 @@ export const MockProjectData = [
         "id": "13113229",
         "name": "1.3",
         "tag_name": "1.3",
-        "assests": [
+        "assets": [
           {
             "id": "88568278",
             "name": "mock-linux-x86.tar.gz",
@@ -2304,7 +2304,7 @@ export const MockProjectData = [
         "id": "93113229",
         "name": "1.4",
         "tag_name": "1.4",
-        "assests": [],
+        "assets": [],
         "total_downloads": 0
       }
     ],
