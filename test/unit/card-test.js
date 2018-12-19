@@ -141,7 +141,7 @@ describe('Test - Card : ', () => {
     component.create(bootstrap).then( () => { 
       let num = new NumValueConverter();     
       const element = document.querySelector('#card-popular-project-releases');
-      expect(element.innerHTML).toEqual(''+num.toView(MockProjectData[0].releases));
+      expect(element.innerHTML).toEqual(''+num.toView(MockProjectData[0].releases.length));
       done();
     }).catch( e => { console.log(e.toString()) });
   });
@@ -159,7 +159,9 @@ describe('Test - Card : ', () => {
     component.create(bootstrap).then( () => {
       let num = new NumValueConverter();
       const element = document.querySelector('#card-popular-project-downloads');
-      expect(element.innerHTML).toEqual(''+num.toView(MockProjectData[0].downloads));
+      let downloads = 0;
+      MockProjectData[0].releases.forEach( e => downloads += e.total_downloads);
+      expect(element.innerHTML).toEqual(''+num.toView(downloads));
       done();
     }).catch( e => { console.log(e.toString()) });
   });

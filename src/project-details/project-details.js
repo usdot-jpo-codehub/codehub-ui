@@ -16,6 +16,8 @@ export class ProjectDetails {
     this.similarProjects = [];
     this.componentDependencies = [];
     this.projectsThatUseUs = [];
+    this.releases = [];
+    this.downloads = 0;
 
     this.sonarLink = '';
 
@@ -54,6 +56,13 @@ export class ProjectDetails {
       } else {
         this.projectsThatUseUs = repo.forkedRepos;
       }
+
+      this.releases = this.repo.releases;
+      if (this.releases === undefined) {
+        this.releases = [];
+      }
+
+      this.releases.forEach(r => { this.downloads += r.total_downloads; });
     });
 
     this.dataContext.getHealthById(params.id).then(health => {

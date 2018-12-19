@@ -371,12 +371,63 @@ export const MockProjectData = [
     ],
     "stars": 81,
     "watchers": 34,
-    "releases": 0,
+    "releases": [
+      {
+        "id": "13113227",
+        "name": "1.0",
+        "tag_name": null,
+        "assests": [
+          {
+            "id": "8856824",
+            "name": "mock-linux.tar.gz",
+            "label": "",
+            "size": 794246,
+            "download_count": 1
+          },
+          {
+            "id": "8856834",
+            "name": "mock-apple-darwin.tar.gz",
+            "label": "",
+            "size": 689310,
+            "download_count": 3
+          },
+          {
+            "id": "8856841",
+            "name": "mock-win.tar.gz",
+            "label": "",
+            "size": 805555,
+            "download_count": 10
+          }
+        ],
+        "total_downloads": 14
+      },
+      {
+        "id": "13113228",
+        "name": "2.0",
+        "tag_name": null,
+        "assests": [
+          {
+            "id": "8856825",
+            "name": "mock-linux.tar.gz",
+            "label": "",
+            "size": 794246,
+            "download_count": 5
+          },
+          {
+            "id": "8856835",
+            "name": "mock-apple-darwin.tar.gz",
+            "label": "",
+            "size": 689310,
+            "download_count": 13
+          }
+        ],
+        "total_downloads": 18
+      }
+    ],
     "rank": 8136,
     "repositoryUrl": "https://github.com/fedspendingtransparency/usaspending-api",
     "updatedAt": "2018-11-07T15:31:09Z",
-    "id": "8397762_65394827",
-    "downloads": 10
+    "id": "8397762_65394827"
   },
   {
     "organization": "fedspendingtransparency",
@@ -662,12 +713,27 @@ export const MockProjectData = [
     ],
     "stars": 30,
     "watchers": 27,
-    "releases": 0,
+    "releases": [
+      {
+        "id": "13113227",
+        "name": "1.1",
+        "tag_name": null,
+        "assests": [
+          {
+            "id": "8856824",
+            "name": "mock-linux.tar.gz",
+            "label": "",
+            "size": 794246,
+            "download_count": 20
+          }
+        ],
+        "total_downloads": 20
+      }
+    ],
     "rank": 6928,
     "repositoryUrl": "https://github.com/fedspendingtransparency/data-act-broker-backend",
     "updatedAt": "2018-11-07T16:53:33Z",
-    "id": "8397762_57313310",
-    "downloads": 10
+    "id": "8397762_57313310"
   },
   {
     "organization": "fedspendingtransparency",
@@ -957,12 +1023,27 @@ export const MockProjectData = [
     ],
     "stars": 48,
     "watchers": 30,
-    "releases": 0,
+    "releases": [
+      {
+        "id": "13113229",
+        "name": "5.1.3",
+        "tag_name": "5.1.3",
+        "assests": [
+          {
+            "id": "88568278",
+            "name": "mock-win-x86.exe",
+            "label": "",
+            "size": 794246,
+            "download_count": 123
+          }
+        ],
+        "total_downloads": 123
+      }
+    ],
     "rank": 4395,
     "repositoryUrl": "https://github.com/fedspendingtransparency/usaspending-website",
     "updatedAt": "2018-11-06T23:06:35Z",
-    "id": "8397762_65394770",
-    "downloads": 10
+    "id": "8397762_65394770"
   },
   {
     "organization": "fedspendingtransparency",
@@ -1735,12 +1816,11 @@ export const MockProjectData = [
     ],
     "stars": 45,
     "watchers": 59,
-    "releases": 0,
+    "releases": [],
     "rank": 3178,
     "repositoryUrl": "https://github.com/fedspendingtransparency/fedspendingtransparency.github.io",
     "updatedAt": "2018-11-07T21:15:50Z",
-    "id": "8397762_24609061",
-    "downloads": 10
+    "id": "8397762_24609061"
   },
   {
     "organization": "fedspendingtransparency",
@@ -2031,12 +2111,19 @@ export const MockProjectData = [
     ],
     "stars": 14,
     "watchers": 27,
-    "releases": 0,
+    "releases": [
+      {
+        "id": "253113229",
+        "name": "3.1",
+        "tag_name": "",
+        "assests": [],
+        "total_downloads": 0
+      }
+    ],
     "rank": 3160,
     "repositoryUrl": "https://github.com/fedspendingtransparency/data-act-broker-web-app",
     "updatedAt": "2018-11-07T19:59:51Z",
-    "id": "8397762_47277547",
-    "downloads": 10
+    "id": "8397762_47277547"
   },
   {
     "organization": "usdot-jpo-ode",
@@ -2197,11 +2284,33 @@ export const MockProjectData = [
     ],
     "stars": 26,
     "watchers": 19,
-    "releases": 0,
+    "releases": [
+      {
+        "id": "13113229",
+        "name": "1.3",
+        "tag_name": "1.3",
+        "assests": [
+          {
+            "id": "88568278",
+            "name": "mock-linux-x86.tar.gz",
+            "label": "",
+            "size": 794246,
+            "download_count": 12
+          }
+        ],
+        "total_downloads": 12
+      },
+      {
+        "id": "93113229",
+        "name": "1.4",
+        "tag_name": "1.4",
+        "assests": [],
+        "total_downloads": 0
+      }
+    ],
     "rank": 2501,
     "repositoryUrl": "https://github.com/usdot-jpo-ode/jpo-ode",
     "updatedAt": "2018-11-14T20:55:31Z",
-    "id": "23056647_72044729",
-    "downloads": 10
+    "id": "23056647_72044729"
   }
 ];

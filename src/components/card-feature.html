@@ -45,7 +45,7 @@
         <div class="col-md-3 col-sm-3">
           <span class="stat">
             <span class="octicon octicon-tag"></span>
-            <span id="card-feature-project-releases" class="num text-muted text-emphasized">${repo.releases | num}</span>
+            <span id="card-feature-project-releases" class="num text-muted text-emphasized">${releases.length | num}</span>
             <span class="stat-label">releases</span>
           </span>
         </div>
@@ -76,7 +76,7 @@
         <div class="col-md-4 col-sm-4">
           <span class="stat">
             <span class="octicon octicon-cloud-download"></span>
-            <span id="card-feature-project-downloads" class="num text-muted text-emphasized">${repo.downloads | num}</span>
+            <span id="card-feature-project-downloads" class="num text-muted text-emphasized">${downloads | num}</span>
             <span class="stat-label">downloads</span>
           </span>
         </div>
