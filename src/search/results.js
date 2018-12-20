@@ -1,18 +1,22 @@
 import { inject, bindable } from 'aurelia-framework';
 import { activationStrategy } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
+import { DialogService } from 'aurelia-dialog';
 import $ from 'bootstrap';
 import { multiselect } from 'bootstrap-multiselect';
 import { DataContext } from 'services/datacontext';
 import { Filters } from 'components/filters';
+import { ReadmeModal } from '../components/modals/readme-modal';
+import { LeavingModal } from '../components/modals/leaving-modal';
 
-@inject(DataContext, Filters, EventAggregator)
+@inject(DataContext, Filters, EventAggregator, DialogService)
 export class Results {
 
-  constructor(dataContext, filters, ea) {
+  constructor(dataContext, filters, ea, dialogService) {
     this.dataContext = dataContext;
     this.filters = filters;
     this.ea = ea;
+    this.dialogService = dialogService;
 
     this.searchText = '';
     this.resultCount = 0;
@@ -287,4 +291,12 @@ export class Results {
       });
   }
 
+  openReadmeModal(repo) {
+    this.dialogService.open({ viewModel: ReadmeModal, model: repo });
+  }
+
+  openLeavingSiteConfirmation(name, url) {
+    const mdl = { name, url };
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl });
+  }
 }
