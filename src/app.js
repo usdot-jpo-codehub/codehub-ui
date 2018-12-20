@@ -38,4 +38,8 @@ export class App {
   openFeedbackModal() {
     this.dialogService.open({ viewModel: FeedbackModal });
   }
+
+  scrollToTop() {
+    window.scrollTo(0, 0);
+  }
 }
