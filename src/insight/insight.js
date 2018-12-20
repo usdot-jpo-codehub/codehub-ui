@@ -1,13 +1,16 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
+import { DialogService } from 'aurelia-dialog';
 import * as c3 from 'c3';
 import * as echarts from 'echarts';
 import { DataContext } from 'services/datacontext';
-@inject(DataContext, Router)
+import { LeavingModal } from '../components/modals/leaving-modal';
+@inject(DataContext, Router, DialogService)
 export class Insight {
-  constructor(dataContext, router) {
+  constructor(dataContext, router, dialogService) {
     this.dataContext = dataContext;
     this.router = router;
+    this.dialogService = dialogService;
     this.insights = [];
     this.projects = [];
     this.mulChart = {};
@@ -400,5 +403,10 @@ export class Insight {
       return 0;
     }
     return (a[1] > b[1]) ? -1 : 1;
+  }
+
+  openLeavingSiteConfirmation(name, url) {
+    const mdl = { name, url };
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl });
   }
 }

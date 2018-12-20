@@ -1,12 +1,15 @@
 import { inject } from 'aurelia-framework';
 import { activationStrategy } from 'aurelia-router';
 import { DataContext } from 'services/datacontext';
+import { DialogService } from 'aurelia-dialog';
+import { LeavingModal } from '../../components/modals/leaving-modal';
 
-@inject(DataContext)
+@inject(DataContext, DialogService)
 export class ProjectDetailsHeader {
 
-  constructor(dataContext) {
+  constructor(dataContext, dialogService) {
     this.dataContext = dataContext;
+    this.dialogService = dialogService;
 
     this.repo = {};
 
@@ -27,6 +30,11 @@ export class ProjectDetailsHeader {
 
   goBack() {
     history.back();
+  }
+
+  openLeavingSiteConfirmation(name, url) {
+    const mdl = { name, url };
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl });
   }
 
 }

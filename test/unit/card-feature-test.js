@@ -55,7 +55,7 @@ describe('Test Card Feature : ', () => {
   it('Expect organization link', (done) => {
     component.create(bootstrap).then( () => {
       const element = document.querySelector('#card-feature-organization-link');
-      expect(element.getAttribute('href')).toEqual(MockProjectData[0].organizationUrl);
+      expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.organization,repo.organizationUrl)');
       done();
     }).catch( e => { console.log(e.toString()) });
   });
@@ -96,7 +96,7 @@ describe('Test Card Feature : ', () => {
   it('Expect project status link url', (done) => {
     component.create(bootstrap).then( () => {
       const element = document.querySelector('#card-feature-project-status-link');
-      expect(element.getAttribute('href')).toEqual(MockProjectData[0].repositoryUrl);
+      expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.organization,repo.repositoryUrl)');
       done();
     }).catch( e => { console.log(e.toString()) });
   });
