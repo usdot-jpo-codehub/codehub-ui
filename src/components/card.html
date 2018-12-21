@@ -29,12 +29,38 @@
       </div>
 
       <div class="row github-stats">
-        <div class="col-md-4 col-sm-4">
+        <div class="col-md-3 col-sm-3">
           <span class="stat">
             <span class="octicon octicon-star"></span>
             <span id="card-popular-project-stars" class="num text-muted text-emphasized">${repo.stars | num}</span>
             <span class="stat-label">stars</span>
           </span>
+        </div>
+        <div class="col-md-3 col-sm-3">
+          <span class="stat">
+            <span class="octicon octicon-eye"></span>
+            <span id="card-popular-project-watchers" class="num text-muted text-emphasized">${repo.watchers | num}</span>
+            <span class="stat-label">watchers</span>
+          </span>
+        </div>
+        <div class="col-md-3 col-sm-3">
+          <span class="stat">
+            <span class="octicon octicon-tag"></span>
+            <span id="card-popular-project-releases" class="num text-muted text-emphasized">${releases.length | num}</span>
+            <span class="stat-label">releases</span>
+          </span>
+        </div>
+        <div class="col-md-3 col-sm-3">
+          <span class="stat">
+            <span class="octicon octicon-repo-forked"></span>
+            <span id="card-popular-project-forks" class="num text-muted text-emphasized">${repo.forkedRepos.length | num}</span>
+            <span class="stat-label">forks</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="row github-stats">
+        <div class="col-md-4 col-sm-4">
           <span class="stat">
             <span class="octicon octicon-organization"></span>
             <span id="card-popular-project-contributors" class="num text-muted text-emphasized">${repo.contributors | num}</span>
@@ -43,11 +69,6 @@
         </div>
         <div class="col-md-4 col-sm-4">
           <span class="stat">
-            <span class="octicon octicon-eye"></span>
-            <span id="card-popular-project-watchers" class="num text-muted text-emphasized">${repo.watchers | num}</span>
-            <span class="stat-label">watchers</span>
-          </span>
-          <span class="stat">
             <span class="octicon octicon-git-commit"></span>
             <span id="card-popular-project-commits" class="num text-muted text-emphasized">${repo.commits | num:1}</span>
             <span class="stat-label">commits</span>
@@ -55,14 +76,9 @@
         </div>
         <div class="col-md-4 col-sm-4">
           <span class="stat">
-            <span class="octicon octicon-tag"></span>
-            <span id="card-popular-project-releases" class="num text-muted text-emphasized">${repo.releases | num}</span>
-            <span class="stat-label">releases</span>
-          </span>
-          <span class="stat">
-            <span class="octicon octicon-repo-forked"></span>
-            <span id="card-popular-project-forks" class="num text-muted text-emphasized">${ repo.forkedRepos.length | num}</span>
-            <span class="stat-label">forks</span>
+            <span class="octicon octicon-cloud-download"></span>
+            <span id="card-popular-project-downloads" class="num text-muted text-emphasized">${downloads | num}</span>
+            <span class="stat-label">downloads</span>
           </span>
         </div>
       </div>
