@@ -28,14 +28,15 @@
 			content: "";
 			text-transform: uppercase;
 			position: absolute;
-			color: white;
-			opacity: 0.6;
-			left: 180px;
-			bottom: 9px;
+			color: @beta-text-color;
+			opacity: @beta-opacity;
+			left: 190px;
+			bottom: 4px;
 			font-weight: 900;
 			font-size: @font-size-smallest;
 			letter-spacing: 1px;
 			text-shadow: 0 3px 4px rgba(0,0,0,0.2);
+			display: @beta-display-message;
 		}
 	}
 
@@ -137,7 +138,7 @@
 	}
 
 	.main-nav {
-		margin-left: 30px;
+		margin-left: 45px;
 		> li > a {
 		  border-bottom: 4px solid transparent;
 	  }
@@ -149,6 +150,24 @@
 		    border-bottom: 4px solid @white;
 		  }
 		}
+	}
+
+	.main-nav-beta-message {
+		margin-left:auto;
+		margin-right:auto;
+		margin-top:15px;
+		text-align:center;
+		color: @beta-text-color;
+		opacity: @beta-opacity;
+		font-weight: 900;
+		font-size: @font-size-medium;
+		letter-spacing: 1px;
+		text-shadow: 0 3px 4px rgba(0,0,0,0.2);
+		display: @beta-display-message;
+		z-index: -1;
+		pointer-events: none;
+		background: none !important;
+		width: 20%;
 	}
 
 	.user-nav {

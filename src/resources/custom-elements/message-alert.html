@@ -1,0 +1,7 @@
+<template>
+  <div id="message-alert" if.bind="active" class="message-notification">    
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" click.delegate="dismiss()"><span aria-hidden="true"><i class="material-icons">close</i></span></button>
+    <p><i class="material-icons message-icon">${icon}</i> ${message}</p>
+  </div>
+</template>
+  
