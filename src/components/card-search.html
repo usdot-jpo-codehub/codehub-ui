@@ -16,50 +16,55 @@
               <img if.bind="repo.organization != 'foundation'" src="img/language-icons/${repo.language.toLowerCase() ? repo.language.toLowerCase() : 'default'}.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';">
               <img if.bind="repo.organization == 'foundation'" src="img/language-icons/foundation.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';">
             </div>
-            <div class="card-title multiline"><a href="#" route-href="route:project-details; params.bind: {id:repo.id}" title="${repo.project_name}" innerhtml.bind="repo.highlight.project_name ? repo.highlight.project_name : repo.project_name"></a></div>
+            <div class="card-title multiline"><a id="card-search-title-link" href="#" route-href="route:project-details; params.bind: {id:repo.id}" title="${repo.project_name}" innerhtml.bind="repo.highlight.project_name ? repo.highlight.project_name : repo.project_name"></a></div>
             <div class="org-name">${repo.language ? repo.language : stageConfig.NO_LANG}</div>
           </div>
           <div class="proj-desc multiline" innerhtml.bind="repo.highlight.project_description ? repo.highlight.project_description : repo.project_description"></div>
-          <div class="text-muted last-updated clearfix">By <a href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="View on Github" target="_blank">${repo.organization}</a> &nbsp; | &nbsp; Updated ${repo.updatedAt | ago} <span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> ${repo.origin}</span></div>
+          <div class="text-muted last-updated clearfix">By <a id="card-search-organization-link" href="${repo.organizationUrl}" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="View on Github" target="_blanks"><span id="card-search-organization-link-text">${repo.organization}</span></a> &nbsp; | &nbsp; <span id="card-search-organization-updated-text">Updated ${repo.updatedAt | ago}</span> <span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i><span id="card-search-organization-origin-text">${repo.origin}</span></span></div>
         </div>
 
         <div class="col-lg-4 col-github-stats">
           <div class="card-stats lined-header">
-            <span class="pull-right"><em class="text-muted">Source: <a href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.repositoryUrl)"  target="_blank">Github™</a></em></span>
+            <span class="pull-right"><em class="text-muted">Source: <a id="card-search-project-status-link" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.repositoryUrl)"  target="_blank">Github™</a></em></span>
             <h4 class=""><span>Project Stats</span></h4>
           </div>
           <div class="row github-stats">
             <div class="col-md-6 col-sm-6">
               <span class="stat">
                 <span class="octicon octicon-star"></span>
-                <span class="num text-muted text-emphasized">${repo.stars | num}</span>
+                <span id="card-search-project-stars" class="num text-muted text-emphasized">${repo.stars | num}</span>
                 <span class="stat-label">stars</span>
               </span>
               <span class="stat">
                 <span class="octicon octicon-organization"></span>
-                <span class="num text-muted text-emphasized">${repo.contributors | num}</span>
+                <span id="card-search-project-contributors" class="num text-muted text-emphasized">${repo.contributors | num}</span>
                 <span class="stat-label">contributors</span>
             </span>
             <span class="stat">
               <span class="octicon octicon-eye"></span>
-              <span class="num text-muted text-emphasized">${repo.watchers | num}</span>
+              <span id="card-search-project-watchers" class="num text-muted text-emphasized">${repo.watchers | num}</span>
               <span class="stat-label">watchers</span>
             </span>
+            <span class="stat">
+                <span class="octicon octicon-cloud-download"></span>
+                <span id="card-search-project-downloads" class="num text-muted text-emphasized">${downloads | num}</span>
+                <span class="stat-label">downloads</span>
+              </span>
           </div>
           <div class="col-md-6 col-sm-6">
             <span class="stat">
               <span class="octicon octicon-git-commit"></span>
-              <span class="num text-muted text-emphasized">${repo.commits | num:1}</span>
+              <span id="card-search-project-commits" class="num text-muted text-emphasized">${repo.commits | num:1}</span>
               <span class="stat-label">commits</span>
             </span>
             <span class="stat">
               <span class="octicon octicon-tag"></span>
-              <span class="num text-muted text-emphasized">${repo.releases | num}</span>
+              <span id="card-search-project-releases" class="num text-muted text-emphasized">${releases.length | num}</span>
               <span class="stat-label">releases</span>
             </span>
             <span class="stat">
               <span class="octicon octicon-repo-forked"></span>
-              <span class="num text-muted text-emphasized">${(repo.forkedRepos.length + repo.userForkedRepos.length) | num}</span>
+              <span id="card-search-project-forks" class="num text-muted text-emphasized">${repo.forks | num}</span>
               <span class="stat-label">forks</span>
             </span>
           </div>
@@ -69,8 +74,8 @@
 
     <div class="row card-links">
       <ul class="list-inline clearfix">
-        <li if.bind="repo.highlight['readMe.content'][0]"><a href="#" click.trigger="openReadmeModal(repo)"><em class="search-highlight"><i class="material-icons">library_books</i> Show README</em></a></li>
-        <li if.bind="!repo.highlight['readMe.content'][0]"><a href="#" click.trigger="openReadmeModal(repo)"><i class="material-icons">library_books</i> Show README </a></li>
+        <li if.bind="repo.highlight['readMe.content'][0]"><a id="card-search-project-open-readme" href="#" click.trigger="openReadmeModal(repo)"><em class="search-highlight"><i class="material-icons">library_books</i> Show README</em></a></li>
+        <li if.bind="!repo.highlight['readMe.content'][0]"><a id="card-search-project-open-readme" href="#" click.trigger="openReadmeModal(repo)"><i class="material-icons">library_books</i> Show README </a></li>
         <li><a class="disabled hide"><i class="material-icons">bookmark_border</i> Bookmark</a></li>
         <li><a class="disabled hide"><i class="material-icons">share</i> Share</a></li>
         <li class="pull-right"><a route-href="route:project-details; params.bind: {id:repo.id}">Go to Details<i class="material-icons">chevron_right</i></a></li>
