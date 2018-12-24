@@ -1,0 +1,28 @@
+<template>    
+  <div tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" click.trigger="controller.cancel()" class="close" aria-label="Close"><span
+            aria-hidden="true"><i class="material-icons md-48">close</i></span></button>
+          <h4 class="modal-title"><span class="text-uppercase">You are now leaving the Intelligent Transportation Systems website.</span></h4>
+        </div>
+        <div class="modal-body leaving-modal">
+          <p>
+              You are about to access:<a href="#" click.trigger="navigateAndClose()">${model.url}</a>
+          </p>
+          <p>
+              Our website has many links to other organizations.
+              While we offer these electronic linkages for your convenience in accessing transportation-related information, please be aware that when you exit our website, the privacy and accessibility policies stated on our website may not be the same as that on other websites.              
+          </p>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default btn-icon-right" attach-focus.bind="isFocus" click.delegate="navigateAndClose()" >Continue <i class="material-icons">chevron_right</i></button>
+          <button type="button" class="btn btn-default" click.trigger="controller.cancel()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+  

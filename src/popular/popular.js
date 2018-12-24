@@ -1,16 +1,20 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
+import { DialogService } from 'aurelia-dialog';
 import { DataContext } from 'services/datacontext';
 import { StageConfig } from '../../stageConf';
+import { ReadmeModal } from '../components/modals/readme-modal';
+import { LeavingModal } from '../components/modals/leaving-modal';
 
-@inject(DataContext, Router, StageConfig)
+@inject(DataContext, Router, StageConfig, DialogService)
 export class Popular {
 
-  constructor(dataContext, router, stageConfig) {
+  constructor(dataContext, router, stageConfig, dialogService) {
     this.dataContext = dataContext;
     this.router = router;
     this.stageConfig = stageConfig;
     this.fp = stageConfig.FEATURED_PROJECTS;
+    this.dialogService = dialogService;
 
     this.projects = [];
     this.featured = [];
@@ -67,6 +71,15 @@ export class Popular {
 
   activate() {
     this.getData();
+  }
+
+  openReadmeModal(repo) {
+    this.dialogService.open({ viewModel: ReadmeModal, model: repo });
+  }
+
+  openLeavingSiteConfirmation(name, url) {
+    const mdl = { name, url };
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl });
   }
 
 }

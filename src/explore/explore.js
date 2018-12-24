@@ -2,16 +2,20 @@ import { inject, bindable } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import $ from 'bootstrap';
 import { multiselect } from 'bootstrap-multiselect';
+import { DialogService } from 'aurelia-dialog';
 import { DataContext } from 'services/datacontext';
 import { Filters } from 'components/filters';
+import { ReadmeModal } from '../components/modals/readme-modal';
+import { LeavingModal } from '../components/modals/leaving-modal';
 
-@inject(DataContext, Router, Filters)
+@inject(DataContext, Router, Filters, DialogService)
 export class Explore {
 
-  constructor(dataContext, router, filters) {
+  constructor(dataContext, router, filters, dialogService) {
     this.dataContext = dataContext;
     this.router = router;
     this.filters = filters;
+    this.dialogService = dialogService;
 
     this.resultCount = 0;
     this.searchDone = false;
@@ -258,6 +262,15 @@ export class Explore {
         }
         return false;
       });
+  }
+
+  openReadmeModal(repo) {
+    this.dialogService.open({ viewModel: ReadmeModal, model: repo });
+  }
+
+  openLeavingSiteConfirmation(name, url) {
+    const mdl = { name, url };
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl });
   }
 
 }

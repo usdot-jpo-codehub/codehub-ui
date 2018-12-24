@@ -21,10 +21,10 @@
         <div class="org-name">${repo.language ? repo.language : stageConfig.NO_LANG}</div>
       </div>
       <div class="proj-desc multiline">${repo.project_description}</div>
-      <div class="text-muted last-updated">By <a id="card-popular-organization-link" href="${repo.organizationUrl}" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="View on Github" target="_blank">${repo.organization}</a> &nbsp; | &nbsp; <span id="card-popular-organization-updated-text">Updated ${repo.updatedAt | ago}</span><span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> <span id="card-popular-organization-origin-text">${repo.origin}</span></span></div>
+      <div class="text-muted last-updated">By <a id="card-popular-organization-link" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="View on Github" target="_blank">${repo.organization}</a> &nbsp; | &nbsp; <span id="card-popular-organization-updated-text">Updated ${repo.updatedAt | ago}</span><span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> <span id="card-popular-organization-origin-text">${repo.origin}</span></span></div>
 
       <div class="card-stats lined-header">
-        <span class="pull-right"><em class="text-muted">Source: <a id="card-popular-project-status-link" href="${repo.repositoryUrl}"  target="_blank">Github™</a></em></span>
+        <span class="pull-right"><em class="text-muted">Source: <a id="card-popular-project-status-link" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.repositoryUrl)"  target="_blank">Github™</a></em></span>
         <h4 class=""><span>Project Stats</span></h4>
       </div>
 

@@ -3,6 +3,8 @@ import { Router, activationStrategy } from 'aurelia-router';
 import { DialogService } from 'aurelia-dialog';
 import { DataContext } from 'services/datacontext';
 import { AddProjectsModal } from 'components/modals/addprojects-modal.js';
+import { ReadmeModal } from '../components/modals/readme-modal';
+import { LeavingModal } from '../components/modals/leaving-modal';
 
 @inject(DataContext, Router, DialogService)
 export class ProjectDetails {
@@ -92,6 +94,15 @@ export class ProjectDetails {
         });
       }
     });
+  }
+
+  openReadmeModal(repo) {
+    this.dialogService.open({ viewModel: ReadmeModal, model: repo });
+  }
+
+  openLeavingSiteConfirmation(name, url) {
+    const mdl = { name, url };
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl });
   }
 
 }
