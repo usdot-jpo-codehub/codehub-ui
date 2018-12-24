@@ -23,7 +23,7 @@
       <div class="text-muted last-updated">By <a id="card-health-organization-link" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="View on Github" target="_blank">${repo.organization}</a> &nbsp; | &nbsp; <span id="card-health-organization-updated-text">Updated ${repo.updatedAt | ago}</span> <span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> <span id="card-health-organization-origin-text">${repo.origin}</span></span></div>
 
       <div class="card-stats lined-header">
-        <span class="pull-right"><em class="text-muted">Source: <a id="card-health-health-status-link" href="#" click.trigger="openLeavingSiteConfirmation('SonarQube™','https://www.sonarqube.org')" target="_blank">SonarQube™</a></em></span>
+        <span class="pull-right"><em class="text-muted">Source: <a id="card-health-health-status-link" href="#" click.trigger="openLeavingSiteConfirmation('SonarQube™', repo.sonarlink)" target="_blank">SonarQube™</a></em></span>
         <h4 class=""><span>Health Stats</span></h4>
       </div>                    
 

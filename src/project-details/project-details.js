@@ -5,13 +5,15 @@ import { DataContext } from 'services/datacontext';
 import { AddProjectsModal } from 'components/modals/addprojects-modal.js';
 import { ReadmeModal } from '../components/modals/readme-modal';
 import { LeavingModal } from '../components/modals/leaving-modal';
+import { StageConfig } from '../../stageConf';
 
-@inject(DataContext, Router, DialogService)
+@inject(DataContext, Router, DialogService, StageConfig)
 export class ProjectDetails {
 
-  constructor(dataContext, router, dialogService) {
+  constructor(dataContext, router, dialogService, stageConfig) {
     this.dataContext = dataContext;
     this.dialogService = dialogService;
+    this.stageConfig = stageConfig;
 
     this.repo = {};
     this.repo.contributors_list = [];
@@ -52,7 +54,7 @@ export class ProjectDetails {
 
     this.dataContext.findById(params.id).then(repo => {
       this.repo = repo;
-      this.sonarLink = `http://52.90.146.208:9000/dashboard/index/${repo.project_name}`;
+      this.sonarLink = `${this.stageConfig.SONARQUBE_ADDRESS}/dashboard/index/${repo.project_name}`;
       if (repo.userForkedRepos) {
         this.projectsThatUseUs = repo.forkedRepos.concat(repo.userForkedRepos);
       } else {

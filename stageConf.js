@@ -4,5 +4,6 @@ export const StageConfig = {
   FEATURED_PROJECTS: ['23056647_72044729', '23056647_99961005', '23056647_99942371', '23056647_77352013', '23056647_119436284', '23056647_127138533', '23056647_129775801', '23056647_99358953'],
   IS_BETA: true,
   BETA_ICON: 'warning',
-  BETA_MESSAGE: 'This site is currently in Beta Release'
+  BETA_MESSAGE: 'This site is currently in Beta Release',
+  SONARQUBE_ADDRESS: 'http://localhost:9000'
 };
