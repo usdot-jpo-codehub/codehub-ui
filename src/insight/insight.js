@@ -5,12 +5,15 @@ import * as c3 from 'c3';
 import * as echarts from 'echarts';
 import { DataContext } from 'services/datacontext';
 import { LeavingModal } from '../components/modals/leaving-modal';
-@inject(DataContext, Router, DialogService)
+import { StageConfig } from '../../stageConf';
+@inject(DataContext, Router, DialogService, StageConfig)
 export class Insight {
-  constructor(dataContext, router, dialogService) {
+  constructor(dataContext, router, dialogService, stageConfig) {
     this.dataContext = dataContext;
     this.router = router;
     this.dialogService = dialogService;
+    this.stageConfig = stageConfig;
+    this.sonarqube_projects = `${this.stageConfig.SONARQUBE_ADDRESS}/projects`;
     this.insights = [];
     this.projects = [];
     this.mulChart = {};
