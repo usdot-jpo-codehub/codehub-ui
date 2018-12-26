@@ -643,17 +643,24 @@ a.disabled {
 
 .message-notification {
   position: fixed;
-  width: 30%;
+  display: inline-block;
   text-align: left;
   background-color: lighten(@black, 15%);
   height: 50px;
-  line-height: 49px;
-  color: @white;
-  font-size: @font-size-medium;
   bottom: 50px;
   right: 0;
   z-index: 1000;
   border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 60px;
+  
+  > p {
+    display: inline;
+    color: @white;
+    font-size: @font-size-medium;
+    line-height: 49px;
+    word-wrap: break-word;
+  }
 
   transform:translateY(200px);
     -moz-transform:translateY(200px);
@@ -669,7 +676,6 @@ a.disabled {
     vertical-align: -10px;
     margin-right: 12px;
     font-size: @font-size-h2;
-    margin-left: 8px;
   }
 
   .message-icon {

@@ -4,6 +4,7 @@
       <div class="navbar-header">
           <a class="navbar-brand" route-href="route:popular">
             <img src="../../../../img/logo.png" alt="ITS CodeHub" id="logo">
+            <span if.bind="stageConfig.IS_BETA" class="beta-message">Beta</span>
           </a>
       </div>
       <div id="navbar">
@@ -44,9 +45,9 @@
             </form>
           </div>
         </div>
-        <div if.bind="stageConfig.IS_BETA" class="main-nav-beta-message" >
+        <!-- <div if.bind="stageConfig.IS_BETA" class="main-nav-beta-message" >
           ${stageConfig.IS_BETA? "BETA Release" : ""}
-        </div>
+        </div> -->
     </div>
   </nav>
 </template>
