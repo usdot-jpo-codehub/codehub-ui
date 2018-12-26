@@ -22,6 +22,7 @@ export class ProjectDetails {
     this.projectsThatUseUs = [];
     this.releases = [];
     this.downloads = 0;
+    this.noSonarData = false;
 
     this.sonarLink = '';
 
@@ -70,6 +71,11 @@ export class ProjectDetails {
     });
 
     this.dataContext.getHealthById(params.id).then(health => {
+      if (Object.prototype.hasOwnProperty.call(health, 'error')) {
+        this.noSonarData = true;
+      } else {
+        this.noSonarData = health.code_smells === undefined && health.reliability_rating === undefined && health.security_rating === undefined;
+      }
       this.health = health;
     });
 
@@ -86,6 +92,8 @@ export class ProjectDetails {
         }
       }
     });
+
+    this.noDependencies = this.componentDependencies.length === 0 && this.projectsThatUseUs.length === 0;
   }
 
   openAddProjectModal() {

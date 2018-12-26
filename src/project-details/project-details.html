@@ -151,6 +151,7 @@
                     <button class="btn btn-link hide" click.trigger="openAddProjectModal()"><i class="material-icons">add_circle</i> Are you using this project?</button>
                   </div>
                 </div>
+                <div class="coming-soon-watermark ${componentDependencies.length < 1 && projectsThatUseUs.length < 1 ? '' : 'hide'}">Coming Soon</div>
               </div>
             </div>
           </div>
@@ -171,7 +172,7 @@
                   </div>
                 </div> -->
                 <div class="col-lg-12 col-qual">
-                  <span class="pull-right"><em class="text-muted">Source: <a href="#" click.trigger="openLeavingSiteConfirmation('SonarQube™', sonarLink)" target="_blank">SonarQube™</a></em></span>
+                  <span class="pull-right"><em class="text-muted ${noSonarData ? 'hide' : ''}">Source: <a href="#" click.trigger="openLeavingSiteConfirmation('SonarQube™', sonarLink)" target="_blank">SonarQube™</a></em></span>
                   <h3>SonarQube</h3>
                   <p>Is an open source platform for continuous inspection of code quality.</p>
                   <div class="row">
@@ -213,6 +214,7 @@
                         <li>${health.vulnerabilities.val} vulnerabilities</li>
                       </ul>
                     </div>
+                    <div if.bind="noSonarData" class="coming-soon-watermark">Coming Soon</div>
                   </div>
                 </div>
               </div>

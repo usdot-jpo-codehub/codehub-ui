@@ -162,4 +162,26 @@
       }
     }
   }
+
+  .coming-soon-watermark {
+    text-transform: uppercase;
+    position: absolute;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:55px;
+    text-align:center;
+    color: @light-gray;
+    opacity: 0.3;
+    font-weight: 600;
+    font-size: @font-size-largest;
+    text-align: center;
+    letter-spacing: max(10px);
+    text-shadow: 0 3px 4px rgba(0,0,0,0.2);
+    display: @beta-display-message;
+    z-index: 10;
+    pointer-events: none;
+    background: none !important;
+    width: 100%;
+    transform: rotate(-12deg);
+  }
 }
