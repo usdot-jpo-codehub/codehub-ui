@@ -53,7 +53,7 @@ describe('Test - Card Search : ', () => {
   it('Expect organization link', (done) => {
     component.create(bootstrap).then( () => {
       const element = document.querySelector('#card-search-organization-link');
-      expect(element.getAttribute('href')).toEqual(MockProjectData[0].organizationUrl);
+      expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.organization,repo.organizationUrl)');
       done();
     }).catch( e => { console.log(e.toString()) });
   });

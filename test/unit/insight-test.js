@@ -1,11 +1,13 @@
 import { StageComponent } from 'aurelia-testing';
 import { bootstrap } from 'aurelia-bootstrapper';
 import { Router } from 'aurelia-router'
+import { DialogService } from 'aurelia-dialog';
 import { DataContext } from '../../src/services/datacontext';
 import { Insight } from '../../src/insight/insight';
 import { MockDataInsightFindEnterpriseInsight } from '../mockdata/mock-data-insight-findEnterpriseInsight';
 import { MockDataInsightGetAll } from '../mockdata/mock-data-insight-getAll';
 import { NumValueConverter } from '../../src/resources/value-converters/num';
+import { StageConfig } from '../../stageConf';
 
 // Mocking Class DataContext (service)
 export class MockDataContext {
@@ -21,13 +23,15 @@ describe('Insight : ', () => {
   let dctx = new MockDataContext();
   let router;
   let viewModel;
+  let dialogService;
+  let stageConfig = StageConfig;
   
   beforeEach( () => {    
     dctx.responseFindEnterpriseInsight = undefined;
     dctx.responseGetAll = undefined;
     router = {};
-
-    viewModel = new Insight(dctx, router);
+    dialogService = {};
+    viewModel = new Insight(dctx, router, dialogService, stageConfig);
 
     component = StageComponent
       .withResources('insight/insight')
@@ -38,6 +42,8 @@ describe('Insight : ', () => {
       aurelia.use.standardConfiguration();
       aurelia.container.registerInstance(DataContext, dctx);
       aurelia.container.registerInstance(Router, router);
+      aurelia.container.registerInstance(DialogService, dialogService);
+      aurelia.container.registerInstance(StageConfig, stageConfig);
     });
   });
 
