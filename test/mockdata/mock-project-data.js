@@ -1,5 +1,193 @@
 export const MockProjectData = [
   {
+    "organization": "usdot-jpo-ode",
+    "organizationUrl": "https://github.com/usdot-jpo-ode",
+    "organizationType": "Organization",
+    "organizationAvatarUrl": "https://avatars2.githubusercontent.com/u/23056647?v=4",
+    "origin": "PUBLIC",
+    "project_name": "jpo-ode",
+    "full_name": "usdot-jpo-ode/jpo-ode",
+    "project_description": "US Department of Transportation (USDOT) Intelligent Transportation Systems Operational Data Environment (ITS ODE). This is the main repository that integrates and coordinates ODE Submodules.",
+    "repository": "jpo-ode",
+    "forkedRepos": [
+      {
+        "id": "42840583_152122560",
+        "name": "jpo-ode",
+        "org_name": "darrelld05"
+      },
+      {
+        "id": "7475771_145814291",
+        "name": "jpo-ode",
+        "org_name": "kssonu4u"
+      },
+      {
+        "id": "38541284_130270574",
+        "name": "jpo-ode",
+        "org_name": "MarioDH"
+      },
+      {
+        "id": "32356764_126688467",
+        "name": "jpo-ode",
+        "org_name": "yangsoso"
+      },
+      {
+        "id": "1860862_123641545",
+        "name": "jpo-ode",
+        "org_name": "Edon07"
+      },
+      {
+        "id": "1916753_120336776",
+        "name": "jpo-ode",
+        "org_name": "onthejeep"
+      },
+      {
+        "id": "33533793_118946510",
+        "name": "jpo-ode",
+        "org_name": "OSUPCVLab"
+      },
+      {
+        "id": "13427284_116835740",
+        "name": "jpo-ode",
+        "org_name": "wayties"
+      },
+      {
+        "id": "28535848_94336819",
+        "name": "jpo-ode",
+        "org_name": "DOTAMC"
+      },
+      {
+        "id": "1120608_90075506",
+        "name": "jpo-ode",
+        "org_name": "kimPerry"
+      },
+      {
+        "id": "11353428_86829378",
+        "name": "jpo-ode",
+        "org_name": "sharafm2002"
+      },
+      {
+        "id": "12912578_76863396",
+        "name": "jpo-ode",
+        "org_name": "mvs5465"
+      },
+      {
+        "id": "10130982_75348929",
+        "name": "jpo-ode",
+        "org_name": "hmusavi"
+      },
+      {
+        "id": "23481864_75121569",
+        "name": "jpo-ode",
+        "org_name": "mgarramo"
+      },
+      {
+        "id": "5840989_75118639",
+        "name": "jpo-ode",
+        "org_name": "lauraGgit"
+      }
+    ],
+    "commits": 2302,
+    "language": "Java",
+    "languages": {
+      "Batchfile": "1948",
+      "C": "4075",
+      "CSS": "1617",
+      "Dockerfile": "2906",
+      "HTML": "4849",
+      "Java": "2740483",
+      "JavaScript": "3219",
+      "Shell": "7650"
+    },
+    "content": "\n\nMaster: [![Build Status](https://travis-ci.org/usdot-jpo-ode/jpo-ode.svg?branch=master)](https://travis-ci.org/usdot-jpo-ode/jpo-ode) [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=usdot.jpo.ode:jpo-ode)](https://sonarcloud.io/dashboard?id=usdot.jpo.ode%3Ajpo-ode)\n\nDevelop: [![Build Status](https://travis-ci.org/usdot-jpo-ode/jpo-ode.svg?branch=develop)](https://travis-ci.org/usdot-jpo-ode/jpo-ode) [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=usdot.jpo.ode:jpo-ode:develop)](https://sonarcloud.io/dashboard?id=usdot.jpo.ode%3Ajpo-ode%3Adevelop)\n\n# jpo-ode\nUS Department of Transportation (USDOT) Intelligent Transportation Systems Operational Data Environment (ITS ODE)\n\nThe ITS ODE is a real-time virtual data router that ingests and processes operational data from various connected devices - including vehicles, infrastructure, and traffic management centers - and distributes it to other devices and subscribing transportation management applications. Using the ITS ODE within intelligent transportation deployments increases data fluidity and interoperability while meeting operational needs and protecting user privacy. The software’s microservices architecture makes it easy to add new capabilities to meet local needs.\n\n![ODE Dataflows](images/data_flow_v2.png)\n\n<a name=\"toc\"/>\n\n## Table of Contents\n\n[I. Release Notes](#release-notes)\n\n[II. Documentation](#documentation)\n\n[III. Collaboration Tools](#collaboration-tools)\n\n[IV. Getting Started](#getting-started)\n\n[V. Testing the Application](#testing)\n\n[VI. ODE Limitation](#dev-tools)\n\n[VII. Development Tools](#dev-tools)\n\n[VIII. Contribution Information](#contribution-info)\n\n[IX. Troubleshooting](#troubleshooting)\n\n---\n\n<a name=\"release-notes\"/>\n\n\n## [I. Release Notes](ReleaseNotes.md)\n\n\n<a name=\"documentation\"/>\n\n## II. Documentation\nODE provides the following living documents to keep ODE users and stakeholders informed of the latest developments:\n\n1. [ODE Architecture](docs/JPO%20ODE%20Architecture.docx)\n2. [ODE User Guide](docs/JPO_ODE_UserGuide.docx)\n3. [ODE Output Schema Reference Guide](docs/ODE_Output_Schema_Reference.docx)\n4. [ODE REST API Guide](https://usdot-jpo-ode.github.io/)\n5. [ODE Smoke Tests](https://github.com/usdot-jpo-ode/jpo-ode/wiki/JPO-ODE-QA-Documents)\n\nAll stakeholders are invited to provide input to these documents. Stakeholders should direct all input on this document to the JPO Product Owner at DOT, FHWA, and JPO. To provide feedback, we recommend that you create an \"issue\" in this repository (https://github.com/usdot-jpo-ode/jpo-ode/issues). You will need a GitHub account to create an issue. If you don’t have an account, a dialog will be presented to you to create one at no cost.\n\n<a name=\"collaboration-tools\"/>\n\n## III. Collaboration Tools\n\n### Source Repositories - GitHub\n- Main repository on GitHub (public)\n\t- https://github.com/usdot-jpo-ode/jpo-ode\n\t- git@github.com:usdot-jpo-ode/jpo-ode.git\n- Security repository on GitHub (public)\n        - https://github.com/usdot-jpo-ode/jpo-security.git\n\t- git@github.com:usdot-jpo-ode/jpo-security.git\n- Private repository on BitBucket\n\t- https://usdot-jpo-ode@bitbucket.org/usdot-jpo-ode/jpo-ode-private.git\n\t- git@bitbucket.org:usdot-jpo-ode/jpo-ode-private.git\n- Data Privacy Module on Github (public)\n\t- https://github.com/usdot-jpo-ode/jpo-cvdp\n\t- git@github.com/usdot-jpo-ode/jpo-cvdp\n- S3 Depositor Module on Github (public)\n\t- https://github.com/usdot-jpo-ode/jpo-s3-deposit\n\t- gith@github.com/usdot-jpo-ode/jpo-s3-deposit\n\n### Agile Project Management - Jira\nhttps://usdotjpoode.atlassian.net/secure/Dashboard.jspa\n\n### Wiki - Confluence\nhttps://usdotjpoode.atlassian.net/wiki/\n\n### Continuous Integration and Delivery\nhttps://travis-ci.org/usdot-jpo-ode/jpo-ode\n\nTo allow Travis run your build when you push your changes to your public fork of the jpo-ode repository, you must define the following secure environment variable using Travis CLI (https://github.com/travis-ci/travis.rb).\n\nRun:\n\n```\ntravis login --org\n```\nEnter personal github account credentials and then run this:\n\n```\ntravis env set BITBUCKET_UN_APP_PW 'yourbitbucketusername:yourbitbucketpassword' -r yourtravisusername/jpo-ode\n```\n\nThe login information will be saved and this needs to be done only once.\n\nIn order to allow Sonar to run, personal key must be added with this command:\n(Key can be obtained from the JPO-ODE development team)\n\n```\ntravis env set SONAR_SECURITY_TOKEN <key> -pr <user-account>/<repo-name>\n```\n\n### Static Code Analysis\nhttps://sonarcloud.io/organizations/usdot-jpo-ode/projects\n\n[Back to top](#toc)\n\n<a name=\"getting-started\"/>\n\n## IV. Getting Started\n\nThe following instructions describe the procedure to fetch, build, and run the application. If you are installing the ODE in an Ubuntu environment, see this [quick start guide](https://github.com/usdot-jpo-ode/jpo-ode/wiki/Prepare-a-fresh-Ubuntu-instance-for-ODE-installation).\n\n### Prerequisites\n* JDK 1.8: http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html\n* Maven: https://maven.apache.org/install.html\n* Git: https://git-scm.com/\n\nAdditionally, read the following guides to familiarize yourself with Docker and Kafka.\n\n**Docker**\n\n[README.md](docker/README.md)\n\n**Kafka**\n\n[README.md](docker/kafka/README.md)\n\n---\n### Obtain the Source Code\n\n**NOTE**: The ODE consists of four repositories:\n\n|Name|Visibility|Description|\n|----|----------|-----------|\n|[jpo-ode](https://github.com/usdot-jpo-ode/jpo-ode)|public|Contains the public components of the application code.|\n|[jpo-cvdp](https://github.com/usdot-jpo-ode/jpo-cvdp)|public|Privacy Protection Module|\n|[jpo-s3-deposit](https://github.com/usdot-jpo-ode/jpo-s3-deposit)|public|S3 depositor service. Optional, comment out of `docker-compose.yml` file if not used.|\n|[jpo-security](https://github.com/usdot-jpo-ode/jpo-security)|public|Security dependencies.|\n|[asn1_codec](https://github.com/usdot-jpo-ode/asn1_codec)|public|ASN.1 Encoder/Decoder module|\n|jpo-ode-private|private|Proprietary dependencies.|\n|[jpo-security-svcs](https://github.com/usdot-jpo-ode/jpo-security-svcs)|public|Provides cryptographic services.|\n\nBuilding this application requires all repositories. If you need access to the private repositories, please reach out to a member of the development team.\n\n\n#### Step 1 - Clone public repository\n\nDisable Git core.autocrlf (Only the First Time)\n**NOTE**: If running on Windows, please make sure that your global git config is set up to not convert End-of-Line characters during checkout. This is important for building docker images correctly.\n\n```bash\ngit config --global core.autocrlf false\n```\n\nClone the source code from the GitHub repository using Git command:\n\n```bash\ngit clone --recurse-submodules https://github.com/usdot-jpo-ode/jpo-ode.git\n```\n\n*Note*: Make sure you specify the --recurse-submodules option on the clone command line. This option will cause the cloning of all dependent submodules:\n- Privacy Protection Module (PPM) - [jpo-cvdp](https://github.com/usdot-jpo-ode/jpo-cvdp)\n- S3 Bucket Depositor - [jpo-s3-deposit](https://github.com/usdot-jpo-ode/jpo-s3-deposit)\n- Security - [jpo-security](https://github.com/usdot-jpo-ode/jpo-security)\n- Security Services Module- [jpo-security](https://github.com/usdot-jpo-ode/jpo-security-svcs)\n- ASN.1 CODEC - [asn1_codec](https://github.com/usdot-jpo-ode/asn1_codec)\n\n#### Step 2 - Clone private repository\n\nClone the source code from the BitBucket repository:\n\n```bash\ngit clone --recurse-submodules https://yourbitbucketusername:yourbitbucketpassword@bitbucket.org/usdot-jpo-ode/jpo-ode-private.git\n```\n\n---\n### Build and Deploy the Application\n\n#### Environment Variables\n\nODE configuration can be customized for every deployment environment using environment variables. These variables can either be set locally or using the *sample.env* file found in the root of the jpo-ode repository.\n\nInstructions for how to use the *sample.env* file can be found [here](https://github.com/usdot-jpo-ode/jpo-ode/wiki/Using-the-.env-configuration-file).\n\n**Important!** \nYou must rename `sample.env` to `.env` for Docker to automatically read the file. This file will contain AWS access keys and other private information. Do not push this file to source control.\n\n#### Build Process\n\n**Note** Docker builds may fail if you are on a corporate network due to DNS resolution errors. \n[See here](https://github.com/usdot-jpo-ode/jpo-ode/wiki/Docker-fix-for-SSL-issues-due-to-corporate-network) for instructions to fix this.\n\n**Note** In order for Docker to automatically read the environment variable file, you must rename it from `sample.env` to `.env`.\n\nThe ODE application uses Maven to manage builds.\n\n**Step 1**: Build the private repository artifacts consisting of J2735 ASN.1 Java API and IEEE1609.2 ASN.1 Java API\n\nNavigate to the root directory of the `jpo-ode-private` project:\n\n```bash\n cd jpo-ode-private/\n mvn clean install\n```\n\n**Step 2**: Build the public 1609.2 Security Library\n```bash\ncd jpo-security\nmvn clean install -DskipTests\n```\n\n**Step 3**: Build the S3 Bucket Depositor Service\n\nNote - if you do not intend on using this feature, edit the docker-compose.yml file and comment out (add a `#` to) the lines including and below `s3dep:`.\n\nNavigate to the root directory of the `jpo-s3-depositor` project:\n\n```bash\nmvn clean compile assembly:single install\n```\n\n**Step 4** (Optional)\nFamiliarize yourself with Docker and follow the instructions in the [README.md](docker/README.md).\n\nIf you wish to change the application properties, such as change the location of the upload service via `ode.uploadLocation.*` properties or set the `ode.kafkaBrokers` to something other than the $DOCKER_HOST_IP:9092, or wish to set the CAS username/password, `ODE_EXTERNAL_IPVs`, etc. instead of setting the environment variables, modify `jpo-ode-svcs\\src\\main\\resources\\application.properties` file as desired.\n\n**Step 5**: Navigate to the root directory of the jpo-ode project.\n\n**Step 6**: Build and deploy the application.\n\nThe easiest way to do this is to run the ```clean-build-and-deploy``` script.\nThis script executes the following commands:\n\n```\n#!/bin/bash\ndocker-compose stop\ndocker-compose rm -f -v\nmvn clean install\ndocker-compose up --build -d\ndocker-compose ps\n```\n\nFor other build options, see the next section. Otherwise, move on to section [V. Testing ODE Application](#testing)\n\n[Back to top](#toc)\n\n---\n### Other Build/Deploy Options\n\n#### Building ODE without Deploying\nTo build the ODE docker container images but not deploy it, run the following commands:\n\n```\n cd jpo-ode (or cd ../jpo-ode if you are in any sub-directory)\n mvn clean install\n docker-compose rm -f -v\n docker-compose build\n```\n\nAlternatively, you may run the ```clean-build``` script.\n\n#### Deploying ODE Application on a Docker Host\nTo deploy the the application on the docker host configured in your DOCKER_HOST_IP machine, run the following:\n\n```bash\ndocker-compose up --no-recreate -d\n```\n\n**NOTE**: It's important to run ```docker-compose up``` with ```no-recreate``` option. Otherwise you may run into [this issue] (https://github.com/wurstmeister/kafka-docker/issues/100).\n\nAlternatively, run ```deploy``` script.\n\nCheck the deployment by running ```docker-compose ps```. You can start and stop containers using ```docker-compose start``` and ```docker-compose stop``` commands.\nIf using the multi-broker docker-compose file, you can change the scaling by running ```docker-compose scale <container>=n``` where container is the container you would like to scale and n is the number of instances. For example, ```docker-compose scale kafka=3```.\n\n#### Running ODE Application on localhost\nYou can run the application on your local machine while other services are deployed on a host environment. To do so, run the following:\n```bash\n docker-compose start zookeeper kafka\n java -jar jpo-ode-svcs/target/jpo-ode-svcs-0.0.1-SNAPSHOT.jar\n```\n\n[Back to top](#toc)\n\n<a name=\"testing\"/>\n\n## V. Testing ODE Application\nOnce the ODE is running, you should be able to access the jpo-ode web UI at `localhost:8080`.\n\n1. Press the `Connect` button to connect to the ODE WebSocket service.\n2. Press `Choose File` button to select an OBU log file containing BSMs and/or TIM messages as specified by the WYDOT CV Pilot project. See below documents for details:\na. [Wyoming CV Pilot Log File Design](data/Wyoming_CV_Pilot_Log_File_Design.docx) \nb. [WYDOT Log Records](data/wydotLogRecords.h) \n3. Press `Upload` button to upload the file to ODE.\n\nUpload records within the files must be embedding BSM and/or TIM messages wrapped in J2735 MessageFrame and ASN.1 UPER encoded, wrapped in IEEE 1609.2 envelope and ASN.1 COER encoded binary format. The following files are a samples of each supported type. Uploading any of the files below will you will observe the decoded messages returned to the web UI page while connected to the WebSocket interface:\n\n - [data/bsmLogDuringEvent.bin](data/bsmLogDuringEvent.bin)\n - [data/bsmLogDuringEvent.gz](data/bsmLogDuringEvent.gz)\n - [data/bsmTx.bin](data/bsmTx.bin)\n - [data/bsmTx.gz](data/bsmTx.gz)\n - [data/dnMsg.bin](data/dnMsg.bin)\n - [data/dnMsg.gz](data/dnMsg.gz)\n - [data/rxMsg_BSM.bin](data/rxMsg_BSM.bin)\n - [data/rxMsg_BSM.gz](data/rxMsg_BSM.gz)\n - [data/rxMsg_TIM.bin](data/rxMsg_TIM.bin)\n - [data/rxMsg_TIM.gz](data/rxMsg_TIM.gz)\n\nAnother way data can be uploaded to the ODE is through copying the file to the location specified by the `ode.uploadLocationRoot/ode.uploadLocationObuLog`property. If not specified,  Default locations would be `uploads/bsmlog`sub-directory off of the location where ODE is launched.\n\nThe result of uploading and decoding of messages will be displayed on the UI screen.\n\n![ODE UI](images/ode-ui.png)\n\n*Notice that the empty fields in the J2735 message are represented by a `null` value. Also note that ODE output strips the MessageFrame header and returns a pure BSM or TIM in the subscription topic.*\n\n### asn1_codec Module (ASN.1 Encoder and Decoder)\nODE requires the deployment of asn1_codec module. ODE's `docker-compose.yml` file is set up to build and deploy the module in a Docker container. If you wish to run `asn1_codec` module outside Docker (i.e. directly on the host machine), please refer to the documentation of `asn1_codec` module.\n\nThe only requirement for deploying `asn1_codec` module on Docker is the setup of two environment variables `DOCKER_HOST_IP` and `DOCKER_SHARED_VOLUME`.\n\n### PPM Module (Geofencing and Filtering)\n\nTo run the ODE with PPM module, you must install and start the PPM service. PPM service communicates with other services through Kafka Topics. PPM will read from the specified \"Raw BSM\" topic and publish the result to the specified \"Filtered Bsm\" topic. These topic names are specified by the following ODE and PPM properties:\n\n - ODE properties for communications with PPM (set in application.properties)\n\t - ode.kafkaTopicBsmRawJson  (default = j2735BsmRawJson)\n\t - ode.kafkaTopicBsmFilteredJson (default = j2735BsmFilteredJson)\n - PPM properties for communications with ODE (set in yourconfig.properties)\n\t - privacy.topic.consumer (default = j2735BsmRawJson)\n\t - privacy.topic.producer (default = j2735BsmFilteredJson)\n\nFollow the instructions [here](https://github.com/usdot-jpo-ode/jpo-cvdp/blob/master/docs/installation.md) (https://github.com/usdot-jpo-ode/jpo-cvdp/blob/master/docs/installation.md) to install and build the PPM service.\n\nDuring the build process, edit the sample config file located in `config/example.properties` and point the property `metadata.broker.list` towards the host of your docker machine or wherever the kafka brokers are hosted. You may use the command `docker-machine ls` to find the kafka service.\n\nAfter a successful build, use the following commands to configure and run the PPM\n\n```\ncd $BASE_PPM_DIR/jpo-cvdp/build\n$ ./bsmjson_privacy -c ../config/ppm.properties\n```\nWith the PPM module running, all filtered BSMs that are uploaded through the web interface will be captured and processed. You will see an output of both submitted BSM and processed data unless the entire record was filtered out.\n\n![PPM](images/PPM.png)\n\n\n[Back to top](#toc)\n\n<a name=\"ode-limitation\"/>\n\n## VI. ODE Limitations\n\nDate: 07/2017\n\nIn its current state, the ODE has been developed to accomplish the goals of data transfer, security, and modularity working with the J2735 and 1609.2 security. The system has been designed to support multiple services orchestrated through the Apache Kafka streaming data pipelines, services built and supported as separate applications and described with each service's repository. As a modular system, each component has been built for functionality first, and additional performance testing is needed to understand the limits of the system with large volumes of data.\n\n<a name=\"dev-tools\"/>\n\n## VII. Development Tools\n\n### Integrated Development Environment (IDE)\n\nInstall the IDE of your choice:\n\n* Eclipse: [https://eclipse.org/](https://eclipse.org/)\n* STS: [https://spring.io/tools/sts/all](https://spring.io/tools/sts/all)\n* IntelliJ: [https://www.jetbrains.com/idea/](https://www.jetbrains.com/idea/)\n\n### Continuous Integration and Delivery\n\nTo be added.\n\n### Continous Deployment\n\nTo be added.\n\n<a name=\"contribution-info\"/>\n\n## VIII. Contribution Information\n\nPlease read our [contributing guide](docs/contributing_guide.md) to learn about our development process, how to propose pull requests and improvements, and how to build and test your changes to this project.\n\n<a name=\"troubleshooting\"/>\n\n## IX. Troubleshooting\n\nPlease read our [Wiki](https://github.com/usdot-jpo-ode/jpo-ode/wiki) for more information, or check the [ODE User Guide](https://github.com/usdot-jpo-ode/jpo-ode/raw/develop/docs/JPO_ODE_UserGuide.docx).\n\n[Back to top](#toc)\n",
+    "contributors": 9,
+    "contributors_list": [
+      {
+        "avatar_url": "https://avatars0.githubusercontent.com/u/12912578?v=4",
+        "profile_url": "https://github.com/mvs5465",
+        "user_type": "User",
+        "username": "mvs5465"
+      },
+      {
+        "avatar_url": "https://avatars2.githubusercontent.com/u/10130982?v=4",
+        "profile_url": "https://github.com/hmusavi",
+        "user_type": "User",
+        "username": "hmusavi"
+      },
+      {
+        "avatar_url": "https://avatars0.githubusercontent.com/u/23481864?v=4",
+        "profile_url": "https://github.com/mgarramo",
+        "user_type": "User",
+        "username": "mgarramo"
+      },
+      {
+        "avatar_url": "https://avatars0.githubusercontent.com/u/9087336?v=4",
+        "profile_url": "https://github.com/0111sandesh",
+        "user_type": "User",
+        "username": "0111sandesh"
+      },
+      {
+        "avatar_url": "https://avatars0.githubusercontent.com/u/549261?v=4",
+        "profile_url": "https://github.com/tonychen091",
+        "user_type": "User",
+        "username": "tonychen091"
+      },
+      {
+        "avatar_url": "https://avatars0.githubusercontent.com/u/29639608?v=4",
+        "profile_url": "https://github.com/levesque1",
+        "user_type": "User",
+        "username": "levesque1"
+      },
+      {
+        "avatar_url": "https://avatars2.githubusercontent.com/u/5840989?v=4",
+        "profile_url": "https://github.com/lauraGgit",
+        "user_type": "User",
+        "username": "lauraGgit"
+      },
+      {
+        "avatar_url": "https://avatars2.githubusercontent.com/u/23216443?v=4",
+        "profile_url": "https://github.com/ToryB1",
+        "user_type": "User",
+        "username": "ToryB1"
+      },
+      {
+        "avatar_url": "https://avatars2.githubusercontent.com/u/1664694?v=4",
+        "profile_url": "https://github.com/southernsun",
+        "user_type": "User",
+        "username": "southernsun"
+      }
+    ],
+    "stars": 26,
+    "watchers": 19,
+    "releases": [
+      {
+        "id": "13113229",
+        "name": "1.3",
+        "tag_name": "1.3",
+        "assets": [
+          {
+            "id": "88568278",
+            "name": "mock-linux-x86.tar.gz",
+            "label": "",
+            "size": 794246,
+            "download_count": 12
+          }
+        ],
+        "total_downloads": 12
+      },
+      {
+        "id": "93113229",
+        "name": "1.4",
+        "tag_name": "1.4",
+        "assets": [],
+        "total_downloads": 0
+      }
+    ],
+    "rank": 2501,
+    "repositoryUrl": "https://github.com/usdot-jpo-ode/jpo-ode",
+    "updatedAt": "2018-11-14T20:55:31Z",
+    "id": "23056647_72044729"
+  },
+  {
     "organization": "fedspendingtransparency",
     "organizationUrl": "https://github.com/fedspendingtransparency",
     "organizationType": "Organization",
@@ -2124,193 +2312,5 @@ export const MockProjectData = [
     "repositoryUrl": "https://github.com/fedspendingtransparency/data-act-broker-web-app",
     "updatedAt": "2018-11-07T19:59:51Z",
     "id": "8397762_47277547"
-  },
-  {
-    "organization": "usdot-jpo-ode",
-    "organizationUrl": "https://github.com/usdot-jpo-ode",
-    "organizationType": "Organization",
-    "organizationAvatarUrl": "https://avatars2.githubusercontent.com/u/23056647?v=4",
-    "origin": "PUBLIC",
-    "project_name": "jpo-ode",
-    "full_name": "usdot-jpo-ode/jpo-ode",
-    "project_description": "US Department of Transportation (USDOT) Intelligent Transportation Systems Operational Data Environment (ITS ODE). This is the main repository that integrates and coordinates ODE Submodules.",
-    "repository": "jpo-ode",
-    "forkedRepos": [
-      {
-        "id": "42840583_152122560",
-        "name": "jpo-ode",
-        "org_name": "darrelld05"
-      },
-      {
-        "id": "7475771_145814291",
-        "name": "jpo-ode",
-        "org_name": "kssonu4u"
-      },
-      {
-        "id": "38541284_130270574",
-        "name": "jpo-ode",
-        "org_name": "MarioDH"
-      },
-      {
-        "id": "32356764_126688467",
-        "name": "jpo-ode",
-        "org_name": "yangsoso"
-      },
-      {
-        "id": "1860862_123641545",
-        "name": "jpo-ode",
-        "org_name": "Edon07"
-      },
-      {
-        "id": "1916753_120336776",
-        "name": "jpo-ode",
-        "org_name": "onthejeep"
-      },
-      {
-        "id": "33533793_118946510",
-        "name": "jpo-ode",
-        "org_name": "OSUPCVLab"
-      },
-      {
-        "id": "13427284_116835740",
-        "name": "jpo-ode",
-        "org_name": "wayties"
-      },
-      {
-        "id": "28535848_94336819",
-        "name": "jpo-ode",
-        "org_name": "DOTAMC"
-      },
-      {
-        "id": "1120608_90075506",
-        "name": "jpo-ode",
-        "org_name": "kimPerry"
-      },
-      {
-        "id": "11353428_86829378",
-        "name": "jpo-ode",
-        "org_name": "sharafm2002"
-      },
-      {
-        "id": "12912578_76863396",
-        "name": "jpo-ode",
-        "org_name": "mvs5465"
-      },
-      {
-        "id": "10130982_75348929",
-        "name": "jpo-ode",
-        "org_name": "hmusavi"
-      },
-      {
-        "id": "23481864_75121569",
-        "name": "jpo-ode",
-        "org_name": "mgarramo"
-      },
-      {
-        "id": "5840989_75118639",
-        "name": "jpo-ode",
-        "org_name": "lauraGgit"
-      }
-    ],
-    "commits": 2302,
-    "language": "Java",
-    "languages": {
-      "Batchfile": "1948",
-      "C": "4075",
-      "CSS": "1617",
-      "Dockerfile": "2906",
-      "HTML": "4849",
-      "Java": "2740483",
-      "JavaScript": "3219",
-      "Shell": "7650"
-    },
-    "content": "\n\nMaster: [![Build Status](https://travis-ci.org/usdot-jpo-ode/jpo-ode.svg?branch=master)](https://travis-ci.org/usdot-jpo-ode/jpo-ode) [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=usdot.jpo.ode:jpo-ode)](https://sonarcloud.io/dashboard?id=usdot.jpo.ode%3Ajpo-ode)\n\nDevelop: [![Build Status](https://travis-ci.org/usdot-jpo-ode/jpo-ode.svg?branch=develop)](https://travis-ci.org/usdot-jpo-ode/jpo-ode) [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=usdot.jpo.ode:jpo-ode:develop)](https://sonarcloud.io/dashboard?id=usdot.jpo.ode%3Ajpo-ode%3Adevelop)\n\n# jpo-ode\nUS Department of Transportation (USDOT) Intelligent Transportation Systems Operational Data Environment (ITS ODE)\n\nThe ITS ODE is a real-time virtual data router that ingests and processes operational data from various connected devices - including vehicles, infrastructure, and traffic management centers - and distributes it to other devices and subscribing transportation management applications. Using the ITS ODE within intelligent transportation deployments increases data fluidity and interoperability while meeting operational needs and protecting user privacy. The software’s microservices architecture makes it easy to add new capabilities to meet local needs.\n\n![ODE Dataflows](images/data_flow_v2.png)\n\n<a name=\"toc\"/>\n\n## Table of Contents\n\n[I. Release Notes](#release-notes)\n\n[II. Documentation](#documentation)\n\n[III. Collaboration Tools](#collaboration-tools)\n\n[IV. Getting Started](#getting-started)\n\n[V. Testing the Application](#testing)\n\n[VI. ODE Limitation](#dev-tools)\n\n[VII. Development Tools](#dev-tools)\n\n[VIII. Contribution Information](#contribution-info)\n\n[IX. Troubleshooting](#troubleshooting)\n\n---\n\n<a name=\"release-notes\"/>\n\n\n## [I. Release Notes](ReleaseNotes.md)\n\n\n<a name=\"documentation\"/>\n\n## II. Documentation\nODE provides the following living documents to keep ODE users and stakeholders informed of the latest developments:\n\n1. [ODE Architecture](docs/JPO%20ODE%20Architecture.docx)\n2. [ODE User Guide](docs/JPO_ODE_UserGuide.docx)\n3. [ODE Output Schema Reference Guide](docs/ODE_Output_Schema_Reference.docx)\n4. [ODE REST API Guide](https://usdot-jpo-ode.github.io/)\n5. [ODE Smoke Tests](https://github.com/usdot-jpo-ode/jpo-ode/wiki/JPO-ODE-QA-Documents)\n\nAll stakeholders are invited to provide input to these documents. Stakeholders should direct all input on this document to the JPO Product Owner at DOT, FHWA, and JPO. To provide feedback, we recommend that you create an \"issue\" in this repository (https://github.com/usdot-jpo-ode/jpo-ode/issues). You will need a GitHub account to create an issue. If you don’t have an account, a dialog will be presented to you to create one at no cost.\n\n<a name=\"collaboration-tools\"/>\n\n## III. Collaboration Tools\n\n### Source Repositories - GitHub\n- Main repository on GitHub (public)\n\t- https://github.com/usdot-jpo-ode/jpo-ode\n\t- git@github.com:usdot-jpo-ode/jpo-ode.git\n- Security repository on GitHub (public)\n        - https://github.com/usdot-jpo-ode/jpo-security.git\n\t- git@github.com:usdot-jpo-ode/jpo-security.git\n- Private repository on BitBucket\n\t- https://usdot-jpo-ode@bitbucket.org/usdot-jpo-ode/jpo-ode-private.git\n\t- git@bitbucket.org:usdot-jpo-ode/jpo-ode-private.git\n- Data Privacy Module on Github (public)\n\t- https://github.com/usdot-jpo-ode/jpo-cvdp\n\t- git@github.com/usdot-jpo-ode/jpo-cvdp\n- S3 Depositor Module on Github (public)\n\t- https://github.com/usdot-jpo-ode/jpo-s3-deposit\n\t- gith@github.com/usdot-jpo-ode/jpo-s3-deposit\n\n### Agile Project Management - Jira\nhttps://usdotjpoode.atlassian.net/secure/Dashboard.jspa\n\n### Wiki - Confluence\nhttps://usdotjpoode.atlassian.net/wiki/\n\n### Continuous Integration and Delivery\nhttps://travis-ci.org/usdot-jpo-ode/jpo-ode\n\nTo allow Travis run your build when you push your changes to your public fork of the jpo-ode repository, you must define the following secure environment variable using Travis CLI (https://github.com/travis-ci/travis.rb).\n\nRun:\n\n```\ntravis login --org\n```\nEnter personal github account credentials and then run this:\n\n```\ntravis env set BITBUCKET_UN_APP_PW 'yourbitbucketusername:yourbitbucketpassword' -r yourtravisusername/jpo-ode\n```\n\nThe login information will be saved and this needs to be done only once.\n\nIn order to allow Sonar to run, personal key must be added with this command:\n(Key can be obtained from the JPO-ODE development team)\n\n```\ntravis env set SONAR_SECURITY_TOKEN <key> -pr <user-account>/<repo-name>\n```\n\n### Static Code Analysis\nhttps://sonarcloud.io/organizations/usdot-jpo-ode/projects\n\n[Back to top](#toc)\n\n<a name=\"getting-started\"/>\n\n## IV. Getting Started\n\nThe following instructions describe the procedure to fetch, build, and run the application. If you are installing the ODE in an Ubuntu environment, see this [quick start guide](https://github.com/usdot-jpo-ode/jpo-ode/wiki/Prepare-a-fresh-Ubuntu-instance-for-ODE-installation).\n\n### Prerequisites\n* JDK 1.8: http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html\n* Maven: https://maven.apache.org/install.html\n* Git: https://git-scm.com/\n\nAdditionally, read the following guides to familiarize yourself with Docker and Kafka.\n\n**Docker**\n\n[README.md](docker/README.md)\n\n**Kafka**\n\n[README.md](docker/kafka/README.md)\n\n---\n### Obtain the Source Code\n\n**NOTE**: The ODE consists of four repositories:\n\n|Name|Visibility|Description|\n|----|----------|-----------|\n|[jpo-ode](https://github.com/usdot-jpo-ode/jpo-ode)|public|Contains the public components of the application code.|\n|[jpo-cvdp](https://github.com/usdot-jpo-ode/jpo-cvdp)|public|Privacy Protection Module|\n|[jpo-s3-deposit](https://github.com/usdot-jpo-ode/jpo-s3-deposit)|public|S3 depositor service. Optional, comment out of `docker-compose.yml` file if not used.|\n|[jpo-security](https://github.com/usdot-jpo-ode/jpo-security)|public|Security dependencies.|\n|[asn1_codec](https://github.com/usdot-jpo-ode/asn1_codec)|public|ASN.1 Encoder/Decoder module|\n|jpo-ode-private|private|Proprietary dependencies.|\n|[jpo-security-svcs](https://github.com/usdot-jpo-ode/jpo-security-svcs)|public|Provides cryptographic services.|\n\nBuilding this application requires all repositories. If you need access to the private repositories, please reach out to a member of the development team.\n\n\n#### Step 1 - Clone public repository\n\nDisable Git core.autocrlf (Only the First Time)\n**NOTE**: If running on Windows, please make sure that your global git config is set up to not convert End-of-Line characters during checkout. This is important for building docker images correctly.\n\n```bash\ngit config --global core.autocrlf false\n```\n\nClone the source code from the GitHub repository using Git command:\n\n```bash\ngit clone --recurse-submodules https://github.com/usdot-jpo-ode/jpo-ode.git\n```\n\n*Note*: Make sure you specify the --recurse-submodules option on the clone command line. This option will cause the cloning of all dependent submodules:\n- Privacy Protection Module (PPM) - [jpo-cvdp](https://github.com/usdot-jpo-ode/jpo-cvdp)\n- S3 Bucket Depositor - [jpo-s3-deposit](https://github.com/usdot-jpo-ode/jpo-s3-deposit)\n- Security - [jpo-security](https://github.com/usdot-jpo-ode/jpo-security)\n- Security Services Module- [jpo-security](https://github.com/usdot-jpo-ode/jpo-security-svcs)\n- ASN.1 CODEC - [asn1_codec](https://github.com/usdot-jpo-ode/asn1_codec)\n\n#### Step 2 - Clone private repository\n\nClone the source code from the BitBucket repository:\n\n```bash\ngit clone --recurse-submodules https://yourbitbucketusername:yourbitbucketpassword@bitbucket.org/usdot-jpo-ode/jpo-ode-private.git\n```\n\n---\n### Build and Deploy the Application\n\n#### Environment Variables\n\nODE configuration can be customized for every deployment environment using environment variables. These variables can either be set locally or using the *sample.env* file found in the root of the jpo-ode repository.\n\nInstructions for how to use the *sample.env* file can be found [here](https://github.com/usdot-jpo-ode/jpo-ode/wiki/Using-the-.env-configuration-file).\n\n**Important!** \nYou must rename `sample.env` to `.env` for Docker to automatically read the file. This file will contain AWS access keys and other private information. Do not push this file to source control.\n\n#### Build Process\n\n**Note** Docker builds may fail if you are on a corporate network due to DNS resolution errors. \n[See here](https://github.com/usdot-jpo-ode/jpo-ode/wiki/Docker-fix-for-SSL-issues-due-to-corporate-network) for instructions to fix this.\n\n**Note** In order for Docker to automatically read the environment variable file, you must rename it from `sample.env` to `.env`.\n\nThe ODE application uses Maven to manage builds.\n\n**Step 1**: Build the private repository artifacts consisting of J2735 ASN.1 Java API and IEEE1609.2 ASN.1 Java API\n\nNavigate to the root directory of the `jpo-ode-private` project:\n\n```bash\n cd jpo-ode-private/\n mvn clean install\n```\n\n**Step 2**: Build the public 1609.2 Security Library\n```bash\ncd jpo-security\nmvn clean install -DskipTests\n```\n\n**Step 3**: Build the S3 Bucket Depositor Service\n\nNote - if you do not intend on using this feature, edit the docker-compose.yml file and comment out (add a `#` to) the lines including and below `s3dep:`.\n\nNavigate to the root directory of the `jpo-s3-depositor` project:\n\n```bash\nmvn clean compile assembly:single install\n```\n\n**Step 4** (Optional)\nFamiliarize yourself with Docker and follow the instructions in the [README.md](docker/README.md).\n\nIf you wish to change the application properties, such as change the location of the upload service via `ode.uploadLocation.*` properties or set the `ode.kafkaBrokers` to something other than the $DOCKER_HOST_IP:9092, or wish to set the CAS username/password, `ODE_EXTERNAL_IPVs`, etc. instead of setting the environment variables, modify `jpo-ode-svcs\\src\\main\\resources\\application.properties` file as desired.\n\n**Step 5**: Navigate to the root directory of the jpo-ode project.\n\n**Step 6**: Build and deploy the application.\n\nThe easiest way to do this is to run the ```clean-build-and-deploy``` script.\nThis script executes the following commands:\n\n```\n#!/bin/bash\ndocker-compose stop\ndocker-compose rm -f -v\nmvn clean install\ndocker-compose up --build -d\ndocker-compose ps\n```\n\nFor other build options, see the next section. Otherwise, move on to section [V. Testing ODE Application](#testing)\n\n[Back to top](#toc)\n\n---\n### Other Build/Deploy Options\n\n#### Building ODE without Deploying\nTo build the ODE docker container images but not deploy it, run the following commands:\n\n```\n cd jpo-ode (or cd ../jpo-ode if you are in any sub-directory)\n mvn clean install\n docker-compose rm -f -v\n docker-compose build\n```\n\nAlternatively, you may run the ```clean-build``` script.\n\n#### Deploying ODE Application on a Docker Host\nTo deploy the the application on the docker host configured in your DOCKER_HOST_IP machine, run the following:\n\n```bash\ndocker-compose up --no-recreate -d\n```\n\n**NOTE**: It's important to run ```docker-compose up``` with ```no-recreate``` option. Otherwise you may run into [this issue] (https://github.com/wurstmeister/kafka-docker/issues/100).\n\nAlternatively, run ```deploy``` script.\n\nCheck the deployment by running ```docker-compose ps```. You can start and stop containers using ```docker-compose start``` and ```docker-compose stop``` commands.\nIf using the multi-broker docker-compose file, you can change the scaling by running ```docker-compose scale <container>=n``` where container is the container you would like to scale and n is the number of instances. For example, ```docker-compose scale kafka=3```.\n\n#### Running ODE Application on localhost\nYou can run the application on your local machine while other services are deployed on a host environment. To do so, run the following:\n```bash\n docker-compose start zookeeper kafka\n java -jar jpo-ode-svcs/target/jpo-ode-svcs-0.0.1-SNAPSHOT.jar\n```\n\n[Back to top](#toc)\n\n<a name=\"testing\"/>\n\n## V. Testing ODE Application\nOnce the ODE is running, you should be able to access the jpo-ode web UI at `localhost:8080`.\n\n1. Press the `Connect` button to connect to the ODE WebSocket service.\n2. Press `Choose File` button to select an OBU log file containing BSMs and/or TIM messages as specified by the WYDOT CV Pilot project. See below documents for details:\na. [Wyoming CV Pilot Log File Design](data/Wyoming_CV_Pilot_Log_File_Design.docx) \nb. [WYDOT Log Records](data/wydotLogRecords.h) \n3. Press `Upload` button to upload the file to ODE.\n\nUpload records within the files must be embedding BSM and/or TIM messages wrapped in J2735 MessageFrame and ASN.1 UPER encoded, wrapped in IEEE 1609.2 envelope and ASN.1 COER encoded binary format. The following files are a samples of each supported type. Uploading any of the files below will you will observe the decoded messages returned to the web UI page while connected to the WebSocket interface:\n\n - [data/bsmLogDuringEvent.bin](data/bsmLogDuringEvent.bin)\n - [data/bsmLogDuringEvent.gz](data/bsmLogDuringEvent.gz)\n - [data/bsmTx.bin](data/bsmTx.bin)\n - [data/bsmTx.gz](data/bsmTx.gz)\n - [data/dnMsg.bin](data/dnMsg.bin)\n - [data/dnMsg.gz](data/dnMsg.gz)\n - [data/rxMsg_BSM.bin](data/rxMsg_BSM.bin)\n - [data/rxMsg_BSM.gz](data/rxMsg_BSM.gz)\n - [data/rxMsg_TIM.bin](data/rxMsg_TIM.bin)\n - [data/rxMsg_TIM.gz](data/rxMsg_TIM.gz)\n\nAnother way data can be uploaded to the ODE is through copying the file to the location specified by the `ode.uploadLocationRoot/ode.uploadLocationObuLog`property. If not specified,  Default locations would be `uploads/bsmlog`sub-directory off of the location where ODE is launched.\n\nThe result of uploading and decoding of messages will be displayed on the UI screen.\n\n![ODE UI](images/ode-ui.png)\n\n*Notice that the empty fields in the J2735 message are represented by a `null` value. Also note that ODE output strips the MessageFrame header and returns a pure BSM or TIM in the subscription topic.*\n\n### asn1_codec Module (ASN.1 Encoder and Decoder)\nODE requires the deployment of asn1_codec module. ODE's `docker-compose.yml` file is set up to build and deploy the module in a Docker container. If you wish to run `asn1_codec` module outside Docker (i.e. directly on the host machine), please refer to the documentation of `asn1_codec` module.\n\nThe only requirement for deploying `asn1_codec` module on Docker is the setup of two environment variables `DOCKER_HOST_IP` and `DOCKER_SHARED_VOLUME`.\n\n### PPM Module (Geofencing and Filtering)\n\nTo run the ODE with PPM module, you must install and start the PPM service. PPM service communicates with other services through Kafka Topics. PPM will read from the specified \"Raw BSM\" topic and publish the result to the specified \"Filtered Bsm\" topic. These topic names are specified by the following ODE and PPM properties:\n\n - ODE properties for communications with PPM (set in application.properties)\n\t - ode.kafkaTopicBsmRawJson  (default = j2735BsmRawJson)\n\t - ode.kafkaTopicBsmFilteredJson (default = j2735BsmFilteredJson)\n - PPM properties for communications with ODE (set in yourconfig.properties)\n\t - privacy.topic.consumer (default = j2735BsmRawJson)\n\t - privacy.topic.producer (default = j2735BsmFilteredJson)\n\nFollow the instructions [here](https://github.com/usdot-jpo-ode/jpo-cvdp/blob/master/docs/installation.md) (https://github.com/usdot-jpo-ode/jpo-cvdp/blob/master/docs/installation.md) to install and build the PPM service.\n\nDuring the build process, edit the sample config file located in `config/example.properties` and point the property `metadata.broker.list` towards the host of your docker machine or wherever the kafka brokers are hosted. You may use the command `docker-machine ls` to find the kafka service.\n\nAfter a successful build, use the following commands to configure and run the PPM\n\n```\ncd $BASE_PPM_DIR/jpo-cvdp/build\n$ ./bsmjson_privacy -c ../config/ppm.properties\n```\nWith the PPM module running, all filtered BSMs that are uploaded through the web interface will be captured and processed. You will see an output of both submitted BSM and processed data unless the entire record was filtered out.\n\n![PPM](images/PPM.png)\n\n\n[Back to top](#toc)\n\n<a name=\"ode-limitation\"/>\n\n## VI. ODE Limitations\n\nDate: 07/2017\n\nIn its current state, the ODE has been developed to accomplish the goals of data transfer, security, and modularity working with the J2735 and 1609.2 security. The system has been designed to support multiple services orchestrated through the Apache Kafka streaming data pipelines, services built and supported as separate applications and described with each service's repository. As a modular system, each component has been built for functionality first, and additional performance testing is needed to understand the limits of the system with large volumes of data.\n\n<a name=\"dev-tools\"/>\n\n## VII. Development Tools\n\n### Integrated Development Environment (IDE)\n\nInstall the IDE of your choice:\n\n* Eclipse: [https://eclipse.org/](https://eclipse.org/)\n* STS: [https://spring.io/tools/sts/all](https://spring.io/tools/sts/all)\n* IntelliJ: [https://www.jetbrains.com/idea/](https://www.jetbrains.com/idea/)\n\n### Continuous Integration and Delivery\n\nTo be added.\n\n### Continous Deployment\n\nTo be added.\n\n<a name=\"contribution-info\"/>\n\n## VIII. Contribution Information\n\nPlease read our [contributing guide](docs/contributing_guide.md) to learn about our development process, how to propose pull requests and improvements, and how to build and test your changes to this project.\n\n<a name=\"troubleshooting\"/>\n\n## IX. Troubleshooting\n\nPlease read our [Wiki](https://github.com/usdot-jpo-ode/jpo-ode/wiki) for more information, or check the [ODE User Guide](https://github.com/usdot-jpo-ode/jpo-ode/raw/develop/docs/JPO_ODE_UserGuide.docx).\n\n[Back to top](#toc)\n",
-    "contributors": 9,
-    "contributors_list": [
-      {
-        "avatar_url": "https://avatars0.githubusercontent.com/u/12912578?v=4",
-        "profile_url": "https://github.com/mvs5465",
-        "user_type": "User",
-        "username": "mvs5465"
-      },
-      {
-        "avatar_url": "https://avatars2.githubusercontent.com/u/10130982?v=4",
-        "profile_url": "https://github.com/hmusavi",
-        "user_type": "User",
-        "username": "hmusavi"
-      },
-      {
-        "avatar_url": "https://avatars0.githubusercontent.com/u/23481864?v=4",
-        "profile_url": "https://github.com/mgarramo",
-        "user_type": "User",
-        "username": "mgarramo"
-      },
-      {
-        "avatar_url": "https://avatars0.githubusercontent.com/u/9087336?v=4",
-        "profile_url": "https://github.com/0111sandesh",
-        "user_type": "User",
-        "username": "0111sandesh"
-      },
-      {
-        "avatar_url": "https://avatars0.githubusercontent.com/u/549261?v=4",
-        "profile_url": "https://github.com/tonychen091",
-        "user_type": "User",
-        "username": "tonychen091"
-      },
-      {
-        "avatar_url": "https://avatars0.githubusercontent.com/u/29639608?v=4",
-        "profile_url": "https://github.com/levesque1",
-        "user_type": "User",
-        "username": "levesque1"
-      },
-      {
-        "avatar_url": "https://avatars2.githubusercontent.com/u/5840989?v=4",
-        "profile_url": "https://github.com/lauraGgit",
-        "user_type": "User",
-        "username": "lauraGgit"
-      },
-      {
-        "avatar_url": "https://avatars2.githubusercontent.com/u/23216443?v=4",
-        "profile_url": "https://github.com/ToryB1",
-        "user_type": "User",
-        "username": "ToryB1"
-      },
-      {
-        "avatar_url": "https://avatars2.githubusercontent.com/u/1664694?v=4",
-        "profile_url": "https://github.com/southernsun",
-        "user_type": "User",
-        "username": "southernsun"
-      }
-    ],
-    "stars": 26,
-    "watchers": 19,
-    "releases": [
-      {
-        "id": "13113229",
-        "name": "1.3",
-        "tag_name": "1.3",
-        "assets": [
-          {
-            "id": "88568278",
-            "name": "mock-linux-x86.tar.gz",
-            "label": "",
-            "size": 794246,
-            "download_count": 12
-          }
-        ],
-        "total_downloads": 12
-      },
-      {
-        "id": "93113229",
-        "name": "1.4",
-        "tag_name": "1.4",
-        "assets": [],
-        "total_downloads": 0
-      }
-    ],
-    "rank": 2501,
-    "repositoryUrl": "https://github.com/usdot-jpo-ode/jpo-ode",
-    "updatedAt": "2018-11-14T20:55:31Z",
-    "id": "23056647_72044729"
   }
 ];
