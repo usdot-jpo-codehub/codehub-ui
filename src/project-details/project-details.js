@@ -71,7 +71,7 @@ export class ProjectDetails {
     });
 
     this.dataContext.getHealthById(params.id).then(health => {
-      if (Object.prototype.hasOwnProperty.call(health, 'error')) {
+      if (health && Object.prototype.hasOwnProperty.call(health, 'error')) {
         this.noSonarData = true;
       } else {
         this.noSonarData = health.code_smells === undefined && health.reliability_rating === undefined && health.security_rating === undefined;
