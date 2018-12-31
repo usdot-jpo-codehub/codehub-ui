@@ -30,11 +30,11 @@
       <div class="row health-stats text-center">      
         <div class="col-lg-4 col-md-4 col-sm-4">
           <h3 class="health-tiles">Reliabilty</h3>
-          <span id="card-health-project-bugs" class="num text-muted text-emphasized">${ repo.metrics ? Number(repo.metrics.bugs.val) : -1 | num }</span><span class="text-muted"> bugs <span id="card-health-project-bugs-rating" class="rating rating-${repo.metrics ? repo.metrics.reliability_rating.data : ''}">${repo.metrics ? repo.metrics.reliability_rating.data : ''}</span></span>
+          <span id="card-health-project-bugs" class="num text-muted text-emphasized">${ bugs | num }</span><span class="text-muted"> bugs <span id="card-health-project-bugs-rating" class="rating rating-${repo.metrics ? repo.metrics.reliability_rating.data : ''}">${repo.metrics ? repo.metrics.reliability_rating.data : ''}</span></span>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
           <h3 class="health-tiles">Security</h3>
-          <span id="card-health-project-vulnerabilities" class="num text-muted text-emphasized">${ repo.metrics ? Number(repo.metrics.vulnerabilities.val) : 0 | num }</span><span class="text-muted"> vulnerabilities <span id="card-health-project-vulnerabilities-rating" class="rating rating-${repo.metrics ? repo.metrics.security_rating.data : ''}">${repo.metrics ? repo.metrics.security_rating.data : ''}</span></span>
+          <span id="card-health-project-vulnerabilities" class="num text-muted text-emphasized">${ vulnerabilities | num }</span><span class="text-muted"> vulnerabilities <span id="card-health-project-vulnerabilities-rating" class="rating rating-${repo.metrics ? repo.metrics.security_rating.data : ''}">${repo.metrics ? repo.metrics.security_rating.data : ''}</span></span>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
           <h3 class="health-tiles">Technical Debt</h3>

@@ -18,55 +18,55 @@
                   <div class="lined-header">
                     <h2 class=""><span>Overview</span></h2>
                   </div>
-                  <div class="proj-desc">${repo.project_description}</div>
-                  <div class="text-muted last-updated">By <a href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl)" target="_blanks">${repo.organization}</a> &nbsp; | &nbsp; Updated ${repo.updatedAt | ago} <span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> ${repo.origin}</span></div>
+                  <div id="project-description" class="proj-desc">${repo.project_description}</div>
+                  <div class="text-muted last-updated">By <a id="project-organization-link" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl)" target="_blanks">${repo.organization}</a> &nbsp; | &nbsp; Updated <span id="project-update-at">${repo.updatedAt | ago}</span> <span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> <span id="project-origin">${repo.origin}</span></span></div>
 
                   <ul class="list-inline">
-                    <li><button click.trigger="openReadmeModal(repo)" class="btn btn-secondary"><i class="material-icons">library_books</i> Show README</button></li>
+                    <li><button id="project-readme-button" click.trigger="openReadmeModal(repo)" class="btn btn-secondary"><i class="material-icons">library_books</i><span id="project-readme-button-text">Show README</span></button></li>
                   </ul>
                 </div>
                 <div class="col-lg-4 col-github-stats">
                   <div class="lined-header">
-                    <span class="pull-right"><em class="text-muted">Source: <a href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.repositoryUrl)" target="_blank">Github™</a></em></span>
+                    <span class="pull-right"><em class="text-muted">Source: <a id="project-source-link" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.repositoryUrl)" target="_blank">Github™</a></em></span>
                     <h4 class=""><span>Project Stats</span></h4>
                   </div>
                   <div class="row github-stats">
                     <div class="col-md-6 col-sm-6">
                       <span class="stat">
                         <span class="octicon octicon-star"></span>
-                        <span class="num text-muted text-emphasized">${repo.stars | num}</span>
+                        <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.stars | num}</span>
                         <span class="stat-label">stars</span>
                       </span>
                       <span class="stat">
                         <span class="octicon octicon-organization"></span>
-                        <span class="num text-muted text-emphasized">${repo.contributors | num}</span>
+                        <span id="project-stats-contributors" class="num text-muted text-emphasized">${repo.contributors | num}</span>
                         <span class="stat-label">contributors</span>
                       </span>
                       <span class="stat">
                         <span class="octicon octicon-eye"></span>
-                        <span class="num text-muted text-emphasized">${repo.watchers | num}</span>
+                        <span id="project-stats-watchers" class="num text-muted text-emphasized">${repo.watchers | num}</span>
                         <span class="stat-label">watchers</span>
                       </span>
                       <span class="stat">
                         <span class="octicon octicon-cloud-download"></span>
-                        <span class="num text-muted text-emphasized">${downloads | num}</span>
+                        <span id="project-stats-downloads" class="num text-muted text-emphasized">${downloads | num}</span>
                         <span class="stat-label">downloads</span>
                       </span>
                     </div>
                     <div class="col-md-6 col-sm-6">
                       <span class="stat">
                         <span class="octicon octicon-git-commit"></span>
-                        <span class="num text-muted text-emphasized">${repo.commits | num:1}</span>
+                        <span id="project-stats-commits" class="num text-muted text-emphasized">${repo.commits | num:1}</span>
                         <span class="stat-label">commits</span>
                       </span>
                       <span class="stat">
                         <span class="octicon octicon-tag"></span>
-                        <span class="num text-muted text-emphasized">${releases.length | num}</span>
+                        <span id="project-stats-releases" class="num text-muted text-emphasized">${releases.length | num}</span>
                         <span class="stat-label">releases</span>
                       </span>
                       <span class="stat">
                         <span class="octicon octicon-repo-forked"></span>
-                        <span class="num text-muted text-emphasized">${(repo.forkedRepos.length + repo.userForkedRepos.length) | num}</span>
+                        <span id="project-stats-forks" class="num text-muted text-emphasized">${repo.forkedRepos.length | num}</span>
                         <span class="stat-label">forks</span>
                       </span>
                     </div>
@@ -88,13 +88,13 @@
                   <h3>Projects Reused by us</h3>
                   <div class="row">
                     <div class="multi-column">
-                      <ul class="list-unstyled">
+                      <ul id="project-list-reused-by-us-visible" class="list-unstyled">
                         <li repeat.for="depend of componentDependencies | pick:numDepends"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
                       </ul>
                     </div>
                     <div class="collapse" id="collapseDepend">
                       <div class="multi-column">
-                        <ul class="list-unstyled">
+                        <ul id="project-list-reused-by-us-collapsed" class="list-unstyled">
                           <li repeat.for="depend of componentDependencies | skip:numDepends"><strong>${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
                         </ul>
                       </div>
@@ -105,18 +105,18 @@
                     <template if.bind="dependCollapsed">Show More <i class="material-icons">expand_more</i></template>
                     <template if.bind="!dependCollapsed">Show Less <i class="material-icons">expand_less</i></template>
                   </button>
+                  <div class="coming-soon-watermark ${componentDependencies.length < 1  ? '' : 'hide'}">Coming Soon</div>
 
                   <div if.bind="componentDependencies.length < 1" class="empty-state text-center">
                     <i class="material-icons large-icon">add_circle</i>
                     <em class="text-muted">None Found</em>
                   </div>
-
                 </div>
                 <div class="col-lg-6">
                   <h3>Projects reusing us</h3>
                   <div class="row">
                     <div class="multi-column">
-                      <ul class="list-unstyled">
+                      <ul id="project-list-reusing-us-visible" class="list-unstyled">
                         <li repeat.for="uses of projectsThatUseUs | pick:numDepends"><strong>${uses.name}</strong>
                           <ul>
                             <li><small>${uses.org_name}</small></li>
@@ -126,7 +126,7 @@
                     </div>
                     <div class="collapse" id="collapseUseUs">
                       <div class="multi-column">
-                        <ul class="list-unstyled">
+                        <ul id="project-list-reusing-us-collapse" class="list-unstyled">
                           <li repeat.for="uses of projectsThatUseUs | skip:numDepends"><strong>${uses.name}</strong>
                             <ul>
                               <li><small>${uses.org_name}</small></li>
@@ -148,9 +148,10 @@
                   </div>
 
                   <div class="text-center">
-                    <button class="btn btn-link hide" click.trigger="openAddProjectModal()"><i class="material-icons">add_circle</i> Are you using this project?</button>
+                    <button class="btn btn-link" click.trigger="openAddProjectModal()"><i class="material-icons">add_circle</i> Are you using this project?</button>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -171,7 +172,7 @@
                   </div>
                 </div> -->
                 <div class="col-lg-12 col-qual">
-                  <span class="pull-right"><em class="text-muted">Source: <a href="#" click.trigger="openLeavingSiteConfirmation('SonarQube™', sonarLink)" target="_blank">SonarQube™</a></em></span>
+                  <span class="pull-right"><em class="text-muted ${noSonarData ? 'hide' : ''}">Source: <a href="#" click.trigger="openLeavingSiteConfirmation('SonarQube™', sonarLink)" target="_blank">SonarQube™</a></em></span>
                   <h3>SonarQube</h3>
                   <p>Is an open source platform for continuous inspection of code quality.</p>
                   <div class="row">
@@ -186,33 +187,34 @@
                     </div>
                     <div class="col-lg-3 col-md-6 grade-wrapper">
                       <h5>Maintainability</h5>
-                      <div class="grade-circle rating-${health.sqale_rating.data}">
+                      <div id="project-maintainability-rating" class="grade-circle rating-${health.sqale_rating.data}">
                         ${health.sqale_rating.data}
                       </div>
                       <ul class="list-unstyled">
-                        <li>${health.code_smells.val} code smells</li>
-                        <li>${health.complexity.val} complexity</li>
+                        <li id="project-maintainability-code-smells">${health.code_smells.val} code smells</li>
+                        <li id="project-maintainability-complexity">${health.complexity.val} complexity</li>
                       </ul>
                     </div>
                     <div class="col-lg-3 col-md-6 grade-wrapper">
                       <h5>Reliability</h5>
-                      <div class="grade-circle rating-${health.reliability_rating.data}">
+                      <div id="project-reliability-rating" class="grade-circle rating-${health.reliability_rating.data}">
                         ${health.reliability_rating.data}
                       </div>
                       <ul class="list-unstyled">
-                        <li>${health.bugs.val} bugs</li>
-                        <li>${health.violations.val} violations</li>
+                        <li id="project-reliability-bugs">${health.bugs.val} bugs</li>
+                        <li id="project-reliability-violations">${health.violations.val} violations</li>
                       </ul>
                     </div>
                     <div class="col-lg-3 col-md-6 grade-wrapper">
                       <h5>Security</h5>
-                      <div class="grade-circle rating-${health.security_rating.data}">
+                      <div id="project-security-rating" class="grade-circle rating-${health.security_rating.data}">
                         ${health.security_rating.data}
                       </div>
                       <ul class="list-unstyled">
-                        <li>${health.vulnerabilities.val} vulnerabilities</li>
+                        <li id="project-security-vulnerabilities">${health.vulnerabilities.val} vulnerabilities</li>
                       </ul>
                     </div>
+                    <div if.bind="noSonarData" class="coming-soon-watermark">Coming Soon</div>
                   </div>
                 </div>
               </div>

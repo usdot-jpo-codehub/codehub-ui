@@ -48,6 +48,7 @@ export class Explore {
           this.rebuildFilterLang(projects);
           this.rebuildFilterOrigin(projects);
           this.searchDone = true;
+          this.resultCount = this.projects.length;
           return this.projects;
         }, 10);
       });

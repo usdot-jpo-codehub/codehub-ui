@@ -2,65 +2,65 @@ export const MockCodeHealthiestData = [
     {
         "organization": "usdot-jpo-ode",
         "origin": "PUBLIC",
-        "project_name": "asn1_codec",
-        "language": "C++",
+        "project_name": "usaspending-api",
+        "language": "Python",
         "metrics": {
             "bugs": {
-                "frmt_val": "0",
+                "frmt_val": "87",
                 "key": "bugs",
-                "val": "0.0"
+                "val": "87.0"
             },
             "code_smells": {
-                "frmt_val": "6,720",
+                "frmt_val": "881",
                 "key": "code_smells",
-                "val": "6720.0"
+                "val": "881.0"
             },
             "complexity": {
-                "frmt_val": "7",
+                "frmt_val": "5,981",
                 "key": "complexity",
-                "val": "7.0"
+                "val": "5981.0"
             },
             "reliability_rating": {
-                "data": "A",
-                "frmt_val": "A",
-                "key": "reliability_rating",
-                "val": "1.0"
-            },
-            "security_rating": {
-                "data": "A",
-                "frmt_val": "A",
-                "key": "security_rating",
-                "val": "1.0"
-            },
-            "sqale_debt_ratio": {
-                "frmt_val": "15.3%",
-                "key": "sqale_debt_ratio",
-                "val": "15.3"
-            },
-            "sqale_index": {
-                "frmt_val": "21d",
-                "key": "sqale_index",
-                "val": "10080.0"
-            },
-            "sqale_rating": {
                 "data": "C",
                 "frmt_val": "C",
-                "key": "sqale_rating",
+                "key": "reliability_rating",
                 "val": "3.0"
             },
+            "security_rating": {
+                "data": "C",
+                "frmt_val": "C",
+                "key": "security_rating",
+                "val": "3.0"
+            },
+            "sqale_debt_ratio": {
+                "frmt_val": "0.7%",
+                "key": "sqale_debt_ratio",
+                "val": "0.7"
+            },
+            "sqale_index": {
+                "frmt_val": "10d",
+                "key": "sqale_index",
+                "val": "5267.0"
+            },
+            "sqale_rating": {
+                "data": "A",
+                "frmt_val": "A",
+                "key": "sqale_rating",
+                "val": "1.0"
+            },
             "violations": {
-                "frmt_val": "6,720",
+                "frmt_val": "977",
                 "key": "violations",
-                "val": "6720.0"
+                "val": "977.0"
             },
             "vulnerabilities": {
-                "frmt_val": "0",
+                "frmt_val": "9",
                 "key": "vulnerabilities",
-                "val": "0.0"
+                "val": "9.0"
             }
         },
         "updatedAt": "2018-05-17T23:47:58Z",
-        "id": "23056647_99942371"
+        "id": "23056647_72044729"
     },
     {
         "organization": "usdot-jpo-ode",
@@ -361,3 +361,5 @@ export const MockCodeHealthiestData = [
         "id": "23056647_127138533"
     }
 ];
+
+
