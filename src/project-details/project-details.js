@@ -63,7 +63,7 @@ export class ProjectDetails {
       }
 
       this.releases = this.repo.releases;
-      if (this.releases === undefined) {
+      if (this.releases === undefined || !Array.isArray(this.releases)) {
         this.releases = [];
       }
 
