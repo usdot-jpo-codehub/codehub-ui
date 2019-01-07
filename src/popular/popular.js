@@ -60,7 +60,7 @@ export class Popular {
                 element.project_description = proj.project_description;
                 element.organizationUrl = proj.organizationUrl;
                 element.content = proj.content;
-                element.sonarlink = `${this.stageConfig.SONARQUBE_ADDRESS}/dashboard/index/${proj.project_name}`;
+                element.sonarlink = `${this.stageConfig.SONARQUBE_ADDRESS}/dashboard/index/${proj.organization}_${proj.project_name}`;
                 this.healthiest.push(element);
               }
             });
