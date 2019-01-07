@@ -55,7 +55,7 @@ export class ProjectDetails {
 
     this.dataContext.findById(params.id).then(repo => {
       this.repo = repo;
-      this.sonarLink = `${this.stageConfig.SONARQUBE_ADDRESS}/dashboard/index/${repo.project_name}`;
+      this.sonarLink = `${this.stageConfig.SONARQUBE_ADDRESS}/dashboard/index/${repo.organization}_${repo.project_name}`;
       if (repo.userForkedRepos) {
         this.projectsThatUseUs = repo.forkedRepos.concat(repo.userForkedRepos);
       } else {

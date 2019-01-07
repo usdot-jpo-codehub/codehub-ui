@@ -13,7 +13,7 @@ export class Insight {
     this.router = router;
     this.dialogService = dialogService;
     this.stageConfig = stageConfig;
-    this.sonarqube_projects = `${this.stageConfig.SONARQUBE_ADDRESS}/projects`;
+    this.sonarqube_projects = `${this.stageConfig.SONARQUBE_ADDRESS}`;
     this.insights = [];
     this.projects = [];
     this.mulChart = {};
