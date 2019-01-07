@@ -46,7 +46,7 @@ export class ProjectDetails {
 
     this.dataContext.findSimilarProjects(params.id).then(similarProjects => {
       // TODO should be using promises to catch errors
-      if (similarProjects && similarProjects.ok) {
+      if (!similarProjects.error) {
         setTimeout(() => {
           this.similarProjects = similarProjects;
         }, 10);
