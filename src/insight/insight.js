@@ -1,8 +1,8 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { DialogService } from 'aurelia-dialog';
-import * as c3 from 'c3';
-import * as echarts from 'echarts';
+import * as c3 from 'c3/c3';
+import * as echarts from 'echarts/dist/echarts';
 import { DataContext } from 'services/datacontext';
 import { LeavingModal } from '../components/modals/leaving-modal';
 import { StageConfig } from '../../stageConf';
@@ -70,6 +70,9 @@ export class Insight {
 
   activate() {
     this.loading = true;
+  }
+
+  attached() {
     this.getData();
     window.addEventListener('resize', this.handleResize, false);
   }
