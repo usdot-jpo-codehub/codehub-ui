@@ -15,9 +15,9 @@ export class LeavingModal {
   }
 
   navigateAndClose() {
-    window.location.assign(this.model.url);
-    // const win = window.open(this.model.url, '_blank');
-    // win.focus();
+    // window.location.assign(this.model.url);
+    const win = window.open(this.model.url, '_blank');
+    win.focus();
 
     this.controller.cancel();
   }
