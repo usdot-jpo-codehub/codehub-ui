@@ -21,7 +21,8 @@ export class ReadmeModal {
 
   attached() {
     this.taskQueue.queueMicroTask(() => {
-      const anchors = document.getElementsByTagName('a');
+      const readmeObj = document.querySelector('#readme-content');
+      const anchors = readmeObj.getElementsByTagName('a');
       const self = this;
 
       for (let i = 0; i < anchors.length; i++) {
