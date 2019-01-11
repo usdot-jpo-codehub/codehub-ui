@@ -12,7 +12,7 @@ gulp.task('serve', function(done){
         port: 9000,
         // Expecting a proxy to be present that will proxy to an API Server
         proxy: {
-      target: 'localhost:8083',
+      target: '0.0.0.0:80',
           middleware: function(req, res, next) {
             res.setHeader('Access-Control-Allow-Origin', '*');
             next();
@@ -41,7 +41,7 @@ gulp.task('serve-bundle', function(done){
         port: 9000,
         // Expecting a proxy to be present that will proxy to an API Server
         proxy: {
-          target: 'localhost:8080',
+          target: '0.0.0.0:8080',
           middleware: function(req, res, next) {
             res.setHeader('Access-Control-Allow-Origin', '*');
             next();
