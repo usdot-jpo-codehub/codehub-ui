@@ -20,9 +20,9 @@
               </div>
               <template repeat.for="repo of featured | sort: { propertyName: selectedSort, direction: sortDirection} | chunk: 3">
                 <div class="row">
-                  <compose view-model="../components/card-feature" model.bind="repo[0]"></compose>
-                  <compose view-model="../components/card-feature" model.bind="repo[1]"></compose>
-                  <compose view-model="../components/card-feature" model.bind="repo[2]"></compose>
+                  <compose view-model="../components/card-feature" if.bind="repo[0]" model.bind="repo[0]"></compose>
+                  <compose view-model="../components/card-feature" if.bind="repo[1]" model.bind="repo[1]"></compose>
+                  <compose view-model="../components/card-feature" if.bind="repo[2]" model.bind="repo[2]"></compose>
                 </div>
               </template>
             </div>
@@ -32,9 +32,9 @@
               </div>
               <template repeat.for="repo of projects | sort: { propertyName: selectedSort, direction: sortDirection} | chunk: 3">
                 <div class="row">
-                  <compose view-model="../components/card" model.bind="repo[0]"></compose>
-                  <compose view-model="../components/card" model.bind="repo[1]"></compose>
-                  <compose view-model="../components/card" model.bind="repo[2]"></compose>
+                  <compose view-model="../components/card" if.bind="repo[0]" model.bind="repo[0]"></compose>
+                  <compose view-model="../components/card" if.bind="repo[1]" model.bind="repo[1]"></compose>
+                  <compose view-model="../components/card" if.bind="repo[2]" model.bind="repo[2]"></compose>
                 </div>
               </template>
             </div>
@@ -44,9 +44,9 @@
               </div>
               <template repeat.for="repo of healthiest | chunk: 3">
                 <div class="row">
-                  <compose view-model="../components/card-health" model.bind="repo[0]"></compose>
-                  <compose view-model="../components/card-health" model.bind="repo[1]"></compose>
-                  <compose view-model="../components/card-health" model.bind="repo[2]"></compose>
+                  <compose view-model="../components/card-health" if.bind="repo[0]" model.bind="repo[0]"></compose>
+                  <compose view-model="../components/card-health" if.bind="repo[1]" model.bind="repo[1]"></compose>
+                  <compose view-model="../components/card-health" if.bind="repo[2]" model.bind="repo[2]"></compose>
                 </div>
               </template>
             </div>

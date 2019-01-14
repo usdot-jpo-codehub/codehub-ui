@@ -69,9 +69,9 @@
             filter: { propertyName: 'language', filterArray: filters.selectedLanguages}:filters.selectedLanguages.length |
             filter: { propertyName: 'origin', filterArray: filters.selectedOrigins}:filters.selectedOrigins.length |
             chunk: 3">
-              <compose view-model="../components/card" model.bind="repo[0]"></compose>
-              <compose view-model="../components/card" model.bind="repo[1]"></compose>
-              <compose view-model="../components/card" model.bind="repo[2]"></compose>
+              <compose view-model="../components/card" if.bind="repo[0]" model.bind="repo[0]"></compose>
+              <compose view-model="../components/card" if.bind="repo[1]" model.bind="repo[1]"></compose>
+              <compose view-model="../components/card" if.bind="repo[2]" model.bind="repo[2]"></compose>
           </div>
       </div>
     </div>
