@@ -31,13 +31,13 @@
           <li><span class="project-counter">Projects</span> <span id="explore-projects-count">(${resultCount})</span></li>
           <template if.bind="!filterLangEmpty || !filterOrgEmpty || !filterOriginEmpty">
             <li if.bind="!filterLangEmpty" repeat.for="pill of filters.selectedLanguages">
-              <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'language', pill)})</small> <a href="javascript:$('#filterLang').multiselect('deselect', '${pill}');$('#filterLang').trigger('change');"><i class="material-icons">close</i></a></span>
+              <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'language', pill)})</small> <a href="#" click.trigger="removePill('#filterLang',pill)"><i class="material-icons">close</i></a></span>
             </li>
             <li if.bind="!filterOrgEmpty" repeat.for="pill of filters.selectedOrganizations">
-              <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'organization', pill)})</small> <a href="javascript:$('#filterOrg').multiselect('deselect', '${pill}');$('#filterOrg').trigger('change');"><i class="material-icons">close</i></a></span>
+              <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'organization', pill)})</small> <a href="#" click.trigger="removePill('#filterOrg',pill)"><i class="material-icons">close</i></a></span>
             </li>
             <li if.bind="!filterOriginEmpty" repeat.for="pill of filters.selectedOrigins">
-              <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'origin', pill)})</small> <a href="javascript:$('#filterOrigin').multiselect('deselect', '${pill}');$('#filterOrigin').trigger('change');"><i class="material-icons">close</i></a></span>
+              <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'origin', pill)})</small> <a href="#" click.trigger="removePill('#filterOrigin',pill)"><i class="material-icons">close</i></a></span>
             </li>
             <li>
               <a class="clear-btn" href="#" click.delegate="clearAllFilters()">Clear All</a>
@@ -69,9 +69,9 @@
             filter: { propertyName: 'language', filterArray: filters.selectedLanguages}:filters.selectedLanguages.length |
             filter: { propertyName: 'origin', filterArray: filters.selectedOrigins}:filters.selectedOrigins.length |
             chunk: 3">
-              <compose view-model="../components/card" model.bind="repo[0]"></compose>
-              <compose view-model="../components/card" model.bind="repo[1]"></compose>
-              <compose view-model="../components/card" model.bind="repo[2]"></compose>
+              <compose view-model="../components/card" if.bind="repo[0]" model.bind="repo[0]"></compose>
+              <compose view-model="../components/card" if.bind="repo[1]" model.bind="repo[1]"></compose>
+              <compose view-model="../components/card" if.bind="repo[2]" model.bind="repo[2]"></compose>
           </div>
       </div>
     </div>
