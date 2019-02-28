@@ -3,6 +3,7 @@ import { inject } from 'aurelia-framework';
 import 'fetch';
 import { ContributorsModal } from 'components/modals/contributors-modal.js';
 import { FeedbackModal } from 'components/modals/feedback-modal.js';
+import { LeavingModal } from 'components/modals/leaving-modal.js';
 import { StageConfig } from '../stageConf';
 
 @inject(DialogService, StageConfig)
@@ -32,6 +33,11 @@ export class App {
 
   openFeedbackModal() {
     this.dialogService.open({ viewModel: FeedbackModal });
+  }
+
+  openLeavingSiteConfirmation(name, url) {
+    const mdl = { name, url };
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl });
   }
 
   scrollToTop() {
