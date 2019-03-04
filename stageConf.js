@@ -5,5 +5,7 @@ export const StageConfig = {
   IS_BETA: true,
   BETA_ICON: 'warning',
   BETA_MESSAGE: 'This site is currently in Beta Release',
-  SONARQUBE_ADDRESS: 'http://dot-task4-dev-sonar-codehub-elb-1232935947.us-east-1.elb.amazonaws.com'
+  SONARQUBE_ADDRESS: 'http://dot-task4-dev-sonar-codehub-elb-1232935947.us-east-1.elb.amazonaws.com',
+  HOME_TEXT_ABOVE_SEARCH: '',
+  HOME_TEXT_BELOW_SEARCH: 'ITS CodeHub fosters collaborative development of open source software between USDOT, state and local agencies, researchers, and companies.'
 };
