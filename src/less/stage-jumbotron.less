@@ -90,11 +90,19 @@
 			}
 
 			.search-bar-description {
-				font-size: 1.2em;
+				@media (min-width: 300px) {
+					font-size: 8px;
+				}
+				@media (min-width: 600px) {
+					font-size: 1.2vw;
+				}
+				@media (min-width: 1200px) {
+					font-size: 15px;
+				}
 				font-weight: 150;
 				text-align: center;
-				margin-left: 100px;
-				margin-right: 100px;
+				margin-left: 50px;
+				margin-right: 50px;
 			}
 
 			.beta-message {
