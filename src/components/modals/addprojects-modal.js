@@ -79,11 +79,11 @@ export class AddProjectsModal {
 
     $('#selectProjects').on('change', ev => {
       if ($('#selectProjects').val()) {
-        parent.selectedProjects = $('#selectProject').val();
-        parent.selectedProjectsEmpty = false;
+        this.selectedProjects = $('#selectProject').val();
+        this.selectedProjectsEmpty = false;
       } else {
-        parent.selectedProjects = [];
-        parent.selectedProjectsEmpty = true;
+        this.selectedProjects = [];
+        this.selectedProjectsEmpty = true;
       }
     });
   }
@@ -91,7 +91,6 @@ export class AddProjectsModal {
   addProject() {
     if ($('.nav-tabs .active').attr('id') === 'search_select') {
       const proj = this.projects[$('#selectProjects').val()];
-
       const postData = {
         id: proj.id,
         name: proj.project_name,
