@@ -15,7 +15,4 @@ RUN chmod +x /app/install_run_script.sh
 RUN /app/install_run_script.sh
 EXPOSE 80 9000
 # Install module dependencies
-RUN npm install && \
-    jspm install -y
-#CMD ["gulp", "build"]
 CMD ["nginx", "-g", "daemon off;"]
