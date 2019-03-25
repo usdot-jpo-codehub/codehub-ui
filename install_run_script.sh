@@ -6,6 +6,7 @@
 cd /app
 #npm install -y
 npm install --save-dev
-#npm install jspm --save-dev
+npm install --save-dev gulp
+npm install jspm --save-dev
 jspm install -y
 gulp build
