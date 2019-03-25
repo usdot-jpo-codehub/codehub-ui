@@ -8,6 +8,6 @@
                       "containerPort": 80
                   }
               ],
-              "desiredCount": 10,
+              "desiredCount": 1,
               "role": "ecs-service-role"
 }
