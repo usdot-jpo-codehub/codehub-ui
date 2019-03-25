@@ -3,7 +3,7 @@
               "taskDefinition": "codehub-ui",
               "loadBalancers": [
                   {
-                      "targetGroupArn":"arn:aws:elasticloadbalancing:us-east-1:927373803645:loadbalancer/app/jenkins-triggered-ui-elb/1cd3705fe8841f7d",
+                      "targetGroupArn":"arn:aws:elasticloadbalancing:us-east-1:927373803645:targetgroup/jenkins-triggered-ui-target/8d52a41b920da235",
                       "containerName": "codehub-ui-demo",
                       "containerPort": 80
                   }
