@@ -4,8 +4,8 @@
               "taskDefinition": "codehub-ui",
               "loadBalancers": [
                   {
-                      "containerName": "codehub-ui",
                       "targetGroupArn":"arn:aws:elasticloadbalancing:us-east-1:927373803645:targetgroup/jenkins-triggered-ui-target/8d52a41b920da235",
+                      "containerName": "codehub-ui",
                       "containerPort": 80
                   }
               ],
