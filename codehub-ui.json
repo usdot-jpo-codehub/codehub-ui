@@ -1,5 +1,5 @@
 {
-    "family": "codehub-ui",
+    "family": "codehub-ui-family",
     "containerDefinitions": [
         {
             "image": "927373803645.dkr.ecr.us-east-1.amazonaws.com/nate-docker-production/codehub-ui:%BUILD_NUMBER%",
