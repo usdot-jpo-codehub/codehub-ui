@@ -1,18 +1,13 @@
 {
-    "family": "codehub-ui-family",
-    "containerDefinitions": [
-        {
-            "image": "927373803645.dkr.ecr.us-east-1.amazonaws.com/nate-docker-production/codehub-ui:%BUILD_NUMBER%",
-            "name": "codehub-ui",
-            "cpu": 10,
-            "memory": 256,
-            "essential": true,
-            "portMappings": [
-                {
-                    "containerPort": 80,
-                    "hostPort": 80
-                }
-            ]
-        }
-    ]
+              "serviceName": "codehub-ui-service",
+              "taskDefinition": "codehub-ui-dev",
+              "loadBalancers": [
+                  {
+                      "loadBalancerName": "jenkins-triggered-ui-elb",
+                      "containerName": "codehub-ui-demo",
+                      "containerPort": 80
+                  }
+              ],
+              "desiredCount": 10,
+              "role": "ecs-service-role"
 }
