@@ -2,7 +2,7 @@
     "family": "codehub-ui",
     "containerDefinitions": [
         {
-            "image": "927373803645.dkr.ecr.us-east-1.amazonaws.com/nate-docker-production/codehub-ui:v_%BUILD_NUMBER%",
+            "image": "927373803645.dkr.ecr.us-east-1.amazonaws.com/nate-docker-production/codehub-ui:%BUILD_NUMBER%",
             "name": "codehub-ui",
             "cpu": 10,
             "memory": 256,
