@@ -1,4 +1,5 @@
 {
+              "cluster": "codehub-cluster",
               "serviceName": "codehub-ui-service",
               "taskDefinition": "codehub-ui",
               "loadBalancers": [
