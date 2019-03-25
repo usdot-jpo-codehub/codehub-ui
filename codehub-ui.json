@@ -3,7 +3,7 @@
               "taskDefinition": "codehub-ui",
               "loadBalancers": [
                   {
-                      "loadBalancerName": "jenkins-triggered-ui-elb-1532065464.us-east-1.elb.amazonaws.com",
+                      "loadBalancerName": "jenkins-triggered-ui-elb",
                       "containerName": "codehub-ui-demo",
                       "containerPort": 80
                   }
