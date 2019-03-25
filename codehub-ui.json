@@ -4,7 +4,6 @@
               "loadBalancers": [
                   {
                       "targetGroupArn":"arn:aws:elasticloadbalancing:us-east-1:927373803645:targetgroup/jenkins-triggered-ui-target/8d52a41b920da235",
-                      "containerName": "codehub-ui-demo",
                       "containerPort": 80
                   }
               ],
