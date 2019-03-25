@@ -15,7 +15,9 @@ ENV NODE_VERSION 8.15.0
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
 RUN npm install && \
+    npm install --save-dev && \
     npm install gulp -g && \
+    npm install --save-dev gulp && \
     npm install -g jspm && \
     jspm init && \
     npm install jspm --save-dev && \
