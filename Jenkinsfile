@@ -18,6 +18,7 @@ pipeline {
             )
             sh 'ls -l'
         }
+        }
         stage('Build') {
             steps {
             script {
@@ -94,5 +95,4 @@ pipeline {
 
 
     }
-}
 }
