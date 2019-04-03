@@ -12,9 +12,11 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/usdot-jpo-codehub/codehub-devops.git'
-                sh 'ls -l'
+            git(
+                branch: 'development',
+                url: 'https://github.com/usdot-jpo-codehub/codehub-devops.git'
             }
+            sh 'ls -l'
         }
         stage('Build') {
             steps {
