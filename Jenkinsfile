@@ -22,11 +22,10 @@ pipeline {
         stage('Build') {
             steps {
             script {
-              sh 'eval $registryCredential'
-              docker.build(registryBase + ":$BUILD_NUMBER", "-f Dockerfile-Base .")
+              //sh 'eval $registryCredential'
               sh 'docker login'
+              docker.build(registryBase + ":$BUILD_NUMBER", "-f Dockerfile-Base .")
               sh 'docker push $registryBase:$BUILD_NUMBER'
-              //dockerImage = docker.build "927373803645.dkr.ecr.us-east-1.amazonaws.com/"+ registry + ":$BUILD_NUMBER"
               sh 'echo "Completing image build"'
             }
             }
