@@ -15,7 +15,7 @@ pipeline {
             git(
                 branch: 'development',
                 url: 'https://github.com/usdot-jpo-codehub/codehub-devops.git'
-            }
+            )
             sh 'ls -l'
         }
         stage('Build') {
