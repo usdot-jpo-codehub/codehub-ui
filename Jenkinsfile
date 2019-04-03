@@ -14,7 +14,7 @@ pipeline {
             steps {
             git(
                 branch: 'development',
-                url: 'https://github.com/natesol-code21/codehub-ui.git'
+                url: 'https://github.com/usdot-jpo-codehub/codehub-ui.git'
             )
             sh 'ls -l'
         }
@@ -24,7 +24,7 @@ pipeline {
             script {
               sh 'eval $registryCredential'
               docker.build(registryBase + ":$BUILD_NUMBER", "-f Dockerfile-Base .")
-              sh 'docker login -u natesol15 -p Sand1989##@@'
+              sh 'docker login'
               sh 'docker push $registryBase:$BUILD_NUMBER'
               //dockerImage = docker.build "927373803645.dkr.ecr.us-east-1.amazonaws.com/"+ registry + ":$BUILD_NUMBER"
               sh 'echo "Completing image build"'
