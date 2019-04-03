@@ -37,20 +37,6 @@ pipeline {
             }
         }
 
-        stage('Integration Test1') {
-            steps {
-
-                sh 'echo Integration Test 1 is complete'
-            }
-        }
-
-        stage('Integration Test2') {
-            steps {
-
-                sh 'echo Integration Test 2 is complete'
-            }
-        }
-
         stage('Sonarqube Scan') {
             environment {
                 scannerHome = tool 'SonarQubeScanner'
@@ -69,6 +55,20 @@ pipeline {
         stage('508 Complaince') {
             steps {
                 sh 'echo 508 Complaince is complete'
+            }
+        }
+
+        stage('Integration Test1') {
+            steps {
+
+                sh 'echo Integration Test 1 is complete'
+            }
+        }
+
+        stage('Integration Test2') {
+            steps {
+
+                sh 'echo Integration Test 2 is complete'
             }
         }
 
