@@ -14,7 +14,7 @@ pipeline {
             steps {
             git(
                 branch: 'development',
-                url: 'https://github.com/usdot-jpo-codehub/codehub-devops.git'
+                url: 'https://github.com/natesol-code21/codehub-ui.git'
             )
             sh 'ls -l'
         }
