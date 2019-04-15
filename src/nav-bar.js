@@ -2,9 +2,10 @@ import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import $ from 'jquery';
-import { typeahead } from 'corejs-typeahead';
+// import { typeahead } from 'corejs-typeahead';
+import typeahead from 'bootstrap-3-typeahead';
 import { DataContext } from 'services/datacontext';
-import { StageConfig } from '../stageConf';
+import { StageConfig } from './stageConf';
 
 @inject(DataContext, Router, EventAggregator, StageConfig)
 export class NavBar {
@@ -15,7 +16,7 @@ export class NavBar {
     this.eventAggregator = eventAggregator;
     this.stageConfig = stageConfig;
 
-    this.PF_AUTH_GIVENNAME = PF_AUTH_GIVENNAME !== '' ? PF_AUTH_GIVENNAME : 'Guest'; // eslint-disable-line
+    this.PF_AUTH_GIVENNAME = this.PF_AUTH_GIVENNAME !== '' ? this.PF_AUTH_GIVENNAME : 'Guest'; // eslint-disable-line
     this.PF_AUTH_GIVENNAME = this.PF_AUTH_GIVENNAME === '<!--#echo var="PF_AUTH_GIVENNAME" -->' ? 'Guest' : this.PF_AUTH_GIVENNAME; // in case that the SSI variables are not set
 
     this.navSearchText = '';

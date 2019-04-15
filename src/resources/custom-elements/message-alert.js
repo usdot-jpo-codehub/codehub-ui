@@ -1,5 +1,5 @@
 import { inject, bindable, bindingMode } from 'aurelia-framework';
-import $ from 'bootstrap';
+import $ from 'jquery';
 
 
 @inject(Element)

@@ -2,7 +2,7 @@ import { inject, bindable } from 'aurelia-framework';
 import { activationStrategy } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { DialogService } from 'aurelia-dialog';
-import $ from 'bootstrap';
+import $ from 'jquery';
 import { multiselect } from 'bootstrap-multiselect';
 import { DataContext } from 'services/datacontext';
 import { Filters } from 'components/filters';
@@ -275,7 +275,10 @@ export class Results {
   }
 
   filterArray(array, filterArray, propertyName) {
-    return array
+    if (filterArray.length === 0)
+      return array;
+
+    let result = array
       .slice(0)
       .filter((object) => {
         for (const value of filterArray) {
@@ -289,14 +292,16 @@ export class Results {
         }
         return false;
       });
+    
+    return result;
   }
 
   openReadmeModal(repo) {
-    this.dialogService.open({ viewModel: ReadmeModal, model: repo });
+    this.dialogService.open({ viewModel: ReadmeModal, model: repo, lock: false });
   }
 
   openLeavingSiteConfirmation(name, url) {
     const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl });
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false });
   }
 }

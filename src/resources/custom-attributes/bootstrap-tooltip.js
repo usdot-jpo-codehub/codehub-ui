@@ -1,7 +1,7 @@
 import { customAttribute, inject } from 'aurelia-framework';
-import $ from 'bootstrap';
+import $ from 'jquery';
 
-@customAttribute('bootstrap-tooltip')
+@customAttribute('jquery-tooltip')
 @inject(Element)
 export class BootstrapTooltip {
   constructor(element) {

@@ -1,10 +1,10 @@
 import { DialogService } from 'aurelia-dialog';
 import { inject } from 'aurelia-framework';
-import 'fetch';
 import { ContributorsModal } from 'components/modals/contributors-modal.js';
 import { FeedbackModal } from 'components/modals/feedback-modal.js';
 import { LeavingModal } from 'components/modals/leaving-modal.js';
-import { StageConfig } from '../stageConf';
+import { StageConfig } from './stageConf';
+import 'bootstrap';
 
 @inject(DialogService, StageConfig)
 export class App {
@@ -28,16 +28,16 @@ export class App {
   }
 
   openContribModal(repo) {
-    this.dialogService.open({ viewModel: ContributorsModal, model: repo });
+    this.dialogService.open({ viewModel: ContributorsModal, model: repo, lock:false });
   }
 
   openFeedbackModal() {
-    this.dialogService.open({ viewModel: FeedbackModal });
+    this.dialogService.open({ viewModel: FeedbackModal, lock:false });
   }
 
   openLeavingSiteConfirmation(name, url) {
     const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl });
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock:false });
   }
 
   scrollToTop() {

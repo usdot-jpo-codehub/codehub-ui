@@ -50,7 +50,7 @@ export class ReadmeModal {
 
   openLeavingSiteConfirmation(name, url) {
     const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl });
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false });
   }
 
 }

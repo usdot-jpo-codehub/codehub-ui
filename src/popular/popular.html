@@ -4,8 +4,8 @@
 
   <div class="container-fluid title-wrapper home-wrapper">
     <ul class="nav nav-tabs home-tabs" role="tablist">
-      <li role="presentation" class="active"><a class="featured" href="#featured" aria-controls="featured" role="tab" data-toggle="tab"><i class="material-icons">highlight</i> Featured Projects</a></li>
-      <li role="presentation" class=""><a href="#popular" aria-controls="popular" role="tab" data-toggle="tab"><i class="material-icons">star</i> Most Popular Projects</a></li>
+      <li role="presentation"><a class="featured active" href="#featured" aria-controls="featured" role="tab" data-toggle="tab"><i class="material-icons">highlight</i> Featured Projects</a></li>
+      <li role="presentation"><a href="#popular" aria-controls="popular" role="tab" data-toggle="tab"><i class="material-icons">star</i> Most Popular Projects</a></li>
       <li role="presentation"><a href="#trending" aria-controls="trending" role="tab" data-toggle="tab"><i class="material-icons">favorite</i> Healthiest Projects</a></li>
     </ul>
   </div>
@@ -16,7 +16,7 @@
           <div class="home-tab tab-content">
             <div role="tabpanel" class="tab-pane active" id="featured">
               <div if.bind="projects.length < 1" class="loader" width="100%" height="100%" align="center" valign="center">
-                <img src="img/loading.svg" width="100px" alt="Loading...">
+                <img src="../../img/loading.svg" width="100px" alt="Loading...">
               </div>
               <template repeat.for="repo of featured | sort: { propertyName: selectedSort, direction: sortDirection} | chunk: 3">
                 <div class="row">
@@ -28,7 +28,7 @@
             </div>
             <div role="tabpanel" class="tab-pane" id="popular">
               <div if.bind="projects.length < 1" class="loader" width="100%" height="100%" align="center" valign="center">
-                <img src="img/loading.svg" width="100px" alt="Loading...">
+                <img src="../../img/loading.svg" width="100px" alt="Loading...">
               </div>
               <template repeat.for="repo of projects | sort: { propertyName: selectedSort, direction: sortDirection} | chunk: 3">
                 <div class="row">
@@ -40,7 +40,7 @@
             </div>
             <div role="tabpanel" class="tab-pane" id="trending">
               <div if.bind="healthiest.length < 1" class="loader" width="100%" height="100%" align="center" valign="center">
-                <img src="img/loading.svg" width="100px" alt="Loading...">
+                <img src="../../img/loading.svg" width="100px" alt="Loading...">
               </div>
               <template repeat.for="repo of healthiest | chunk: 3">
                 <div class="row">

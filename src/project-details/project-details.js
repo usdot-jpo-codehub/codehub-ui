@@ -97,7 +97,7 @@ export class ProjectDetails {
   }
 
   openAddProjectModal() {
-    this.dialogService.open({ viewModel: AddProjectsModal, model: this.repo }).then(response => {
+    this.dialogService.open({ viewModel: AddProjectsModal, model: this.repo, lock: false }).then(response => {
       if (!response.wasCancelled) {
         this.dataContext.postUsedProject(response.output, this.repo.id).then(data => {
           this.projectsThatUseUs.push(response.output);
@@ -107,12 +107,12 @@ export class ProjectDetails {
   }
 
   openReadmeModal(repo) {
-    this.dialogService.open({ viewModel: ReadmeModal, model: repo });
+    this.dialogService.open({ viewModel: ReadmeModal, model: repo, lock: false });
   }
 
   openLeavingSiteConfirmation(name, url) {
     const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl });
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false });
   }
 
 }

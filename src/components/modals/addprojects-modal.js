@@ -1,6 +1,6 @@
 import { inject } from 'aurelia-framework';
 import { DialogController } from 'aurelia-dialog';
-import $ from 'bootstrap';
+import $ from 'jquery';
 import { multiselect } from 'bootstrap-multiselect';
 import { DataContext } from 'services/datacontext';
 

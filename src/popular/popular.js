@@ -75,12 +75,12 @@ export class Popular {
   }
 
   openReadmeModal(repo) {
-    this.dialogService.open({ viewModel: ReadmeModal, model: repo });
+    this.dialogService.open({ viewModel: ReadmeModal, model: repo, lock: false });
   }
 
   openLeavingSiteConfirmation(name, url) {
     const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl });
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false });
   }
 
 }

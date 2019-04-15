@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" type="image/png" href="favicon.ico">
     <title>ITS CodeHub | Home</title>
-    <link href="jspm_packages/npm/bootstrap-multiselect@0.9.13-1/dist/css/bootstrap-multiselect.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.ico">
     <link href="styles/styles.css" rel="stylesheet">
-    <link href="styles/font-awesome.css" rel="stylesheet">
-    <link href="jspm_packages/npm/octicons@4.4.0/build/font/octicons.css" rel="stylesheet">
-    <link href="jspm_packages/npm/roboto-fontface@0.6.1/css/roboto/roboto-fontface.css" rel="stylesheet">
-    <link href="jspm_packages/npm/roboto-fontface@0.6.1/css/roboto-condensed/roboto-condensed-fontface.css" rel="stylesheet">
-    <link href="jspm_packages/npm/material-design-icons-iconfont@3.0.3/dist/material-design-icons.css" rel="stylesheet">
-</head>
+    <link href="styles/bootstrap-multiselect.css" rel="stylesheet" type="text/css"/>
+    <link href="styles/fonts/octicons.css" rel="stylesheet">
+    <link href="styles/fonts/material-icons.css" rel="stylesheet">
+  </head>
 
   <body aurelia-app="main">
     <div class="splash">
@@ -23,29 +19,7 @@
             <span class="txt-loading text-uppercase">Loading</span>
         </div>
     </div>
-
-    <script>
-      const PF_AUTH_GIVENNAME = '<!--#echo var="PF_AUTH_GIVENNAME" -->';
-      const PF_AUTH_SN = '<!--#echo var="PF_AUTH_SN" -->';
-      const PF_AUTH_SUBJECT = '<!--#echo var="PF_AUTH_SUBJECT" -->';
-    </script>
-
-    <script src="jspm_packages/system.js"></script>
-
-    <script src="config.js"></script>
-    <script>
-      var systemLocate = System.locate;
-      System.locate = function(load) {
-        var System = this;
-        return Promise.resolve(systemLocate.call(this, load)).then(function(address) {
-          if(address.lastIndexOf("html.js") > -1) return address;
-          if(address.lastIndexOf("css.js") > -1) return address;
-          return address + System.cacheBust;
-        });
-      };
-      System.cacheBust = '?bust=' + '{BUILD_LABEL}';
-
-      System.import('aurelia-bootstrapper');
-    </script>
+    <script src="scripts/vendor-bundle.js"></script>
+    <script>SystemJS.import("aurelia-bootstrapper").catch(function(err) { console.log(err); })</script>
   </body>
 </html>

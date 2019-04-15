@@ -1,6 +1,6 @@
 import { inject } from 'aurelia-framework';
 import * as browser from 'detect-browser';
-import $ from 'bootstrap';
+import $ from 'jquery';
 
 @inject(Element)
 export class BrowserAlert {

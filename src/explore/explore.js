@@ -1,7 +1,7 @@
 import { inject, bindable } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
-import $ from 'bootstrap';
-import { multiselect } from 'bootstrap-multiselect';
+import $ from 'jquery';
+import 'bootstrap-multiselect';
 import { DialogService } from 'aurelia-dialog';
 import { DataContext } from 'services/datacontext';
 import { Filters } from 'components/filters';
@@ -109,6 +109,7 @@ export class Explore {
       enableCaseInsensitiveFiltering: true,
       maxHeight: 250,
       enableHTML: true,
+      position: 'relative',
       buttonText(options, select) {
         if (options.length === 0) {
           return 'Organizations';
@@ -249,7 +250,10 @@ export class Explore {
   }
 
   filterArray(array, filterArray, propertyName) {
-    return array
+    if (filterArray.length === 0)
+      return array;
+
+    let result =  array
       .slice(0)
       .filter((object) => {
         for (const value of filterArray) {
@@ -263,15 +267,17 @@ export class Explore {
         }
         return false;
       });
+
+    return result;
   }
 
   openReadmeModal(repo) {
-    this.dialogService.open({ viewModel: ReadmeModal, model: repo });
+    this.dialogService.open({ viewModel: ReadmeModal, model: repo, lock: false });
   }
 
   openLeavingSiteConfirmation(name, url) {
     const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl });
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false });
   }
 
 }

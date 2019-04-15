@@ -1,7 +1,6 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { DialogService } from 'aurelia-dialog';
-import * as c3 from 'c3/c3';
 import * as echarts from 'echarts/dist/echarts';
 import { DataContext } from 'services/datacontext';
 import { LeavingModal } from '../components/modals/leaving-modal';
@@ -17,6 +16,7 @@ export class Insight {
     this.insights = [];
     this.projects = [];
     this.mulChart = {};
+    this.chartMostUsedLanguages = {};
     this.mostUsedLanguages = {};
     this.loading = true;
   }
@@ -78,7 +78,7 @@ export class Insight {
   }
 
   deactivate() {
-    this.mostUsedLanguages.destroy();
+    // this.mostUsedLanguages.destroy();
     window.removeEventListener('resize', this.handleResize);
   }
 
@@ -86,7 +86,8 @@ export class Insight {
     this.mulChart.resize();
     this.mfChart.resize();
     this.myChart2.resize();
-    this.mostUsedLanguages.resize();
+    this.chartMostUsedLanguages.resize();
+    // this.mostUsedLanguages.resize();
   }
 
   buildChartMostUsed(insights) {
@@ -99,27 +100,86 @@ export class Insight {
       const mulBot = mul.slice(6, mul.length);
       const mulOther = mulBot.reduce((a, b) => b[1] + a, 0);
       mulTop.push([`Other(${mulBot.length})`, mulOther]);
-      resolve(mulTop);
+      let data = mulTop.map((item) => {
+        let r = {value:item[1],name:item[0]};
+        return r;
+      });
+      resolve(data);
     });
 
     calc.then((data) => {
-      this.mostUsedLanguages = c3.generate({
-        bindto: '#mostUsedLanguages',
-        data: {
-          columns: data,
-          type: 'donut',
+      this.chartMostUsedLanguages = echarts.init(document.getElementById('chartMostUsedLanguajes'));
+      this.chartMostUsedLanguages.setOption({
+        tooltip: {
+          trigger: 'axis',
         },
-        color: {
-          pattern: ['#85C241', '#BAD432', '#009343', '#F7B719', '#BAD432', '#009343'],
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true,
         },
-        donut: {
-          width: 80,
-          title: 'Languages',
+        toolbox: {
+          show: true,
+          feature: {
+            dataZoom: {
+              show: false,
+              title: {
+                zoom: 'Zoom',
+                back: 'Back',
+              },
+            },
+            dataView: {
+              show: true,
+              title: 'Data',
+              readOnly: true,
+              lang: ['Data View', 'Close', 'Refresh'],
+            },
+            restore: {
+              show: true,
+              title: 'Reset',
+            },
+            saveAsImage: {
+              show: true,
+              title: 'Save',
+              type: 'png',
+              name: 'codehub_most_used_languages',
+            },
+          },
         },
+        calculable: true,
+        
+        series: [
+          {
+              name:'Most Used Languages',
+              type:'pie',
+              radius : '50%',
+              center: ['50%', '50%'],
+              data: data,
+              label: {
+                normal: {
+                    position: 'outside',
+                    formatter: '{b}\r\n{d}%'
+                }
+              },
+              itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+              },
+  
+              animationType: 'scale',
+              animationEasing: 'elasticOut',
+              animationDelay: function (idx) {
+                  return Math.random() * 200;
+              }
+          }
+        ],
       });
     });
   }
-
   buildChartLanguages(insights) {
     const calc = new Promise((resolve, reject) => {
       const list = this.insights.language_counts_stat;
@@ -458,6 +518,6 @@ export class Insight {
 
   openLeavingSiteConfirmation(name, url) {
     const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl });
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false });
   }
 }
