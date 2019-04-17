@@ -5,7 +5,8 @@ const karmaConfig = project.unitTestRunners.find(x => x.id === 'karma');
 
 let testSrc = [
   { pattern: karmaConfig.source, included: false },
-  'test/aurelia-karma.js'
+  'test/aurelia-karma.js',
+  'node_modules/jasmine-jquery/lib/jasmine-jquery.js'
 ];
 
 let output = project.platform.output;
@@ -13,7 +14,16 @@ let appSrc = project.build.bundles.map(x => path.join(output, x.name));
 let entryIndex = appSrc.indexOf(path.join(output, project.build.loader.configTarget));
 let entryBundle = appSrc.splice(entryIndex, 1)[0];
 let sourceMaps = [{pattern:'scripts/**/*.js.map', included: false}];
-let files = [entryBundle].concat(testSrc).concat(appSrc).concat(sourceMaps);
+let mockFiles = [{pattern: 'test/mockdata/*.json', watched: true, served: true, included: false}];
+let imgPNG = [{pattern: 'img/**/*.png', watched: false, served: true, included: false}];
+let imgSVG = [{pattern: 'img/**/*.svg', watched: false, served: true, included: false}];
+let files = [entryBundle]
+  .concat(testSrc)
+  .concat(appSrc)
+  .concat(sourceMaps)
+  .concat(mockFiles)
+  .concat(imgPNG)
+  .concat(imgSVG);
 
 let transpilerOptions = project.transpiler.options;
 transpilerOptions.sourceMap = 'inline';
