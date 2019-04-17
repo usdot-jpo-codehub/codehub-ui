@@ -135,5 +135,15 @@
     "id": "jasmine",
     "displayName": "Jasmine"
   },
+  "bundle": {
+    "target": "dist",
+    "copyFiles": [
+      {"name": "index", "pattern": "index.html", "dest":""},
+      {"name": "favicon", "pattern": "favicon.ico", "dest":""},
+      {"name": "scripts", "pattern": "scripts/**/*.js", "dest":"/scripts/"},
+      {"name": "styles", "pattern": "styles/**/*", "dest":"/styles/"},
+      {"name": "images", "pattern": "img/**/*", "dest":"/img/"}
+    ]
+  },
   "packageManager": "npm"
 }
