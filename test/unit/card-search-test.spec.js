@@ -1,37 +1,37 @@
 import { StageComponent } from 'aurelia-testing';
 import { bootstrap } from 'aurelia-bootstrapper';
-import { MockProjectData } from '../mockdata/mock-project-data';
 import { AgoValueConverter } from '../../src/resources/value-converters/ago';
 import { NumValueConverter } from '../../src/resources/value-converters/num';
 
-
-describe('Test Card Feature : ', () => {
+describe('Test - Card Search : ', () => {
 
   let component;
+  let mockProjectData
 
   beforeEach( () => {
-    component = StageComponent.withResources('components/card-feature')
-      .inView('<compose view-model="components/card-feature" model.bind="repoData"></compose>')
-      .boundTo({repoData: MockProjectData[0]});
+    jasmine.getFixtures().fixturesPath='base/test/mockdata/';
+    mockProjectData = JSON.parse(readFixtures('mock-project-data.json'));
+    component = StageComponent.withResources('components/card-search')
+      .inView('<compose view-model="components/card-search" model.bind="repoData"></compose>')
+      .boundTo({repoData: mockProjectData[0]});
 
     component.bootstrap( aurelia => {
       aurelia.use.standardConfiguration();
     });
-
   });
-  
+
   it('Expect title card link text to be project name', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-feature-title-link');
-      expect(element.innerHTML).toEqual(MockProjectData[0].project_name);
+      const element = document.querySelector('#card-search-title-link');
+      expect(element.innerHTML).toEqual(mockProjectData[0].project_name);
       done();
     }).catch( e => { console.log(e.toString()) });
   });
 
   it('Expect title card link title to be project name', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-feature-title-link');
-      expect(element.getAttribute('title')).toEqual(MockProjectData[0].project_name);
+      const element = document.querySelector('#card-search-title-link');
+      expect(element.getAttribute('title')).toEqual(mockProjectData[0].project_name);
       done();
     }).catch( e => { console.log(e.toString()) });
   });
@@ -39,7 +39,7 @@ describe('Test Card Feature : ', () => {
   it('Expect language name', (done) => {
     component.create(bootstrap).then( () => {
       const element = document.querySelector('.org-name');
-      expect(element.innerHTML).toEqual(MockProjectData[0].language);
+      expect(element.innerHTML).toEqual(mockProjectData[0].language);
       done();
     }).catch( e => { console.log(e.toString()) });
   });
@@ -47,14 +47,14 @@ describe('Test Card Feature : ', () => {
   it('Expect project description', (done) => {
     component.create(bootstrap).then( () => {
       const element = document.querySelector('.proj-desc');
-      expect(element.innerHTML).toEqual(MockProjectData[0].project_description);
+      expect(element.innerHTML).toEqual(mockProjectData[0].project_description);
       done();
     }).catch( e => { console.log(e.toString()) });
   });
 
   it('Expect organization link', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-feature-organization-link');
+      const element = document.querySelector('#card-search-organization-link');
       expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.organization,repo.organizationUrl)');
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -62,16 +62,16 @@ describe('Test Card Feature : ', () => {
 
   it('Expect organization link title to be "View on Gitbub"', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-feature-organization-link');
-      expect(element.getAttribute('data-original-title')).toEqual('View on Github');
+      const element = document.querySelector('#card-search-organization-link');
+      expect(element.getAttribute('title')).toEqual('View on Github');
       done();
     }).catch( e => { console.log(e.toString()) });
   });
 
   it('Expect organization text to be the organization name', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-feature-organization-link');
-      expect(element.innerHTML).toEqual(MockProjectData[0].organization);
+      const element = document.querySelector('#card-search-organization-link-text');
+      expect(element.innerHTML).toEqual(mockProjectData[0].organization);
       done();
     }).catch( e => { console.log(e.toString()) });
   });
@@ -79,78 +79,78 @@ describe('Test Card Feature : ', () => {
   it('Expect organization updated days', (done) => {
     component.create(bootstrap).then( () => {
       let ago = new AgoValueConverter();
-      const element = document.querySelector('#card-feature-organization-updated-text');
-      expect(element.innerHTML).toEqual('Updated '+ago.toView(MockProjectData[0].updatedAt));
+      const element = document.querySelector('#card-search-organization-updated-text');
+      expect(element.innerHTML).toEqual('Updated '+ago.toView(mockProjectData[0].updatedAt));
       done();
     }).catch( e => { console.log(e.toString()) });
   });
 
   it('Expect organization origin text', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-feature-organization-origin-text');
-      expect(element.innerHTML).toEqual(MockProjectData[0].origin);
+      const element = document.querySelector('#card-search-organization-origin-text');
+      expect(element.innerHTML).toEqual(mockProjectData[0].origin);
       done();
     }).catch( e => { console.log(e.toString()) });
   });
 
   it('Expect project status link url', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-feature-project-status-link');
+      const element = document.querySelector('#card-search-project-status-link');
       expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.organization,repo.repositoryUrl)');
       done();
     }).catch( e => { console.log(e.toString()) });
   });
 
   it('Expect project number of stars', (done) => {
-    component.create(bootstrap).then( () => { 
-      let num = new NumValueConverter();     
-      const element = document.querySelector('#card-feature-project-stars');
-      expect(element.innerHTML).toEqual(num.toView(MockProjectData[0].stars));
+    component.create(bootstrap).then( () => {
+      let num = new NumValueConverter();
+      const element = document.querySelector('#card-search-project-stars');
+      expect(element.innerHTML).toEqual(num.toView(mockProjectData[0].stars));
       done();
     }).catch( e => { console.log(e.toString()) });
   });
 
   it('Expect project number of contributors', (done) => {
-    component.create(bootstrap).then( () => { 
-      let num = new NumValueConverter();     
-      const element = document.querySelector('#card-feature-project-contributors');
-      expect(element.innerHTML).toEqual(num.toView(MockProjectData[0].contributors));
+    component.create(bootstrap).then( () => {
+      let num = new NumValueConverter();
+      const element = document.querySelector('#card-search-project-contributors');
+      expect(element.innerHTML).toEqual(num.toView(mockProjectData[0].contributors));
       done();
     }).catch( e => { console.log(e.toString()) });
   });
 
   it('Expect project number of watchers', (done) => {
-    component.create(bootstrap).then( () => { 
-      let num = new NumValueConverter();     
-      const element = document.querySelector('#card-feature-project-watchers');
-      expect(element.innerHTML).toEqual(num.toView(MockProjectData[0].watchers));
+    component.create(bootstrap).then( () => {
+      let num = new NumValueConverter();
+      const element = document.querySelector('#card-search-project-watchers');
+      expect(element.innerHTML).toEqual(num.toView(mockProjectData[0].watchers));
       done();
     }).catch( e => { console.log(e.toString()) });
   });
 
   it('Expect project number of commits', (done) => {
-    component.create(bootstrap).then( () => { 
-      let num = new NumValueConverter();     
-      const element = document.querySelector('#card-feature-project-commits');
-      expect(element.innerHTML).toEqual(num.toView(MockProjectData[0].commits, 1));
+    component.create(bootstrap).then( () => {
+      let num = new NumValueConverter();
+      const element = document.querySelector('#card-search-project-commits');
+      expect(element.innerHTML).toEqual(num.toView(mockProjectData[0].commits, 1));
       done();
     }).catch( e => { console.log(e.toString()) });
   });
 
   it('Expect project number of releases', (done) => {
-    component.create(bootstrap).then( () => { 
-      let num = new NumValueConverter();     
-      const element = document.querySelector('#card-feature-project-releases');
-      expect(element.innerHTML).toEqual(''+num.toView(MockProjectData[0].releases.length));
+    component.create(bootstrap).then( () => {
+      let num = new NumValueConverter();
+      const element = document.querySelector('#card-search-project-releases');
+      expect(element.innerHTML).toEqual(''+num.toView(mockProjectData[0].releases.length));
       done();
     }).catch( e => { console.log(e.toString()) });
   });
 
   it('Expect project number of forks', (done) => {
-    component.create(bootstrap).then( () => { 
-      let num = new NumValueConverter();     
-      const element = document.querySelector('#card-feature-project-forks');
-      expect(element.innerHTML).toEqual(''+num.toView(MockProjectData[0].forks));
+    component.create(bootstrap).then( () => {
+      let num = new NumValueConverter();
+      const element = document.querySelector('#card-search-project-forks');
+      expect(element.innerHTML).toEqual(''+num.toView(mockProjectData[0].forks));
       done();
     }).catch( e => { console.log(e.toString()) });
   });
@@ -158,26 +158,26 @@ describe('Test Card Feature : ', () => {
   it('Expect project number of dowloads', (done) => {
     component.create(bootstrap).then( () => {
       let num = new NumValueConverter();
-      const element = document.querySelector('#card-feature-project-downloads');
+      const element = document.querySelector('#card-search-project-downloads');
       let downloads = 0;
-      MockProjectData[0].releases.forEach( e => downloads += e.total_downloads);
+      mockProjectData[0].releases.forEach( e => downloads += e.total_downloads);
       expect(element.innerHTML).toEqual(''+num.toView(downloads));
       done();
     }).catch( e => { console.log(e.toString()) });
   });
 
   it('Expect project readme click trigger', (done) => {
-    component.create(bootstrap).then( () => { 
-      let num = new NumValueConverter();     
-      const element = document.querySelector('#card-feature-project-open-readme');
+    component.create(bootstrap).then( () => {
+      let num = new NumValueConverter();
+      const element = document.querySelector('#card-search-project-open-readme');
       expect(element.getAttribute('click.trigger')).toEqual('openReadmeModal(repo)');
       done();
     }).catch( e => { console.log(e.toString()) });
   });
 
   it('Expect card link to use project-details route passing repo id', (done) => {
-    component.create(bootstrap).then( () => { 
-      let num = new NumValueConverter();     
+    component.create(bootstrap).then( () => {
+      let num = new NumValueConverter();
       const element = document.querySelector('.card-link');
       expect(element.getAttribute('route-href')).toEqual('route:project-details; params.bind: {id:repo.id}');
       done();
