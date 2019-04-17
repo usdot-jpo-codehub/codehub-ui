@@ -27,6 +27,9 @@ export class Insight {
       this.dataContext.getAll()]).then((values) => {
         this.insights = values[0];
         this.projects = values[1];
+        if(typeof this.insights==='undefined' || typeof this.projects==='undefined') {
+          return;
+        }
         this.sortProjects(this.projects).then((projects) => {
           Promise.all([
             this.buildChartMostUsed(this.insights),
@@ -40,6 +43,8 @@ export class Insight {
             }, 10, self);
             this.loading = false;
           });
+        }).catch((e) => {
+          return;
         });
       });
   }
