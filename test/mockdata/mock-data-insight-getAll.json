@@ -1,6 +1,4 @@
-// Project data of 9 projects sorted by forkedRepos in descending order 
-
-export const MockDataInsightGetAll = [
+[
   {
     "organization": "booz-allen-hamilton",
     "organizationUrl": "https://github.com/booz-allen-hamilton",
@@ -2248,4 +2246,4 @@ export const MockDataInsightGetAll = [
     "updatedAt": "2017-03-08T02:49:09Z",
     "id": "543127_78688236"
   }
-];
+]

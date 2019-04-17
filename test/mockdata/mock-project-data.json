@@ -1,4 +1,4 @@
-export const MockProjectData = [
+[
   {
     "organization": "usdot-jpo-ode",
     "organizationUrl": "https://github.com/usdot-jpo-ode",
@@ -2313,4 +2313,4 @@ export const MockProjectData = [
     "updatedAt": "2018-11-07T19:59:51Z",
     "id": "8397762_47277547"
   }
-];
+]

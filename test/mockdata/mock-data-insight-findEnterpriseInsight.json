@@ -1,4 +1,4 @@
-export const MockDataInsightFindEnterpriseInsight = {
+{
   "number_of_organizations": 1,
   "number_of_projects": 14,
   "bugs_vulnerabilities": 174,
@@ -87,4 +87,4 @@ export const MockDataInsightFindEnterpriseInsight = {
       "E": 0
     }
   }
-};
+}

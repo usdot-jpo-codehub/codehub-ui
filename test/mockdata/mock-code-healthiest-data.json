@@ -1,4 +1,4 @@
-export const MockCodeHealthiestData = [
+[
     {
         "organization": "usdot-jpo-ode",
         "origin": "PUBLIC",
@@ -360,6 +360,4 @@ export const MockCodeHealthiestData = [
         "updatedAt": "2018-11-13T16:29:03Z",
         "id": "23056647_127138533"
     }
-];
-
-
+]
