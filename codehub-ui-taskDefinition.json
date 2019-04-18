@@ -1,0 +1,22 @@
+{
+    "family": "codehub-ui",
+        "networkMode": "awsvpc",
+        "containerDefinitions": [
+            {
+                "name": "codehub-ui",
+                "image": "927373803645.dkr.ecr.us-east-1.amazonaws.com/nate-docker-production/codehub-ui:latest",
+                "portMappings": [
+                  {
+                    "containerPort": 80
+                  }
+                ],
+                "essential": true
+            }
+        ],
+        "requiresCompatibilities": [
+            "FARGATE"
+        ],
+        "cpu": "256",
+        "memory": "512",
+        "executionRoleArn": "arn:aws:iam::927373803645:role/codehub-admin"
+}
