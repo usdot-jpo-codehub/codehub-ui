@@ -25,26 +25,24 @@ node {
 
         }
 
-        stage('Unit Test') {
-        dir ('App'){
+    stage('Unit Test') {
         nodejs('node') {
+            dir ('App'){
               script {
                 sh 'npm install'
                 sh 'npm install -g gulp'
                 sh 'npm install -g aurelia-cli'
-                sh 'au test'
+                sh 'npm install aurelia-cli'
+                sh 'npm i --save-dev karma karma-chrome-launcher karma-mocha karma-chai'
+                //sh 'export CHROME_BIN=/usr/bin/google-chrome'
+                //sh 'au test'
                 sh 'au package-bundle --env prod'
-                sh 'Bundling is Complete!!'
+                sh 'ls -l'
+                sh 'echo Bundling is Complete!!'
             }
           }
   }
   }
-
-      stage('Twistlock scan') {
-          dir ('App'){
-             sh 'echo Twistlock Scan is Sucessfully Completed!!'
-            }
-      }
 
       stage('Static Code Analysis'){
         dir ('App'){
@@ -60,7 +58,7 @@ node {
                     sh 'ls "${scannerHome}"/bin/'
                     sh 'cat /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube_Scanner_2.8/conf/sonar-scanner.properties'
                     //sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectName=codehub-ui-base -Dsonar.projectVersion=1.0.0 -Dsonar.projectKey=codehub-ui-base -Dsonar.sources=."
-                    sh "${scannerHome}/bin/sonar-scanner -X  -Dsonar.projectName=codehub-ui-base -Dsonar.projectVersion=1.0.0 -Dsonar.projectKey=codehub-ui-base -Dsonar.sources=."
+                    sh "${scannerHome}/bin/sonar-scanner -X  -Dsonar.projectName=codehub-ui-base -Dsonar.projectVersion=1.0.0 -Dsonar.projectKey=codehub-ui-base -Dsonar.sources=src,scripts"
                 }
             }
         }
