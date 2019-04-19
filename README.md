@@ -29,7 +29,7 @@ To run the app, follow these steps:
   ```
 
 ## Bundling
-The build and bundling is performed by the Aurelia CLI. 
+The build and bundling is performed by the Aurelia CLI.
 
 ### To buble (build) the application for production environment, execute the following command:
 ``` shell
@@ -43,12 +43,12 @@ au build --env prod
 
 Unit tests are running through the aurelia-cli and uses [karma](https://karma-runner.github.io) and [jasmine](https://jasmine.github.io/) to execute the tests.
 
-### To execute the unit tests, execute the following command: 
+### To execute the unit tests, execute the following command:
 ```shell
 au test
 ```
 
-### To execute the unit in a Test Driven Development (TDD) mode: 
+### To execute the unit in a Test Driven Development (TDD) mode:
 ```shell
 au test --watch
 ```
@@ -84,5 +84,4 @@ au package-bundle --env prod
 ```
 By default a **dist** folder will be created and all the required files will be copied to it.
 
-The configuration of the bundle is manage throught he **aurelia.json" file under the **aurelia_project** folder.
-
+The configuration of the bundle is manage throught he **aurelia.json" file under the **aurelia_project** folder...
