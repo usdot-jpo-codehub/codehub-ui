@@ -28,7 +28,7 @@ node {
                 sh 'npm i --save-dev karma puppeteer karma-chrome-launcher'
                 sh 'export CHROME_BIN=/usr/bin/chromium'
                 sh 'au build'
-                sh 'au test --browsers ChromiumHeadlessNoSandbox --watch=true --code-coverage'
+                sh 'au test --browsers ChromiumHeadlessNoSandbox --watch=false --code-coverage'
                 sh 'au package-bundle --env prod'
                 sh 'ls -l'
                 sh 'echo Bundling is Complete!!'
