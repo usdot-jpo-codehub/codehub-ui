@@ -2,21 +2,13 @@ node {
     environment {
       registry = "927373803645.dkr.ecr.us-east-1.amazonaws.com/"
       repo = "dev-codehub/codehub-ui"
-      //927373803645.dkr.ecr.us-east-1.amazonaws.com/nate-docker-production/codehub-ui-updated
-      imageUrl= '$registry+repo:$BUILD_NUMBER'
       DOCKER_LOGIN='(aws ecr get-login --no-include-email --region us-east-1)'
       dockerImage = ''
       registryurl = '927373803645.dkr.ecr.us-east-1.amazonaws.com/'
-      GIT_BRANCH = 'development_bundler'
-      GIT_REPO = 'https://github.com/usdot-jpo-codehub/codehub-ui.git'
-      SONAR_HOST_URL='http://localhost:9000'
-      SONAR_AUTH_TOKEN='121d594f68b9cafd02f7433c0c992a3e19af02d3'
     }
-    //tools {nodejs "node"}
      stage('Git Checkout') {
           deleteDir()
           dir ('App'){
-              //stdStage.checkout(GIT_REPO, GIT_BRANCH)
               git(
                 branch: 'development_bundler',
                 url: 'https://github.com/usdot-jpo-codehub/codehub-ui.git'
@@ -51,15 +43,9 @@ node {
         script {
             def scannerHome = tool 'SonarQube Scanner 2.8';
             withSonarQubeEnv('SonarQube') {
-                    // git(
-                    //    branch: 'development-bundler',
-                    //    url: 'https://github.com/usdot-jpo-codehub/codehub-ui.git'
-                  //  )
-                    sh "ls -l"
                     sh 'ls "${scannerHome}"/bin/'
                     sh 'cat /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube_Scanner_2.8/conf/sonar-scanner.properties'
-                    //sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectName=codehub-ui-base -Dsonar.projectVersion=1.0.0 -Dsonar.projectKey=codehub-ui-base -Dsonar.sources=."
-                    sh "${scannerHome}/bin/sonar-scanner -X  -Dsonar.projectName=codehub-ui-base -Dsonar.projectVersion=1.0.0 -Dsonar.projectKey=codehub-ui-base -Dsonar.sources=src,scripts"
+                    sh "${scannerHome}/bin/sonar-scanner -X  -Dsonar.projectName=codehub-ui-base -Dsonar.projectVersion=1.0.0 -Dsonar.projectKey=codehub-ui -Dsonar.sources=src,scripts"
                 }
             }
         }
@@ -119,10 +105,6 @@ node {
       dir ('App'){
       nodejs('node') {
             script {
-            SERVICE_NAME="codehub-ui-service"
-            IMAGE_VERSION="$BUILD_NUMBER"
-            TASK_FAMILY="codehub-ui"
-              sh 'npm config ls'
               sh 'npm install js-yaml -g'
               sh 'npm install js-yaml'
               sh 'aws ecs register-task-definition --cli-input-json file://codehub-ui-taskDefinition.json --region us-east-1'
