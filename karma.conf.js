@@ -27,7 +27,6 @@ let files = [entryBundle]
 
 let transpilerOptions = project.transpiler.options;
 transpilerOptions.sourceMap = 'inline';
-
 module.exports = function(config) {
   config.set({
     basePath: '',
