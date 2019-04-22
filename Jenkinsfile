@@ -28,6 +28,7 @@ node {
                 sh 'npm i --save-dev karma puppeteer karma-chrome-launcher karma-verbose-reporter'
                 sh 'export CHROME_BIN=/usr/bin/chromium'
                 sh 'au test --browsers ChromiumHeadlessNoSandbox --watch=false --code-coverage --single-run'
+                sh 'curl http://test-jenkins-server-elb-758001667.us-east-1.elb.amazonaws.com/job/CodeHub-UI/19/loadcomplete/api/xml'
                 sh 'au package-bundle --env prod'
                 sh 'ls -l'
                 sh 'echo Bundling is Complete!!'
