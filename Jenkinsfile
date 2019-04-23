@@ -29,7 +29,7 @@ node {
                 sh 'export CHROME_BIN=/usr/bin/chromium'
                 sh 'au test --env dev --browsers ChromiumHeadlessNoSandbox --watch=false --code-coverage --single-run'
                 sh 'ls -l'
-                sh './analyze_unit_test_result karma-result.json'
+                //sh './analyze_unit_test_result karma-result.json'
                 sh 'au package-bundle --env prod'
                 sh 'ls -l'
                 sh 'echo Bundling is Complete!!'
