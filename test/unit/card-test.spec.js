@@ -25,7 +25,7 @@ describe('Test - Card : ', () => {
 
   it('Expect title card link text to be project name', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-popular-title-link');
+      const element = document.querySelector('#card-popular-title-linkyupu');
       expect(element.innerHTML).toEqual(mockProjectData[0].project_name);
       done();
     }).catch( e => { console.log(e.toString()) });
