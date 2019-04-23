@@ -2,7 +2,7 @@
 const path = require('path');
 const project = require('./aurelia_project/aurelia.json');
 const karmaConfig = project.unitTestRunners.find(x => x.id === 'karma');
-
+process.env.CHROME_BIN = require('puppeteer').executablePath()
 let testSrc = [
   { pattern: karmaConfig.source, included: false },
   'test/aurelia-karma.js',
@@ -27,7 +27,6 @@ let files = [entryBundle]
 
 let transpilerOptions = project.transpiler.options;
 transpilerOptions.sourceMap = 'inline';
-
 module.exports = function(config) {
   config.set({
     basePath: '',
@@ -39,19 +38,25 @@ module.exports = function(config) {
       [appSrc]: ['sourcemap']
     },
     'babelPreprocessor': { options: transpilerOptions },
-    reporters: ['progress'],
+    reporters: ['verbose','json-result','spec'],
+    jsonResultReporter: {
+      outputFile: "karma-result.json",
+      isSynchronous: true
+    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: true,
-    browsers: ['ChromeHeadless'],
+    autoWatch: false,
+    browsers: ['ChromiumHeadless'],
     browserDisconnectTimeout: 10000,
     browserDisconnectTolerance: 3,
     browserNoActivityTimeout: 60000,
     flags: [
       '--disable-web-security',
       '--disable-gpu',
-      '--no-sandbox'
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--remote-debugging-port=9222',
     ],
     singleRun: true,
     // client.args must be a array of string.
