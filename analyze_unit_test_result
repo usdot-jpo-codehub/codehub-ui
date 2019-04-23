@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+
+is_success() {
+echo "Unit test results"
+res=$(cat $1 | jq -r ".summary.failed")
+if [ $1 -gt 0 ]; then
+    exit 1
+else
+    echo "All Unit Test Cases Passes!!"
+fi
+}
+is_success

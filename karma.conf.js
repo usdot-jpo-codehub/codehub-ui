@@ -38,7 +38,11 @@ module.exports = function(config) {
       [appSrc]: ['sourcemap']
     },
     'babelPreprocessor': { options: transpilerOptions },
-    reporters: ['verbose'],
+    reporters: ['verbose','json-result'],
+    jsonResultReporter: {
+      outputFile: "karma-result.json",
+      isSynchronous: true
+    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
