@@ -3,12 +3,13 @@
 set -e
 
 is_success() {
-echo "Unit test results"
+echo "Unit Test Summary"
 res=$(cat $1 | jq -r ".summary.failed")
-if [ $1 -gt 0 ]; then
+echo $res
+if [ $res > 0 ]; then
     exit 1
 else
-    echo "All Unit Test Cases Passes!!"
+    echo "All Unit Test Cases Pass!!"
 fi
 }
 is_success
