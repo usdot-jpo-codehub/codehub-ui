@@ -27,7 +27,7 @@ node {
                 sh 'npm install aurelia-cli'
                 sh 'npm i --save-dev karma puppeteer karma-chrome-launcher karma-verbose-reporter karma-structured-json-reporter'
                 sh 'export CHROME_BIN=/usr/bin/chromium'
-                sh 'au test --browsers ChromiumHeadlessNoSandbox --watch=false --code-coverage --single-run'
+                sh 'au test --browsers ChromiumHeadlessNoSandbox --watch=false --code-coverage'
                 sh 'ls -l'
                 //sh './analyze_unit_test_result karma-result.json'
                 sh 'au package-bundle --env prod'
