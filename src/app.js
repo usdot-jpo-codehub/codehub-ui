@@ -27,6 +27,20 @@ export class App {
     this.stageConfig = stageConfig;
   }
 
+  activate() {
+    setTimeout(()=>{
+      const alertMessage = document.querySelector ('#message-alert-button');
+      if(alertMessage) {
+        alertMessage.focus();
+      } else {
+        const homeLink = document.querySelector('#router-menu-Home');
+        if(homeLink){
+          homeLink.focus(); 
+        }
+      }
+    },500);
+  }
+
   openContribModal(repo) {
     this.dialogService.open({ viewModel: ContributorsModal, model: repo, lock:false });
   }
