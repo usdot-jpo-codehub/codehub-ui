@@ -49,6 +49,14 @@ export class NavBar {
 
     $('#searchForm input').focusout(event => {
       this.hideNavSearch();
+      $('#searchBtn').focus();
+    });
+
+    $('#searchForm input').keydown(event => {
+      if(event.key === 'Escape'){
+        this.hideNavSearch();
+        $('#searchBtn').focus();
+      }
     });
 
     const search = this.dataContext;

@@ -10,18 +10,18 @@
         <div class="col-lg-12 col-md-12 col-sm-12 filter-wrapper">
           <div class="row filter-result-bar">
             <div class="col-lg-10 col-md-10">
-              <ul class='list-inline'>
-                <li>${resultCount} results for <strong>`${searchText}`</strong></li>
-                <li if.bind="!filterLangEmpty" repeat.for="pill of filters.selectedLanguages">
+              <ul class='list-inline' aria-hidden="true">
+                <li aria-hidden="true"><span tabindex="0" id="results-result-text" aria-label="${resultCount} results for search text ${searchText}">${resultCount} results for <strong>${searchText}</strong></span></li>
+                <li aria-hidden="true" if.bind="!filterLangEmpty" repeat.for="pill of filters.selectedLanguages">
                   <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'language', pill)})</small> <a href="javascript:$('#filterLang').multiselect('deselect', '${pill}');$('#filterLang').trigger('change');"><i class="material-icons">close</i></a></span>
                 </li>
-                <li if.bind="!filterOrgEmpty" repeat.for="pill of filters.selectedOrganizations">
+                <li aria-hidden="true" if.bind="!filterOrgEmpty" repeat.for="pill of filters.selectedOrganizations">
                   <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'organization', pill)})</small> <a href="javascript:$('#filterOrg').multiselect('deselect', '${pill}');$('#filterOrg').trigger('change');"><i class="material-icons">close</i></a></span>
                 </li>
-                <li if.bind="!filterOriginEmpty" repeat.for="pill of filters.selectedOrigins">
+                <li aria-hidden="true" if.bind="!filterOriginEmpty" repeat.for="pill of filters.selectedOrigins">
                   <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'origin', pill)})</small> <a href="javascript:$('#filterOrigin').multiselect('deselect', '${pill}');$('#filterOrigin').trigger('change');"><i class="material-icons">close</i></a></span>
                 </li>
-                <li>
+                <li aria-hidden="true">
                   <a class="clear-btn" if.bind="!filterLangEmpty || !filterOrgEmpty || !filterOriginEmpty" href="#" click.delegate="clearAllFilters()">Clear All</a>
                 </li>
               </ul>

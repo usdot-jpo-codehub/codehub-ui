@@ -14,5 +14,28 @@ export class MessageAlert {
 
   dismiss() {
     $(this.element).hide();
+    this.focusActiveMenu();
+  }
+
+  focusActiveMenu() {
+    const titleBarNav = document.querySelector('#titleBarNav');
+    if(!titleBarNav)
+      return;
+    let items = titleBarNav.getElementsByTagName('li');
+    if(!items)
+      return;
+
+    for(let item of items) {
+      if(item.classList.contains('active')) {
+        let links = item.getElementsByTagName('a');
+        if(!links)
+          continue;
+        let a = links[0];
+        if(!a)
+          return;
+        a.focus();
+        break;
+      }
+    }
   }
 }

@@ -40,17 +40,18 @@ export class ReadmeModal {
           return false;
         };
       }
+      const readmeTitle = document.querySelector('#readme-title');
+      readmeTitle.focus();
     });
   }
 
   navigateAndClose() {
     this.router.navigateToRoute('project-details', { id: this.repo.id });
-    this.controller.cancel();
+    this.controller.ok();
   }
 
   openLeavingSiteConfirmation(name, url) {
     const mdl = { name, url };
     this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false });
   }
-
 }

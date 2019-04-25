@@ -8,15 +8,17 @@ import { DataContext } from 'services/datacontext';
 import { Filters } from 'components/filters';
 import { ReadmeModal } from '../components/modals/readme-modal';
 import { LeavingModal } from '../components/modals/leaving-modal';
+import { StageConfig } from '../../stageConf';
 
-@inject(DataContext, Filters, EventAggregator, DialogService)
+@inject(DataContext, Filters, EventAggregator, DialogService, StageConfig)
 export class Results {
 
-  constructor(dataContext, filters, ea, dialogService) {
+  constructor(dataContext, filters, ea, dialogService, stageConfig) {
     this.dataContext = dataContext;
     this.filters = filters;
     this.ea = ea;
     this.dialogService = dialogService;
+    this.stageConfig = stageConfig;
 
     this.searchText = '';
     this.resultCount = 0;
@@ -39,6 +41,7 @@ export class Results {
       { value: 'commits', name: 'Commits' },
       { value: 'contributors', name: 'Contributors' },
     ];
+    this.openReadmeLinkId = null;
   }
 
   determineActivationStrategy() {
@@ -63,6 +66,9 @@ export class Results {
             this.rebuildFilterOrg(projects);
             this.rebuildFilterLang(projects);
             this.rebuildFilterOrigin(projects);
+            const resultsText = document.querySelector('#results-result-text');
+            if(resultsText)
+              resultsText.focus();
             return this.projects;
           }, 10);
         });
@@ -84,6 +90,9 @@ export class Results {
           this.rebuildFilterOrg(projects);
           this.rebuildFilterLang(projects);
           this.rebuildFilterOrigin(projects);
+          const resultsText = document.querySelector('#results-result-text');
+          if(resultsText)
+              resultsText.focus();
           return this.projects;
         }, 10);
       });
@@ -296,8 +305,14 @@ export class Results {
     return result;
   }
 
-  openReadmeModal(repo) {
-    this.dialogService.open({ viewModel: ReadmeModal, model: repo, lock: false });
+  openReadmeModal(repo, target) {
+    this.openReadmeLinkId = target.getAttribute('id');
+    this.dialogService.open({ viewModel: ReadmeModal, model: repo, lock: false }).whenClosed(response => {
+      if (response.wasCancelled) {
+        const element = document.querySelector('#'+this.openReadmeLinkId);
+        element.focus();
+      }
+    });
   }
 
   openLeavingSiteConfirmation(name, url) {

@@ -31,7 +31,8 @@ describe('Test - Card Search : ', () => {
   it('Expect title card link title to be project name', (done) => {
     component.create(bootstrap).then( () => {
       const element = document.querySelector('#card-search-title-link');
-      expect(element.getAttribute('title')).toEqual(mockProjectData[0].project_name);
+      const text = `Project name: ${mockProjectData[0].project_name}`;
+      expect(element.getAttribute('aria-label')).toEqual(text);
       done();
     }).catch( e => { console.log(e.toString()) });
   });
@@ -63,7 +64,8 @@ describe('Test - Card Search : ', () => {
   it('Expect organization link title to be "View on Gitbub"', (done) => {
     component.create(bootstrap).then( () => {
       const element = document.querySelector('#card-search-organization-link');
-      expect(element.getAttribute('title')).toEqual('View on Github');
+      const text = `Project organization: ${mockProjectData[0].organization}, view on GitHub.`;
+      expect(element.getAttribute('aria-label')).toEqual(text);
       done();
     }).catch( e => { console.log(e.toString()) });
   });
@@ -168,10 +170,12 @@ describe('Test - Card Search : ', () => {
 
   it('Expect project readme click trigger', (done) => {
     component.create(bootstrap).then( () => {
-      let num = new NumValueConverter();
-      const element = document.querySelector('#card-search-project-open-readme');
-      expect(element.getAttribute('click.trigger')).toEqual('openReadmeModal(repo)');
-      done();
+    const id = `#card-search-project-open-readme-${mockProjectData[0].id}`;
+    const element = document.querySelector(id);
+    console.log(id);
+    console.log(element);
+    expect(element.getAttribute('click.trigger')).toEqual('openReadmeModal(repo,$event.target)');
+    done();
     }).catch( e => { console.log(e.toString()) });
   });
 

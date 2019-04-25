@@ -34,6 +34,7 @@ export class Popular {
       { value: 'commits', name: 'Commits' },
       { value: 'contributors', name: 'Contributors' },
     ];
+    this.openReadmeLinkId = null;
   }
 
   getData() {
@@ -74,8 +75,14 @@ export class Popular {
     this.getData();
   }
 
-  openReadmeModal(repo) {
-    this.dialogService.open({ viewModel: ReadmeModal, model: repo, lock: false });
+  openReadmeModal(repo, target) {
+    this.openReadmeLinkId = target.getAttribute('id');
+    this.dialogService.open({ viewModel: ReadmeModal, model: repo, lock: false }).whenClosed(response => {
+      if (response.wasCancelled) {
+        const element = document.querySelector('#'+this.openReadmeLinkId);
+        element.focus();
+      }
+    });
   }
 
   openLeavingSiteConfirmation(name, url) {

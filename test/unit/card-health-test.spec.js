@@ -33,7 +33,8 @@ describe('Test - Card Health : ', () => {
   it('Expect title card link title to be project name', (done) => {
     component.create(bootstrap).then( () => {
       const element = document.querySelector('#card-health-title-link');
-      expect(element.getAttribute('title')).toEqual(mockCodeHealthiestData[0].project_name);
+      const text = `Project name: ${mockCodeHealthiestData[0].project_name}`;
+      expect(element.getAttribute('aria-label')).toEqual(text);
       done();
     }).catch( e => { console.log(e.toString()) });
   });
@@ -68,7 +69,8 @@ describe('Test - Card Health : ', () => {
   it('Expect organization link title to be "View on Gitbub"', (done) => {
     component.create(bootstrap).then( () => {
       const element = document.querySelector('#card-health-organization-link');
-      expect(element.getAttribute('title')).toEqual('View on Github');
+      const text = `Project organization: ${mockCodeHealthiestData[0].organization}, view on GitHub.`;
+      expect(element.getAttribute('aria-label')).toEqual(text);
       done();
     }).catch( e => { console.log(e.toString()) });
   });
@@ -164,8 +166,9 @@ describe('Test - Card Health : ', () => {
 
   it('Expect project readme click trigger', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-health-project-open-readme');
-      expect(element.getAttribute('click.trigger')).toEqual('openReadmeModal(repo)');
+      const id = `#card-health-project-open-readme-${mockCodeHealthiestData[0].id}`;
+      const element = document.querySelector(id);
+      expect(element.getAttribute('click.trigger')).toEqual('openReadmeModal(repo,$event.target)');
       done();
     }).catch( e => { console.log(e.toString()) });
   });

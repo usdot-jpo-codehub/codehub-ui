@@ -34,6 +34,7 @@ export class Explore {
       { value: 'commits', name: 'Commits' },
       { value: 'contributors', name: 'Contributors' },
     ];
+    this.openReadmeLinkId = null;
   }
 
   getData() {
@@ -271,8 +272,14 @@ export class Explore {
     return result;
   }
 
-  openReadmeModal(repo) {
-    this.dialogService.open({ viewModel: ReadmeModal, model: repo, lock: false });
+  openReadmeModal(repo, target) {
+    this.openReadmeLinkId = target.getAttribute('id');
+    this.dialogService.open({ viewModel: ReadmeModal, model: repo, lock: false }).whenClosed(response => {
+      if (response.wasCancelled) {
+        const element = document.querySelector('#'+this.openReadmeLinkId);
+        element.focus();
+      }
+    });
   }
 
   openLeavingSiteConfirmation(name, url) {
