@@ -172,8 +172,6 @@ describe('Test - Card Search : ', () => {
     component.create(bootstrap).then( () => {
     const id = `#card-search-project-open-readme-${mockProjectData[0].id}`;
     const element = document.querySelector(id);
-    console.log(id);
-    console.log(element);
     expect(element.getAttribute('click.trigger')).toEqual('openReadmeModal(repo,$event.target)');
     done();
     }).catch( e => { console.log(e.toString()) });
