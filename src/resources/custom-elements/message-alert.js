@@ -25,7 +25,8 @@ export class MessageAlert {
     if(!items)
       return;
 
-    for(let item of items) {
+    let found = false;
+    for(let item of items) { //search for the active page to focus
       if(item.classList.contains('active')) {
         let links = item.getElementsByTagName('a');
         if(!links)
@@ -34,7 +35,14 @@ export class MessageAlert {
         if(!a)
           return;
         a.focus();
+        found = true;
         break;
+      }
+    }
+    if(!found) { //seach for the search bar to focus
+      const searchBarElement = document.querySelector('#searchBar');
+      if(searchBarElement) {
+        searchBarElement.focus();
       }
     }
   }
