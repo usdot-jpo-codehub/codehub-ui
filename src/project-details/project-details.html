@@ -19,7 +19,7 @@
                     <h2 class=""><span>Overview</span></h2>
                   </div>
                   <div id="project-description" class="proj-desc">${repo.project_description}</div>
-                  <div class="text-muted last-updated">By <a id="project-organization-link" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl)" target="_blanks">${repo.organization}</a> &nbsp; | &nbsp; Updated <span id="project-update-at">${repo.updatedAt | ago}</span> <span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> <span id="project-origin">${repo.origin}</span></span></div>
+                  <div class="text-muted last-updated">By <a id="project-organization-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl,$event.target)" target="_blanks">${repo.organization}</a> &nbsp; | &nbsp; Updated <span id="project-update-at">${repo.updatedAt | ago}</span> <span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> <span id="project-origin">${repo.origin}</span></span></div>
 
                   <ul class="list-inline">
                     <li><button id="project-readme-button" click.trigger="openReadmeModal(repo)" class="btn btn-secondary"><i class="material-icons">library_books</i><span id="project-readme-button-text">Show README</span></button></li>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-lg-4 col-github-stats">
                   <div class="lined-header">
-                    <span class="pull-right"><em class="text-muted">Source: <a id="project-source-link" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.repositoryUrl)" target="_blank">Github™</a></em></span>
+                    <span class="pull-right"><em class="text-muted">Source: <a id="project-source-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.project_name,repo.repositoryUrl,$event.target)" target="_blank">Github™</a></em></span>
                     <h4 class=""><span>Project Stats</span></h4>
                   </div>
                   <div class="row github-stats">
@@ -172,7 +172,7 @@
                   </div>
                 </div> -->
                 <div class="col-lg-12 col-qual">
-                  <span class="pull-right hidden"><em class="text-muted ${noSonarData ? 'hide' : ''}">Source: <a href="#" click.trigger="openLeavingSiteConfirmation('SonarQube™', sonarLink)" target="_blank">SonarQube™</a></em></span>
+                  <span class="pull-right hidden"><em class="text-muted ${noSonarData ? 'hide' : ''}">Source: <a href="#" id="project-details-sonarqube-${repo.id}" click.trigger="openLeavingSiteConfirmation('SonarQube™', sonarLink, $event.target)" target="_blank">SonarQube™</a></em></span>
                   <h3>SonarQube</h3>
                   <p>Is an open source platform for continuous inspection of code quality.</p>
                   <div class="row">

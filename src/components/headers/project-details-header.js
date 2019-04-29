@@ -12,6 +12,7 @@ export class ProjectDetailsHeader {
     this.dialogService = dialogService;
 
     this.repo = {};
+    this.exitDialogLinkId = null
 
     // TODO Have some sort of loading text or loading animation while dataContext loads
     // this.repo.project_name = 'Loading...';
@@ -32,9 +33,15 @@ export class ProjectDetailsHeader {
     history.back();
   }
 
-  openLeavingSiteConfirmation(name, url) {
+  openLeavingSiteConfirmation(name, url, target) {
+    this.exitDialogLinkId = target.getAttribute('id');
     const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false });
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed( response => {
+      const element = document.querySelector('#'+this.exitDialogLinkId);
+      if(element) {
+        element.focus();
+      }
+    });
   }
 
 }

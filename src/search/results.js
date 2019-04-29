@@ -43,6 +43,7 @@ export class Results {
     ];
     this.openReadmeLinkId = null;
     this.ariaLabel = '';
+    this.exitDialogLinkId = null;
   }
 
   determineActivationStrategy() {
@@ -362,9 +363,15 @@ export class Results {
     });
   }
 
-  openLeavingSiteConfirmation(name, url) {
+  openLeavingSiteConfirmation(name, url, target) {
+    this.exitDialogLinkId = target.getAttribute('id');
     const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false });
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed( response => {
+      const element = document.querySelector('#'+this.exitDialogLinkId);
+      if(element) {
+        element.focus();
+      }
+    });
   }
 
   removePillFilter(multiselectId, pill) {

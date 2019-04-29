@@ -19,6 +19,7 @@ export class Insight {
     this.chartMostUsedLanguages = {};
     this.mostUsedLanguages = {};
     this.loading = true;
+    this.exitDialogLinkId = null;
   }
 
   getData() {
@@ -521,8 +522,14 @@ export class Insight {
     return (a[1] > b[1]) ? -1 : 1;
   }
 
-  openLeavingSiteConfirmation(name, url) {
+  openLeavingSiteConfirmation(name, url, target) {
+    this.exitDialogLinkId = target.getAttribute('id');
     const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false });
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed( response => {
+      const element = document.querySelector('#'+this.exitDialogLinkId);
+      if(element) {
+        element.focus();
+      }
+    });
   }
 }

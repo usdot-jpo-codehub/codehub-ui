@@ -13,6 +13,7 @@ export class ReadmeModal {
     this.router = router;
     this.taskQueue = taskQueue;
     this.dialogService = dialogService;
+    this.exitDialogLinkId = null;
   }
 
   activate(repo, navigationInstruction) {
@@ -20,11 +21,10 @@ export class ReadmeModal {
   }
 
   attached() {
+    const self = this;
     this.taskQueue.queueMicroTask(() => {
       const readmeObj = document.querySelector('#readme-content');
       const anchors = readmeObj.getElementsByTagName('a');
-      const self = this;
-
       for (let i = 0; i < anchors.length; i++) {
         anchors[i].onclick = function na(event) {
           if (event.target.tagName.toLowerCase() === 'a') {
@@ -34,7 +34,7 @@ export class ReadmeModal {
                 return true;
               }
             } else {
-              self.openLeavingSiteConfirmation('redirection', event.target.href);
+              self.openLeavingSiteConfirmation(event.target.innerHTML, event.target.href, event.target);
             }
           }
           return false;
@@ -50,8 +50,17 @@ export class ReadmeModal {
     this.controller.ok();
   }
 
-  openLeavingSiteConfirmation(name, url) {
+  openLeavingSiteConfirmation(name, url, target) {
+    this.exitDialogLinkId = target.getAttribute('id') ? target.getAttribute('id') : 'no-id-detected';
     const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false });
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed( response => {
+      const element = document.querySelector('#'+this.exitDialogLinkId);
+      if(element) {
+        element.focus();
+      } else {
+        const readmeTitle = document.querySelector('#readme-title');
+        readmeTitle.focus();
+      }
+    });
   }
 }

@@ -1,37 +1,37 @@
-<template>    
-  <div tabindex="-1" role="dialog">
+<template>
+  <div tabindex="-1" role="dialog" id="exitdialog-title" aria-label="Exist confirmation dialog press escape to close the dialog at any time.">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" click.trigger="controller.cancel()" class="close" aria-label="Close"><span
+          <button tabindex="2" aria-hidden="true" type="button" click.trigger="controller.cancel()" class="close" aria-label="Close"><span
             aria-hidden="true"><i class="material-icons md-48">close</i></span></button>
-          <h4 class="modal-title"><span class="text-uppercase">You are now leaving the Intelligent Transportation Systems website.</span></h4>
+          <h4 tabindex="1" class="modal-title"><span class="text-uppercase">You are now leaving the Intelligent Transportation Systems website.</span></h4>
         </div>
-        <div class="modal-body leaving-modal">
-          <p>
+        <div tabindex="3" class="modal-body leaving-modal" aria-labelledby="leavingModla-p1 leavingModla-p2 leavingModla-p3 leavingModla-p4 leavingModla-p5 leavingModla-p6">
+          <p id="leavingModla-p1">
             You are about to access a non-government link outside of the U.S. Department of Transportation (DOT).
           </p>
-          <p>
-            <a href="#" click.trigger="navigateAndClose()">${model.url}</a>.
+          <p id="leavingModla-p2">
+            <a href="#" click.trigger="navigateAndClose()" aria-label="Target link belongs to: ${model.name}">${model.url}</a>
           </p>
-          <p>
+          <p id="leavingModla-p3">
               Our Web sites have many links to other organizations, including educational institutions and non-profit associations.
           </p>
-          <p>
+          <p id="leavingModla-p4">
               Please note: While links to Web sites outside of DOT are offered for your convenience in accessing transportation-related information, please be aware that when you exit DOT Web sites, the privacy policy, including tracking technology, computer security, intellectual property protection and Section 508 of the Rehabilitation Act (accessibility requirements) no longer apply. In addition, DOT cannot attest to the accuracy, relevancy, timeliness or completeness of information provided by linked sites.
           </p>
-          <p>
+          <p id="leavingModla-p5">
               Linking to a Web site does not constitute an endorsement by DOT or any of its employees of the sponsors of the site or the products presented on the site.
               For more information, please view DOT's Web site linking policy.
           </p>
-          <p>
-            To get back to the page you were previously viewing, click the "Cancel" button.
+          <p id="leavingModla-p6">
+            To stay in the page press the escape key or the "Cancel" button.
           </p>
           
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default btn-icon-right" attach-focus.bind="isFocus" click.delegate="navigateAndClose()" >Continue <i class="material-icons">chevron_right</i></button>
-          <button type="button" class="btn btn-default" click.trigger="controller.cancel()">Cancel</button>
+          <button tabindex="4" type="button" class="btn btn-default btn-icon-right" click.delegate="navigateAndClose()" >Continue <i class="material-icons" aria-hidden="true">chevron_right</i></button>
+          <button tabindex="5" type="button" class="btn btn-default" click.trigger="controller.cancel()">Cancel</button>
         </div>
       </div>
     </div>
