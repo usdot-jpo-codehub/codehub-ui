@@ -55,15 +55,15 @@ describe('Test - Card Search : ', () => {
 
   it('Expect organization link', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-search-organization-link');
-      expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.organization,repo.organizationUrl)');
+      const element = document.querySelector(`#card-search-organization-link-${mockProjectData[0].id}`);
+      expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.organization,repo.organizationUrl,$event.target)');
       done();
     }).catch( e => { console.log(e.toString()) });
   });
 
   it('Expect organization link title to be "View on Gitbub"', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-search-organization-link');
+      const element = document.querySelector(`#card-search-organization-link-${mockProjectData[0].id}`);
       const text = `Project organization: ${mockProjectData[0].organization}, view on GitHub.`;
       expect(element.getAttribute('aria-label')).toEqual(text);
       done();
@@ -97,8 +97,8 @@ describe('Test - Card Search : ', () => {
 
   it('Expect project status link url', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-search-project-status-link');
-      expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.organization,repo.repositoryUrl)');
+      const element = document.querySelector(`#card-search-project-status-link-${mockProjectData[0].id}`);
+      expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.project_name,repo.repositoryUrl,$event.target)');
       done();
     }).catch( e => { console.log(e.toString()) });
   });

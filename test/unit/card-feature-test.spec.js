@@ -58,15 +58,15 @@ describe('Test Card Feature : ', () => {
 
   it('Expect organization link', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-feature-organization-link');
-      expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.organization,repo.organizationUrl)');
+      const element = document.querySelector(`#card-feature-organization-link-${mockProjectData[0].id}`);
+      expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.organization,repo.organizationUrl,$event.target)');
       done();
     }).catch( e => { console.log(e.toString()) });
   });
 
   it('Expect organization aria-label to be "Project organization: [organization], view on GitHub."', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-feature-organization-link');
+      const element = document.querySelector(`#card-feature-organization-link-${mockProjectData[0].id}`);
       const text = `Project organization: ${mockProjectData[0].organization}, view on GitHub.`;
       expect(element.getAttribute('aria-label')).toEqual(text);
       done();
@@ -75,7 +75,7 @@ describe('Test Card Feature : ', () => {
 
   it('Expect organization text to be the organization name', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-feature-organization-link');
+      const element = document.querySelector(`#card-feature-organization-link-${mockProjectData[0].id}`);
       expect(element.innerHTML).toEqual(mockProjectData[0].organization);
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -100,8 +100,8 @@ describe('Test Card Feature : ', () => {
 
   it('Expect project status link url', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-feature-project-status-link');
-      expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.organization,repo.repositoryUrl)');
+      const element = document.querySelector(`#card-feature-project-status-link-${mockProjectData[0].id}`);
+      expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.project_name,repo.repositoryUrl,$event.target)');
       done();
     }).catch( e => { console.log(e.toString()) });
   });

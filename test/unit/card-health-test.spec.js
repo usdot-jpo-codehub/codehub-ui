@@ -59,7 +59,7 @@ describe('Test - Card Health : ', () => {
 
   it('Expect organization link', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-health-organization-link');
+      const element = document.querySelector(`#card-health-organization-link-${mockCodeHealthiestData[0].id}`);
       let orgLink = mockCodeHealthiestData[0].organizationUrl;
       expect(element.getAttribute('href')).toEqual(orgLink ? orgLink : '#');
       done();
@@ -68,7 +68,7 @@ describe('Test - Card Health : ', () => {
 
   it('Expect organization link title to be "View on Gitbub"', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-health-organization-link');
+      const element = document.querySelector(`#card-health-organization-link-${mockCodeHealthiestData[0].id}`);
       const text = `Project organization: ${mockCodeHealthiestData[0].organization}, view on GitHub.`;
       expect(element.getAttribute('aria-label')).toEqual(text);
       done();
@@ -77,7 +77,8 @@ describe('Test - Card Health : ', () => {
 
   it('Expect organization text to be the organization name', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-health-organization-link');
+      const id = `#card-health-organization-link-${mockCodeHealthiestData[0].id}`;
+      const element = document.querySelector(id);
       expect(element.innerHTML).toEqual(mockCodeHealthiestData[0].organization);
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -102,7 +103,7 @@ describe('Test - Card Health : ', () => {
 
   it('Expect Health status link url', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-health-health-status-link');
+      const element = document.querySelector(`#card-health-health-status-link-${mockCodeHealthiestData[0].id}`);
       expect(element.innerHTML).toEqual('SonarQube™');
       done();
     }).catch( e => { console.log(e.toString()) });
