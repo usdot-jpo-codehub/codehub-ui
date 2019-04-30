@@ -25,7 +25,7 @@ describe('Test Card Feature : ', () => {
 
   it('Expect title card link text to be project name', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-feature-title-link');
+      const element = document.querySelector(`#card-feature-title-link-${mockProjectData[0].id}`);
       expect(element.innerHTML).toEqual(mockProjectData[0].project_name);
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -33,7 +33,7 @@ describe('Test Card Feature : ', () => {
 
   it('Expect title card link aria-label to be project name', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-feature-title-link');
+      const element = document.querySelector(`#card-feature-title-link-${mockProjectData[0].id}`);
       const text = `Project name: ${mockProjectData[0].project_name}`
       expect(element.getAttribute('aria-label')).toEqual(text);
       done();
@@ -84,7 +84,7 @@ describe('Test Card Feature : ', () => {
   it('Expect organization updated days', (done) => {
     component.create(bootstrap).then( () => {
       let ago = new AgoValueConverter();
-      const element = document.querySelector('#card-feature-organization-updated-text');
+      const element = document.querySelector(`#card-feature-organization-updated-text-${mockProjectData[0].id}`);
       expect(element.innerHTML).toEqual('Updated '+ago.toView(mockProjectData[0].updatedAt));
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -92,7 +92,7 @@ describe('Test Card Feature : ', () => {
 
   it('Expect organization origin text', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-feature-organization-origin-text');
+      const element = document.querySelector(`#card-feature-organization-origin-text-${mockProjectData[0].id}`);
       expect(element.innerHTML).toEqual(mockProjectData[0].origin);
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -109,7 +109,7 @@ describe('Test Card Feature : ', () => {
   it('Expect project number of stars', (done) => {
     component.create(bootstrap).then( () => {
       let num = new NumValueConverter();
-      const element = document.querySelector('#card-feature-project-stars');
+      const element = document.querySelector(`#card-feature-project-stars-${mockProjectData[0].id}`);
       expect(element.innerHTML).toEqual(num.toView(mockProjectData[0].stars));
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -118,7 +118,7 @@ describe('Test Card Feature : ', () => {
   it('Expect project number of contributors', (done) => {
     component.create(bootstrap).then( () => {
       let num = new NumValueConverter();
-      const element = document.querySelector('#card-feature-project-contributors');
+      const element = document.querySelector(`#card-feature-project-contributors-${mockProjectData[0].id}`);
       expect(element.innerHTML).toEqual(num.toView(mockProjectData[0].contributors));
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -127,7 +127,7 @@ describe('Test Card Feature : ', () => {
   it('Expect project number of watchers', (done) => {
     component.create(bootstrap).then( () => {
       let num = new NumValueConverter();
-      const element = document.querySelector('#card-feature-project-watchers');
+      const element = document.querySelector(`#card-feature-project-watchers-${mockProjectData[0].id}`);
       expect(element.innerHTML).toEqual(num.toView(mockProjectData[0].watchers));
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -136,7 +136,7 @@ describe('Test Card Feature : ', () => {
   it('Expect project number of commits', (done) => {
     component.create(bootstrap).then( () => {
       let num = new NumValueConverter();
-      const element = document.querySelector('#card-feature-project-commits');
+      const element = document.querySelector(`#card-feature-project-commits-${mockProjectData[0].id}`);
       expect(element.innerHTML).toEqual(num.toView(mockProjectData[0].commits, 1));
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -145,7 +145,7 @@ describe('Test Card Feature : ', () => {
   it('Expect project number of releases', (done) => {
     component.create(bootstrap).then( () => {
       let num = new NumValueConverter();
-      const element = document.querySelector('#card-feature-project-releases');
+      const element = document.querySelector(`#card-feature-project-releases-${mockProjectData[0].id}`);
       expect(element.innerHTML).toEqual(''+num.toView(mockProjectData[0].releases.length));
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -154,7 +154,7 @@ describe('Test Card Feature : ', () => {
   it('Expect project number of forks', (done) => {
     component.create(bootstrap).then( () => {
       let num = new NumValueConverter();
-      const element = document.querySelector('#card-feature-project-forks');
+      const element = document.querySelector(`#card-feature-project-forks-${mockProjectData[0].id}`);
       expect(element.innerHTML).toEqual(''+num.toView(mockProjectData[0].forks));
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -163,7 +163,7 @@ describe('Test Card Feature : ', () => {
   it('Expect project number of dowloads', (done) => {
     component.create(bootstrap).then( () => {
       let num = new NumValueConverter();
-      const element = document.querySelector('#card-feature-project-downloads');
+      const element = document.querySelector(`#card-feature-project-downloads-${mockProjectData[0].id}`);
       let downloads = 0;
       mockProjectData[0].releases.forEach( e => downloads += e.total_downloads);
       expect(element.innerHTML).toEqual(''+num.toView(downloads));
