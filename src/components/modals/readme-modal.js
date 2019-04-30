@@ -14,6 +14,7 @@ export class ReadmeModal {
     this.taskQueue = taskQueue;
     this.dialogService = dialogService;
     this.exitDialogLinkId = null;
+    this.visible = true;
   }
 
   activate(repo, navigationInstruction) {
@@ -51,16 +52,20 @@ export class ReadmeModal {
   }
 
   openLeavingSiteConfirmation(name, url, target) {
+    this.visible = false;
     this.exitDialogLinkId = target.getAttribute('id') ? target.getAttribute('id') : 'no-id-detected';
     const mdl = { name, url };
     this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed( response => {
-      const element = document.querySelector('#'+this.exitDialogLinkId);
-      if(element) {
-        element.focus();
-      } else {
-        const readmeTitle = document.querySelector('#readme-title');
-        readmeTitle.focus();
-      }
+      this.visible = true;
+      setTimeout(() => {
+        const element = document.querySelector('#'+this.exitDialogLinkId);
+        if(element) {
+          element.focus();
+        } else {
+          const readmeTitle = document.querySelector('#readme-title');
+          readmeTitle.focus();
+        }
+      },200);
     });
   }
 }

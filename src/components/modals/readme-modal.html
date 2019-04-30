@@ -1,6 +1,6 @@
 <template>
   <require from="resources/custom-elements/markdown"></require>
-  <div tabindex="-1" role="dialog" id="readme-title" aria-label="Readme dialog for ${repo.project_name}, press escape to exit the dialog at any time.">
+  <div class="${visible?'':'hide'}" tabindex="-1" role="dialog" id="readme-title" aria-label="Readme dialog for ${repo.project_name}, press escape to exit the dialog at any time.">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
