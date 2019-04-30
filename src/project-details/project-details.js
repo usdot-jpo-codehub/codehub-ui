@@ -5,6 +5,7 @@ import { DataContext } from 'services/datacontext';
 import { AddProjectsModal } from 'components/modals/addprojects-modal.js';
 import { ReadmeModal } from '../components/modals/readme-modal';
 import { LeavingModal } from '../components/modals/leaving-modal';
+import { ContributorsModal } from '../components/modals/contributors-modal';
 import { StageConfig } from '../../stageConf';
 
 @inject(DataContext, Router, DialogService, StageConfig)
@@ -30,6 +31,9 @@ export class ProjectDetails {
     this.useUsCollapsed = true;
     this.numDepends = 8;
     this.exitDialogLinkId = null;
+    this.openReadmeLinkId = null;
+    this.addProjectLinkId = null;
+    this.contributorsLinkid = null;
 
     this.health = {}; // JSON.parse('{ "violations" : { "val" : 106.0, "frmt_val" : "106", "key" : "violations" }, "security_rating" : { "val" : 3.0, "frmt_val" : "C", "data" : "C", "key" : "security_rating" }, "sqale_rating" : { "val" : 1.0, "frmt_val" : "A", "data" : "A", "key" : "sqale_rating" }, "code_smells" : { "val" : 81.0, "frmt_val" : "81", "key" : "code_smells" }, "new_violations" : { }, "bugs" : { "val" : 24.0, "frmt_val" : "24", "key" : "bugs" }, "new_code_smells" : { }, "complexity" : { "val" : 203.0, "frmt_val" : "203", "key" : "complexity" }, "new_vulnerabilities" : { }, "vulnerabilities" : { "val" : 1.0, "frmt_val" : "1", "key" : "vulnerabilities" }, "new_bugs" : { }, "reliability_rating" : { "val" : 3.0, "frmt_val" : "C", "data" : "C", "key" : "reliability_rating" } }');
 
@@ -97,18 +101,29 @@ export class ProjectDetails {
     this.noDependencies = this.componentDependencies.length === 0 && this.projectsThatUseUs.length === 0;
   }
 
-  openAddProjectModal() {
-    this.dialogService.open({ viewModel: AddProjectsModal, model: this.repo, lock: false }).then(response => {
-      if (!response.wasCancelled) {
+  openAddProjectModal(target) {
+    this.addProjectLinkId = target.getAttribute('id');
+    this.dialogService.open({ viewModel: AddProjectsModal, model: this.repo, lock: false }).whenClosed(response => {
+      if (response && response.wasCancelled) {
         this.dataContext.postUsedProject(response.output, this.repo.id).then(data => {
           this.projectsThatUseUs.push(response.output);
-        });
+        }).catch((e) => {console.log(e);});
+      }
+      const element = document.querySelector('#'+this.addProjectLinkId);
+      if(element) {
+        element.focus();
       }
     });
   }
 
-  openReadmeModal(repo) {
-    this.dialogService.open({ viewModel: ReadmeModal, model: repo, lock: false });
+  openReadmeModal(repo, target) {
+    this.openReadmeLinkId = target.getAttribute('id');
+    this.dialogService.open({ viewModel: ReadmeModal, model: repo, lock: false }).whenClosed(response => {
+      if (response.wasCancelled) {
+        const element = document.querySelector('#'+this.openReadmeLinkId);
+        element.focus();
+      }
+    });
   }
 
   openLeavingSiteConfirmation(name, url, target) {
@@ -116,6 +131,16 @@ export class ProjectDetails {
     const mdl = { name, url };
     this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed( response => {
       const element = document.querySelector('#'+this.exitDialogLinkId);
+      if(element) {
+        element.focus();
+      }
+    });
+  }
+
+  openContribModal(repo, target) {
+    this.contributorsLinkid = target.getAttribute('id');
+    this.dialogService.open({ viewModel: ContributorsModal, model: repo, lock:false }).whenClosed( response => {
+      const element = document.querySelector('#'+this.contributorsLinkid);
       if(element) {
         element.focus();
       }

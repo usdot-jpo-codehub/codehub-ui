@@ -3,13 +3,15 @@ import { activationStrategy } from 'aurelia-router';
 import { DataContext } from 'services/datacontext';
 import { DialogService } from 'aurelia-dialog';
 import { LeavingModal } from '../../components/modals/leaving-modal';
+import { StageConfig } from '../../stageConf';
 
-@inject(DataContext, DialogService)
+@inject(DataContext, DialogService, StageConfig)
 export class ProjectDetailsHeader {
 
-  constructor(dataContext, dialogService) {
+  constructor(dataContext, dialogService, stageConfig) {
     this.dataContext = dataContext;
     this.dialogService = dialogService;
+    this.stageConfig = stageConfig;
 
     this.repo = {};
     this.exitDialogLinkId = null

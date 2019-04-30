@@ -136,8 +136,9 @@ describe('Project Details : ', () => {
   it('Expects Project Project Update At to be', (done) => {
     component.create(bootstrap).then(() => {
       let element = document.querySelector('#project-update-at');
+      console.log(element);
       let ago = new AgoValueConverter();
-      expect(element.innerHTML).toEqual(ago.toView(mockProjectData[0].updatedAt));
+      expect(element.innerHTML).toEqual('Updated '+ago.toView(mockProjectData[0].updatedAt));
       done();
     }).catch( e => { console.log(e.toString())} );
   });
@@ -152,8 +153,8 @@ describe('Project Details : ', () => {
 
   it('Expects Project Readme button Click-Trigger to be', (done) => {
     component.create(bootstrap).then(() => {
-      let element = document.querySelector('#project-readme-button');
-      expect(element.getAttribute('click.trigger')).toEqual('openReadmeModal(repo)');
+      let element = document.querySelector(`#project-readme-button-${mockProjectData[0].id}`);
+      expect(element.getAttribute('click.trigger')).toEqual('openReadmeModal(repo,$event.target)');
       done();
     }).catch( e => { console.log(e.toString())} );
   });

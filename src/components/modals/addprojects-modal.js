@@ -19,6 +19,7 @@ export class AddProjectsModal {
 
     this.selectedProjects = [];
     this.selectedProjectsEmpty = true;
+    this.hasFocus = true;
   }
 
   getData() {
@@ -28,9 +29,11 @@ export class AddProjectsModal {
           this.projects = JSON.parse(JSON.stringify(projects));
           this.rebuildProjectSelect(projects);
           $('#selectProjects').click();
+          $('#addproject-dialog').focus();
           return this.projects;
         }, 10);
-      });
+      })
+      .catch((e) => {console.log(e);});
   }
 
   activate() {
@@ -40,6 +43,7 @@ export class AddProjectsModal {
   attached() {
     this.setupProjectSelect();
     this.rebuildProjectSelect(this.projects);
+    this.hasFocus = true;
   }
 
   rebuildProjectSelect(projects) {
@@ -96,14 +100,12 @@ export class AddProjectsModal {
         name: proj.project_name,
         org_name: proj.organization,
       };
-
       this.controller.ok(postData);
     } else {
       const postData = {
         name: this.nameFormInput,
         org_name: this.orgFormInput,
       };
-
       this.controller.ok(postData);
     }
   }

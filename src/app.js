@@ -1,6 +1,5 @@
 import { DialogService } from 'aurelia-dialog';
 import { inject } from 'aurelia-framework';
-import { ContributorsModal } from 'components/modals/contributors-modal.js';
 import { FeedbackModal } from 'components/modals/feedback-modal.js';
 import { LeavingModal } from 'components/modals/leaving-modal.js';
 import { StageConfig } from './stageConf';
@@ -40,10 +39,6 @@ export class App {
         }
       }
     },500);
-  }
-
-  openContribModal(repo) {
-    this.dialogService.open({ viewModel: ContributorsModal, model: repo, lock:false });
   }
 
   openFeedbackModal() {
