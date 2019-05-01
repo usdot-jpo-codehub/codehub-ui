@@ -6,7 +6,7 @@ import { DataContext } from 'services/datacontext';
 export class InsightTitle {
   constructor(dataContext) {
     this.dataContext = dataContext;
-    this.lastUpdated = 'Hello';
+    this.lastUpdated = '';
   }
 
   getData() {
