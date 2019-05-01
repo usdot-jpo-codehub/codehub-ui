@@ -70,19 +70,6 @@ describe('Results : ', () => {
       }, 100);
     }).catch( e => { console.log(e.toString())} );
   });
-  it('Validate result text aria-label', (done) => {
-    dtx.responseGetAll = mockProjectData;
-    dtx.responseSearch = mockProjectData;
-    component.create(bootstrap).then(() => {
-      component.viewModel.activate(searchObject);
-      setTimeout(() => {
-        let resultsText = document.querySelector('#results-result-text');
-        let ariaLabel = resultsText.getAttribute('aria-label');
-        expect(ariaLabel).toEqual('6 results for search text: asn.1');
-        done();
-      }, 100);
-    }).catch( e => { console.log(e.toString())} );
-  });
   it('Validate if filters are available', (done) => {
     dtx.responseGetAll = mockProjectData;
     dtx.responseSearch = mockProjectData;

@@ -3,24 +3,19 @@
   <require from="../resources/value-converters/ago"></require>
   <require from="../resources/custom-attributes/bootstrap-tooltip"></require>
 
-  <div if.bind="repo" class="col-lg-4 col-md-12 col-sm-12" aria-hidden="true">
-    <div class="card card-default hover-card" aria-hidden="true">
-      <!-- <div class="ribbon-wrapper">
-        <div class="ribbon">Gamification</div>
-      </div> -->
-      <div class="card-header" aria-hidden="true">
+  <div if.bind="repo" class="col-lg-4 col-md-12 col-sm-12">
+    <div class="card card-default hover-card">
+      <div class="card-header">
         <div tabindex="0" class="lang-logo" role="img" aria-label="Language icon ${repo.language}">
-          <span>
             <img alt="Language icon ${repo.language}" src="img/language-icons/${repo.language.toLowerCase() ? repo.language.toLowerCase() : 'default'}.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';">
-          </span>
         </div>
         <div class="card-title multiline">
           <a id="card-health-title-link-${repo.id}" href="#" route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Project name: ${repo.project_name}">${repo.project_name}</a>
         </div>
-        <div tabindex="0" class="org-name" aria-label="${repo.language ? 'Project language: '+repo.language : 'Project language: not identified.'}">${ repo.language &&  repo.language !== undefined  ? repo.language : stageConfig.NO_LANG}</div>
+        <div tabindex="0" class="org-name">${ repo.language &&  repo.language !== undefined  ? repo.language : stageConfig.NO_LANG}</div>
       </div>
-      <div tabindex="0" class="proj-desc multiline" aria-label="Project description: ${repo.project_description ? repo.project_description : 'empty'}">${repo.project_description ? repo.project_description : ''}</div>
-      <div class="text-muted last-updated">By <a id="card-health-organization-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl,$event.target)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" aria-label="Project organization: ${repo.organization}, view on GitHub." target="_blank">${repo.organization}</a> &nbsp; | &nbsp; <span tabindex="0" id="card-health-organization-updated-text-${repo.id}" aria-label="Last update: ${repo.updatedAt | ago}">Updated ${repo.updatedAt | ago}</span> <span class="pull-right repo-status"><i class="material-icons">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> <span tabindex="0" id="card-health-organization-origin-text-${repo.id}" aria-label="Project origin: ${repo.origin}">${repo.origin}</span></span></div>
+      <div tabindex="0" class="proj-desc multiline">${repo.project_description ? repo.project_description : ''}</div>
+      <div class="text-muted last-updated"><span aria-hidden="true">By&nbsp;</span><a id="card-health-organization-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl,$event.target)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" aria-label="Project organization: ${repo.organization}, view on GitHub." target="_blank">${repo.organization}</a> &nbsp; | &nbsp; <span tabindex="0" id="card-health-organization-updated-text-${repo.id}">Updated ${repo.updatedAt | ago}</span> <span class="pull-right repo-status"><i class="material-icons" aria-hidden="true">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> <span tabindex="0" id="card-health-organization-origin-text-${repo.id}">${repo.origin}</span></span></div>
 
       <div class="card-stats lined-header">
         <span class="pull-right hidden"><em class="text-muted">Source: <a id="card-health-health-status-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation('SonarQube™', repo.sonarlink,$event.target)" target="_blank" aria-label="View on SonarQube.">SonarQube™</a></em></span>
@@ -30,29 +25,29 @@
       <div class="row health-stats text-center">
         <div class="col-lg-4 col-md-4 col-sm-4">
           <h3 tabindex="0" class="health-tiles" aria-label="Reliability, ${ bugs | num } bugs,, ${repo.metrics ? repo.metrics.reliability_rating.data : 'No'} rating">Reliability</h3>
-          <span id="card-health-project-bugs-${repo.id}" class="num text-muted text-emphasized">${ bugs | num }</span><span class="text-muted"> bugs <span id="card-health-project-bugs-rating-${repo.id}" class="rating rating-${repo.metrics ? repo.metrics.reliability_rating.data : ''}">${repo.metrics ? repo.metrics.reliability_rating.data : ''}</span></span>
+          <span id="card-health-project-bugs-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${ bugs | num }</span><span class="text-muted" aria-hidden="true"> bugs <span id="card-health-project-bugs-rating-${repo.id}" class="rating rating-${repo.metrics ? repo.metrics.reliability_rating.data : ''}" aria-hidden="true">${repo.metrics ? repo.metrics.reliability_rating.data : ''}</span></span>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
           <h3 tabindex="0" class="health-tiles" aria-label="Security, ${ vulnerabilities | num } vulnerabilities,, ${repo.metrics ? repo.metrics.security_rating.data : 'No'} rating">Security</h3>
-          <span id="card-health-project-vulnerabilities-${repo.id}" class="num text-muted text-emphasized">${ vulnerabilities | num }</span><span class="text-muted"> vulnerabilities <span id="card-health-project-vulnerabilities-rating-${repo.id}" class="rating rating-${repo.metrics ? repo.metrics.security_rating.data : ''}">${repo.metrics ? repo.metrics.security_rating.data : ''}</span></span>
+          <span id="card-health-project-vulnerabilities-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${ vulnerabilities | num }</span><span class="text-muted" aria-hidden="true"> vulnerabilities <span id="card-health-project-vulnerabilities-rating-${repo.id}" class="rating rating-${repo.metrics ? repo.metrics.security_rating.data : ''}" aria-hidden="true">${repo.metrics ? repo.metrics.security_rating.data : ''}</span></span>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
           <h3 tabindex="0" class="health-tiles" aria-label="Technical Debt, ${ repo.metrics ? repo.metrics.sqale_index.frmt_val : 'Not available'},, ${repo.metrics ? repo.metrics.sqale_rating.data : 'No'} rating">Technical Debt</h3>
-          <span id="card-health-project-debt-days-${repo.id}" class="num text-muted text-emphasized">${ repo.metrics ? repo.metrics.sqale_index.frmt_val : ''}</span><span class="text-muted"> - <span id="card-health-project-debt-days-rating-${repo.id}" class="rating rating-${repo.metrics ? repo.metrics.sqale_rating.data : ''}">${repo.metrics ? repo.metrics.sqale_rating.data : ''}</span></span>
+          <span id="card-health-project-debt-days-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${ repo.metrics ? repo.metrics.sqale_index.frmt_val : ''}</span><span class="text-muted" aria-hidden="true"> - <span id="card-health-project-debt-days-rating-${repo.id}" class="rating rating-${repo.metrics ? repo.metrics.sqale_rating.data : ''}" aria-hidden="true">${repo.metrics ? repo.metrics.sqale_rating.data : ''}</span></span>
         </div>
       </div>
 
       <div class="row card-links clearfix">
-        <ul class="list-inline pull-left" aria-hidden="true">
-          <li aria-hidden="true"><a id="card-health-project-open-readme-${repo.id}" href="#" click.trigger="openReadmeModal(repo,$event.target)" aria-label="Show readme file"><i class="material-icons">library_books</i> Show README</a></li>
+        <ul class="list-inline pull-left">
+          <li><a id="card-health-project-open-readme-${repo.id}" href="#" click.trigger="openReadmeModal(repo,$event.target)" aria-label="Show readme file"><i class="material-icons" aria-hidden="true">library_books</i> Show README</a></li>
         </ul>
-        <ul class="list-inline pull-right" aria-hidden="true">
-          <li aria-hidden="true"><a href="#" class="disabled hide" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a></li>
-          <li aria-hidden="true"><a href="#" class="disabled hide" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="Bookmark"><i class="material-icons">bookmark_border</i></a></li>
+        <ul class="list-inline pull-right">
+          <li><a href="#" class="disabled hide" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons" aria-hidden="true">share</i></a></li>
+          <li><a href="#" class="disabled hide" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="Bookmark"><i class="material-icons" aria-hidden="true">bookmark_border</i></a></li>
         </ul>
       </div>
 
-      <a class="card-link" href="#" route-href="route:project-details; params.bind: {id:repo.id}"></a>
+      <a class="card-link" href="#" route-href="route:project-details; params.bind: {id:repo.id}"  aria-label="Open details for project ${repo.project_name}">&nbsp;</a>
     </div>
   </div>
 </template>

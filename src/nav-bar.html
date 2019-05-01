@@ -1,25 +1,25 @@
 <template bindable="router">
-<nav class="navbar navbar-default" aria-hidden="true">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
       <div class="navbar-header">
-          <a class="navbar-brand" route-href="route:popular" aria-hidden="true">
+          <a class="navbar-brand" route-href="route:popular">
             <img src="../img/logo.png" alt="ITS CodeHub Logo, United States of America, Department of Transportation" id="logo">
             <span if.bind="stageConfig.IS_BETA" class="beta-message" aria-label="Beta version">Beta</span>
           </a>
       </div>
       <div id="navbar">
-        <ul id="titleBarNav" class="nav navbar-nav main-nav" aria-hidden="true">
-          <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : 'stage'}" aria-hidden="true">
-            <a href.bind="row.href" aria-label="${row.title}">${row.title}</a>
+        <ul id="titleBarNav" class="nav navbar-nav main-nav" >
+          <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : 'stage'}">
+            <a tabindex="0" href.bind="row.href" aria-label="${row.title}">${row.title}</a>
           </li>
         </ul>
         <div if.bind="projects.title = 'project-details'">
-          <ul class="nav navbar-nav navbar-right user-nav" aria-hidden="true">
-            <li class="utility-icons" aria-hidden="true"><a href="#" id="searchBtn" title="Search" aria-label="Search for project names and languages"><i class="material-icons" aria-hidden="true">search</i></a></li>
-            <li class="utility-icons utility-icons-external-links" aria-hidden="true"><a href="mailto:codehub_support@bah.com?subject=Feedback on CodeHub" aria-label="Contact us">CONTACT US&emsp;&nbsp;|</a></li>
-            <li class="utility-icons utility-icons-external-links" aria-hidden="true"><a href="https://www.transportation.gov/mission/about-us" target="_blank" aria-label="About Department of Transportation" >&emsp;&nbsp;ABOUT DOT&emsp;&nbsp;|</a></li>
-            <li class="utility-icons utility-icons-external-links" aria-hidden="true"><a href="https://www.transportation.gov/briefingroom" target="_blank" aria-label="Briefing room" >&emsp;&nbsp;BRIEFING ROOM&emsp;&nbsp;|</a></li>
-            <li class="utility-icons utility-icons-external-links" aria-hidden="true"><a href="https://www.transportation.gov/our-activities" target="_blank" aria-label="Our Activities" >&emsp;&nbsp;OUR ACTIVITIES&emsp;&nbsp;</a></li>
+          <ul class="nav navbar-nav navbar-right user-nav">
+            <li class="utility-icons"><a href="#" id="searchBtn" title="Search" aria-label="Search for project names and languages"><i class="material-icons" aria-hidden="true">search</i></a></li>
+            <li class="utility-icons utility-icons-external-links"><a href="mailto:codehub_support@bah.com?subject=Feedback on CodeHub" aria-label="Contact us">CONTACT US&emsp;&nbsp;|</a></li>
+            <li class="utility-icons utility-icons-external-links"><a href="https://www.transportation.gov/mission/about-us" target="_blank" aria-label="About Department of Transportation" >&emsp;&nbsp;ABOUT DOT&emsp;&nbsp;|</a></li>
+            <li class="utility-icons utility-icons-external-links"><a href="https://www.transportation.gov/briefingroom" target="_blank" aria-label="Briefing room" >&emsp;&nbsp;BRIEFING ROOM&emsp;&nbsp;|</a></li>
+            <li class="utility-icons utility-icons-external-links"><a href="https://www.transportation.gov/our-activities" target="_blank" aria-label="Our Activities" >&emsp;&nbsp;OUR ACTIVITIES&emsp;&nbsp;</a></li>
           </ul>
 
           <form id="searchForm" submit.delegate="executeNavSearch(navSearchText)" class="navbar-search hidden" role="search">
