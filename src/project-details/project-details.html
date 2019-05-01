@@ -116,21 +116,19 @@
                   <h3 tabindex="0" aria-label="Projects reusing us, ${projectsThatUseUs ? projectsThatUseUs.length + 'projects detected': '0 projects detected'}">Projects reusing us</h3>
                   <div class="row">
                     <div class="multi-column">
-                      <ul id="project-list-reusing-us-visible" class="list-unstyled" aria-hidden="true">
-                        <li repeat.for="uses of projectsThatUseUs | pick:numDepends" aria-hidden="true"><strong tabindex="0" aria-label="Project name: ${uses.name}, organization: ${uses.org_name}">${uses.name}</strong>
-                          <ul aria-hidden="true">
-                            <li aria-hidden="true"><small>${uses.org_name}</small></li>
-                          </ul>
+                      <ul id="project-list-reusing-us-visible" class="list-unstyled">
+                        <li tabindex="0" repeat.for="uses of projectsThatUseUs | pick:numDepends" aria-label="Project name: ${uses.name}, organization: ${uses.org_name}">
+                          <strong aria-hidden="true">${uses.name}</strong>
+                          <small aria-hidden="true">${uses.org_name}</small>
                         </li>
                       </ul>
                     </div>
                     <div class="collapse" id="collapseUseUs">
                       <div class="multi-column">
-                        <ul id="project-list-reusing-us-collapse" class="list-unstyled" aria-hidden="true">
-                          <li repeat.for="uses of projectsThatUseUs | skip:numDepends" aria-hidden="true"><strong tabindex="0" aria-label="Project name: ${uses.name}, organization: ${uses.org_name}">${uses.name}</strong>
-                            <ul aria-hidden="true">
-                              <li aria-hidden="true"><small>${uses.org_name}</small></li>
-                            </ul>
+                        <ul id="project-list-reusing-us-collapse" class="list-unstyled">
+                          <li tabindex="0" repeat.for="uses of projectsThatUseUs | skip:numDepends" aria-label="Project name: ${uses.name}, organization: ${uses.org_name}">
+                            <strong aria-hidden="true">${uses.name}</strong>
+                            <small aria-hidden="true">${uses.org_name}</small>
                           </li>
                         </ul>
                       </div>

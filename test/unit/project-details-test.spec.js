@@ -262,7 +262,7 @@ describe('Project Details : ', () => {
     component.create(bootstrap).then(() => {
       let visibleItems = document.querySelector('#project-list-reusing-us-visible').getElementsByTagName('li');
       let collapsedItems = document.querySelector('#project-list-reusing-us-collapse').getElementsByTagName('li');
-      let total = (visibleItems.length/2) + (collapsedItems.length/2); // the division by 2 is because there is a nested list to hold the org_name.
+      let total = (visibleItems.length) + (collapsedItems.length);
 
       expect(total).toEqual(mockProjectData[0].forkedRepos.length);
       done();
