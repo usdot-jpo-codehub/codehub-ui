@@ -1,6 +1,6 @@
 .hero-banner {
 	background: @stage-banner-bk; /* Old browsers */
-	background: linear-gradient(135deg, darken(@stage-banner-red, 5%) 0%, darken(@stage-banner-orange, 5%) 100%);
+	background: linear-gradient(135deg, darken(@stage-banner-start, 5%) 0%, darken(@stage-banner-start, 5%) 100%);
 	position: relative;
 
 	.inner {
@@ -27,6 +27,9 @@
 			font-size: 1.5em;
 			border: none;
 			background-color: @white !important;
+			&:focus {
+				font-weight: 400;
+		  }
 		}
 
 		.input-group-btn {
@@ -67,7 +70,7 @@
 
 			.material-icons {
 				font-size: 40px;
-				color: @stage-red;
+				color: darken(@stage-red, 20%);
 			}
 		}
 

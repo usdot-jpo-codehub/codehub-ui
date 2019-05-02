@@ -17,6 +17,10 @@ body {
   margin-bottom: 50px;
 }
 
+// *:focus {
+//   outline: none;
+//  }
+
 .flex-row {
 	display: flex;
 }
@@ -163,7 +167,7 @@ h3{
   .material-icons {
     vertical-align: -7px;
     margin-right: 5px;
-    color: lighten(@black, 75%);
+    color: lighten(@black, 35%);
   }
 
   label {
@@ -398,6 +402,7 @@ a.disabled {
     font-size: @font-size-medium;
     text-transform: none;
     margin-bottom: 0;
+    color: lighten(@text-muted, 3%);
   }
 
   .text-muted {
@@ -408,7 +413,7 @@ a.disabled {
 
 .card-stats {
   font-size: @font-size-small;
-  
+
   .text-muted {
     padding-left: 10px;
     padding-top: 7px;
@@ -581,6 +586,7 @@ a.disabled {
   font-weight: normal;
   font-size: @font-size-small;
   padding: 3px 10px;
+  background-color: transparent;
 }
 
 .toaster-notification {
