@@ -58,6 +58,7 @@ node {
 
               sh 'docker-compose up -d'
               sh 'docker-compose logs --tail="all"'
+              sh 'docker-compose down'
               sh 'echo Integration Test is complete'
           }
       }
