@@ -6,52 +6,52 @@
   <div if.bind="repo" class="col-lg-4 col-md-12 col-sm-12">
     <div class="card card-default hover-card">
       <div class="ribbon-wrapper">
-        <div class="ribbon" >Featured</div>
+        <div tabindex="0" class="ribbon" role="img" aria-label="Featured ribbon image.">Featured</div>
       </div>
       <div class="card-header">
-        <div tabindex="0" class="lang-logo" role="img" aria-hidden="false" aria-label="Language icon ${repo.language}">
+        <div tabindex="0" class="lang-logo" role="img" aria-label="Language icon ${repo.language}">
             <img alt="Language icon ${repo.language}" src="img/language-icons/${repo.language.toLowerCase() ? repo.language.toLowerCase() : 'default'}.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';">
         </div>
         <div class="card-title multiline">
-          <a id="card-feature-title-link" href="#" route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Project name: ${repo.project_name}">${repo.project_name}</a>
+          <a id="card-feature-title-link-${repo.id}" href="#" route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Project name: ${repo.project_name}">${repo.project_name}</a>
         </div>
-        <div tabindex="0" class="org-name" aria-label="${repo.language ? 'Project language: '+repo.language : 'Project language: not identified.'}">${repo.language ? repo.language : stageConfig.NO_LANG}</div>
+        <div tabindex="0" class="org-name">${repo.language ? repo.language : stageConfig.NO_LANG}</div>
       </div>
-      <div tabindex="0" class="proj-desc multiline" aria-label="Project description: ${repo.project_description}">${repo.project_description}</div>
-      <div class="text-muted last-updated" aria-hidden="true">By <a id="card-feature-organization-link" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" target="_blank" aria-label="Project organization: ${repo.organization}, view on GitHub.">${repo.organization}</a> &nbsp; | &nbsp; <span tabindex="0" id="card-feature-organization-updated-text" aria-label="Last update: ${repo.updatedAt | ago}">Updated ${repo.updatedAt | ago}</span> <span class="pull-right repo-status"><i class="material-icons" aria-hidden="true">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> <span tabindex="0" id="card-feature-organization-origin-text" aria-label="Project origin: ${repo.origin}">${repo.origin}</span></span></div>
+      <div tabindex="0" class="proj-desc multiline">${repo.project_description}</div>
+      <div class="text-muted last-updated"><span aria-hidden="true">By&nbsp;</span> <a id="card-feature-organization-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl,$event.target)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" target="_blank" aria-label="Project organization: ${repo.organization}, view on GitHub.">${repo.organization}</a> &nbsp; | &nbsp; <span tabindex="0" id="card-feature-organization-updated-text-${repo.id}" >Updated ${repo.updatedAt | ago}</span> <span class="pull-right repo-status"><i class="material-icons" aria-hidden="true">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> <span tabindex="0" id="card-feature-organization-origin-text-${repo.id}">${repo.origin}</span></span></div>
 
-      <div class="card-stats lined-header" aria-hidden="true">
-        <span class="pull-right" aria-hidden="true"><em class="text-muted" aria-hidden="true">Source: <a id="card-feature-project-status-link" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.repositoryUrl)" target="_blank" aria-label="View source code on Github.">Github™</a></em></span>
+      <div class="card-stats lined-header">
+        <span class="pull-right"><em class="text-muted">Source: <a id="card-feature-project-status-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.project_name,repo.repositoryUrl,$event.target)" target="_blank" aria-label="View source code on Github.">Github™</a></em></span>
         <h4 tabindex="0" class="" aria-label="Project Stats">Project Stats</h4>
       </div>
 
-      <div class="row github-stats" aria-hidden="true">
-        <div class="col-md-3 col-sm-3" aria-hidden="true">
+      <div class="row github-stats">
+        <div class="col-md-3 col-sm-3">
           <span class="stat" tabindex="0" aria-label="${repo.stars} stars">
             <span class="octicon octicon-star" aria-hidden="true"></span>
-            <span id="card-feature-project-stars" class="num text-muted text-emphasized" aria-hidden="true">${repo.stars | num}</span>
+            <span id="card-feature-project-stars-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.stars | num}</span>
             <span class="stat-label" aria-hidden="true">stars</span>
           </span>
         </div>
         <div class="col-md-3 col-sm-3">
           <span class="stat" tabindex="0" aria-label="${repo.watchers} watchers">
-            <span class="octicon octicon-eye"></span>
-            <span id="card-feature-project-watchers" class="num text-muted text-emphasized">${repo.watchers | num}</span>
-            <span class="stat-label">watchers</span>
+            <span class="octicon octicon-eye" aria-hidden="true"></span>
+            <span id="card-feature-project-watchers-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.watchers | num}</span>
+            <span class="stat-label" aria-hidden="true">watchers</span>
           </span>
         </div>
         <div class="col-md-3 col-sm-3">
           <span class="stat" tabindex="0" aria-label="${releases.length} releases">
-            <span class="octicon octicon-tag"></span>
-            <span id="card-feature-project-releases" class="num text-muted text-emphasized">${releases.length | num}</span>
-            <span class="stat-label">releases</span>
+            <span class="octicon octicon-tag" aria-hidden="true"></span>
+            <span id="card-feature-project-releases-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${releases.length | num}</span>
+            <span class="stat-label" aria-hidden="true">releases</span>
           </span>
         </div>
         <div class="col-md-3 col-sm-3">
           <span class="stat" tabindex="0" aria-label="${repo.forks | num} forks">
-            <span class="octicon octicon-repo-forked"></span>
-            <span id="card-feature-project-forks" class="num text-muted text-emphasized">${repo.forks | num}</span>
-            <span class="stat-label">forks</span>
+            <span class="octicon octicon-repo-forked" aria-hidden="true"></span>
+            <span id="card-feature-project-forks-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.forks | num}</span>
+            <span class="stat-label" aria-hidden="true">forks</span>
           </span>
         </div>
       </div>
@@ -59,38 +59,38 @@
       <div class="row github-stats">
         <div class="col-md-4 col-sm-4">
           <span class="stat" tabindex="0" aria-label="${repo.contributors} contributors">
-            <span class="octicon octicon-organization"></span>
-            <span id="card-feature-project-contributors" class="num text-muted text-emphasized">${repo.contributors | num}</span>
-            <span class="stat-label">contributors</span>
+            <span class="octicon octicon-organization" aria-hidden="true"></span>
+            <span id="card-feature-project-contributors-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.contributors | num}</span>
+            <span class="stat-label" aria-hidden="true">contributors</span>
           </span>
         </div>
         <div class="col-md-4 col-sm-4">
           <span class="stat" tabindex="0" aria-label="${repo.commits} commits">
-            <span class="octicon octicon-git-commit"></span>
-            <span id="card-feature-project-commits" class="num text-muted text-emphasized">${repo.commits | num:1}</span>
-            <span class="stat-label">commits</span>
+            <span class="octicon octicon-git-commit" aria-hidden="true"></span>
+            <span id="card-feature-project-commits-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.commits | num:1}</span>
+            <span class="stat-label" aria-hidden="true">commits</span>
           </span>
         </div>
         <div class="col-md-4 col-sm-4">
           <span class="stat" tabindex="0" aria-label="${downloads} downloads">
-            <span class="octicon octicon-cloud-download"></span>
-            <span id="card-feature-project-downloads" class="num text-muted text-emphasized">${downloads | num}</span>
-            <span class="stat-label">downloads</span>
+            <span class="octicon octicon-cloud-download" aria-hidden="true"></span>
+            <span id="card-feature-project-downloads-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${downloads | num}</span>
+            <span class="stat-label" aria-hidden="true">downloads</span>
           </span>
         </div>
       </div>
 
       <div class="row card-links clearfix">
-        <ul class="list-inline pull-left" aria-hidden="true">
-          <li aria-hidden="true"><a id="card-feature-project-open-readme-${repo.id}" href="#" click.trigger="openReadmeModal(repo, $event.target)" aria-label="Show readme file"><i class="material-icons" aria-hidden="true">library_books</i> Show README</a></li>
+        <ul class="list-inline pull-left">
+          <li><a id="card-feature-project-open-readme-${repo.id}" href="#" click.trigger="openReadmeModal(repo, $event.target)"><i class="material-icons" aria-hidden="true">library_books</i> Show README</a></li>
         </ul>
-        <ul class="list-inline pull-right" aria-hidden="true">
-          <li aria-hidden="true"><a href="#" class="disabled hide" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="Share" aria-hidden="true"><i class="material-icons">share</i></a></li>
-          <li aria-hidden="true"><a href="#" class="disabled hide" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="Bookmark" aria-hidden="true"><i class="material-icons">bookmark_border</i></a></li>
+        <ul class="list-inline pull-right">
+          <li><a href="#" class="disabled hide" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons" aria-hidden="true">share</i></a></li>
+          <li><a href="#" class="disabled hide" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="Bookmark"><i class="material-icons" aria-hidden="true">bookmark_border</i></a></li>
         </ul>
       </div>
 
-      <a class="card-link" href="#" route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Open details for project ${repo.project_name}"></a>
+      <a class="card-link" href="#" route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Open details for project ${repo.project_name}">&nbsp;</a>
     </div>
   </div>
 </template>

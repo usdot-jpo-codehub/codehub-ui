@@ -1,6 +1,5 @@
 import { DialogService } from 'aurelia-dialog';
 import { inject } from 'aurelia-framework';
-import { ContributorsModal } from 'components/modals/contributors-modal.js';
 import { FeedbackModal } from 'components/modals/feedback-modal.js';
 import { LeavingModal } from 'components/modals/leaving-modal.js';
 import { StageConfig } from './stageConf';
@@ -25,6 +24,7 @@ export class App {
   constructor(dialogService, stageConfig) {
     this.dialogService = dialogService;
     this.stageConfig = stageConfig;
+    this.exitDialogLinkId = null;
   }
 
   activate() {
@@ -41,17 +41,19 @@ export class App {
     },500);
   }
 
-  openContribModal(repo) {
-    this.dialogService.open({ viewModel: ContributorsModal, model: repo, lock:false });
-  }
-
   openFeedbackModal() {
     this.dialogService.open({ viewModel: FeedbackModal, lock:false });
   }
 
-  openLeavingSiteConfirmation(name, url) {
+  openLeavingSiteConfirmation(name, url, target) {
+    this.exitDialogLinkId = target.getAttribute('id');
     const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock:false });
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock:false }).whenClosed( response => {
+      const element = document.querySelector('#'+this.exitDialogLinkId);
+      if(element) {
+        element.focus();
+      }
+    });
   }
 
   scrollToTop() {

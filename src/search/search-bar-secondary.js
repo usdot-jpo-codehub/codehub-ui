@@ -12,14 +12,16 @@ export class SearchBarSecondary {
     this.dataContext = dataContext;
     this.router = router;
     this.eventAggregator = eventAggregator;
+    this.ariaLabel = null;
 
     this.landing = true;
 
     this.searchText = '';
 
     // On nav bar search update search text
-    this.subscriber = this.eventAggregator.subscribe('searchExecuted', searchText => {
-      this.searchText = searchText;
+    this.subscriber = this.eventAggregator.subscribe('searchExecuted', searchResult => {
+      this.searchText = searchResult.text;
+      this.ariaLabel = `${searchResult.count} results for ${searchResult.text}`;
     });
 
     // When leaving the results page reset search text
@@ -98,6 +100,21 @@ export class SearchBarSecondary {
     // $('#searchBox .typeahead').bind('typeahead:autocompleted', (ev, suggestion) => {
     //   this.searchText = suggestion.text;
     // });
+  }
+
+  triggerOnFocus() {
+    this.generateAriaLabel();
+  }
+
+  generateAriaLabel() {
+    const resultsText = document.querySelector('#results-result-text');
+    if(resultsText) {
+      const artx = resultsText.getAttribute('aria-label');
+      if(artx){
+        console.log('arialabel: ', artx);
+        this.ariaLabel = artx;
+      }
+    }
   }
 
 }

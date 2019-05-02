@@ -42,6 +42,8 @@ export class Results {
       { value: 'contributors', name: 'Contributors' },
     ];
     this.openReadmeLinkId = null;
+    this.ariaLabel = '';
+    this.exitDialogLinkId = null;
   }
 
   determineActivationStrategy() {
@@ -66,6 +68,9 @@ export class Results {
             this.rebuildFilterOrg(projects);
             this.rebuildFilterLang(projects);
             this.rebuildFilterOrigin(projects);
+            this.ariaLabel = this.getResultsAriaLabel(this.resultCount, this.searchText);
+            let searchResult = {text: null, count: this.resultCount};
+            this.ea.publish('searchExecuted', searchResult);
             const resultsText = document.querySelector('#results-result-text');
             if(resultsText)
               resultsText.focus();
@@ -76,7 +81,7 @@ export class Results {
 
     this.resultCount = 0;
     this.searchText = params.searchText;
-    this.ea.publish('searchExecuted', params.searchText);
+    
 
     return this.dataContext.search(params.searchText)
       .then(projects => {
@@ -90,19 +95,26 @@ export class Results {
           this.rebuildFilterOrg(projects);
           this.rebuildFilterLang(projects);
           this.rebuildFilterOrigin(projects);
+          this.ariaLabel = this.getResultsAriaLabel(this.resultCount, this.searchText);
+          let searchResult = {text: params.searchText, count: this.resultCount};
+          this.ea.publish('searchExecuted', searchResult);
           const resultsText = document.querySelector('#results-result-text');
           if(resultsText)
-              resultsText.focus();
+            resultsText.focus();
           return this.projects;
         }, 10);
       });
+  }
+
+  getResultsAriaLabel(resultCount, searchText) {
+    return `${resultCount} results for search text: ${searchText}`
   }
 
   rebuildFilterOrg(projects) {
     const options = [];
     const unique = this.getUniqueValues(projects, 'organization');
     for (const org of unique) {
-      options.push({ label: `${org} <small>(${this.countUniqueValues(projects, 'organization', org)})</small>`, title: org, value: org, selected: false });
+      options.push({ label: `${org} <small>(${this.countUniqueValues(projects, 'organization', org)})</small>`, title: org, value: org, selected: false});
     }
     $('#filterOrg').multiselect('dataprovider', options);
     $('#filterOrg').trigger('change');
@@ -136,6 +148,8 @@ export class Results {
       enableCaseInsensitiveFiltering: true,
       maxHeight: 250,
       enableHTML: true,
+      nonSelectedText: '',
+      buttonContainer: '<div class="btn-group" id="filterOrg-button" />',
       buttonText(options, select) {
         if (options.length === 0) {
           return 'Organizations';
@@ -144,6 +158,14 @@ export class Results {
         }
         return `Organizations (${options.length}) `;
       },
+      buttonTitle(options, select) {
+        if (options.length === 0) {
+          return 'Filter Organizations';
+        } else if (options.length === options.prevObject.length) {
+          return `Filter Organizations (${options.length})`;
+        }
+        return `Filter Organizations (${options.length}) `;
+      }
     });
 
     $('#filterOrg').on('change', ev => {
@@ -157,6 +179,7 @@ export class Results {
 
       const fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
       this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'organization').length;
+      this.ariaLabel = this.getResultsAriaLabel(this.resultCount, this.searchText);
     });
   }
 
@@ -168,6 +191,7 @@ export class Results {
       enableCaseInsensitiveFiltering: true,
       maxHeight: 250,
       enableHTML: true,
+      buttonContainer: '<div class="btn-group" id="filterLang-button" />',
       buttonText(options, select) {
         if (options.length === 0) {
           return 'Languages';
@@ -176,6 +200,14 @@ export class Results {
         }
         return `Languages (${options.length})`;
       },
+      buttonTitle(options, select) {
+        if (options.length === 0) {
+          return 'Filter Languages';
+        } else if (options.length === options.prevObject.length) {
+          return `Filter Languages (${options.length})`;
+        }
+        return `Filter Languages (${options.length}) `;
+      }
     });
 
     $('#filterLang').on('change', ev => {
@@ -189,6 +221,7 @@ export class Results {
 
       const fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
       this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'organization').length;
+      this.ariaLabel = this.getResultsAriaLabel(this.resultCount, this.searchText);
     });
   }
 
@@ -199,6 +232,7 @@ export class Results {
       enableCaseInsensitiveFiltering: true,
       maxHeight: 250,
       enableHTML: true,
+      buttonContainer: '<div class="btn-group" id="filterOrigin-button" />',
       buttonText(options, select) {
         if (options.length === 0) {
           return 'Origin';
@@ -207,6 +241,14 @@ export class Results {
         }
         return `Origin (${options.length})`;
       },
+      buttonTitle(options, select) {
+        if (options.length === 0) {
+          return 'Filter Origin';
+        } else if (options.length === options.prevObject.length) {
+          return `Filter Origin (${options.length})`;
+        }
+        return `Filter Origin (${options.length}) `;
+      }
     });
 
     $('#filterOrigin').on('change', ev => {
@@ -221,6 +263,7 @@ export class Results {
       let fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
       fitlerArr = this.filterArray(fitlerArr, this.filters.selectedOrigins, 'origin');
       this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'organization').length;
+      this.ariaLabel = this.getResultsAriaLabel(this.resultCount, this.searchText);
     });
   }
 
@@ -236,6 +279,11 @@ export class Results {
     this.rebuildFilterOrg(this.projects);
     this.rebuildFilterLang(this.projects);
     this.rebuildFilterOrigin(this.projects);
+
+    const resultsMainPanel = document.querySelector('#results-result-text');
+    if(resultsMainPanel) {
+      resultsMainPanel.focus();
+    }
   }
 
   attached() {
@@ -315,8 +363,32 @@ export class Results {
     });
   }
 
-  openLeavingSiteConfirmation(name, url) {
+  openLeavingSiteConfirmation(name, url, target) {
+    this.exitDialogLinkId = target.getAttribute('id');
     const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false });
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed( response => {
+      const element = document.querySelector('#'+this.exitDialogLinkId);
+      if(element) {
+        element.focus();
+      }
+    });
+  }
+
+  removePillFilter(multiselectId, pill) {
+    $(multiselectId).multiselect('deselect', pill);
+    $(multiselectId).trigger('change');
+
+    if(this.filters.selectedOrganizations.length > 0 || this.filters.selectedLanguages.length>0 || this.filters.selectedOrigins.length>0) {
+      const clearAllFilterElement = document.querySelector('#result-clearall-filters');
+      if(clearAllFilterElement) {
+        clearAllFilterElement.focus();
+      }
+    } else { //in case the last pill was removed then select the main panel.
+      const resultsMainPanel = document.querySelector('#results-result-text');
+      if(resultsMainPanel) {
+        resultsMainPanel.focus();
+      }
+    }
+
   }
 }

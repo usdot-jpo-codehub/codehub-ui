@@ -1,18 +1,18 @@
 <template>
   <require from="resources/value-converters/chunk"></require>
 
-  <div tabindex="-1" role="dialog">
+  <div tabindex="0" id="addproject-dialog" focus.bind="hasFocus" role="dialog" aria-label="Add your project if you are using this project, press escape to close the dialog at any time.">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" click.trigger="controller.cancel()" class="close" aria-label="Close">
-            <span aria-hidden="true"><i class="material-icons md-48">close</i></span></button>
-          <h4 class="modal-title"><span class="text-uppercase">Add Your Project</span></h4>
+          <button tabindex="2" type="button" click.trigger="controller.cancel()" class="close" aria-label="Close">
+            <span aria-hidden="true"><i class="material-icons md-48" aria-hidden="true">close</i></span></button>
+          <h4 tabindex="1" class="modal-title"><span class="text-uppercase" aria-hidden="true">Add Your Project</span></h4>
         </div>
         <div class="modal-body">
-          <ul class="nav nav-tabs search-tabs" id="addProjectTabs" role="tablist">
-            <li role="presentation" id="search_select" class="active"><a href="#search" aria-controls="search" role="tab" data-toggle="tab">Search Existing Projects</a></li>
-            <li if.bind='false' role="presentation" id="manual_select" class="hidden"><a href="#manual" aria-controls="manual" role="tab" data-toggle="tab">Manually Add projects</a></li>
+          <ul class="nav nav-tabs search-tabs" id="addProjectTabs" role="tablist" aria-hidden="true">
+            <li role="presentation" id="search_select" class="active" aria-hidden="true"><a href="#search" aria-controls="search" role="tab" data-toggle="tab">Search Existing Projects</a></li>
+            <li if.bind='false' role="presentation" id="manual_select" class="hidden" aria-hidden="true"><a href="#manual" aria-controls="manual" role="tab" data-toggle="tab">Manually Add projects</a></li>
           </ul>
           <div class="search-tab tab-content">
             <div role="tabpanel" class="tab-pane active" id="search">
@@ -57,8 +57,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" click.trigger="addProject()" class="btn btn-default"><i class="material-icons">add_circle</i>Add Project</button>
-          <button type="button" class="btn btn-default" click.trigger="controller.cancel()">Close</button>
+          <button tabindex="0" type="button" click.trigger="addProject()" class="btn btn-default"><i class="material-icons">add_circle</i>Add Project</button>
+          <button tabindex="0" type="button" class="btn btn-default" click.trigger="controller.cancel()">Close</button>
         </div>
       </div>
     </div>

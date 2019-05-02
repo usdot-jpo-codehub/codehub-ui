@@ -19,6 +19,7 @@ export class Insight {
     this.chartMostUsedLanguages = {};
     this.mostUsedLanguages = {};
     this.loading = true;
+    this.exitDialogLinkId = null;
   }
 
   getData() {
@@ -113,6 +114,7 @@ export class Insight {
     });
 
     calc.then((data) => {
+      data = this.injectColorStyle(data);
       this.chartMostUsedLanguages = echarts.init(document.getElementById('chartMostUsedLanguajes'));
       this.chartMostUsedLanguages.setOption({
         tooltip: {
@@ -164,7 +166,8 @@ export class Insight {
               label: {
                 normal: {
                     position: 'outside',
-                    formatter: '{b}\r\n{d}%'
+                    formatter: '{b}\r\n{d}%',
+                    color: 'rgba(0,0,0,1)'
                 }
               },
               itemStyle: {
@@ -185,6 +188,23 @@ export class Insight {
       });
     });
   }
+
+  injectColorStyle(data) {
+    //wong's palette color
+    let colors = ['#D55E00','#0072B2','#F0E442','#CC79A7','#009E73','#56B4E9','#E69F00'];
+    let c = 0;
+    for(let i=0; i<data.length; i++){
+      let item = data[i];
+      item.itemStyle = {color: colors[c]};
+      data[i] = item;
+      c++
+      if(c >= data.length) {
+        c = 0;
+      }
+    }
+    return data;
+  }
+
   buildChartLanguages(insights) {
     const calc = new Promise((resolve, reject) => {
       const list = this.insights.language_counts_stat;
@@ -521,8 +541,14 @@ export class Insight {
     return (a[1] > b[1]) ? -1 : 1;
   }
 
-  openLeavingSiteConfirmation(name, url) {
+  openLeavingSiteConfirmation(name, url, target) {
+    this.exitDialogLinkId = target.getAttribute('id');
     const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false });
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed( response => {
+      const element = document.querySelector('#'+this.exitDialogLinkId);
+      if(element) {
+        element.focus();
+      }
+    });
   }
 }

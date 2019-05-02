@@ -24,7 +24,7 @@ describe('Test - Card Health : ', () => {
 
   it('Expect title card link text to be project name', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-health-title-link');
+      const element = document.querySelector(`#card-health-title-link-${mockCodeHealthiestData[0].id}`);
       expect(element.innerHTML).toEqual(mockCodeHealthiestData[0].project_name);
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -32,7 +32,7 @@ describe('Test - Card Health : ', () => {
 
   it('Expect title card link title to be project name', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-health-title-link');
+      const element = document.querySelector(`#card-health-title-link-${mockCodeHealthiestData[0].id}`);
       const text = `Project name: ${mockCodeHealthiestData[0].project_name}`;
       expect(element.getAttribute('aria-label')).toEqual(text);
       done();
@@ -59,7 +59,7 @@ describe('Test - Card Health : ', () => {
 
   it('Expect organization link', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-health-organization-link');
+      const element = document.querySelector(`#card-health-organization-link-${mockCodeHealthiestData[0].id}`);
       let orgLink = mockCodeHealthiestData[0].organizationUrl;
       expect(element.getAttribute('href')).toEqual(orgLink ? orgLink : '#');
       done();
@@ -68,7 +68,7 @@ describe('Test - Card Health : ', () => {
 
   it('Expect organization link title to be "View on Gitbub"', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-health-organization-link');
+      const element = document.querySelector(`#card-health-organization-link-${mockCodeHealthiestData[0].id}`);
       const text = `Project organization: ${mockCodeHealthiestData[0].organization}, view on GitHub.`;
       expect(element.getAttribute('aria-label')).toEqual(text);
       done();
@@ -77,7 +77,8 @@ describe('Test - Card Health : ', () => {
 
   it('Expect organization text to be the organization name', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-health-organization-link');
+      const id = `#card-health-organization-link-${mockCodeHealthiestData[0].id}`;
+      const element = document.querySelector(id);
       expect(element.innerHTML).toEqual(mockCodeHealthiestData[0].organization);
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -86,7 +87,7 @@ describe('Test - Card Health : ', () => {
   it('Expect organization updated days', (done) => {
     component.create(bootstrap).then( () => {
       let ago = new AgoValueConverter();
-      const element = document.querySelector('#card-health-organization-updated-text');
+      const element = document.querySelector(`#card-health-organization-updated-text-${mockCodeHealthiestData[0].id}`);
       expect(element.innerHTML).toEqual('Updated '+ago.toView(mockCodeHealthiestData[0].updatedAt));
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -94,7 +95,7 @@ describe('Test - Card Health : ', () => {
 
   it('Expect organization origin text', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-health-organization-origin-text');
+      const element = document.querySelector(`#card-health-organization-origin-text-${mockCodeHealthiestData[0].id}`);
       expect(element.innerHTML).toEqual(mockCodeHealthiestData[0].origin);
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -102,7 +103,7 @@ describe('Test - Card Health : ', () => {
 
   it('Expect Health status link url', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-health-health-status-link');
+      const element = document.querySelector(`#card-health-health-status-link-${mockCodeHealthiestData[0].id}`);
       expect(element.innerHTML).toEqual('SonarQube™');
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -111,7 +112,7 @@ describe('Test - Card Health : ', () => {
   it('Expect project number of bugs', (done) => {
     component.create(bootstrap).then( () => {
       let num = new NumValueConverter();
-      const element = document.querySelector('#card-health-project-bugs');
+      const element = document.querySelector(`#card-health-project-bugs-${mockCodeHealthiestData[0].id}`);
       expect(element.innerHTML).toEqual(''+num.toView(Number(mockCodeHealthiestData[0].metrics ? mockCodeHealthiestData[0].metrics.bugs.val : 0)));
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -119,7 +120,7 @@ describe('Test - Card Health : ', () => {
 
   it('Expect project rating of reliabilty', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-health-project-bugs-rating');
+      const element = document.querySelector(`#card-health-project-bugs-rating-${mockCodeHealthiestData[0].id}`);
       expect(element.innerHTML).toEqual(mockCodeHealthiestData[0].metrics.reliability_rating.data)
       const rating = 'rating-'+element.innerHTML;
       expect(element.getAttribute('class')).toContain(rating);
@@ -130,7 +131,7 @@ describe('Test - Card Health : ', () => {
   it('Expect project number of vulnerabilities', (done) => {
     component.create(bootstrap).then( () => {
       let num = new NumValueConverter();
-      const element = document.querySelector('#card-health-project-vulnerabilities');
+      const element = document.querySelector(`#card-health-project-vulnerabilities-${mockCodeHealthiestData[0].id}`);
       expect(element.innerHTML).toEqual(''+num.toView(Number(mockCodeHealthiestData[0].metrics ? mockCodeHealthiestData[0].metrics.vulnerabilities.val : 0)));
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -138,7 +139,7 @@ describe('Test - Card Health : ', () => {
 
   it('Expect project rating of security', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-health-project-vulnerabilities-rating');
+      const element = document.querySelector(`#card-health-project-vulnerabilities-rating-${mockCodeHealthiestData[0].id}`);
       expect(element.innerHTML).toEqual(mockCodeHealthiestData[0].metrics ? mockCodeHealthiestData[0].metrics.security_rating.data : '');
       const rating = 'rating-'+element.innerHTML;
       expect(element.getAttribute('class')).toContain(rating);
@@ -148,7 +149,7 @@ describe('Test - Card Health : ', () => {
 
   it('Expect project number of technical debt in days', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-health-project-debt-days');
+      const element = document.querySelector(`#card-health-project-debt-days-${mockCodeHealthiestData[0].id}`);
       expect(element.innerHTML).toEqual(mockCodeHealthiestData[0].metrics ? mockCodeHealthiestData[0].metrics.sqale_index.frmt_val : '');
       done();
     }).catch( e => { console.log(e.toString()) });
@@ -156,7 +157,7 @@ describe('Test - Card Health : ', () => {
 
   it('Expect project rating of technical debt', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector('#card-health-project-debt-days-rating');
+      const element = document.querySelector(`#card-health-project-debt-days-rating-${mockCodeHealthiestData[0].id}`);
       expect(element.innerHTML).toEqual(mockCodeHealthiestData[0].metrics ? mockCodeHealthiestData[0].metrics.sqale_rating.data : '');
       const rating = 'rating-'+element.innerHTML;
       expect(element.getAttribute('class')).toContain(rating);

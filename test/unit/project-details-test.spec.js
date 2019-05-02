@@ -119,15 +119,15 @@ describe('Project Details : ', () => {
 
   it('Expects Project Organization link Click-Trigger to be', (done) => {
     component.create(bootstrap).then(() => {
-      let element = document.querySelector('#project-organization-link');
-      expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.organization,repo.organizationUrl)');
+      let element = document.querySelector(`#project-organization-link-${mockProjectData[0].id}`);
+      expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.organization,repo.organizationUrl,$event.target)');
       done();
     }).catch( e => { console.log(e.toString())} );
   });
 
   it('Expects Project Organization link Text to be', (done) => {
     component.create(bootstrap).then(() => {
-      let element = document.querySelector('#project-organization-link');
+      let element = document.querySelector(`#project-organization-link-${mockProjectData[0].id}`);
       expect(element.innerHTML).toEqual(mockProjectData[0].organization);
       done();
     }).catch( e => { console.log(e.toString())} );
@@ -136,8 +136,9 @@ describe('Project Details : ', () => {
   it('Expects Project Project Update At to be', (done) => {
     component.create(bootstrap).then(() => {
       let element = document.querySelector('#project-update-at');
+      console.log(element);
       let ago = new AgoValueConverter();
-      expect(element.innerHTML).toEqual(ago.toView(mockProjectData[0].updatedAt));
+      expect(element.innerHTML).toEqual('Updated '+ago.toView(mockProjectData[0].updatedAt));
       done();
     }).catch( e => { console.log(e.toString())} );
   });
@@ -152,8 +153,8 @@ describe('Project Details : ', () => {
 
   it('Expects Project Readme button Click-Trigger to be', (done) => {
     component.create(bootstrap).then(() => {
-      let element = document.querySelector('#project-readme-button');
-      expect(element.getAttribute('click.trigger')).toEqual('openReadmeModal(repo)');
+      let element = document.querySelector(`#project-readme-button-${mockProjectData[0].id}`);
+      expect(element.getAttribute('click.trigger')).toEqual('openReadmeModal(repo,$event.target)');
       done();
     }).catch( e => { console.log(e.toString())} );
   });
@@ -168,15 +169,15 @@ describe('Project Details : ', () => {
 
   it('Expects Project Source link Click-Trigger to be', (done) => {
     component.create(bootstrap).then(() => {
-      let element = document.querySelector('#project-source-link');
-      expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.organization,repo.repositoryUrl)');
+      let element = document.querySelector(`#project-source-link-${mockProjectData[0].id}`);
+      expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.project_name,repo.repositoryUrl,$event.target)');
       done();
     }).catch( e => { console.log(e.toString())} );
   });
 
   it('Expects Project Source link Text to be', (done) => {
     component.create(bootstrap).then(() => {
-      let element = document.querySelector('#project-source-link');
+      let element = document.querySelector(`#project-source-link-${mockProjectData[0].id}`);
       expect(element.innerHTML).toEqual('Github™');
       done();
     }).catch( e => { console.log(e.toString())} );
@@ -261,7 +262,7 @@ describe('Project Details : ', () => {
     component.create(bootstrap).then(() => {
       let visibleItems = document.querySelector('#project-list-reusing-us-visible').getElementsByTagName('li');
       let collapsedItems = document.querySelector('#project-list-reusing-us-collapse').getElementsByTagName('li');
-      let total = (visibleItems.length/2) + (collapsedItems.length/2); // the division by 2 is because there is a nested list to hold the org_name.
+      let total = (visibleItems.length) + (collapsedItems.length);
 
       expect(total).toEqual(mockProjectData[0].forkedRepos.length);
       done();
