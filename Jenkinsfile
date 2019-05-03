@@ -44,13 +44,25 @@ node {
             }
         }
       }
-      stage('508 Complaince') {
+      stage('508 Complaince Using Axe') {
        nodejs('node') {
           dir ('App'){
             script {
                 sh 'npm install axe-cli -g'
                 sh 'npm install chromedriver'
-                sh 'axe http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com'
+                sh 'axe $(cat list-of-urls.txt)'
+                sh 'echo 508 Complaince is complete'
+            }
+         }
+       }
+      }
+
+      stage('508 Complaince Using lighthouse') {
+       nodejs('node') {
+          dir ('App'){
+            script {
+                sh 'npm install -g lighthouse'
+                sh 'lighthouse http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com -GA —output html —output-path report.html'
                 sh 'echo 508 Complaince is complete'
             }
          }
