@@ -52,11 +52,11 @@ node {
                 sh 'npm cache clean --force'
                 sh 'rm -r -f node_modules'
                 sh 'rm package-lock.json'
-                sh 'npm install --unsafe-perm'
+                sh 'npm install'
                 sh 'npm install -g lighthouse'
                 sh 'npm install lighthouse --save-dev'
                 sh 'npm install -g chrome-headless-launcher'
-                sh 'lighthouse http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com --view'
+                sh 'npm run lighthouse:ci'
                 sh 'echo 508 Complaince is complete'
             }
          }
