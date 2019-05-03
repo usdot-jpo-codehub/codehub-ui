@@ -50,9 +50,9 @@ node {
           dir ('App'){
             script {
                 sh 'npm install -g lighthouse'
-                //sh 'npm install chrome-launcher'
-                //sh 'google-chrome --headless --remote-debugging-port=9222 --no-sandbox --disable-gpu --disable-translate --disable-extensions --disable-background-networking --safebrowsing-disable-auto-update --disable-sync --disable-web-security --metrics-recording-only --disable-default-apps --no-first-run --disable-setuid-sandbox about:blank'
-                //sh 'lighthouse http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com -GA —output html —output-path report.html'
+                sh 'npm install lighthouse --save-dev'
+
+                sh 'lighthouse http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com --view'
                 sh 'echo 508 Complaince is complete'
             }
          }
