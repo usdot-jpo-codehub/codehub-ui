@@ -1,4 +1,1 @@
 http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com
-http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com/#/explore
-http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com/#/insight
-http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com/#/project-details?id=33698304_117864725
