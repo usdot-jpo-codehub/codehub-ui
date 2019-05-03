@@ -55,7 +55,7 @@ node {
                 sh 'npm install'
                 sh 'npm install -g lighthouse'
                 sh 'npm install lighthouse --save-dev'
-                sh 'npm install -g chrome-headless-launcher'
+                sh 'npm install chromedriver'
                 sh 'npm run lighthouse:ci'
                 sh 'echo 508 Complaince is complete'
             }
