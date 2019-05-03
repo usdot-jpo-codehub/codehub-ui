@@ -48,10 +48,10 @@ node {
        nodejs('node') {
           dir ('App'){
             script {
-                sh 'npm install -g pa11y'
-                sh 'npm install phantomjs'
-                sh 'npm install pa11y-reporter-html'
-                sh 'pa11y -s Section508 http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com'
+                sh 'npm install -g pa11y --unsafe-perm=true'
+                sh 'npm i --save-dev pa11y-reporter-html'
+                sh 'npm i --save-dev karma-chrome-launcher'
+                sh 'pa11y -c pa11y.config.json "http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com"'
                 sh 'echo 508 Complaince is complete'
             }
          }
