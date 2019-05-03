@@ -45,10 +45,14 @@ node {
         }
       }
       stage('508 Complaince') {
-        dir ('App'){
-          script {
-              sh 'echo 508 Complaince is complete'
-          }
+       nodejs('node') {
+          dir ('App'){
+            script {
+                sh 'npm install -g pa11y'
+                sh 'pally  –standard WCAG2AAA http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com'
+                sh 'echo 508 Complaince is complete'
+            }
+         }
        }
       }
 
