@@ -51,7 +51,8 @@ node {
             script {
                 sh 'npm install -g lighthouse'
                 sh 'npm install chrome-launcher'
-                sh 'lighthouse http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com -GA —output html —output-path report.html --no-sandbox  --port=23333 --chrome-flags="--headless" --hostname="0.0.0.0"'
+                sh 'google-chrome --remote-debugging-port=9222 --no-sandbox --disable-translate --disable-extensions --disable-background-networking --safebrowsing-disable-auto-update --disable-sync --metrics-recording-only --disable-default-apps --no-first-run --user-data-dir=/tmp/lighthouse.fY3nGmF --disable-setuid-sandbox about:blank'
+                sh 'lighthouse http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com -GA —output html —output-path report.html'
                 sh 'echo 508 Complaince is complete'
             }
          }
