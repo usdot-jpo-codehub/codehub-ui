@@ -51,7 +51,7 @@ node {
             script {
                 sh 'npm install -g lighthouse'
                 sh 'npm install chrome-launcher'
-                sh 'lighthouse http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com -GA —output html —output-path report.html --chrome-flags="--headless"'
+                sh 'lighthouse http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com -GA —output html —output-path report.html'
                 sh 'echo 508 Complaince is complete'
             }
          }
