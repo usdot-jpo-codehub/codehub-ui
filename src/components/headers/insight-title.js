@@ -6,14 +6,30 @@ import { DataContext } from 'services/datacontext';
 export class InsightTitle {
   constructor(dataContext) {
     this.dataContext = dataContext;
-    this.lastUpdated = '';
+    this.lastUpdated = null;
   }
 
   getData() {
     this.dataContext.getLastProcessedDateTime().then(results => {
-      this.lastUpdated = results;
+      this.lastUpdated = this.getLocalDateTime(results);
       return this.lastUpdated;
     });
+  }
+
+  getLocalDateTime(dateTimeString) {
+    let result = null;
+    if (dateTimeString) {
+      if(!dateTimeString.includes('Z')) {
+        dateTimeString += ' Z';
+      }
+      let dt = new Date(dateTimeString);
+      if (Object.prototype.toString.call(dt) === "[object Date]") {
+        if (!isNaN(dt.getTime())) {
+          result = dt.toLocaleString();
+        }
+      }
+    }
+    return result;
   }
 
   activate() {
