@@ -56,7 +56,7 @@ node {
                 sh 'npm install -g lighthouse'
                 sh 'npm install lighthouse --save-dev'
                 sh 'npm install -g chrome-headless-launcher'
-                sh 'npm run lighthouse:ci'
+                sh 'lighthouse http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com --view'
                 sh 'echo 508 Complaince is complete'
             }
          }
