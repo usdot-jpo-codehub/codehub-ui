@@ -20,8 +20,6 @@
     "bootstrap": "^4.3.1",
     "bootstrap-3-typeahead": "^4.0.2",
     "bootstrap-multiselect": "^0.9.13-1",
-    "chrome-launcher": "^0.10.7",
-    "chromedriver": "^74.0.0",
     "corejs-typeahead": "^1.2.1",
     "detect-browser": "^4.2.0",
     "echarts": "^4.2.1",
@@ -31,8 +29,6 @@
     "karma-headless-chrome-launcher": "0.0.6",
     "lighthouse": "^4.3.1",
     "moment": "^2.24.0",
-    "pa11y-reporter-html": "^1.0.0",
-    "phantomjs": "^2.1.7",
     "popper.js": "^1.14.7",
     "roboto-fontface": "^0.10.0",
     "showdown": "^1.9.0",
@@ -79,13 +75,12 @@
     "karma-structured-json-reporter": "^1.0.1",
     "karma-verbose-reporter": "0.0.6",
     "minimatch": "^3.0.4",
-    "pa11y": "^5.1.0",
     "protractor": "^5.4.1",
     "through2": "^2.0.3",
     "vinyl-fs": "^3.0.3",
     "wait-on": "^3.1.0"
   },
   "scripts": {
-    "lighthouse:ci": "node_modules/lighthouse/lighthouse-cli/index.js --output-path=lighthouse-report.html --quiet --chrome-flags='--headless' http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com"
+    "lighthouse:ci": "node_modules/lighthouse/lighthouse-cli/index.js --output-path=lighthouse-report.html --quiet --chrome-flags='--headless' http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com     "
   }
 }
