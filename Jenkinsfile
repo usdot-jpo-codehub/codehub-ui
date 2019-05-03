@@ -49,6 +49,10 @@ node {
        nodejs('node') {
           dir ('App'){
             script {
+                sh 'npm cache clean --force'
+                sh 'rm -r -f node_modules'
+                sh 'rm package-lock.json'
+                sh 'npm install'
                 sh 'npm install -g lighthouse'
                 sh 'npm install lighthouse --save-dev'
                 sh 'npm run lighthouse:ci'
