@@ -18,11 +18,12 @@ RUN groupadd -g 500 $USER \
  && echo "Defaults lecture=never" > /etc/sudoers.d/lecture
 
 USER $USER
+RUN echo $USER
 WORKDIR $HOME
 
 COPY *.sh ./
 ENV CHROME_PATH $HOME/chrome.sh
-RUN ln -s $HOME/docker.sh /usr/local/bin/docker
+RUN ln -s $HOME/docker.sh /usr/bin/docker
 
 ENTRYPOINT ["docker"]
 CMD ["lighthouse", "--help"]
