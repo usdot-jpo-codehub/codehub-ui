@@ -49,6 +49,8 @@ node {
      nodejs('node') {
         dir ('App'){
           script {
+          withAWS(region:'us-east-1') {
+              sh 'eval $(aws ecr get-login --no-include-email) > login'
               sh 'npm install'
               sh 'docker run -t -v /tmp/reports:/tmp -e USERID=$UID 797335914619.dkr.ecr.us-east-1.amazonaws.com/dev-codehub/codehub-ui-access:latest lighthouse http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com --output html --output-path=/tmp/reports/dev-codehub-external-1278179393.us-east-1.elb.amazonaws.html --save-assets'
               sh 'ls -l /tmp/reports'
@@ -57,6 +59,7 @@ node {
        }
      }
     }
+  }
 
       stage('508 Complaince Using Axe') {
        nodejs('node') {
