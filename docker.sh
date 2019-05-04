@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 if [ -z "$(pidof -x dbus-daemon)" ]; then
     sudo mkdir -p /var/run/dbus

@@ -1,3 +1,3 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 google-chrome-stable --no-sandbox --disable-gpu "$@"
