@@ -9,7 +9,7 @@ RUN apt-get update \
  && apt-get install -y sudo xvfb google-chrome-stable \
  && npm install -g lighthouse
 
-ENV USER lighthouse
+ENV USER jenkins
 ENV HOME /home/$USER
 
 RUN groupadd -g 500 $USER \
@@ -23,7 +23,7 @@ WORKDIR $HOME
 
 COPY *.sh ./
 ENV CHROME_PATH $HOME/chrome.sh
-RUN chmod 777 /usr/local/bin
+
 RUN ln -s $HOME/docker.sh /usr/local/bin/docker
 
 ENTRYPOINT ["docker"]
