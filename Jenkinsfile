@@ -50,7 +50,7 @@ node {
         dir ('App'){
           script {
               sh 'npm install'
-              sh 'docker run -t -v $PWD/out/*.*:/tmp/*.* -e USERID=$UID 797335914619.dkr.ecr.us-east-1.amazonaws.com/dev-codehub/codehub-ui-access:latest lighthouse http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com --output html --output-path=/tmp/dev-codehub-external-1278179393.us-east-1.elb.amazonaws.html --save-assets'
+              sh 'docker run -t -v /home/ec2-user/reports:/tmp/*.* -e USERID=$UID 797335914619.dkr.ecr.us-east-1.amazonaws.com/dev-codehub/codehub-ui-access:latest lighthouse http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com --output html --output-path=/tmp/dev-codehub-external-1278179393.us-east-1.elb.amazonaws.html --save-assets'
               sh 'ls -l /tmp'
               sh 'cat /tmp/dev-codehub-external-1278179393.us-east-1.elb.amazonaws.html'
               sh 'publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: '/tmp', reportFiles: 'dev-codehub-external-1278179393.us-east-1.elb.amazonaws.html', reportName: 'HTML Report', reportTitles: ''])'
