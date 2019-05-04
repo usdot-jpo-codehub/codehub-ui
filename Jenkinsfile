@@ -23,7 +23,7 @@ node {
           }
   }
   }
-  stage('Unit Test') {
+  stage('Bundling') {
       nodejs('node') {
           dir ('App'){
             script {
@@ -46,22 +46,16 @@ node {
       }
 
       stage('508 Complaince Using lighthouse') {
-       nodejs('node') {
-          dir ('App'){
-            script {
-                sh 'npm cache clean --force'
-                sh 'rm -r -f node_modules'
-                sh 'rm package-lock.json'
-                sh 'npm install'
-                sh 'npm install -g lighthouse'
-                sh 'npm install lighthouse --save-dev'
-                sh 'npm install chromedriver'
-                sh 'npm run lighthouse:ci'
-                sh 'echo 508 Complaince is complete'
-            }
-         }
+     nodejs('node') {
+        dir ('App'){
+          script {
+              sh 'npm install'
+              sh 'docker run -t -v $PWD/out/*.*:/tmp/*.* -e USERID=$UID 797335914619.dkr.ecr.us-east-1.amazonaws.com/dev-codehub/codehub-ui-access:latest lighthouse http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com --output html --output-path=/tmp/dev-codehub-external-1278179393.us-east-1.elb.amazonaws.html --save-assets'
+              sh 'ls -l'
+          }
        }
-      }
+     }
+    }
 
       stage('508 Complaince Using Axe') {
        nodejs('node') {
