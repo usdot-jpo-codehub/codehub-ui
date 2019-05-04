@@ -1,35 +1,6 @@
-#!/usr/bin/env node
-const chromeLauncher = require('chrome-launcher');
-const puppeteer = require('puppeteer');
-const lighthouse = require('lighthouse');
-const request = require('request');
-const util = require('util');
-
-(async() => {
-
-const URL = 'http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com';
-
-const opts = {
-  chromeFlags: ['--headless'],
-  logLevel: 'info',
-  output: 'html',
-  outputPath: 'report.html'
-};
-
-// Launch chrome using chrome-launcher.
-const chrome = await chromeLauncher.launch(opts);
-opts.port = chrome.port;
-
-// Connect to it using puppeteer.connect().
-const resp = await util.promisify(request)(`http://localhost:${opts.port}/json/version`);
-const {webSocketDebuggerUrl} = JSON.parse(resp.body);
-const browser = await puppeteer.connect({browserWSEndpoint: webSocketDebuggerUrl});
-
-// Run Lighthouse.
-const lhr = await lighthouse(URL, opts, null);
-console.log(`Lighthouse score: ${lhr.score}`);
-
-await browser.disconnect();
-await chrome.kill();
-
-})();
+#!/bin/bash
+#docker run -itv ~/codehub/cicd/reports:/home/chromeuser --cap-add=SYS_ADMIN dev-codehub/codehub-ui-access:latest
+docker run --rm --name lighthouse -v ~/codehub/cicd/reports:/home/chrome/reports --cap-add=SYS_ADMIN dev-codehub/codehub-ui-access:latest
+docker exec -it  /bin/sh -c 'lighthouse --chrome-flags="--headless --disable-gpu" http://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com --output-path=/home/chromeuser/lighthouse-report.html -y'
+exit
+cat ~/codehub/cicd/reports/lighthouse-report.html

@@ -1,38 +1,28 @@
-FROM debian:stretch-slim
-LABEL name="chrome-headless" \
-			version="2.0" \
-			description="Google Chrome Headless in a container"
+FROM node:8
 
-RUN apt-get update && apt-get install -y \
-	apt-transport-https \
-	ca-certificates \
-	curl \
-	gnupg \
-	--no-install-recommends \
-	&& curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
-	&& echo "deb https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
-	&& apt-get update && apt-get install -y \
-	google-chrome-stable \
-	fontconfig \
-	fonts-ipafont-gothic \
-	fonts-wqy-zenhei \
-	fonts-thai-tlwg \
-	fonts-kacst \
-	fonts-symbola \
-	fonts-noto \
-	ttf-freefont \
-	--no-install-recommends \
-	&& apt-get purge --auto-remove -y curl gnupg \
-	&& rm -rf /var/lib/apt/lists/*
+ENV CACHE 2019-05-01
 
-RUN groupadd -r chrome && useradd -r -g chrome -G audio,video chrome \
-    && mkdir -p /home/chrome && chown -R chrome:chrome /home/chrome \
-		&& mkdir -p /opt/google/chrome && chown -R chrome:chrome /opt/google/chrome
+RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
+ && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
 
-USER chrome
+RUN apt-get update \
+ && apt-get install -y sudo xvfb google-chrome-stable \
+ && npm install -g lighthouse
 
-# Expose port 9222
-EXPOSE 9222
+ENV USER lighthouse
+ENV HOME /home/$USER
 
-ENTRYPOINT [ "google-chrome" ]
-CMD [ "--headless", "--disable-gpu", "--remote-debugging-port=9222" ]
+RUN groupadd -g 500 $USER \
+ && useradd -u 500 -g 500 -G root,sudo -m $USER \
+ && passwd -d $USER \
+ && echo "Defaults lecture=never" > /etc/sudoers.d/lecture
+
+USER $USER
+WORKDIR $HOME
+
+COPY *.sh ./
+ENV CHROME_PATH $HOME/chrome.sh
+RUN ln -s $HOME/docker.sh /usr/local/bin/docker
+
+ENTRYPOINT ["docker"]
+CMD ["lighthouse", "--help"]
