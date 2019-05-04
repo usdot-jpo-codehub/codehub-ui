@@ -35,4 +35,4 @@ USER chrome
 EXPOSE 9222
 
 ENTRYPOINT [ "google-chrome" ]
-CMD [ "--headless", "--disable-gpu", "--remote-debugging-address=0.0.0.0", "--remote-debugging-port=9222" ]
+CMD [ "--headless", "--disable-gpu", "--remote-debugging-port=9222" ]
