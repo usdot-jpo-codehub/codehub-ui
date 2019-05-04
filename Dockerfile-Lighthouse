@@ -23,6 +23,7 @@ WORKDIR $HOME
 
 COPY *.sh ./
 ENV CHROME_PATH $HOME/chrome.sh
+RUN chown -R $USER:$USER /usr/bin/docker
 RUN ln -s $HOME/docker.sh /usr/bin/docker
 
 ENTRYPOINT ["docker"]
