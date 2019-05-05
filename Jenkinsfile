@@ -76,7 +76,6 @@ node {
       stage('Integration Test') {
       dir ('App'){
           script {
-
               sh 'docker-compose up -d'
               sh 'docker-compose logs --tail="all"'
               sh 'docker-compose down'

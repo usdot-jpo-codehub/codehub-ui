@@ -20,7 +20,7 @@ RUN groupadd -g 500 $USER \
 USER $USER
 RUN echo $USER
 WORKDIR $HOME
-
+echo $HOME
 COPY *.sh ./
 ENV CHROME_PATH $HOME/chrome.sh
 
