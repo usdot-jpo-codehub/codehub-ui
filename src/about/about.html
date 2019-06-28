@@ -1,8 +1,10 @@
+<!--click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl,$event.target)" target="_blank"-->
+<!-- place repo.organization with name/variable.,  repo.organization.URL:replace with destination url, $event.target  is id of element you were focused on-->
 <template>
   <main class="usa-layout-docs usa-section" id="main-content">
-    <div class="grid-container">
-      <div class="grid-row grid-gap">
-        <aside class="usa-layout-docs__sidenav desktop:grid-col-3">
+    <div class="grid-container container-fluid">
+      <div class="grid-row grid-gap row text-heavy-page">
+        <!--<aside class="usa-layout-docs__sidenav desktop:grid-col-3">
           <nav>
             <ul class="usa-sidenav">
               <li class="usa-sidenav__item">
@@ -37,28 +39,20 @@
             </ul>
           </nav>
           
-        </aside>
+        </aside>-->
         
-        <div class="usa-layout-docs__main desktop:grid-col-9 usa-prose">
-          <h1>Page heading (h1)</h1>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 usa-layout-docs__main desktop:grid-col-9 usa-prose">
+          <h1>About the ITS CodeHub</h1>
+          <p class="usa-intro">ITS CodeHub provides a single point of entry to discover the U.S. Department of Transportation’s (DOT) publicly available open-source code software funded by the Intelligent Transportation System (ITS) Joint Program Office (JPO). By providing access to open repositories, the U.S. DOT aims to enable collaborative development of open-source software between U.S. DOT, and third parties, such as state and local agencies, and researchers. Open-source code made accessible through the ITS CodeHub is quality-checked and freely available to the public.</p>
+          <p> ITS CodeHub encourages the development of products that are built collaboratively and in the open through a reuse-first mindset, a commitment to best practice standards and effective repository management.</p>
           
-          <p class="usa-intro">The page heading communicates the main focus of the page. Make your page heading descriptive and keep it succinct.</p>
+          <h2 id="section-heading-h2">What software can I find on the ITS CodeHub?</h2>
+          <p>The ITS CodeHub serves as the open-source software system that maintains the operationalization of the ITS JPO’s Open-source Code Policy and the discovery system for all ITS JPO-funded code, users can find a wide range of open software ranging from Connected Vehicles to Data Sharing Management.</p>
+          <p>Please check out the <a href="" href="#" route-href="route:explore;" aria-label="View all available projects.">Explore</a> and <a href="" href="#" route-href="route:insight;" aria-label="View metrics about the ITS CodeHub.">Insight</a> tabs for easy-to-use discovery features and information on the repositories available through ITS CodeHub</p>
           
-          <h2 id="section-heading-h2">Section heading (h2)</h2>
+          <h2 id="section-heading-h2">Contact Information</h2>
           
-          <p>These headings introduce, respectively, sections and subsections within your body copy. As you create these headings, follow the same guidelines that you use when writing section headings: Be succinct, descriptive, and precise.</p>
-          
-          <h3 id="section-heading-h3">Subsection heading (h3)</h3>
-          
-          <p>The particulars of your body copy will be determined by the topic of your page. Regardless of topic, it’s a good practice to follow the inverted pyramid structure when writing copy: Begin with the information that’s most important to your users and then present information of less importance.</p>
-          
-          <p>Keep each section and subsection focused — a good approach is to include one theme (topic) per section.</p>
-          
-          <h4 id="section-heading-h4">Subsection heading (h4)</h4>
-          
-          <p>Use the side navigation menu to help your users quickly skip to different sections of your page. The menu is best suited to displaying a hierarchy with one to three levels and, as we mentioned, to display the sub-navigation of a given page.</p>
-          
-          <p>Read the full documentation on our side navigation on the component page.</p>
+          <p>For more information about the ITS CodeHub, please contact the ITS JPO Data Program support team at <a href="mailto:data.itsjpo@dot.gov">data.itsjpo@dot.gov</a>.</p>
         </div>
       </div>
     </div>
