@@ -7,6 +7,7 @@ import { DataContext } from 'services/datacontext';
 import { Filters } from 'components/filters';
 import { ReadmeModal } from '../components/modals/readme-modal';
 import { LeavingModal } from '../components/modals/leaving-modal';
+import { VScanModal } from '../components/modals/vscan-modal';
 
 @inject(DataContext, Router, Filters, DialogService)
 export class Explore {
@@ -51,6 +52,7 @@ export class Explore {
           this.rebuildFilterOrigin(projects);
           this.searchDone = true;
           this.resultCount = this.projects.length;
+          console.log(projects)
           return this.projects;
         }, 10);
       });
@@ -294,4 +296,13 @@ export class Explore {
     });
   }
 
+  displayVScanDialog(repo, target) {
+    this.exitDialogLinkId = target.getAttribute('id');
+    this.dialogService.open({viewModel: VScanModal, model: repo, lock: false}).whenClosed( reponse => {
+      const element = document.querySelector('#'+this.exitDialogLinkId);
+      if(element) {
+        element.focus();
+      }
+    });
+  }
 }

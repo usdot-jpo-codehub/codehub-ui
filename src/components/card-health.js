@@ -1,8 +1,11 @@
+import { timingSafeEqual } from "crypto";
+
 export class Card {
   constructor() {
     this.repo = [];
     this.bugs = 0;
     this.vulnerabilities = 0;
+    this.infected_files = 0;
   }
 
   activate(modelData) {
@@ -15,6 +18,10 @@ export class Card {
         if (this.repo.metrics.vulnerabilities) {
           this.vulnerabilities = Number(this.repo.metrics.vulnerabilities.val);
         }
+      }
+
+      if(this.repo.vscan && this.repo.vscan.infected_files) {
+        this.infected_files = this.repo.vscan.infected_files;
       }
     }
   }

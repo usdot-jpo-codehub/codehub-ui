@@ -5,6 +5,7 @@ import { DataContext } from 'services/datacontext';
 import { StageConfig } from '../../stageConf';
 import { ReadmeModal } from '../components/modals/readme-modal';
 import { LeavingModal } from '../components/modals/leaving-modal';
+import { VScanModal } from '../components/modals/vscan-modal';
 
 @inject(DataContext, Router, StageConfig, DialogService)
 export class Popular {
@@ -42,6 +43,7 @@ export class Popular {
     this.dataContext.findPopular().then(results => {
       setTimeout(() => {
         this.projects = results;
+        console.log(this.projects)
         return this.projects;
       }, 10);
     });
@@ -97,4 +99,13 @@ export class Popular {
     });
   }
 
+  displayVScanDialog(repo, target) {
+    this.exitDialogLinkId = target.getAttribute('id');
+    this.dialogService.open({viewModel: VScanModal, model: repo, lock: false}).whenClosed( reponse => {
+      const element = document.querySelector('#'+this.exitDialogLinkId);
+      if(element) {
+        element.focus();
+      }
+    });
+  }
 }
