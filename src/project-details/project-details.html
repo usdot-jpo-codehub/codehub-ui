@@ -29,8 +29,8 @@
                   <div class="lined-header">
                     <span class="pull-right" aria-hidden="true">
                       <em class="text-muted" aria-hidden="true">Source:
-                        <a if.bind="repo.vscan.infected_files == 0" id="project-source-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.project_name,repo.repositoryUrl,$event.target)" target="_blank" aria-label="View project source code on GitHub.">Github™</a>
-                        <a if.bind="repo.vscan.infected_files > 0" id="project-source-link-${repo.id}" href="#" click.trigger="displayVScanDialog(repo,$event.target)" target="_blank" aria-label="View project source code on GitHub.">Github™</a>
+                        <a if.bind="!repo.vscan || repo.vscan.infected_files == 0" id="project-source-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.project_name,repo.repositoryUrl,$event.target)" target="_blank" aria-label="View project source code on GitHub.">Github™</a>
+                        <a if.bind="repo.vscan.infected_files > 0" id="project-source-link-vs-${repo.id}" href="#" click.trigger="displayVScanDialog(repo,$event.target)" target="_blank" aria-label="View project source code on GitHub.">Github™</a>
                       </em>
                     </span>
                     <h4 tabindex="0" class=""><span>Project Stats</span></h4>
