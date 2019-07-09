@@ -60,6 +60,9 @@ export class ProjectDetails {
     });
 
     this.dataContext.findById(params.id).then(repo => {
+      if (!repo) {
+        return;
+      }
       this.repo = repo;
       this.sonarLink = `${this.stageConfig.SONARQUBE_ADDRESS}/dashboard/index/${repo.organization}_${repo.project_name}`;
       if (repo.userForkedRepos) {

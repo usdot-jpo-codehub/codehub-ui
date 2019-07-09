@@ -49,7 +49,9 @@ export class Popular {
 
     for (let i = 0; i < this.fp.length; i++) {
       this.dataContext.findById(this.fp[i]).then(repo => {
-        this.featured.push(repo);
+        if(repo) {
+          this.featured.push(repo);
+        }
       });
     }
 
