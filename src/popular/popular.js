@@ -43,7 +43,6 @@ export class Popular {
     this.dataContext.findPopular().then(results => {
       setTimeout(() => {
         this.projects = results;
-        console.log(this.projects)
         return this.projects;
       }, 10);
     });

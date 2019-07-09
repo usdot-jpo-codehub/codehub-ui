@@ -52,7 +52,6 @@ export class Explore {
           this.rebuildFilterOrigin(projects);
           this.searchDone = true;
           this.resultCount = this.projects.length;
-          console.log(projects)
           return this.projects;
         }, 10);
       });
