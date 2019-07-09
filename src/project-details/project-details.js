@@ -7,6 +7,7 @@ import { ReadmeModal } from '../components/modals/readme-modal';
 import { LeavingModal } from '../components/modals/leaving-modal';
 import { ContributorsModal } from '../components/modals/contributors-modal';
 import { StageConfig } from '../../stageConf';
+import { VScanModal } from '../components/modals/vscan-modal';
 
 @inject(DataContext, Router, DialogService, StageConfig)
 export class ProjectDetails {
@@ -147,4 +148,13 @@ export class ProjectDetails {
     });
   }
 
+  displayVScanDialog(repo, target) {
+    this.exitDialogLinkId = target.getAttribute('id');
+    this.dialogService.open({viewModel: VScanModal, model: repo, lock: false}).whenClosed( reponse => {
+      const element = document.querySelector('#'+this.exitDialogLinkId);
+      if(element) {
+        element.focus();
+      }
+    });
+  }
 }
