@@ -1,5 +1,3 @@
-import { timingSafeEqual } from "crypto";
-
 export class Card {
   constructor() {
     this.repo = [];
