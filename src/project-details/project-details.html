@@ -74,8 +74,8 @@
                         <span id="project-stats-forks" class="num text-muted text-emphasized">${repo.forkedRepos.length | num}</span>
                         <span class="stat-label">forks</span>
                       </span>
-                      <span class="stat" tabindex="0" aria-label="${repo.vscan.infected_files} viruses">
-                          <span class="octicon octicon-bug ${repo.vscan.infected_files>0?'vscan-alert':''}"></span>
+                      <span class="stat ${repo.vscan.infected_files>0?' stat-vscan':''}" tabindex="0" aria-label="${repo.vscan.infected_files} viruses">
+                          <span class="octicon ${repo.vscan.infected_files>0?'octicon-bug':'octicon-check'}"></span>
                           <span id="project-stats-infected-files" class="num ${repo.vscan.infected_files==0?'text-muted text-emphasized':''}">${repo.vscan.infected_files}</span>
                           <span class="stat-label">viruses</span>
                         </span>
@@ -174,8 +174,8 @@
               <div class="row proj-overview-row proj-health">
                 <div class="col-lg-6 col-qual">
                   <!-- <span class="pull-right hidden"><em class="text-muted ${noSonarData ? 'hide' : ''}">Source: <a href="#" id="project-details-sonarqube-${repo.id}" click.trigger="openLeavingSiteConfirmation('SonarQube™', sonarLink, $event.target)" target="_blank">SonarQube™</a></em></span> -->
-                  <h3 tabindex="0" arial-label="sonar qube">SonarQube</h3>
-                  <p id="sonarqube-description" tabindex="0" aria-label="is an open source platform for continuous inspection of code quality.">is an open source platform for continuous inspection of code quality.</p>
+                  <h3 tabindex="0" arial-label="Code Quality Analysis">Code Quality Analysis</h3>
+                  <p id="sonarqube-description" tabindex="0" aria-label="The following results are produced by SonarQube, a static code analysis application.">The following results are produced by SonarQube, a static code analysis application.</p>
                   <div class="row">
                     <div class="col-lg-6 col-md-6 grade-wrapper">
                       <h5 tabindex="0" aria-label="Releasability">Releasability</h5>
@@ -222,7 +222,7 @@
                 </div>
                 <div class="col-lg-6 col-qual">
                     <h3 tabindex="0" arial-label="Virus scan">Virus Scan</h3>
-                    <p id="virus-scan-description" tabindex="0" aria-label="The following is the result of the virus scan.">The following is the result of the virus scan.</p>
+                    <p id="virus-scan-description" tabindex="0" aria-label="The following results are produced by the ClamAv virus scanner, a static-code-analysis virus detection engine.">The following results are produced by the ClamAv virus scanner, a static-code-analysis virus detection engine.</p>
                     <div class="vscan-wrapper">
                       <div class="row vscan-metrics">
                         <div class="row vscan-metric">
@@ -246,7 +246,7 @@
                         <div class="row vscan-metric">
                           <div class="col-md-12">
                             <span class="stat" tabindex="0" aria-label="${repo.vscan.infected_files} infected">
-                              <span class="octicon octicon-alert ${repo.vscan.infected_files>0?'vscan-alert':''}"></span>
+                              <span class="octicon ${repo.vscan.infected_files>0?'octicon-alert vscan-alert':'octicon-check'}"></span>
                               <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.vscan.infected_files}</span>
                               <span class="stat-label">infected</span>
                             </span>
