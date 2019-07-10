@@ -74,8 +74,8 @@
                         <span id="project-stats-forks" class="num text-muted text-emphasized">${repo.forkedRepos.length | num}</span>
                         <span class="stat-label">forks</span>
                       </span>
-                      <span class="stat" tabindex="0" aria-label="${repo.vscan.infected_files} viruses">
-                          <span class="octicon octicon-bug ${repo.vscan.infected_files>0?'vscan-alert':''}"></span>
+                      <span class="stat ${repo.vscan.infected_files>0?' stat-vscan':''}" tabindex="0" aria-label="${repo.vscan.infected_files} viruses">
+                          <span class="octicon octicon-bug "></span>
                           <span id="project-stats-infected-files" class="num ${repo.vscan.infected_files==0?'text-muted text-emphasized':''}">${repo.vscan.infected_files}</span>
                           <span class="stat-label">viruses</span>
                         </span>
