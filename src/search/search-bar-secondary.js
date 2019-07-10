@@ -111,7 +111,6 @@ export class SearchBarSecondary {
     if(resultsText) {
       const artx = resultsText.getAttribute('aria-label');
       if(artx){
-        console.log('arialabel: ', artx);
         this.ariaLabel = artx;
       }
     }

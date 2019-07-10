@@ -27,7 +27,12 @@
                 </div>
                 <div class="col-lg-4 col-github-stats">
                   <div class="lined-header">
-                    <span class="pull-right" aria-hidden="true"><em class="text-muted" aria-hidden="true">Source: <a id="project-source-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.project_name,repo.repositoryUrl,$event.target)" target="_blank" aria-label="View project source code on GitHub.">Github™</a></em></span>
+                    <span class="pull-right" aria-hidden="true">
+                      <em class="text-muted" aria-hidden="true">Source:
+                        <a if.bind="!repo.vscan || repo.vscan.infected_files == 0" id="project-source-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.project_name,repo.repositoryUrl,$event.target)" target="_blank" aria-label="View project source code on GitHub.">Github™</a>
+                        <a if.bind="repo.vscan.infected_files > 0" id="project-source-link-vs-${repo.id}" href="#" click.trigger="displayVScanDialog(repo,$event.target)" target="_blank" aria-label="View project source code on GitHub.">Github™</a>
+                      </em>
+                    </span>
                     <h4 tabindex="0" class=""><span>Project Stats</span></h4>
                   </div>
                   <div class="row github-stats">
@@ -69,6 +74,11 @@
                         <span id="project-stats-forks" class="num text-muted text-emphasized">${repo.forkedRepos.length | num}</span>
                         <span class="stat-label">forks</span>
                       </span>
+                      <span class="stat" tabindex="0" aria-label="${repo.vscan.infected_files} viruses">
+                          <span class="octicon octicon-bug ${repo.vscan.infected_files>0?'vscan-alert':''}"></span>
+                          <span id="project-stats-infected-files" class="num ${repo.vscan.infected_files==0?'text-muted text-emphasized':''}">${repo.vscan.infected_files}</span>
+                          <span class="stat-label">viruses</span>
+                        </span>
                     </div>
                   </div>
                 </div>
@@ -162,19 +172,12 @@
                 <h2 class="" tabindex="0" aria-label="Project Health Statistics"><span>Health Statistics</span></h2>
               </div>
               <div class="row proj-overview-row proj-health">
-                <!-- <div class="col-lg-2">
-                  <h3>Build</h3>
-                  <div class="empty-state text-center">
-                    <i class="material-icons large-icon">access_time</i>
-                    <em class="text-muted">Coming soon</em>
-                  </div>
-                </div> -->
-                <div class="col-lg-12 col-qual">
+                <div class="col-lg-6 col-qual">
                   <!-- <span class="pull-right hidden"><em class="text-muted ${noSonarData ? 'hide' : ''}">Source: <a href="#" id="project-details-sonarqube-${repo.id}" click.trigger="openLeavingSiteConfirmation('SonarQube™', sonarLink, $event.target)" target="_blank">SonarQube™</a></em></span> -->
                   <h3 tabindex="0" arial-label="sonar qube">SonarQube</h3>
                   <p id="sonarqube-description" tabindex="0" aria-label="is an open source platform for continuous inspection of code quality.">is an open source platform for continuous inspection of code quality.</p>
                   <div class="row">
-                    <div class="col-lg-3 col-md-6 grade-wrapper">
+                    <div class="col-lg-6 col-md-6 grade-wrapper">
                       <h5 tabindex="0" aria-label="Releasability">Releasability</h5>
                       <div class="grade-circle empty-circle">
                         <i class="material-icons">access_time</i>
@@ -183,7 +186,7 @@
                         <li aria-hidden="true" tabindex="0" aria-label="not available, comming soon.">Coming Soon</li>
                       </ul>
                     </div>
-                    <div class="col-lg-3 col-md-6 grade-wrapper">
+                    <div class="col-lg-6 col-md-6 grade-wrapper">
                       <h5 tabindex="0" aria-label="Maintainability">Maintainability</h5>
                       <div tabindex="0" id="project-maintainability-rating" class="grade-circle rating-${health.sqale_rating.data}" aria-label="Rating: '${health.sqale_rating.data}'">
                         ${health.sqale_rating.data}
@@ -193,7 +196,9 @@
                         <li id="project-maintainability-complexity" tabindex="0" aria-label="${health.complexity.val} complexity">${health.complexity.val} complexity</li>
                       </ul>
                     </div>
-                    <div class="col-lg-3 col-md-6 grade-wrapper">
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 grade-wrapper">
                       <h5 tabindex="0" aria-label="Reliability">Reliability</h5>
                       <div tabindex="0" id="project-reliability-rating" class="grade-circle rating-${health.reliability_rating.data}" aria-label="Rating: '${health.reliability_rating.data}'">
                         ${health.reliability_rating.data}
@@ -203,7 +208,7 @@
                         <li id="project-reliability-violations" tabindex="0" aria-label="${health.violations.val} violations">${health.violations.val} violations</li>
                       </ul>
                     </div>
-                    <div class="col-lg-3 col-md-6 grade-wrapper">
+                    <div class="col-lg-6 col-md-6 grade-wrapper">
                       <h5 tabindex="0" aria-label="Security">Security</h5>
                       <div tabindex="0" id="project-security-rating" class="grade-circle rating-${health.security_rating.data}" aria-label="Rating: '${health.security_rating.data}'">
                         ${health.security_rating.data}
@@ -214,6 +219,51 @@
                     </div>
                     <div if.bind="noSonarData" class="coming-soon-watermark" aria-label="Sonarqube not availabel, comming soon.">Coming Soon</div>
                   </div>
+                </div>
+                <div class="col-lg-6 col-qual">
+                    <h3 tabindex="0" arial-label="Virus scan">Virus Scan</h3>
+                    <p id="virus-scan-description" tabindex="0" aria-label="The following is the result of the virus scan.">The following is the result of the virus scan.</p>
+                    <div class="vscan-wrapper">
+                      <div class="row vscan-metrics">
+                        <div class="row vscan-metric">
+                          <div class="col-md-12">
+                            <span class="stat" tabindex="0" aria-label="${repo.vscan.lastscan | ago}">
+                              <span class="octicon octicon-clock"></span>
+                              <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.vscan.lastscan | ago}</span>
+                              <span class="stat-label"></span>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="row vscan-metric">
+                          <div class="col-md-12">
+                            <span class="stat" tabindex="0" aria-label="${repo.vscan.scanned_files} files">
+                              <span class="octicon octicon-file-code"></span>
+                              <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.vscan.scanned_files}</span>
+                              <span class="stat-label">files</span>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="row vscan-metric">
+                          <div class="col-md-12">
+                            <span class="stat" tabindex="0" aria-label="${repo.vscan.infected_files} infected">
+                              <span class="octicon octicon-alert ${repo.vscan.infected_files>0?'vscan-alert':''}"></span>
+                              <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.vscan.infected_files}</span>
+                              <span class="stat-label">infected</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <h4 if.bind="repo.vscan.infected_files > 0" tabindex="0" arial-label="Reported files">Reported files</h4>
+                      <div class="row vscan-reported-files">
+                          <ul class="list-unstyled">
+                            <li tabindex="0" repeat.for="vscan of repo.vscan.reported_files" aria-label="Virus: ${vscan.virus}, file name: ${vscan.filename}">
+                              <strong aria-hidden="true">${vscan.filename}</strong>
+                              <small aria-hidden="true"><span class="octicon octicon-bug vscan-alert"></span>${vscan.virus}</small>
+                            </li>
+                          </ul>
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>
