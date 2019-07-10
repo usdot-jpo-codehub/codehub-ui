@@ -85,7 +85,7 @@
         </div>
         <div class="col-md-3 col-sm-3">
             <span class="${infected_files>0?'stat-vscan':'stat'}" tabindex="0" aria-label="${infected_files} infected files">
-              <span class="octicon octicon-bug" aria-hidden="true"></span>
+              <span class="octicon ${infected_files>0?'octicon-bug':'octicon-check'}" aria-hidden="true"></span>
               <span id="card-popular-project-infected-files-${repo.id}" class="num ${(infected_files>0)?'':' text-muted text-emphasized'}" aria-hidden="true">${infected_files | num}</span>
               <span class="stat-label" aria-hidden="true">viruses</span>
             </span>

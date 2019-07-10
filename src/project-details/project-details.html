@@ -75,7 +75,7 @@
                         <span class="stat-label">forks</span>
                       </span>
                       <span class="stat ${repo.vscan.infected_files>0?' stat-vscan':''}" tabindex="0" aria-label="${repo.vscan.infected_files} viruses">
-                          <span class="octicon octicon-bug "></span>
+                          <span class="octicon ${repo.vscan.infected_files>0?'octicon-bug':'octicon-check'}"></span>
                           <span id="project-stats-infected-files" class="num ${repo.vscan.infected_files==0?'text-muted text-emphasized':''}">${repo.vscan.infected_files}</span>
                           <span class="stat-label">viruses</span>
                         </span>
@@ -246,7 +246,7 @@
                         <div class="row vscan-metric">
                           <div class="col-md-12">
                             <span class="stat" tabindex="0" aria-label="${repo.vscan.infected_files} infected">
-                              <span class="octicon octicon-alert ${repo.vscan.infected_files>0?'vscan-alert':''}"></span>
+                              <span class="octicon ${repo.vscan.infected_files>0?'octicon-alert vscan-alert':'octicon-check'}"></span>
                               <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.vscan.infected_files}</span>
                               <span class="stat-label">infected</span>
                             </span>
