@@ -2,7 +2,6 @@ import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import $ from 'jquery';
-// import { typeahead } from 'corejs-typeahead';
 import typeahead from 'bootstrap-3-typeahead';
 import { DataContext } from 'services/datacontext';
 import { StageConfig } from './stageConf';

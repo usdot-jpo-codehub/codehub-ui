@@ -10,39 +10,27 @@ aside.sidenav{
             & li.sidenav-li{
                 float: unset;
                 font-weight: bold;  
-                border-bottom: 1px solid #dcdee0;
-                color: #003D60;
-                //font-size: 16px;
+                border-bottom: 1px solid @gray-light-for-sidenav-li-lines;
+                color: @dark-blue;
                 padding-top: 5px;
-                padding-bottom: 5px;
-                &.active-child{
-                    //border-left: 2px solid #003D60;
-                    //border-right: 2px solid #003D60;
-                    & a.dropdown-item.sidnav-a{
-                        
-                    }
-                }     
+                padding-bottom: 5px;    
 
                 & a.dropdown-item.sidnav-a{
                     display: block;
                     padding-top: 5px;
                     padding-bottom: 5px;
-                    color: #003D60;
-                    // margin-right: 15px;
-                    // margin-left: 15px;
+                    color: @dark-blue;
                     &.active-child{
-                        border-left: 2px solid #003D60;
-                        border-right: 2px solid #003D60;
+                        border-left: 2px solid @dark-blue;
+                        border-right: 2px solid @dark-blue;
                     }
-                    
+
                 }
             }
             & li.sidenav-li.parent-item{
-                border-bottom: 1px solid #9E9B9B;
+                border-bottom: 1px solid @gray-dark-for-sidenav-top-line;
                 color: #333333;
                 padding-left: 15px;
-                //font-size: 18px; 
-            
             }
         }
     }

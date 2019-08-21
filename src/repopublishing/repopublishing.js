@@ -1,15 +1,15 @@
-import { inject } from './aurelia-framework';
-import { Router } from './aurelia-router';
-import { DialogService } from './aurelia-dialog';
-import { LeavingModal } from '../../components/modals/leaving-modal';
+import { inject } from 'aurelia-framework';
+import { Router } from 'aurelia-router';
+import { DialogService } from 'aurelia-dialog';
+import { LeavingModal } from '../components/modals/leaving-modal';
 
 
 @inject(Router, DialogService)
-export class Operations {
+export class Repopublishing {
   constructor(router, dialogService) {
     this.router = router;
     this.dialogService = dialogService;
-    this.message = 'this is the Operations Page';
+    this.message = 'this is the Repository Publishing Page';
   }
   openLeavingSiteConfirmation(name, url, target) {
     this.exitDialogLinkId = target.getAttribute('id');
@@ -22,15 +22,3 @@ export class Operations {
     });
   }
 }
-// profile/account/account.js
-// export class Account {
-//     configureRouter(config, router) {
-//       config.map([
-//         { route: '', name: 'account', viewPorts: { mainContent: { moduleId: 'settings/account/account' }}, nav: true, title: 'Account' },
-//         //{ route: '', redirect: 'username' },
-//         { route: 'username', name: 'username', moduleId: 'settings/account/username/username', nav: true, title: 'Username' },
-//         { route: 'password', name: 'password', moduleId: 'settings/account/password/password', nav: true, title: 'Password' }
-//       ]);
-//       this.router = router;
-//     }
-//   }
