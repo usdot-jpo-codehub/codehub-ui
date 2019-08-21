@@ -3,6 +3,7 @@ export class Card {
     this.repo = [];
     this.downloads = 0;
     this.releases = [];
+    this.infected_files = 0;
   }
 
   activate(modelData) {
@@ -15,6 +16,10 @@ export class Card {
           this.releases = [];
           this.repo.releases = [];
         }
+      }
+
+      if (modelData.vscan && modelData.vscan.infected_files) {
+        this.infected_files = modelData.vscan.infected_files;
       }
     }
 

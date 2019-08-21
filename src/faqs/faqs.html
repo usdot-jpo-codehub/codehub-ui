@@ -1,0 +1,111 @@
+<template bindable="router">
+    <main class="usa-layout-docs usa-section faqs-page" id="main-content">
+        <div class="grid-container container-fluid">
+            <div class="grid-row grid-gap row text-heavy-page">
+                <aside id="side-nav" class="col-lg-2 col-md-3 desktop:grid-col-2 sidenav">
+                    <compose view-model="side-nav" router.bind="router"></compose>
+                </aside>
+                <div class="col-lg-10 col-md-9 col-sm-12 col-xs-12 usa-layout-docs__main desktop:grid-col-10 usa-prose">
+                    <h2 class="col-lg-10 col-md-10 col-sm-12 col-xs-12">Frequently Asked Questions</h2>
+                    <div class="accordion col-lg-9 col-md-10 col-sm-12 col-xs-12 usa-layout-docs__main desktop:grid-col-9 usa-prose" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        <span class="iconify plus" data-icon="octicon:plus" data-inline="false"></span><span class="iconify minus" data-icon="octicon:dash" data-inline="false"></span>
+                                        What is ITS CodeHub?
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseOne" class="answer collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                        ITS CodeHub provides a single point of entry to discover the U.S. Department of Transportation’s (DOT) publicly available open-source code software funded by the Intelligent Transportation System (ITS) Joint Program Office (JPO). By providing access to open repositories, the U.S. DOT aims to enable collaborative development of open-source software between U.S. DOT, and third parties, such as state and local agencies, and researchers. Open-source code made accessible through the ITS CodeHub is quality-checked and freely available to the public.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            <span class="iconify plus" data-icon="octicon:plus" data-inline="false"></span><span class="iconify minus" data-icon="octicon:dash" data-inline="false"></span>
+                                            Where can I find open source applications for download?
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo" class="answer collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div class="card-body">
+                                        You can check out releases of open source code by clicking on the ‘Explore’ tab on the top menu. From here, you can search for different repositories and view their README files for detailed information.  You can also see and access the Health Stats of each repository, i.e. Virus, SonarQube. 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            <span class="iconify plus" data-icon="octicon:plus" data-inline="false"></span><span class="iconify minus" data-icon="octicon:dash" data-inline="false"></span>
+                                            How can I register my repositories on ITS CodeHub?
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseThree" class="answer collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div class="card-body">
+                                        Please check out the detailed registry process, linked here. You will be asked to fill out and submit the following linked form. Once complete, the ITS CodeHub team will review your application and get back to you within 5 business days. 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingFour">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                            <span class="iconify plus" data-icon="octicon:plus" data-inline="false"></span><span class="iconify minus" data-icon="octicon:dash" data-inline="false"></span>
+                                            I am a developer, how can ITS CodeHub help me?
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseFour" class="answer collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                <div class="card-body">
+                                        ITS CodeHub provides a means for developers to easily and seamlessly discover, upload and download U.S. DOT open source applications. ITS CodeHub is intended to be a forum to allow developers:
+                                    <ul>
+                                        <li>to implement their ideas in new open source projects</li>
+                                        <li>to reuse or augment others’ code</li>
+                                        <li>collaborate on projects of interest</li>
+                                        </ul>   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingFive">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                            <span class="iconify plus" data-icon="octicon:plus" data-inline="false"></span><span class="iconify minus" data-icon="octicon:dash" data-inline="false"></span>
+                                            May I freely use and distribute the open source applications I discovered on ITS CodeHub?  
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseFive" class="answer collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                                <div class="card-body">
+                                        Each open source application that is registered on ITS CodeHub comes with open source license information including terms of use for the released source code. This information often found in the associated terms and conditions.  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingSix">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                            <span class="iconify plus" data-icon="octicon:plus" data-inline="false"></span><span class="iconify minus" data-icon="octicon:dash" data-inline="false"></span>
+                                            Is there a good location that I can get transportation data to support the development and use of the OSADP applications? 
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseSix" class="answer collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                                <div class="card-body">
+                                        Yes, the <a href="https://its.dot.gov/data/">ITS Datahub</a> provides a single point of entry to discover U.S. DOT’s publicly available ITS research data, including connected vehicle data. This is an excellent location to look for highly documented transportation data to support applications found within ITS CodeHub. 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</template>

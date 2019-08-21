@@ -3,18 +3,21 @@ export class CardSearch {
     this.repo = [];
     this.downloads = 0;
     this.releases = [];
+    this.infected_files = 0;
   }
 
   activate(modelData) {
     if (modelData && modelData !== undefined) {
       this.repo = modelData;
-
       if (modelData.releases && modelData.releases !== undefined) {
         this.releases = modelData.releases;
         if (!Array.isArray(modelData.releases)) {
           this.releases = [];
           this.repo.releases = [];
         }
+      }
+      if (modelData.vscan && modelData.vscan.infected_files) {
+        this.infected_files = modelData.vscan.infected_files;
       }
     }
 
