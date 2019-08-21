@@ -10,8 +10,19 @@
       <div id="navbar">
         <ul id="titleBarNav" class="nav navbar-nav main-nav" >
           <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : 'stage'}">
-            <a tabindex="0" href.bind="row.href" aria-label="${row.title}">${row.title}</a>
+            <a if.bind="!row.settings.dropdownchild" tabindex="0" href.bind="row.href" aria-label="${row.title}">${row.title}</a>
           </li>
+          <li repeat.for="row of router.navigation" if.bind="row.settings.firstchild" class="nav-item dropdown">
+              <a repeat.for="row of router.navigation" if.bind="row.settings.firstchild" class="${row.isActive ? 'active-child' : 'stage-child'} nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">${row.settings.parent}</a>
+              <!-- <a if.bind="row.settings.dropdownchild && !row.settings.firstchild" class="${row.isActive ? 'active-child' : 'stage-child'} nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">${row.settings.parent}</a> -->
+              <div class="dropdown-menu">
+                <a repeat.for="row of router.navigation" href.bind="row.href" if.bind="row.settings.dropdownchild" class="${row.isActive ? 'active-child' : 'stage-child'} dropdown-item" href="#">${row.settings.menuitem}</a>
+              </div>
+            </li> 
+          <!--<li class="navitem dropdown">
+            <a href="#" route-href="route:explore;">faqs</a>
+             <a class="card-link" href="#" route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Open details for project ${repo.project_name}">&nbsp;</a>
+          </li> -->
         </ul>
         <div if.bind="projects.title = 'project-details'">
           <ul class="nav navbar-nav navbar-right user-nav">

@@ -24,7 +24,12 @@
       <div class="text-muted last-updated"><span aria-hidden="true">By&nbsp;</span><a id="card-popular-organization-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl,$event.target)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" aria-label="Project organization: ${repo.organization}, view on GitHub." target="_blank">${repo.organization}</a> &nbsp; | &nbsp; <span tabindex="0" id="card-popular-organization-updated-text-${repo.id}">Updated ${repo.updatedAt | ago}</span><span class="pull-right repo-status"><i class="material-icons" aria-hidden="true">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> <span tabindex="0" id="card-popular-organization-origin-text-${repo.id}">${repo.origin}</span></span></div>
 
       <div class="card-stats lined-header">
-        <span class="pull-right"><em class="text-muted">Source: <a id="card-popular-project-status-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.project_name,repo.repositoryUrl,$event.target)"  target="_blank" aria-label="View source code on Github.">Github™</a></em></span>
+        <span class="pull-right">
+          <em class="text-muted">Source:
+            <a if.bind="infected_files == 0" id="card-popular-project-status-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.project_name,repo.repositoryUrl,$event.target)"  target="_blank" aria-label="View source code on Github.">Github™</a>
+            <a if.bind="infected_files > 0" id="card-popular-project-status-link-${repo.id}" href="#" click.trigger="displayVScanDialog(repo,$event.target)"  target="_blank" aria-label="View source code on Github.">Github™</a>
+          </em>
+        </span>
         <h4 tabindex="0" class=""  aria-label="Project Stats">Project Stats</h4>
       </div>
 
@@ -60,25 +65,32 @@
       </div>
 
       <div class="row github-stats">
-        <div class="col-md-4 col-sm-4">
+        <div class="col-md-3 col-sm-3">
           <span class="stat" tabindex="0" aria-label="${repo.contributors} contributors">
             <span class="octicon octicon-organization" aria-hidden="true"></span>
             <span id="card-popular-project-contributors-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.contributors | num}</span>
             <span class="stat-label" aria-hidden="true">contributors</span>
           </span>
         </div>
-        <div class="col-md-4 col-sm-4">
+        <div class="col-md-3 col-sm-3">
           <span class="stat" tabindex="0" aria-label="${repo.commits} commits">
             <span class="octicon octicon-git-commit" aria-hidden="true"></span>
             <span id="card-popular-project-commits-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.commits | num:1}</span>
             <span class="stat-label" aria-hidden="true">commits</span>
           </span>
         </div>
-        <div class="col-md-4 col-sm-4">
+        <div class="col-md-3 col-sm-3">
           <span class="stat" tabindex="0" aria-label="${downloads} downloads">
             <span class="octicon octicon-cloud-download" aria-hidden="true"></span>
             <span id="card-popular-project-downloads-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${downloads | num}</span>
             <span class="stat-label" aria-hidden="true">downloads</span>
+          </span>
+        </div>
+        <div class="col-md-3 col-sm-3">
+          <span class="${infected_files>0?'stat-vscan':'stat'}" tabindex="0" aria-label="${infected_files} infected files">
+            <span class="octicon ${infected_files>0?'octicon-bug':'octicon-check'}" aria-hidden="true"></span>
+            <span id="card-popular-project-infected-files-${repo.id}" class="num ${(infected_files>0)?'':' text-muted text-emphasized'}" aria-hidden="true">${infected_files | num}</span>
+            <span class="stat-label" aria-hidden="true">viruses</span>
           </span>
         </div>
       </div>

@@ -132,6 +132,43 @@
     .col-lg-4 {
       border-left: 1px solid lighten(@gray,@stage-gray-precentage);
     }
+    .vscan-wrapper {
+      h4{
+        font-size:@font-size-base;
+        letter-spacing: 1px;
+        margin-top: 0;
+        text-transform: uppercase;
+        font-family: Roboto-Condensed;
+        font-weight: bold;
+        color: lighten(@black, 50%);
+      }
+      .pull-left {
+        text-align: left
+      }
+      .vscan-metrics {
+        padding-left: 2rem;
+        .vscan-metric {
+          padding: 0px !important;
+          margin: 0px !important;
+          margin-bottom: 0px !important;
+        }
+      }
+      .vscan-reported-files {
+        padding-left: 2rem;
+      }
+    }
+  }
+  .vscan-alert {
+    color: darken(@stage-red,30%) !important;
+  }
+
+  .stat-vscan {
+    display: block;
+    padding: 8px 0;
+    color: darken(@stage-red,30%);
+    font-size: @font-size-small;
+    font-weight: bold;
+    text-decoration: underline;
   }
 
   .col-sidebar {
