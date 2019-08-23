@@ -94,11 +94,15 @@
 					box-shadow: 0 3px 4px rgba(0,0,0,0.2);
 					border: 1px solid @white;
 				}
-			}
+      }
+      > a.active {
+        font-weight: bold;
+        border-bottom: 4px solid @white !important;
+      }
 			> a.dropdown-toggle[aria-expanded="true"]{
 				background-color: @dark-blue;
-				border-right: 1px solid @white;
-				border-left: 1px solid @white;
+				// border-right: 1px solid @white;
+				// border-left: 1px solid @white;
 
 				+ div.dropdown-menu{
 					padding-top: 5px;
@@ -169,8 +173,8 @@
 		> li > a {
 			border-right: 1px solid transparent;
 			border-bottom: 4px solid transparent;
-		  	border-left: 1px solid transparent;
-	  }
+      border-left: 1px solid transparent;
+    }
 
 	  > .active > a {
 		  &,
@@ -178,7 +182,7 @@
 		  &:focus {
 		    border-bottom: 4px solid @white;
 		  }
-		}
+    }
 	}
 
 	.main-nav-beta-message {
@@ -372,8 +376,8 @@
   			&:focus {
   				background-color: fade(@white, 10%);
   			}
-			}
-		}
+      }
+    }
 
 		> .dropdown {
 			> a.utility-nav {
