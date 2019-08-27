@@ -64,7 +64,7 @@ node {
        nodejs('node') {
           dir ('App'){
             script {
-                sh 'npm install axe-cli -g'
+                sh 'npm install axe-cli@3.0.0 -g'
                 sh 'npm install chromedriver@^75.0.0'
                 sh 'axe $(cat list-of-urls.txt)'
                 sh 'echo 508 Complaince is complete'
