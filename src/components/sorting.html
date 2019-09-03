@@ -2,7 +2,7 @@
   <div class="cards-sorting clearfix">
     <form class="form-inline pull-right">
       <div class="form-group">
-        <label for="sortProperty" class=""><i class="material-icons">sort</i>Sort by</label>
+        <label for="sortProperty"><i class="material-icons">sort</i>Sort by</label>
         <select id="sortProperty" value.bind="selectedSort" class="form-control">
           <option repeat.for="option of sortOptions" value="${option.value}">${option.name}</option>
         </select>

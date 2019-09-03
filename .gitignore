@@ -25,6 +25,9 @@ coverage
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
+/scripts
+/src/environment.js
+/src/environment.ts
 
 # Dependency directories
 node_modules
@@ -47,3 +50,6 @@ jspm_packages
 
 # 'gulp build' output
 dist/*
+
+# Chrome debug files
+.chrome/*

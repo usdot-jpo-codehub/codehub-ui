@@ -34,6 +34,8 @@ export class Popular {
       { value: 'commits', name: 'Commits' },
       { value: 'contributors', name: 'Contributors' },
     ];
+    this.openReadmeLinkId = null;
+    this.exitDialogLinkId = null;
   }
 
   getData() {
@@ -74,13 +76,25 @@ export class Popular {
     this.getData();
   }
 
-  openReadmeModal(repo) {
-    this.dialogService.open({ viewModel: ReadmeModal, model: repo });
+  openReadmeModal(repo, target) {
+    this.openReadmeLinkId = target.getAttribute('id');
+    this.dialogService.open({ viewModel: ReadmeModal, model: repo, lock: false }).whenClosed(response => {
+      if (response.wasCancelled) {
+        const element = document.querySelector('#'+this.openReadmeLinkId);
+        element.focus();
+      }
+    });
   }
 
-  openLeavingSiteConfirmation(name, url) {
+  openLeavingSiteConfirmation(name, url, target) {
+    this.exitDialogLinkId = target.getAttribute('id');
     const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl });
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed( response => {
+      const element = document.querySelector('#'+this.exitDialogLinkId);
+      if(element) {
+        element.focus();
+      }
+    });
   }
 
 }

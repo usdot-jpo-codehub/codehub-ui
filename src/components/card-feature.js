@@ -8,7 +8,6 @@ export class Card {
   activate(modelData) {
     if (modelData && modelData !== undefined) {
       this.repo = modelData;
-
       if (modelData.releases && modelData.releases !== undefined) {
         this.releases = modelData.releases;
         if (!Array.isArray(modelData.releases)) {

@@ -2,7 +2,7 @@ import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import $ from 'jquery';
-import { typeahead } from 'corejs-typeahead';
+// import 'typeahead';
 import { DataContext } from 'services/datacontext';
 import { StageConfig } from '../../stageConf';
 
@@ -32,7 +32,7 @@ export class SearchBar {
 
   executeSearch(searchText) {
     this.router.navigateToRoute('results', { searchText });
-    $('#searchBox .typeahead').typeahead('close');
+    // $('#searchBox .typeahead').typeahead('close');
   }
 
   activate() {
@@ -77,31 +77,31 @@ export class SearchBar {
       });
     };
 
-    $('#searchBox .typeahead').typeahead({
-      hint: true,
-      minLength: 1,
-      limit: 1000,
-    },
-      {
-        name: 'suggestions',
-        display: 'text',
-        source: suggestions,
-        templates: {
-          empty() { return '<div class="tt-suggestion tt-selectable">No results found</div>'; },
-          pending() { return '<div class="tt-suggestion tt-selectable">Loading...</div>'; },
-          suggestion(data) {
-            return `<div class="tt-suggestion tt-selectable"> ${data.text} <span class="tt-source"><strong>${data._query}</strong> found in project ${data.found}</span></div>`; // eslint-disable-line
-          },
-        },
-      });
+    // $('#searchBox .typeahead').typeahead({
+    //   hint: true,
+    //   minLength: 1,
+    //   limit: 1000,
+    // },
+    //   {
+    //     name: 'suggestions',
+    //     display: 'text',
+    //     source: suggestions,
+    //     templates: {
+    //       empty() { return '<div class="tt-suggestion tt-selectable">No results found</div>'; },
+    //       pending() { return '<div class="tt-suggestion tt-selectable">Loading...</div>'; },
+    //       suggestion(data) {
+    //         return `<div class="tt-suggestion tt-selectable"> ${data.text} <span class="tt-source"><strong>${data._query}</strong> found in project ${data.found}</span></div>`; // eslint-disable-line
+    //       },
+    //     },
+    //   });
 
-    $('#searchBox .typeahead').on('typeahead:select', (ev, suggestion) => {
-      this.executeSearch(suggestion.text);
-    });
+    // $('#searchBox .typeahead').on('typeahead:select', (ev, suggestion) => {
+    //   this.executeSearch(suggestion.text);
+    // });
 
-    $('#searchBox .typeahead').on('typeahead:autocomplete', (ev, suggestion) => {
-      this.searchText = suggestion.text;
-    });
+    // $('#searchBox .typeahead').on('typeahead:autocomplete', (ev, suggestion) => {
+    //   this.searchText = suggestion.text;
+    // });
   }
 
 }

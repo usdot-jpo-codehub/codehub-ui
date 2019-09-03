@@ -14,6 +14,11 @@ export class LeavingModal {
     this.model = model;
   }
 
+  attached() {
+    const title = document.querySelector('#exitdialog-title');
+    title.focus();
+  }
+
   navigateAndClose() {
     // window.location.assign(this.model.url);
     const win = window.open(this.model.url, '_blank');

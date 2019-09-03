@@ -2,7 +2,6 @@ import { StageComponent } from 'aurelia-testing';
 import { bootstrap } from 'aurelia-bootstrapper';
 import { DataContext } from '../../src/services/datacontext';
 import { Popular } from '../../src/popular/popular';
-import MockProjectData from '../mockdata/mock-project-data';
 
 export class MockDataContext {
   response = undefined;
@@ -17,9 +16,12 @@ describe('Services: DataContext', () => {
   let rt = {}
   let cf = {FEATURED_PROJECTS: []};
   let viewModel = new Popular(dt, rt, cf);
+  let data = null;
 
   beforeEach( () => {
-    dt.response = MockProjectData;
+    jasmine.getFixtures().fixturesPath='base/test/mockdata/';
+
+    dt.response = readFixtures('mock-project-data.json');
     component = StageComponent.withResources('popular/popular')
       .inView('<Popular></Popular>')
       .boundTo(viewModel);

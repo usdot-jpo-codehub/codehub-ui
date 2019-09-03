@@ -1,7 +1,6 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { DialogService } from 'aurelia-dialog';
-import * as c3 from 'c3/c3';
 import * as echarts from 'echarts/dist/echarts';
 import { DataContext } from 'services/datacontext';
 import { LeavingModal } from '../components/modals/leaving-modal';
@@ -17,8 +16,10 @@ export class Insight {
     this.insights = [];
     this.projects = [];
     this.mulChart = {};
+    this.chartMostUsedLanguages = {};
     this.mostUsedLanguages = {};
     this.loading = true;
+    this.exitDialogLinkId = null;
   }
 
   getData() {
@@ -27,6 +28,9 @@ export class Insight {
       this.dataContext.getAll()]).then((values) => {
         this.insights = values[0];
         this.projects = values[1];
+        if(typeof this.insights==='undefined' || typeof this.projects==='undefined') {
+          return;
+        }
         this.sortProjects(this.projects).then((projects) => {
           Promise.all([
             this.buildChartMostUsed(this.insights),
@@ -40,6 +44,8 @@ export class Insight {
             }, 10, self);
             this.loading = false;
           });
+        }).catch((e) => {
+          return;
         });
       });
   }
@@ -78,7 +84,7 @@ export class Insight {
   }
 
   deactivate() {
-    this.mostUsedLanguages.destroy();
+    // this.mostUsedLanguages.destroy();
     window.removeEventListener('resize', this.handleResize);
   }
 
@@ -86,7 +92,8 @@ export class Insight {
     this.mulChart.resize();
     this.mfChart.resize();
     this.myChart2.resize();
-    this.mostUsedLanguages.resize();
+    this.chartMostUsedLanguages.resize();
+    // this.mostUsedLanguages.resize();
   }
 
   buildChartMostUsed(insights) {
@@ -99,25 +106,103 @@ export class Insight {
       const mulBot = mul.slice(6, mul.length);
       const mulOther = mulBot.reduce((a, b) => b[1] + a, 0);
       mulTop.push([`Other(${mulBot.length})`, mulOther]);
-      resolve(mulTop);
+      let data = mulTop.map((item) => {
+        let r = {value:item[1],name:item[0]};
+        return r;
+      });
+      resolve(data);
     });
 
     calc.then((data) => {
-      this.mostUsedLanguages = c3.generate({
-        bindto: '#mostUsedLanguages',
-        data: {
-          columns: data,
-          type: 'donut',
+      data = this.injectColorStyle(data);
+      this.chartMostUsedLanguages = echarts.init(document.getElementById('chartMostUsedLanguajes'));
+      this.chartMostUsedLanguages.setOption({
+        tooltip: {
+          trigger: 'axis',
         },
-        color: {
-          pattern: ['#85C241', '#BAD432', '#009343', '#F7B719', '#BAD432', '#009343'],
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true,
         },
-        donut: {
-          width: 80,
-          title: 'Languages',
+        toolbox: {
+          show: true,
+          feature: {
+            dataZoom: {
+              show: false,
+              title: {
+                zoom: 'Zoom',
+                back: 'Back',
+              },
+            },
+            dataView: {
+              show: true,
+              title: 'Data',
+              readOnly: true,
+              lang: ['Data View', 'Close', 'Refresh'],
+            },
+            restore: {
+              show: true,
+              title: 'Reset',
+            },
+            saveAsImage: {
+              show: true,
+              title: 'Save',
+              type: 'png',
+              name: 'codehub_most_used_languages',
+            },
+          },
         },
+        calculable: true,
+        
+        series: [
+          {
+              name:'Most Used Languages',
+              type:'pie',
+              radius : '50%',
+              center: ['50%', '50%'],
+              data: data,
+              label: {
+                normal: {
+                    position: 'outside',
+                    formatter: '{b}\r\n{d}%',
+                    color: 'rgba(0,0,0,1)'
+                }
+              },
+              itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+              },
+  
+              animationType: 'scale',
+              animationEasing: 'elasticOut',
+              animationDelay: function (idx) {
+                  return Math.random() * 200;
+              }
+          }
+        ],
       });
     });
+  }
+
+  injectColorStyle(data) {
+    //wong's palette color
+    let colors = ['#D55E00','#0072B2','#F0E442','#CC79A7','#009E73','#56B4E9','#E69F00'];
+    let c = 0;
+    for(let i=0; i<data.length; i++){
+      let item = data[i];
+      item.itemStyle = {color: colors[c]};
+      data[i] = item;
+      c++
+      if(c >= data.length) {
+        c = 0;
+      }
+    }
+    return data;
   }
 
   buildChartLanguages(insights) {
@@ -456,8 +541,14 @@ export class Insight {
     return (a[1] > b[1]) ? -1 : 1;
   }
 
-  openLeavingSiteConfirmation(name, url) {
+  openLeavingSiteConfirmation(name, url, target) {
+    this.exitDialogLinkId = target.getAttribute('id');
     const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl });
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed( response => {
+      const element = document.querySelector('#'+this.exitDialogLinkId);
+      if(element) {
+        element.focus();
+      }
+    });
   }
 }

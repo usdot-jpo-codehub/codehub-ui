@@ -1,6 +1,6 @@
 .hero-banner {
 	background: @stage-banner-bk; /* Old browsers */
-	background: linear-gradient(135deg, darken(@stage-banner-red, 5%) 0%, darken(@stage-banner-orange, 5%) 100%);
+	background: linear-gradient(135deg, darken(@stage-banner-start, 5%) 0%, darken(@stage-banner-start, 5%) 100%);
 	position: relative;
 
 	.inner {
@@ -27,6 +27,9 @@
 			font-size: 1.5em;
 			border: none;
 			background-color: @white !important;
+			&:focus {
+				font-weight: 400;
+		  }
 		}
 
 		.input-group-btn {
@@ -67,7 +70,7 @@
 
 			.material-icons {
 				font-size: 40px;
-				color: @stage-red;
+				color: darken(@stage-red, 20%);
 			}
 		}
 
@@ -90,11 +93,19 @@
 			}
 
 			.search-bar-description {
-				font-size: 1.2em;
+				@media (min-width: 300px) {
+					font-size: 8px;
+				}
+				@media (min-width: 600px) {
+					font-size: 1.2vw;
+				}
+				@media (min-width: 1200px) {
+					font-size: 15px;
+				}
 				font-weight: 150;
 				text-align: center;
-				margin-left: 100px;
-				margin-right: 100px;
+				margin-left: 50px;
+				margin-right: 50px;
 			}
 
 			.beta-message {

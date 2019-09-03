@@ -2,7 +2,7 @@ import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import $ from 'jquery';
-import { typeahead } from 'corejs-typeahead';
+// import { typeahead } from 'corejs-typeahead';
 import { DataContext } from 'services/datacontext';
 
 @inject(DataContext, Router, EventAggregator)
@@ -12,14 +12,16 @@ export class SearchBarSecondary {
     this.dataContext = dataContext;
     this.router = router;
     this.eventAggregator = eventAggregator;
+    this.ariaLabel = null;
 
     this.landing = true;
 
     this.searchText = '';
 
     // On nav bar search update search text
-    this.subscriber = this.eventAggregator.subscribe('searchExecuted', searchText => {
-      this.searchText = searchText;
+    this.subscriber = this.eventAggregator.subscribe('searchExecuted', searchResult => {
+      this.searchText = searchResult.text;
+      this.ariaLabel = `${searchResult.count} results for ${searchResult.text}`;
     });
 
     // When leaving the results page reset search text
@@ -30,7 +32,7 @@ export class SearchBarSecondary {
 
   executeSearch(searchText) {
     this.router.navigateToRoute('results', { searchText });
-    $('#searchBox .typeahead').typeahead('close');
+    // $('#searchBox .typeahead').typeahead('close');
   }
 
   activate() {
@@ -73,31 +75,46 @@ export class SearchBarSecondary {
       });
     };
 
-    $('#searchBox .typeahead').typeahead({
-      hint: true,
-      minLength: 1,
-      limit: 1000,
-    },
-      {
-        name: 'suggestions',
-        source: suggestions,
-        display: 'text',
-        templates: {
-          empty() { return '<div class="tt-suggestion tt-selectable">No results found</div>'; },
-          pending() { return '<div class="tt-suggestion tt-selectable">Loading...</div>'; },
-          suggestion(data) {
-            return `<div class="tt-suggestion tt-selectable"> ${data.text} <span class="tt-source"><strong>${data._query}</strong> found in project ${data.found}</span></div>`; // eslint-disable-line
-          },
-        },
-      });
+    // $('#searchBox .typeahead').typeahead({
+    //   hint: true,
+    //   minLength: 1,
+    //   limit: 1000,
+    // },
+    //   {
+    //     name: 'suggestions',
+    //     source: suggestions,
+    //     display: 'text',
+    //     templates: {
+    //       empty() { return '<div class="tt-suggestion tt-selectable">No results found</div>'; },
+    //       pending() { return '<div class="tt-suggestion tt-selectable">Loading...</div>'; },
+    //       suggestion(data) {
+    //         return `<div class="tt-suggestion tt-selectable"> ${data.text} <span class="tt-source"><strong>${data._query}</strong> found in project ${data.found}</span></div>`; // eslint-disable-line
+    //       },
+    //     },
+    //   });
 
-    $('#searchBox .typeahead').bind('typeahead:select', (ev, suggestion) => {
-      this.executeSearch(suggestion.text);
-    });
+    // $('#searchBox .typeahead').bind('typeahead:select', (ev, suggestion) => {
+    //   this.executeSearch(suggestion.text);
+    // });
 
-    $('#searchBox .typeahead').bind('typeahead:autocompleted', (ev, suggestion) => {
-      this.searchText = suggestion.text;
-    });
+    // $('#searchBox .typeahead').bind('typeahead:autocompleted', (ev, suggestion) => {
+    //   this.searchText = suggestion.text;
+    // });
+  }
+
+  triggerOnFocus() {
+    this.generateAriaLabel();
+  }
+
+  generateAriaLabel() {
+    const resultsText = document.querySelector('#results-result-text');
+    if(resultsText) {
+      const artx = resultsText.getAttribute('aria-label');
+      if(artx){
+        console.log('arialabel: ', artx);
+        this.ariaLabel = artx;
+      }
+    }
   }
 
 }
