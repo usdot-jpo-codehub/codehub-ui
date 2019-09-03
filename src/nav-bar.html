@@ -13,11 +13,11 @@
             <a if.bind="!row.settings.dropdownchild" tabindex="0" href.bind="row.href" aria-label="${row.title}">${row.title}</a>
           </li>
           <li repeat.for="row of router.navigation" if.bind="row.settings.firstchild" class="nav-item dropdown">
-              <a repeat.for="row of router.navigation" tabindex="0" if.bind="row.settings.firstchild" class="nav-link dropdown-toggle ${ (router.currentInstruction.config.name ==='repopublishing') || (router.currentInstruction.config.name ==='faqs') ? 'active': ''}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">${row.settings.parent}</a>
+              <a repeat.for="row of router.navigation" tabindex="0" if.bind="row.settings.firstchild" route-href="route:repopublishing;" class="nav-link ${ (router.currentInstruction.config.name ==='repopublishing') || (router.currentInstruction.config.name ==='faqs') ? 'active': ''}" href="#" role="button">${row.settings.parent}</a>
               <!-- <a if.bind="row.settings.dropdownchild && !row.settings.firstchild" class="${row.isActive ? 'active-child' : 'stage-child'} nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">${row.settings.parent}</a> -->
-              <div class="dropdown-menu">
+              <!-- <div class="dropdown-menu">
                 <a repeat.for="row of router.navigation" href.bind="row.href" if.bind="row.settings.dropdownchild" class="${row.isActive ? 'active-child' : 'stage-child'} dropdown-item" href="#">${row.settings.menuitem}</a>
-              </div>
+              </div> -->
             </li> 
           <!--<li class="navitem dropdown">
             <a href="#" route-href="route:explore;">faqs</a>
