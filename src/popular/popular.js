@@ -24,6 +24,9 @@ export class Popular {
     this.projectTitle = 'Most Popular Projects';
 
     this.landing = true;
+    this.searchingPopular = false;
+    this.searchingFeatured = false;
+    this.searchingHealthiest = false;
 
     this.sortDirection = 'descending';
     this.selectedSort = 'rank';
@@ -40,36 +43,61 @@ export class Popular {
   }
 
   getData() {
+    this.searchingPopular = true;
     this.dataContext.findPopular().then(results => {
+      if(!results) {
+        this.searchingPopular = false;
+        return this.projects;
+      }
+
       setTimeout(() => {
         this.projects = results;
+        this.searchingPopular = false;
         return this.projects;
       }, 10);
     });
 
+    let c = 0;
+    let feat = [];
+    this.searchingFeatured = true;
     for (let i = 0; i < this.fp.length; i++) {
       this.dataContext.findById(this.fp[i]).then(repo => {
+        c++;
         if(repo) {
-          this.featured.push(repo);
+          feat.push(repo);
+        }
+        if (c >= this.fp.length) {
+          this.featured = [...feat];
+          this.searchingFeatured = false;
         }
       });
     }
 
+
     this.dataContext.findHealthiest().then((results) => {
       // Injecting project_description and organizationUrl.
       if (results && results.length > 0) {
-        results.forEach((element) => {
-          if (element && element.id) {
-            this.dataContext.findById(element.id).then(proj => {
-              if (proj) {
-                element.project_description = proj.project_description;
-                element.organizationUrl = proj.organizationUrl;
-                element.content = proj.content;
-                element.sonarlink = `${this.stageConfig.SONARQUBE_ADDRESS}/dashboard/index/${proj.organization}_${proj.project_name}`;
-                this.healthiest.push(element);
-              }
-            });
-          }
+        this.searchingHealthiest = true;
+        // removing invalid elements
+        let filterRes = results.filter((x => {return x && x.id}));
+        let c=0;
+        let data = [];
+        filterRes.forEach((element) => {
+          this.dataContext.findById(element.id).then(proj => {
+            c++;
+            if (proj) {
+              element.project_description = proj.project_description;
+              element.organizationUrl = proj.organizationUrl;
+              element.content = proj.content;
+              element.sonarlink = `${this.stageConfig.SONARQUBE_ADDRESS}/dashboard/index/${proj.organization}_${proj.project_name}`;
+              data.push(element);
+            }
+
+            if (c >= filterRes.length) {
+              this.healthiest = [...data];
+              this.searchingHealthiest = false;
+            }
+          });
         });
       }
     });

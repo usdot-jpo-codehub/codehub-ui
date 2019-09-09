@@ -359,7 +359,9 @@ export class Results {
     this.dialogService.open({ viewModel: ReadmeModal, model: repo, lock: false }).whenClosed(response => {
       if (response.wasCancelled) {
         const element = document.querySelector('#'+this.openReadmeLinkId);
-        element.focus();
+        if(element) {
+          element.focus();
+        }
       }
     });
   }

@@ -42,6 +42,11 @@ export class Explore {
   getData() {
     return this.dataContext.getAll()
       .then(projects => {
+        if (!projects) {
+          this.searchDone = true;
+          return this.projects;
+        }
+
         setTimeout(() => {
           this.projects = JSON.parse(JSON.stringify(projects));
           this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');

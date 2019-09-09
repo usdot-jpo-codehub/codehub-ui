@@ -12,17 +12,27 @@ export class DataContext {
   // TODO Wrap API calls in promises to catch errors
 
   getAll() {
-    return this.http.fetch(baseUrl, {
+    return this.http.fetch(`${baseUrl}/getAll`, {
       method: 'GET',
     })
-      .then(response => response.json());
+      .then(response => {
+        if(response && response.ok) {
+          return response.json()
+        }
+        return null;
+      });
   }
 
   findPopular() {
     return this.http.fetch(`${baseUrl}/findPopular`, {
       method: 'GET',
     })
-      .then(response => response.json());
+      .then(response => {
+        if (response && response.ok) {
+          return response.json();
+        }
+        return null;
+      });
   }
 
   findEnterpriseInsight() {
@@ -94,7 +104,12 @@ export class DataContext {
     return this.http.fetch(adjustedURL, {
       method: 'GET',
     })
-      .then(response => response.json());
+      .then(response => {
+        if(response && response.ok) {
+          return response.json();
+        }
+        return null;
+      });
   }
 
   getComponentDependencies(id) {
@@ -102,7 +117,12 @@ export class DataContext {
     return this.http.fetch(adjustedURL, {
       method: 'GET',
     })
-      .then(response => response.json());
+      .then(response => {
+        if (response && response.ok) {
+          response.json();
+        }
+        return null;
+      });
   }
 
   postUsedProject(postObject, id) {
@@ -110,7 +130,12 @@ export class DataContext {
       method: 'POST',
       body: json(postObject),
     })
-      .then(response => response.json());
+      .then(response => {
+        if (response && response.ok){
+          return response.json();
+        }
+        return null;
+      });
   }
 
   findHealthiest() {
