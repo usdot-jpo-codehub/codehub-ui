@@ -19,11 +19,24 @@
               <div if.bind="projects.length < 1" class="loader" width="100%" height="100%" align="center" valign="center">
                 <img src="../../img/loading.svg" width="100px" alt="Loading...">
               </div>
-              <template repeat.for="repo of featured | sort: { propertyName: selectedSort, direction: sortDirection} | chunk: 3">
-                <div class="row">
-                  <compose view-model="../components/card-feature" if.bind="repo[0]" model.bind="repo[0]"></compose>
-                  <compose view-model="../components/card-feature" if.bind="repo[1]" model.bind="repo[1]"></compose>
-                  <compose view-model="../components/card-feature" if.bind="repo[2]" model.bind="repo[2]"></compose>
+              <template repeat.for="repo of featured | chunk: 3">
+                <div class="row marytest1">
+                  <!-- <div if.bind="$index != 1">
+                      <compose view-model="../components/card-feature" if.bind="repo[0]" model.bind="repo[0]"></compose>
+                      <compose view-model="../components/card-feature" if.bind="repo[1]" model.bind="repo[1]"></compose>
+                      <compose view-model="../components/card-feature" if.bind="repo[2]" model.bind="repo[2]"></compose>
+                  </div> -->
+
+                  <!-- <div if.bind="$index == 1"> -->
+                      <compose view-model="../components/card-feature" if.bind="!repo[0].isFake" model.bind="repo[0]"></compose>
+                      <compose view-model="../components/card-feature-fake" if.bind="repo[0].isFake" model.bind="repo[0]"></compose>
+    
+                      <compose view-model="../components/card-feature" if.bind="!repo[1].isFake" model.bind="repo[1]"></compose>
+                      <compose view-model="../components/card-feature-fake" if.bind="repo[1].isFake" model.bind="repo[1]"></compose>
+                      
+                      <compose view-model="../components/card-feature" if.bind="!repo[2].isFake" model.bind="repo[2]"></compose>
+                      <compose view-model="../components/card-feature-fake" if.bind="repo[2].isFake" model.bind="repo[2]"></compose>
+                  <!-- </div> -->
                 </div>
               </template>
             </div>
@@ -33,7 +46,7 @@
                 <img src="../../img/loading.svg" width="100px" alt="Loading...">
               </div>
               <template repeat.for="repo of projects | sort: { propertyName: selectedSort, direction: sortDirection} | chunk: 3">
-                <div class="row">
+                <div class="row marytest2">
                   <compose view-model="../components/card" if.bind="repo[0]" model.bind="repo[0]"></compose>
                   <compose view-model="../components/card" if.bind="repo[1]" model.bind="repo[1]"></compose>
                   <compose view-model="../components/card" if.bind="repo[2]" model.bind="repo[2]"></compose>
@@ -46,7 +59,7 @@
                 <img src="../../img/loading.svg" width="100px" alt="Loading...">
               </div>
               <template repeat.for="repo of healthiest | chunk: 3">
-                <div class="row">
+                <div class="row marytest3">
                   <compose view-model="../components/card-health" if.bind="repo[0]" model.bind="repo[0]"></compose>
                   <compose view-model="../components/card-health" if.bind="repo[1]" model.bind="repo[1]"></compose>
                   <compose view-model="../components/card-health" if.bind="repo[2]" model.bind="repo[2]"></compose>

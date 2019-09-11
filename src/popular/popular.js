@@ -5,6 +5,8 @@ import { DataContext } from 'services/datacontext';
 import { StageConfig } from '../../stageConf';
 import { ReadmeModal } from '../components/modals/readme-modal';
 import { LeavingModal } from '../components/modals/leaving-modal';
+//import json data fake file nickname here. 
+//google how to import json file
 
 @inject(DataContext, Router, StageConfig, DialogService)
 export class Popular {
@@ -45,12 +47,55 @@ export class Popular {
         return this.projects;
       }, 10);
     });
+    //inject fake data here at position 4
+    //need to syncronise these two: API & this array repo, then insert
+    // for (let i = 0; i < this.fp.length; i++) {
+    //   this.dataContext.findById(this.fp[i]).then(repo => {
+    //     this.featured.push(repo);
 
-    for (let i = 0; i < this.fp.length; i++) {
-      this.dataContext.findById(this.fp[i]).then(repo => {
-        this.featured.push(repo);
-      });
-    }
+    //   });
+    // }
+    //Gio:slack_call: 12:45 PM
+let c = 0;
+   let feat = [];
+   this.searchingFeatured = true;
+   for (let i = 0; i < this.fp.length; i++) {
+     this.dataContext.findById(this.fp[i]).then(repo => {
+       c++;
+       if(repo) {
+         feat.push(repo);
+       }
+       if (c >= this.fp.length) {
+         //insert into 'feat' variable into position 4 the fake data (needs a 'name')
+         //insert json object. create variable for json oject, add variable "isFake = true;"
+         let fakeData = {
+              isFake :true, 
+              project_name: "Your repository name here!",
+              language: "Primary Language Here",
+              project_description: "Contribute to the advancement of U.S. Transportation!",
+              organization: "your username",
+              updatedAt: "Future Updates Pending",
+              stars: "?",
+              watchers: "?",
+              releases: "?",
+              forkedRepos: "?",
+              contributors: "?",
+              commits: "?"
+      }; //could put project_name
+         //let fakeData = fakeDatafilename.json;
+         let b = 4;
+         if(feat.length < b)
+         {
+           b=feat.length - 1;
+         }
+          feat.splice(b, 0, fakeData);
+         
+         this.featured = [...feat];
+         this.searchingFeatured = false;
+         console.log(this.featured);
+       }
+     });
+   }
 
     this.dataContext.findHealthiest().then((results) => {
       // Injecting project_description and organizationUrl.
