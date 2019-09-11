@@ -86,6 +86,19 @@ export class DataContext {
       });
   }
 
+  findByIds(ids) {
+    return this.http.fetch(`${baseUrl}/findByIds`, {
+      method: 'POST',
+      body: json(ids),
+    })
+      .then(response => {
+        if (response && response.ok) {
+          return response.json();
+        }
+        return null;
+      });
+  }
+
   findSimilarProjects(id) {
     const adjustedURL = `${baseUrl}/findSimilarProjects/${id}`;
     return this.http.fetch(adjustedURL, {

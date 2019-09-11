@@ -60,18 +60,12 @@ export class Popular {
     let c = 0;
     let feat = [];
     this.searchingFeatured = true;
-    for (let i = 0; i < this.fp.length; i++) {
-      this.dataContext.findById(this.fp[i]).then(repo => {
-        c++;
-        if(repo) {
-          feat.push(repo);
-        }
-        if (c >= this.fp.length) {
-          this.featured = [...feat];
-          this.searchingFeatured = false;
-        }
-      });
-    }
+    this.dataContext.findByIds(this.fp).then(resp => {
+      if (resp) {
+        this.featured = resp;
+      }
+      this.searchingFeatured = false;
+    });
 
 
     this.dataContext.findHealthiest().then((results) => {
@@ -80,25 +74,24 @@ export class Popular {
         this.searchingHealthiest = true;
         // removing invalid elements
         let filterRes = results.filter((x => {return x && x.id}));
-        let c=0;
-        let data = [];
-        filterRes.forEach((element) => {
-          this.dataContext.findById(element.id).then(proj => {
-            c++;
-            if (proj) {
-              element.project_description = proj.project_description;
-              element.organizationUrl = proj.organizationUrl;
-              element.content = proj.content;
-              element.sonarlink = `${this.stageConfig.SONARQUBE_ADDRESS}/dashboard/index/${proj.organization}_${proj.project_name}`;
-              data.push(element);
+        let mapIds = filterRes.map( (x) => x.id);
+        if (mapIds && mapIds.length>0) {
+          this.dataContext.findByIds(mapIds).then((resp) => {
+            if(resp) {
+              filterRes.forEach((element) => {
+                let proj = resp.find(x => x.id === element.id );
+                if (proj) {
+                  element.project_description = proj.project_description;
+                  element.organizationUrl = proj.organizationUrl;
+                  element.content = proj.content;
+                  element.sonarlink = `${this.stageConfig.SONARQUBE_ADDRESS}/dashboard/index/${proj.organization}_${proj.project_name}`;
+                  this.healthiest.push(element);
+                }
+              });
             }
-
-            if (c >= filterRes.length) {
-              this.healthiest = [...data];
-              this.searchingHealthiest = false;
-            }
+            this.searchingHealthiest = false;
           });
-        });
+        }
       }
     });
   }
