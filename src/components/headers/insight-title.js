@@ -10,10 +10,10 @@ export class InsightTitle {
   }
 
   getData() {
-    this.dataContext.getLastProcessedDateTime().then(results => {
-      this.lastUpdated = this.getLocalDateTime(results);
-      return this.lastUpdated;
-    });
+    // this.dataContext.getLastProcessedDateTime().then(results => {
+    //   this.lastUpdated = this.getLocalDateTime(results);
+    //   return this.lastUpdated;
+    // });
   }
 
   getLocalDateTime(dateTimeString) {

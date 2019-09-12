@@ -50,14 +50,14 @@ export class ProjectDetails {
   activate(params) {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
 
-    this.dataContext.findSimilarProjects(params.id).then(similarProjects => {
-      // TODO should be using promises to catch errors
-      if (similarProjects && !similarProjects.error) {
-        setTimeout(() => {
-          this.similarProjects = similarProjects;
-        }, 10);
-      }
-    });
+    // this.dataContext.findSimilarProjects(params.id).then(similarProjects => {
+    //   // TODO should be using promises to catch errors
+    //   if (similarProjects && !similarProjects.error) {
+    //     setTimeout(() => {
+    //       this.similarProjects = similarProjects;
+    //     }, 10);
+    //   }
+    // });
 
     this.dataContext.findById(params.id).then(repo => {
       if (!repo) {
@@ -89,7 +89,7 @@ export class ProjectDetails {
     });
 
     this.dataContext.getComponentDependencies(params.id).then(depends => {
-      if (depends.componentDependencies) {
+      if (depends && depends.componentDependencies) {
         this.componentDependencies = depends.componentDependencies;
 
         // TODO this fix should be done API side
