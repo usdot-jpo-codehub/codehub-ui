@@ -5,6 +5,7 @@ import { DataContext } from 'services/datacontext';
 import { StageConfig } from '../../stageConf';
 import { ReadmeModal } from '../components/modals/readme-modal';
 import { LeavingModal } from '../components/modals/leaving-modal';
+import { VScanModal } from '../components/modals/vscan-modal';
 //import json data fake file nickname here. 
 //google how to import json file
 
@@ -25,6 +26,9 @@ export class Popular {
     this.projectTitle = 'Most Popular Projects';
 
     this.landing = true;
+    this.searchingPopular = false;
+    this.searchingFeatured = false;
+    this.searchingHealthiest = false;
 
     this.sortDirection = 'descending';
     this.selectedSort = 'rank';
@@ -41,9 +45,16 @@ export class Popular {
   }
 
   getData() {
+    this.searchingPopular = true;
     this.dataContext.findPopular().then(results => {
+      if(!results) {
+        this.searchingPopular = false;
+        return this.projects;
+      }
+
       setTimeout(() => {
         this.projects = results;
+        this.searchingPopular = false;
         return this.projects;
       }, 10);
     });
@@ -100,19 +111,27 @@ let c = 0;
     this.dataContext.findHealthiest().then((results) => {
       // Injecting project_description and organizationUrl.
       if (results && results.length > 0) {
-        results.forEach((element) => {
-          if (element && element.id) {
-            this.dataContext.findById(element.id).then(proj => {
-              if (proj) {
-                element.project_description = proj.project_description;
-                element.organizationUrl = proj.organizationUrl;
-                element.content = proj.content;
-                element.sonarlink = `${this.stageConfig.SONARQUBE_ADDRESS}/dashboard/index/${proj.organization}_${proj.project_name}`;
-                this.healthiest.push(element);
-              }
-            });
-          }
-        });
+        this.searchingHealthiest = true;
+        // removing invalid elements
+        let filterRes = results.filter((x => {return x && x.id}));
+        let mapIds = filterRes.map( (x) => x.id);
+        if (mapIds && mapIds.length>0) {
+          this.dataContext.findByIds(mapIds).then((resp) => {
+            if(resp) {
+              filterRes.forEach((element) => {
+                let proj = resp.find(x => x.id === element.id );
+                if (proj) {
+                  element.project_description = proj.project_description;
+                  element.organizationUrl = proj.organizationUrl;
+                  element.content = proj.content;
+                  element.sonarlink = `${this.stageConfig.SONARQUBE_ADDRESS}/dashboard/index/${proj.organization}_${proj.project_name}`;
+                  this.healthiest.push(element);
+                }
+              });
+            }
+            this.searchingHealthiest = false;
+          });
+        }
       }
     });
   }
@@ -142,4 +161,13 @@ let c = 0;
     });
   }
 
+  displayVScanDialog(repo, target) {
+    this.exitDialogLinkId = target.getAttribute('id');
+    this.dialogService.open({viewModel: VScanModal, model: repo, lock: false}).whenClosed( reponse => {
+      const element = document.querySelector('#'+this.exitDialogLinkId);
+      if(element) {
+        element.focus();
+      }
+    });
+  }
 }

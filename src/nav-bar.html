@@ -10,16 +10,27 @@
       <div id="navbar">
         <ul id="titleBarNav" class="nav navbar-nav main-nav" >
           <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : 'stage'}">
-            <a tabindex="0" href.bind="row.href" aria-label="${row.title}">${row.title}</a>
+            <a if.bind="!row.settings.dropdownchild" tabindex="0" href.bind="row.href" aria-label="${row.title}">${row.title}</a>
           </li>
+          <li repeat.for="row of router.navigation" if.bind="row.settings.firstchild" class="nav-item dropdown">
+              <a repeat.for="row of router.navigation" tabindex="0" if.bind="row.settings.firstchild" route-href="route:repopublishing;" class="nav-link ${ (router.currentInstruction.config.name ==='repopublishing') || (router.currentInstruction.config.name ==='faqs') ? 'active': ''}" href="#" role="button">${row.settings.parent}</a>
+              <!-- <a if.bind="row.settings.dropdownchild && !row.settings.firstchild" class="${row.isActive ? 'active-child' : 'stage-child'} nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">${row.settings.parent}</a> -->
+              <!-- <div class="dropdown-menu">
+                <a repeat.for="row of router.navigation" href.bind="row.href" if.bind="row.settings.dropdownchild" class="${row.isActive ? 'active-child' : 'stage-child'} dropdown-item" href="#">${row.settings.menuitem}</a>
+              </div> -->
+            </li> 
+          <!--<li class="navitem dropdown">
+            <a href="#" route-href="route:explore;">faqs</a>
+             <a class="card-link" href="#" route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Open details for project ${repo.project_name}">&nbsp;</a>
+          </li> -->
         </ul>
         <div if.bind="projects.title = 'project-details'">
           <ul class="nav navbar-nav navbar-right user-nav">
             <li class="utility-icons"><a href="#" id="searchBtn" title="Search" aria-label="Search for project names and languages"><i class="material-icons" aria-hidden="true">search</i></a></li>
-            <li class="utility-icons utility-icons-external-links"><a href="mailto:codehub_support@bah.com?subject=Feedback on CodeHub" aria-label="Contact us">CONTACT US&emsp;&nbsp;|</a></li>
-            <li class="utility-icons utility-icons-external-links"><a href="https://www.transportation.gov/mission/about-us" target="_blank" aria-label="About Department of Transportation" >&emsp;&nbsp;ABOUT DOT&emsp;&nbsp;|</a></li>
-            <li class="utility-icons utility-icons-external-links"><a href="https://www.transportation.gov/briefingroom" target="_blank" aria-label="Briefing room" >&emsp;&nbsp;BRIEFING ROOM&emsp;&nbsp;|</a></li>
-            <li class="utility-icons utility-icons-external-links"><a href="https://www.transportation.gov/our-activities" target="_blank" aria-label="Our Activities" >&emsp;&nbsp;OUR ACTIVITIES&emsp;&nbsp;</a></li>
+            <li class="utility-icons utility-icons-external-links"><a href="https://www.its.dot.gov/about/its_jpo.htm" target="_blank" aria-label="About ITS JPO" >&emsp;&nbsp;ABOUT ITS JPO&emsp;&nbsp;|</a></li>
+            <li class="utility-icons utility-icons-external-links"><a href="https://www.transportation.gov/mission/about-us" target="_blank" aria-label="About U.S. DOT" >&emsp;&nbsp;ABOUT U.S. DOT&emsp;&nbsp;|</a></li>
+            <li class="utility-icons utility-icons-external-links"><a href="https://www.transportation.gov/briefingroom" target="_blank" aria-label="U.S. DOT Briefing room" >&emsp;&nbsp;U.S. DOT BRIEFING ROOM&emsp;&nbsp;|</a></li>
+            <li class="utility-icons utility-icons-external-links"><a href="https://www.transportation.gov/our-activities" target="_blank" aria-label="U.S. DOT ACTIVITIES" >&emsp;&nbsp;U.S. DOT ACTIVITIES&emsp;&nbsp;</a></li>
           </ul>
 
           <form id="searchForm" submit.delegate="executeNavSearch(navSearchText)" class="navbar-search hidden" role="search">

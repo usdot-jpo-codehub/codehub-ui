@@ -7,7 +7,7 @@
     <div class="card card-default hover-card">
       <div class="card-header">
         <div tabindex="0" class="lang-logo" role="img" aria-label="Language icon ${repo.language}">
-            <img alt="Language icon ${repo.language}" src="img/language-icons/${repo.language.toLowerCase() ? repo.language.toLowerCase() : 'default'}.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';">
+            <img alt="Language icon ${repo.language}" src.bind="language_image">
         </div>
         <div class="card-title multiline">
           <a id="card-health-title-link-${repo.id}" href="#" route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Project name: ${repo.project_name}">${repo.project_name}</a>
