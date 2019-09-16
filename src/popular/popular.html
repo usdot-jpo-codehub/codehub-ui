@@ -19,11 +19,16 @@
               <div if.bind="(projects.length < 1) && (searchingFeatured)" class="loader" width="100%" height="100%" align="center" valign="center">
                 <img src="../../img/loading.svg" width="100px" alt="Loading...">
               </div>
-              <template repeat.for="repo of featured | sort: { propertyName: selectedSort, direction: sortDirection} | chunk: 3">
+              <template repeat.for="repo of featured | chunk: 3">
                 <div class="row">
-                  <compose view-model="../components/card-feature" if.bind="repo[0]" model.bind="repo[0]"></compose>
-                  <compose view-model="../components/card-feature" if.bind="repo[1]" model.bind="repo[1]"></compose>
-                  <compose view-model="../components/card-feature" if.bind="repo[2]" model.bind="repo[2]"></compose>
+                  <compose view-model="../components/card-feature" if.bind="!repo[0].isFake" model.bind="repo[0]"></compose>
+                  <compose view-model="../components/card-feature-fake" if.bind="repo[0].isFake" model.bind="repo[0]"></compose>
+
+                  <compose view-model="../components/card-feature" if.bind="!repo[1].isFake" model.bind="repo[1]"></compose>
+                  <compose view-model="../components/card-feature-fake" if.bind="repo[1].isFake" model.bind="repo[1]"></compose>
+                  
+                  <compose view-model="../components/card-feature" if.bind="!repo[2].isFake" model.bind="repo[2]"></compose>
+                  <compose view-model="../components/card-feature-fake" if.bind="repo[2].isFake" model.bind="repo[2]"></compose>
                 </div>
               </template>
             </div>

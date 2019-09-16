@@ -9,7 +9,10 @@ export class Repopublishing {
   constructor(router, dialogService) {
     this.router = router;
     this.dialogService = dialogService;
-    this.message = 'this is the Repository Publishing Page';
+    this.message = 'this is the Repository Registration Page';
+  }
+  activate(){
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
   openLeavingSiteConfirmation(name, url, target) {
     this.exitDialogLinkId = target.getAttribute('id');

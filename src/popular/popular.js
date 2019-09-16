@@ -6,16 +6,18 @@ import { StageConfig } from '../../stageConf';
 import { ReadmeModal } from '../components/modals/readme-modal';
 import { LeavingModal } from '../components/modals/leaving-modal';
 import { VScanModal } from '../components/modals/vscan-modal';
+import { FakeData } from '../../fakeData';
 
-@inject(DataContext, Router, StageConfig, DialogService)
+@inject(DataContext, Router, StageConfig, DialogService, FakeData)
 export class Popular {
 
-  constructor(dataContext, router, stageConfig, dialogService) {
+  constructor(dataContext, router, stageConfig, dialogService, fakeData) {
     this.dataContext = dataContext;
     this.router = router;
     this.stageConfig = stageConfig;
     this.fp = stageConfig.FEATURED_PROJECTS;
     this.dialogService = dialogService;
+    this.fakeData = fakeData;
 
     this.projects = [];
     this.featured = [];
@@ -45,7 +47,7 @@ export class Popular {
   getData() {
     this.searchingPopular = true;
     this.dataContext.findPopular().then(results => {
-      if(!results) {
+      if (!results) {
         this.searchingPopular = false;
         return this.projects;
       }
@@ -56,30 +58,36 @@ export class Popular {
         return this.projects;
       }, 10);
     });
-
     let c = 0;
     let feat = [];
     this.searchingFeatured = true;
     this.dataContext.findByIds(this.fp).then(resp => {
       if (resp) {
+        let fakeData = this.fakeData;
+        let b = 4;
+        console.log(resp);
+        if (resp.length < b) {
+          b = resp.length - 1;
+        }
+        resp.splice(b, 0, fakeData);
+        console.log(resp);
         this.featured = resp;
+        this.searchingFeatured = false;
       }
-      this.searchingFeatured = false;
     });
-
 
     this.dataContext.findHealthiest().then((results) => {
       // Injecting project_description and organizationUrl.
       if (results && results.length > 0) {
         this.searchingHealthiest = true;
         // removing invalid elements
-        let filterRes = results.filter((x => {return x && x.id}));
-        let mapIds = filterRes.map( (x) => x.id);
-        if (mapIds && mapIds.length>0) {
+        let filterRes = results.filter((x => { return x && x.id }));
+        let mapIds = filterRes.map((x) => x.id);
+        if (mapIds && mapIds.length > 0) {
           this.dataContext.findByIds(mapIds).then((resp) => {
-            if(resp) {
+            if (resp) {
               filterRes.forEach((element) => {
-                let proj = resp.find(x => x.id === element.id );
+                let proj = resp.find(x => x.id === element.id);
                 if (proj) {
                   element.project_description = proj.project_description;
                   element.organizationUrl = proj.organizationUrl;
@@ -104,7 +112,7 @@ export class Popular {
     this.openReadmeLinkId = target.getAttribute('id');
     this.dialogService.open({ viewModel: ReadmeModal, model: repo, lock: false }).whenClosed(response => {
       if (response.wasCancelled) {
-        const element = document.querySelector('#'+this.openReadmeLinkId);
+        const element = document.querySelector('#' + this.openReadmeLinkId);
         element.focus();
       }
     });
@@ -113,9 +121,9 @@ export class Popular {
   openLeavingSiteConfirmation(name, url, target) {
     this.exitDialogLinkId = target.getAttribute('id');
     const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed( response => {
-      const element = document.querySelector('#'+this.exitDialogLinkId);
-      if(element) {
+    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed(response => {
+      const element = document.querySelector('#' + this.exitDialogLinkId);
+      if (element) {
         element.focus();
       }
     });
@@ -123,9 +131,9 @@ export class Popular {
 
   displayVScanDialog(repo, target) {
     this.exitDialogLinkId = target.getAttribute('id');
-    this.dialogService.open({viewModel: VScanModal, model: repo, lock: false}).whenClosed( reponse => {
-      const element = document.querySelector('#'+this.exitDialogLinkId);
-      if(element) {
+    this.dialogService.open({ viewModel: VScanModal, model: repo, lock: false }).whenClosed(reponse => {
+      const element = document.querySelector('#' + this.exitDialogLinkId);
+      if (element) {
         element.focus();
       }
     });
