@@ -11,6 +11,9 @@ export class Repopublishing {
     this.dialogService = dialogService;
     this.message = 'this is the Repository Publishing Page';
   }
+  activate(){
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  }
   openLeavingSiteConfirmation(name, url, target) {
     this.exitDialogLinkId = target.getAttribute('id');
     const mdl = { name, url };

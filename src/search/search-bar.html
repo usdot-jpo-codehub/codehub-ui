@@ -19,6 +19,12 @@
         </form>
       </div>
       <p class="search-bar-description" id="search-bar_text-below-search" innerhtml.bind="stageConfig.HOME_TEXT_BELOW_SEARCH" tabindex="0"></p>
+      <div id="header-connect-repo">
+          <span class="button-lead button-lead-header">JOIN OUR COMMUNITY!</span>
+          <button class="btn btn-yellow" click.delegate="router.navigateToRoute('repopublishing')">Connect Your Repo</button>
+        </div>  
+        <!-- in js, on click do binding to local function. in local function, do router navigatiion , can we pass parameters -->
     </div>
+    
   </div>
 </template>

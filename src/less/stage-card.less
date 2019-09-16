@@ -68,8 +68,24 @@
       font-size: @font-size-small;
       font-weight: bold;
       text-decoration: underline;
-    }
+	}
+	
+	.stat .num,
+ 	.stat .stat-label{
+		display: inline-block;
+	}
+	&.row div{
+		padding-right: 11px;
+		padding-left: 11px;
+	}
+	&.row div:last-child {
+		padding-right: 15px;
+	}
+	&.row div:first-child {
+		padding-left: 15px;
+	}
   }
+
 }
 
 // Global Github Stats

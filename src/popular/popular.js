@@ -7,17 +7,20 @@ import { ReadmeModal } from '../components/modals/readme-modal';
 import { LeavingModal } from '../components/modals/leaving-modal';
 import { VScanModal } from '../components/modals/vscan-modal';
 //import json data fake file nickname here. 
+import { FakeData } from '../../fakeData';
 //google how to import json file
 
-@inject(DataContext, Router, StageConfig, DialogService)
+
+@inject(DataContext, Router, StageConfig, DialogService, FakeData)
 export class Popular {
 
-  constructor(dataContext, router, stageConfig, dialogService) {
+  constructor(dataContext, router, stageConfig, dialogService, fakeData) {
     this.dataContext = dataContext;
     this.router = router;
     this.stageConfig = stageConfig;
     this.fp = stageConfig.FEATURED_PROJECTS;
     this.dialogService = dialogService;
+    this.fakeData = fakeData;
 
     this.projects = [];
     this.featured = [];
@@ -67,46 +70,83 @@ export class Popular {
     //   });
     // }
     //Gio:slack_call: 12:45 PM
-let c = 0;
+   let c = 0;
    let feat = [];
    this.searchingFeatured = true;
-   for (let i = 0; i < this.fp.length; i++) {
-     this.dataContext.findById(this.fp[i]).then(repo => {
-       c++;
-       if(repo) {
-         feat.push(repo);
-       }
-       if (c >= this.fp.length) {
+   this.dataContext.findByIds(this.fp).then(resp => {
+     if (resp) {
+      let fakeData = this.fakeData;
+      // let fakeData = {
+      //   isFake :true, 
+      //   project_name: "Your repository name here!",
+      //   language: "Primary Language Here",
+      //   project_description: "Contribute to the advancement of U.S. Transportation!",
+      //   organization: "your username",
+      //   updatedAt: "Future Updates Pending",
+      //   stars: "?",
+      //   watchers: "?",
+      //   releases: "?",
+      //   forkedRepos: "?",
+      //   contributors: "?",
+      //   commits: "?"
+      // }; 
+   //let fakeData = fakeDatafilename.json;
+      let b = 4;
+      console.log(resp);
+      if(resp.length < b)
+      {
+        b=resp.length - 1;
+      }
+      resp.splice(b, 0, fakeData);
+      console.log(resp);
+      this.featured = resp;
+      this.searchingFeatured = false;
+    }
+  });
+
+   
+   
+  //  let c = 0;
+  //  let feat = [];
+  //  this.searchingFeatured = true;
+  //  for (let i = 0; i < this.fp.length; i++) {
+  //    this.dataContext.findById(this.fp[i]).then(repo => {
+  //      c++;
+  //      if(repo) {
+  //        feat.push(repo);
+  //      }
+  //      if (c >= this.fp.length) {
+
          //insert into 'feat' variable into position 4 the fake data (needs a 'name')
          //insert json object. create variable for json oject, add variable "isFake = true;"
-         let fakeData = {
-              isFake :true, 
-              project_name: "Your repository name here!",
-              language: "Primary Language Here",
-              project_description: "Contribute to the advancement of U.S. Transportation!",
-              organization: "your username",
-              updatedAt: "Future Updates Pending",
-              stars: "?",
-              watchers: "?",
-              releases: "?",
-              forkedRepos: "?",
-              contributors: "?",
-              commits: "?"
-      }; //could put project_name
-         //let fakeData = fakeDatafilename.json;
-         let b = 4;
-         if(feat.length < b)
-         {
-           b=feat.length - 1;
-         }
-          feat.splice(b, 0, fakeData);
+      //    let fakeData = {
+      //         isFake :true, 
+      //         project_name: "Your repository name here!",
+      //         language: "Primary Language Here",
+      //         project_description: "Contribute to the advancement of U.S. Transportation!",
+      //         organization: "your username",
+      //         updatedAt: "Future Updates Pending",
+      //         stars: "?",
+      //         watchers: "?",
+      //         releases: "?",
+      //         forkedRepos: "?",
+      //         contributors: "?",
+      //         commits: "?"
+      // }; //could put project_name
+      //    //let fakeData = fakeDatafilename.json;
+      //    let b = 4;
+      //    if(feat.length < b)
+      //    {
+      //      b=feat.length - 1;
+      //    }
+      //     feat.splice(b, 0, fakeData);
          
-         this.featured = [...feat];
-         this.searchingFeatured = false;
-         console.log(this.featured);
-       }
-     });
-   }
+    //      this.featured = [...feat];
+    //      this.searchingFeatured = false;
+    //      console.log(this.featured);
+    //    }
+    //  });
+   //}
 
     this.dataContext.findHealthiest().then((results) => {
       // Injecting project_description and organizationUrl.
