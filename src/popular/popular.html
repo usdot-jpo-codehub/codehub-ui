@@ -21,22 +21,14 @@
               </div>
               <template repeat.for="repo of featured | chunk: 3">
                 <div class="row">
-                  <!-- <div if.bind="$index != 1">
-                      <compose view-model="../components/card-feature" if.bind="repo[0]" model.bind="repo[0]"></compose>
-                      <compose view-model="../components/card-feature" if.bind="repo[1]" model.bind="repo[1]"></compose>
-                      <compose view-model="../components/card-feature" if.bind="repo[2]" model.bind="repo[2]"></compose>
-                  </div> -->
+                  <compose view-model="../components/card-feature" if.bind="!repo[0].isFake" model.bind="repo[0]"></compose>
+                  <compose view-model="../components/card-feature-fake" if.bind="repo[0].isFake" model.bind="repo[0]"></compose>
 
-                  <!-- <div if.bind="$index == 1"> -->
-                      <compose view-model="../components/card-feature" if.bind="!repo[0].isFake" model.bind="repo[0]"></compose>
-                      <compose view-model="../components/card-feature-fake" if.bind="repo[0].isFake" model.bind="repo[0]"></compose>
-    
-                      <compose view-model="../components/card-feature" if.bind="!repo[1].isFake" model.bind="repo[1]"></compose>
-                      <compose view-model="../components/card-feature-fake" if.bind="repo[1].isFake" model.bind="repo[1]"></compose>
-                      
-                      <compose view-model="../components/card-feature" if.bind="!repo[2].isFake" model.bind="repo[2]"></compose>
-                      <compose view-model="../components/card-feature-fake" if.bind="repo[2].isFake" model.bind="repo[2]"></compose>
-                  <!-- </div> -->
+                  <compose view-model="../components/card-feature" if.bind="!repo[1].isFake" model.bind="repo[1]"></compose>
+                  <compose view-model="../components/card-feature-fake" if.bind="repo[1].isFake" model.bind="repo[1]"></compose>
+                  
+                  <compose view-model="../components/card-feature" if.bind="!repo[2].isFake" model.bind="repo[2]"></compose>
+                  <compose view-model="../components/card-feature-fake" if.bind="repo[2].isFake" model.bind="repo[2]"></compose>
                 </div>
               </template>
             </div>
