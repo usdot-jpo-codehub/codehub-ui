@@ -57,7 +57,7 @@ au test --watch
 Integration tests are performed with [Protractor](http://angular.github.io/protractor/#/).
 
 1. Place your E2E-Tests into the folder ```test/e2e/src```
-2. Install the necessary webdriver
+2. Install the necessary webdriver.
 
   ```shell
   gulp webdriver-update
