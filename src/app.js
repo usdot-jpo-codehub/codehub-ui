@@ -5,8 +5,9 @@ import { FeedbackModal } from 'components/modals/feedback-modal.js';
 import { LeavingModal } from 'components/modals/leaving-modal.js';
 import { StageConfig } from './stageConf';
 import 'bootstrap';
+import environment from './environment';
 
-@inject(DialogService, StageConfig)
+@inject(DialogService, StageConfig, environment)
 export class App {
   configureRouter(config, router) {
     config.title = 'ITS CodeHub';
@@ -32,10 +33,11 @@ export class App {
     this.router = router;
   }
 
-  constructor(dialogService, stageConfig) {
+  constructor(dialogService, stageConfig, environment) {
     this.dialogService = dialogService;
     this.stageConfig = stageConfig;
     this.exitDialogLinkId = null;
+    this.version = this.prepareVersion(environment.version);
   }
 
   activate() {
@@ -50,6 +52,13 @@ export class App {
         }
       }
     },500);
+  }
+
+  prepareVersion(ver) {
+    let parts = ver.split('.')
+    let version = `${parts[0]}.${parts[1]}`
+    let build = `${parts[2]}`
+    return {version, build};
   }
 
   openFeedbackModal() {
