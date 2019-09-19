@@ -75,6 +75,7 @@ node {
     dir('App') {
       script {
         def branchname = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+
         echo "Current branch is ${branchname}"
         if (branchname == 'master') {
           sh 'aws s3 sync dist/ s3://codehub-ui-stage --delete'
