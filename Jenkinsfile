@@ -85,47 +85,19 @@ node {
     }
   }
 
-  stage('Build Codehub-UI Base Image') {
+  stage('Upload to S3') {
     dir ('App') {
-      script {
-        withAWS(region:'us-east-1') {
-          sh 'eval $(aws ecr get-login --no-include-email) > login'
-          dockerImage=docker.build("797335914619.dkr.ecr.us-east-1.amazonaws.com/dev-codehub/codehub-ui" + ":latest")
-        }
-        sh 'echo "Completing image build"'
-      }
-    }
-  }
-
-  stage('Publish Codehub-UI Base Image') {
-    dir ('App'){
-      script {
-        withAWS(region:'us-east-1') {
-          sh 'eval $(aws ecr get-login --no-include-email) > login'
-          dockerImage.push()
-        }
-        sh 'echo "Image Build Published Completed Successfully"'
-      }
-    }
-  }
-
-  stage('Register TaskDefinition Updates') {
-    dir ('App') {
-      script {
-        sh 'aws ecs register-task-definition --cli-input-json file://codehub-ui-taskDefinition.json --region us-east-1'
-        sh 'echo Task Definition Updated Successfully'
-      }
-    }
-  }
-
-  stage('Deploy Service') {
-    dir ('App'){
-      nodejs('node') {
         script {
-          sh './process_deployment.sh'
+          sh 'npm install'
+          sh 'au package-bundle --env prod'
+          def branchname = sh (returnStdout: true, script:'git rev-parse --abbrev-ref HEAD').trim()
+          echo "Current branch is ${branchname}"
+          if (branchname == 'master') {
+              sh 'aws s3 sync dist/ s3://codehub-ui-stage --delete'
+          } else if (branchname == 'development') {
+              sh 'aws s3 sync dist/ s3://codehub-ui-dev --delete'
+          }
         }
-      }
     }
   }
-
 }
