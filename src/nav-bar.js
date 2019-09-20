@@ -138,4 +138,9 @@ export class NavBar {
     });
     /*eslint-enable */
   }
+
+  is_resources_subpage(name) {
+    let sub_pages = ['repopublishing','faqs','additional-information']
+    return sub_pages.includes(name);
+  }
 }

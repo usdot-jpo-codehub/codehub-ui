@@ -26,7 +26,8 @@ export class App {
       { route: 'project-details', name: 'project-details', viewPorts: { mainContent: { moduleId: 'project-details/project-details' }, headerContent: { moduleId: 'components/headers/project-details-header' } }, nav: false, title: 'Project Details' },
       { route: 'profile', name: 'profile', viewPorts: { mainContent: { moduleId: 'profile/profile' },headerContent: { moduleId: 'components/headers/generic-title'} , headerContent: { moduleId: 'components/headers/secondary-title' } }, nav: false, title: 'Your Account', settings: { desc: '' }},
       { route: 'repopublishing', name: 'repopublishing', viewPorts: { mainContent: { moduleId: 'repopublishing/repopublishing'}, headerContent: { moduleId: 'components/headers/generic-title'}}, nav: true, title: 'Resources', settings:{desc: '', dropdownchild: true, parent: 'Resources', firstchild: true, menuitem: 'Repository Registration'}},
-      { route: 'faqs', name: 'faqs', viewPorts: { mainContent: { moduleId: 'faqs/faqs'}, headerContent: { moduleId: 'components/headers/generic-title'}}, nav: true, title: 'Resources', settings: { desc: '', dropdownchild: true, parent: 'Resources', firstchild: false, menuitem: 'FAQs' }}
+      { route: 'faqs', name: 'faqs', viewPorts: { mainContent: { moduleId: 'faqs/faqs'}, headerContent: { moduleId: 'components/headers/generic-title'}}, nav: true, title: 'Resources', settings: { desc: '', dropdownchild: true, parent: 'Resources', firstchild: false, menuitem: 'FAQs' }},
+      { route: 'additional-information', name: 'additional-information', viewPorts: { mainContent: { moduleId: 'additional-information/additional-information'}, headerContent: { moduleId: 'components/headers/generic-title'}}, nav: true, title: 'Resources', settings: { desc: '', dropdownchild: true, parent: 'Resources', firstchild: false, menuitem: 'Additional Information' }}
       
       //put resources drop down here
     ]);
