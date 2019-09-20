@@ -65,12 +65,10 @@ export class Popular {
       if (resp) {
         let fakeData = this.fakeData;
         let b = 4;
-        console.log(resp);
         if (resp.length < b) {
           b = resp.length - 1;
         }
         resp.splice(b, 0, fakeData);
-        console.log(resp);
         this.featured = resp;
         this.searchingFeatured = false;
       }
