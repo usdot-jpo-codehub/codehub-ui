@@ -82,6 +82,9 @@
     "wait-on": "^3.1.0"
   },
   "scripts": {
+    "start": "au run --watch",
+    "test": "au test",
+    "bundle": "au package-bundle --env prod",
     "lighthouse:ci": "node_modules/lighthouse/lighthouse-cli/index.js --output-path=lighthouse-report.html --quiet --chrome-flags='--headless' https://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com"
   }
 }
