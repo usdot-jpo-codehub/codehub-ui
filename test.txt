@@ -1,0 +1,6 @@
+s3_credentials = {
+    'aws_access_key_id': 'AKIAJY63YNN4O5KOCQIQ',
+    'aws_secret_access_key': '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',
+#     'aws_session_token': 'localtoken',
+    'region_name': 'us-east-1'
+}
