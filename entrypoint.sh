@@ -1,7 +1,4 @@
 #!/bin/bash
-set -e
-
-# Add initialisation logic here
-
-# Run application
-exec "$@"
+envsubst '${PROXY_PASS_URL}' < /etc/nginx/nginx.conf > /etc/nginx/nginx.conf
+cat /etc/nginx/nginx.conf
+nginx -g 'daemon off;'
