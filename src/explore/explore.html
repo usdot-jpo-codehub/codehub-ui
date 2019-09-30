@@ -31,13 +31,13 @@
           <li><span class="project-counter">Projects</span> <span id="explore-projects-count">(${resultCount})</span></li>
           <template if.bind="!filterLangEmpty || !filterOrgEmpty || !filterOriginEmpty">
             <li if.bind="!filterLangEmpty" repeat.for="pill of filters.selectedLanguages">
-              <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'language', pill)})</small> <a href="#" click.trigger="removePill('#filterLang',pill)"><i class="material-icons">close</i></a></span>
+              <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'language', pill)})</small> <a href="#" click.trigger="removePill('#filterLang',pill)"><em class="material-icons">close</em></a></span>
             </li>
             <li if.bind="!filterOrgEmpty" repeat.for="pill of filters.selectedOrganizations">
-              <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'organization', pill)})</small> <a href="#" click.trigger="removePill('#filterOrg',pill)"><i class="material-icons">close</i></a></span>
+              <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'organization', pill)})</small> <a href="#" click.trigger="removePill('#filterOrg',pill)"><em class="material-icons">close</em></a></span>
             </li>
             <li if.bind="!filterOriginEmpty" repeat.for="pill of filters.selectedOrigins">
-              <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'origin', pill)})</small> <a href="#" click.trigger="removePill('#filterOrigin',pill)"><i class="material-icons">close</i></a></span>
+              <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'origin', pill)})</small> <a href="#" click.trigger="removePill('#filterOrigin',pill)"><em class="material-icons">close</em></a></span>
             </li>
             <li>
               <a class="clear-btn" href="#" click.delegate="clearAllFilters()">Clear All</a>
@@ -53,11 +53,11 @@
                 <h2 class=""><span id="explore-no-results">No Results</span></h2>
               </div>
               <div if.bind="searchDone && resultCount < 1" class="empty-state">
-                <i class="material-icons">sentiment_dissatisfied</i>
+                <em class="material-icons">sentiment_dissatisfied</em>
                 <em class="text-muted">Nothing matches those filters</em>
               </div>
             </div>
-            <div if.bind="!searchDone" class="loader" width="100%" height="100%" align="center" valign="center">
+            <div if.bind="!searchDone" class="loader" width="100%" height="100%" valign="center">
               <img src="../../img/loading.svg" width="100px" alt="Loading...">
             </div>
           </div>

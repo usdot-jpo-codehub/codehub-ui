@@ -121,12 +121,12 @@ mark,
   .text-emphasis-variant(@state-danger-text);
 }
 
-// Contextual backgrounds
-// For now we'll leave these alongside the text classes until v4 when we can
-// safely shift things around (per SemVer rules).
+/* Contextual backgrounds */
+/* For now we'll leave these alongside the text classes until v4 when we can */
+/* safely shift things around (per SemVer rules). */
 .bg-primary {
-  // Given the contrast here, this is the only class to have its color inverted
-  // automatically.
+  /* Given the contrast here, this is the only class to have its color inverted */
+  /* automatically. */
   color: #fff;
   .bg-variant(@brand-primary);
 }
@@ -144,8 +144,8 @@ mark,
 }
 
 
-// Page header
-// -------------------------
+/* Page header
+ ------------------------- */
 
 .page-header {
   padding-bottom: ((@line-height-computed / 2) - 1);
@@ -154,10 +154,10 @@ mark,
 }
 
 
-// Lists
-// -------------------------
+/* Lists
+ -------------------------
 
-// Unordered and Ordered lists
+ Unordered and Ordered lists */
 ul,
 ol {
   margin-top: 0;
@@ -168,15 +168,15 @@ ol {
   }
 }
 
-// List options
+/* List options
 
-// Unstyled keeps list items block level, just removes default browser padding and list-style
+ Unstyled keeps list items block level, just removes default browser padding and list-style */
 .list-unstyled {
   padding-left: 0;
   list-style: none;
 }
 
-// Inline turns list items into inline-block
+/* Inline turns list items into inline-block */
 .list-inline {
   .list-unstyled();
   margin-left: -5px;
@@ -188,9 +188,9 @@ ol {
   }
 }
 
-// Description Lists
+/* Description Lists */
 dl {
-  margin-top: 0; // Remove browser default
+  margin-top: 0; /* Remove browser default */
   margin-bottom: @line-height-computed;
 }
 dt,
@@ -201,17 +201,17 @@ dt {
   font-weight: bold;
 }
 dd {
-  margin-left: 0; // Undo browser default
+  margin-left: 0; /* Undo browser default */
 }
 
-// Horizontal description lists
-//
-// Defaults to being stacked without any of the below styles applied, until the
-// grid breakpoint is reached (default of ~768px).
-
+/*
+ Horizontal description lists
+ Defaults to being stacked without any of the below styles applied, until the
+ grid breakpoint is reached (default of ~768px).
+*/
 .dl-horizontal {
   dd {
-    &:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present
+    &:extend(.clearfix all); /* Clear the floated `dt` if an empty `dd` is present */
   }
 
   @media (min-width: @grid-float-breakpoint) {
@@ -228,13 +228,13 @@ dd {
   }
 }
 
-
-// Misc
-// -------------------------
-
-// Abbreviations and acronyms
+/*
+ Misc
+ -------------------------
+*/
+/* Abbreviations and acronyms */
 abbr[title],
-// Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
+/* Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257 */
 abbr[data-original-title] {
   cursor: help;
   border-bottom: 1px dotted @abbr-border-color;
@@ -244,7 +244,7 @@ abbr[data-original-title] {
   text-transform: uppercase;
 }
 
-// Blockquotes
+/* Blockquotes */
 blockquote {
   padding: (@line-height-computed / 2) @line-height-computed;
   margin: 0 0 @line-height-computed;
@@ -259,25 +259,27 @@ blockquote {
     }
   }
 
-  // Note: Deprecated small and .small as of v3.1.0
-  // Context: https://github.com/twbs/bootstrap/issues/11660
+  /* Note: Deprecated small and .small as of v3.1.0 */
+  /* Context: https://github.com/twbs/bootstrap/issues/11660 */
   footer,
   small,
   .small {
     display: block;
-    font-size: 80%; // back to default font-size
+    font-size: 80%; /* back to default font-size */
     line-height: @line-height-base;
     color: @blockquote-small-color;
 
     &:before {
-      content: '\2014 \00A0'; // em dash, nbsp
+      content: '\2014 \00A0'; /* em dash, nbsp */
     }
   }
 }
 
+/*
 // Opposite alignment of blockquote
 //
 // Heads up: `blockquote.pull-right` has been deprecated as of v3.1.0.
+*/
 .blockquote-reverse,
 blockquote.pull-right {
   padding-right: 15px;
@@ -286,18 +288,18 @@ blockquote.pull-right {
   border-left: 0;
   text-align: right;
 
-  // Account for citation
+  /* Account for citation */
   footer,
   small,
   .small {
     &:before { content: ''; }
     &:after {
-      content: '\00A0 \2014'; // nbsp, em dash
+      content: '\00A0 \2014'; /* nbsp, em dash */
     }
   }
 }
 
-// Addresses
+/* Addresses */
 address {
   margin-bottom: @line-height-computed;
   font-style: normal;

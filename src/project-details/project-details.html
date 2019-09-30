@@ -112,8 +112,8 @@
                   </div>
 
                   <button if.bind="componentDependencies.length > numDepends" id="showMoreBtn" class="btn btn-link btn-sm" data-toggle="collapse" click.delegate="dependCollapsed = dependCollapsed !== true" href="#collapseDepend">
-                    <template if.bind="dependCollapsed">Show More <i class="material-icons">expand_more</i></template>
-                    <template if.bind="!dependCollapsed">Show Less <i class="material-icons">expand_less</i></template>
+                    <template if.bind="dependCollapsed">Show More <em class="material-icons">expand_more</em></template>
+                    <template if.bind="!dependCollapsed">Show Less <em class="material-icons">expand_less</em></template>
                   </button>
                   <div tabindex="0" class="coming-soon-watermark ${componentDependencies.length < 1  ? '' : 'hide'}" aria-label="${componentDependencies.length < 1  ? 'Feature comming soon' : ''}">Coming Soon</div>
 
@@ -180,7 +180,7 @@
                     <div class="col-lg-6 col-md-6 grade-wrapper">
                       <h5 tabindex="0" aria-label="Releasability">Releasability</h5>
                       <div class="grade-circle empty-circle">
-                        <i class="material-icons">access_time</i>
+                        <em class="material-icons">access_time</em>
                       </div>
                       <ul class="list-unstyled" aria-hidden="true">
                         <li aria-hidden="true" tabindex="0" aria-label="not available, comming soon.">Coming Soon</li>
@@ -276,10 +276,10 @@
       <div class="col-lg-3 col-md-3 col-sidebar">
         <div class="row card-btns">
           <div class="col-md-6">
-            <a href="#" class="disabled hide"><i class="material-icons">bookmark_border</i> Bookmark</a>
+            <a href="#" class="disabled hide"><em class="material-icons">bookmark_border</em> Bookmark</a>
           </div>
           <div class="col-md-6">
-            <a href="#" class="disabled hide"><i class="material-icons">share</i> Share</a>
+            <a href="#" class="disabled hide"><em class="material-icons">share</em> Share</a>
           </div>
         </div>
 
@@ -313,7 +313,7 @@
                 <a route-href="route:project-details; params.bind: {id:project.project_id}" class="list-group-item">
                   <span class="media">
                     <span class="media-left">
-                      <img tabindex="0" role="img" aria-label="Project image," class="img-circle media-object" src="https://github.com/${project.project_org_name}.png" onError="this.onerror=null;this.src='/img/language-icons/organization-default.svg';">
+                      <img tabindex="0" role="img" aria-label="Project image," class="img-circle media-object" src="https://github.com/${project.project_org_name}.png" onError="this.onerror=null;this.src='/img/language-icons/organization-default.svg';" alt="Organization">
                     </span>
                     <span class="media-body clearfix">
                       <h5 tabindex="0" aria-label="project name, ${project.project_name}">${project.project_name}</h5>

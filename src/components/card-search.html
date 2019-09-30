@@ -10,7 +10,7 @@
           <div class="card-header">
             <div tabindex="0" class="lang-logo" role="img" aria-label="Language icon ${repo.language}">
               <img alt="Language icon ${repo.language}" if.bind="repo.organization != 'foundation'" src.bind="language_image">
-              <img if.bind="repo.organization == 'foundation'" src="img/language-icons/foundation.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';">
+              <img if.bind="repo.organization == 'foundation'" src="img/language-icons/foundation.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';" alt="Foundation">
             </div>
             <div class="card-title multiline">
               <a id="card-search-title-link-${repo.id}" href="#" route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Project name: ${repo.project_name}" innerhtml.bind="repo.highlight.project_name ? repo.highlight.project_name : repo.project_name"></a>
@@ -83,8 +83,8 @@
     <div class="row card-links">
       <ul class="list-inline clearfix">
         <li><a id="card-search-project-open-readme-${repo.id}" href="#" click.trigger="openReadmeModal(repo,$event.target)"><em class="search-highlight"><i class="material-icons" aria-hidden="true">library_books</i> Show README</em></a></li>
-        <li><a class="disabled hide"><i class="material-icons">bookmark_border</i> Bookmark</a></li>
-        <li><a class="disabled hide"><i class="material-icons">share</i> Share</a></li>
+        <li><a class="disabled hide"><em class="material-icons">bookmark_border</em> Bookmark</a></li>
+        <li><a class="disabled hide"><em class="material-icons">share</em> Share</a></li>
         <li class="pull-right"><a route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Go to project details">Go to Details<i class="material-icons" aria-hidden="true">chevron_right</i></a></li>
       </ul>
     </div>

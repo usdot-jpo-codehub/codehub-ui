@@ -1,7 +1,6 @@
 import { inject } from 'aurelia-framework';
 import { DialogController } from 'aurelia-dialog';
 import $ from 'jquery';
-import { multiselect } from 'bootstrap-multiselect';
 import { DataContext } from 'services/datacontext';
 
 @inject(DialogController, DataContext)
@@ -72,11 +71,6 @@ export class AddProjectsModal {
       maxHeight: 250,
       enableHTML: true,
       buttonText(options, select) {
-        if (options.length === 0) {
-          return 'Projects';
-        } else if (options.length === options.prevObject.length) {
-          return 'Projects';
-        }
         return 'Projects';
       },
     });

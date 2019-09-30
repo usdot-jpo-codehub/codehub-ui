@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import { multiselect } from 'bootstrap-multiselect';
 
 export class Filters {
   constructor() {

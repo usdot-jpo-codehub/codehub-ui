@@ -1,6 +1,6 @@
 <template>
   <div id="message-alert" if.bind="active" class="message-notification">
-    <button id="message-alert-button" type="button" class="close" data-dismiss="alert" click.delegate="dismiss()" aria-label="Message alert: ${message}, press to close this alert."><span aria-hidden="true"><i class="material-icons">close</i></span></button>
+    <button id="message-alert-button" type="button" class="close" data-dismiss="alert" click.delegate="dismiss()" aria-label="Message alert: ${message}, press to close this alert."><span aria-hidden="true"><em class="material-icons">close</em></span></button>
     <i class="material-icons message-icon" aria-hidden="true">${icon}</i>
     <p id="message-alert-text"> ${message}</p>
   </div>

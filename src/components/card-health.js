@@ -10,15 +10,15 @@ export class Card {
   activate(modelData) {
     this.repo = modelData;
 
-    if(this.repo.language) {
-      let url = `/img/language-icons/${this.repo.language.toLowerCase()}.svg`;
-      url = url.replace(/\#/g,'_sharp');
-      this.validateImage(url, (isValid) => {
-        this.language_image = isValid ? url : this.language_image;
-      });
-    }
+    if (this.repo) {
+      if(this.repo.language) {
+        let url = `/img/language-icons/${this.repo.language.toLowerCase()}.svg`;
+        url = url.replace(/\#/g,'_sharp');
+        this.validateImage(url, (isValid) => {
+          this.language_image = isValid ? url : this.language_image;
+        });
+      }
 
-    if (this.repo !== undefined) {
       if (this.repo.metrics) {
         if (this.repo.metrics.bugs) {
           this.bugs = Number(this.repo.metrics.bugs.val);

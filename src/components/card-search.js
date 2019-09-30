@@ -8,7 +8,7 @@ export class CardSearch {
   }
 
   activate(modelData) {
-    if (modelData && modelData !== undefined) {
+    if (modelData) {
       this.repo = modelData;
 
       if(this.repo.language) {
@@ -19,7 +19,7 @@ export class CardSearch {
         });
       }
 
-      if (modelData.releases && modelData.releases !== undefined) {
+      if (modelData.releases) {
         this.releases = modelData.releases;
         if (!Array.isArray(modelData.releases)) {
           this.releases = [];

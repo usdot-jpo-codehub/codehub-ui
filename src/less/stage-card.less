@@ -27,8 +27,9 @@
   }
 }
 
+// Global Default Card Styles
 .card-default {
-	.health-stats {
+  .health-stats {
 		h3 {
 			margin-top: 10px;
 			font-size: @font-size-smaller;
@@ -42,10 +43,6 @@
 
 		font-size: @font-size-smaller;
 	}
-}
-
-// Global Default Card Styles
-.card-default {
   .github-stats {
     border-left: none;
     padding: 0  0 10px 0;
@@ -160,12 +157,15 @@
 		margin-bottom: 20px;
 
     .repo-status {
-      font-family: Roboto-Condensed;
+      font-family: Roboto-Condensed, sans-serif;
       font-weight: 500;
     }
 
     .last-updated {
       line-height: @font-size-larger;
+      font-size: @font-size-smaller;
+      margin-top: 10px;
+      padding-bottom: 10px;
 
       .material-icons {
         vertical-align: -6px;
@@ -216,7 +216,7 @@
 
 			.ribbon {
 				font-size: @font-size-smaller;
-				font-family: Roboto-Condensed;
+				font-family: Roboto-Condensed, sans-serif;
 				font-weight: bold;
 				letter-spacing: -0.25px;
 				text-transform: uppercase;
@@ -309,12 +309,6 @@
 			-webkit-box-orient: vertical;
 			overflow: hidden;
 			text-overflow: ellipsis;
-		}
-
-		.last-updated {
-			font-size: @font-size-smaller;
-			margin-top: 10px;
-			padding-bottom: 10px;
 		}
 	}
 

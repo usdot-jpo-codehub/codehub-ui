@@ -6,7 +6,7 @@ import { StageConfig } from '../../stageConf';
 import { ReadmeModal } from '../components/modals/readme-modal';
 import { LeavingModal } from '../components/modals/leaving-modal';
 import { VScanModal } from '../components/modals/vscan-modal';
-import { FakeData } from '../../fakeData';
+import { FakeData } from '../fakeData';
 
 @inject(DataContext, Router, StageConfig, DialogService, FakeData)
 export class Popular {
@@ -59,16 +59,16 @@ export class Popular {
       }, 10);
     });
     let c = 0;
-    let feat = [];
     this.searchingFeatured = true;
     this.dataContext.findByIds(this.fp).then(resp => {
       if (resp) {
-        let fakeData = this.fakeData;
         let b = 4;
         if (resp.length < b) {
           b = resp.length - 1;
         }
-        resp.splice(b, 0, fakeData);
+        if (this.fakeData) {
+          resp.splice(b, 0, this.fakeData);
+        }
         this.featured = resp;
         this.searchingFeatured = false;
       }
