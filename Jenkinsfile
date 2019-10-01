@@ -66,8 +66,8 @@ node {
   stage('Push Image to ECR') {
     dir('App') {
       script {
-        sh 'docker build -t ${params.IMAGE_TAG} .'
-        sh 'docker push ${params.IMAGE_TAG}'
+        sh "docker build -t ${params.IMAGE_TAG} ."
+        sh "docker push ${params.IMAGE_TAG}"
       }
     }
   }
@@ -75,7 +75,7 @@ node {
     stage('Redeploy Service') {
     dir('App') {
       script {
-        sh 'aws ecs update-service --cluster ${params.ECS_CLUSTER} --service ${params.ECS_SERVICE} --force-new-deployment'
+        sh "aws ecs update-service --cluster ${params.ECS_CLUSTER} --service ${params.ECS_SERVICE} --force-new-deployment"
       }
     }
   }
