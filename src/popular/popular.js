@@ -58,7 +58,7 @@ export class Popular {
         return this.projects;
       }, 10);
     });
-    let c = 0;
+
     this.searchingFeatured = true;
     this.dataContext.findByIds(this.fp).then(resp => {
       if (resp) {
