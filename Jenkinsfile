@@ -3,6 +3,7 @@ node {
   environment {
     DOCKER_LOGIN='(aws ecr get-login --no-include-email --region us-east-1)'
     dockerImage = ''
+    
   }
 
   stage('Git Checkout') {
