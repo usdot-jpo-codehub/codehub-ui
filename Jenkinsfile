@@ -1,6 +1,9 @@
 node {
   stage('Git Checkout') {
-    checkout scm
+    deleteDir()
+    dir('App') {
+      checkout scm
+    }
   }
 
   stage('Unit Test') {
@@ -9,17 +12,6 @@ node {
         script {
           sh 'npm install'
           sh 'au test --browsers ChromeHeadlessNoSandbox --watch=false --code-coverage'
-        }
-      }
-    }
-  }
-
-  stage('Static Code Analysis') {
-    dir('App') {
-      script {
-        def scannerHome = tool 'SonarQube Scanner 2.8';
-        withSonarQubeEnv('SonarQube') {
-          sh "${scannerHome}/bin/sonar-scanner -X  -Dsonar.projectName=codehub-ui -Dsonar.projectVersion=1.0.0 -Dsonar.projectKey=codehub-ui -Dsonar.sources=src,scripts -Dsonar.sourceEncoding=UTF-8"
         }
       }
     }
@@ -74,8 +66,8 @@ node {
   stage('Push Image to ECR') {
     dir('App') {
       script {
-        sh 'docker build -t ${env.IMAGE_TAG} .'
-        sh 'docker push ${env.IMAGE_TAG}'
+        sh 'docker build -t ${params.IMAGE_TAG} .'
+        sh 'docker push ${params.IMAGE_TAG}'
       }
     }
   }
@@ -83,7 +75,7 @@ node {
     stage('Redeploy Service') {
     dir('App') {
       script {
-        sh 'aws ecs update-service --cluster ${env.ECS_CLUSTER} --service ${env.ECS_SERVICE} --force-new-deployment'
+        sh 'aws ecs update-service --cluster ${params.ECS_CLUSTER} --service ${params.ECS_SERVICE} --force-new-deployment'
       }
     }
   }
