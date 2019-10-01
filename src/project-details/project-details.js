@@ -1,4 +1,4 @@
-import { inject, bindable } from 'aurelia-framework';
+import { inject } from 'aurelia-framework';
 import { Router, activationStrategy } from 'aurelia-router';
 import { DialogService } from 'aurelia-dialog';
 import { DataContext } from 'services/datacontext';
