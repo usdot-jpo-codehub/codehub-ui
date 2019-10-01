@@ -38,7 +38,7 @@ node {
       dir('App') {
         script {
           withAWS(region: 'us-east-1') {
-            sh 'eval $(aws ecr get-login --no-include-email) > login'
+            sh 'eval $(aws ecr get-login --no-include-email)'
             sh 'docker run -t -v /tmp:/tmp -e USERID=$UID 797335914619.dkr.ecr.us-east-1.amazonaws.com/dev-codehub/codehub-ui-access:latest lighthouse https://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com --output html --output-path=/tmp/dev-codehub-external-1278179393.us-east-1.elb.amazonaws.html --save-assets'
             publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: '/tmp', reportFiles: 'dev-codehub-external-1278179393.us-east-1.elb.amazonaws.html', reportName: 'HTML Report', reportTitles: '508 Report'])
           }
@@ -71,17 +71,19 @@ node {
     }
   }
 
-  stage('Upload to S3') {
+  stage('Push Image to ECR') {
     dir('App') {
       script {
-        def branchname = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+        sh 'docker build -t ${env.IMAGE_TAG} .'
+        sh 'docker push ${env.IMAGE_TAG}'
+      }
+    }
+  }
 
-        echo "Current branch is ${branchname}"
-        if (branchname == 'master') {
-          sh 'aws s3 sync dist/ s3://codehub-ui-stage --delete'
-        } else if (branchname == 'development') {
-          sh 'aws s3 sync dist/ s3://codehub-ui-dev --delete'
-        }
+    stage('Redeploy Service') {
+    dir('App') {
+      script {
+        sh 'aws ecs update-service --cluster ${env.ECS_CLUSTER} --service ${env.ECS_SERVICE} --force-new-deployment'
       }
     }
   }
