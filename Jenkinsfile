@@ -76,6 +76,7 @@ node {
     dir('App') {
       script {
         sh "aws ecs update-service --cluster ${params.ECS_CLUSTER} --service ${params.ECS_SERVICE} --force-new-deployment"
+
       }
     }
   }
