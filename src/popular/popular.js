@@ -63,6 +63,7 @@ export class Popular {
     this.searchingFeatured = true;
     this.dataContext.findByIds(this.fp).then(resp => {
       if (resp) {
+        resp = this.sortByFeaturedIds(resp, this.fp);
         let fakeData = this.fakeData;
         let b = 4;
         if (resp.length < b) {
@@ -100,6 +101,22 @@ export class Popular {
         }
       }
     });
+  }
+
+  sortByFeaturedIds(data, fp) {
+    let result = [];
+    fp.forEach((key) => {
+      let found = false;
+      data = data.filter((item) => {
+          if(!found && item.id == key) {
+              result.push(item);
+              found = true;
+              return false;
+          } else
+              return true;
+      })
+    })
+    return result;
   }
 
   activate() {
