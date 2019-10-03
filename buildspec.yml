@@ -18,7 +18,7 @@ phases:
       - BRANCH_NAME="$(git rev-parse --abbrev-ref HEAD)"
       - |
         if [ "$BRANCH_NAME" = "master" ] || [ "$BRANCH_NAME" = "development" ]; then
-          docker push "$IMAGE_URI:$IMAGE_TAG"
-          docker push "$IMAGE_URI:latest"
-          aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment
+          docker push "$IMAGE_URI:$IMAGE_TAG";
+          docker push "$IMAGE_URI:latest";
+          aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment;
         fi
