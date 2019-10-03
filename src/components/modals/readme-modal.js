@@ -1,7 +1,8 @@
-import { inject, TaskQueue } from 'aurelia-framework';
+import { inject, TaskQueue, computedFrom } from 'aurelia-framework';
 import { DialogController, DialogService } from 'aurelia-dialog';
 import { Router } from 'aurelia-router';
 import { LeavingModal } from './leaving-modal';
+import { NO_README_MESSAGE, NO_DESCRIPTION_MESSAGE } from '../../constants/ch-contants';
 
 @inject(DialogController, Router, TaskQueue, DialogService)
 export class ReadmeModal {
@@ -44,6 +45,15 @@ export class ReadmeModal {
       const readmeTitle = document.querySelector('#readme-title');
       readmeTitle.focus();
     });
+  }
+
+  @computedFrom('repo.content')
+  get content() {
+    let c = this.repo.content ? this.repo.content : NO_README_MESSAGE;
+    return c;
+  }
+  get hascontent() {
+    return this.repo.content ? true : false;
   }
 
   navigateAndClose() {

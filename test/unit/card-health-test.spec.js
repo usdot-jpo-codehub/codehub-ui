@@ -3,6 +3,7 @@ import { bootstrap } from 'aurelia-bootstrapper';
 import { AgoValueConverter } from '../../src/resources/value-converters/ago';
 import { NumValueConverter } from '../../src/resources/value-converters/num';
 import { StageConfig } from '../../src/stageConf';
+import { NO_DESCRIPTION_MESSAGE } from '../../src/constants/ch-contants';
 
 describe('Test - Card Health : ', () => {
 
@@ -52,7 +53,7 @@ describe('Test - Card Health : ', () => {
     component.create(bootstrap).then( () => {
       const element = document.querySelector('.proj-desc');
       let pDescription = mockCodeHealthiestData[0].project_description;
-      expect(element.innerHTML).toEqual(pDescription ? pDescription : '');
+      expect(element.innerText).toEqual(pDescription ? pDescription : NO_DESCRIPTION_MESSAGE);
       done();
     }).catch( e => { console.log(e.toString()) });
   });

@@ -1,10 +1,16 @@
+import { inject, computedFrom } from 'aurelia-framework';
+import { NO_DESCRIPTION_MESSAGE } from '../constants/ch-contants';
+import { StageConfig } from '../stageConf';
+
+@inject(StageConfig)
 export class Card {
-  constructor() {
+  constructor(stageConfig) {
     this.repo = [];
     this.bugs = 0;
     this.vulnerabilities = 0;
     this.infected_files = 0;
     this.language_image = '/img/language-icons/default.svg';
+    this.stageConfig = stageConfig;
   }
 
   activate(modelData) {
@@ -32,6 +38,17 @@ export class Card {
         this.infected_files = this.repo.vscan.infected_files;
       }
     }
+  }
+
+  @computedFrom('repo.project_description')
+  get hasdescription() {
+    return this.repo.project_description ? true : false;
+  }
+  get description() {
+    return this.repo.project_description  ? this.repo.project_description : NO_DESCRIPTION_MESSAGE;
+  }
+  get language() {
+    return this.repo.language ? this.repo.language : this.stageConfig.NO_LANG
   }
 
   validateImage(url, cbfx) {

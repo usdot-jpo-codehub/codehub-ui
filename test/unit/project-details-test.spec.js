@@ -136,7 +136,6 @@ describe('Project Details : ', () => {
   it('Expects Project Project Update At to be', (done) => {
     component.create(bootstrap).then(() => {
       let element = document.querySelector('#project-update-at');
-      console.log(element);
       let ago = new AgoValueConverter();
       expect(element.innerHTML).toEqual('Updated '+ago.toView(mockProjectData[0].updatedAt));
       done();
