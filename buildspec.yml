@@ -12,7 +12,6 @@ phases:
       - IMAGE_URI="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME"
   build:
     commands:
-      -
       - docker build -t $IMAGE_URI:$IMAGE_TAG .
   post_build:
     commands:
