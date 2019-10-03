@@ -106,7 +106,7 @@ export class ProjectDetails {
     this.noDependencies = this.componentDependencies.length === 0 && this.projectsThatUseUs.length === 0;
   }
 
-  @computedFrom('this.repo.project_description')
+  @computedFrom('repo.project_description')
   get description() {
     return this.repo.project_description ? this.repo.project_description : NO_DESCRIPTION_MESSAGE;
   }
