@@ -15,9 +15,9 @@ phases:
       - docker build -t $IMAGE_URI:$IMAGE_TAG .
   post_build:
     commands:
-      - echo $CODEBUILD_SOURCE_VERSION
+      - BRANCH_NAME=$(git symbolic-ref HEAD --short)
       - |
-        if [ "$CODEBUILD_SOURCE_VERSION" = "master" ] || [ "$CODEBUILD_SOURCE_VERSION" = "development" ]; then
+        if [ "$BRANCH_NAME" = "master" ] || [ "$BRANCH_NAME" = "development" ]; then
           docker push "$IMAGE_URI:$IMAGE_TAG";
           docker push "$IMAGE_URI:latest";
           aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment;
