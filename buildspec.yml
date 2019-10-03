@@ -8,14 +8,17 @@ phases:
     commands:
       - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
       - CODEBUILD_RESOLVED_SOURCE_VERSION="${CODEBUILD_RESOLVED_SOURCE_VERSION:-$IMAGE_TAG}"
-      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
       - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      - echo $IMAGE_TAG
-      - IMAGE_URI="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG"
-      - echo $IMAGE_URI
+      - IMAGE_URI="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME"
   build:
     commands:
-      - docker build -t $IMAGE_URI .
+      - docker build -t $IMAGE_URI:$IMAGE_TAG .
   post_build:
     commands:
-      - docker push $IMAGE_URI
+      - BRANCH_NAME="$(git rev-parse --abbrev-ref HEAD)"
+      - |
+        if [ "$BRANCH_NAME" = "master" ] || [ "$BRANCH_NAME" = "development" ]; then
+          docker push "$IMAGE_URI:$IMAGE_TAG"
+          docker push "$IMAGE_URI:latest"
+          aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment
+        fi
