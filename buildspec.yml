@@ -17,6 +17,7 @@ phases:
     commands:
       - curl -fsSL https://raw.githubusercontent.com/thii/aws-codebuild-extras/master/install >> extras.sh
       - . ./extras.sh
+      - echo $CODEBUILD_GIT_BRANCH
       - |
         if [ "$CODEBUILD_GIT_BRANCH" = "master" ] || [ "$CODEBUILD_GIT_BRANCH" = "development" ]; then
           docker push "$IMAGE_URI:$IMAGE_TAG";
