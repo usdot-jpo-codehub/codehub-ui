@@ -61,7 +61,31 @@
       color: @text-muted;
       font-size: @font-size-smaller;
     }
+    .stat-vscan {
+      display: block;
+      padding: 8px 0;
+      color: darken(@stage-red,30%);
+      font-size: @font-size-small;
+      font-weight: bold;
+      text-decoration: underline;
+	}
+	
+	.stat .num,
+ 	.stat .stat-label{
+		display: inline-block;
+	}
+	&.row div{
+		padding-right: 11px;
+		padding-left: 11px;
+	}
+	&.row div:last-child {
+		padding-right: 15px;
+	}
+	&.row div:first-child {
+		padding-left: 15px;
+	}
   }
+
 }
 
 // Global Github Stats
@@ -80,6 +104,15 @@
       padding: 8px 0;
       color: @text-muted;
       font-size: @font-size-smaller;
+    }
+
+    .stat-vscan {
+      display: block;
+      padding: 8px 0;
+      color: darken(@stage-red,30%);
+      font-size: @font-size-small;
+      font-weight: bold;
+      text-decoration: underline;
     }
   }
 }
@@ -276,7 +309,15 @@
 			-webkit-box-orient: vertical;
 			overflow: hidden;
 			text-overflow: ellipsis;
-		}
+    }
+
+    .no-desc {
+      font-size: @font-size-medium;
+      color: @light-gray;
+      font-weight: bold;
+      font-style: italic;
+    }
+
 
 		.last-updated {
 			font-size: @font-size-smaller;

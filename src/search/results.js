@@ -9,6 +9,7 @@ import { Filters } from 'components/filters';
 import { ReadmeModal } from '../components/modals/readme-modal';
 import { LeavingModal } from '../components/modals/leaving-modal';
 import { StageConfig } from '../../stageConf';
+import { VScanModal } from '../components/modals/vscan-modal';
 
 @inject(DataContext, Filters, EventAggregator, DialogService, StageConfig)
 export class Results {
@@ -358,7 +359,9 @@ export class Results {
     this.dialogService.open({ viewModel: ReadmeModal, model: repo, lock: false }).whenClosed(response => {
       if (response.wasCancelled) {
         const element = document.querySelector('#'+this.openReadmeLinkId);
-        element.focus();
+        if(element) {
+          element.focus();
+        }
       }
     });
   }
@@ -390,5 +393,15 @@ export class Results {
       }
     }
 
+  }
+
+  displayVScanDialog(repo, target) {
+    this.exitDialogLinkId = target.getAttribute('id');
+    this.dialogService.open({viewModel: VScanModal, model: repo, lock: false}).whenClosed( reponse => {
+      const element = document.querySelector('#'+this.exitDialogLinkId);
+      if(element) {
+        element.focus();
+      }
+    });
   }
 }

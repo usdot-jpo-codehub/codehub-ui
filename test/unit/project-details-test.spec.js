@@ -27,17 +27,17 @@ export class MockDataContext {
     this.mockDataComponentDependencies = JSON.parse(readFixtures('mock-data-component-dependencies.json'));
   }
 
-  findSimilarProjects(id) {
-    let p = this.findById(id);
-    if ( !p ) {
-      return null;
-    }
+  // findSimilarProjects(id) {
+  //   let p = this.findById(id);
+  //   if ( !p ) {
+  //     return null;
+  //   }
 
-    let sims = this.mockDataInsightGetAll;
-    let ps = sims.filter( x => x.language === p.language && x.id !== p.id);
-    this.respFindSimilarProjects = ps && ps.length > 0 ? ps[0] : null;
-    return Promise.resolve(this.respFileSimilarProjects)
-  }
+  //   let sims = this.mockDataInsightGetAll;
+  //   let ps = sims.filter( x => x.language === p.language && x.id !== p.id);
+  //   this.respFindSimilarProjects = ps && ps.length > 0 ? ps[0] : null;
+  //   return Promise.resolve(this.respFileSimilarProjects)
+  // }
   findById(id) {
     let prj = this.mockProjectData;
     let p = prj.filter(x => x.id === id);
@@ -136,7 +136,6 @@ describe('Project Details : ', () => {
   it('Expects Project Project Update At to be', (done) => {
     component.create(bootstrap).then(() => {
       let element = document.querySelector('#project-update-at');
-      console.log(element);
       let ago = new AgoValueConverter();
       expect(element.innerHTML).toEqual('Updated '+ago.toView(mockProjectData[0].updatedAt));
       done();

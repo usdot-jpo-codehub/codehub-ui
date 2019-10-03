@@ -1,6 +1,7 @@
 <template>
   <require from="resources/custom-elements/browser-alert"></require>
   <require from="resources/custom-elements/message-alert"></require>
+  <!-- <require from="resources/elements/nav-menu.html"></require> -->
 
   <div id="top" class="hero-banner">
     <div class="inner">
@@ -17,20 +18,24 @@
   <message-alert active.bind="stageConfig.IS_BETA" icon.bind="stageConfig.BETA_ICON" message.bind="stageConfig.BETA_MESSAGE"></message-alert>
 
   <div class="fab-container">
-    <a href="#" click.trigger="scrollToTop()" id="backToTop" tooltip="Back To Top" class="fab" aria-label="scroll page back to top."><i class="material-icons">arrow_upward</i></a>
+    <a href="#" click.trigger="scrollToTop()" id="backToTop" tooltip="Back To Top" class="fab" aria-label="scroll page back to top."><em class="material-icons">arrow_upward</em></a>
   </div>
 
   <footer>
     <div class="container-fluid ">
       <div class="row">
-        <div class="col-lg-12 col-md-12">
+        <div class="col-lg-11 col-md-11">
           <p>
             Office of the Assistant Secretary for Research and Technology (OST-R) • U.S. Department of Transportation (US DOT) 
             1200 New Jersey Avenue, SE • Washington, DC 20590 • 800.853.1351
           </p>
         </div>
-      </div>      
-      <div class="row">
+        <div class="col-lg-1 col-md-1 version">
+            Version: ${version.version}<br>
+            Build: ${version.build}
+        </div>
+      </div>
+      <!-- <div class="row">
         <div class="col-lg-12 col-md-12">
           <ul class="list-inline">
 
@@ -63,7 +68,7 @@
             <li><a href="#" id="ft-White-House" click.trigger="openLeavingSiteConfirmation('White House','http://whitehouse.gov/',$event.target)">White House</a></li>
           </ul>
         </div>
-      </div>
+      </div> -->
     </div>
   </footer>
 </template>

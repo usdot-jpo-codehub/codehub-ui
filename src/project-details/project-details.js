@@ -1,4 +1,4 @@
-import { inject, bindable } from 'aurelia-framework';
+import { inject, computedFrom } from 'aurelia-framework';
 import { Router, activationStrategy } from 'aurelia-router';
 import { DialogService } from 'aurelia-dialog';
 import { DataContext } from 'services/datacontext';
@@ -7,6 +7,8 @@ import { ReadmeModal } from '../components/modals/readme-modal';
 import { LeavingModal } from '../components/modals/leaving-modal';
 import { ContributorsModal } from '../components/modals/contributors-modal';
 import { StageConfig } from '../../stageConf';
+import { VScanModal } from '../components/modals/vscan-modal';
+import { NO_DESCRIPTION_MESSAGE } from '../constants/ch-contants';
 
 @inject(DataContext, Router, DialogService, StageConfig)
 export class ProjectDetails {
@@ -49,16 +51,19 @@ export class ProjectDetails {
   activate(params) {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
 
-    this.dataContext.findSimilarProjects(params.id).then(similarProjects => {
-      // TODO should be using promises to catch errors
-      if (similarProjects && !similarProjects.error) {
-        setTimeout(() => {
-          this.similarProjects = similarProjects;
-        }, 10);
-      }
-    });
+    // this.dataContext.findSimilarProjects(params.id).then(similarProjects => {
+    //   // TODO should be using promises to catch errors
+    //   if (similarProjects && !similarProjects.error) {
+    //     setTimeout(() => {
+    //       this.similarProjects = similarProjects;
+    //     }, 10);
+    //   }
+    // });
 
     this.dataContext.findById(params.id).then(repo => {
+      if (!repo) {
+        return;
+      }
       this.repo = repo;
       this.sonarLink = `${this.stageConfig.SONARQUBE_ADDRESS}/dashboard/index/${repo.organization}_${repo.project_name}`;
       if (repo.userForkedRepos) {
@@ -85,7 +90,7 @@ export class ProjectDetails {
     });
 
     this.dataContext.getComponentDependencies(params.id).then(depends => {
-      if (depends.componentDependencies) {
+      if (depends && depends.componentDependencies) {
         this.componentDependencies = depends.componentDependencies;
 
         // TODO this fix should be done API side
@@ -100,6 +105,16 @@ export class ProjectDetails {
 
     this.noDependencies = this.componentDependencies.length === 0 && this.projectsThatUseUs.length === 0;
   }
+
+  @computedFrom('repo.project_description')
+  get description() {
+    return this.repo.project_description ? this.repo.project_description : NO_DESCRIPTION_MESSAGE;
+  }
+  get hasdescription() {
+    return this.repo.project_description ? true : false;
+  }
+
+  
 
   openAddProjectModal(target) {
     this.addProjectLinkId = target.getAttribute('id');
@@ -147,4 +162,13 @@ export class ProjectDetails {
     });
   }
 
+  displayVScanDialog(repo, target) {
+    this.exitDialogLinkId = target.getAttribute('id');
+    this.dialogService.open({viewModel: VScanModal, model: repo, lock: false}).whenClosed( reponse => {
+      const element = document.querySelector('#'+this.exitDialogLinkId);
+      if(element) {
+        element.focus();
+      }
+    });
+  }
 }

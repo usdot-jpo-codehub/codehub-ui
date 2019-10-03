@@ -1,0 +1,37 @@
+<template bindable="router">
+    <main class="usa-layout-docs usa-section repopublishing-page" id="main-content">
+        <div class="grid-container container-fluid">
+            <div class="grid-row grid-gap row text-heavy-page">
+                <aside id="side-nav" class="col-lg-2 col-md-3 desktop:grid-col-2 sidenav">
+                    <compose view-model="side-nav" router.bind="router"></compose>
+                </aside>
+                <div class="col-lg-10 col-md-9 col-sm-12 col-xs-12 usa-layout-docs__main desktop:grid-col-10 usa-prose">
+                    <h2>Additional Information</h2>
+                    <div class="col-lg-9 col-md-10 col-sm-12 col-xs-12 usa-layout-docs__main desktop:grid-col-9 usa-prose">
+                      <p>
+                          The U.S. DOT offers several resources to discover transportation data or find additional information:
+                      </p>
+                      <ul>
+                        <li>
+                          <a href="#" id="about-links-its-datahub" click.trigger="openLeavingSiteConfirmation('ITS DataHub','https://www.its.dot.gov/data/index.html',$event.target, true)">ITS DataHub</a>
+                          – The ITS DataHub provides a single point of entry to discover U.S. DOT’s publicly available ITS research data, including connected vehicle data.
+                        </li>
+                        <li>
+                          <a href="#" id="about-links-sdc" click.trigger="openLeavingSiteConfirmation('ITS DataHub','https://its.dot.gov/data/secure/index.html',$event.target, true)">Secure Data Commons (SDC)</a>
+                          – The SDC is the U.S. DOT’s prototype cloud-based analytics platform for the transportation sector to share and collaborate on research, tools, algorithms, analysis, and more around sensitive datasets.
+                        </li>
+                        <li>
+                          <a href="#" id="about-links-github" click.trigger="openLeavingSiteConfirmation('ITS DataHub','https://github.com/',$event.target)">GitHub</a>
+                          – GitHub is a development platform to host and review code, manage projects, and build software alongside other developers.
+                        </li>
+                        <li>
+                          <a href="#" id="about-links-cvpdp" click.trigger="openLeavingSiteConfirmation('ITS DataHub','http://its.dot.gov/pilots/',$event.target, true)">ITS JPO Connected Vehicle Pilot Deployment Program</a>
+                          – The U.S. DOT’s ITS JPO launched the Connected Vehicle Pilot Deployment Program in September 2015 to deploy, test, and operationalize cutting-edge mobile and roadside technologies and to enable multiple connected vehicle applications. This site provides a detailed description of the program and its objectives, phases, and research progress.
+                        </li>
+                      </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</template>

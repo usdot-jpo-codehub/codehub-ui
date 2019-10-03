@@ -4,6 +4,7 @@ import { DataContext } from 'services/datacontext';
 import { DialogService } from 'aurelia-dialog';
 import { LeavingModal } from '../../components/modals/leaving-modal';
 import { StageConfig } from '../../stageConf';
+import { VScanModal } from '../../components/modals/vscan-modal';
 
 @inject(DataContext, DialogService, StageConfig)
 export class ProjectDetailsHeader {
@@ -46,4 +47,13 @@ export class ProjectDetailsHeader {
     });
   }
 
+  displayVScanDialog(repo, target) {
+    this.exitDialogLinkId = target.getAttribute('id');
+    this.dialogService.open({viewModel: VScanModal, model: repo, lock: false}).whenClosed( reponse => {
+      const element = document.querySelector('#'+this.exitDialogLinkId);
+      if(element) {
+        element.focus();
+      }
+    });
+  }
 }

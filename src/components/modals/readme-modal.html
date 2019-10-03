@@ -6,11 +6,11 @@
         <div class="modal-header">
           <button tabindex="2" type="button" click.trigger="controller.cancel()" class="close" aria-label="Close"><span
             aria-hidden="true"><i class="material-icons md-48" aria-hidden="true">close</i></span></button>
-          <h4 tabindex="1"  class="modal-title" ><span class="text-uppercase" aria-hidden="true">readme</span>.md for ${repo.project_name}</h4>
+          <h4 tabindex="1"  class="modal-title" ><span class="text-uppercase" aria-hidden="true">readme</span> for ${repo.project_name}</h4>
         </div>
         <div tabindex="3" role="article" class="modal-body markdown-body">
 
-          <div id="readme-content" markdown.bind="repo.highlight['readMe.content'][0] ? repo.highlight['readMe.content'][0] : repo.content"></div>
+          <div id="readme-content" class="${hascontent ? '' : 'no-content'} " markdown.bind="content"></div>
 
         </div>
         <div class="modal-footer">

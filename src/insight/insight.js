@@ -89,10 +89,18 @@ export class Insight {
   }
 
   handleResize = (event) => {
-    this.mulChart.resize();
-    this.mfChart.resize();
-    this.myChart2.resize();
-    this.chartMostUsedLanguages.resize();
+    if (this.mulChart) {
+      this.mulChart.resize();
+    }
+    if (this.mfChart) {
+      this.mfChart.resize();
+    }
+    if (this.myChart2) {
+      this.myChart2.resize();
+    }
+    if (this.chartMostUsedLanguages) {
+      this.chartMostUsedLanguages.resize();
+    }
     // this.mostUsedLanguages.resize();
   }
 

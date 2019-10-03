@@ -1,0 +1,128 @@
+<template bindable="router">
+    <main class="usa-layout-docs usa-section repopublishing-page" id="main-content">
+        <div class="grid-container container-fluid">
+            <div class="grid-row grid-gap row text-heavy-page">
+                <aside id="side-nav" class="col-lg-2 col-md-3 desktop:grid-col-2 sidenav">
+                    <compose view-model="side-nav" router.bind="router"></compose>
+                </aside>
+                <div class="col-lg-10 col-md-9 col-sm-12 col-xs-12 usa-layout-docs__main desktop:grid-col-10 usa-prose">
+                    <h2>Repository Registration</h2>
+                    <div class="col-lg-9 col-md-10 col-sm-12 col-xs-12 usa-layout-docs__main desktop:grid-col-9 usa-prose">
+                        <h3>Phase 1 - Registration</h3>
+                        <p>The ITS CodeHub onboarding process is initiated by completing and submitting the registration
+                            form,
+                            (<a href="https://github.com/usdot-jpo-codehub/codehub-ui/blob/master/docs/codehub-registration-form.docx?raw=true" >codehub-registration-form.docx</a>)
+                            , via email to <a  id="dontact-us-email" href="mailto:data.itsjpo@dot.gov">data.itsjpo@dot.gov</a></p>
+                        <h3>Phase 2 - User-Provided Compliance Check</h3>
+                        <p>
+                            Upon receipt, the ITS CodeHub administration team will begin the compliance check phase. In
+                            this phase your repositories will be checked for compliance against the following ITS
+                            Codehub repository standards. Repositories must include the following:
+                            <ul>
+                                <li>A README, which, at a minimum, complies with the provided template to include a
+                                    summary of the source code or application and details needed for <a target="_blank" href="http://code.gov/">code.gov</a>
+                                    registration
+                                </li>
+                                <li>
+                                    RELEASE-NOTES, which describe incremental differences in this release and associated
+                                    instructions (e.g., new features); this is a required element if the uploaded code
+                                    is an incremental release to a previous version
+                                </li>
+                                <li>LICENSE information under which this source code product is released</li>
+                                <li>An ATTRIBUTION file that acknowledges or gives credits to individuals, groups, or
+                                    organizations that have contributed to the software product</li>
+                                <li>An SMP in the code collaboration platform being used (e.g., GitHub)</li>
+                                <li>Installation instructions/quick-start guide (preferably within README)</li>
+                                <li>A detailed User Guide, if applicable</li>
+                                <li>Static code analysis result report indicating that the code meets the following
+                                    threshold metrics or equivalents:
+                                    <ul>
+                                        <li>Quality Gate – Passed</li>
+                                        <li>Bugs – Grade >=B</li>
+                                        <li>Vulnerabilities – Grade >=B</li>
+                                        <li>Code Smell/Technical Debt – Grade >=B</li>
+                                        <li>Test Coverage – >=80%</li>
+                                    </ul>
+                                </li>
+                                <li>A virus scan report with no warnings or detections (Are the red checks user
+                                    completed, or completed by us)</li>
+                            </ul>
+                        </p>
+                        <p>If all of the above documentation and checks are provided and are acceptable, the application
+                            will be considered complete enough for ingestion.</p>
+                        <p>Should your repository fail any of these checks, we will alert you to the failures and
+                            request that you fix them and reapply for ITS CodeHub hosting.</p>
+                        <h3>Phase 3 - ITS CodeHub Administrator Compliance Crosscheck</h3>
+                        <p>When the ITS CodeHub administration team has determined that your repository meets all of the provided checks listed above, they will begin a cross-check investigation to verify the information provided is correct, up-to-date, and secure.</p>
+                        <p>We will perform the following actions:
+                            <ul>
+                                <li>Validate that the README meets general best practices and is complete
+                                    <ul>
+                                        <li>We will inspect the README to make sure it includes quick start guide, requirements, installation, configuration, and other necessary sections for usability</li>
+                                        <li>We will make sure that the code is has up-to-date requirements and supporting packages as realistically possible</li>
+                                    </ul>
+                                </li>
+                                <li>Validate that RELEASE-NOTES are included, a LICENSE file exists, and an ATTRIBUTION file if necessary
+                                    <ul>
+                                        <li>We will inspect these files and ensure that they are complete and correct</li>
+                                    </ul>
+                                </li>
+                                <li>Code inspection
+                                    <ul>
+                                        <li>We will briefly inspect the code in your repository for general best practices, formatting, and design safety</li>
+                                        <li>We will check that your code has unit tests and passes the unit tests</li>
+                                        <li>We will check that your code passes a build</li>
+                                    </ul>
+                                </li>
+                                <li>Static analysis via SonarQube
+                                    <ul>
+                                        <li>Your code will be sent through our SonarQube static code analysis program to make sure it matches the report you provided</li>
+                                        <li>We will validate that the code is free from dangerous bugs and vulnerabilities, and contains an acceptable number of code smells</li>
+                                        <li>Code coverage will be validated to ensure your unit tests match the coverage reported, that they cover 80% of the code, and that they are meaningful</li>
+                                    </ul>
+                                </li>
+                                <li>Virus scan check
+                                    <ul>
+                                        <li>Your code will be scanned with McAfee for any viruses</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </p>
+                        <p>Should your repository fail any of these checks, we will alert you to the failures and request that you fix them and reapply for ITS CodeHub listing.</p>
+                        <h3>Phase 4 - Client Acceptance</h3>
+                        <p>Following technical acceptance,  a summary of your repositories will be reviewed for final approval.</p>
+                        <p>Should your repository request be disapproved, we will alert you to the reason for failures and request that resolve them and reapply for ITS CodeHub listing.</p>
+                        <h3>Phase 5 - Application Release</h3>
+                        <p>Once all technical checks meet the above requirements and your repository receives final approval, we will publish the repositories on ITS CodeHub.</p>
+                        <h3>Phase 6 - Post-Release Deprecation and Offboarding Process</h3>
+                        <p>Repositories that are old, un-managed, and/or un-maintained may be flagged for deprecation and removal from ITS CodeHub. In addition you may request that your application be removed from ITS CodeHub.</p>
+                        <h3>Deprecation</h3>
+                        <h4>ITS CodeHub Admin Initiated Deprecation</h4>
+                        <p>After 2 years of inactivity, a ITS CodeHub repository will be flagged as inactive and the ITS CodeHub team will review whether to continue listing the repository, or remove it.</p>
+                        <p>Other alerts may trigger this review process early including:
+                            <ul>
+                                <li>Low usage statistics</li>
+                                <li>Failing SonarQube reports</li>
+                                <li>Failing builds</li>
+                                <li>Dangerous or severely outdated dependencies</li>
+                            </ul>
+                        </p>
+                        <p>When a repository is flagged, ITS CodeHub admins will alert the listed point of contact and request them to fix the issues. After this alert is sent to the PoC, they will have 30 days to fix the issues before the repository will be reviewed and considered for removal.</p>
+                        <p>Based on these findings, the ITS CodeHub team will present the proposed removal for the final removal decision. If removal is approved, a deprecation date and a removal date will be sent to the listed point of contact.
+                        </p>
+                        <h4>User Initiated Deprecation</h4>
+                        <p>Users that wish to remove their application(s) from ITS CodeHub must fill out a Deprecation and Offboarding Form and submit it to the ITS CodeHub administration team via email. The ITS CodeHub team will review the form, remove the application from the ITS CodeHub interface, and notify the requested contacts.</p>
+                        <p>This form will include:
+                            <ul>
+                                <li>Desired deprecation date (date when repository should be flagged as deprecated)</li>
+                                <li>Desired removal date (date when repository is removed from the ITS CodeHub interface)</li>
+                                <li>Reason for removal</li>
+                                <li>List of parties to be alerted upon removal, if necessary</li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</template>
