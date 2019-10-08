@@ -15,9 +15,9 @@
             <div class="card-title multiline">
               <a id="card-search-title-link-${repo.id}" href="#" route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Project name: ${repo.project_name}" innerhtml.bind="repo.highlight.project_name ? repo.highlight.project_name : repo.project_name"></a>
             </div>
-            <div tabindex="0" class="org-name">${repo.language ? repo.language : stageConfig.NO_LANG}</div>
+            <div tabindex="0" class="org-name">${language}</div>
           </div>
-          <div tabindex="0" class="proj-desc multiline" innerhtml.bind="repo.highlight.project_description ? repo.highlight.project_description : repo.project_description"></div>
+          <div tabindex="0" class="proj-desc ${hasdescription ? '' : 'no-desc'} multiline" innerhtml.bind="description"></div>
           <div class="text-muted last-updated clearfix"><span aria-hidden="true">By&nbsp;</span><a id="card-search-organization-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl,$event.target)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" aria-label="Project organization: ${repo.organization}, view on GitHub." target="_blanks"><span id="card-search-organization-link-text-${repo.id}">${repo.organization}</span></a> &nbsp; | &nbsp; <span tabindex="0" id="card-search-organization-updated-text-${repo.id}">Updated ${repo.updatedAt | ago}</span> <span class="pull-right repo-status"><i class="material-icons" aria-hidden="true">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i><span tabindex="0" id="card-search-organization-origin-text-${repo.id}">${repo.origin}</span></span></div>
         </div>
 
