@@ -7,10 +7,16 @@ export class EmailRegistration {
     this.element = element;
     this.valid = true;
     this.email = '';
+    this.timer = null;
+    this.words = ['Code', 'Insight', 'Engagement'];
+    this.word_index = null;
+    this.word = this.words[this.word_index];
+    this.msseconds = 4500;
   }
 
   attached() {
     this.focus_input();
+    this.timer_timeout();
   }
 
   close() {
@@ -79,5 +85,25 @@ export class EmailRegistration {
         projectDetailsProjectName.focus();
       }
     }
+  }
+
+  timer_timeout() {
+    $('#keyword').fadeOut(500, () => {
+      this.word_index ++;
+      if (!this.word_index || (this.word_index >= this.words.length)) {
+        this.word_index = 0;
+      }
+      this.word = this.words[this.word_index];
+      $('#keyword').fadeIn(500);
+
+      if (this.time) {
+        delete(this.timer);
+      }
+
+      this.timer = setTimeout( () => {
+        this.timer_timeout();
+      }, this.msseconds);
+    });
+
   }
 }

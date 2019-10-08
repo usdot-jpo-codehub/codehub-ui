@@ -721,11 +721,6 @@ a.disabled {
   right: 50px;
   z-index: 1000;
 
-  @media (max-width: 600px) {
-    width: 300px;
-    right: 5px;
-  }
-
   border-radius: 8px;
   border-color: @light-gray;
   border-style: solid;
@@ -746,6 +741,13 @@ a.disabled {
   -webkit-animation:comeDown 1.25s 1.0s ease forwards;
   -moz-animation:comeDown 1.25s 1.0s ease forwards;
   -ms-animation:comeDown 1.25s 1.0s ease forwards;
+
+  @media (max-width: 600px) {
+    width: 310px;
+    padding-left: 3px;
+    padding-right: 3px;
+    right: 5px;
+  }
 
   .header-controls {
     display: flex;
@@ -810,6 +812,11 @@ a.disabled {
         width: 100%;
         background-color: @dark-blue;
         border-color: @light-gray;
+        img {
+          margin-left: 5px;
+          height: 10px;
+          width: 10px;
+        }
       }
       .valid {
         background-color: darken(@white, 5%);

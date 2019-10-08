@@ -6,7 +6,7 @@
     <div class="content">
       <div class="header-text">
         <span class="title1">Want more:&nbsp;</span>
-        <span class="title2">ITS Code</span>
+        <span id="keyword" class="title2">${word}</span>
         <span class="title1">?</span>
       </div>
       <div class="message">
@@ -14,7 +14,7 @@
       </div>
       <div class="controls">
         <input type="email" class="form-control ${valid ? 'valid' : 'invalid'}" id="input-email-address" aria-describedby="emailHelp" placeholder="Email address" value.two-way="email">
-        <button type="button" class="btn btn-primary" click.delegate="signup()">Sign Up</button>
+        <button type="button" class="btn btn-primary" click.delegate="signup()">Sign Up <img src="img/external-link-alt-hover.svg" alt="External link icon"> </button>
       </div>
     </div>
 
