@@ -1,7 +1,7 @@
 <template>
   <require from="resources/custom-elements/browser-alert"></require>
   <require from="resources/custom-elements/message-alert"></require>
-  <!-- <require from="resources/elements/nav-menu.html"></require> -->
+  <require from="resources/custom-elements/email-registration"></require>
 
   <div id="top" class="hero-banner">
     <div class="inner">
@@ -16,6 +16,7 @@
 
   <!-- <browser-alert></browser-alert> -->
   <message-alert active.bind="stageConfig.IS_BETA" icon.bind="stageConfig.BETA_ICON" message.bind="stageConfig.BETA_MESSAGE"></message-alert>
+  <email-registration active.bind="stageConfig.MAIL_REGISTRATION_ENABLED"></email-registration>
 
   <div class="fab-container">
     <a href="#" click.trigger="scrollToTop()" id="backToTop" tooltip="Back To Top" class="fab" aria-label="scroll page back to top."><em class="material-icons">arrow_upward</em></a>
