@@ -202,13 +202,17 @@ h3{
 	&:extend(.label, .label-default);
 	font-family: "Roboto", sans-serif;
 	font-weight: bold;
-	font-size: @font-size-base;
+	font-size: @font-size-base !important;
 	border-radius: 10px;
 	background-color: @stage-red;
-	color: @white;
+	color: @black;
 	display: block;
 	padding: .1em .6em .2em;
 	text-align: center;
+
+  a .material-icons{
+    color: @link-color;
+  }
 
 	small {
 		font-weight: normal;
@@ -735,7 +739,7 @@ footer {
   margin-top: 10px;
   padding-top: 10px;
   background-color: darken(@white, 4%);
-  font-size: @font-size-smallest;
+  font-size: @font-size-small;
 
   .row {
     > [class*='col-'] {
@@ -754,6 +758,9 @@ footer {
     width: 140px;
     margin-right: 10px;
     filter: invert(100%);
+  }
+  .version {
+    font-size: @font-size-smallest;
   }
 }
 

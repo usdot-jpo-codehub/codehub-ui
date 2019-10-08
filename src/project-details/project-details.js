@@ -1,4 +1,4 @@
-import { inject } from 'aurelia-framework';
+import { inject, computedFrom } from 'aurelia-framework';
 import { Router, activationStrategy } from 'aurelia-router';
 import { DialogService } from 'aurelia-dialog';
 import { DataContext } from 'services/datacontext';
@@ -8,6 +8,7 @@ import { LeavingModal } from '../components/modals/leaving-modal';
 import { ContributorsModal } from '../components/modals/contributors-modal';
 import { StageConfig } from '../../stageConf';
 import { VScanModal } from '../components/modals/vscan-modal';
+import { NO_DESCRIPTION_MESSAGE } from '../constants/ch-contants';
 
 @inject(DataContext, Router, DialogService, StageConfig)
 export class ProjectDetails {
@@ -104,6 +105,16 @@ export class ProjectDetails {
 
     this.noDependencies = this.componentDependencies.length === 0 && this.projectsThatUseUs.length === 0;
   }
+
+  @computedFrom('repo.project_description')
+  get description() {
+    return this.repo.project_description ? this.repo.project_description : NO_DESCRIPTION_MESSAGE;
+  }
+  get hasdescription() {
+    return this.repo.project_description ? true : false;
+  }
+
+  
 
   openAddProjectModal(target) {
     this.addProjectLinkId = target.getAttribute('id');

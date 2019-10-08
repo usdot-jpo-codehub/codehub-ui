@@ -2,6 +2,7 @@ import { StageComponent } from 'aurelia-testing';
 import { bootstrap } from 'aurelia-bootstrapper';
 import { AgoValueConverter } from '../../src/resources/value-converters/ago';
 import { NumValueConverter } from '../../src/resources/value-converters/num';
+import { NO_DESCRIPTION_MESSAGE } from '../../src/constants/ch-contants';
 
 describe('Test - Card Search : ', () => {
 
@@ -48,7 +49,7 @@ describe('Test - Card Search : ', () => {
   it('Expect project description', (done) => {
     component.create(bootstrap).then( () => {
       const element = document.querySelector('.proj-desc');
-      expect(element.innerHTML).toEqual(mockProjectData[0].project_description);
+      expect(element.innerText).toEqual(mockProjectData[0].project_description ? mockProjectData[0].project_description : NO_DESCRIPTION_MESSAGE);
       done();
     }).catch( e => { console.log(e.toString()) });
   });

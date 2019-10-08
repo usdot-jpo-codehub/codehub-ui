@@ -15,7 +15,7 @@
                   <div class="lined-header">
                     <h2 tabindex="0" class="" aria-label="Project overview."><span>Overview</span></h2>
                   </div>
-                  <div id="project-description" tabindex="0" class="proj-desc" aria-label="Project description: ${repo.project_description}">${repo.project_description}</div>
+                  <div id="project-description" tabindex="0" class="proj-desc ${hasdescription ? '' : 'no-desc'} " aria-label="Project description: ${description}">${description}</div>
                   <div class="text-muted last-updated">By <a id="project-organization-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl,$event.target)" target="_blanks" aria-label="Project organization: ${repo.organization}, view on GitHub.">${repo.organization}</a> &nbsp; | &nbsp;<span id="project-update-at" tabindex="0" aria-label="Updated ${repo.updatedAt | ago}">Updated ${repo.updatedAt | ago}</span> <span class="pull-right repo-status"><i class="material-icons" aria-hidden="true">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> <span tabindex="0" id="project-origin" aria-label="Project origin: ${repo.origin}">${repo.origin}</span></span></div>
 
                   <ul class="list-inline" aria-hidden="true">
