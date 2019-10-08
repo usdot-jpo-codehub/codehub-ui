@@ -1,0 +1,31 @@
+.about-main_wrapper {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+
+  .left_gray_4x_border {
+    border-left-color: lighten(@light-gray, 30%);
+    border-left-style: solid;
+    border-left-width: 4px;
+  }
+
+  .about_main_auto_size_image {
+    img {
+      min-width: 3rem;
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .about_auto_size_image {
+    text-align: center;
+    img {
+      min-width: 3rem;
+      max-width: 12rem;
+      width: 100%;
+      height: auto;
+    }
+  }
+}
