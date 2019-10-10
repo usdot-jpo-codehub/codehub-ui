@@ -23,6 +23,13 @@ describe('Test - Value Converters - NumValueConverter', () => {
     done();
   });
 
+  it('NumValueConverter : Decimal has just zeros', (done) => {
+    let num = new NumValueConverter();
+    let val = num.toView(10.00, 3);
+    expect(val).toEqual('10');
+    done();
+  });
+
   it('NumValueConverter : K symbol no digits', (done) => {
     let num = new NumValueConverter();
     let val = num.toView(6006.0123456789);
