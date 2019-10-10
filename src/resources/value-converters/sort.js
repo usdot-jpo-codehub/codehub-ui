@@ -1,5 +1,13 @@
 export class SortValueConverter {
   toView(array, config) {
+
+    if (!array) {
+      return null;
+    }
+    if (!config) {
+      return array;
+    }
+
     if (config.propertyName === 'default') {
       if (config.direction === 'ascending') {
         return array
