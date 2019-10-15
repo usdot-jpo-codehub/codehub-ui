@@ -13,8 +13,8 @@ export class AdditionalInformation {
   }
   openLeavingSiteConfirmation(name, url, target, bypass) {
     this.exitDialogLinkId = target.getAttribute('id');
-    bypass = bypass === undefined ? false : bypass;
-    if(bypass) {
+    let byp = bypass === undefined ? false : bypass;
+    if(byp) {
       const win = window.open(url, '_blank');
       win.focus();
     } else {

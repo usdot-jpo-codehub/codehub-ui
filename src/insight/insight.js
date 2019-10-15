@@ -65,9 +65,9 @@ export class Insight {
           }
           return null;
         });
-        projects = projects.slice(0, 9);
-        projects.reverse();
-        resolve(projects);
+        let projs = projects.slice(0, 9);
+        projs.reverse();
+        resolve(projs);
       } catch (e) {
         reject(e);
       }
@@ -122,7 +122,7 @@ export class Insight {
     });
 
     calc.then((data) => {
-      data = this.injectColorStyle(data);
+      let dat = this.injectColorStyle(data);
       this.chartMostUsedLanguages = echarts.init(document.getElementById('chartMostUsedLanguajes'));
       this.chartMostUsedLanguages.setOption({
         tooltip: {
@@ -170,7 +170,7 @@ export class Insight {
               type:'pie',
               radius : '50%',
               center: ['50%', '50%'],
-              data: data,
+              data: dat,
               label: {
                 normal: {
                     position: 'outside',

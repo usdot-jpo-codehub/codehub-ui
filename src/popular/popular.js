@@ -62,15 +62,15 @@ export class Popular {
     this.searchingFeatured = true;
     this.dataContext.findByIds(this.fp).then(resp => {
       if (resp) {
-        resp = this.sortByFeaturedIds(resp, this.fp);
+        let rsp = this.sortByFeaturedIds(resp, this.fp);
         let b = 4;
-        if (resp.length < b) {
-          b = resp.length - 1;
+        if (rsp.length < b) {
+          b = rsp.length - 1;
         }
         if (this.fakeData) {
-          resp.splice(b, 0, this.fakeData);
+          rsp.splice(b, 0, this.fakeData);
         }
-        this.featured = resp;
+        this.featured = rsp;
         this.searchingFeatured = false;
       }
     });
@@ -107,7 +107,7 @@ export class Popular {
     let result = [];
     fp.forEach((key) => {
       let found = false;
-      data = data.filter((item) => {
+      data.filter((item) => {
           if(!found && item.id == key) {
               result.push(item);
               found = true;

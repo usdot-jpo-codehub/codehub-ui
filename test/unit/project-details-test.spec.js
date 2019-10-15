@@ -48,8 +48,13 @@ export class MockDataContext {
     let hd = this.mockCodeHealthiestData;
     let h = hd.filter(x => x.id === id);
     let hr = h && h.length ? h[0] : null;
-    this.respGetHealthById = hr.metrics;
-    return Promise.resolve(this.respGetHealthById);
+    if (hr) {
+      this.respGetHealthById = hr.metrics;
+      return Promise.resolve(this.respGetHealthById);
+    } else {
+      return Promise.reject("No health data for id: " +id);
+    }
+
   }
   getComponentDependencies(id){
     this.respGetComponentDependencies = {

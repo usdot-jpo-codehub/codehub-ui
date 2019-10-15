@@ -19,10 +19,11 @@ export class InsightTitle {
   getLocalDateTime(dateTimeString) {
     let result = null;
     if (dateTimeString) {
-      if(!dateTimeString.includes('Z')) {
-        dateTimeString += ' Z';
+      let dts = dateTimeString;
+      if(!dts.includes('Z')) {
+        dts += ' Z';
       }
-      let dt = new Date(dateTimeString);
+      let dt = new Date(dts);
       if (Object.prototype.toString.call(dt) === "[object Date]") {
         if (!isNaN(dt.getTime())) {
           result = dt.toLocaleString();
