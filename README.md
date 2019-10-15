@@ -21,7 +21,7 @@ After you have the API running, you may run the CodeHub UI in Docker using the f
 1. Set the `PROXY_PASS_URL` environment variable to the full URL and port of your CodeHub API instance.
 2. Run the `./build-and-run-docker.sh` script present in the top level of this repository.
 
-## Running the unit tests
+## Running Unit Tests
 
 Unit tests are run via the aurelia-cli and use [karma](https://karma-runner.github.io) and [jasmine](https://jasmine.github.io/) as test-runners.
 
@@ -35,7 +35,7 @@ au test
 au test --watch
 ```
 
-## Running The Integration Tests
+## Running Integration Tests
 
 Integration tests are performed with [Protractor](http://angular.github.io/protractor/#/).
 
