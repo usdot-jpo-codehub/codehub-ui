@@ -81,7 +81,6 @@ export class EmailRegistration {
     if(!found) { //search for project name in project details
       const projectDetailsProjectName = document.querySelector('#project-details-project-name');
       if(projectDetailsProjectName) {
-        found = true;
         projectDetailsProjectName.focus();
       }
     }

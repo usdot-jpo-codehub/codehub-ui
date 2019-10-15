@@ -25,7 +25,7 @@ export class Card {
         });
       }
 
-      if (modelData.releases && modelData.releases !== undefined) {
+      if (modelData.releases) {
         this.releases = modelData.releases;
         if (!Array.isArray(modelData.releases)) {
           this.releases = [];

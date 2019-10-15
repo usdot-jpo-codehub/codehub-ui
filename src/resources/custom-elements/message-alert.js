@@ -1,4 +1,4 @@
-import { inject, bindable, bindingMode } from 'aurelia-framework';
+import { inject, bindable } from 'aurelia-framework';
 import $ from 'jquery';
 
 
@@ -49,7 +49,6 @@ export class MessageAlert {
     if(!found) { //search for project name in project details
       const projectDetailsProjectName = document.querySelector('#project-details-project-name');
       if(projectDetailsProjectName) {
-        found = true;
         projectDetailsProjectName.focus();
       }
     }

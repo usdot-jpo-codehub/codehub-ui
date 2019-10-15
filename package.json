@@ -20,7 +20,6 @@
     "bootstrap": "^4.3.1",
     "bootstrap-3-typeahead": "^4.0.2",
     "bootstrap-multiselect": "^0.9.13-1",
-    "corejs-typeahead": "^1.2.1",
     "detect-browser": "^4.2.0",
     "echarts": "^4.2.1",
     "fetch": "^1.1.0",

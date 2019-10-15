@@ -53,7 +53,7 @@ export class Insight {
   sortProjects(projects) {
     return new Promise((resolve, reject) => {
       try {
-        projects = projects.sort((a, b) => {
+        projects.sort((a, b) => {
           if (b.forkedRepos && a.forkedRepos) {
             return Number(b.forkedRepos.length) - Number(a.forkedRepos.length);
           }
@@ -66,7 +66,7 @@ export class Insight {
           return null;
         });
         projects = projects.slice(0, 9);
-        projects = projects.reverse();
+        projects.reverse();
         resolve(projects);
       } catch (e) {
         reject(e);

@@ -1,9 +1,8 @@
-import { inject, bindable } from 'aurelia-framework';
+import { inject } from 'aurelia-framework';
 import { activationStrategy } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { DialogService } from 'aurelia-dialog';
 import $ from 'jquery';
-import { multiselect } from 'bootstrap-multiselect';
 import { DataContext } from 'services/datacontext';
 import { Filters } from 'components/filters';
 import { ReadmeModal } from '../components/modals/readme-modal';

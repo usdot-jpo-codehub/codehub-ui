@@ -2,7 +2,7 @@ import { inject, TaskQueue, computedFrom } from 'aurelia-framework';
 import { DialogController, DialogService } from 'aurelia-dialog';
 import { Router } from 'aurelia-router';
 import { LeavingModal } from './leaving-modal';
-import { NO_README_MESSAGE, NO_DESCRIPTION_MESSAGE } from '../../constants/ch-contants';
+import { NO_README_MESSAGE } from '../../constants/ch-contants';
 
 @inject(DialogController, Router, TaskQueue, DialogService)
 export class ReadmeModal {

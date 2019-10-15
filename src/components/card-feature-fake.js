@@ -6,9 +6,9 @@ export class Card {
   }
 
   activate(modelData) {
-    if (modelData && modelData !== undefined) {
+    if (modelData) {
       this.repo = modelData;
-      if (modelData.releases && modelData.releases !== undefined) {
+      if (modelData.releases) {
         this.releases = modelData.releases;
         if (!Array.isArray(modelData.releases)) {
           this.releases = [];
@@ -18,7 +18,7 @@ export class Card {
     }
 
     this.releases.forEach(element => {
-      this.downloads += (element.total_downloads && element.total_downloads !== undefined) ? element.total_downloads : 0;
+      this.downloads += (element.total_downloads && element.total_downloads != undefined) ? element.total_downloads : 0;
     });
   }
 
