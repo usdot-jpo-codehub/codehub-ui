@@ -20,13 +20,11 @@
         display: inline-block;
         width: 100%;
       }
-      ul > li > ul >li {
-
-      }
 
       padding-left: 15px;
       padding-right: 15px;
 
+      columns:2;
       -webkit-column-count:2;
       -moz-column-count:2;
       -ms-column-count:2;
@@ -37,7 +35,6 @@
       -ms-column-gap:30px;
       -o-column-gap:30px;
       column-gap:30px;
-      columns:2;
 
       -webkit-column-rule: 1px solid #d0d0d0; /* Chrome, Safari, Opera */
       -moz-column-rule: 1px solid #d0d0d0; /* Firefox */
@@ -138,7 +135,7 @@
         letter-spacing: 1px;
         margin-top: 0;
         text-transform: uppercase;
-        font-family: Roboto-Condensed;
+        font-family: Roboto-Condensed, sans-serif;
         font-weight: bold;
         color: lighten(@black, 50%);
       }
@@ -211,7 +208,6 @@
     opacity: 0.3;
     font-weight: 600;
     font-size: @font-size-largest;
-    text-align: center;
     letter-spacing: max(10px);
     text-shadow: 0 3px 4px rgba(0,0,0,0.2);
     display: @beta-display-message;

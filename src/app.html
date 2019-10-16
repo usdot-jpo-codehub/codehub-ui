@@ -1,7 +1,7 @@
 <template>
   <require from="resources/custom-elements/browser-alert"></require>
   <require from="resources/custom-elements/message-alert"></require>
-  <!-- <require from="resources/elements/nav-menu.html"></require> -->
+  <require from="resources/custom-elements/email-registration"></require>
 
   <div id="top" class="hero-banner">
     <div class="inner">
@@ -14,8 +14,8 @@
     <router-view name="mainContent"></router-view>
   </div>
 
-  <!-- <browser-alert></browser-alert> -->
   <message-alert active.bind="stageConfig.IS_BETA" icon.bind="stageConfig.BETA_ICON" message.bind="stageConfig.BETA_MESSAGE"></message-alert>
+  <email-registration active.bind="stageConfig.MAIL_REGISTRATION_ENABLED"></email-registration>
 
   <div class="fab-container">
     <a href="#" click.trigger="scrollToTop()" id="backToTop" tooltip="Back To Top" class="fab" aria-label="scroll page back to top."><em class="material-icons">arrow_upward</em></a>
@@ -35,40 +35,6 @@
             Build: ${version.build}
         </div>
       </div>
-      <!-- <div class="row">
-        <div class="col-lg-12 col-md-12">
-          <ul class="list-inline">
-
-            <li><a href="#" id="ft-Web-Policies-Notices" click.trigger="openLeavingSiteConfirmation('Web Policies &amp; Notices','https://www.transportation.gov/web-policies',$event.target)">Web Policies &amp; Notices</a></li>
-            <li><span class="text-muted">|</span></li>
-            <li><a href="#" id="ft-Accessibility" click.trigger="openLeavingSiteConfirmation('Accessibility','https://www.transportation.gov/accessibility',$event.target)">Accessibility</a></li>
-            <li><span class="text-muted">|</span></li>
-            <li><a href="#" id="ft-Careers" click.trigger="openLeavingSiteConfirmation('Careers','https://www.transportation.gov/careers',$event.target)">Careers</a></li>
-            <li><span class="text-muted">|</span></li>
-            <li><a href="#" id="ft-FOIA" click.trigger="openLeavingSiteConfirmation('FOIA','https://www.transportation.gov/foia',$event.target)">FOIA</a></li>
-            <li><span class="text-muted">|</span></li>
-            <li><a href="#" id="ft-Privacy-Policy" click.trigger="openLeavingSiteConfirmation('Privacy Policy','https://www.transportation.gov/privacy',$event.target)">Privacy Policy</a></li>
-            <li><span class="text-muted">|</span></li>
-            <li><a href="#" id="ft-Information-Quality" click.trigger="openLeavingSiteConfirmation('Information Quality','https://www.transportation.gov/regulations/dot-information-dissemination-quality-guidelines/',$event.target)">Information Quality</a></li>
-            <li><span class="text-muted">|</span></li>
-            <li><a href="#" id="ft-No-FEAR-Act-Data" click.trigger="openLeavingSiteConfirmation('No FEAR Act Data','https://www.civilrights.dot.gov/civil-rights-awareness-enforcement/employment-related/affirmative-employment/no-fear-act',$event.target)">No FEAR Act Data</a></li>
-            <li><span class="text-muted">|</span></li>
-            <li><a href="#" id="ft-Ethics" click.trigger="openLeavingSiteConfirmation('Ethics','https://www.transportation.gov/ethics',$event.target)">Ethics</a></li>
-            <li><span class="text-muted">|</span></li>
-            <li><a href="#" id="ft-Civil-Rights" click.trigger="openLeavingSiteConfirmation('Civil Rights','https://www.civilrights.dot.gov/',$event.target)">Civil Rights</a></li>
-            <li><span class="text-muted">|</span></li>
-            <li><a href="#" id="ft-Office-of-Inspector-General" click.trigger="openLeavingSiteConfirmation('Office of Inspector General','http://www.oig.dot.gov/',$event.target)">Office of Inspector General</a></li>
-            <li><span class="text-muted">|</span></li>
-            <li><a href="#" id="ft-OIG-Hotline" click.trigger="openLeavingSiteConfirmation('OIG Hotline','http://www.oig.dot.gov/Hotline',$event.target)">OIG Hotline</a></li>
-            <li><span class="text-muted">|</span></li>
-            <li><a href="#" id="ft-BusinessUSA" click.trigger="openLeavingSiteConfirmation('BusinessUSA','https://business.usa.gov/',$event.target)">BusinessUSA</a></li>
-            <li><span class="text-muted">|</span></li>
-            <li><a href="#" id="ft-USA-gov" click.trigger="openLeavingSiteConfirmation('USA.gov','http://usa.gov/',$event.target)">USA.gov</a></li>
-            <li><span class="text-muted">|</span></li>
-            <li><a href="#" id="ft-White-House" click.trigger="openLeavingSiteConfirmation('White House','http://whitehouse.gov/',$event.target)">White House</a></li>
-          </ul>
-        </div>
-      </div> -->
     </div>
   </footer>
 </template>

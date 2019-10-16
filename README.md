@@ -1,47 +1,29 @@
-# aurelia-skeleton-navigation
+![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoieE1PRzV1dmZyOTB5MVBIYzlGYUFKcitLUVpPVEtNd2Z3WDdraEUxYXMwQkV5SytJbk1MSitxenlqTFN1N3hqOVJ3bXRZVkFrS2paTXNnQVNkQWFVRmQwPSIsIml2UGFyYW1ldGVyU3BlYyI6Ik0ySy85bzR3OVU2eEMwUnUiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=usdot-jpo-codehub_codehub-ui&metric=alert_status)](https://sonarcloud.io/dashboard?id=usdot-jpo-codehub_codehub-ui)
 
-## Running The App
+# codehub-ui
 
-To run the app, follow these steps:
+This repository holds the frontend user-interface (UI) code for the United States Department of Transportation (U.S. DOT) Joint Program Office (JPO) Intelligent Transit Systems (ITS) CodeHub website located at [https://its.dot.gov/code](https://its.dot.gov/code).
 
-1. Ensure that [NodeJS](http://nodejs.org/) is installed. This provides the platform on which the build tooling runs.
-2. From the project folder, execute the following command:
+## Getting Started
 
-  ```shell
-  npm install
-  ```
-3. Ensure that [Gulp](http://gulpjs.com/) is installed globally. If you need to install it, use the following command:
+The CodeHub UI is a Dockerized application. While it is possible to run this application natively, we strongly recommend that you use Docker to abstract away the complications of Node version management and package installation.
 
-  ```shell
-  npm install -g gulp
-  ```
-  > **Note:** Gulp must be installed globally, but a local version will also be installed to ensure a compatible version is used for the project.
-4. Ensure that [aurelia-cli](http://jspm.io/) is installed globally. If you need to install it, use the following command:
+### Prerequisites
 
-  ```shell
-  npm install -g aurelia-cli
-  ```
+- Docker Version 19.03 (or higher)
 
-5. To run the app, execute the following command:
+### Installing
 
-  ```shell
-  au run --watch
-  ```
+The UI requires a running CodeHub API instance to which it can connect. See the [codehub-api repository](https://github.com/usdot-jpo-codehub/codehub-api) for instructions.
 
-## Bundling
-The build and bundling is performed by the Aurelia CLI.
+After you have the API running, you may run the CodeHub UI in Docker using the following steps:
 
-### To buble (build) the application for production environment, execute the following command:
-``` shell
-au build --env prod
-```
- - It is possible to change environment by passing the flag --env with the values: **dev**, **stage** or **prod**.
- - It will create the bundle files under the **scripts** folder.
- - The configuration of the bundle is manage throught he **aurelia.json" file under the **aurelia_project** folder.
+1. Set the `PROXY_PASS_URL` environment variable to the full URL and port of your CodeHub API instance.
+2. Run the `./build-and-run-docker.sh` script present in the top level of this repository.
 
-## Running The Unit Tests
+## Running Unit Tests
 
-Unit tests are running through the aurelia-cli and uses [karma](https://karma-runner.github.io) and [jasmine](https://jasmine.github.io/) to execute the tests.
+Unit tests are run via the aurelia-cli and use [karma](https://karma-runner.github.io) and [jasmine](https://jasmine.github.io/) as test-runners.
 
 ### To execute the unit tests, execute the following command:
 ```shell
@@ -53,7 +35,8 @@ au test
 au test --watch
 ```
 
-## Running The E2E Tests
+## Running Integration Tests
+
 Integration tests are performed with [Protractor](http://angular.github.io/protractor/#/).
 
 1. Place your E2E-Tests into the folder ```test/e2e/src```
@@ -77,11 +60,34 @@ Integration tests are performed with [Protractor](http://angular.github.io/protr
   au protractor
   ```
 
-## Exporting bundled production version
-To create a distribution package that includes all the assets, execute the following command.
-```shell
-au package-bundle --env prod
-```
-By default a **dist** folder will be created and all the required files will be copied to it.
+## Deployment
 
-The configuration of the bundle is manage throught he **aurelia.json" file under the **aurelia_project** folder...
+Deployment of the UI is as simple as building and running the Docker image in your environment of choice.
+
+## Built With
+
+* [Docker](https://www.docker.com/) - Containerization Platform
+* [Node](https://nodejs.org/en/) - JavaScript Runtime Environment
+* [Aurelia](https://aurelia.io/) - JavaScript Web Application Framework
+
+## Contributing
+
+Please contribute to this repository using GitHub Pull Requests and GitHub Issues.
+
+## Authors
+
+The Developers of ITS CodeHub.
+
+## License
+
+This project is licensed under the Apache 2.0 License.
+
+## Code.gov Registration Info
+
+Agency: DOT
+Short Description: The backend API for the ITS CodeHub repository-sharing website.
+Status: Beta
+Tags: transportation, connected vehicles, intelligent transportation systems, javascript, api
+Labor Hours: 0
+Contact Name: Brian Brotsos
+Contact Phone:

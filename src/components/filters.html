@@ -1,90 +1,61 @@
 <template>
   <require from="../resources/value-converters/unique"></require>
 
-<select id="example-getting-started" multiple="multiple">
-  <option value="cheese">Cheese</option>
-  <option value="tomatoes">Tomatoes</option>
-  <option value="mozarella">Mozzarella</option>
-  <option value="mushrooms">Mushrooms</option>
-  <option value="pepperoni">Pepperoni</option>
-  <option value="onions">Onions</option>
-</select>
+  <select id="example-getting-started" multiple="multiple">
+    <option value="cheese">Cheese</option>
+    <option value="tomatoes">Tomatoes</option>
+    <option value="mozarella">Mozzarella</option>
+    <option value="mushrooms">Mushrooms</option>
+    <option value="pepperoni">Pepperoni</option>
+    <option value="onions">Onions</option>
+  </select>
 
-  <!-- <div class="col-lg-2 col-sm-3 aside col-filters"> -->
-    <h5>Filters</h5>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4>
-          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
-             aria-controls="collapseOne">Organizations</a>
-        </h4>
-      </div>
-      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-        <div class="panel-body">
-
-          <select id="stage-org" multiple="multiple">
-            <option repeat.for="organization of projects | unique: { propertyName: 'organization'}" value.bind="organization">${organization}</option>
-          </select> 
-
-
-          <!-- <ul class="list-group">
-            <li class="list-group-item">
-              <form>
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" name="toggleOrg" click.delegate="filters.toggleOrg($event, projects)"
-                           checked/> Show All<br/>
-                  </label>
-                </div>
-              </form>
-            </li>
-            <li class="list-group-item"
-                repeat.for="organization of projects | unique: { propertyName: 'organization'}">
-              <form>
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" name="orgCheck" checked.bind="filters.selectedOrganizations"
-                           value.bind="organization"> ${organization}
-                  </label>
-                </div>
-              </form>
-            </li>
-          </ul> -->
-        </div>
+  <h5>Filters</h5>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Organizations</a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        <select id="stage-org" multiple="multiple">
+          <option repeat.for="organization of projects | unique: { propertyName: 'organization'}" value.bind="organization">${organization}</option>
+        </select> 
       </div>
     </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4>
-          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true"
-             aria-controls="collapseTwo" class="collapsed">Language</a>
-        </h4>
-      </div>
-      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-        <div class="panel-body">
-          <ul class="list-group">
-            <li class="list-group-item">
-              <form>
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" name="toggleLang" click.delegate="filters.toggleLang($event, projects)"
-                           checked/> Show All<br/>
-                  </label>
-                </div>
-              </form>
-            </li>
-            <li class="list-group-item" repeat.for="language of projects | unique: { propertyName: 'language'}">
-              <form>
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" checked.bind="filters.selectedLanguages" value.bind="language"> ${language}
-                  </label>
-                </div>
-              </form>
-            </li>
-          </ul>
-        </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true"
+            aria-controls="collapseTwo" class="collapsed">Language</a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <form>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="toggleLang" click.delegate="filters.toggleLang($event, projects)"
+                          checked/> Show All<br/>
+                </label>
+              </div>
+            </form>
+          </li>
+          <li class="list-group-item" repeat.for="language of projects | unique: { propertyName: 'language'}">
+            <form>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" checked.bind="filters.selectedLanguages" value.bind="language"> ${language}
+                </label>
+              </div>
+            </form>
+          </li>
+        </ul>
       </div>
     </div>
-  <!-- </div> -->
+  </div>
 </template>

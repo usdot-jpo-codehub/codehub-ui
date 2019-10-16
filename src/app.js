@@ -1,4 +1,4 @@
-import { Router, RouterConfiguration, RouteConfig, NavModel } from 'aurelia-router';
+import { Router } from 'aurelia-router';
 import { DialogService } from 'aurelia-dialog';
 import { inject } from 'aurelia-framework';
 import { FeedbackModal } from 'components/modals/feedback-modal.js';
@@ -17,14 +17,9 @@ export class App {
       { route: 'about', name: 'about', viewPorts: { mainContent: {moduleId: 'about/about' }, headerContent: { moduleId: 'components/headers/generic-title' } }, nav: true, title: 'About', settings: { desc: '' } },
       { route: 'explore', name: 'explore', viewPorts: { mainContent: { moduleId: 'explore/explore' }, headerContent: { moduleId: 'components/headers/generic-title' } }, nav: true, title: 'Explore', settings: { desc: '' } },
       { route: 'insight', name: 'insight', viewPorts: { mainContent: { moduleId: 'insight/insight' }, headerContent: { moduleId: 'components/headers/insight-title' } }, nav: true, title: 'Insight', settings: { desc: '', altTitle: 'Enterprise Insight' } },
-      // { route: 'resources', name: 'cats', viewPorts: { mainContent: {moduleId: 'cats' }, headerContent: { moduleId: 'components/headers/generic-title' } }, nav: true, title: 'Cats', settings: { desc: 'Frequently Asked Questions' } },
-      //{ route: 'resources', name: 'resources', viewPorts: { mainContent: {moduleId: 'resources-knowledge/routes' }, headerContent: { moduleId: 'components/headers/generic-title' } }, nav: true, title: 'Resources', settings: { desc: 'CodeHub Resources', dropdownparent: 'true' } },
-      //{ route: 'settings', name: 'settings', viewPorts: { mainContent: {moduleId: 'settings/settings' }, headerContent: { moduleId: 'components/headers/generic-title' } }, nav: true, title: 'Resources', settings: { desc: 'Resources Description' } },
-      // { route: 'cats', name: 'child1', viewPorts: { mainContent: {moduleId: 'resources-knowledge/childroutes' }, headerContent: { moduleId: 'components/headers/generic-title' } }, nav: true, title: 'Resources child 1', settings: { desc: '1st child', data: 'child1' } },
-      // { route: 'childroutes/child2', name: 'child2', viewPorts: { mainContent: {moduleId: 'resources-knowledge/childroutes' }, headerContent: { moduleId: 'components/headers/generic-title' } }, nav: true, title: 'Resources child 2', settings: { desc: 'second child', data: 'child2' } },
       { route: 'results', name: 'results', viewPorts: { mainContent: { moduleId: 'search/results' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: false, title: 'Search Results' },
       { route: 'project-details', name: 'project-details', viewPorts: { mainContent: { moduleId: 'project-details/project-details' }, headerContent: { moduleId: 'components/headers/project-details-header' } }, nav: false, title: 'Project Details' },
-      { route: 'profile', name: 'profile', viewPorts: { mainContent: { moduleId: 'profile/profile' },headerContent: { moduleId: 'components/headers/generic-title'} , headerContent: { moduleId: 'components/headers/secondary-title' } }, nav: false, title: 'Your Account', settings: { desc: '' }},
+      { route: 'profile', name: 'profile', viewPorts: { mainContent: { moduleId: 'profile/profile' },headerContent: { moduleId: 'components/headers/generic-title'} }, nav: false, title: 'Your Account', settings: { desc: '' }},
       { route: 'repopublishing', name: 'repopublishing', viewPorts: { mainContent: { moduleId: 'repopublishing/repopublishing'}, headerContent: { moduleId: 'components/headers/generic-title'}}, nav: true, title: 'Resources', settings:{desc: '', dropdownchild: true, parent: 'Resources', firstchild: true, menuitem: 'Repository Registration'}},
       { route: 'faqs', name: 'faqs', viewPorts: { mainContent: { moduleId: 'faqs/faqs'}, headerContent: { moduleId: 'components/headers/generic-title'}}, nav: true, title: 'Resources', settings: { desc: '', dropdownchild: true, parent: 'Resources', firstchild: false, menuitem: 'FAQs' }},
       { route: 'additional-information', name: 'additional-information', viewPorts: { mainContent: { moduleId: 'additional-information/additional-information'}, headerContent: { moduleId: 'components/headers/generic-title'}}, nav: true, title: 'Resources', settings: { desc: '', dropdownchild: true, parent: 'Resources', firstchild: false, menuitem: 'Additional Information' }}
@@ -34,11 +29,11 @@ export class App {
     this.router = router;
   }
 
-  constructor(dialogService, stageConfig, environment) {
+  constructor(dialogService, stageConfig, env) {
     this.dialogService = dialogService;
     this.stageConfig = stageConfig;
     this.exitDialogLinkId = null;
-    this.version = this.prepareVersion(environment.version);
+    this.version = this.prepareVersion(env.version);
   }
 
   activate() {

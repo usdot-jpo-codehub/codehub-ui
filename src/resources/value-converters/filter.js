@@ -1,7 +1,11 @@
 export class FilterValueConverter {
   toView(array, config) {
-    if (config.filterArray.length === 0)
+    if (!array) {
+      return null;
+    }
+    if (!config || !config.filterArray || config.filterArray.length === 0) {
       return array;
+    }
 
     let result = array
     .slice(0)
