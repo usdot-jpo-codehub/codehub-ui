@@ -20,6 +20,9 @@ export class EmailRegistration {
   }
 
   close() {
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
     $(this.element).hide();
     this.focusActiveMenu();
   }
@@ -95,8 +98,8 @@ export class EmailRegistration {
       this.word = this.words[this.word_index];
       $('#keyword').fadeIn(500);
 
-      if (this.time) {
-        delete(this.timer);
+      if (this.timer) {
+        clearTimeout(this.timer);
       }
 
       this.timer = setTimeout( () => {

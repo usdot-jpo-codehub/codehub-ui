@@ -44,7 +44,7 @@ describe('Test - Card Health : ', () => {
     component.create(bootstrap).then( () => {
       const element = document.querySelector('.org-name');
       let language = mockCodeHealthiestData[0].language;
-      expect(element.innerHTML).toEqual(language && language !== undefined ? language : StageConfig.NO_LANG);
+      expect(element.innerHTML).toEqual(language && language != undefined ? language : StageConfig.NO_LANG);
       done();
     }).catch( e => { console.log(e.toString()) });
   });
