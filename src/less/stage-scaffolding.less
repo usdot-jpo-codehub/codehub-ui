@@ -800,6 +800,12 @@ a.disabled {
       font-weight: 100;
       color: @black;
     }
+    .message-alert {
+      font-family: @font-family-base;
+      font-size: @font-size-medium;
+      font-weight: normal;
+      color: darken(red, 15%);
+    }
     .controls {
       display: flex;
       flex-direction: column;
@@ -823,7 +829,7 @@ a.disabled {
         background-color: darken(@white, 5%);
       }
       .invalid {
-        background-color: lighten(@stage-red, 30%) !important;
+        background-color: lighten(red, 40%) !important;
       }
     }
   }
