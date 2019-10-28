@@ -7,6 +7,6 @@ node_modules/
 
 .editorconfig
 .gitignore
-.travis.yml
 build-and-run-docker.sh
 buildspec.yml
+Dockerfile
