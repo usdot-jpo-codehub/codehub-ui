@@ -1,5 +1,12 @@
+# This file lists the files and folders that do not belong in the Docker image
+
 node_modules/
 .git/
-test/
 .chrome/
 .vscode/
+
+.editorconfig
+.gitignore
+.travis.yml
+build-and-run-docker.sh
+buildspec.yml
