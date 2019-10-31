@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/usdot-jpo-codehub/codehub-ui.git"
   },
-  "license": "MIT",
+  "license": "Apache-2.0",
   "dependencies": {
     "aurelia-animator-css": "^1.0.4",
     "aurelia-bootstrapper": "^2.3.0",
@@ -83,7 +83,6 @@
   "scripts": {
     "start": "au run --watch",
     "test": "au test",
-    "bundle": "au package-bundle --env prod",
-    "lighthouse:ci": "node_modules/lighthouse/lighthouse-cli/index.js --output-path=lighthouse-report.html --quiet --chrome-flags='--headless' https://dev-codehub-external-1278179393.us-east-1.elb.amazonaws.com"
+    "bundle": "au package-bundle --env prod"
   }
 }

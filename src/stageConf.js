@@ -8,5 +8,6 @@ export const StageConfig = {
   SONARQUBE_ADDRESS: 'http://dot-task4-dev-sonar-codehub-elb-1232935947.us-east-1.elb.amazonaws.com',
   HOME_TEXT_ABOVE_SEARCH: '',
   HOME_TEXT_BELOW_SEARCH: 'The U.S. Department of Transportation’s public portal for open-source, reusable ITS software code.<br>Enabling innovation through open-source collaboration.',
-  MAIL_REGISTRATION_ENABLED: true,
+  EMAIL_REGISTRATION_ENABLED: true,
+  EMAIL_LISTID: '1697497844'
 };

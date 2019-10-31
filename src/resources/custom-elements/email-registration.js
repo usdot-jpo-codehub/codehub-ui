@@ -1,9 +1,10 @@
 import { inject, bindable } from 'aurelia-framework';
+import { DataContext } from '../../services/datacontext';
 
-@inject(Element)
+@inject(Element, DataContext)
 export class EmailRegistration {
   @bindable active;
-  constructor(element) {
+  constructor(element, dataContext) {
     this.element = element;
     this.valid = true;
     this.email = '';
@@ -12,6 +13,11 @@ export class EmailRegistration {
     this.word_index = null;
     this.word = this.words[this.word_index];
     this.msseconds = 4500;
+    this.dataContext = dataContext;
+    this.message = 'Join our mailing list! Stay up to date on new features and repositories!';
+    this.message_alert = 'There is a problem with the registration service, please try again later.';
+    this.message_invalid_email = 'Invalid email format, please try again.';
+    this.is_error = false;
   }
 
   attached() {
@@ -20,16 +26,23 @@ export class EmailRegistration {
   }
 
   close() {
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
     $(this.element).hide();
     this.focusActiveMenu();
   }
 
   signup() {
     if (this.validate_email()) {
-      console.log('email is valid');
-      // Insert backend call here 
-      $(this.element).hide();
-      this.focusActiveMenu();
+      this.dataContext.registerUserEmail(this.email).then(resp => {
+        if (resp && (resp.code === 200 || resp.code === 201)) {
+          $(this.element).hide();
+          this.focusActiveMenu();
+        } else {
+          this.is_error = true;
+        }
+      });
     } else {
       this.valid = false;
       this.email = '';
@@ -95,8 +108,8 @@ export class EmailRegistration {
       this.word = this.words[this.word_index];
       $('#keyword').fadeIn(500);
 
-      if (this.time) {
-        delete(this.timer);
+      if (this.timer) {
+        clearTimeout(this.timer);
       }
 
       this.timer = setTimeout( () => {
@@ -104,5 +117,19 @@ export class EmailRegistration {
       }, this.msseconds);
     });
 
+  }
+
+  handleKeypress(event) {
+    if (event && event.key==='Enter') {
+      this.signup();
+    } else {
+      if (!this.valid) {
+        this.valid = true;
+      }
+      if (this.is_error) {
+        this.is_error = false;
+      }
+    }
+    return true;
   }
 }

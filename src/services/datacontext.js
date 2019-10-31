@@ -1,12 +1,14 @@
 import { inject } from 'aurelia-framework';
 import { HttpClient, json } from 'aurelia-fetch-client';
+import { StageConfig } from '../stageConf';
 
 const baseUrl = '/api/projects';
 
-@inject(HttpClient)
+@inject(HttpClient, StageConfig)
 export class DataContext {
-  constructor(httpClient) {
+  constructor(httpClient, stageConfig) {
     this.http = httpClient;
+    this.stageConfig = stageConfig;
   }
 
   // TODO Wrap API calls in promises to catch errors
@@ -161,6 +163,29 @@ export class DataContext {
         }
         return null;
       });
+  }
+
+  registerUserEmail(email) {
+    let payload = {
+      'email': email,
+      'listId': this.stageConfig.EMAIL_LISTID
+    }
+    console.log(payload);
+    return this.http.fetch(`/apicc/v1/contacts`, {
+      method: 'POST',
+      body: json(payload),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      if (response && response.ok) {
+        let jObj = response.json();
+
+        return jObj;
+      }
+      return null;
+    });
   }
 
 }

@@ -35,6 +35,6 @@ COPY --from=buildimage /app/dist .
 
 COPY --from=buildimage /app/entrypoint.sh .
 
-COPY nginx.conf /etc/nginx
+COPY nginx.template.conf /etc/nginx
 
 CMD ["/app/entrypoint.sh"]
