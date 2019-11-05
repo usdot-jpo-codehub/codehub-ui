@@ -6,7 +6,7 @@
   <div if.bind="repo" class="col-lg-12 col-md-12 col-sm-12">
     <div class="card card-search hover-card">
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-7">
           <div class="card-header">
             <div tabindex="0" class="lang-logo" role="img" aria-label="Language icon ${repo.language}">
               <img alt="Language icon ${repo.language}" if.bind="repo.organization != 'foundation'" src.bind="language_image">
@@ -18,10 +18,31 @@
             <div tabindex="0" class="org-name">${language}</div>
           </div>
           <div tabindex="0" class="proj-desc ${hasdescription ? '' : 'no-desc'} multiline" innerhtml.bind="description"></div>
-          <div class="text-muted last-updated clearfix"><span aria-hidden="true">By&nbsp;</span><a id="card-search-organization-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl,$event.target)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" aria-label="Project organization: ${repo.organization}, view on GitHub." target="_blanks"><span id="card-search-organization-link-text-${repo.id}">${repo.organization}</span></a> &nbsp; | &nbsp; <span tabindex="0" id="card-search-organization-updated-text-${repo.id}">Updated ${repo.updatedAt | ago}</span> <span class="pull-right repo-status"><i class="material-icons" aria-hidden="true">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i><span tabindex="0" id="card-search-organization-origin-text-${repo.id}">${repo.origin}</span></span></div>
+          <div class=" card-search-details">
+            <div class="text-muted last-updated clearfix">
+              <span aria-hidden="true">By&nbsp;</span>
+              <a id="card-search-organization-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl,$event.target)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" aria-label="Project organization: ${repo.organization}, view on GitHub." target="_blanks">
+                <span id="card-search-organization-link-text-${repo.id}">${repo.organization}</span>
+              </a>
+              &nbsp; | &nbsp;
+              <span tabindex="0" id="card-search-organization-updated-text-${repo.id}">Updated ${repo.updatedAt | ago}</span>
+            </div>
+            <div class="card-search-badges text-muted last-updated">
+              <div>
+                <a href="#" route-href="route:badges-about" title="Status ${repo.badges.status}">
+                  <img alt="Badge status image" src.bind="badge_status_image">
+                  <span>${repo.badges.status.toUpperCase()}</span>
+                </a>
+              </div>
+              <div>
+                <i class="material-icons" aria-hidden="true">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i>
+                <span tabindex="0" id="card-search-organization-origin-text-${repo.id}">${repo.origin}</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="col-lg-4 col-github-stats">
+        <div class="col-lg-5 col-github-stats">
           <div class="card-stats lined-header">
             <span class="pull-right">
               <em class="text-muted">Source:
@@ -86,7 +107,6 @@
       </ul>
       <ul class="list-inline pull-right">
         <li class="pull-right"><a route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Go to project details">Go to Details<i class="material-icons" aria-hidden="true">chevron_right</i></a></li>
-        <li if.bind="badge_status_image"><a href="#" route-href="route:badges-about" title="Status ${repo.badges.status}"><img alt="Badge status image" src.bind="badge_status_image"></a></li>
       </ul>
     </div>
 

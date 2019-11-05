@@ -202,7 +202,7 @@
             
             img {
               width: auto;
-              height: 23px !important;
+              height: 23px;
             }
 					}
 				}
@@ -225,7 +225,7 @@
             
             img {
               width: auto;
-              height: 25px !important;
+              height: 25px;
               padding-bottom: 6px;
             }
           }
@@ -536,9 +536,32 @@
 
 		.col-github-stats {
 			.github-stats {
-				padding-left: 20px;
+				padding-left: 40px;
 		  }
-		}
+    }
+
+    .card-search-details {
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      justify-content: space-between;
+
+      .card-search-badges {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-content: center;
+        a {
+          padding-left: 0;
+          padding-right: 10px;
+          img {
+            width: auto;
+            height: 25px;
+            padding-bottom: 6px;
+          }
+        }
+      }
+    }
 	}
 }
 
