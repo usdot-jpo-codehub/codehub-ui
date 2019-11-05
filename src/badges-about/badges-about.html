@@ -1,0 +1,68 @@
+<template bindable="router">
+    <main class="usa-layout-docs usa-section repopublishing-page" id="main-content">
+        <div class="grid-container container-fluid">
+            <div class="grid-row grid-gap row text-heavy-page">
+                <aside id="side-nav" class="col-lg-2 col-md-3 desktop:grid-col-2 sidenav">
+                    <compose view-model="side-nav" router.bind="router"></compose>
+                </aside>
+                <div class="div-1 col-lg-10 col-md-9 col-sm-12 col-xs-12 usa-layout-docs__main desktop:grid-col-10 usa-prose">
+                    <h2>About CodeHub Badges</h2>
+                    <div class="div-2 col-lg-9 col-md-10 col-sm-12 col-xs-12 usa-layout-docs__main desktop:grid-col-9 usa-prose column-no-side-padding">
+                        <p>A repository may be assessed or reassessed at any time and issued a Badge. Badges are designed to alert users about the status of a repository. Three Badges are utilized, they include:
+                           
+                                <div><img src="./img/active_flame_final_28w_35h.svg" alt="Icon for Active Repository" class="badge-about-header-icon"/><h3 class="badge-about-header">Active</h3></div>
+                                <div>
+                                    
+                                    <span class="col-lg-12 col-md-12 col-xs-12 column-no-side-padding"> <strong>Definition:</strong> This repository is maintained by the current owner. The owner
+                                        should respond to user requests, including approving pull requests, and
+                                        comments as is practicable. </span>
+                                    <span class="col-lg-12 col-md-12 col-xs-12 column-no-side-padding"><strong>Usage:</strong> Inactive, and Read-Only repositories may be reviewed on a case by
+                                        case basis to determine if Active status is appropriate. Whether to place a
+                                        repository in Active status will be determined based upon, but not limited
+                                        to the following criteria: Forks; Contributors; Watchers; Commits; Stars;
+                                        Last Update; and U.S. DOT Availability.</span>
+                                </div>
+                        
+                                <div>
+                                    <img src="./img/inactive_zzz_final_32w_35h.svg" alt="Icon for Active Repository" class="badge-about-header-icon"/><h3 class="badge-about-header">Inactive</h3>
+                                </div>
+                                <div>
+                                    <span class="col-lg-12 col-md-12 col-xs-12 column-no-side-padding"> <strong>Definition:</strong> This repository is not being maintained. No user activity
+                                    will be acknowledged. This repository will be converted to Read-Only status
+                                    in the future if possible. No pull requests have been approved since the
+                                    repository was placed in Inactive status.</span>
+                                    <span class="col-lg-12 col-md-12 col-xs-12 column-no-side-padding"><strong>Usage:</strong> A repository that has been transferred to U.S. DOT ownership, but
+                                        has not been prepared for Read-Only status. When practicable, the U.S. DOT
+                                        will convert this repository to Read-Only. Also used if a repository becomes
+                                        “Deprecated” (inactive for 2 years as outlined on <a href
+                                        <a href="#" id="about-links-its-datahub" click.trigger="openLeavingSiteConfirmation('ITS DataHub','https://www.its.dot.gov/data/index.html',$event.target, true)">https://www.its.dot.gov/code/</a>).
+                                    </span>
+                                </div>
+
+                                <div><img src="./img/read-only_lock_final_28w_35h.svg" alt="Icon for Read-Only Repository" class="badge-about-header-icon" /><h3 class="badge-about-header">Read-Only</h3>
+                                </div>
+                                <div>
+                                    <span class="col-lg-12 col-md-12 col-xs-12 column-no-side-padding"><strong>Definition:</strong> This repository is in Read-Only and not maintained. No user
+                                    activity, except forking, is
+                                    permitted. No user activity will be acknowledged. Users are free to fork
+                                    this repository.</span>
+                                    <span class="col-lg-12 col-md-12 col-xs-12 column-no-side-padding"><strong>Usage:</strong> All repositories that are not Active will be converted to Read-Only
+                                    if possible. If not possible to
+                                    convert to Read-Only, the repository will be marked Inactive.</span>
+                                </div>
+                                
+                                
+                                <div>
+                                    <img src="./img/pending_review_final_29w_35h.svg" alt="Icon for Active Repository" class="badge-about-header-icon"/><h3 class="badge-about-header">Pending Assesment</h3>
+                                </div>
+                                <div>
+                                    <span class="col-lg-12 col-md-12 col-xs-12 column-no-side-padding"><strong>Definition:</strong> This repository in currently under evaluation by the ITS CodeHub support team.</span>
+                                    <span class="col-lg-12 col-md-12 col-xs-12 column-no-side-padding"><strong>Usage:</strong> The repository's status will be updated once the review has been completed.</span>
+                                </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</template>
