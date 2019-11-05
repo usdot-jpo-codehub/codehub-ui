@@ -16,11 +16,24 @@
                     <h2 tabindex="0" class="" aria-label="Project overview."><span>Overview</span></h2>
                   </div>
                   <div id="project-description" tabindex="0" class="proj-desc ${hasdescription ? '' : 'no-desc'} " aria-label="Project description: ${description}">${description}</div>
-                  <div class="text-muted last-updated">By <a id="project-organization-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl,$event.target)" target="_blanks" aria-label="Project organization: ${repo.organization}, view on GitHub.">${repo.organization}</a> &nbsp; | &nbsp;<span id="project-update-at" tabindex="0" aria-label="Updated ${repo.updatedAt | ago}">Updated ${repo.updatedAt | ago}</span> <span class="pull-right repo-status"><i class="material-icons" aria-hidden="true">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i> <span tabindex="0" id="project-origin" aria-label="Project origin: ${repo.origin}">${repo.origin}</span></span></div>
+                  <div class="text-muted last-updated">By <a id="project-organization-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl,$event.target)" target="_blanks" aria-label="Project organization: ${repo.organization}, view on GitHub.">${repo.organization}</a> &nbsp; | &nbsp;<span id="project-update-at" tabindex="0" aria-label="Updated ${repo.updatedAt | ago}">Updated ${repo.updatedAt | ago}</span></div>
 
-                  <ul class="list-inline" aria-hidden="true">
-                    <li aria-hidden="true"><button id="project-readme-button-${repo.id}" click.trigger="openReadmeModal(repo,$event.target)" class="btn btn-secondary" aria-label="View project readme file."><i class="material-icons" aria-hidden="true">library_books</i><span id="project-readme-button-text" aria-hidden="true">Show README</span></button></li>
-                  </ul>
+                  <div class="row card-links-project-details">
+                    <ul class="list-inline pull-left" aria-hidden="true">
+                      <li aria-hidden="true"><button id="project-readme-button-${repo.id}" click.trigger="openReadmeModal(repo,$event.target)" class="btn btn-secondary" aria-label="View project readme file."><i class="material-icons" aria-hidden="true">library_books</i><span id="project-readme-button-text" aria-hidden="true">Show README</span></button></li>
+                    </ul>
+                    <ul class="list-inline pull-right" aria-hidden="true">
+                      <li if.bind="badge_status_image">
+                        <a href="#" route-href="route:badges-about" title="Status ${repo.badges.status}">
+                          <img alt="Badge status image" src.bind="badge_status_image"></a>
+                          <span>${repo.badges.status.toUpperCase()}</span>
+                      </li>
+                      <li class="pull-right">
+                          <i class="material-icons" aria-hidden="true">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i>
+                          <span tabindex="0" id="project-origin" aria-label="Project origin: ${repo.origin}">${repo.origin}</span>
+                      </li>
+                      </ul>
+                  </div>
                 </div>
                 <div class="col-lg-4 col-github-stats">
                   <div class="lined-header">

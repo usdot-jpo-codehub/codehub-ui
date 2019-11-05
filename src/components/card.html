@@ -97,8 +97,7 @@
           <li><a id="card-popular-project-open-readme-${repo.id}" href="#" click.trigger="openReadmeModal(repo,$event.target)" aria-label="Show readme file"><em class="material-icons">library_books</em> Show README</a></li>
         </ul>
         <ul class="list-inline pull-right">
-          <li><a href="#" class="disabled hide" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons" aria-hidden="true">share</i></a></li>
-          <li><a href="#" class="disabled hide" bootstrap-tooltip data-toggle="tooltip" data-placement="top" title="Bookmark"><i class="material-icons" aria-hidden="true">bookmark_border</i></a></li>
+          <li if.bind="badge_status_image"><a href="#" route-href="route:badges-about" title="Status ${repo.badges.status}"><img alt="Badge status image" src.bind="badge_status_image"></a></li>
         </ul>
       </div>
 

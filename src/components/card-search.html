@@ -81,11 +81,12 @@
     </div>
 
     <div class="row card-links">
-      <ul class="list-inline clearfix">
-        <li><a id="card-search-project-open-readme-${repo.id}" href="#" click.trigger="openReadmeModal(repo,$event.target)"><em class="search-highlight"><i class="material-icons" aria-hidden="true">library_books</i> Show README</em></a></li>
-        <li><a class="disabled hide"><em class="material-icons">bookmark_border</em> Bookmark</a></li>
-        <li><a class="disabled hide"><em class="material-icons">share</em> Share</a></li>
+      <ul class="list-inline pull-left">
+        <li><a id="card-feature-project-open-readme-${repo.id}" href="#" click.trigger="openReadmeModal(repo, $event.target)"><i class="material-icons" aria-hidden="true">library_books</i> Show README</a></li>
+      </ul>
+      <ul class="list-inline pull-right">
         <li class="pull-right"><a route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Go to project details">Go to Details<i class="material-icons" aria-hidden="true">chevron_right</i></a></li>
+        <li if.bind="badge_status_image"><a href="#" route-href="route:badges-about" title="Status ${repo.badges.status}"><img alt="Badge status image" src.bind="badge_status_image"></a></li>
       </ul>
     </div>
 
