@@ -41,10 +41,10 @@ export class Card {
       if (modelData.badges && modelData.badges.status) {
         switch(modelData.badges.status.toLowerCase()) {
           case 'active':
-            this.badge_status_image = '/img/flame_final_28w_35h.svg';
+            this.badge_status_image = '/img/active_flame_final_28w_35h.svg';
             break;
           case 'inactive':
-            this.badge_status_image = '/img/zzz_final_32w_35h.svg';
+            this.badge_status_image = '/img/inactive_zzz_final_32w_35h.svg';
             break;
           default:
             this.badge_status_image = null;

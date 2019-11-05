@@ -42,10 +42,10 @@ export class Card {
       if (this.repo.badges && this.repo.badges.status) {
         switch(this.repo.badges.status.toLowerCase()) {
           case 'active':
-            this.badge_status_image = '/img/flame_final_28w_35h.svg';
+            this.badge_status_image = '/img/active_flame_final_28w_35h.svg';
             break;
           case 'inactive':
-            this.badge_status_image = '/img/zzz_final_32w_35h.svg';
+            this.badge_status_image = '/img/inactive_zzz_final_32w_35h.svg';
             break;
           default:
             this.badge_status_image = null;
