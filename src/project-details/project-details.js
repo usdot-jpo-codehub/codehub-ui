@@ -39,7 +39,7 @@ export class ProjectDetails {
 
     this.health = {};
 
-    this.badge_status_image = null;
+    this.badge_status_image = '/img/pending_review_final_29w_35h.svg';
   }
 
   determineActivationStrategy() {
@@ -76,8 +76,14 @@ export class ProjectDetails {
           case 'inactive':
             this.badge_status_image = '/img/inactive_zzz_final_32w_35h.svg';
             break;
+          case 'pending':
+              this.badge_status_image = '/img/pending_review_final_29w_35h.svg';
+              break;
+          case 'read-only':
+              this.badge_status_image = '/img/lock_final_28w_35h.svg';
+              break;
           default:
-            this.badge_status_image = null;
+            this.badge_status_image = '/img/pending_review_final_29w_35h.svg';
         }
       }
     });
