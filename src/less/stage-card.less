@@ -194,12 +194,45 @@
 
 				> li {
 					padding-left: 0px;
-					padding-right: 0px;
+					padding-right: 15px;
 
 					a {
 						padding-left: 0;
-						padding-right: 0;
+            padding-right: 0;
+            
+            img {
+              width: auto;
+              height: 23px;
+            }
 					}
+				}
+			}
+		}
+
+    .card-links-project-details {
+      .pull-right {
+        margin-right: 0px;
+        line-height: @font-size-larger;
+        font-size: @font-size-smaller;
+
+				> li {
+					padding-left: 0px;
+					padding-right: 15px;
+
+					a {
+						padding-left: 0;
+            padding-right: 0;
+            
+            img {
+              width: auto;
+              height: 25px;
+              padding-bottom: 6px;
+            }
+          }
+          .material-icons {
+            vertical-align: -6px;
+            font-size:@font-size-larger;
+          }
 				}
 			}
 		}
@@ -503,9 +536,32 @@
 
 		.col-github-stats {
 			.github-stats {
-				padding-left: 20px;
+				padding-left: 40px;
 		  }
-		}
+    }
+
+    .card-search-details {
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      justify-content: space-between;
+
+      .card-search-badges {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-content: center;
+        a {
+          padding-left: 0;
+          padding-right: 10px;
+          img {
+            width: auto;
+            height: 25px;
+            padding-bottom: 6px;
+          }
+        }
+      }
+    }
 	}
 }
 

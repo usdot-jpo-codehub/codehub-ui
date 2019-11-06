@@ -11,6 +11,7 @@ export class Card {
     this.infected_files = 0;
     this.language_image = '/img/language-icons/default.svg';
     this.stageConfig = stageConfig;
+    this.badge_status_image = '/img/pending_review_final_29w_35h.svg';
   }
 
   activate(modelData) {
@@ -36,6 +37,25 @@ export class Card {
       if (modelData.vscan && modelData.vscan.infected_files) {
         this.infected_files = modelData.vscan.infected_files;
       }
+
+      if (modelData.badges && modelData.badges.status) {
+        switch(modelData.badges.status.toLowerCase()) {
+          case 'active':
+            this.badge_status_image = '/img/active_flame_final_28w_35h.svg';
+            break;
+          case 'inactive':
+            this.badge_status_image = '/img/inactive_zzz_final_32w_35h.svg';
+            break;
+          case 'pending':
+              this.badge_status_image = '/img/pending_review_final_29w_35h.svg';
+              break;
+          case 'read-only':
+              this.badge_status_image = '/img/lock_final_28w_35h.svg';
+              break;
+          default:
+            this.badge_status_image = '/img/pending_review_final_29w_35h.svg';
+        }
+      }
     }
 
     this.releases.forEach(element => {
@@ -59,5 +79,9 @@ export class Card {
     img.onload = () => cbfx(true);
     img.onerror = () => cbfx(false);
     img.src = url;
+  }
+
+  badgeStatusClicked(event) {
+    console.log('badge status clicked');
   }
 }

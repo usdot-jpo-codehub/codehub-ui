@@ -11,6 +11,7 @@ export class Card {
     this.infected_files = 0;
     this.language_image = '/img/language-icons/default.svg';
     this.stageConfig = stageConfig;
+    this.badge_status_image = '/img/pending_review_final_29w_35h.svg';
   }
 
   activate(modelData) {
@@ -36,6 +37,25 @@ export class Card {
 
       if(this.repo.vscan && this.repo.vscan.infected_files) {
         this.infected_files = this.repo.vscan.infected_files;
+      }
+
+      if (this.repo.badges && this.repo.badges.status) {
+        switch(this.repo.badges.status.toLowerCase()) {
+          case 'active':
+            this.badge_status_image = '/img/active_flame_final_28w_35h.svg';
+            break;
+          case 'inactive':
+            this.badge_status_image = '/img/inactive_zzz_final_32w_35h.svg';
+            break;
+          case 'pending':
+              this.badge_status_image = '/img/pending_review_final_29w_35h.svg';
+              break;
+          case 'read-only':
+              this.badge_status_image = '/img/lock_final_28w_35h.svg';
+              break;
+          default:
+            this.badge_status_image = '/img/pending_review_final_29w_35h.svg';
+        }
       }
     }
   }
