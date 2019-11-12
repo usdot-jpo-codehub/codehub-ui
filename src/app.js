@@ -6,6 +6,7 @@ import { LeavingModal } from 'components/modals/leaving-modal.js';
 import { StageConfig } from './stageConf';
 import 'bootstrap';
 import environment from './environment';
+import 'uswds';
 
 @inject(DialogService, StageConfig, environment)
 export class App {

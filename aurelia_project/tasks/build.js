@@ -3,6 +3,7 @@ import {CLIOptions, build as buildCLI} from 'aurelia-cli';
 import transpile from './transpile';
 import processMarkup from './process-markup';
 import processCSS from './process-css';
+import processSCSS from './process-css-scss';
 import copyFiles from './copy-files';
 import watch from './watch';
 import project from '../aurelia.json';
@@ -13,6 +14,7 @@ let build = gulp.series(
     transpile,
     processMarkup,
     processCSS,
+    processSCSS,
     copyFiles
   ),
   writeBundles

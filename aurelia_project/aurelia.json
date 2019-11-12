@@ -108,6 +108,13 @@
     "source": "src/less/**/*.less",
     "path": "src/less/"
   },
+  "cssProcessorScss": {
+    "id": "scss",
+    "displayName": "Scss",
+    "fileExtension": ".scss",
+    "source": "src/sass/**/*.scss",
+    "path": "src/sass/"
+  },
   "editor": {
     "id": "vscode",
     "displayName": "Visual Studio Code"
