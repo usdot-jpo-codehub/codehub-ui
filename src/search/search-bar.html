@@ -4,7 +4,7 @@
       <h1 tabindex="0" id="search-bar_main-title" aria-label="Welcome to ITS CodeHub ${stageConfig.IS_BETA ? ', beta version' : ''}">Welcome to ITS CodeHub<span if.bind="stageConfig.IS_BETA" class="beta-message" aria-hidden="true">&nbsp;${stageConfig.IS_BETA ? "BETA" : ""}</span></h1>
       <p innerhtml.bind="stageConfig.HOME_TEXT_ABOVE_SEARCH"></p>
       <div class="col-lg-12">
-        <form submit.delegate="executeSearch(searchText)" id="middleOfHeader_bigOne">
+        <form submit.delegate="executeSearch(searchText)">
           <div class="form-group">
             <div class="col-lg-offset-3 col-lg-6 search-field">
               <div id="searchBox" class="input-group">

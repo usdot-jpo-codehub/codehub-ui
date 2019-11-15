@@ -1,61 +1,5 @@
 <template bindable="router">
-  <header class="usa-header usa-header--extended">
-    <div class="usa-navbar">
-        <div class="usa-logo" id="extended-logo">
-          <a class="navbar-brand" route-href="route:popular">
-            <img src="../img/logo.png" alt="ITS CodeHub Logo, United States of America, Department of Transportation" id="logo-mobile">
-          </a>
-        </div>
-        <button class="usa-menu-btn">Menu</button>
-    </div>  
-    <nav aria-label="Primary navigation" class="navbar navbar-default usa-nav">
-        <div class="usa-nav__inner"><button class="usa-nav__close"><img src="../img/close.svg" alt="close"></button>    
-      <!-- <div class="container-fluid"> -->
-              <div class="navbar-header">
-                  <a class="navbar-brand" route-href="route:popular">
-                    <img src="../img/logo.png" alt="ITS CodeHub Logo, United States of America, Department of Transportation" id="logo">
-                    <span if.bind="stageConfig.IS_BETA" class="beta-message" aria-label="Beta version">Beta</span>
-                  </a>
-              </div>
-              <div id="navbar">
-                <ul id="titleBarNav" class="nav navbar-nav main-nav usa-nav__primary usa-accordion" >
-                  <li repeat.for="row of router.navigation" if.bind="row.settings.isTopLevelMenu" class="${row.isActive ? 'active usa-nav__primary-item firstrow' : 'stage usa-nav__primary-item firstrow'}">
-                    <a if.bind="row.settings.isTopLevelMenu" tabindex="0" href.bind="row.href" aria-label="${row.title}" class="usa-nav__link">${row.title}</a>
-                  </li> <!--  -->
-                  <li repeat.for="row of router.navigation" if.bind="row.settings.isParent" class="nav-item dropdown usa-nav__primary-item">
-                    <a repeat.for="row of router.navigation" tabindex="0" if.bind="row.settings.isParent" route-href="route:repopublishing;" class="usa-nav__link nav-link ${ is_resources_subpage(router.currentInstruction.config.name) ? 'active': ''}" href="#" role="button">${row.settings.parent}</a>
-                  </li> 
-                </ul>
-                <div if.bind="projects.title = 'project-details'" class="usa-nav__secondary">
-                  <ul class="nav navbar-nav navbar-right user-nav usa-nav__secondary-links">
-                    <li class="utility-icons opening-magnifier"><a href="#" id="searchBtn" title="Search" aria-label="Search for project names and languages"><i class="material-icons" aria-hidden="true">search</i></a></li>
-                    <li class="utility-icons utility-icons-external-links usa-nav__secondary-item"><a href="https://www.its.dot.gov/about/its_jpo.htm" target="_blank" aria-label="About ITS JPO" rel="noopener noreferrer">ABOUT ITS JPO</a></li>
-                    <li class="utility-icons utility-icons-external-links usa-nav__secondary-item"><a href="https://www.transportation.gov/mission/about-us" target="_blank" aria-label="About U.S. DOT" rel="noopener noreferrer">ABOUT U.S. DOT</a></li>
-                    <li class="utility-icons utility-icons-external-links usa-nav__secondary-item"><a href="https://www.transportation.gov/briefingroom" target="_blank" aria-label="U.S. DOT Briefing room" rel="noopener noreferrer">U.S. DOT BRIEFING ROOM</a></li>
-                    <li class="utility-icons utility-icons-external-links usa-nav__secondary-item"><a href="https://www.transportation.gov/our-activities" target="_blank" aria-label="U.S. DOT ACTIVITIES" rel="noopener noreferrer">U.S. DOT ACTIVITIES</a></li>
-                  </ul>
-        
-                  <form id="searchForm" submit.delegate="executeNavSearch(navSearchText)" class="navbar-search hidden" role="search">
-                    <div id="navSearchBox" class="input-group">
-                      <label for="searchBarNav" class="control-label sr-only">Search</label>
-                      <!-- <i class="material-icons" aria-hidden="true">search</i> -->
-                      <span class="input-group-btn">
-                        <button id="searchBtn" class="btn btn-default" type="submit" ><i class="material-icons" aria-hidden="true">search</i></button>
-                      </span>
-                      <input id="searchBarNav" type="text" value.bind="navSearchText" class="typeahead form-control" placeholder="Search for project names and languages...">
-                      <span class="input-group-btn">
-                        <button id="closeBtnSearch" class="btn btn-default" type="submit" ><em class="material-icons">close</em></button>
-                      </span>
-                    </div>
-                  </form>
-                  
-                </div>
-              </div>
-            </div>
-          </nav>
-  </header>
-  <!--OLD CODE  -->
-  <!-- <nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
       <div class="navbar-header">
           <a class="navbar-brand" route-href="route:popular">
@@ -95,5 +39,5 @@
         </div>
       </div>
     </div>
-  </nav> -->
+  </nav>
 </template>
