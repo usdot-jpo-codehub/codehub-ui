@@ -107,7 +107,8 @@
         .usa-nav__secondary .usa-nav__secondary-links .usa-nav__secondary-item a{
             font-size: 0.93rem;
         }
-        .main-nav  .usa-nav__primary-item.active > .usa-nav__link{
+        .main-nav  .usa-nav__primary-item.active > .usa-nav__link,
+        .main-nav  .usa-nav__primary-item > .usa-nav__link.active{
             color: #007c85;
             //border-left: 2px solid #003d60;
             //border-right: 2px solid #003d60;       
@@ -136,12 +137,13 @@
     .main-nav.usa-nav__primary{
         margin-left: 0px;
         margin-top: 0px;
+        margin-bottom: 15px;
     }
 
     .usa-nav__secondary{
         display: table;
         width: 100%;
-        padding-top: 1rem;
+        //padding-top: 1rem;
         .usa-nav__secondary-links{
             display: table-footer-group;
         }
@@ -159,6 +161,7 @@
         }
         .nav.navbar-nav.navbar-right.user-nav.usa-nav__secondary-links{
             float: left !important;
+
         }
     
     }

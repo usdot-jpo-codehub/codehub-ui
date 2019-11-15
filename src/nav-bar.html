@@ -19,11 +19,11 @@
               </div>
               <div id="navbar">
                 <ul id="titleBarNav" class="nav navbar-nav main-nav usa-nav__primary usa-accordion" >
-                  <li repeat.for="row of router.navigation" class="${row.isActive ? 'active usa-nav__primary-item' : 'stage usa-nav__primary-item'}">
-                    <a if.bind="!row.settings.dropdownchild" tabindex="0" href.bind="row.href" aria-label="${row.title}" class="usa-nav__link">${row.title}</a>
+                  <li repeat.for="row of router.navigation" if.bind="row.settings.isTopLevelMenu" class="${row.isActive ? 'active usa-nav__primary-item firstrow' : 'stage usa-nav__primary-item firstrow'}">
+                    <a if.bind="row.settings.isTopLevelMenu" tabindex="0" href.bind="row.href" aria-label="${row.title}" class="usa-nav__link">${row.title}</a>
                   </li> <!--  -->
-                  <li repeat.for="row of router.navigation" if.bind="row.settings.firstchild" class="nav-item dropdown usa-nav__primary-item">
-                    <a repeat.for="row of router.navigation" tabindex="0" if.bind="row.settings.firstchild" route-href="route:repopublishing;" class="usa-nav__link nav-link ${ is_resources_subpage(router.currentInstruction.config.name) ? 'active': ''}" href="#" role="button">${row.settings.parent}</a>
+                  <li repeat.for="row of router.navigation" if.bind="row.settings.isParent" class="nav-item dropdown usa-nav__primary-item">
+                    <a repeat.for="row of router.navigation" tabindex="0" if.bind="row.settings.isParent" route-href="route:repopublishing;" class="usa-nav__link nav-link ${ is_resources_subpage(router.currentInstruction.config.name) ? 'active': ''}" href="#" role="button">${row.settings.parent}</a>
                   </li> 
                 </ul>
                 <div if.bind="projects.title = 'project-details'" class="usa-nav__secondary">
