@@ -22,7 +22,6 @@ export class NavBar {
 //submit.delegate="executeNavSearch(navSearchText)"
   executeNavSearch(searchText) {
     this.eventAggregator.publish('searchExecuted', searchText);
-    console.log("search trigger");
     this.router.navigateToRoute('results', { searchText });
     this.hideNavSearch();
   }
