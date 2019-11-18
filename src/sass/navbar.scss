@@ -46,6 +46,10 @@
         position: static;
         margin-right: 15px;
 
+        .usa-nav__secondary-links{
+            margin-right: 0px;
+        }
+
         #searchForm{
             float: none;
             max-width: unset;
