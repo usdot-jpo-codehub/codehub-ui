@@ -91,6 +91,7 @@ export class Popular {
                   element.project_description = proj.project_description;
                   element.organizationUrl = proj.organizationUrl;
                   element.content = proj.content;
+                  element.badges = proj.badges;
                   element.sonarlink = `${this.stageConfig.SONARQUBE_ADDRESS}/dashboard/index/${proj.organization}_${proj.project_name}`;
                   this.healthiest.push(element);
                 }
@@ -133,15 +134,21 @@ export class Popular {
     });
   }
 
-  openLeavingSiteConfirmation(name, url, target) {
+  openLeavingSiteConfirmation(name, url, target, bypass) {
     this.exitDialogLinkId = target.getAttribute('id');
-    const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed(response => {
-      const element = document.querySelector('#' + this.exitDialogLinkId);
-      if (element) {
-        element.focus();
-      }
-    });
+    let byp = bypass === undefined ? false : bypass;
+    if(byp) {
+      const win = window.open(url, '_blank');
+      win.focus();
+    } else {
+      const mdl = { name, url };
+      this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed( response => {
+        const element = document.querySelector('#'+this.exitDialogLinkId);
+        if(element) {
+          element.focus();
+        }
+      });
+    }
   }
 
   displayVScanDialog(repo, target) {

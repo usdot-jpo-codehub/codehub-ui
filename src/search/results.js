@@ -365,15 +365,21 @@ export class Results {
     });
   }
 
-  openLeavingSiteConfirmation(name, url, target) {
+  openLeavingSiteConfirmation(name, url, target, bypass) {
     this.exitDialogLinkId = target.getAttribute('id');
-    const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed( response => {
-      const element = document.querySelector('#'+this.exitDialogLinkId);
-      if(element) {
-        element.focus();
-      }
-    });
+    let byp = bypass === undefined ? false : bypass;
+    if(byp) {
+      const win = window.open(url, '_blank');
+      win.focus();
+    } else {
+      const mdl = { name, url };
+      this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed( response => {
+        const element = document.querySelector('#'+this.exitDialogLinkId);
+        if(element) {
+          element.focus();
+        }
+      });
+    }
   }
 
   removePillFilter(multiselectId, pill) {

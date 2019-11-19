@@ -6,6 +6,7 @@ import { LeavingModal } from 'components/modals/leaving-modal.js';
 import { StageConfig } from './stageConf';
 import 'bootstrap';
 import environment from './environment';
+import 'uswds';
 
 @inject(DialogService, StageConfig, environment)
 export class App {
@@ -13,16 +14,17 @@ export class App {
     config.title = 'ITS CodeHub';
     config.options.pushState = false;
     config.map([
-      { route: '', name: 'popular', viewPorts: { mainContent: { moduleId: 'popular/popular' }, headerContent: { moduleId: 'search/search-bar' } }, nav: true, title: 'Home' },
-      { route: 'about', name: 'about', viewPorts: { mainContent: {moduleId: 'about/about' }, headerContent: { moduleId: 'components/headers/generic-title' } }, nav: true, title: 'About', settings: { desc: '' } },
-      { route: 'explore', name: 'explore', viewPorts: { mainContent: { moduleId: 'explore/explore' }, headerContent: { moduleId: 'components/headers/generic-title' } }, nav: true, title: 'Explore', settings: { desc: '' } },
-      { route: 'insight', name: 'insight', viewPorts: { mainContent: { moduleId: 'insight/insight' }, headerContent: { moduleId: 'components/headers/insight-title' } }, nav: true, title: 'Insight', settings: { desc: '', altTitle: 'Enterprise Insight' } },
+      { route: '', name: 'popular', viewPorts: { mainContent: { moduleId: 'popular/popular' }, headerContent: { moduleId: 'search/search-bar' } }, nav: true, title: 'Home', settings: { desc: '', isTopLevelMenu_noChildren: true}},
+      { route: 'about', name: 'about', viewPorts: { mainContent: {moduleId: 'about/about' }, headerContent: { moduleId: 'components/headers/generic-title' } }, nav: true, title: 'About', settings: { desc: '', isTopLevelMenu_noChildren: true} },
+      { route: 'explore', name: 'explore', viewPorts: { mainContent: { moduleId: 'explore/explore' }, headerContent: { moduleId: 'components/headers/generic-title' } }, nav: true, title: 'Explore', settings: { desc: '',isTopLevelMenu_noChildren: true} },
+      { route: 'insight', name: 'insight', viewPorts: { mainContent: { moduleId: 'insight/insight' }, headerContent: { moduleId: 'components/headers/insight-title' } }, nav: true, title: 'Insight', settings: { desc: '', isTopLevelMenu_noChildren: true, altTitle: 'Enterprise Insight' } },
       { route: 'results', name: 'results', viewPorts: { mainContent: { moduleId: 'search/results' }, headerContent: { moduleId: 'search/search-bar-secondary' } }, nav: false, title: 'Search Results' },
-      { route: 'project-details', name: 'project-details', viewPorts: { mainContent: { moduleId: 'project-details/project-details' }, headerContent: { moduleId: 'components/headers/project-details-header' } }, nav: false, title: 'Project Details' },
-      { route: 'profile', name: 'profile', viewPorts: { mainContent: { moduleId: 'profile/profile' },headerContent: { moduleId: 'components/headers/generic-title'} }, nav: false, title: 'Your Account', settings: { desc: '' }},
-      { route: 'repopublishing', name: 'repopublishing', viewPorts: { mainContent: { moduleId: 'repopublishing/repopublishing'}, headerContent: { moduleId: 'components/headers/generic-title'}}, nav: true, title: 'Resources', settings:{desc: '', dropdownchild: true, parent: 'Resources', firstchild: true, menuitem: 'Repository Registration'}},
+      { route: 'project-details', name: 'project-details', viewPorts: { mainContent: { moduleId: 'project-details/project-details' }, headerContent: { moduleId: 'components/headers/project-details-header' } }, nav: false, title: 'Project Details', settings: { desc: '', isTopLevelMenu_noChildren: true }},
+      { route: 'profile', name: 'profile', viewPorts: { mainContent: { moduleId: 'profile/profile' },headerContent: { moduleId: 'components/headers/generic-title'} }, nav: false, title: 'Your Account', settings: { desc: '', isTopLevelMenu_noChildren: true }},
+      { route: 'repopublishing', name: 'repopublishing', viewPorts: { mainContent: { moduleId: 'repopublishing/repopublishing'}, headerContent: { moduleId: 'components/headers/generic-title'}}, nav: true, title: 'Resources', settings:{desc: '', isTopLevelMenu_hasChildren: true, dropdownchild: true, parent: 'Resources', firstchild: true, menuitem: 'Repository Registration'}},
       { route: 'faqs', name: 'faqs', viewPorts: { mainContent: { moduleId: 'faqs/faqs'}, headerContent: { moduleId: 'components/headers/generic-title'}}, nav: true, title: 'Resources', settings: { desc: '', dropdownchild: true, parent: 'Resources', firstchild: false, menuitem: 'FAQs' }},
-      { route: 'additional-information', name: 'additional-information', viewPorts: { mainContent: { moduleId: 'additional-information/additional-information'}, headerContent: { moduleId: 'components/headers/generic-title'}}, nav: true, title: 'Resources', settings: { desc: '', dropdownchild: true, parent: 'Resources', firstchild: false, menuitem: 'Additional Information' }}
+      { route: 'additional-information', name: 'additional-information', viewPorts: { mainContent: { moduleId: 'additional-information/additional-information'}, headerContent: { moduleId: 'components/headers/generic-title'}}, nav: true, title: 'Resources', settings: { desc: '', dropdownchild: true, parent: 'Resources', firstchild: false, menuitem: 'Additional Information' }},
+      { route: 'badges-about', name: 'badges-about', viewPorts: { mainContent: { moduleId: 'badges-about/badges-about'}, headerContent: { moduleId: 'components/headers/generic-title'}}, nav: true, title: 'Resources', settings: { desc: '', dropdownchild: true, parent: 'Resources', firstchild: false, menuitem: 'About Badges' }}
       
       //put resources drop down here
     ]);
@@ -61,15 +63,21 @@ export class App {
     this.dialogService.open({ viewModel: FeedbackModal, lock:false });
   }
 
-  openLeavingSiteConfirmation(name, url, target) {
+  openLeavingSiteConfirmation(name, url, target, bypass) {
     this.exitDialogLinkId = target.getAttribute('id');
-    const mdl = { name, url };
-    this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock:false }).whenClosed( response => {
-      const element = document.querySelector('#'+this.exitDialogLinkId);
-      if(element) {
-        element.focus();
-      }
-    });
+    let byp = bypass === undefined ? false : bypass;
+    if(byp) {
+      const win = window.open(url, '_blank');
+      win.focus();
+    } else {
+      const mdl = { name, url };
+      this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed( response => {
+        const element = document.querySelector('#'+this.exitDialogLinkId);
+        if(element) {
+          element.focus();
+        }
+      });
+    }
   }
 
   scrollToTop() {

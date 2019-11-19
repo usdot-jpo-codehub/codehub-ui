@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="29px" height="35px" viewBox="0 0 29 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>pending review</title>
+    <desc>Created with Sketch.</desc>
+    <g id="pending-review" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" stroke="#404040" stroke-width="2" cx="14.5" cy="19" r="2"></circle>
+        <path d="M25.1752569,13.4732 C24.8740775,12.3771222 24.3798452,11.3818597 23.6925601,10.4874125 C21.4511823,7.80681175 18.5293254,6 14.7213859,6 C7.97170084,6 2.5,11.372583 2.5,18 C2.5,24.627417 7.97170084,30 14.7213859,30 C19.7237111,30 23.6086834,26.6556924 25.5,22.4300153" id="Arrow-Line" stroke="#404040" stroke-width="3" stroke-linecap="round"></path>
+        <path d="M14.2449993,11.3110447 C14.3342867,11.1036816 14.4192869,11 14.5,11 C14.5807131,11 14.661359,11.1036816 14.7419377,11.3110447 L15,17 L14,17 L14.2449993,11.3110447 Z" id="bottom-hand" stroke="#404040" stroke-width="2" fill="#404040" stroke-linejoin="round"></path>
+        <path d="M19.4971987,23.4308711 C19.5112021,23.6467556 19.4727036,23.8003135 19.3817032,23.8915446 C19.2907027,23.9827758 19.1424426,24.0164502 18.9369226,23.9925677 L15.5,21.1303144 L16.6274559,20 L19.4971987,23.4308711 Z" id="top-hand" stroke="#404040" stroke-width="2" fill="#404040" stroke-linejoin="round"></path>
+        <polygon id="Triangle" stroke="#404040" fill="#404040" stroke-linejoin="round" transform="translate(25.500266, 15.000000) scale(-1, -1) rotate(-12.000000) translate(-25.500266, -15.000000) " points="25.3009315 13 28.5002662 17 22.5002662 16.9714763"></polygon>
+    </g>
+</svg>
