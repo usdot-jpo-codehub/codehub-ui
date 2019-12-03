@@ -5,6 +5,7 @@ import { DialogService } from 'aurelia-dialog';
 import { DataContext } from '../../src/services/datacontext';
 import { Insight } from '../../src/insight/insight';
 import { NumValueConverter } from '../../src/resources/value-converters/num';
+import { DurationValueConverter } from '../../src/resources/value-converters/duration';
 import { StageConfig } from '../../src/stageConf';
 
 // Mocking Class DataContext (service)
@@ -107,8 +108,8 @@ describe('Insight : ', () => {
       component.viewModel.activate();
       setTimeout(() => {
         const element = document.querySelector('#technical-debt');
-        const num = new NumValueConverter();
-        expect(element.innerHTML).toEqual(''+num.toView(mockDataInsightFindEnterpriseInsight.technical_debt,2));
+        const duration = new DurationValueConverter();
+        expect(element.innerHTML).toEqual(''+duration.toView(mockDataInsightFindEnterpriseInsight.technical_debt));
         done();
       }, 10);
 
