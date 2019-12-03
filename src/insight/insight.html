@@ -1,5 +1,6 @@
 <template>
   <require from="../resources/value-converters/num"></require>
+  <require from="../resources/value-converters/duration"></require>
 
   <div class="container-fluid">
     <div class="row ${loading ? 'hidden' : ''}">
@@ -26,7 +27,7 @@
           <div class="div col-lg-3">
             <div class="card card-insight">
               <h2 tabindex="0" class="text-center health-tiles">Technical Debt</h2>
-              <div tabindex="0" id="technical-debt" class="text-center health-num">${insights.technical_debt | num:2}</div>
+              <div tabindex="0" id="technical-debt" class="text-center health-num">${insights.technical_debt | duration}</div>
             </div>
           </div>
         </div>
