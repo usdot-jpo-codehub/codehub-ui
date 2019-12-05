@@ -20,8 +20,8 @@ The UI requires a running CodeHub API instance to which it can connect. See the 
 
 After you have the CodeHub Web API and Constant Contact API running, you may run the CodeHub UI in Docker using the following steps:
 
-1. Set the `PROXY_PASS_WEBAPI` environment variable to the following: `proxy_pass PROTOCOL://URL:PORT` where the protocol is http or https, URL is the location of your CodeHub Web API, and port is the port it is running on.
-2. Set the `PROXY_PASS_APICC` environment variable to the following: `proxy_pass PROTOCOL://URL:PORT` where the protocol is http or https, URL is the location of your Constant Contact API, and port is the port it is running on.
+1. Set the `PROXY_PASS_WEBAPI` environment variable to the following: `proxy_pass "PROTOCOL://URL:PORT";` where the protocol is http or https, URL is the location of your CodeHub Web API, and port is the port it is running on.
+2. Set the `PROXY_PASS_APICC` environment variable to the following: `proxy_pass "PROTOCOL://URL:PORT";` where the protocol is http or https, URL is the location of your Constant Contact API, and port is the port it is running on.
 2. Run the `./build-and-run-docker.sh` script present in the top level of this repository.
 
 ## Running Unit Tests
