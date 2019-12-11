@@ -78,7 +78,7 @@ export class NavBar {
   }
 
   is_resources_subpage(name) {
-    let sub_pages = ['repopublishing','faqs','additional-information']
+    let sub_pages = ['repopublishing','faqs','additional-information','badges-about'];
     return sub_pages.includes(name);
   }
 }
