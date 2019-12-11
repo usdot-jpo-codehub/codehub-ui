@@ -37,6 +37,17 @@ export class DataContext {
       });
   }
 
+  findFeatured() {
+    return this.http.fetch(`${baseUrl}/findFeatured`, {
+      method: 'GET'
+    }).then( (response) => {
+      if (response && response.ok) {
+        return response.json();
+      }
+      return null;
+    });
+  }
+
   findEnterpriseInsight() {
     return this.http.fetch('/api/codes/findEnterpriseInsight', {
       method: 'GET',
