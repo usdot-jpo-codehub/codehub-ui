@@ -11,14 +11,17 @@ The CodeHub UI is a Dockerized application. While it is possible to run this app
 ### Prerequisites
 
 - Docker Version 19.03 (or higher)
+- A running instance of the [CodeHub API](https://github.com/usdot-jpo-codehub/codehub-api) (and therefore ElasticSearch)
+- A running instance of the [Constant Contact API](https://github.com/usdot-jpo-codehub/cdh-apicc)
 
 ### Installing
 
 The UI requires a running CodeHub API instance to which it can connect. See the [codehub-api repository](https://github.com/usdot-jpo-codehub/codehub-api) for instructions.
 
-After you have the API running, you may run the CodeHub UI in Docker using the following steps:
+After you have the CodeHub Web API and Constant Contact API running, you may run the CodeHub UI in Docker using the following steps:
 
-1. Set the `PROXY_PASS_URL` environment variable to the full URL and port of your CodeHub API instance.
+1. Set the `PROXY_PASS_WEBAPI` environment variable to the following: `proxy_pass "PROTOCOL://URL:PORT";` where the protocol is http or https, URL is the location of your CodeHub Web API, and port is the port it is running on.
+2. Set the `PROXY_PASS_APICC` environment variable to the following: `proxy_pass "PROTOCOL://URL:PORT";` where the protocol is http or https, URL is the location of your Constant Contact API, and port is the port it is running on.
 2. Run the `./build-and-run-docker.sh` script present in the top level of this repository.
 
 ## Running Unit Tests
@@ -26,11 +29,13 @@ After you have the API running, you may run the CodeHub UI in Docker using the f
 Unit tests are run via the aurelia-cli and use [karma](https://karma-runner.github.io) and [jasmine](https://jasmine.github.io/) as test-runners.
 
 ### To execute the unit tests, execute the following command:
+
 ```shell
 au test
 ```
 
 ### To execute the unit in a Test Driven Development (TDD) mode:
+
 ```shell
 au test --watch
 ```
@@ -62,7 +67,17 @@ Integration tests are performed with [Protractor](http://angular.github.io/protr
 
 ## Deployment
 
-Deployment of the UI is as simple as building and running the Docker image in your environment of choice.
+Deployment of the UI is similar to running in Docker locally, you must set the two proxy pass environment variables.
+
+**Important:** if the CodeHub Web API or the Constant Contact API are running behind load balancers, you will need to set their proxy pass environment variables using the nginx resolver directive, as follows:
+
+```shell
+export PROXY_PASS_WEBAPI='resolver 10.0.0.2 valid=10s; set $backend "http://example-loadbalancer.amazonaws.com:3000"; proxy_pass $backend;'
+export PROXY_PASS_APICC='resolver 10.0.0.2 valid=10s; set $backend "http://example-loadbalancer.amazonaws.com:3000"; proxy_pass $backend;'
+```
+
+Where 10.0.0.2 is the location of your network's domain name server (10.0.0.2 is the default for an AWS VPC with the default 10.0.0.0/16 CIDR), and the example-loadbalancer is the URL and port of your API's load balancer.
+
 
 ## Built With
 

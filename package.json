@@ -24,6 +24,7 @@
     "echarts": "^4.2.1",
     "fetch": "^1.1.0",
     "gulp-sass": "^4.0.2",
+    "humanize-duration": "^3.21.0",
     "jquery": "^3.4.1",
     "jquery-tooltip": "^0.2.1",
     "karma-headless-chrome-launcher": "0.0.6",

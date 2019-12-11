@@ -31,6 +31,9 @@
             padding: 0;
             z-index: 999999;
         }
+        .hide-overflow {
+          overflow: hidden;
+        }
         .iframe-styles {
             border: solid 0px transparent;
             width: 100%;
@@ -39,16 +42,34 @@
     </style>
 </head>
 
-<body>
+<body onload="createIframe()">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe title="Google Tag Manager" src="https://www.googletagmanager.com/ns.html?id=GTM-T6F2VPH"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <div class="scroll-wrapper">
-        <iframe title="ITS CodeHub BAH" src="https://itscodehub.boozallencsn.com" class="iframe-styles">
-            Your browser doesn't support iframes
-        </iframe>
+    <div id="iframe-wrapper">
     </div>
+    <script>
+      function getPathAndQuery(location) {
+        let result = location.pathname;
+        result = result + (!location.hash ? "" : location.hash);
+        return result;
+      }
+      function createIframe() {
+        var ios = !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g);
+        var frameWrapper = document.getElementById('iframe-wrapper');
+        frameWrapper.setAttribute('class', !ios ? 'scroll-wrapper hide-overflow' : 'scroll-wrapper');
+
+        var targetPath = getPathAndQuery(window.location);
+
+        var frame = document.createElement('iframe');
+        var url = 'https://itscodehub.boozallencsn.com' + (targetPath ? targetPath : '');
+        frame.setAttribute('src', url);
+        frame.setAttribute('class', 'iframe-styles');
+
+        frameWrapper.appendChild(frame);
+      }
+    </script>
 </body>
 
 </html>
