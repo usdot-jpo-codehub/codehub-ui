@@ -51,9 +51,7 @@
     </div>
     <script>
       function getPathAndQuery(location) {
-        let result = location.pathname;
-        result = result + (!location.hash ? "" : location.hash);
-        return result;
+        return !location.hash ? "" : "/"+location.hash;
       }
       function createIframe() {
         var ios = !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g);
