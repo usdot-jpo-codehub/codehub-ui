@@ -218,15 +218,15 @@ describe('Insight : ', () => {
       component.viewModel.activate();
       setTimeout(() => {
         const list = mockDataInsightFindEnterpriseInsight.language_counts_stat;
-        const arr1 = Object.keys(list).sort((a, b) => list[a] - list[b]);
-        const expectedData = arr1.map(k => mockDataInsightFindEnterpriseInsight.language_counts_stat[k]).slice(-10);
+        let arr1 = Object.keys(list).sort((a, b) => list[a] - list[b]);
+        const expectedData = arr1.map(k => mockDataInsightFindEnterpriseInsight.language_counts_stat[k]).slice(-6);
         const chartData = component.viewModel.mulChart._api.getOption().series[0].data;
         expect(chartData.length).toEqual(expectedData.length);
         let expected ='';
         let realdata = '';
         for(let i = 0; i<expectedData.length; i++) {
-          expected += expectedData[i] + '|';
-          realdata += chartData[i] + '|';
+          expected += expectedData[i] != 0 ? expectedData[i] + '|' : '';
+          realdata += (typeof chartData[i]) == 'number' ? chartData[i] + '|' : '';
         }
         expect(expected).toEqual(realdata);
 
