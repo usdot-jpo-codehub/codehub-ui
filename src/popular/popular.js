@@ -60,19 +60,17 @@ export class Popular {
     });
 
     this.searchingFeatured = true;
-    this.dataContext.findByIds(this.fp).then(resp => {
-      if (resp) {
-        let rsp = this.sortByFeaturedIds(resp, this.fp);
-        let b = 4;
-        if (rsp.length < b) {
-          b = rsp.length - 1;
-        }
-        if (this.fakeData) {
-          rsp.splice(b, 0, this.fakeData);
-        }
-        this.featured = rsp;
+    this.dataContext.findFeatured().then((results) => {
+      if(!results) {
         this.searchingFeatured = false;
+        return this.featured;
       }
+
+      setTimeout(() => {
+        this.featured = results;
+        this.searchingFeatured = false;
+        return this.featured;
+      }, 20);
     });
 
     this.dataContext.findHealthiest().then((results) => {
