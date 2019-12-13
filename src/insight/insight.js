@@ -26,6 +26,7 @@ export class Insight {
     this.filters = filters;
     this.organizations = [];
     this.selectedOrganization = null;
+    this.organizationTitle='Organizations';
   }
 
   activate() {
@@ -623,7 +624,8 @@ export class Insight {
       let orgs = this.filters.getUniqueValues(projects, 'organization');
       orgs.sort();
       let organizations = [];
-      organizations.push({id:0, name: 'All'});
+      let allName = 'All'+(orgs.length > 0 ? ' ('+orgs.length+')' : '');
+      organizations.push({id:0, name: allName});
       for(let i=0; i<orgs.length; i++) {
         organizations.push({ id: i+1, name: orgs[i] });
       }
@@ -632,7 +634,13 @@ export class Insight {
   }
 
   organizationChanged(selectedOrganization) {
-    this.getData(selectedOrganization.name);
+    if (selectedOrganization.id == 0) {
+      this.organizationTitle = 'Organizations';
+      this.getData('All');
+    } else {
+      this.organizationTitle = 'Organization';
+      this.getData(selectedOrganization.name);
+    }
   }
 
 }

@@ -59,9 +59,12 @@ describe('Insight : ', () => {
     component.create(bootstrap).then( () => {
       component.viewModel.activate();
       setTimeout(() => {
-        const element = document.querySelector('#number-of-organizations');
+        const element = document.querySelector('#id-organization');
+        let txt = element.options[element.selectedIndex].text;
         const num = new NumValueConverter();
-        expect(element.innerHTML).toEqual(''+num.toView(mockDataInsightFindEnterpriseInsight.number_of_organizations));
+        let orgs = num.toView(mockDataInsightFindEnterpriseInsight.number_of_organizations);
+        let expected = 'All'+(orgs>0 ? ' ('+orgs+')' : '');
+        expect(expected).toEqual(txt);
         done();
       }, 10);
 
