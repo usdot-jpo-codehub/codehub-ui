@@ -55,6 +55,30 @@ export class DataContext {
       .then(response => response.json());
   }
 
+  findEnterpriseInsightByOrganization(organization) {
+    return this.http.fetch('/api/codes/findEnterpriseInsightOrg', {
+      method: 'POST',
+      body: json(organization),
+    }).then(response => {
+      if (response && response.ok) {
+        return response.json();
+      }
+      return null;
+    });
+  }
+
+  getProjectsByOrganization(organization) {
+    return this.http.fetch(`${baseUrl}/getProjectsByOrganization`, {
+      method: 'POST',
+      body: json(organization),
+    }).then(response => {
+      if (response && response.ok) {
+        return response.json();
+      }
+      return null;
+    });
+  }
+
   getLastProcessedDateTime() {
     return this.http.fetch('/api/codes/getLastProcessedDateTime', {
       method: 'GET',
