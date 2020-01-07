@@ -16,7 +16,7 @@
                     <h2 tabindex="0" class="" aria-label="Project overview."><span>Overview</span></h2>
                   </div>
                   <div id="project-description" tabindex="0" class="proj-desc ${hasdescription ? '' : 'no-desc'} " aria-label="Project description: ${description}">${description}</div>
-                  <div class="text-muted last-updated">By <a id="project-organization-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl,$event.target)" target="_blanks" aria-label="Project organization: ${repo.organization}, view on GitHub.">${repo.organization}</a> &nbsp; | &nbsp;<span id="project-update-at" tabindex="0" aria-label="Updated ${repo.updatedAt | ago}">Updated ${repo.updatedAt | ago}</span></div>
+                  <div class="text-muted last-updated">By <a id="project-organization-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.sourceData.owner.name,repo.source.owner.url,$event.target)" target="_blanks" aria-label="Project organization: ${repo.sourceData.owner.name}, view on GitHub.">${repo.sourceData.owner.name}</a> &nbsp; | &nbsp;<span id="project-update-at" tabindex="0" aria-label="Updated ${repo.sourceData.lastPush | ago}">Updated ${repo.sourceData.lastPush | ago}</span></div>
 
                   <div class="row card-links-project-details">
                     <ul class="list-inline pull-left" aria-hidden="true">
@@ -24,43 +24,39 @@
                     </ul>
                     <ul class="list-inline pull-right" aria-hidden="true">
                       <li if.bind="badge_status_image">
-                        <a href="#" route-href="route:badges-about" title="Status ${repo.badges.status}">
+                        <a href="#" route-href="route:badges-about" title="Status ${repo.codehubData.badges.status}">
                           <img alt="Badge status image" src.bind="badge_status_image">
-                          <span>${repo.badges.status.toUpperCase()}</span>
+                          <span>${repo.codehubData.badges.status.toUpperCase()}</span>
                         </a>
                       </li>
-                      <li class="pull-right">
-                          <i class="material-icons" aria-hidden="true">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i>
-                          <span tabindex="0" id="project-origin" aria-label="Project origin: ${repo.origin}">${repo.origin}</span>
-                      </li>
-                      </ul>
+                    </ul>
                   </div>
                 </div>
                 <div class="col-lg-5 col-github-stats">
                   <div class="lined-header">
                     <span class="pull-right" aria-hidden="true">
                       <em class="text-muted" aria-hidden="true">Source:
-                        <a if.bind="!repo.vscan || repo.vscan.infected_files == 0" id="project-source-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.project_name,repo.repositoryUrl,$event.target)" target="_blank" aria-label="View project source code on GitHub.">Github™</a>
-                        <a if.bind="repo.vscan.infected_files > 0" id="project-source-link-vs-${repo.id}" href="#" click.trigger="displayVScanDialog(repo,$event.target)" target="_blank" aria-label="View project source code on GitHub.">Github™</a>
+                        <a if.bind="!repo.generatedData.vscan || repo.generatedData.vscan.infected_files == 0" id="project-source-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.sourceData.name,repo.sourceData.repositoryUrl,$event.target)" target="_blank" aria-label="View project source code on GitHub.">Github™</a>
+                        <a if.bind="repo.generatedData.vscan.infected_files > 0" id="project-source-link-vs-${repo.id}" href="#" click.trigger="displayVScanDialog(repo,$event.target)" target="_blank" aria-label="View project source code on GitHub.">Github™</a>
                       </em>
                     </span>
                     <h4 tabindex="0" class=""><span>Project Stats</span></h4>
                   </div>
                   <div class="row github-stats">
                     <div class="col-md-6 col-sm-6">
-                      <span class="stat" tabindex="0" aria-label="${repo.stars} stars">
+                      <span class="stat" tabindex="0" aria-label="${repo.sourceData.stars} stars">
                         <span class="octicon octicon-star"></span>
-                        <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.stars | num}</span>
+                        <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.sourceData.stars | num}</span>
                         <span class="stat-label">stars</span>
                       </span>
-                      <span class="stat" tabindex="0" aria-label="${repo.contributors} contributors">
+                      <span class="stat" tabindex="0" aria-label="${repo.sourceData.contributors.length} contributors">
                         <span class="octicon octicon-organization"></span>
-                        <span id="project-stats-contributors" class="num text-muted text-emphasized">${repo.contributors | num}</span>
+                        <span id="project-stats-contributors" class="num text-muted text-emphasized">${repo.sourceData.contributors.length | num}</span>
                         <span class="stat-label">contributors</span>
                       </span>
-                      <span class="stat" tabindex="0" aria-label="${repo.watchers} watchers">
+                      <span class="stat" tabindex="0" aria-label="${repo.sourceData.watchers} watchers">
                         <span class="octicon octicon-eye"></span>
-                        <span id="project-stats-watchers" class="num text-muted text-emphasized">${repo.watchers | num}</span>
+                        <span id="project-stats-watchers" class="num text-muted text-emphasized">${repo.sourceData.watchers | num}</span>
                         <span class="stat-label">watchers</span>
                       </span>
                       <span class="stat" tabindex="0" aria-label="${downloads} downloads">
@@ -70,9 +66,9 @@
                       </span>
                     </div>
                     <div class="col-md-6 col-sm-6">
-                      <span class="stat" tabindex="0" aria-label="${repo.commits} commits">
+                      <span class="stat" tabindex="0" aria-label="${repo.sourceData.commits} commits">
                         <span class="octicon octicon-git-commit"></span>
-                        <span id="project-stats-commits" class="num text-muted text-emphasized">${repo.commits | num:1}</span>
+                        <span id="project-stats-commits" class="num text-muted text-emphasized">${repo.sourceData.commits | num:1}</span>
                         <span class="stat-label">commits</span>
                       </span>
                       <span class="stat" tabindex="0" aria-label="${releases.length} releases">
@@ -80,14 +76,14 @@
                         <span id="project-stats-releases" class="num text-muted text-emphasized">${releases.length | num}</span>
                         <span class="stat-label">releases</span>
                       </span>
-                      <span class="stat" tabindex="0" aria-label="${repo.forkedRepos.length | num} forks">
+                      <span class="stat" tabindex="0" aria-label="${repo.sourceData.forks.forkedRepos.length | num} forks">
                         <span class="octicon octicon-repo-forked"></span>
-                        <span id="project-stats-forks" class="num text-muted text-emphasized">${repo.forkedRepos.length | num}</span>
+                        <span id="project-stats-forks" class="num text-muted text-emphasized">${repo.sourceData.forks.forkedRepos.length | num}</span>
                         <span class="stat-label">forks</span>
                       </span>
-                      <span class="stat ${repo.vscan.infected_files>0?' stat-vscan':''}" tabindex="0" aria-label="${repo.vscan.infected_files} viruses">
-                          <span class="octicon ${repo.vscan.infected_files>0?'octicon-bug':'octicon-check'}"></span>
-                          <span id="project-stats-infected-files" class="num ${repo.vscan.infected_files==0?'text-muted text-emphasized':''}">${repo.vscan.infected_files}</span>
+                      <span class="stat ${repo.generatedData.vscan.infected_files>0?' stat-vscan':''}" tabindex="0" aria-label="${repo.generatedData.vscan.infected_files} viruses">
+                          <span class="octicon ${repo.generatedData.vscan.infected_files>0?'octicon-bug':'octicon-check'}"></span>
+                          <span id="project-stats-infected-files" class="num ${repo.generatedData.vscan.infected_files==0?'text-muted text-emphasized':''}">${repo.generatedData.vscan.infected_files}</span>
                           <span class="stat-label">viruses</span>
                         </span>
                     </div>
@@ -138,18 +134,18 @@
                   <div class="row">
                     <div class="multi-column">
                       <ul id="project-list-reusing-us-visible" class="list-unstyled">
-                        <li tabindex="0" repeat.for="uses of projectsThatUseUs | pick:numDepends" aria-label="Project name: ${uses.name}, organization: ${uses.org_name}">
+                        <li tabindex="0" repeat.for="uses of projectsThatUseUs | pick:numDepends" aria-label="Project name: ${uses.name}, organization: ${uses.owner}">
                           <strong aria-hidden="true">${uses.name}</strong>
-                          <small aria-hidden="true">${uses.org_name}</small>
+                          <small aria-hidden="true">${uses.owner}</small>
                         </li>
                       </ul>
                     </div>
                     <div class="collapse" id="collapseUseUs">
                       <div class="multi-column">
                         <ul id="project-list-reusing-us-collapse" class="list-unstyled">
-                          <li tabindex="0" repeat.for="uses of projectsThatUseUs | skip:numDepends" aria-label="Project name: ${uses.name}, organization: ${uses.org_name}">
+                          <li tabindex="0" repeat.for="uses of projectsThatUseUs | skip:numDepends" aria-label="Project name: ${uses.name}, organization: ${uses.owner}">
                             <strong aria-hidden="true">${uses.name}</strong>
-                            <small aria-hidden="true">${uses.org_name}</small>
+                            <small aria-hidden="true">${uses.owner}</small>
                           </li>
                         </ul>
                       </div>
@@ -198,8 +194,8 @@
                     </div>
                     <div class="col-lg-6 col-md-6 grade-wrapper">
                       <h5 tabindex="0" aria-label="Maintainability">Maintainability</h5>
-                      <div tabindex="0" id="project-maintainability-rating" class="grade-circle rating-${health.sqale_rating.data}" aria-label="Rating: '${health.sqale_rating.data}'">
-                        ${health.sqale_rating.data}
+                      <div tabindex="0" id="project-maintainability-rating" class="grade-circle rating-${health.sqale_rating.frmt_val}" aria-label="Rating: '${health.sqale_rating.frmt_val}'">
+                        ${health.sqale_rating.frmt_val}
                       </div>
                       <ul class="list-unstyled">
                         <li id="project-maintainability-code-smells" tabindex="0" aria-label="${health.code_smells.val} code smells">${health.code_smells.val} code smells</li>
@@ -210,8 +206,8 @@
                   <div class="row">
                     <div class="col-lg-6 col-md-6 grade-wrapper">
                       <h5 tabindex="0" aria-label="Reliability">Reliability</h5>
-                      <div tabindex="0" id="project-reliability-rating" class="grade-circle rating-${health.reliability_rating.data}" aria-label="Rating: '${health.reliability_rating.data}'">
-                        ${health.reliability_rating.data}
+                      <div tabindex="0" id="project-reliability-rating" class="grade-circle rating-${health.reliability_rating.frmt_val}" aria-label="Rating: '${health.reliability_rating.frmt_val}'">
+                        ${health.reliability_rating.frmt_val}
                       </div>
                       <ul class="list-unstyled">
                         <li id="project-reliability-bugs" tabindex="0" aria-label="${health.bugs.val} bugs">${health.bugs.val} bugs</li>
@@ -220,8 +216,8 @@
                     </div>
                     <div class="col-lg-6 col-md-6 grade-wrapper">
                       <h5 tabindex="0" aria-label="Security">Security</h5>
-                      <div tabindex="0" id="project-security-rating" class="grade-circle rating-${health.security_rating.data}" aria-label="Rating: '${health.security_rating.data}'">
-                        ${health.security_rating.data}
+                      <div tabindex="0" id="project-security-rating" class="grade-circle rating-${health.security_rating.frmt_val}" aria-label="Rating: '${health.security_rating.frmt_val}'">
+                        ${health.security_rating.frmt_val}
                       </div>
                       <ul class="list-unstyled">
                         <li id="project-security-vulnerabilities" tabindex="0" aria-label="${health.vulnerabilities.val} vulnerabilities">${health.vulnerabilities.val} vulnerabilities</li>
@@ -237,18 +233,18 @@
                       <div class="row vscan-metrics">
                         <div class="row vscan-metric">
                           <div class="col-md-12">
-                            <span class="stat" tabindex="0" aria-label="${repo.vscan.lastscan | ago}">
+                            <span class="stat" tabindex="0" aria-label="${repo.generatedData.vscan.lastscan | ago}">
                               <span class="octicon octicon-clock"></span>
-                              <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.vscan.lastscan | ago}</span>
+                              <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.generatedData.vscan.lastscan | ago}</span>
                               <span class="stat-label"></span>
                             </span>
                           </div>
                         </div>
                         <div class="row vscan-metric">
                           <div class="col-md-12">
-                            <span class="stat" tabindex="0" aria-label="${repo.vscan.scanned_files} files">
+                            <span class="stat" tabindex="0" aria-label="${repo.generatedData.vscan.scanned_files} files">
                               <span class="octicon octicon-file-code"></span>
-                              <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.vscan.scanned_files}</span>
+                              <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.generatedData.vscan.scanned_files}</span>
                               <span class="stat-label">files</span>
                             </span>
                           </div>
@@ -256,18 +252,18 @@
                         <div class="row vscan-metric">
                           <div class="col-md-12">
                             <span class="stat" tabindex="0" aria-label="${repo.vscan.infected_files} infected">
-                              <span class="octicon ${repo.vscan.infected_files>0?'octicon-alert vscan-alert':'octicon-check'}"></span>
-                              <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.vscan.infected_files}</span>
+                              <span class="octicon ${repo.generatedData.vscan.infected_files>0?'octicon-alert vscan-alert':'octicon-check'}"></span>
+                              <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.generatedData.vscan.infected_files}</span>
                               <span class="stat-label">infected</span>
                             </span>
                           </div>
                         </div>
                       </div>
                       <hr>
-                      <h4 if.bind="repo.vscan.infected_files > 0" tabindex="0" arial-label="Reported files">Reported files</h4>
+                      <h4 if.bind="repo.generatedData.vscan.infected_files > 0" tabindex="0" arial-label="Reported files">Reported files</h4>
                       <div class="row vscan-reported-files">
                           <ul class="list-unstyled">
-                            <li tabindex="0" repeat.for="vscan of repo.vscan.reported_files" aria-label="Virus: ${vscan.virus}, file name: ${vscan.filename}">
+                            <li tabindex="0" repeat.for="vscan of repo.generatedData.vscan.reported_files" aria-label="Virus: ${vscan.virus}, file name: ${vscan.filename}">
                               <strong aria-hidden="true">${vscan.filename}</strong>
                               <small aria-hidden="true"><span class="octicon octicon-bug vscan-alert"></span>${vscan.virus}</small>
                             </li>
@@ -297,15 +293,15 @@
           <div class="col-lg-12">
             <h3 tabindex="0" aria-label="Contributors, the project has ${repo.contributors_list.length} contributors.">Contributors</h3>
             <div class="media-list media-list-users list-group">
-              <template repeat.for="contrib of repo.contributors_list | pick:5">
-                <a id="contributor-${contrib.username}" href="#" click.trigger="openLeavingSiteConfirmation('Contributor url', contrib.profile_url, $event.target)" target="_blank" class="list-group-item">
+              <template repeat.for="contrib of repo.sourceData.contributors | pick:5">
+                <a id="contributor-${contrib.username}" href="#" click.trigger="openLeavingSiteConfirmation('Contributor url', contrib.profileUrl, $event.target)" target="_blank" class="list-group-item">
                   <span class="media">
                     <span class="media-left">
-                      <img tabindex="0" class="img-circle media-object" role="img" alt="Avatar image," src="${contrib.avatar_url}" onError="this.onerror=null;this.src='/img/language-icons/unknown-user.svg';">
+                      <img tabindex="0" class="img-circle media-object" role="img" alt="Avatar image," src="${contrib.avatarUrl}" onError="this.onerror=null;this.src='/img/language-icons/unknown-user.svg';">
                     </span>
                     <span class="media-body clearfix">
                       <h5 tabindex="0" aria-label="Contributor name, ${contrib.username},">${contrib.username}<span class="pull-right" aria-hidden="true"></span></h5>
-                      <span tabindex="0" class="media-body-secondary" aria-label="Profile url, ${contrib.profile_url}.">${contrib.profile_url}</span>
+                      <span tabindex="0" class="media-body-secondary" aria-label="Profile url, ${contrib.profileUrl}.">${contrib.profileUrl}</span>
                     </span>
                   </span>
                 </a>
@@ -313,33 +309,9 @@
 
             </div>
             <div class="view-all clearfix">
-              <a if.bind="repo.contributors_list.length > 5" id="project-details_contributors" href="#" click.delegate="openContribModal(repo,$event.target)" class="" aria-label="View all contributors.">View All Contributors <i class="material-icons" aria-hidden="true">keyboard_arrow_right</i></a>
+              <a if.bind="repo.sourceData.contributors.length > 5" id="project-details_contributors" href="#" click.delegate="openContribModal(repo,$event.target)" class="" aria-label="View all contributors.">View All Contributors <i class="material-icons" aria-hidden="true">keyboard_arrow_right</i></a>
             </div>
 
-            <h3 tabindex="0" aria-label="Similar projects, ${similarProjects.length<1?'no similar projects found': 'there are '+similarProjects.length+' similar projects.'}">Similar Projects</h3>
-            <div class="media-list media-list-projects list-group">
-
-              <template repeat.for="project of similarProjects | pick:3">
-                <a route-href="route:project-details; params.bind: {id:project.project_id}" class="list-group-item">
-                  <span class="media">
-                    <span class="media-left">
-                      <img tabindex="0" role="img" aria-label="Project image," class="img-circle media-object" src="https://github.com/${project.project_org_name}.png" onError="this.onerror=null;this.src='/img/language-icons/organization-default.svg';" alt="Organization">
-                    </span>
-                    <span class="media-body clearfix">
-                      <h5 tabindex="0" aria-label="project name, ${project.project_name}">${project.project_name}</h5>
-                      <span tabindex="0" class="media-body-secondary" aria-label="organization, ${project.project_org_name}">${project.project_org_name}</span>
-                    </span>
-                  </span>
-                </a>
-              </template>
-            </div>
-
-            <div if.bind="similarProjects.length < 1" class="loader empty-state" width="100%" height="100%" valign="center">
-              <i class="material-icons" aria-hidden="true">sentiment_dissatisfied</i>
-              <em tabindex="0" class="text-muted" aria-label="We could not find anything for ${repo.project_name}">We could not find anything for <strong>${repo.project_name}</strong></em>
-            </div>
-
-          </div>
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ export class MockDataContext {
   responseGetAll = undefined;
 
   findEnterpriseInsight() { return Promise.resolve(this.responseFindEnterpriseInsight) }
-  getAll() {return Promise.resolve(this.responseGetAll) }
+  getRepositories() {return Promise.resolve(this.responseGetAll) }
 }
 
 describe('Insight : ', () => {

@@ -22,15 +22,13 @@ export class AddProjectsModal {
   }
 
   getData() {
-    return this.dataContext.getAll()
+    return this.dataContext.getRepositories(null)
       .then(projects => {
-        setTimeout(() => {
           this.projects = JSON.parse(JSON.stringify(projects));
           this.rebuildProjectSelect(projects);
           $('#selectProjects').click();
           $('#addproject-dialog').focus();
           return this.projects;
-        }, 10);
       })
       .catch((e) => {console.log(e);});
   }

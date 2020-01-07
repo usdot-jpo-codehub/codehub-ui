@@ -8,12 +8,12 @@
       <div class="row">
         <div class="col-lg-7">
           <div class="card-header">
-            <div tabindex="0" class="lang-logo" role="img" aria-label="Language icon ${repo.language}">
-              <img alt="Language icon ${repo.language}" if.bind="repo.organization != 'foundation'" src.bind="language_image">
-              <img if.bind="repo.organization == 'foundation'" src="img/language-icons/foundation.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';" alt="Foundation">
+            <div tabindex="0" class="lang-logo" role="img" aria-label="Language icon ${repo.sourceData.language}">
+              <img alt="Language icon ${repo.sourceData.language}" if.bind="repo.sourceData.owner.type != 'foundation'" src.bind="language_image">
+              <img if.bind="repo.sourceData.owner.type == 'foundation'" src="img/language-icons/foundation.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';" alt="Foundation">
             </div>
             <div class="card-title multiline">
-              <a id="card-search-title-link-${repo.id}" href="#" route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Project name: ${repo.project_name}" innerhtml.bind="repo.highlight.project_name ? repo.highlight.project_name : repo.project_name"></a>
+              <a id="card-search-title-link-${repo.id}" href="#" route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Project name: ${repo.sourceData.name}" innerhtml.bind="repo.highlights['sourceData.name'] ? repo.highlights['sourceData.name'] : repo.sourceData.name"></a>
             </div>
             <div tabindex="0" class="org-name">${language}</div>
           </div>
@@ -21,22 +21,22 @@
           <div class=" card-search-details">
             <div class="text-muted last-updated clearfix">
               <span aria-hidden="true">By&nbsp;</span>
-              <a id="card-search-organization-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.organization,repo.organizationUrl,$event.target)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" aria-label="Project organization: ${repo.organization}, view on GitHub." target="_blanks">
-                <span id="card-search-organization-link-text-${repo.id}">${repo.organization}</span>
+              <a id="card-search-organization-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.sourceData.owner.name,repo.sourceData.owner.url,$event.target)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" aria-label="Project organization: ${repo.sourceData.owner.name}, view on GitHub." target="_blanks">
+                <span id="card-search-organization-link-text-${repo.id}">${repo.sourceData.owner.name}</span>
               </a>
               &nbsp; | &nbsp;
-              <span tabindex="0" id="card-search-organization-updated-text-${repo.id}">Updated ${repo.updatedAt | ago}</span>
+              <span tabindex="0" id="card-search-organization-updated-text-${repo.id}">Updated ${repo.sourceData.lastPush | ago}</span>
             </div>
             <div class="card-search-badges text-muted last-updated">
               <div>
-                <a href="#" route-href="route:badges-about" title="Status ${repo.badges.status}">
+                <a href="#" route-href="route:badges-about" title="Status ${repo.codehubData.badges.status}">
                   <img alt="Badge status image" src.bind="badge_status_image">
-                  <span>${repo.badges.status.toUpperCase()}</span>
+                  <span>${repo.codehubData.badges.status.toUpperCase()}</span>
                 </a>
               </div>
               <div>
-                <i class="material-icons" aria-hidden="true">${repo.origin == 'PUBLIC' ? 'public' : 'business'}</i>
-                <span tabindex="0" id="card-search-organization-origin-text-${repo.id}">${repo.origin}</span>
+                <i class="material-icons" aria-hidden="true">public</i>
+                <span tabindex="0" id="card-search-organization-origin-text-${repo.id}">PUBLIC</span>
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@
           <div class="card-stats lined-header">
             <span class="pull-right">
               <em class="text-muted">Source:
-                <a if.bind="infected_files == 0" id="card-search-project-status-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.project_name,repo.repositoryUrl,$event.target)"  target="_blank" aria-label="View source code on Github.">Github™</a>
+                <a if.bind="infected_files == 0" id="card-search-project-status-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.sourceData.name,repo.sourceData.repositoryUrl,$event.target)"  target="_blank" aria-label="View source code on Github.">Github™</a>
                 <a if.bind="infected_files > 0" id="card-popular-project-status-link-${repo.id}" href="#" click.trigger="displayVScanDialog(repo,$event.target)"  target="_blank" aria-label="View source code on Github.">Github™</a>
               </em>
             </span>
@@ -54,19 +54,19 @@
           </div>
           <div class="row github-stats">
             <div class="col-md-6 col-sm-6">
-              <span class="stat" tabindex="0" aria-label="${repo.stars} stars">
+              <span class="stat" tabindex="0" aria-label="${repo.sourceData.stars} stars">
                 <span class="octicon octicon-star" aria-hidden="true"></span>
-                <span id="card-search-project-stars-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.stars | num}</span>
+                <span id="card-search-project-stars-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.sourceData.stars | num}</span>
                 <span class="stat-label" aria-hidden="true">stars</span>
               </span>
-              <span class="stat" tabindex="0" aria-label="${repo.contributors} contributors">
+              <span class="stat" tabindex="0" aria-label="${repo.sourceData.contributors.length} contributors">
                 <span class="octicon octicon-organization" aria-hidden="true"></span>
-                <span id="card-search-project-contributors-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.contributors | num}</span>
+                <span id="card-search-project-contributors-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.sourceData.contributors.length | num}</span>
                 <span class="stat-label" aria-hidden="true">contributors</span>
             </span>
-            <span class="stat" tabindex="0" aria-label="${repo.watchers} watchers">
+            <span class="stat" tabindex="0" aria-label="${repo.sourceData.watchers} watchers">
               <span class="octicon octicon-eye" aria-hidden="true"></span>
-              <span id="card-search-project-watchers-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.watchers | num}</span>
+              <span id="card-search-project-watchers-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.sourceData.watchers | num}</span>
               <span class="stat-label" aria-hidden="true">watchers</span>
             </span>
             <span class="stat" tabindex="0" aria-label="${downloads} dowloads">
@@ -76,9 +76,9 @@
               </span>
           </div>
           <div class="col-md-6 col-sm-6">
-            <span class="stat" tabindex="0" aria-label="${repo.commits} commits">
+            <span class="stat" tabindex="0" aria-label="${repo.sourceData.commits} commits">
               <span class="octicon octicon-git-commit" aria-hidden="true"></span>
-              <span id="card-search-project-commits-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.commits | num:1}</span>
+              <span id="card-search-project-commits-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.sourceData.commits | num:1}</span>
               <span class="stat-label" aria-hidden="true">commits</span>
             </span>
             <span class="stat" tabindex="0" aria-label="${releases.length} releases">
@@ -86,9 +86,9 @@
               <span id="card-search-project-releases-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${releases.length | num}</span>
               <span class="stat-label" aria-hidden="true">releases</span>
             </span>
-            <span class="stat" tabindex="0" aria-label="${repo.forks | num} forks">
+            <span class="stat" tabindex="0" aria-label="${repo.sourceData.forks.forkedRepos.length | num} forks">
               <span class="octicon octicon-repo-forked" aria-hidden="true"></span>
-              <span id="card-search-project-forks-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.forks | num}</span>
+              <span id="card-search-project-forks-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.sourceData.forks.forkedRepos.length | num}</span>
               <span class="stat-label" aria-hidden="true">forks</span>
             </span>
             <span class="${infected_files>0 ? ' stat-vscan' : 'stat'}" tabindex="0" aria-label="${infected_files | num} infected files">

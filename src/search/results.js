@@ -33,13 +33,13 @@ export class Results {
 
     this.selectedSort = 'default';
     this.sortOptions = [
-      { value: 'rank', name: 'Rank' },
-      { value: 'default', name: 'Relevance' },
-      { value: 'stars', name: 'Stars' },
-      { value: 'watchers', name: 'Watchers' },
-      { value: 'releases', name: 'Releases' },
-      { value: 'commits', name: 'Commits' },
-      { value: 'contributors', name: 'Contributors' },
+      { value: 'generatedData.rank', name: 'Rank' },
+      { value: 'sourceData.stars', name: 'Stars' },
+      { value: 'sourceData.watchers', name: 'Watchers' },
+      { value: 'sourceData.releases', name: 'Releases' },
+      { value: 'sourceData.commits', name: 'Commits' },
+      { value: 'sourceData.contributors', name: 'Contributors' },
+      { value: 'sourceData.forks.forkedRepos', name: 'Forks' }
     ];
     this.openReadmeLinkId = null;
     this.ariaLabel = '';
@@ -54,30 +54,28 @@ export class Results {
     this.projects = [];
     this.searchDone = false;
 
-    if (!(params.searchText) || params.searchText === '') {
-      this.searchText = 'Everything';
-      return this.dataContext.getAll()
-        .then(projects => {
-          setTimeout(() => {
-            this.projects = projects;
-            this.resultCount = this.projects.length;
-            this.searchDone = true;
-            this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
-            this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
-            this.filters.selectedOrigins = this.filters.getUniqueValues(this.projects, 'origin');
-            this.rebuildFilterOrg(projects);
-            this.rebuildFilterLang(projects);
-            this.rebuildFilterOrigin(projects);
-            this.ariaLabel = this.getResultsAriaLabel(this.resultCount, this.searchText);
-            let searchResult = {text: null, count: this.resultCount};
-            this.ea.publish('searchExecuted', searchResult);
-            const resultsText = document.querySelector('#results-result-text');
-            if(resultsText)
-              resultsText.focus();
-            return this.projects;
-          }, 10);
-        });
-    }
+    // if (!(params.searchText) || params.searchText === '') {
+    //   this.searchText = 'Everything';
+    //   return this.dataContext.getAll()
+    //     .then(projects => {
+    //       setTimeout(() => {
+    //         this.projects = projects;
+    //         this.resultCount = this.projects.length;
+    //         this.searchDone = true;
+    //         this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
+    //         this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
+    //         this.rebuildFilterOrg(projects);
+    //         this.rebuildFilterLang(projects);
+    //         this.ariaLabel = this.getResultsAriaLabel(this.resultCount, this.searchText);
+    //         let searchResult = {text: null, count: this.resultCount};
+    //         this.ea.publish('searchExecuted', searchResult);
+    //         const resultsText = document.querySelector('#results-result-text');
+    //         if(resultsText)
+    //           resultsText.focus();
+    //         return this.projects;
+    //       }, 10);
+    //     });
+    // }
 
     this.resultCount = 0;
     this.searchText = params.searchText;
@@ -85,16 +83,13 @@ export class Results {
 
     return this.dataContext.search(params.searchText)
       .then(projects => {
-        setTimeout(() => {
           this.projects = projects;
           this.resultCount = this.projects.length;
           this.searchDone = true;
-          this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
-          this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
-          this.filters.selectedOrigins = this.filters.getUniqueValues(this.projects, 'origin');
+          this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'sourceData.owner.name');
+          this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'sourceData.language');
           this.rebuildFilterOrg(projects);
           this.rebuildFilterLang(projects);
-          this.rebuildFilterOrigin(projects);
           this.ariaLabel = this.getResultsAriaLabel(this.resultCount, this.searchText);
           let searchResult = {text: params.searchText, count: this.resultCount};
           this.ea.publish('searchExecuted', searchResult);
@@ -102,7 +97,6 @@ export class Results {
           if(resultsText)
             resultsText.focus();
           return this.projects;
-        }, 10);
       });
   }
 
@@ -112,9 +106,9 @@ export class Results {
 
   rebuildFilterOrg(projects) {
     const options = [];
-    const unique = this.getUniqueValues(projects, 'organization');
+    const unique = this.getUniqueValues(projects, 'sourceData.owner.name');
     for (const org of unique) {
-      options.push({ label: `${org} <small>(${this.countUniqueValues(projects, 'organization', org)})</small>`, title: org, value: org, selected: false});
+      options.push({ label: `${org} <small>(${this.countUniqueValues(projects, 'sourceData.owner.name', org)})</small>`, title: org, value: org, selected: false});
     }
     $('#filterOrg').multiselect('dataprovider', options);
     $('#filterOrg').trigger('change');
@@ -122,22 +116,12 @@ export class Results {
 
   rebuildFilterLang(projects) {
     const options = [];
-    const unique = this.getUniqueValues(projects, 'language');
+    const unique = this.getUniqueValues(projects, 'sourceData.language');
     for (const lang of unique) {
-      options.push({ label: `${lang} <small>(${this.countUniqueValues(projects, 'language', lang)})</small>`, title: lang, value: lang, selected: false });
+      options.push({ label: `${lang} <small>(${this.countUniqueValues(projects, 'sourceData.language', lang)})</small>`, title: lang, value: lang, selected: false });
     }
     $('#filterLang').multiselect('dataprovider', options);
     $('#filterLang').trigger('change');
-  }
-
-  rebuildFilterOrigin(projects) {
-    const options = [];
-    const unique = this.getUniqueValues(projects, 'origin');
-    for (const origin of unique) {
-      options.push({ label: `${origin} <small>(${this.countUniqueValues(projects, 'origin', origin)})</small>`, title: origin, value: origin, selected: false });
-    }
-    $('#filterOrigin').multiselect('dataprovider', options);
-    $('#filterOrigin').trigger('change');
   }
 
   setupFilterOrg() {
@@ -173,12 +157,12 @@ export class Results {
         this.filters.selectedOrganizations = $('#filterOrg').val();
         this.filterOrgEmpty = false;
       } else {
-        this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
+        this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'sourceData.owner.name');
         this.filterOrgEmpty = true;
       }
 
-      const fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
-      this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'organization').length;
+      const fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'sourceData.language');
+      this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'sourceData.owner.name').length;
       this.ariaLabel = this.getResultsAriaLabel(this.resultCount, this.searchText);
     });
   }
@@ -215,54 +199,12 @@ export class Results {
         this.filters.selectedLanguages = $('#filterLang').val();
         this.filterLangEmpty = false;
       } else {
-        this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
+        this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'sourceData.language');
         this.filterLangEmpty = true;
       }
 
-      const fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
-      this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'organization').length;
-      this.ariaLabel = this.getResultsAriaLabel(this.resultCount, this.searchText);
-    });
-  }
-
-  setupFilterOrigin() {
-    $('#filterOrigin').multiselect({
-      enableFiltering: true,
-      disableIfEmpty: true,
-      enableCaseInsensitiveFiltering: true,
-      maxHeight: 250,
-      enableHTML: true,
-      buttonContainer: '<div class="btn-group" id="filterOrigin-button" />',
-      buttonText(options, select) {
-        if (options.length === 0) {
-          return 'Origin';
-        } else if (options.length === options.prevObject.length) {
-          return `Origin (${options.length})`;
-        }
-        return `Origin (${options.length})`;
-      },
-      buttonTitle(options, select) {
-        if (options.length === 0) {
-          return 'Filter Origin';
-        } else if (options.length === options.prevObject.length) {
-          return `Filter Origin (${options.length})`;
-        }
-        return `Filter Origin (${options.length}) `;
-      }
-    });
-
-    $('#filterOrigin').on('change', ev => {
-      if ($('#filterOrigin').val()) {
-        this.filters.selectedOrigins = $('#filterOrigin').val();
-        this.filterOriginEmpty = false;
-      } else {
-        this.filters.selectedOrigins = this.filters.getUniqueValues(this.projects, 'origin');
-        this.filterOriginEmpty = true;
-      }
-
-      let fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'language');
-      fitlerArr = this.filterArray(fitlerArr, this.filters.selectedOrigins, 'origin');
-      this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'organization').length;
+      const fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'sourceData.language');
+      this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'sourceData.owner.name').length;
       this.ariaLabel = this.getResultsAriaLabel(this.resultCount, this.searchText);
     });
   }
@@ -270,15 +212,12 @@ export class Results {
   clearAllFilters() {
     $('#filterLang').multiselect('deselectAll', false);
     $('#filterOrg').multiselect('deselectAll', false);
-    $('#filterOrigin').multiselect('deselectAll', false);
 
     $('#filterLang').trigger('change');
     $('#filterOrg').trigger('change');
-    $('#filterOrigin').trigger('change');
 
     this.rebuildFilterOrg(this.projects);
     this.rebuildFilterLang(this.projects);
-    this.rebuildFilterOrigin(this.projects);
 
     const resultsMainPanel = document.querySelector('#results-result-text');
     if(resultsMainPanel) {
@@ -289,11 +228,9 @@ export class Results {
   attached() {
     this.setupFilterOrg();
     this.setupFilterLang();
-    this.setupFilterOrigin();
 
     this.rebuildFilterOrg(this.projects);
     this.rebuildFilterLang(this.projects);
-    this.rebuildFilterOrigin(this.projects);
   }
 
   detached() {
@@ -308,8 +245,9 @@ export class Results {
   getUniqueValues(array, property) {
     const propertyArray = [];
     for (const object of array) {
-      if (object[property]) {
-        propertyArray.push(object[property]);
+      let v = this.filters.getNested(object, property);
+      if (v) {
+        propertyArray.push(v);
       } else {
         propertyArray.push('None');
       }
@@ -322,9 +260,10 @@ export class Results {
   countUniqueValues(array, property, value) {
     let count = 0;
     for (const object of array) {
-      if (object[property] === value) {
+      let v = this.filters.getNested(object, property);
+      if (v === value) {
         count++;
-      } else if ((object[property] === null || object[property] === undefined) && value === 'None') {
+      } else if ((v === null || v === undefined) && value === 'None') {
         count++;
       }
     }
@@ -339,8 +278,9 @@ export class Results {
       .slice(0)
       .filter((object) => {
         for (const value of filterArray) {
-          if (object[propertyName]) {
-            if (object[propertyName] === value) {
+          let v = this.filters.getNested(object, propertyName);
+          if (v) {
+            if (v === value) {
               return true;
             }
           } else if (value === 'None') {
@@ -386,7 +326,7 @@ export class Results {
     $(multiselectId).multiselect('deselect', pill);
     $(multiselectId).trigger('change');
 
-    if(this.filters.selectedOrganizations.length > 0 || this.filters.selectedLanguages.length>0 || this.filters.selectedOrigins.length>0) {
+    if(this.filters.selectedOrganizations.length > 0 || this.filters.selectedLanguages.length>0 ) {
       const clearAllFilterElement = document.querySelector('#result-clearall-filters');
       if(clearAllFilterElement) {
         clearAllFilterElement.focus();

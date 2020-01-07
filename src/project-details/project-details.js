@@ -50,26 +50,18 @@ export class ProjectDetails {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
 
     this.dataContext.findById(params.id).then(repo => {
+      console.log(repo);
       if (!repo) {
         return;
       }
       this.repo = repo;
-      this.sonarLink = `${this.stageConfig.SONARQUBE_ADDRESS}/dashboard/index/${repo.organization}_${repo.project_name}`;
-      if (repo.userForkedRepos) {
-        this.projectsThatUseUs = repo.forkedRepos.concat(repo.userForkedRepos);
-      } else {
-        this.projectsThatUseUs = repo.forkedRepos;
-      }
+      this.projectsThatUseUs = repo.sourceData.forks.forkedRepos;
 
-      this.releases = this.repo.releases;
-      if (this.releases === undefined || !Array.isArray(this.releases)) {
-        this.releases = [];
-      }
-
+      this.releases = this.repo.sourceData.releases;
       this.releases.forEach(r => { this.downloads += r.total_downloads; });
 
-      if (repo.badges && repo.badges.status) {
-        switch(repo.badges.status.toLowerCase()) {
+      if (repo.codehubData.badges && repo.codehubData.badges.status) {
+        switch(repo.codehubData.badges.status.toLowerCase()) {
           case 'active':
             this.badge_status_image = '/img/active_flame_final_28w_35h.svg';
             break;
@@ -86,40 +78,27 @@ export class ProjectDetails {
             this.badge_status_image = '/img/pending_review_final_29w_35h.svg';
         }
       }
+      this.noSonarData = !this.repo.generatedData.sonarMetrics &&
+      !this.repo.generatedData.sonarMetrics.code_smells &&
+      !this.repo.generatedData.sonarMetrics.code_smells.val &&
+      !this.repo.generatedData.sonarMetrics.reliability_rating &&
+      !this.repo.generatedData.sonarMetrics.reliability_rating.val &&
+      !this.repo.generatedData.sonarMetrics.security_rating &&
+      !this.repo.generatedData.sonarMetrics.security_rating.val;
+
+      this.health = this.repo.generatedData.sonarMetrics;
+
+      this.noDependencies = this.projectsThatUseUs.length === 0;
     });
 
-    this.dataContext.getHealthById(params.id).then(health => {
-      if (health && Object.prototype.hasOwnProperty.call(health, 'error')) {
-        this.noSonarData = true;
-      } else {
-        this.noSonarData = health.code_smells === undefined && health.reliability_rating === undefined && health.security_rating === undefined;
-      }
-      this.health = health;
-    });
-
-    this.dataContext.getComponentDependencies(params.id).then(depends => {
-      if (depends && depends.componentDependencies) {
-        this.componentDependencies = depends.componentDependencies;
-
-        // TODO this fix should be done API side
-        let i = depends.componentDependencies.length;
-        while (i--) {
-          if (this.componentDependencies[i].artifactId === undefined) {
-            this.componentDependencies.splice(i, 1);
-          }
-        }
-      }
-    });
-
-    this.noDependencies = this.componentDependencies.length === 0 && this.projectsThatUseUs.length === 0;
   }
 
-  @computedFrom('repo.project_description')
+  @computedFrom('repo.sourceData.description')
   get description() {
-    return this.repo.project_description ? this.repo.project_description : NO_DESCRIPTION_MESSAGE;
+    return this.repo.sourceData && this.repo.sourceData.description ? this.repo.sourceData.description : NO_DESCRIPTION_MESSAGE;
   }
   get hasdescription() {
-    return this.repo.project_description ? true : false;
+    return this.repo.sourceData && this.repo.sourceData.description ? true : false;
   }
 
   

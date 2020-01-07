@@ -10,7 +10,7 @@ import { Explore } from '../../src/explore/explore';
 export class MockDataContext {
   response  = undefined;
 
-  getAll() {return Promise.resolve(this.response)}
+  getRepositories() {return Promise.resolve(this.response)}
 }
 
 export class MockRouter {

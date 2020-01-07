@@ -2,7 +2,7 @@ import { inject } from 'aurelia-framework';
 import { HttpClient, json } from 'aurelia-fetch-client';
 import { StageConfig } from '../stageConf';
 
-const baseUrl = '/api/projects';
+const baseUrl = '/api/v1';
 
 @inject(HttpClient, StageConfig)
 export class DataContext {
@@ -13,58 +13,60 @@ export class DataContext {
 
   // TODO Wrap API calls in promises to catch errors
 
-  getAll() {
-    return this.http.fetch(`${baseUrl}/getAll`, {
+  getRepositories(owners) {
+    let url = `${baseUrl}/repositories` + (owners ? `?owner=${owners}` : '');
+    return this.http.fetch(url, {
       method: 'GET',
     })
-      .then(response => {
-        if(response && response.ok) {
-          return response.json()
+    .then(response => response.json())
+    .then(data => {
+      if(data.code == 200) {
+          return data.result;
         }
         return null;
       });
   }
 
   findPopular() {
-    return this.http.fetch(`${baseUrl}/findPopular`, {
+    return this.http.fetch(`${baseUrl}/repositories?limit=6&rank=popular`, {
       method: 'GET',
     })
-      .then(response => {
-        if (response && response.ok) {
-          return response.json();
+      .then(response => response.json())
+      .then(data => {
+        if (data.code == 200) {
+          return data.result;
         }
         return null;
-      });
+      })
+      .catch( e => { return null; });
   }
 
   findFeatured() {
-    return this.http.fetch(`${baseUrl}/findFeatured`, {
+    return this.http.fetch(`${baseUrl}/repositories?limit=5&rank=featured`, {
       method: 'GET'
-    }).then( (response) => {
-      if (response && response.ok) {
-        return response.json();
+    })
+    .then( (response) => response.json())
+    .then( data => {
+      if (data.code == 200) {
+        return data.result;
       }
       return null;
-    });
+    })
+    .catch( e => {return null;});
   }
 
-  findEnterpriseInsight() {
-    return this.http.fetch('/api/codes/findEnterpriseInsight', {
+  getMetrics(organizations) {
+    let url = `${baseUrl}/metrics` + (organizations ? `/${organizations}` : '')
+    return this.http.fetch(url, {
       method: 'GET',
     })
-      .then(response => response.json());
-  }
-
-  findEnterpriseInsightByOrganization(organization) {
-    return this.http.fetch('/api/codes/findEnterpriseInsightOrg', {
-      method: 'POST',
-      body: json(organization),
-    }).then(response => {
-      if (response && response.ok) {
-        return response.json();
-      }
-      return null;
-    });
+    .then(response => response.json())
+    .then(data => {
+      if (data.code == 200) {
+          return data.result;
+        }
+        return null;
+      });
   }
 
   getProjectsByOrganization(organization) {
@@ -92,11 +94,25 @@ export class DataContext {
   }
 
   search(searchText) {
+    let searchObj = {
+      term: searchText,
+      limit: 1000,
+      matchAll: false
+    }
     return this.http.fetch(`${baseUrl}/search`, {
       method: 'POST',
-      body: json(searchText),
+      headers: {
+        'Content-Type':'application/json',
+        'Accept': 'application/json'
+      },
+      body: json(searchObj),
     })
-      .then(response => response.json());
+      .then(response => response.json())
+      .then(data => {
+        if (data.code == 200) {
+          return data.result;
+        }
+      });
   }
 
   findSuggestions(searchText) {
@@ -113,24 +129,23 @@ export class DataContext {
   }
 
   findById(id) {
-    const adjustedURL = `${baseUrl}/findById/${id}`;
+    const adjustedURL = `${baseUrl}/repositories/${id}`;
     return this.http.fetch(adjustedURL)
-      .then(response => {
-        if (response && response.ok) {
-          return response.json();
+      .then(response => response.json())
+      .then(data => {
+        if (data.code == 200 && data.result.length>0 ) {
+          return data.result[0];
         }
         return null;
       });
   }
 
   findByIds(ids) {
-    return this.http.fetch(`${baseUrl}/findByIds`, {
-      method: 'POST',
-      body: json(ids),
-    })
-      .then(response => {
-        if (response && response.ok) {
-          return response.json();
+    return this.http.fetch(`${baseUrl}/repositories/${ids}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.code == 200 && data.result.length>0) {
+          return data.result;
         }
         return null;
       });
@@ -189,12 +204,13 @@ export class DataContext {
   }
 
   findHealthiest() {
-    return this.http.fetch('/api/codes/findHealthiest', {
+    return this.http.fetch(`${baseUrl}/repositories?limit=6&rank=healthiest&order=asc`, {
       method: 'GET',
     })
-      .then((response) => {
-        if (response && response.ok) {
-          return response.json();
+      .then(response => response.json())
+      .then(data => {
+        if (data.code == 200) {
+          return data.result;
         }
         return null;
       });
@@ -205,7 +221,6 @@ export class DataContext {
       'email': email,
       'listId': this.stageConfig.EMAIL_LISTID
     }
-    console.log(payload);
     return this.http.fetch(`/apicc/v1/contacts`, {
       method: 'POST',
       body: json(payload),

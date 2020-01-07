@@ -15,7 +15,7 @@ export class MockDataContext {
   responseGetAll = undefined;
   responseSearch = undefined;
 
-  getAll() {return Promise.resolve(this.responseGetAll)}
+  getRepositories() {return Promise.resolve(this.responseGetAll)}
   search() {return Promise.resolve(this.responseSearch)}
 }
 
