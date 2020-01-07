@@ -2,123 +2,125 @@
   <require from="../resources/value-converters/num"></require>
   <require from="../resources/value-converters/duration"></require>
 
-  <div class="container-fluid">
-    <div class="row ${loading ? 'hidden' : ''}">
-      <div class="col-lg-12 cards-wrapper insight-wrapper">
-        <div class="row">
-          <div class="div col-lg-3">
-            <div class="card card-insight card-insight-organization">
-              <h2 tabindex="0" class="text-center health-tiles">${organizationTitle}</h2>
-              <div class="card-insight-organization-controls">
-                <select value.bind="selectedOrganization" change.delegate="organizationChanged(selectedOrganization)" name="organization" id="id-organization">
-                  <option repeat.for="organization of organizations" model.bind="organization">
-                    ${organization.name}
-                  </option>
-                </select>
+  <main class="usa-layout-docs usa-section insight-page">
+    <div class="container-fluid">
+      <div class="row ${loading ? 'hidden' : ''}">
+        <div class="col-lg-12 cards-wrapper insight-wrapper">
+          <div class="row">
+            <div class="div col-lg-3">
+              <div class="card card-insight card-insight-organization">
+                <h2 tabindex="0" class="text-center health-tiles">${organizationTitle}</h2>
+                <div class="card-insight-organization-controls">
+                  <select value.bind="selectedOrganization" change.delegate="organizationChanged(selectedOrganization)" name="organization" id="id-organization">
+                    <option repeat.for="organization of organizations" model.bind="organization">
+                      ${organization.name}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="div col-lg-3">
+              <div class="card card-insight">
+                <h2 tabindex="0" class="text-center health-tiles">Projects</h2>
+                <div tabindex="0" id="number-of-projects" class="text-center health-num">${insights.numberOfProjects | num}</div>
+              </div>
+            </div>
+            <div class="div col-lg-3">
+              <div class="card card-insight">
+                <h2 tabindex="0" class="text-center health-tiles">Bugs &#38; Vulnerabilities</h2>
+                <div tabindex="0" id="bugs-vulnerabilities" class="text-center health-num">${insights.bugsVulnerabilities | num:1}</div>
+              </div>
+            </div>
+            <div class="div col-lg-3">
+              <div class="card card-insight">
+                <h2 tabindex="0" class="text-center health-tiles">Technical Debt</h2>
+                <div tabindex="0" id="technical-debt" class="text-center health-num">${insights.technicalDebt | duration}</div>
               </div>
             </div>
           </div>
-          <div class="div col-lg-3">
-            <div class="card card-insight">
-              <h2 tabindex="0" class="text-center health-tiles">Projects</h2>
-              <div tabindex="0" id="number-of-projects" class="text-center health-num">${insights.numberOfProjects | num}</div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card card-insight">
+                <div class="lined-header">
+                  <h2 tabindex="0" class=""><span>Most Used Languages</span></h2>
+                </div>
+                <div tabindex="0" id="chartMostUsedLanguajes" aria-label="Pie chart image of most used languages" style="width: 100%; height: 320px; border: 0px solid rgb(204, 204, 204); padding: 10px; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; cursor: default; background-color: rgba(0, 0, 0, 0);"></div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card card-insight">
+                <div class="lined-header">
+                  <h2 tabindex="0" class=""><span>Top Projects by Forks</span></h2>
+                </div>
+                <div tabindex="0" id="mfChart" aria-label="Bar chart image of most forked projects" style="width: 100%; height: 320px; border: 0px solid rgb(204, 204, 204); padding: 10px; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; cursor: default; background-color: rgba(0, 0, 0, 0);"></div>
+
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card card-insight">
+                <div class="lined-header">
+                  <h2 tabindex="0" class="" ><span>Projects by Languages</span></h2>
+                </div>
+                <div tabindex="0" id="main" aria-label="Bar chart image of projects by languages." style="width: 100%; height: 320px; border: 0px solid rgb(204, 204, 204); padding: 10px; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; cursor: default; background-color: rgba(0, 0, 0, 0);"></div>
+
+              </div>
             </div>
           </div>
-          <div class="div col-lg-3">
-            <div class="card card-insight">
-              <h2 tabindex="0" class="text-center health-tiles">Bugs &#38; Vulnerabilities</h2>
-              <div tabindex="0" id="bugs-vulnerabilities" class="text-center health-num">${insights.bugsVulnerabilities | num:1}</div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card card-insight">
+                <div class="lined-header">
+                  <span class="pull-right hidden"><em class="text-muted">Source: <a href="#" id="insight-overall-health" click.trigger="openLeavingSiteConfirmation('SonarQube™', sonarqube_projects,$event.target)" target="_blank">SonarQube™</a></em></span>
+                  <h2 tabindex="0" class=""><span>Overall Source Code Health</span></h2>
+                </div>
+                <div tabindex="0" id="main2" aria-label="Collection of radar charts showing reliability, security and maintainability." style="width: 100%;height:337px;"></div>
+              </div>
             </div>
           </div>
-          <div class="div col-lg-3">
-            <div class="card card-insight">
-              <h2 tabindex="0" class="text-center health-tiles">Technical Debt</h2>
-              <div tabindex="0" id="technical-debt" class="text-center health-num">${insights.technicalDebt | duration}</div>
+
+          <div if.bind="selectedOrganization.id === 0" class="row">
+            <div class="col-lg-12">
+              <div class="card card-insight">
+                <div class="lined-header">
+                  <span class="pull-right"><em class="text-muted">Source: Google Analytics</em></span>
+                  <h2 tabindex="0" class=""><span>CodeHub page views</span></h2>
+                </div>
+                <div class="insight-iframe-pageviews-container">
+                  <iframe title="CodeHub page views" class="insight-iframe-pageviews" width="100%" height="100%" src="https://datastudio.google.com/embed/reporting/1ZYljjg50KOq0a099DseuFvA-HAs_cEJ3/page/OXOu" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div if.bind="selectedOrganization.id === 0" class="row">
+            <div class="col-lg-6">
+              <div class="card card-insight">
+                <div class="lined-header">
+                  <h2 tabindex="0" class="" ><span>User Sessions by Source</span></h2>
+                </div>
+                <div class="insight-iframe-piechart-container"> 
+                  <iframe title="User Sessions by Source" class="insight-iframe-piechart" width="100%" height="100%" src="https://datastudio.google.com/embed/reporting/1rMuXkjQkD7DzB3WZPvnya8Fu3SfyrHd_/page/OXOu" allowfullscreen></iframe>
+                </div> 
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card card-insight">
+                <div class="lined-header">
+                  <h2 tabindex="0" class="" ><span>Users by Country</span></h2>
+                </div>
+                <div class="insight-iframe-piechart-container">   
+                  <iframe title="Users by Country" class="insight-iframe-piechart" width="100%" height="100%" src="https://datastudio.google.com/embed/reporting/19EAPiisD0EbB9cUK8yTLqbMid_0SHeen/page/OXOu" allowfullscreen></iframe>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="card card-insight">
-              <div class="lined-header">
-                <h2 tabindex="0" class=""><span>Most Used Languages</span></h2>
-              </div>
-              <div tabindex="0" id="chartMostUsedLanguajes" aria-label="Pie chart image of most used languages" style="width: 100%; height: 320px; border: 0px solid rgb(204, 204, 204); padding: 10px; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; cursor: default; background-color: rgba(0, 0, 0, 0);"></div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card card-insight">
-              <div class="lined-header">
-                <h2 tabindex="0" class=""><span>Top Projects by Forks</span></h2>
-              </div>
-              <div tabindex="0" id="mfChart" aria-label="Bar chart image of most forked projects" style="width: 100%; height: 320px; border: 0px solid rgb(204, 204, 204); padding: 10px; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; cursor: default; background-color: rgba(0, 0, 0, 0);"></div>
-
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card card-insight">
-              <div class="lined-header">
-                <h2 tabindex="0" class="" ><span>Projects by Languages</span></h2>
-              </div>
-              <div tabindex="0" id="main" aria-label="Bar chart image of projects by languages." style="width: 100%; height: 320px; border: 0px solid rgb(204, 204, 204); padding: 10px; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; cursor: default; background-color: rgba(0, 0, 0, 0);"></div>
-
-            </div>
-          </div>
-        </div>
-        <div class="row">
-
-          <div class="col-lg-12">
-            <div class="card card-insight">
-              <div class="lined-header">
-                <span class="pull-right hidden"><em class="text-muted">Source: <a href="#" id="insight-overall-health" click.trigger="openLeavingSiteConfirmation('SonarQube™', sonarqube_projects,$event.target)" target="_blank">SonarQube™</a></em></span>
-                <h2 tabindex="0" class=""><span>Overall Source Code Health</span></h2>
-              </div>
-              <div tabindex="0" id="main2" aria-label="Collection of radar charts showing reliability, security and maintainability." style="width: 100%;height:337px;"></div>
-            </div>
-          </div>
       </div>
-
-      <div if.bind="selectedOrganization.id === 0" class="row">
-          <div class="col-lg-12">
-            <div class="card card-insight">
-              <div class="lined-header">
-                <span class="pull-right"><em class="text-muted">Source: Google Analytics</em></span>
-                <h2 tabindex="0" class=""><span>CodeHub page views</span></h2>
-              </div>
-              <div class="insight-iframe-pageviews-container">
-                <iframe title="CodeHub page views" class="insight-iframe-pageviews" width="100%" height="100%" src="https://datastudio.google.com/embed/reporting/1ZYljjg50KOq0a099DseuFvA-HAs_cEJ3/page/OXOu" allowfullscreen></iframe>
-              </div>
-            </div>
-          </div>
-      </div>
-      <div if.bind="selectedOrganization.id === 0" class="row">
-        <div class="col-lg-6">
-          <div class="card card-insight">
-            <div class="lined-header">
-              <h2 tabindex="0" class="" ><span>User Sessions by Source</span></h2>
-            </div>
-            <div class="insight-iframe-piechart-container"> 
-              <iframe title="User Sessions by Source" class="insight-iframe-piechart" width="100%" height="100%" src="https://datastudio.google.com/embed/reporting/1rMuXkjQkD7DzB3WZPvnya8Fu3SfyrHd_/page/OXOu" allowfullscreen></iframe>
-            </div> 
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="card card-insight">
-            <div class="lined-header">
-              <h2 tabindex="0" class="" ><span>Users by Country</span></h2>
-            </div>
-            <div class="insight-iframe-piechart-container">   
-              <iframe title="Users by Country" class="insight-iframe-piechart" width="100%" height="100%" src="https://datastudio.google.com/embed/reporting/19EAPiisD0EbB9cUK8yTLqbMid_0SHeen/page/OXOu" allowfullscreen></iframe>
-            </div>
-          </div>
+      <div class="splash ${loading ? '' : 'hidden'}">
+        <div class="loading">
+            <img src="img/loading.svg" alt="Loading...">
+            <span class="txt-loading text-uppercase">Loading</span>
         </div>
       </div>
     </div>
-  </div>
-  <div class="splash ${loading ? '' : 'hidden'}">
-    <div class="loading">
-        <img src="img/loading.svg" alt="Loading...">
-        <span class="txt-loading text-uppercase">Loading</span>
-    </div>
-  </div>
+  </main>
 </template>
