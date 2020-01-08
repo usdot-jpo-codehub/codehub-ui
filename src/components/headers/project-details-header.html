@@ -9,11 +9,6 @@
         </div>
         <h1 tabindex="0" id="project-details-project-name" aria-label="Project details for: ${repo.sourceData.name}">${repo.sourceData.name}</h1>
         <p aria-label="Project language: ${repo.sourceData.language ? repo.sourceData.language : stageConfig.NO_LANG}"><span aria-hidden="true">${repo.sourceData.language ? repo.sourceData.language : stageConfig.NO_LANG}</span></p>
-        <div class="btn-group">
-          <a class="btn btn-secondary btn-sm" href="#" click.delegate="goBack()" aria-label="Go back to project summary."><i class="material-icons" aria-hidden="true">chevron_left</i>Back</a>
-          <a if.bind="repo.generatedData.vscan.infected_files == 0" class="btn btn-secondary btn-sm" id="project-details-header-github-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.sourceData.name,repo.sourceData.repositoryUrl,$event.target)" target="_blank" aria-label="View project source code on GitHub.">View on Github<i class="material-icons" aria-hidden="true">chevron_right</i></a>
-          <a if.bind="repo.generatedData.vscan.infected_files > 0" class="btn btn-secondary btn-sm" id="project-details-header-github-${repo.id}" href="#" click.trigger="displayVScanDialog(repo,$event.target)" target="_blank" aria-label="View project source code on GitHub.">View on Github<i class="material-icons" aria-hidden="true">chevron_right</i></a>
-        </div>
       </div>
     </div>
   </div>

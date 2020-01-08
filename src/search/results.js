@@ -54,29 +54,6 @@ export class Results {
     this.projects = [];
     this.searchDone = false;
 
-    // if (!(params.searchText) || params.searchText === '') {
-    //   this.searchText = 'Everything';
-    //   return this.dataContext.getAll()
-    //     .then(projects => {
-    //       setTimeout(() => {
-    //         this.projects = projects;
-    //         this.resultCount = this.projects.length;
-    //         this.searchDone = true;
-    //         this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'organization');
-    //         this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'language');
-    //         this.rebuildFilterOrg(projects);
-    //         this.rebuildFilterLang(projects);
-    //         this.ariaLabel = this.getResultsAriaLabel(this.resultCount, this.searchText);
-    //         let searchResult = {text: null, count: this.resultCount};
-    //         this.ea.publish('searchExecuted', searchResult);
-    //         const resultsText = document.querySelector('#results-result-text');
-    //         if(resultsText)
-    //           resultsText.focus();
-    //         return this.projects;
-    //       }, 10);
-    //     });
-    // }
-
     this.resultCount = 0;
     this.searchText = params.searchText;
     
