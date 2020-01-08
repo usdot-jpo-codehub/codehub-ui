@@ -163,4 +163,8 @@ export class ProjectDetails {
       }
     });
   }
+
+  goBack() {
+    history.back();
+  }
 }

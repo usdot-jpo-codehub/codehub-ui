@@ -32,10 +32,6 @@ export class ProjectDetailsHeader {
     });
   }
 
-  goBack() {
-    history.back();
-  }
-
   openLeavingSiteConfirmation(name, url, target, bypass) {
     this.exitDialogLinkId = target.getAttribute('id');
     let byp = bypass === undefined ? false : bypass;
