@@ -5,7 +5,6 @@ import { StageConfig } from '../../src/stageConf';
 describe('Test Search Bar : ', () => {
 
   let component;
-  let mockProjectData;
 
   beforeEach( () => {
 

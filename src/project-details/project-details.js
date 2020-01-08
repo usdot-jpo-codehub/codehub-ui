@@ -50,7 +50,6 @@ export class ProjectDetails {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
 
     this.dataContext.findById(params.id).then(repo => {
-      console.log(repo);
       if (!repo) {
         return;
       }

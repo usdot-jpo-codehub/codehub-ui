@@ -24,16 +24,16 @@ describe('Results : ', () => {
   let dtx  = new MockDataContext();
   let viewModel;
   let filters;
-  let mockProjectData;
+  let mockRepositoriesData;
   let searchObject;
   let eventAggregator;
   let dialogService;
 
   beforeEach( () => {
     jasmine.getFixtures().fixturesPath='base/test/mockdata/';
-    mockProjectData = JSON.parse(readFixtures('mock-project-data.json'));
+    mockRepositoriesData = JSON.parse(readFixtures('mock-repositories-data.json'));
 
-    searchObject = {searchText: "asn.1"};
+    searchObject = {searchText: "carma"};
     dtx.responseGetAll = undefined;
     dtx.responseSearch = undefined;
     filters = new Filters();
@@ -59,55 +59,54 @@ describe('Results : ', () => {
   });
 
   it('Validate result text', (done) => {
-    dtx.responseGetAll = mockProjectData;
-    dtx.responseSearch = mockProjectData;
+    dtx.responseGetAll = mockRepositoriesData;
+    dtx.responseSearch = mockRepositoriesData;
     component.create(bootstrap).then(() => {
       component.viewModel.activate(searchObject);
       setTimeout(() => {
         let resultsText = document.querySelector('#results-result-text');
-        expect(resultsText.innerHTML).toEqual('6 results for <strong>asn.1</strong>');
+        expect(resultsText.innerHTML).toEqual('6 results for <strong>carma</strong>');
         done();
       }, 100);
     }).catch( e => { console.log(e.toString())} );
   });
   it('Validate if filters are available', (done) => {
-    dtx.responseGetAll = mockProjectData;
-    dtx.responseSearch = mockProjectData;
+    dtx.responseGetAll = mockRepositoriesData;
+    dtx.responseSearch = mockRepositoriesData;
     component.create(bootstrap).then(() => {
       component.viewModel.activate(searchObject);
       setTimeout(() => {
         let filterOrganization = document.querySelector('#filterOrg');
         let filterLanguage = document.querySelector('#filterOrg');
-        let filterOrigin = document.querySelector('#filterOrg');
-        let ok = filterOrganization && filterLanguage && filterOrigin ? true : false;
+        let ok = filterOrganization && filterLanguage ? true : false;
         expect(ok).toEqual(true);
         done();
       }, 100);
     }).catch( e => { console.log(e.toString())} );
   });
   it('Validate Organization Filter works', (done) => {
-    dtx.responseGetAll = mockProjectData;
-    dtx.responseSearch = mockProjectData;
+    dtx.responseGetAll = mockRepositoriesData;
+    dtx.responseSearch = mockRepositoriesData;
     component.create(bootstrap).then(() => {
       component.viewModel.activate(searchObject);
       setTimeout(() => {
-        $('#filterOrg').multiselect('select', ['fedspendingtransparency']);
+        $('#filterOrg').multiselect('select', ['usdot-fhwa-stol']);
         $('#filterOrg').trigger('change');
-        expect(component.viewModel.resultCount).toEqual(5);
+        expect(component.viewModel.resultCount).toEqual(2);
         done();
       }, 100);
     }).catch( e => { console.log(e.toString())} );
   });
   it('Validate Organization Filter creates pill', (done) => {
-    dtx.responseGetAll = mockProjectData;
-    dtx.responseSearch = mockProjectData;
+    dtx.responseGetAll = mockRepositoriesData;
+    dtx.responseSearch = mockRepositoriesData;
     component.create(bootstrap).then(() => {
       component.viewModel.activate(searchObject);
-      let filterValue = 'fedspendingtransparency';
+      let filterValue = 'usdot-fhwa-stol';
       setTimeout(() => {
         $('#filterOrg').multiselect('select', [filterValue]);
         $('#filterOrg').trigger('change');
-        component.viewModel.setupFilterOrigin();
+        component.viewModel.setupFilterOrg();
         setTimeout(() => {
           let v = document.getElementsByClassName('stage-chip');
           expect(v.length).toBeGreaterThan(0, 'No pills were created.');
@@ -119,12 +118,12 @@ describe('Results : ', () => {
     }).catch( e => { console.log(e.toString())} );
   });
   it('Validate Language Filter works', (done) => {
-    dtx.responseGetAll = mockProjectData;
-    dtx.responseSearch = mockProjectData;
+    dtx.responseGetAll = mockRepositoriesData;
+    dtx.responseSearch = mockRepositoriesData;
     component.create(bootstrap).then(() => {
       component.viewModel.activate(searchObject);
       setTimeout(() => {
-        $('#filterLang').multiselect('select', ['Python']);
+        $('#filterLang').multiselect('select', ['Java']);
         $('#filterLang').trigger('change');
         expect(component.viewModel.resultCount).toEqual(2);
         done();
@@ -132,15 +131,15 @@ describe('Results : ', () => {
     }).catch( e => { console.log(e.toString())} );
   });
   it('Validate Language Filter creates pill', (done) => {
-    dtx.responseGetAll = mockProjectData;
-    dtx.responseSearch = mockProjectData;
+    dtx.responseGetAll = mockRepositoriesData;
+    dtx.responseSearch = mockRepositoriesData;
     component.create(bootstrap).then(() => {
       component.viewModel.activate(searchObject);
-      let filterValue = 'Python';
+      let filterValue = 'Java';
       setTimeout(() => {
         $('#filterLang').multiselect('select', [filterValue]);
         $('#filterLang').trigger('change');
-        component.viewModel.setupFilterOrigin();
+        component.viewModel.setupFilterLang();
         setTimeout(() => {
           let v = document.getElementsByClassName('stage-chip');
           expect(v.length).toBeGreaterThan(0, 'No pills were created.');
@@ -149,39 +148,6 @@ describe('Results : ', () => {
           done();
         }, 100);
 
-      }, 100);
-    }).catch( e => { console.log(e.toString())} );
-  });
-  it('Validate Origin Filter works', (done) => {
-    dtx.responseGetAll = mockProjectData;
-    dtx.responseSearch = mockProjectData;
-    component.create(bootstrap).then(() => {
-      component.viewModel.activate(searchObject);
-      setTimeout(() => {
-        $('#filterOrigin').multiselect('select', ['PRIVATE']);
-        $('#filterOrigin').trigger('change');
-        expect(component.viewModel.resultCount).toEqual(1);
-        done();
-      }, 100);
-    }).catch( e => { console.log(e.toString())} );
-  });
-  it('Validate Language Filter creates pill', (done) => {
-    dtx.responseGetAll = mockProjectData;
-    dtx.responseSearch = mockProjectData;
-    component.create(bootstrap).then(() => {
-      component.viewModel.activate(searchObject);
-      let filterValue = 'PRIVATE';
-      setTimeout(() => {
-        $('#filterOrigin').multiselect('select', [filterValue]);
-        $('#filterOrigin').trigger('change');
-        component.viewModel.setupFilterOrigin();
-        setTimeout(() => {
-          let v = document.getElementsByClassName('stage-chip');
-          expect(v.length).toBeGreaterThan(0, 'No pills were created.');
-          let hasPill = v[0].innerHTML.includes(filterValue);
-          expect(hasPill).toEqual(true);
-          done();
-        }, 100);
       }, 100);
     }).catch( e => { console.log(e.toString())} );
   });
