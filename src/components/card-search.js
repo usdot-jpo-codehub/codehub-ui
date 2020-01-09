@@ -25,7 +25,7 @@ export class CardSearch {
         });
       }
 
-      if (modelData.releases) {
+      if (modelData.sourceData.releases) {
         this.releases = modelData.sourceData.releases;
       }
       if (modelData.generatedData.vscan && modelData.generatedData.vscan.infected_files) {
