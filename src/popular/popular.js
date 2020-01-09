@@ -51,12 +51,8 @@ export class Popular {
         this.searchingPopular = false;
         return this.projects;
       }
-
-      setTimeout(() => {
-        this.projects = results;
-        this.searchingPopular = false;
-        return this.projects;
-      }, 10);
+      this.projects = results;
+      this.searchingPopular = false;
     });
 
     this.searchingFeatured = true;
@@ -65,57 +61,19 @@ export class Popular {
         this.searchingFeatured = false;
         return this.featured;
       }
-
-      setTimeout(() => {
-        this.featured = results;
-        this.searchingFeatured = false;
-        return this.featured;
-      }, 20);
+      this.featured = results;
+      this.searchingFeatured = false;
     });
 
+    this.searchingHealthiest = true;
     this.dataContext.findHealthiest().then((results) => {
-      // Injecting project_description and organizationUrl.
-      if (results && results.length > 0) {
-        this.searchingHealthiest = true;
-        // removing invalid elements
-        let filterRes = results.filter((x => { return x && x.id }));
-        let mapIds = filterRes.map((x) => x.id);
-        if (mapIds && mapIds.length > 0) {
-          this.dataContext.findByIds(mapIds).then((resp) => {
-            if (resp) {
-              filterRes.forEach((element) => {
-                let proj = resp.find(x => x.id === element.id);
-                if (proj) {
-                  element.project_description = proj.project_description;
-                  element.organizationUrl = proj.organizationUrl;
-                  element.content = proj.content;
-                  element.badges = proj.badges;
-                  element.sonarlink = `${this.stageConfig.SONARQUBE_ADDRESS}/dashboard/index/${proj.organization}_${proj.project_name}`;
-                  this.healthiest.push(element);
-                }
-              });
-            }
-            this.searchingHealthiest = false;
-          });
-        }
+      if(!results) {
+        this.searchingHealthiest = false;
+        return this.healthiest;
       }
+      this.healthiest = results;
+      this.searchingHealthiest = false;
     });
-  }
-
-  sortByFeaturedIds(data, fp) {
-    let result = [];
-    fp.forEach((key) => {
-      let found = false;
-      data.filter((item) => {
-          if(!found && item.id == key) {
-              result.push(item);
-              found = true;
-              return false;
-          } else
-              return true;
-      })
-    })
-    return result;
   }
 
   activate() {
@@ -151,7 +109,7 @@ export class Popular {
 
   displayVScanDialog(repo, target) {
     this.exitDialogLinkId = target.getAttribute('id');
-    this.dialogService.open({ viewModel: VScanModal, model: repo, lock: false }).whenClosed(reponse => {
+    this.dialogService.open({ viewModel: VScanModal, model: repo, lock: false }).whenClosed(response => {
       const element = document.querySelector('#' + this.exitDialogLinkId);
       if (element) {
         element.focus();

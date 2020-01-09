@@ -13,7 +13,6 @@
             <div class="col-lg-9 col-md-9 col-sm-9">
               <select id="filterOrg" multiple="multiple"></select>
               <select id="filterLang" multiple="multiple"></select>
-              <select id="filterOrigin" multiple="multiple"></select>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3">
               <compose view="../components/sorting.html"></compose>
@@ -30,15 +29,12 @@
         <div class="col-lg-12 col-chips">
           <ul class='list-inline'>
             <li><span class="project-counter">Projects</span> <span id="explore-projects-count">(${resultCount})</span></li>
-            <template if.bind="!filterLangEmpty || !filterOrgEmpty || !filterOriginEmpty">
+          <template if.bind="!filterLangEmpty || !filterOrgEmpty ">
               <li if.bind="!filterLangEmpty" repeat.for="pill of filters.selectedLanguages">
-                <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'language', pill)})</small> <a href="#" click.trigger="removePill('#filterLang',pill)"><em class="material-icons">close</em></a></span>
+              <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'sourceData.language', pill)})</small> <a href="#" click.trigger="removePill('#filterLang',pill)"><em class="material-icons">close</em></a></span>
               </li>
               <li if.bind="!filterOrgEmpty" repeat.for="pill of filters.selectedOrganizations">
-                <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'organization', pill)})</small> <a href="#" click.trigger="removePill('#filterOrg',pill)"><em class="material-icons">close</em></a></span>
-              </li>
-              <li if.bind="!filterOriginEmpty" repeat.for="pill of filters.selectedOrigins">
-                <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'origin', pill)})</small> <a href="#" click.trigger="removePill('#filterOrigin',pill)"><em class="material-icons">close</em></a></span>
+              <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'sourceData.owner.name', pill)})</small> <a href="#" click.trigger="removePill('#filterOrg',pill)"><em class="material-icons">close</em></a></span>
               </li>
               <li>
                 <a class="clear-btn" href="#" click.delegate="clearAllFilters()">Clear All</a>
@@ -66,9 +62,8 @@
             <div class="row"
               virtual-repeat.for="repo of projects |
               sort: { propertyName: selectedSort, direction: sortDirection} |
-              filter: { propertyName: 'organization', filterArray: filters.selectedOrganizations}:filters.selectedOrganizations.length |
-              filter: { propertyName: 'language', filterArray: filters.selectedLanguages}:filters.selectedLanguages.length |
-              filter: { propertyName: 'origin', filterArray: filters.selectedOrigins}:filters.selectedOrigins.length |
+              filter: { propertyName: 'sourceData.owner.name', filterArray: filters.selectedOrganizations}:filters.selectedOrganizations.length |
+              filter: { propertyName: 'sourceData.language', filterArray: filters.selectedLanguages}:filters.selectedLanguages.length |
               chunk: 3">
                 <compose view-model="../components/card" if.bind="repo[0]" model.bind="repo[0]"></compose>
                 <compose view-model="../components/card" if.bind="repo[1]" model.bind="repo[1]"></compose>

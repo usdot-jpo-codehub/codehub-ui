@@ -49,11 +49,11 @@ export class ReadmeModal {
 
   @computedFrom('repo.content')
   get content() {
-    let c = this.repo.content ? this.repo.content : NO_README_MESSAGE;
+    let c = this.repo.sourceData.readme.content ? this.repo.sourceData.readme.content : NO_README_MESSAGE;
     return c;
   }
   get hascontent() {
-    return this.repo.content ? true : false;
+    return this.repo.sourceData.readme.content ? true : false;
   }
 
   navigateAndClose() {

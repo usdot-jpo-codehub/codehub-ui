@@ -1,0 +1,55 @@
+{
+  "numberOfOrganizations": 3,
+  "numberOfProjects": 6,
+  "bugsVulnerabilities": 430,
+  "technicalDebt": 131908,
+  "organizations": [
+    "Trihydro",
+    "usdot-jpo-ode",
+    "usdot-fhwa-stol"
+  ],
+  "languageCountsStat": {
+    "Java": 2,
+    "CSS": 2,
+    "C": 1,
+    "JavaScript": 1
+  },
+  "languagePercentageStat": {
+    "Java": 33.333336,
+    "CSS": 33.333336,
+    "C": 16.666668,
+    "JavaScript": 16.666668
+  },
+  "metricsSummary": {
+    "releasibility": {
+      "values": {}
+    },
+    "reliability": {
+      "values": {
+        "A": 2,
+        "B": 0,
+        "C": 2,
+        "D": 2,
+        "E": 0
+      }
+    },
+    "security": {
+      "values": {
+        "A": 2,
+        "B": 0,
+        "C": 1,
+        "D": 1,
+        "E": 2
+      }
+    },
+    "maintainability": {
+      "values": {
+        "A": 5,
+        "B": 1,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      }
+    }
+  }
+}

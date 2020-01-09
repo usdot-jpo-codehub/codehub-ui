@@ -46,21 +46,19 @@ export class Insight {
   getData(organization) {
     if (organization === 'All') {
       return Promise.all([
-        this.dataContext.findEnterpriseInsight(),
-        this.dataContext.getAll()]).then((values) => {
+        this.dataContext.getMetrics(null),
+        this.dataContext.getRepositories(null)]).then((values) => {
           this.insights = values[0];
           this.projects = values[1];
 
-          this.buildOrganizations(this.projects).then( orgs => {
-            this.organizations = orgs;
-          });
+          this.organizations = this.buildOrganizations(this.insights.organizations);
 
           this.prepareInsightData(this.insights, this.projects);
         });
     } else {
       return Promise.all([
-        this.dataContext.findEnterpriseInsightByOrganization(this.selectedOrganization.name),
-        this.dataContext.getProjectsByOrganization(this.selectedOrganization.name)]).then((values) => {
+        this.dataContext.getMetrics(this.selectedOrganization.name),
+        this.dataContext.getRepositories(this.selectedOrganization.name)]).then((values) => {
           this.insights = values[0];
           this.projects = values[1];
 
@@ -97,13 +95,13 @@ export class Insight {
     return new Promise((resolve, reject) => {
       try {
         projects.sort((a, b) => {
-          if (b.forkedRepos && a.forkedRepos) {
-            return Number(b.forkedRepos.length) - Number(a.forkedRepos.length);
+          if (b.sourceData.forks.forkedRepos && a.sourceData.forks.forkedRepos) {
+            return Number(b.sourceData.forks.forkedRepos.length) - Number(a.sourceData.forks.forkedRepos.length);
           }
-          if (b.forkedRepos) {
+          if (b.sourceData.forks.forkedRepos) {
             return 1;
           }
-          if (a.forkedRepos) {
+          if (a.sourceData.forks.forkedRepos) {
             return -1;
           }
           return null;
@@ -136,7 +134,7 @@ export class Insight {
   buildChartMostUsed(insights) {
     const calc = new Promise((resolve, reject) => {
       // Pie Chart
-      let mul = insights.language_counts_stat;
+      let mul = insights.languageCountsStat;
       mul = Object.entries(mul);
       mul.sort(this.multiArraySecondColumnDesc);
       mul = mul.filter(x => x[1] != 0);
@@ -262,10 +260,10 @@ export class Insight {
 
   buildChartLanguages(insights) {
     const calc = new Promise((resolve, reject) => {
-      const list = this.insights.language_counts_stat;
+      const list = this.insights.languageCountsStat;
       let arr1 = Object.keys(list).sort((a, b) => list[a] - list[b]);
       arr1 = arr1.slice(-10);
-      let arr2 = arr1.map(k => this.insights.language_counts_stat[k]);
+      let arr2 = arr1.map(k => this.insights.languageCountsStat[k]);
       arr2 = arr2.slice(-10);
       const result = this.filterZeroStats(arr1, arr2);
       resolve(result);
@@ -360,8 +358,8 @@ export class Insight {
 
   buildChartForks(projects) {
     const calc = new Promise((resolve, reject) => {
-      const forkProjectNames = projects.map(obj => obj.project_name);
-      const forkAmount = projects.map(obj => obj.forkedRepos.length);
+      const forkProjectNames = projects.map(obj => obj.sourceData.name);
+      const forkAmount = projects.map(obj => obj.sourceData.forks.forkedRepos.length);
       const result = { forkProjectNames, forkAmount };
       resolve(result);
     });
@@ -456,11 +454,11 @@ export class Insight {
 
   buildChartHealth(projects) {
     const calc = new Promise((resolve, reject) => {
-      const reliabilityData = this.getDataForRadarChart(this.insights.metrics_summary.reliability);
+      const reliabilityData = this.getDataForRadarChart(this.insights.metricsSummary.reliability.values);
       const maxReliability = reliabilityData && reliabilityData.length > 0 ? Math.max(...reliabilityData) : 10;
-      const securityData = this.getDataForRadarChart(this.insights.metrics_summary.security);
+      const securityData = this.getDataForRadarChart(this.insights.metricsSummary.security.values);
       const maxSecurity = securityData && securityData.length > 0 ? Math.max(...securityData) : 10;
-      const maintainabilityData = this.getDataForRadarChart(this.insights.metrics_summary.maintainability);
+      const maintainabilityData = this.getDataForRadarChart(this.insights.metricsSummary.maintainability.values);
       const maxMaintainability = maintainabilityData && maintainabilityData.length > 0 ? Math.max(...maintainabilityData) : 10;
 
       const result = {
@@ -471,7 +469,6 @@ export class Insight {
         maintainabilityData,
         maxMaintainability,
       };
-
       resolve(result);
     });
 
@@ -591,7 +588,6 @@ export class Insight {
     Object.keys(obj).forEach((x) => {
       result.push(obj[x]);
     });
-
     return result;
   }
 
@@ -619,18 +615,15 @@ export class Insight {
     }
   }
 
-  buildOrganizations(projects) {
-    return new Promise((resolve, reject) => {
-      let orgs = this.filters.getUniqueValues(projects, 'organization');
-      orgs.sort();
-      let organizations = [];
-      let allName = 'All'+(orgs.length > 0 ? ' ('+orgs.length+')' : '');
-      organizations.push({id:0, name: allName});
-      for(let i=0; i<orgs.length; i++) {
-        organizations.push({ id: i+1, name: orgs[i] });
-      }
-      resolve(organizations);
-    });
+  buildOrganizations(orgs) {
+    orgs.sort();
+    let organizations = [];
+    let allName = 'All'+(orgs.length > 0 ? ' ('+orgs.length+')' : '');
+    organizations.push({id:0, name: allName});
+    for(let i=0; i<orgs.length; i++) {
+      organizations.push({ id: i+1, name: orgs[i] });
+    }
+    return organizations;
   }
 
   organizationChanged(selectedOrganization) {

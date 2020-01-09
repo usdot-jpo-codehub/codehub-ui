@@ -10,11 +10,11 @@ import { StageConfig } from '../../src/stageConf';
 
 // Mocking Class DataContext (service)
 export class MockDataContext {
-  responseFindEnterpriseInsight = undefined;
-  responseGetAll = undefined;
+  responseMetrics = undefined;
+  responseRepositories = undefined;
 
-  findEnterpriseInsight() { return Promise.resolve(this.responseFindEnterpriseInsight) }
-  getAll() {return Promise.resolve(this.responseGetAll) }
+  getMetrics() { return Promise.resolve(this.responseMetrics) }
+  getRepositories() {return Promise.resolve(this.responseRepositories) }
 }
 
 describe('Insight : ', () => {
@@ -29,11 +29,11 @@ describe('Insight : ', () => {
 
   beforeEach( () => {
     jasmine.getFixtures().fixturesPath='base/test/mockdata/';
-    mockDataInsightFindEnterpriseInsight = JSON.parse(readFixtures('mock-data-insight-findEnterpriseInsight.json'));
-    mockDataInsightGetAll = JSON.parse(readFixtures('mock-data-insight-getAll.json'));
+    mockDataInsightFindEnterpriseInsight = JSON.parse(readFixtures('mock-metrics-data.json'));
+    mockDataInsightGetAll = JSON.parse(readFixtures('mock-repositories-data.json'));
 
-    dctx.responseFindEnterpriseInsight = undefined;
-    dctx.responseGetAll = undefined;
+    dctx.responseMetrics = undefined;
+    dctx.responseRepositories = undefined;
     router = {};
     dialogService = {};
     viewModel = new Insight(dctx, router, dialogService, stageConfig);
@@ -53,8 +53,8 @@ describe('Insight : ', () => {
   });
 
   it('Expect number of Organizations', (done) => {
-    dctx.responseFindEnterpriseInsight = mockDataInsightFindEnterpriseInsight;
-    dctx.responseGetAll = mockDataInsightGetAll;
+    dctx.responseMetrics = mockDataInsightFindEnterpriseInsight;
+    dctx.responseRepositories = mockDataInsightGetAll;
 
     component.create(bootstrap).then( () => {
       component.viewModel.activate();
@@ -62,7 +62,7 @@ describe('Insight : ', () => {
         const element = document.querySelector('#id-organization');
         let txt = element.options[element.selectedIndex].text;
         const num = new NumValueConverter();
-        let orgs = num.toView(mockDataInsightFindEnterpriseInsight.number_of_organizations);
+        let orgs = num.toView(mockDataInsightFindEnterpriseInsight.numberOfOrganizations);
         let expected = 'All'+(orgs>0 ? ' ('+orgs+')' : '');
         expect(expected).toEqual(txt);
         done();
@@ -72,15 +72,15 @@ describe('Insight : ', () => {
   });
 
   it('Expect number of Projects', (done) => {
-    dctx.responseFindEnterpriseInsight = mockDataInsightFindEnterpriseInsight;
-    dctx.responseGetAll = mockDataInsightGetAll;
+    dctx.responseMetrics = mockDataInsightFindEnterpriseInsight;
+    dctx.responseRepositories = mockDataInsightGetAll;
 
     component.create(bootstrap).then( () => {
       component.viewModel.activate();
       setTimeout(() => {
         const element = document.querySelector('#number-of-projects');
         const num = new NumValueConverter();
-        expect(element.innerHTML).toEqual(''+num.toView(mockDataInsightFindEnterpriseInsight.number_of_projects));
+        expect(element.innerHTML).toEqual(''+num.toView(mockDataInsightFindEnterpriseInsight.numberOfProjects));
         done();
       }, 10);
 
@@ -88,15 +88,15 @@ describe('Insight : ', () => {
   });
 
   it('Expect number of Bugs and Vulnerabilities', (done) => {
-    dctx.responseFindEnterpriseInsight = mockDataInsightFindEnterpriseInsight;
-    dctx.responseGetAll = mockDataInsightGetAll;
+    dctx.responseMetrics = mockDataInsightFindEnterpriseInsight;
+    dctx.responseRepositories = mockDataInsightGetAll;
 
     component.create(bootstrap).then( () => {
       component.viewModel.activate();
       setTimeout(() => {
         const element = document.querySelector('#bugs-vulnerabilities');
         const num = new NumValueConverter();
-        expect(element.innerHTML).toEqual(''+num.toView(mockDataInsightFindEnterpriseInsight.bugs_vulnerabilities,1));
+        expect(element.innerHTML).toEqual(''+num.toView(mockDataInsightFindEnterpriseInsight.bugsVulnerabilities,1));
         done();
       }, 10);
 
@@ -104,15 +104,15 @@ describe('Insight : ', () => {
   });
 
   it('Expect number of Technical Debt', (done) => {
-    dctx.responseFindEnterpriseInsight = mockDataInsightFindEnterpriseInsight;
-    dctx.responseGetAll = mockDataInsightGetAll;
+    dctx.responseMetrics = mockDataInsightFindEnterpriseInsight;
+    dctx.responseRepositories = mockDataInsightGetAll;
 
     component.create(bootstrap).then( () => {
       component.viewModel.activate();
       setTimeout(() => {
         const element = document.querySelector('#technical-debt');
         const duration = new DurationValueConverter();
-        expect(element.innerHTML).toEqual(''+duration.toView(mockDataInsightFindEnterpriseInsight.technical_debt));
+        expect(element.innerHTML).toEqual(''+duration.toView(mockDataInsightFindEnterpriseInsight.technicalDebt));
         done();
       }, 10);
 
@@ -120,8 +120,8 @@ describe('Insight : ', () => {
   });
 
   it('Expect Most Used Languages Chart to be created', (done) => {
-    dctx.responseFindEnterpriseInsight = mockDataInsightFindEnterpriseInsight;
-    dctx.responseGetAll = mockDataInsightGetAll;
+    dctx.responseMetrics = mockDataInsightFindEnterpriseInsight;
+    dctx.responseRepositories = mockDataInsightGetAll;
 
     component.create(bootstrap).then( () => {
       component.viewModel.activate();
@@ -135,13 +135,13 @@ describe('Insight : ', () => {
   });
 
   it('Expect Most Used Languages Chart Data', (done) => {
-    dctx.responseFindEnterpriseInsight = mockDataInsightFindEnterpriseInsight;
-    dctx.responseGetAll = mockDataInsightGetAll;
+    dctx.responseMetrics = mockDataInsightFindEnterpriseInsight;
+    dctx.responseRepositories = mockDataInsightGetAll;
 
     component.create(bootstrap).then( () => {
       component.viewModel.activate();
       setTimeout(() => {
-        let langStats = mockDataInsightFindEnterpriseInsight.language_counts_stat;
+        let langStats = mockDataInsightFindEnterpriseInsight.languageCountsStat;
         langStats = Object.entries(langStats);
         langStats.sort(component.viewModel.multiArraySecondColumnDesc);
         const result = langStats.slice(0,5);
@@ -161,8 +161,8 @@ describe('Insight : ', () => {
   });
 
   it('Expect Top Projects by Forks Chart to be created', (done) => {
-    dctx.responseFindEnterpriseInsight = mockDataInsightFindEnterpriseInsight;
-    dctx.responseGetAll = mockDataInsightGetAll;
+    dctx.responseMetrics = mockDataInsightFindEnterpriseInsight;
+    dctx.responseRepositories = mockDataInsightGetAll;
 
     component.create(bootstrap).then( () => {
       component.viewModel.activate();
@@ -176,13 +176,13 @@ describe('Insight : ', () => {
   });
 
   it('Expect Top Projects by Forks Chart Data', (done) => {
-    dctx.responseFindEnterpriseInsight = mockDataInsightFindEnterpriseInsight;
-    dctx.responseGetAll = mockDataInsightGetAll;
+    dctx.responseMetrics = mockDataInsightFindEnterpriseInsight;
+    dctx.responseRepositories = mockDataInsightGetAll;
 
     component.create(bootstrap).then( () => {
       component.viewModel.activate();
       setTimeout(() => {
-        let forkAmount = mockDataInsightGetAll.map( x => x.forkedRepos.length).reverse();
+        let forkAmount = mockDataInsightGetAll.map( x => x.sourceData.forks.forkedRepos.length).reverse();
         const chartData = component.viewModel.mfChart._api.getOption().series[0].data;
         expect(chartData.length).toEqual(forkAmount.length);
         let expected ='';
@@ -199,8 +199,8 @@ describe('Insight : ', () => {
   });
 
   it('Expect Projects by Languages Chart to be created', (done) => {
-    dctx.responseFindEnterpriseInsight = mockDataInsightFindEnterpriseInsight;
-    dctx.responseGetAll = mockDataInsightGetAll;
+    dctx.responseMetrics = mockDataInsightFindEnterpriseInsight;
+    dctx.responseRepositories = mockDataInsightGetAll;
 
     component.create(bootstrap).then( () => {
       component.viewModel.activate();
@@ -214,15 +214,15 @@ describe('Insight : ', () => {
   });
 
   it('Expect Projects by Languages Chart Data', (done) => {
-    dctx.responseFindEnterpriseInsight = mockDataInsightFindEnterpriseInsight;
-    dctx.responseGetAll = mockDataInsightGetAll;
+    dctx.responseMetrics = mockDataInsightFindEnterpriseInsight;
+    dctx.responseRepositories = mockDataInsightGetAll;
 
     component.create(bootstrap).then( () => {
       component.viewModel.activate();
       setTimeout(() => {
-        const list = mockDataInsightFindEnterpriseInsight.language_counts_stat;
+        const list = mockDataInsightFindEnterpriseInsight.languageCountsStat;
         let arr1 = Object.keys(list).sort((a, b) => list[a] - list[b]);
-        const expectedData = arr1.map(k => mockDataInsightFindEnterpriseInsight.language_counts_stat[k]).slice(-6);
+        const expectedData = arr1.map(k => mockDataInsightFindEnterpriseInsight.languageCountsStat[k]).slice(-6);
         const chartData = component.viewModel.mulChart._api.getOption().series[0].data;
         expect(chartData.length).toEqual(expectedData.length);
         let expected ='';
@@ -240,8 +240,8 @@ describe('Insight : ', () => {
   });
 
   it('Expect Overall Source Code Health Chart to be created', (done) => {
-    dctx.responseFindEnterpriseInsight = mockDataInsightFindEnterpriseInsight;
-    dctx.responseGetAll = mockDataInsightGetAll;
+    dctx.responseMetrics = mockDataInsightFindEnterpriseInsight;
+    dctx.responseRepositories = mockDataInsightGetAll;
 
     component.create(bootstrap).then( () => {
       component.viewModel.activate();
@@ -255,21 +255,21 @@ describe('Insight : ', () => {
   });
 
   it('Validate Overall Source Code Health Chart Data', (done) => {
-    dctx.responseFindEnterpriseInsight = mockDataInsightFindEnterpriseInsight;
-    dctx.responseGetAll = mockDataInsightGetAll;
+    dctx.responseMetrics = mockDataInsightFindEnterpriseInsight;
+    dctx.responseRepositories = mockDataInsightGetAll;
 
     component.create(bootstrap).then( () => {
       component.viewModel.activate();
       setTimeout(() => {
-        const expReliabilityData = component.viewModel.getDataForRadarChart(mockDataInsightFindEnterpriseInsight.metrics_summary.reliability);
-        const expSecurityData = component.viewModel.getDataForRadarChart(mockDataInsightFindEnterpriseInsight.metrics_summary.security);
-        const expMaintainabilityData = component.viewModel.getDataForRadarChart(mockDataInsightFindEnterpriseInsight.metrics_summary.maintainability);
+        const expReliabilityData = component.viewModel.getDataForRadarChart(mockDataInsightFindEnterpriseInsight.metricsSummary.reliability.values);
+        const expSecurityData = component.viewModel.getDataForRadarChart(mockDataInsightFindEnterpriseInsight.metricsSummary.security.values);
+        const expMaintainabilityData = component.viewModel.getDataForRadarChart(mockDataInsightFindEnterpriseInsight.metricsSummary.maintainability.values);
 
         const crtReliabilityData = component.viewModel.myChart2._api.getOption().series[0].data[0].value;
         const crtSecurityData = component.viewModel.myChart2._api.getOption().series[1].data[0].value;
         const crtMaintainabilityData = component.viewModel.myChart2._api.getOption().series[2].data[0].value;
 
-        expect(expReliabilityData.length).toEqual(crtReliabilityData.length, 'Unexpected Reliability data length');        
+        expect(expReliabilityData.length).toEqual(crtReliabilityData.length, 'Unexpected Reliability data length');
         let expected ='';
         let realdata = '';
         for(let i = 0; i<expReliabilityData.length; i++) {
@@ -303,6 +303,8 @@ describe('Insight : ', () => {
   });
 
   it('Expect multiArraySecondColumnDesc sort the an array of arrays by the second column in descending order.', (done) => {
+    dctx.responseMetrics = mockDataInsightFindEnterpriseInsight;
+    dctx.responseRepositories = mockDataInsightGetAll;
     component.create(bootstrap).then( () => {
 
       const mockData = [['C++', 1], ['C#', 2], ['Java', 3]];
@@ -315,6 +317,8 @@ describe('Insight : ', () => {
   });
 
   it('Expect getDataForRadarChart return an array of values from a key-value object.', (done) => {
+    dctx.responseMetrics = mockDataInsightFindEnterpriseInsight;
+    dctx.responseRepositories = mockDataInsightGetAll;
     component.create(bootstrap).then( () => {
 
       const mockData = {'A': 1, 'B': 2, 'C': 3};

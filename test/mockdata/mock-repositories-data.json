@@ -1,0 +1,1355 @@
+[
+  {
+    "id": "0b5a091ecae902be1f8ae33fc0081218",
+    "sourceData": {
+      "commits": 1,
+      "stars": 3,
+      "watchers": 4,
+      "description": "The open source code base for the WYDOT CV Resource Manager, a web application that aids in documenting participants, vehicles and equipment over the course of the WYDOT CV Pilot Project.",
+      "language": "CSS",
+      "name": "cvrm",
+      "repositoryUrl": "https://github.com/Trihydro/cvrm",
+      "createdAt": "2018-05-02T20:57:25.000+0000",
+      "lastPush": null,
+      "owner": {
+        "avatarUrl": "https://avatars1.githubusercontent.com/u/2973053?v=4",
+        "name": "Trihydro",
+        "type": "Organization",
+        "url": "https://github.com/Trihydro"
+      },
+      "readme": {
+        "content": "# Connected Vehicle Resource Manager\nThis application was developed with the support of the USDOT ITS Joint Program Office.\n\n## Description\n\nThis application provides a website to manage resources associated with a Connected Vehicle project. The website provides a series of forms to enter and view resources such as participants, training courses, vehicles and devices that are part of the project. Graphs showing resource usage and device deployment are provided in the website. Role based access restrictions limit the visibility of data to specific user roles. \n\nThe application consists of a website, a REST service and a backend database. The website and REST service are secured using ssl security. User login security is provided using the Auth0 identity platform.\n\n## Release Notes\n\n### Iteration 5\n- Improved email styling on user invites\n- Now housing service enpoints and website access in SSL environments \n- Data redaction implemented for users without permissions to view PII across the website\n\n### Iteration 4\n- Integrated User Roles and their access levels across the site per page. \n- Added a user settigns page for resetting a ones's password\n- Implemented super user pages for user with elevated permissions to edit, block, and invite other users.\n- Developed user creation functionality that emails invited users and allows them to reset their password among first logging in. \n- Integrated securty across the site using Auth0 to handle endpoint authorization, page permissions, and login/logout functionality.\n\n### Iteration 3\n- Implemented the functionality to add/edit/delete training courses.\n- Developed an interactive dashboard to provide snapshots of information regarding participant training statuses, vehicles in use, and deployed equipment. \n- Added the ability to add and remove training for participants and the current status of each course per participant.\n\n### Iteration 2\n- Implemented the functionality to add/edit/delete participants and vehicles.\n- Integrated feedback to remove vehicle types, expand vehicle classes, add notes fields to vehicles and equipment, and added VIN numbers to vehicles. \n\n### Iteration 1\n- Implemented the functionality to add/edit/delete equipment and equipment components.\n\n## Getting Started\n\n### Prerequisites\nMySQL\n\nAuth0 Authentication Account\n\n### Instructions\n\nThe follwing instructions describe the processes to download, build, and run the website.\n\n#### Downloading the source code\n\n**Step 1**: Clone the solution from GitHub using:\n\n```bash\ngit clone https://github.com/Trihydro/cvrm.git\n```\n\n**Step 2**: Start MySQL in a terminal\n\n**Step 3**: Create the database in MySQL\n\n```bash\nmysql> create database cvpt;\n```\n\n**Step 4**: Create database tables with script\n\n```bash\nmysql> use cvpt;\nmysql> source <project install location>/data/cvptdbcreate;\n```\n\n**Step 5**: Replace all instances of &lt;username&gt; and &lt;password&gt; the file cvrm/data/testData.loadData.cmd with your MySQL username and password. \nReplace the instances of &lt;db-username&gt; and &lt;db-password&gt; in the file cvrm/service/src/main/resources/application.properties with your MySQL username and password.\n\n\n**Step 6**: Load test data in DOS/Bash terminal\n```bash\ncd cvrm/data/data/testData\nloadData.cmd\n```\n\n**Step 7**: Create the user for the database in MySQL shell\n\n```bash\nmysql> CREATE USER 'cvpt-user'@'localhost' IDENTIFIED BY 'cvptuser';\nmysql> GRANT ALL PRIVILEGES ON cvpt . * TO 'cvpt-user'@'localhost';\n```\n\n**Step 8**: Set up an Auth0 account with a Single Page Application service for the website logins and a Machine to Machine service for the web site to connect with the REST service. Record the Client Id, ClientSecret for the Single Page Application service and ApiClientId, ApiClientSecret for the Machine to Machine service. \n\n**Step 9**: Replace instances of the &lt;auth0-Domain&gt;, &lt;auth0-Issuer&gt;,&lt;auth0-ClientId&gt;, &lt;auth0-ClientSecret&gt;, &lt;auth0-ApiClientId&gt;, and &lt;auth0-ApiClientSecret&gt; found in the file cvrm/service/src/main/resources/auth0.properties with corresponding values returned from your Auth0 configuration.\n\n**Step 10**: For ssl security set up a Java Key Store with appropriate certificates for the selected domain name. Create the Java Key Store as the file cvrm/service/src/main/resources/cvrmServerKeyStore.jks. \n\n**Step 11**: Replace the instances of &lt;key-store-password&gt; and &lt;ssl-alias&gt; found in the file cvrm/service/src/main/resources/application.properties with values set up for your Java Key Store and domain. \n\n**Step 12**: Replace the instance of &lt;mail-host-ip-address&gt; found in the file cvrm/service/src/main/resources/application.properties with the ip address of the email server that will be used to email user login invitations.\n\n**Step 13**: Replace the image files found in /cvrm/website/src/main/website/src/ with pictures and logos appropriate for your CV project.\n\n**Step 14**: Build the entire project in DOS/Bash terminal\n\n```bash\ncd cvrm\nmvn clean install\n```\n\n**Step 15**: Start the service\n\n```bash\ncd cvrm/service\nmvn spring-boot:run\n```\n\n**Step 16**: Start the website in a separate terminal\n\n```bash\ncd cvrm/website/src/main/website\nnpm start\n```\n\n\n\n\n",
+        "url": "https://api.github.com/repos/Trihydro/cvrm/contents/README.md?ref=master"
+      },
+      "forks": {
+        "forkedRepos": [
+          {
+            "id": "1419354-145517312",
+            "name": "cvrm",
+            "owner": "hfye"
+          }
+        ]
+      },
+      "contributors": [
+        {
+          "avatarUrl": "https://avatars0.githubusercontent.com/u/1120608?v=4",
+          "profileUrl": "https://github.com/kimPerry",
+          "userType": "User",
+          "username": "kimPerry"
+        }
+      ],
+      "releases": [],
+      "languages": {
+        "TypeScript": 124853,
+        "Java": 336682,
+        "CSS": 543804,
+        "Batchfile": 1052,
+        "JavaScript": 305046,
+        "PLSQL": 10530,
+        "HTML": 364113
+      }
+    },
+    "generatedData": {
+      "rank": 31,
+      "sonarMetrics": {
+        "bugs": {
+          "frmt_val": "18",
+          "key": "bugs",
+          "val": 18.0
+        },
+        "code_smells": {
+          "frmt_val": "468",
+          "key": "code_smells",
+          "val": 468.0
+        },
+        "reliability_rating": {
+          "frmt_val": "D",
+          "key": "reliability_rating",
+          "val": 4.0
+        },
+        "security_rating": {
+          "frmt_val": "E",
+          "key": "security_rating",
+          "val": 5.0
+        },
+        "sqale_index": {
+          "frmt_val": "5d 7h",
+          "key": "sqale_index",
+          "val": 2871.0
+        },
+        "sqale_rating": {
+          "frmt_val": "A",
+          "key": "sqale_rating",
+          "val": 1.0
+        },
+        "violations": {
+          "frmt_val": "502",
+          "key": "violations",
+          "val": 502.0
+        },
+        "vulnerabilities": {
+          "frmt_val": "16",
+          "key": "vulnerabilities",
+          "val": 16.0
+        },
+        "complexity": {
+          "frmt_val": "1,986",
+          "key": "complexity",
+          "val": 1986.0
+        }
+      },
+      "vscan": {
+        "data_scanned": "78.49 MB",
+        "infected_files": 0,
+        "lastscan": "2019-12-06T16:04:07.000+0000",
+        "scanned_directories": 99,
+        "scanned_files": 502,
+        "time": "74.838 sec (1 m 14 s)",
+        "reported_files": []
+      }
+    },
+    "codehubData": {
+      "etag": "N/A",
+      "source": "github",
+      "lastModified": "2019-12-20T21:50:11.000+0000",
+      "lastIngested": null,
+      "badges": {
+        "status": "pending",
+        "isFeatured": false
+      },
+      "isVisible": true,
+      "isIngested": true,
+      "isIngestionEnabled": true
+    }
+  },
+  {
+    "id": "5e4d4c646f94e7f407498436eb726f94",
+    "sourceData": {
+      "commits": 2841,
+      "stars": 49,
+      "watchers": 27,
+      "description": "US Department of Transportation (USDOT) Intelligent Transportation Systems Operational Data Environment (ITS ODE). This is the main repository that integrates and coordinates ODE Submodules.",
+      "language": "Java",
+      "name": "jpo-ode",
+      "repositoryUrl": "https://github.com/usdot-jpo-ode/jpo-ode",
+      "createdAt": "2016-10-26T21:10:46.000+0000",
+      "lastPush": "2019-11-08T14:49:22.000+0000",
+      "owner": {
+        "avatarUrl": "https://avatars2.githubusercontent.com/u/23056647?v=4",
+        "name": "usdot-jpo-ode",
+        "type": "Organization",
+        "url": "https://github.com/usdot-jpo-ode"
+      },
+      "readme": {
+        "content": "| Travis Build Status | Sonar Code Quality | Sonar Code Coverage |\n|---------------------|---------------------|---------------------|\n [![Build Status](https://travis-ci.org/usdot-jpo-ode/jpo-ode.svg?branch=master)](https://travis-ci.org/usdot-jpo-ode/jpo-ode) | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=usdot.jpo.ode%3Ajpo-ode&metric=alert_status)](https://sonarcloud.io/dashboard?id=usdot.jpo.ode%3Ajpo-ode) | [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=usdot.jpo.ode%3Ajpo-ode&metric=coverage)](https://sonarcloud.io/dashboard?id=usdot.jpo.ode%3Ajpo-ode) |\n\n# jpo-ode\n\n**US Department of Transportation (USDOT) Intelligent Transportation Systems (ITS) Joint Program Office (JPO) Operational Data Environemnt (ODE)**\n\nThe ITS ODE is a real-time virtual data router that ingests and processes operational data from various connected devices - including vehicles, infrastructure, and traffic management centers - and distributes it to other devices and subscribing transportation management applications. Using the ITS ODE within intelligent transportation deployments increases data fluidity and interoperability while meeting operational needs and protecting user privacy. The software’s microservices architecture makes it easy to add new capabilities to meet local needs. Check the ITS factsheet for more information: <https://www.its.dot.gov/factsheets/pdf/ITSJPO_ODE.pdf>.\n\n![Figure 1: ODE Dataflows](docs/images/readme/figure1.png)\n\n_Figure 1: ODE Dataflows_\n\n**Documentation:**\n\n1. [ODE Architecture](docs/Architecture.md)\n2. [ODE User Guide](docs/UserGuide.md)\n3. [ODE Output Schema Reference Guide](docs/ODE_Output_Schema_Reference.docx)\n4. [ODE REST API Guide](https://usdot-jpo-ode.github.io/)\n5. [ODE Smoke Tests](https://github.com/usdot-jpo-ode/jpo-ode/wiki/JPO-ODE-QA-Documents)\n\nAll stakeholders are invited to provide input to these documents. To provide feedback, we recommend that you create an \"issue\" in this repository (<https://github.com/usdot-jpo-ode/jpo-ode/issues>). You will need a GitHub account to create an issue. If you don’t have an account, a dialog will be presented to you to create one at no cost.\n\n---\n\n<a name=\"toc\"/>\n\n## Table of Contents\n\n1.  [Usage Example](#usage-example)\n2.  [Configuration](#configuration)\n3.  [Installation](#installation)\n4.  [File Manifest](#file-manifest)\n5.  [Development Setup](#development-setup)\n6.  [Release History](#release-history)\n7.  [Contact Information](#contact-information)\n8.  [Contributing](#contributing)\n9.  [Known Bugs](#known-bugs)\n10. [Credits and Acknowledgement](#credits-and-acknowledgement)\n11. [Code.gov Registration Info](#codegov-registration-info)\n\n<!--\n#########################################\n############# Usage Example #############\n#########################################\n -->\n\n<a name=\"usgage-example\"/>\n\n## 1. Usage Example\n\nOnce the ODE is deployed and running locally, you may access the ODE's demonstration console by opening your browser and navigating to  `http://localhost:8080`.\n\n1.  Press the `Connect` button to connect to the ODE WebSocket service.\n2.  Press `Select File` button to select an OBU log file containing BSMs and/or TIM messages as specified by the WYDOT CV Pilot project. See below documents for details:\n    - [Wyoming CV Pilot Log File Design](data/Wyoming_CV_Pilot_Log_File_Design.docx)\n    - [WYDOT Log Records](data/wydotLogRecords.h)\n3.  Press `Upload` button to upload the file to ODE.\n\nUpload records within the files must be embedding BSM and/or TIM messages wrapped in J2735 MessageFrame and ASN.1 UPER encoded, wrapped in IEEE 1609.2 envelope and ASN.1 COER encoded binary format. Please review the files in the [data](data) folder for samples of each supported type. By uploading a valid data file, you will be able to observe the decoded messages contained within the file appear in the web UI page while connected to the WebSocket interface.\n\nAnother way data can be uploaded to the ODE is through copying the file to the location specified by the `ode.uploadLocationRoot/ode.uploadLocationObuLog`property. If not specified,  Default locations would be `uploads/bsmlog`sub-directory off of the location where ODE is launched.\n\nThe result of uploading and decoding of messages will be displayed on the UI screen.\n\n![ODE UI](docs/images/readme/figure2.png)\n\n_Figure 2: ODE UI demonstrating message subscription_\n\nNotice that the empty fields in the J2735 message are represented by a `null` value. Also note that ODE output strips the MessageFrame header and returns a pure BSM or TIM in the subscription topic.\n\n\nWith the PPM module running, all filtered BSMs that are uploaded through the web interface will be captured and processed. You will see an output of both submitted BSM and processed data unless the entire record was filtered out.\n\n[Back to top](#toc)\n\n<!--\n#########################################\n############# Configuration #############\n#########################################\n -->\n\n<a name=\"configuration\"/>\n\n## 2. Configuration\n\n### System Requirements\n\n-  Minimum RAM: 16 GB\n-  Minimum storage space: 100 GB\n-  Supported operating systems:\n   -  Ubuntu 18.04 Linux (Recommended)\n   -  Windows 10 Professional (Professional version required for Docker virtualization)\n   -  OSX 10 Mojave\n\nThe ODE software can run on most standard Window, Mac, or Linux based computers with\nPentium core processors. Performance of the software will be based on the computing power and available RAM in\nthe system.  Larger data flows can require much larger space requirements depending on the\namount of data being processed by the software. The ODE software application was developed using the open source programming language Java. If running the ODE outside of Docker, the application requires the Java 8 runtime environment.\n\n### Software Prerequisites\n\nThe ODE is bundled as a series of submodules running in Docker containers and managed by Docker-Compose. All other required dependencies will automatically be downloaded and installed as part of the Docker build process.\n\n- Docker: <https://docs.docker.com/engine/installation/>\n- Docker-Compose: <https://docs.docker.com/compose/install/>\n\n### Tips and Advice\n\nRead the following guides to familiarize yourself with ODE's Docker and Kafka modules.\n\n- [Docker README](docker.md)\n- [Kafka README](kafka.md)\n\n**Installation and Deployment:**\n\n- Docker builds may fail if you are on a corporate network due to DNS resolution errors.\n[See here](https://github.com/usdot-jpo-ode/jpo-ode/wiki/Docker-fix-for-SSL-issues-due-to-corporate-network) for instructions to fix this.\n- Additionally `git` commands may fail for similar reasons, you can fix this by running `export GIT_SSL_NO_VERIFY=1`.\n- Windows users may find more information on installing and using Docker [here](https://github.com/usdot-jpo-ode/jpo-ode/wiki/Docker-management).\n- Users interested in Kafka may find more guidance and configuration options [here](docker/kafka/README.md).\n\n**Configuration:**\n\nIf you wish to change the application properties, such as change the location of the upload service via `ode.uploadLocation.*` properties or set the `ode.kafkaBrokers` to something other than the `$DOCKER_HOST_IP:9092`, or wish to change the log file upload folder, etc. instead of setting the environment variables, modify `jpo-ode-svcs\\src\\main\\resources\\application.properties` file as desired.\n\nODE configuration can be customized for every deployment environment using environment variables. These variables can either be set locally or using the [sample.env](sample.env) file. Instructions for how to use this file can be found [here](https://github.com/usdot-jpo-ode/jpo-ode/wiki/Using-the-.env-configuration-file).\n\n**Important!**\nYou must rename `sample.env` to `.env` for Docker to automatically read the file. This file will contain AWS access keys and other private information. Do not push this file to source control.\n\n[Back to top](#toc)\n\n<!--\n########################################\n############# Installation #############\n########################################\n -->\n\n<a name=\"installation\"/>\n\n## 3. Installation\n\nThe following instructions describe the minimal procedure to fetch, build, and run the main ODE application. If you want to use the privacy protection module and/or S3 depositors, see the [User Guide](docs/UserGuide.md) for more detailed information. Additionally, different build processes are covered at the bottom of this section.\n\n#### Step 0 - For Windows Users Only\n\nIf running on Windows, please make sure that your global git config is set up to not convert end-of-line characters during checkout.\n\nDisable `git core.autocrlf` (One Time Only)\n\n```bash\ngit config --global core.autocrlf false\n```\n\n#### Step 1 - Download the Source Code\n\nThe ODE software system consists of the following modules hosted in separate Github repositories:\n\n|Name|Visibility|Description|\n|----|----------|-----------|\n|[jpo-ode](https://github.com/usdot-jpo-ode/jpo-ode)|public|Contains the public components of the application code.|\n|[jpo-cvdp](https://github.com/usdot-jpo-ode/jpo-cvdp)|public|Privacy Protection Module|\n|[jpo-s3-deposit](https://github.com/usdot-jpo-ode/jpo-s3-deposit)|public|S3 depositor service. Optional, comment out of `docker-compose.yml` file if not used.|\n|[asn1_codec](https://github.com/usdot-jpo-ode/asn1_codec)|public|ASN.1 Encoder/Decoder module|\n|[jpo-security-svcs](https://github.com/usdot-jpo-ode/jpo-security-svcs)|public|Provides cryptographic services.|\n|[jpo-sdw-depositor](https://github.com/usdot-jpo-ode/jpo-sdw-depositor)|public|SDW depositor service. Optional, comment out of `docker-compose.yml` file if not used.|\n\nYou may download the stable, default branch for ALL of these dependencies by using the following recursive git clone command:\n\n```bash\ngit clone --recurse-submodules https://github.com/usdot-jpo-ode/jpo-ode.git\n```\n\nOnce you have these repositories obtained, you are ready to build and deploy the application.\n\n##### Downloading the source code from a non-default branch\n\n<details><summary>(Advanced) Downloading the source code from a non-default branch</summary>\n<p>\n\nThe above steps to pull the code from GitHub repository pulls it from the default branch which is the stable branch. If you wish to pull the source code from a branch that is still under development or beta testing, you will need to specify the branch to pull from. The following commands aid you in that action.\n\n**Note**: These commands can also be performed using the provided script `update_branch`.\n\n```bash\n# Backup user provided source or configuration files used by submodules\ncp asn1_codec/asn1c_combined/J2735_201603DA.ASN .\n\n# Run the following commands to reset existing branch\ngit reset --hard\ngit submodule foreach --recursive git reset --hard\n\n# Pull from the non-default branch\ngit checkout <branch_name>\ngit pull origin <branch_name>\n\n# The next command wipes out all of the submodules and re-initializes them.\ngit submodule deinit -f . && git submodule update --recursive --init\n\n# Restore user provided source or configuration files used by submodules\ncp ./J2735_201603DA.ASN asn1_codec/asn1c_combined/\n```\n\n</p>\n</details>\n\n#### Step 2 - Build and run the application\n\n**Notes:**\n- Docker builds may fail if you are on a corporate network due to DNS resolution errors.\n[See here](https://github.com/usdot-jpo-ode/jpo-ode/wiki/Docker-fix-for-SSL-issues-due-to-corporate-network) for instructions to fix this.\n- In order for Docker to automatically read the environment variable file, you must rename it from `sample.env` to `.env`. **This file will contain private keys, do not put add it to version control.**\n\nCopy the following files from `jpo-ode` directory into your DOCKER_SHARED_VOLUME directory.\n- Copy jpo-ode/ppm.properties to ${DOCKER_SHARED_VOLUME}/config.properties. Open the newly copied `config.properties` file in a text editor and update the `metadata.broker.list=your.docker.host.ip:9092` line with your system's DOCKER_HOST_IP in place of the dummy `your.docker.host.ip` string.\n- Copy jpo-ode/adm.properties to ${DOCKER_SHARED_VOLUME}/adm.properties\n- Copy jpo-ode/aem.properties to ${DOCKER_SHARED_VOLUME}/aem.properties\n\nNavigate to the root directory of the jpo-ode project and run the following command:\n\n```bash\ndocker-compose up --build -d\ndocker-compose ps\n```\n\nTo bring down the services and remove the running containers run the following command:\n\n```bash\ndocker-compose down\n```\nFor a fresh restart, run:\n\n```bash\ndocker-compose down\ndocker-compose up --build -d\ndocker-compose ps\n```\n\nTo completely rebuild from scratch, run:\n\n```bash\ndocker-compose down\ndocker-compose rm -fvs\ndocker-compose up --build -d\ndocker-compose ps\n```\n\nCheck the deployment by running `docker-compose ps`. You can start and stop containers using `docker-compose start` and `docker-compose stop` commands.\nIf using the multi-broker docker-compose file, you can change the scaling by running `docker-compose scale <container>=n` where container is the container you would like to scale and n is the number of instances. For example, `docker-compose scale kafka=3`.\n\n\n#### asn1_codec Module (ASN.1 Encoder and Decoder)\nODE requires the deployment of asn1_codec module. ODE's `docker-compose.yml` file is set up to build and deploy the module in a Docker container. If you wish to run `asn1_codec` module outside Docker (i.e. directly on the host machine), please refer to the documentation of `asn1_codec` module.\n\nThe only requirement for deploying `asn1_codec` module on Docker is the setup of two environment variables `DOCKER_HOST_IP` and `DOCKER_SHARED_VOLUME`.\n\n#### PPM Module (Geofencing and Filtering)\n\nTo run the ODE with PPM module, you must install and start the PPM service. PPM service communicates with other services through Kafka Topics. PPM will read from the specified \"Raw BSM\" topic and publish the result to the specified \"Filtered Bsm\" topic. These topic names are specified by the following ODE and PPM properties:\n\n - ODE properties for communications with PPM (set in application.properties)\n\t - ode.kafkaTopicOdeBsmJson  (default = topic.OdeBsmJson)\n\t - ode.kafkaTopicFilteredOdeBsmJson (default = topic.FilteredOdeBsmJson)\n - PPM properties for communications with ODE (set in yourconfig.properties)\n\t - privacy.topic.consumer (default = j2735BsmRawJson)\n\t - privacy.topic.producer (default = j2735BsmFilteredJson)\n\nFollow the instructions [here](https://github.com/usdot-jpo-ode/jpo-cvdp/blob/master/docs/installation.md) to install and build the PPM service.\n\nDuring the build process, edit the sample config file located in `config/example.properties` and point the property `metadata.broker.list` towards the host of your docker machine or wherever the kafka brokers are hosted. You may use the command `docker-machine ls` to find the kafka service.\n\nAfter a successful build, use the following commands to configure and run the PPM\n\n```\ncd $BASE_PPM_DIR/jpo-cvdp/build\n$ ./bsmjson_privacy -c ../config/ppm.properties\n```\n\n\n[Back to top](#toc)\n\n<!--\n#########################################\n############# File Manifest #############\n#########################################\n -->\n\n<a name=\"file-manifest\"/>\n\n## 4. File Manifest\n\nThis section outlines the software technology stacks of the ODE.\n\n### Containerization and Management\n\n- [Docker](https://www.docker.com/)\n- [Docker-Compose](https://docs.docker.com/compose/)\n\n### Messaging\n\n- [Kafka](https://kafka.apache.org/)\n\n### Code Quality\n\n- [SonarCloud](https://sonarcloud.io)\n\n### Continuous Integration\n\n- [TravisCI](https://travis-ci.org/)\n\n### ODE Code\n\n- [Java 8](https://openjdk.java.net/)\n- [Maven](https://maven.apache.org/)\n- [Spring Boot](http://spring.io/projects/spring-boot)\n- [Logback](https://logback.qos.ch/)\n- [SNMP4J](https://www.snmp4j.org/)\n- [JUnit](https://junit.org)\n- [JMockit](http://jmockit.github.io/)\n- [Stomp Websocket](http://jmesnil.net/stomp-websocket)\n\n### Web UI\n\n- [MaterializeCSS](https://materializecss.com)\n- [jQuery](https://jquery.com/)\n- [Stomp Websocket](http://jmesnil.net/stomp-websocket)\n- [SockJS](https://github.com/sockjs)\n\n[Back to top](#toc)\n\n<!--\n#############################################\n############# Development Setup #############\n#############################################\n -->\n\n<a name=\"development-setup\"/>\n\n## 5. Development Setup\n\n### Integrated Development Environment (IDE)\n\nInstall the IDE of your choice:\n\n* Eclipse: [https://eclipse.org/](https://eclipse.org/)\n* STS: [https://spring.io/tools/sts/all](https://spring.io/tools/sts/all)\n* IntelliJ: [https://www.jetbrains.com/idea/](https://www.jetbrains.com/idea/)\n\n### Continuous Integration\n\n* TravisCI: <https://travis-ci.org/usdot-jpo-ode/jpo-ode>\n\n[Back to top](#toc)\n\n<!--\n###########################################\n############# Release History #############\n###########################################\n -->\n\n<a name=\"release-history\"/>\n\n## 6. Release History\n\n[Release Notes](ReleaseNotes.md)\n\n[Back to top](#toc)\n\n<!--\n###############################################\n############# Contact Information #############\n###############################################\n -->\n\n<a name=\"contact-information\"/>\n\n## 7. Contact Information\n\nContact the developers of the ODE application by submitting a [Github issue](https://github.com/usdot-jpo-ode/jpo-ode/issues).\n\nContact the ODE management representative using the information in the [Code.gov Registration Info](#codegov-registration-info) section.\n\n### License information\n\nLicensed under the Apache License, Version 2.0 (the \"License\"); you may not use this\nfile except in compliance with the License.\nYou may obtain a copy of the License at <http://www.apache.org/licenses/LICENSE-2.0>\nUnless required by applicable law or agreed to in writing, software distributed under\nthe License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either expressed or implied. See the License for the specific language governing\npermissions and limitations under the [License](http://www.apache.org/licenses/LICENSE-2.0).\n\n[Back to top](#toc)\n\n<!--\n########################################\n############# Contributing #############\n########################################\n -->\n\n<a name=\"contributing\"/>\n\n## 8. Contributing\n\nPlease read our [contributing guide](docs/contributing_guide.md) to learn about our development process, how to propose pull requests and improvements, and how to build and test your changes to this project.\n\n### Source Repositories - GitHub\n\n- Main repository on GitHub (public)\n\t- <https://github.com/usdot-jpo-ode/jpo-ode>\n- Data Privacy Module on Github (public)\n\t- <https://github.com/usdot-jpo-ode/jpo-cvdp>\n- S3 Depositor Module on Github (public)\n\t- <https://github.com/usdot-jpo-ode/jpo-s3-deposit>\n- Security services repository on GitHub (public)\n  - <https://github.com/usdot-jpo-ode/jpo-security-svcs>\n- ODE Output Validatory Library (public)\n  - https://github.com/usdot-jpo-ode/ode-output-validator-library\n\n### Agile Project Management - Jira\n<https://usdotjpoode.atlassian.net/secure/RapidBoard.jspa?projectKey=ODE>\n\n### Wiki - Confluence\n<https://usdotjpoode.atlassian.net/wiki/>\n\n### Continuous Integration and Delivery\n<https://travis-ci.org/usdot-jpo-ode/jpo-ode>\n\n<details><summary>Using Travis for your build</summary>\n\n\nTo allow Travis run your build when you push your changes to your public fork of the jpo-ode repository, you must define the following secure environment variable using Travis CLI (<https://github.com/travis-ci/travis.rb>).\n\nRun:\n\n```\ntravis login --org\n```\nEnter personal github account credentials.\n\nIn order to allow Sonar to run, personal key must be added with this command:\n(Key can be obtained from the JPO-ODE development team)\n\n```\ntravis env set SONAR_SECURITY_TOKEN <key> -pr <user-account>/<repo-name>\n```\n</details>\n<br>\n\n### Static Code Analysis\n\n<https://sonarcloud.io/organizations/usdot-jpo-ode/projects>\n\n[Back to top](#toc)\n\n<!--\n######################################\n############# Known Bugs #############\n######################################\n -->\n\n### Quality Assurance\n\nCode quality assurance is reported through the [usdot-jpo-ode SonarCloud organization](https://sonarcloud.io/organizations/usdot-jpo-ode/projects). Code quality reports are generated by the [JaCoCo plugin for Maven](https://www.eclemma.org/jacoco/trunk/doc/maven.html) during the ODE's [webhook-triggered TravisCI build](https://github.com/usdot-jpo-ode/jpo-ode/blob/dev/.travis.yml#L16). After a successful build, the [SonarQube scanner plugin for Maven](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Maven) creates and uploads a code quality report to SonarCloud.\n\nFor regression and user acceptance testing, ODE provides an automated test harness. The test harness is pprovided in the [qa/test-harness](ga/test-harness) directory under jpo-ode root folder. The test harness uses the ODE [Validator Library](https://github.com/usdot-jpo-ode/ode-output-validator-library) repository as a submodule.\n\nFor more information, please see: https://github.com/usdot-jpo-ode/jpo-ode/wiki/Using-the-ODE-test-harness\n\n<a name=\"known-bugs\"/>\n\n## 9. Known Bugs\n\nDate: 07/2017\n\nIn its current state, the ODE has been developed to accomplish the goals of data transfer, security, and modularity working with the J2735 and 1609.2 security. The system has been designed to support multiple services orchestrated through the Apache Kafka streaming data pipelines, services built and supported as separate applications and described with each service's repository. As a modular system, each component has been built for functionality first, and additional performance testing is needed to understand the limits of the system with large volumes of data.\n\n### Troubleshooting\n\nPlease read our [Wiki](https://github.com/usdot-jpo-ode/jpo-ode/wiki) for more information, or check the [User Guide](docs/UserGuide.md).\n\nApplication Support for the ODE currently managed via GitHub's native issue tracker: <https://github.com/usdot-jpo-ode/jpo-ode/issues>.\n\n[Back to top](#toc)\n\n<!--\n#######################################################\n############# Credits and Acknowledgement #############\n#######################################################\n -->\n\n<a name=\"credits-and-acknowledgement\"/>\n\n## 10. Credits and Acknowledgement\n\n[Attribution](ATTRIBUTION.md)\n\n[Back to top](#toc)\n\n<!--\n######################################################\n############# Code.gov Registration Info #############\n######################################################\n -->\n\n<a name=\"codegov-registration-info\"/>\n\n## 11. Code.gov Registration Info\n\nAgency: DOT\n\nShort Description: The ITS ODE is a real-time virtual data router that ingests and processes operational data from various connected devices – including vehicles, infrastructure, and traffic management centers – and distributes it to other devices and subscribing transportation management applications. Using the ITS ODE within intelligent transportation deployments increases data fluidity and interoperability while meeting operational needs and protecting user privacy. The software’s microservices architecture makes it easy to add new capabilities to meet local needs.\n\nStatus: Beta\n\nTags: transportation, connected vehicles, intelligent transportation systems, java\n\nLabor hours: 200\n\nContact Name: James Lieu\n\nContact Phone: (202) 366-3000\n\n[Back to top](#toc)\n",
+        "url": "https://api.github.com/repos/usdot-jpo-ode/jpo-ode/contents/README.md?ref=master"
+      },
+      "forks": {
+        "forkedRepos": [
+          {
+            "id": "16823421-222526337",
+            "name": "jpo-ode",
+            "owner": "ZulaliH"
+          },
+          {
+            "id": "6510727-221864343",
+            "name": "jpo-ode",
+            "owner": "skinnermk"
+          },
+          {
+            "id": "19275817-193073221",
+            "name": "jpo-ode",
+            "owner": "Gyudong-Han"
+          },
+          {
+            "id": "2973053-188295405",
+            "name": "jpo-ode",
+            "owner": "Trihydro"
+          },
+          {
+            "id": "44681952-187247631",
+            "name": "jpo-ode",
+            "owner": "DenverConnectedVehicle"
+          },
+          {
+            "id": "3209501-187247191",
+            "name": "jpo-ode",
+            "owner": "alexsoble"
+          },
+          {
+            "id": "25799314-185809755",
+            "name": "jpo-ode",
+            "owner": "BobFairchild"
+          },
+          {
+            "id": "12669277-181532886",
+            "name": "jpo-ode",
+            "owner": "mikiec84"
+          },
+          {
+            "id": "22332670-178449357",
+            "name": "jpo-ode",
+            "owner": "wolfedwolf"
+          },
+          {
+            "id": "18428479-170591248",
+            "name": "jpo-ode",
+            "owner": "Apoorb"
+          },
+          {
+            "id": "21817814-164044174",
+            "name": "jpo-ode",
+            "owner": "kijeongeun"
+          },
+          {
+            "id": "42840583-152122560",
+            "name": "jpo-ode",
+            "owner": "darrelld05"
+          },
+          {
+            "id": "7475771-145814291",
+            "name": "jpo-ode",
+            "owner": "kssonu4u"
+          },
+          {
+            "id": "38541284-130270574",
+            "name": "jpo-ode",
+            "owner": "MarioDH"
+          },
+          {
+            "id": "32356764-126688467",
+            "name": "jpo-ode",
+            "owner": "yangsoso"
+          },
+          {
+            "id": "1860862-123641545",
+            "name": "jpo-ode",
+            "owner": "Edon07"
+          },
+          {
+            "id": "1916753-120336776",
+            "name": "jpo-ode",
+            "owner": "onthejeep"
+          },
+          {
+            "id": "33533793-118946510",
+            "name": "jpo-ode",
+            "owner": "OSUPCVLab"
+          },
+          {
+            "id": "13427284-116835740",
+            "name": "jpo-ode",
+            "owner": "wayties"
+          },
+          {
+            "id": "28535848-94336819",
+            "name": "jpo-ode",
+            "owner": "DOTAMC"
+          },
+          {
+            "id": "1120608-90075506",
+            "name": "jpo-ode",
+            "owner": "kimPerry"
+          },
+          {
+            "id": "11353428-86829378",
+            "name": "jpo-ode",
+            "owner": "sharafm2002"
+          },
+          {
+            "id": "12912578-76863396",
+            "name": "jpo-ode",
+            "owner": "mvs5465"
+          },
+          {
+            "id": "10130982-75348929",
+            "name": "jpo-ode",
+            "owner": "hmusavi"
+          },
+          {
+            "id": "23481864-75121569",
+            "name": "jpo-ode",
+            "owner": "mgarramo"
+          },
+          {
+            "id": "5840989-75118639",
+            "name": "jpo-ode",
+            "owner": "lauraGgit"
+          }
+        ]
+      },
+      "contributors": [
+        {
+          "avatarUrl": "https://avatars0.githubusercontent.com/u/12912578?v=4",
+          "profileUrl": "https://github.com/mvs5465",
+          "userType": "User",
+          "username": "mvs5465"
+        },
+        {
+          "avatarUrl": "https://avatars2.githubusercontent.com/u/10130982?v=4",
+          "profileUrl": "https://github.com/hmusavi",
+          "userType": "User",
+          "username": "hmusavi"
+        },
+        {
+          "avatarUrl": "https://avatars0.githubusercontent.com/u/23481864?v=4",
+          "profileUrl": "https://github.com/mgarramo",
+          "userType": "User",
+          "username": "mgarramo"
+        },
+        {
+          "avatarUrl": "https://avatars0.githubusercontent.com/u/9087336?v=4",
+          "profileUrl": "https://github.com/0111sandesh",
+          "userType": "User",
+          "username": "0111sandesh"
+        },
+        {
+          "avatarUrl": "https://avatars0.githubusercontent.com/u/549261?v=4",
+          "profileUrl": "https://github.com/tonychen091",
+          "userType": "User",
+          "username": "tonychen091"
+        },
+        {
+          "avatarUrl": "https://avatars2.githubusercontent.com/u/2932159?v=4",
+          "profileUrl": "https://github.com/payneBrandon",
+          "userType": "User",
+          "username": "payneBrandon"
+        },
+        {
+          "avatarUrl": "https://avatars1.githubusercontent.com/u/3028188?v=4",
+          "profileUrl": "https://github.com/snallamothu",
+          "userType": "User",
+          "username": "snallamothu"
+        },
+        {
+          "avatarUrl": "https://avatars3.githubusercontent.com/u/3209501?v=4",
+          "profileUrl": "https://github.com/alexsoble",
+          "userType": "User",
+          "username": "alexsoble"
+        },
+        {
+          "avatarUrl": "https://avatars3.githubusercontent.com/u/605331?v=4",
+          "profileUrl": "https://github.com/bbrotsos",
+          "userType": "User",
+          "username": "bbrotsos"
+        },
+        {
+          "avatarUrl": "https://avatars2.githubusercontent.com/u/5840989?v=4",
+          "profileUrl": "https://github.com/lauraGgit",
+          "userType": "User",
+          "username": "lauraGgit"
+        },
+        {
+          "avatarUrl": "https://avatars2.githubusercontent.com/u/23216443?v=4",
+          "profileUrl": "https://github.com/ToryB1",
+          "userType": "User",
+          "username": "ToryB1"
+        },
+        {
+          "avatarUrl": "https://avatars2.githubusercontent.com/u/26032882?v=4",
+          "profileUrl": "https://github.com/trevor-trou",
+          "userType": "User",
+          "username": "trevor-trou"
+        },
+        {
+          "avatarUrl": "https://avatars2.githubusercontent.com/u/1664694?v=4",
+          "profileUrl": "https://github.com/southernsun",
+          "userType": "User",
+          "username": "southernsun"
+        }
+      ],
+      "releases": [],
+      "languages": {
+        "Java": 2321554,
+        "Dockerfile": 1337,
+        "Shell": 4751,
+        "CSS": 1617,
+        "C": 4075,
+        "Batchfile": 1803,
+        "Makefile": 983,
+        "JavaScript": 3128,
+        "HTML": 68071,
+        "Python": 10013
+      }
+    },
+    "generatedData": {
+      "rank": 3161,
+      "sonarMetrics": {
+        "bugs": {
+          "frmt_val": "62",
+          "key": "bugs",
+          "val": 62.0
+        },
+        "code_smells": {
+          "frmt_val": "534",
+          "key": "code_smells",
+          "val": 534.0
+        },
+        "reliability_rating": {
+          "frmt_val": "C",
+          "key": "reliability_rating",
+          "val": 3.0
+        },
+        "security_rating": {
+          "frmt_val": "E",
+          "key": "security_rating",
+          "val": 5.0
+        },
+        "sqale_index": {
+          "frmt_val": "5d 2h",
+          "key": "sqale_index",
+          "val": 2527.0
+        },
+        "sqale_rating": {
+          "frmt_val": "A",
+          "key": "sqale_rating",
+          "val": 1.0
+        },
+        "violations": {
+          "frmt_val": "605",
+          "key": "violations",
+          "val": 605.0
+        },
+        "vulnerabilities": {
+          "frmt_val": "9",
+          "key": "vulnerabilities",
+          "val": 9.0
+        },
+        "complexity": {
+          "frmt_val": "5,290",
+          "key": "complexity",
+          "val": 5290.0
+        }
+      },
+      "vscan": {
+        "data_scanned": "40.16 MB",
+        "infected_files": 0,
+        "lastscan": "2019-12-06T16:58:23.000+0000",
+        "scanned_directories": 204,
+        "scanned_files": 737,
+        "time": "66.209 sec (1 m 6 s)",
+        "reported_files": []
+      }
+    },
+    "codehubData": {
+      "etag": "N/A",
+      "source": "github",
+      "lastModified": "2019-12-20T21:51:23.000+0000",
+      "lastIngested": null,
+      "badges": {
+        "status": "pending",
+        "isFeatured": false
+      },
+      "isVisible": true,
+      "isIngested": true,
+      "isIngestionEnabled": true
+    }
+  },
+  {
+    "id": "54bf10b6cd0f248e3156b946649313b3",
+    "sourceData": {
+      "commits": 990,
+      "stars": 1,
+      "watchers": 6,
+      "description": "Web User Interface for CARMA Platform",
+      "language": "JavaScript",
+      "name": "CARMAWebUi",
+      "repositoryUrl": "https://github.com/usdot-fhwa-stol/CARMAWebUi",
+      "createdAt": "2018-12-21T20:22:09.000+0000",
+      "lastPush": "2019-12-11T22:52:17.000+0000",
+      "owner": {
+        "avatarUrl": "https://avatars1.githubusercontent.com/u/43184500?v=4",
+        "name": "usdot-fhwa-stol",
+        "type": "Organization",
+        "url": "https://github.com/usdot-fhwa-stol"
+      },
+      "readme": {
+        "content": "# CARMAWebUi\nCARMAWebUi is the web-based user interface component of the CARMAPlatform.\n\nTo install copy the contents of the `website` directory into the root of your web server's folder structure.\n\n# CARMAPlatform\nThe primary CARMAPlatform repository can be found [here](https://github.com/usdot-fhwa-stol/CARMAPlatform) and is part of the [USDOT FHWA STOL](https://github.com/usdot-fhwa-stol/)\ngithub organization. Documentation on how the CARMAPlatform functions, how it will evolve over time, and how you can contribute can be found at the above links as well\n\n## Contribution\nWelcome to the CARMA contributing guide. Please read this guide to learn about our development process, how to propose pull requests and improvements, and how to build and test your changes to this project. [CARMA Contributing Guide](https://github.com/usdot-fhwa-stol/CARMAPlatform/blob/develop/Contributing.md) \n\n## Code of Conduct \nPlease read our [CARMA Code of Conduct](https://github.com/usdot-fhwa-stol/CARMAPlatform/blob/develop/Code_of_Conduct.md) which outlines our expectations for participants within the CARMA community, as well as steps to reporting unacceptable behavior. We are committed to providing a welcoming and inspiring community for all and expect our code of conduct to be honored. Anyone who violates this code of conduct may be banned from the community.\n\n## Attribution\nThe development team would like to acknowledge the people who have made direct contributions to the design and code in this repository. [CARMA Attribution](https://github.com/usdot-fhwa-stol/CARMAPlatform/blob/develop/ATTRIBUTION.txt) \n\n## License\nBy contributing to the Federal Highway Administration (FHWA) Connected Automated Research Mobility Applications (CARMA), you agree that your contributions will be licensed under its Apache License 2.0 license. [CARMA License](https://github.com/usdot-fhwa-stol/CARMAPlatform/blob/develop/docs/License.md) \n\n## Contact\nPlease click on the CARMA logo below to visit the Federal Highway Adminstration(FHWA) CARMA website.\n\n[![CARMA Image](https://raw.githubusercontent.com/usdot-fhwa-stol/CARMAPlatform/develop/docs/image/CARMA_icon.png)](https://highways.dot.gov/research/research-programs/operations/CARMA)\n",
+        "url": "https://api.github.com/repos/usdot-fhwa-stol/CARMAWebUi/contents/README.md?ref=develop"
+      },
+      "forks": {
+        "forkedRepos": []
+      },
+      "contributors": [
+        {
+          "avatarUrl": "https://avatars1.githubusercontent.com/u/10292079?v=4",
+          "profileUrl": "https://github.com/msmcconnell",
+          "userType": "User",
+          "username": "msmcconnell"
+        },
+        {
+          "avatarUrl": "https://avatars3.githubusercontent.com/u/27976519?v=4",
+          "profileUrl": "https://github.com/maefromm",
+          "userType": "User",
+          "username": "maefromm"
+        },
+        {
+          "avatarUrl": "https://avatars0.githubusercontent.com/u/3723561?v=4",
+          "profileUrl": "https://github.com/Supraluminal",
+          "userType": "User",
+          "username": "Supraluminal"
+        },
+        {
+          "avatarUrl": "https://avatars3.githubusercontent.com/u/9048857?v=4",
+          "profileUrl": "https://github.com/TonysCousin",
+          "userType": "User",
+          "username": "TonysCousin"
+        },
+        {
+          "avatarUrl": "https://avatars2.githubusercontent.com/u/26841526?v=4",
+          "profileUrl": "https://github.com/qswawrq",
+          "userType": "User",
+          "username": "qswawrq"
+        },
+        {
+          "avatarUrl": "https://avatars1.githubusercontent.com/u/17771329?v=4",
+          "profileUrl": "https://github.com/aphelyon",
+          "userType": "User",
+          "username": "aphelyon"
+        },
+        {
+          "avatarUrl": "https://avatars0.githubusercontent.com/u/42840583?v=4",
+          "profileUrl": "https://github.com/darrelld05",
+          "userType": "User",
+          "username": "darrelld05"
+        },
+        {
+          "avatarUrl": "https://avatars2.githubusercontent.com/u/8008530?v=4",
+          "profileUrl": "https://github.com/Imp314",
+          "userType": "User",
+          "username": "Imp314"
+        },
+        {
+          "avatarUrl": "https://avatars2.githubusercontent.com/u/49001908?v=4",
+          "profileUrl": "https://github.com/itabrl",
+          "userType": "User",
+          "username": "itabrl"
+        },
+        {
+          "avatarUrl": "https://avatars0.githubusercontent.com/u/35111859?v=4",
+          "profileUrl": "https://github.com/MrZeekster",
+          "userType": "User",
+          "username": "MrZeekster"
+        },
+        {
+          "avatarUrl": "https://avatars3.githubusercontent.com/u/29981535?v=4",
+          "profileUrl": "https://github.com/watters-torc",
+          "userType": "User",
+          "username": "watters-torc"
+        },
+        {
+          "avatarUrl": "https://avatars0.githubusercontent.com/u/55887989?v=4",
+          "profileUrl": "https://github.com/jenctyler",
+          "userType": "User",
+          "username": "jenctyler"
+        }
+      ],
+      "releases": [],
+      "languages": {
+        "Dockerfile": 1695,
+        "CSS": 22207,
+        "Shell": 11521,
+        "JavaScript": 191849,
+        "PHP": 1322,
+        "HTML": 27673
+      }
+    },
+    "generatedData": {
+      "rank": 1077,
+      "sonarMetrics": {
+        "bugs": {
+          "frmt_val": "258",
+          "key": "bugs",
+          "val": 258.0
+        },
+        "code_smells": {
+          "frmt_val": "2,085",
+          "key": "code_smells",
+          "val": 2085.0
+        },
+        "reliability_rating": {
+          "frmt_val": "D",
+          "key": "reliability_rating",
+          "val": 4.0
+        },
+        "security_rating": {
+          "frmt_val": "D",
+          "key": "security_rating",
+          "val": 4.0
+        },
+        "sqale_index": {
+          "frmt_val": "263d",
+          "key": "sqale_index",
+          "val": 126430.0
+        },
+        "sqale_rating": {
+          "frmt_val": "B",
+          "key": "sqale_rating",
+          "val": 2.0
+        },
+        "violations": {
+          "frmt_val": "2,361",
+          "key": "violations",
+          "val": 2361.0
+        },
+        "vulnerabilities": {
+          "frmt_val": "18",
+          "key": "vulnerabilities",
+          "val": 18.0
+        },
+        "complexity": {
+          "frmt_val": "14,575",
+          "key": "complexity",
+          "val": 14575.0
+        }
+      },
+      "vscan": {
+        "data_scanned": "39.22 MB",
+        "infected_files": 0,
+        "lastscan": "2019-12-12T15:51:16.000+0000",
+        "scanned_directories": 60,
+        "scanned_files": 986,
+        "time": "59.162 sec (0 m 59 s)",
+        "reported_files": []
+      }
+    },
+    "codehubData": {
+      "etag": "N/A",
+      "source": "github",
+      "lastModified": "2019-12-20T21:52:52.000+0000",
+      "lastIngested": null,
+      "badges": {
+        "status": "pending",
+        "isFeatured": false
+      },
+      "isVisible": true,
+      "isIngested": true,
+      "isIngestionEnabled": true
+    }
+  },
+  {
+    "id": "aad4fab6d8f5f8339af37800baa41c25",
+    "sourceData": {
+      "commits": 2018,
+      "stars": 1,
+      "watchers": 6,
+      "description": "The ASN.1 Compiler",
+      "language": "C",
+      "name": "asn1c",
+      "repositoryUrl": "https://github.com/usdot-jpo-ode/asn1c",
+      "createdAt": "2017-08-04T16:00:17.000+0000",
+      "lastPush": "2017-09-05T16:38:58.000+0000",
+      "owner": {
+        "avatarUrl": "https://avatars2.githubusercontent.com/u/23056647?v=4",
+        "name": "usdot-jpo-ode",
+        "type": "Organization",
+        "url": "https://github.com/usdot-jpo-ode"
+      },
+      "readme": {
+        "content": "# About\n\nASN.1 to C compiler takes the ASN.1 module files (example) and generates\nthe C++ compatible C source code. That code can be used to serialize\nthe native C structures into compact and unambiguous BER/XER/PER-based\ndata files, and deserialize the files back.\n\nVarious ASN.1 based formats are widely used in the industry,\nsuch as to encode the X.509 certificates employed in the HTTPS handshake,\nto exchange control data between mobile phones and cellular networks,\nto car-to-car communication in intelligent transportation networks.\n\nThe ASN.1 standard is large and complex and no open source compiler supports\nit in its entirety. The asn1c is arguably the most evolved open source\nASN.1 compiler.\n\n# Build and Install\n\nIf you haven't installed the asn1c yet, read the [INSTALL.md](INSTALL.md) file\nfor a short installation guide.\n\n[![Build Status](https://travis-ci.org/vlm/asn1c.svg?branch=master)](https://travis-ci.org/vlm/asn1c)\n\n# Documentation\n\nFor the list of asn1c command line options, see `asn1c -h` or `man asn1c`.\n\nThe comprehensive documentation on this compiler is in [doc/asn1c-usage.pdf](doc/asn1c-usage.pdf).\n\nPlease also read the [FAQ](FAQ) file.\n\nAn excellent book on ASN.1 is written by Olivier Dubuisson:\n\"ASN.1 Communication between heterogeneous systems\", ISBN:0-12-6333361-0.\n\n# Quick start\n\n(also check out [doc/asn1c-quick.pdf](doc/asn1c-quick.pdf))\n\nAfter installing the compiler (see [INSTALL.md](INSTALL.md)), you may use\nthe asn1c command to compile the ASN.1 specification:\n\n    asn1c <module.asn1>                         # Compile module\n\nIf several specifications contain interdependencies, all of them must be\nspecified at the same time:\n\n    asn1c <module1.asn1> <module2.asn1> ...     # Compile interdependent modules\n\nThe asn1c source tarball contains the [examples/](examples/) directory\nwith several ASN.1 modules and a [script](examples/crfc2asn1.pl)\nto extract the ASN.1 modules from RFC documents.\nRefer to the [examples/README](examples/README) file in that directory.\n\nTo compile the X.509 PKI module:\n\n    ./asn1c/asn1c -P ./examples/rfc3280-*.asn1  # Compile-n-print\n\nIn this example, the **-P** option is to print the compiled text on the\nstandard output. The default behavior is that asn1c compiler creates\nmultiple .c and .h files for every ASN.1 type found inside the specified\nASN.1 modules.\n\nThe compiler's **-E** and **-EF** options are used for testing the parser and\nthe semantic fixer, respectively. These options will instruct the compiler\nto dump out the parsed (and fixed) ASN.1 specification as it was\n\"understood\" by the compiler. It might be useful for checking\nwhether a particular syntactic construction is properly supported\nby the compiler.\n\n    asn1c -EF <module-to-test.asn1>             # Check semantic validity\n\n# Model of operation\n\nThe asn1c compiler works by processing the ASN.1 module specifications\nin several stages:\n\n1. During the first stage, the ASN.1 file is parsed.\n   (Parsing produces an ASN.1 syntax tree for the subsequent levels)\n2. During the second stage, the syntax tree is \"fixed\".\n   (Fixing is a process of checking the tree for semantic errors,\n   accompanied by the tree transformation into the canonical form)\n3. During the third stage, the syntax tree is compiled into the target language.\n\nThere are several command-line options reserved for printing the results\nafter each stage of operation:\n\n    <parser> => print                                       (-E)\n    <parser> => <fixer> => print                            (-E -F)\n    <parser> => <fixer> => <compiler> => print              (-P)\n    <parser> => <fixer> => <compiler> => save-compiled      [default]\n\n\n-- \nLev Walkin\nvlm@lionet.info\n",
+        "url": "https://api.github.com/repos/usdot-jpo-ode/asn1c/contents/README.md?ref=master"
+      },
+      "forks": {
+        "forkedRepos": [
+          {
+            "id": "6510727-221865315",
+            "name": "asn1c",
+            "owner": "skinnermk"
+          },
+          {
+            "id": "1860862-123641629",
+            "name": "asn1c",
+            "owner": "Edon07"
+          }
+        ]
+      },
+      "contributors": [
+        {
+          "avatarUrl": "https://avatars2.githubusercontent.com/u/145781?v=4",
+          "profileUrl": "https://github.com/vlm",
+          "userType": "User",
+          "username": "vlm"
+        },
+        {
+          "avatarUrl": "https://avatars0.githubusercontent.com/u/6227912?v=4",
+          "profileUrl": "https://github.com/brchiu",
+          "userType": "User",
+          "username": "brchiu"
+        },
+        {
+          "avatarUrl": "https://avatars3.githubusercontent.com/u/1236714?v=4",
+          "profileUrl": "https://github.com/velichkov",
+          "userType": "User",
+          "username": "velichkov"
+        },
+        {
+          "avatarUrl": "https://avatars2.githubusercontent.com/u/156891?v=4",
+          "profileUrl": "https://github.com/wiml",
+          "userType": "User",
+          "username": "wiml"
+        },
+        {
+          "avatarUrl": "https://avatars2.githubusercontent.com/u/8332609?v=4",
+          "profileUrl": "https://github.com/simo5",
+          "userType": "User",
+          "username": "simo5"
+        },
+        {
+          "avatarUrl": "https://avatars1.githubusercontent.com/u/2324954?v=4",
+          "profileUrl": "https://github.com/johvik",
+          "userType": "User",
+          "username": "johvik"
+        },
+        {
+          "avatarUrl": "https://avatars0.githubusercontent.com/u/254519?v=4",
+          "profileUrl": "https://github.com/akire",
+          "userType": "User",
+          "username": "akire"
+        },
+        {
+          "avatarUrl": "https://avatars3.githubusercontent.com/u/18166483?v=4",
+          "profileUrl": "https://github.com/DanyaFilatov",
+          "userType": "User",
+          "username": "DanyaFilatov"
+        },
+        {
+          "avatarUrl": "https://avatars1.githubusercontent.com/u/660477?v=4",
+          "profileUrl": "https://github.com/elfring",
+          "userType": "User",
+          "username": "elfring"
+        },
+        {
+          "avatarUrl": "https://avatars0.githubusercontent.com/u/1487399?v=4",
+          "profileUrl": "https://github.com/sleevi",
+          "userType": "User",
+          "username": "sleevi"
+        },
+        {
+          "avatarUrl": "https://avatars1.githubusercontent.com/u/481351?v=4",
+          "profileUrl": "https://github.com/theirix",
+          "userType": "User",
+          "username": "theirix"
+        },
+        {
+          "avatarUrl": "https://avatars1.githubusercontent.com/u/167235?v=4",
+          "profileUrl": "https://github.com/daa",
+          "userType": "User",
+          "username": "daa"
+        },
+        {
+          "avatarUrl": "https://avatars2.githubusercontent.com/u/1749243?v=4",
+          "profileUrl": "https://github.com/basinilya",
+          "userType": "User",
+          "username": "basinilya"
+        },
+        {
+          "avatarUrl": "https://avatars3.githubusercontent.com/u/1163818?v=4",
+          "profileUrl": "https://github.com/jariq",
+          "userType": "User",
+          "username": "jariq"
+        },
+        {
+          "avatarUrl": "https://avatars0.githubusercontent.com/u/444024?v=4",
+          "profileUrl": "https://github.com/sancane",
+          "userType": "User",
+          "username": "sancane"
+        },
+        {
+          "avatarUrl": "https://avatars3.githubusercontent.com/u/15227658?v=4",
+          "profileUrl": "https://github.com/mattipee",
+          "userType": "User",
+          "username": "mattipee"
+        }
+      ],
+      "releases": [],
+      "languages": {
+        "Yacc": 54176,
+        "Shell": 23656,
+        "C++": 5778,
+        "C": 1787505,
+        "Makefile": 11982,
+        "M4": 22203,
+        "Objective-C": 5234,
+        "Perl": 631,
+        "Perl 6": 1073,
+        "Lex": 14013
+      }
+    },
+    "generatedData": {
+      "rank": 2125,
+      "sonarMetrics": {
+        "bugs": {
+          "frmt_val": "0",
+          "key": "bugs",
+          "val": 0.0
+        },
+        "code_smells": {
+          "frmt_val": "0",
+          "key": "code_smells",
+          "val": 0.0
+        },
+        "reliability_rating": {
+          "frmt_val": "A",
+          "key": "reliability_rating",
+          "val": 1.0
+        },
+        "security_rating": {
+          "frmt_val": "A",
+          "key": "security_rating",
+          "val": 1.0
+        },
+        "sqale_index": {
+          "frmt_val": "0",
+          "key": "sqale_index",
+          "val": 0.0
+        },
+        "sqale_rating": {
+          "frmt_val": "A",
+          "key": "sqale_rating",
+          "val": 1.0
+        },
+        "violations": {
+          "frmt_val": "0",
+          "key": "violations",
+          "val": 0.0
+        },
+        "vulnerabilities": {
+          "frmt_val": "0",
+          "key": "vulnerabilities",
+          "val": 0.0
+        },
+        "complexity": {
+          "frmt_val": null,
+          "key": null,
+          "val": 0.0
+        }
+      },
+      "vscan": {
+        "data_scanned": "36.81 MB",
+        "infected_files": 0,
+        "lastscan": "2019-12-11T15:54:14.000+0000",
+        "scanned_directories": 51,
+        "scanned_files": 890,
+        "time": "48.941 sec (0 m 48 s)",
+        "reported_files": []
+      }
+    },
+    "codehubData": {
+      "etag": "N/A",
+      "source": "github",
+      "lastModified": "2019-12-20T21:52:08.000+0000",
+      "lastIngested": null,
+      "badges": {
+        "status": "pending",
+        "isFeatured": false
+      },
+      "isVisible": true,
+      "isIngested": true,
+      "isIngestionEnabled": true
+    }
+  },
+  {
+    "id": "97270863ac729db00a967d3da7719f19",
+    "sourceData": {
+      "commits": 14,
+      "stars": 3,
+      "watchers": 4,
+      "description": "The code base for the Service Monitor Device Management, a web application that monitors the network status of road side units for the WYDOT CV Pilot Project. ",
+      "language": "CSS",
+      "name": "smdm",
+      "repositoryUrl": "https://github.com/Trihydro/smdm",
+      "createdAt": "2018-08-09T19:37:51.000+0000",
+      "lastPush": "2018-08-14T22:03:11.000+0000",
+      "owner": {
+        "avatarUrl": "https://avatars1.githubusercontent.com/u/2973053?v=4",
+        "name": "Trihydro",
+        "type": "Organization",
+        "url": "https://github.com/Trihydro"
+      },
+      "readme": {
+        "content": "# Service Monitor Device Management\n\n## Description\n\nThis application is used internally to monitor the network status of Road Side Units (RSUs). This app monitors IPv4, IPv6 and DSRC network status and provides information visually on a map as well as charts and graphs in a dashboard format. It also provides information for active Traveler Information Messages (TIMs) and vehicle counts past an RSU.\n\n## Release Notes\n\n### Release 1\n- Developed an interactive map and dashboard to provide real-time IPv4, IPv6 and DSRC network status and active TIMs for RSUs.\n- Implemented the functionality to see the vehicle counts past an RSU within the last 24 hours.\n\n## Getting Started\n\n### Prerequisites\nESRI's Web AppBuilder for ArcGIS (Developer Edition) version 2.8\n- https://developers.arcgis.com/web-appbuilder/\n\nArcGIS Server - map services\n\nArcGIS Portal - web map\n\n### Instructions\n\nThe following instructions describe the process to download, configure and create the web app.\n\n#### Create map services\nRequired map services for the app to work properly:\n- RSU Network\n  - See SMDM_RSU.png diagram and notes below.\n- RSU DSRC\n  - See SMDM_RSU.png diagram and notes below.\n- Active TIMs\n  - See SMDM_ACTIVE_TIM.png diagram.\n\nThe RSU Network and RSU DSRC layers use the same data source and the values outlined below are expected in order for the app to work properly. \n- STATUS\n  - RSU site status.\n  - Expected values:\n    - Existing\n    - Proposed\n    - Not in Service\n- IPV4_STATUS_UP\n  - IPv4 network status\n  - Expected values:\n    - 1\n      - status up\n    - 0\n      - status other than up\n- IPV6_STATUS_UP\n  - IPv6 network status\n  - Expected values:\n    - 1\n      - status up\n    - 0\n      - status other than up\n- DSRC_STATUS_UP\n  - DSRC status\n  - Expected values:\n    - 1\n      - status up\n    - 0\n      - status other than up\n- NETWORK_STATUS\n  - IPv4 network status. This column is used to symbolize the RSU Network layer.\n  - Expected values\n    - green\n      - IPv6 and IPv4 status are up.\n    - yellow\n      - IPv6 status is up IPv4 status is down.\n    - orange\n      - IPv6 status is down IPv4 status is up.\n    - red\n      - IPv6 and IPv4 status are down.\n    - gray\n      - IPv6 or IPv4 status are other.\n    - not in service\n      - RSU not in service.\n    - proposed\n      - RSU is proposed.\n- DSRC_NETWORK_STATUS\n  - DSRC network status. This column is used to symbolize the RSU DSRC layer.\n  - Expected values:\n    - green\n      - DSRC status is up.\n    - red\n      - DSRC status is down.\n    - gray\n      - DSRC status is other.\n    - not in service\n      - RSU is not in service.\n    - proposed\n      - RSU is proposed.\n      \nThe Active TIMs layers is joined to the RSU Network layer in the map service using the deviceid column.\n\nOptional map services:\n- Construction\n- VSL\n- Incidents\n- Road Conditions\n\nThese map services are optional and if not used will need to be removed from the config.json and configs/AttributeTable/config_widgets_AttributeTable_Widget_30.json files.\n\n#### Create web map\nA web map is required for the Web AppBuilder template to work. One will need to be created and accessible on ArcGIS Portal.\n\n#### Download and configure the config.json file\n**Step 1**: Download the config.json file.\n\n**Step 2**: Open the file for editing and modify the following lines of code to use your ArcGIS Portal/Server URLs:\n  - Line 19: ArcGIS Portal URL\n  - Line 398: ArcGIS Portal URL\n  - Line 767: RSU Network layer URL\n  - Line 1036: RSU Network layer URL\n  - Line 1305: Active TIMs layer URL\n \n **Step 3**: Save edits.\n\n#### Download and configure the configs folder\n**Step 1**: Download the configs folder.\n\n**Step 2**: Open the configs/AttributeTable/config_widgets_AttributeTable_Widget_30.json file for editing and modify the following lines of code to use your ArcGIS Server URLs. This is the only file in the configs directory that needs to be modified.\n  - Line 7: RSU Network layer URL\n  - Line 206: RSU DSRC layer URL\n  - Line 405: Construction layer URL\n  - Line 484: Variable Speed Limit (VSL) layer URL\n  - Line 535: Incidents layer URL\n  - Line 596: Road Conditions layer URL\n  - Line 657: Active TIMs layer URL\n \n **Step 3**: Save edits.\n\n#### Create, download and configure a new web app from Web AppBuilder for ArcGIS\n**Step 1**: Open Web AppBuilder for ArcGIS and connect to the portal you are using for the web map.\n\n**Step 2**: Create a new Infographic dashboard.\n\n**Step 3**: Download the web app.\n\n**Step 4**: In the root menu replace the config.json with the one you downloaded and configured above.\n\n**Step 5**: In the root menu replace the configs folder with the one you downloaded and configured above.\n",
+        "url": "https://api.github.com/repos/Trihydro/smdm/contents/README.md?ref=master"
+      },
+      "forks": {
+        "forkedRepos": [
+          {
+            "id": "44650052-212584926",
+            "name": "smdm",
+            "owner": "IAITraffic"
+          },
+          {
+            "id": "25094076-206596093",
+            "name": "smdm",
+            "owner": "tonggehuang"
+          },
+          {
+            "id": "4606611-144208582",
+            "name": "smdm",
+            "owner": "imanoreotwe"
+          }
+        ]
+      },
+      "contributors": [
+        {
+          "avatarUrl": "https://avatars2.githubusercontent.com/u/42048372?v=4",
+          "profileUrl": "https://github.com/trawlinson-wydot",
+          "userType": "User",
+          "username": "trawlinson-wydot"
+        },
+        {
+          "avatarUrl": "https://avatars0.githubusercontent.com/u/27357655?v=4",
+          "profileUrl": "https://github.com/richardlsmith",
+          "userType": "User",
+          "username": "richardlsmith"
+        }
+      ],
+      "releases": [],
+      "languages": {
+        "CSS": 422
+      }
+    },
+    "generatedData": {
+      "rank": 49,
+      "sonarMetrics": {
+        "bugs": {
+          "frmt_val": "0",
+          "key": "bugs",
+          "val": 0.0
+        },
+        "code_smells": {
+          "frmt_val": "0",
+          "key": "code_smells",
+          "val": 0.0
+        },
+        "reliability_rating": {
+          "frmt_val": "A",
+          "key": "reliability_rating",
+          "val": 1.0
+        },
+        "security_rating": {
+          "frmt_val": "A",
+          "key": "security_rating",
+          "val": 1.0
+        },
+        "sqale_index": {
+          "frmt_val": "0",
+          "key": "sqale_index",
+          "val": 0.0
+        },
+        "sqale_rating": {
+          "frmt_val": "A",
+          "key": "sqale_rating",
+          "val": 1.0
+        },
+        "violations": {
+          "frmt_val": "0",
+          "key": "violations",
+          "val": 0.0
+        },
+        "vulnerabilities": {
+          "frmt_val": "0",
+          "key": "vulnerabilities",
+          "val": 0.0
+        },
+        "complexity": {
+          "frmt_val": null,
+          "key": null,
+          "val": 0.0
+        }
+      },
+      "vscan": {
+        "data_scanned": "0.27 MB",
+        "infected_files": 0,
+        "lastscan": "2019-12-06T17:19:38.000+0000",
+        "scanned_directories": 85,
+        "scanned_files": 112,
+        "time": "51.040 sec (0 m 51 s)",
+        "reported_files": []
+      }
+    },
+    "codehubData": {
+      "etag": "N/A",
+      "source": "github",
+      "lastModified": "2019-12-20T21:50:53.000+0000",
+      "lastIngested": null,
+      "badges": {
+        "status": "pending",
+        "isFeatured": false
+      },
+      "isVisible": true,
+      "isIngested": true,
+      "isIngestionEnabled": true
+    }
+  },
+  {
+    "id": "585e203c4bf7b9ff12966fd9697b87cb",
+    "sourceData": {
+      "commits": 4800,
+      "stars": 167,
+      "watchers": 27,
+      "description": "The newest inception of CARMA is now live on Github and open for collaborating. The CARMAPlatform is created on a robot operating system (ROS) and utilizes open source software (OSS) that enables cooperative automated driving plug-ins.",
+      "language": "Java",
+      "name": "CARMAPlatform",
+      "repositoryUrl": "https://github.com/usdot-fhwa-stol/CARMAPlatform",
+      "createdAt": "2019-12-20T21:49:36.000+0000",
+      "lastPush": "2019-12-20T21:49:36.000+0000",
+      "owner": {
+        "avatarUrl": "https://avatars1.githubusercontent.com/u/43184500?v=4",
+        "name": "usdot-fhwa-stol",
+        "type": "Organization",
+        "url": "https://github.com/usdot-fhwa-stol"
+      },
+      "readme": {
+        "content": "| CicleCI Build Status | Sonar Code Quality |\n|----------------------|---------------------|\n[![CircleCI](https://circleci.com/gh/usdot-fhwa-stol/CARMAPlatform.svg?style=svg)](https://circleci.com/gh/usdot-fhwa-stol/CARMAPlatform) | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=usdot-fhwa-stol_CARMAPlatform&metric=alert_status)](https://sonarcloud.io/dashboard?id=usdot-fhwa-stol_CARMAPlatform) |\n\n# CARMA\n![CARMA Arch](docs/image/CARMA3_Vehicles.jpg)\n\nCARMA<sup>SM</sup>  advances research and development to accelerate market readiness and deployment of cooperative driving automation, while advancing automated driving technology safety, security, data, and artificial intelligence. It encourages collaboration and participation by a community of engineers and researchers to advance understanding of cooperative driving automation using open source software (OSS) and agile project management practices. \n\nCARMA is a reusable, extensible platform for controlling SAE level 2 connected, automated vehicles (AVs). It provides a rich, generic API for third party plugins that implement vehicle guidance algorithms that plan vehicle trajectories. It is written in Java and C++ and runs in a Robot Operating System (ROS) environment. The platform can be reused on a variety of properly equipped vehicles.\n\nThis readme updated: 26 July 2019\n\n## What Is CARMA\n![CARMA Arch](docs/image/CARMA3_Architecture.png)\n\nManaging automated vehicle motion involves three aspects. The first is **navigation, also known as localization**, which is the act of determining where the vehicle currently is with respect to the earth and with respect to the desired path of travel (its planned route). The second is **guidance, also known as trajectory planning**, which includes the processes of determining how the vehicle is to move from its current location to its destination. The destination and route will be handed to the guidance algorithms, and they then determine how the vehicle’s motion needs to be adjusted at any time in order to follow the route. The third aspect of automated vehicle motion is **control**, which covers the actuation of the vehicle’s physical devices to induce changes in motion (for land vehicles these are typically causing the wheels to rotate faster or slower and turning the steering wheel). Therefore, the navigation solution becomes an input to the guidance function, and the guidance solution becomes an input to the control function. As the vehicle moves, obviously its location changes so that the navigation function constantly needs to update its solution and the cycle iterates as quickly as necessary to produce a smooth and accurate vehicle motion. The rate of iteration is largely determined by the expected speed of the vehicle.\n\nCARMA provides the navigation and guidance functions for its host vehicle, as well as some of the control functions.  It depends on low level controller hardware to provide the rest of the control function.  The current version of CARMA provides SAE level 2 autonomy, with both speed and steering control.\n\n## Documentation\n\n![CARMA Demo](docs/image/CARMA2_Platooning_from_Office.jpg)\n\n<!-- We would like to publish this section, but are not ready to at this time:\n## System Specifications\nThe current CARMA requirements specification: [CARMA Platform Requirements](https://usdot-carma.atlassian.net/wiki/spaces/CAR/pages/56786945/Platform+Requirements+Document?preview=/56786945/56852481/CAV%20Platform%20Requirements.docx)\n-->\n\n## Release Notes\nThe current version and release history of the CARMA software platform: [CARMA Release Notes](<docs/Release_notes.md>)\n\n**Repo Structure Note:**  The master and develop branches of this repo (and all other repos in the usdot-fhwa-stol GitHub organization) now reflects the third generation of CARMA code and documentation, called CARMA3.  It uses [Autoware](https://github.com/autowarefoundation/autoware) to provide SAE level 2 and 3 automation capability.  The legacy CARMA2 code is still being supported.  It was used extensively by FHWA during 2018 for SAE level 1 experiments.  To work with that code base, please check out the CARMA2-integration branch and make pull requests to it (using the contribution process outlined below).\n\n## Roadmap\nThe current CARMA development direction and release plans. [CARMA Roadmap](<docs/Roadmap.md>)\n\n## Architecture Guide\nThe documentation describes the software architecture within a single CARMA vehicle.  There may be several of these vehicles operating in concert, communicating with each other via DSRC or cellular means.  They can also communicate with roadside infrastructure using DSRC or cellular.  The communication among software components within a single vehicle, however, is mostly done via the Robot Operating System (ROS) framework.  There are no ROS communications between neighboring vehicles. [CARMA3 System Architecture](https://usdot-carma.atlassian.net/wiki/spaces/CAR/pages/89587713/CARMA3+System+Architecture?preview=/89587713/128680006/CARMA%203.0%20Platform%20Architecture%20v0.docx)\n\nFor information on the CARMA2 architecture, please see [CARMA2 System Architecture](https://usdot-carma.atlassian.net/wiki/spaces/CAR/pages/11403311/CARMA2+System+Architecture?preview=/11403311/130678837/CAV%20Platform%20Architecture.docx)\n\n## Detailed Design Documents\nPlease see the Detail Design document page for detailed design specification for CARMA and other additional information.\n[Detail Design Page](Detail_Design.md)\n\n## Developers Guide \nA plug-in developers guide for CARMA3 will be coming soon.\n\nFor a description of the approach to develop a plug-in for CARMA2, please see [CARMA 2.7 Developers Guide](https://usdot-carma.atlassian.net/wiki/spaces/CAR/pages/23330913/CARMA+Project+Documentation?preview=/23330913/29556796/CARMA%202.7%20Developers%20Guide.docx)\n\n## Users Guide\nA user guide for CARMA3 will be coming soon.\n\nFor a description of the functionality specific to CARMA2 on the Cadillac SRX, see [CARMA User Guide](https://usdot-carma.atlassian.net/wiki/spaces/CAR/pages/23330913/CARMA+Project+Documentation?preview=/23330913/29392940/CARMA%202.7%20USER%20GUIDE.docx)\n\n## Administrator Guide\nAn administrator guide for CARMA3 will be coming soon.\n\nFor administrative information on CARMA2, including vehicle and developer PC configuration, build, deployment and testing steps necessary to install and run the CARMA platform, please see [Administrator Guide](https://usdot-carma.atlassian.net/wiki/spaces/CAR/pages/23330913/CARMA+Project+Documentation?preview=/23330913/29196388/CARMA%20Administrator%20Guide.docx)\n\n## Other CARMA Packages\nCARMA Platform<sup>SM</sup> is a downloadable, open source software (OSS) platform architected to be extensible and reusable for a wide variety of research purposes to advance innovation for cooperative driving automation. It enables communication between vehicles, road users such as pedestrians, bicyclists, and scooters, and infrastructure devices capable of communication. It promotes collaboration between a community of engineers and researchers to accelerate the development, testing, and evaluation of cooperative driving automation while advancing the safety, security, data, and use of artificial intelligence in automated driving technology. \n\nThe CARMA Platform is distributed as a set of multiple independent packages hosted in separate Github repositories. These packages facilitate operation of the CARMA platform with different hardware configurations or allow it to support different modes of operation. To include one of these packages in your build of the CARMAPlatform system please clone the Github repository into the same Catkin workspace `src/` folder as this repository. The Catkin build system will verify that dependencies are resolved appropriately and build the newly included package when you next run `catkin_make`. An incomplete listing of available packages for CARMA2 includes:\n\n### Vehicle Controller Interface Drivers\n* [CARMACadillacSrx2013ControllerDriver](https://github.com/usdot-fhwa-stol/CARMACadillacSrx2013ControllerDriver)\n* [CARMAFreightliner2012ControllerDriver](https://github.com/usdot-fhwa-stol/CARMAFreightliner2012ControllerDriver)\n* [CARMATorcXgvControllerDriver](https://github.com/usdot-fhwa-stol/CARMATorcXgvControllerDriver)\n\n### Sensor Drivers\n* [CARMATorcPinpointDriver](https://github.com/usdot-fhwa-stol/CARMATorcPinpointDriver)\n* [CARMADelphiEsrDriver](https://github.com/usdot-fhwa-stol/CARMADelphiEsrDriver)\n* [CARMACohdaDsrcDriver](https://github.com/usdot-fhwa-stol/CARMACohdaDsrcDriver)\n\n### General System Utilites\n* [CARMAWebUi](https://github.com/usdot-fhwa-stol/CARMAWebUi)\n* [CARMAMsgs](https://github.com/usdot-fhwa-stol/CARMAMsgs)\n* [CARMAUtils](https://github.com/usdot-fhwa-stol/CARMAUtils)\n\nA full list of available packages may be found at in the [USDOT FHWA STOL](https://github.com/usdot-fhwa-stol) Github organization.\n\nCARMA Cloud<sup>SM</sup> is a downloadable, cloud-based open source software (OSS) service that provides information to support and enable cooperative driving automation. It enables communication with cloud services and vehicles, road users such as pedestrians, bicyclists, and scooters, and infrastructure devices capable of communication. It promotes collaboration between a community of engineers and researchers to accelerate the development, testing, and evaluation of cooperative driving automation while advancing the safety, security, data, and use of artificial intelligence in automated driving technology. The source code for CARMA Cloud can be found [here on GitHub](https://github.com/usdot-fhwa-stol/CARMACloud).\n\n## Contribution\nWelcome to the CARMA contributing guide. Please read this guide to learn about our development process, how to propose pull requests and improvements, and how to build and test your changes to this project. [CARMA Contributing Guide](Contributing.md) \n\n## Code of Conduct \nPlease read our [CARMA Code of Conduct](Code_of_Conduct.md) which outlines our expectations for participants within the CARMA community, as well as steps to reporting unacceptable behavior. We are committed to providing a welcoming and inspiring community for all and expect our code of conduct to be honored. Anyone who violates this code of conduct may be banned from the community.\n\n## Attribution\nThe development team would like to acknowledge the people who have made direct contributions to the design and code in this repository. [CARMA Attribution](ATTRIBUTION.md) \n\n## License\nBy contributing to the Federal Highway Administration (FHWA) Connected Automated Research Mobility Applications (CARMA), you agree that your contributions will be licensed under its Apache License 2.0 license. [CARMA License](<docs/License.md>) \n\n## Code.gov Registration Info\n\nAgency: DOT\n\nShort Description: Cooperative Automation Research Mobility Applications (CARMA) is an open source software (OSS) platform that runs on a computer inside of a vehicle, and the computer interacts with the vehicle's devices to enable cooperative automated vehicle research, development, and testing. The computer then gives the vehicle the information needed in order to interact and cooperate with infrastructure and other vehicles.Phase I of this project initiated the next generation of the CARMA fleet by developing a common platform infrastructure that will support the FHWA's strategic vision for Cooperative Automated Driving Systems (CADS). Phase I also developed the Integrated Highway Prototype (IHP) by integrating the existing applications and a new vehicle type, the heavy truck, into the CARMA fleet. The following five applications are major research areas: (1) Vehicle Platooning, (2) Signalized Intersection Approach and Departure, (3) Infrastructure guided Speed Harmonization, and (4) Cooperative Lane Change, and (5) Cooperative Ramp Merge.Phase II of this project will advance CADS, which was developed on the FHWA's CARMA research platform to allow testing of arbitration and negotiation strategies. Ultimately, this project will enhance infrastructure efficiency and reduce traffic congestion. One of the goals of this project is to accelerate the technology transfer and deployment of cooperative vehicle applications through open source collaboration with industry and stakeholders. This project will enable Society of Engineers (SAE) Level 2 and Level 3 (L2/3) light vehicle testing capabilities and develop a fleet of four SAE L2/3 heavy vehicles. The project will also develop a high-level concept for Transportation System Management and Operations (TSMO) around the use of automated driving technology. Furthermore, this project will identify Traffic Incident Management (TIM) scenarios that provide strategy improvements and new strategies for first responder use cases interacting with ADS and using ADS. The new FHWA fleet will be used to prototype a scenario for each of the following use case categories: (1) Basic Travel, (2) Work Zone, (3) Traffic Incident Management and (4) Weather. These tests will provide objective data to inform stakeholders about the impacts of ADS and possible strategies to use ADS to improve operations.\n\nStatus: Beta\n\nTags: transportation, cooperative driving automation, connected vehicles, intelligent transportation systems, C++, java, python, docker\n\nLabor hours: 200\n\nContact Name: James Lieu\n\nContact Phone: (202) 366-3000\n\n## Contact\nPlease click on the CARMA logo below to visit the Federal Highway Adminstration(FHWA) CARMA website. For more information, contact CARMA@dot.gov.\n[![CARMA Image](docs/image/CARMA_icon2.png)](https://highways.dot.gov/research/research-programs/operations/CARMA)\n\n\n",
+        "url": "https://api.github.com/repos/usdot-fhwa-stol/CARMAPlatform/contents/README.md?ref=develop"
+      },
+      "forks": {
+        "forkedRepos": [
+          {
+            "id": "5959703-222189380",
+            "name": "CARMAPlatform",
+            "owner": "heshanfu"
+          },
+          {
+            "id": "18047163-222070668",
+            "name": "CARMAPlatform",
+            "owner": "labimage"
+          },
+          {
+            "id": "26907972-205598952",
+            "name": "CARMAPlatform",
+            "owner": "Shashankreddysunkara"
+          },
+          {
+            "id": "44192250-203552943",
+            "name": "CARMAPlatform",
+            "owner": "V2X-DC"
+          },
+          {
+            "id": "25051699-203197276",
+            "name": "CARMAPlatform",
+            "owner": "itabr"
+          },
+          {
+            "id": "53441473-199481387",
+            "name": "CARMAPlatform",
+            "owner": "ksadabadi"
+          },
+          {
+            "id": "26729043-198175371",
+            "name": "CARMAPlatform",
+            "owner": "turen009"
+          },
+          {
+            "id": "41028712-196930182",
+            "name": "CARMAPlatform",
+            "owner": "ub-mri"
+          },
+          {
+            "id": "22946040-196617242",
+            "name": "CARMAPlatform",
+            "owner": "kfarokhi"
+          },
+          {
+            "id": "52831227-196614599",
+            "name": "CARMAPlatform",
+            "owner": "JackHallCCTA"
+          },
+          {
+            "id": "10778749-196585394",
+            "name": "CARMAPlatform",
+            "owner": "majiaqi"
+          },
+          {
+            "id": "47857268-196577543",
+            "name": "CARMAPlatform",
+            "owner": "vsn3876"
+          },
+          {
+            "id": "4781383-194982797",
+            "name": "CARMAPlatform",
+            "owner": "michaleb"
+          },
+          {
+            "id": "8967368-194109899",
+            "name": "CARMAPlatform",
+            "owner": "SiChiTong"
+          },
+          {
+            "id": "51248593-192540853",
+            "name": "CARMAPlatform",
+            "owner": "usdot-fhwa-nrc"
+          },
+          {
+            "id": "49401497-191597708",
+            "name": "CARMAPlatform",
+            "owner": "mgoli-cav"
+          },
+          {
+            "id": "38030772-189413598",
+            "name": "CARMAPlatform",
+            "owner": "kfunaoka"
+          },
+          {
+            "id": "24319837-188413964",
+            "name": "Usdot-fhwa-stol-CARMAPlatform",
+            "owner": "Diffblue-benchmarks"
+          },
+          {
+            "id": "168620-185102051",
+            "name": "CARMAPlatform",
+            "owner": "zhangaigh"
+          },
+          {
+            "id": "1435044-174177344",
+            "name": "CARMAPlatform",
+            "owner": "atgreenwood"
+          },
+          {
+            "id": "18428479-170591266",
+            "name": "CARMAPlatform",
+            "owner": "Apoorb"
+          },
+          {
+            "id": "45389748-166662793",
+            "name": "CARMAPlatform",
+            "owner": "nadellian"
+          },
+          {
+            "id": "27449748-162315429",
+            "name": "CARMAPlatform",
+            "owner": "snehagn"
+          },
+          {
+            "id": "14936902-160944655",
+            "name": "CARMAPlatform",
+            "owner": "DamonMIN"
+          },
+          {
+            "id": "45392190-159339354",
+            "name": "CARMAPlatform",
+            "owner": "qwert1234zx"
+          },
+          {
+            "id": "34893801-158920895",
+            "name": "CARMAPlatform",
+            "owner": "armando170A"
+          },
+          {
+            "id": "12128496-158777907",
+            "name": "CARMAPlatform",
+            "owner": "lakeroland"
+          },
+          {
+            "id": "45153569-158560607",
+            "name": "CARMAPlatform",
+            "owner": "perryyo"
+          },
+          {
+            "id": "44305051-155874708",
+            "name": "CARMAPlatform",
+            "owner": "VetteDriver"
+          },
+          {
+            "id": "26827842-155394870",
+            "name": "CARMAPlatform",
+            "owner": "rvalienter90"
+          }
+        ]
+      },
+      "contributors": [
+        {
+          "avatarUrl": "https://avatars1.githubusercontent.com/u/10292079?v=4",
+          "profileUrl": "https://github.com/msmcconnell",
+          "userType": "User",
+          "username": "msmcconnell"
+        },
+        {
+          "avatarUrl": "https://avatars0.githubusercontent.com/u/3723561?v=4",
+          "profileUrl": "https://github.com/Supraluminal",
+          "userType": "User",
+          "username": "Supraluminal"
+        },
+        {
+          "avatarUrl": "https://avatars2.githubusercontent.com/u/26841526?v=4",
+          "profileUrl": "https://github.com/qswawrq",
+          "userType": "User",
+          "username": "qswawrq"
+        },
+        {
+          "avatarUrl": "https://avatars3.githubusercontent.com/u/9048857?v=4",
+          "profileUrl": "https://github.com/TonysCousin",
+          "userType": "User",
+          "username": "TonysCousin"
+        },
+        {
+          "avatarUrl": "https://avatars0.githubusercontent.com/u/42840583?v=4",
+          "profileUrl": "https://github.com/darrelld05",
+          "userType": "User",
+          "username": "darrelld05"
+        },
+        {
+          "avatarUrl": "https://avatars3.githubusercontent.com/u/27976519?v=4",
+          "profileUrl": "https://github.com/maefromm",
+          "userType": "User",
+          "username": "maefromm"
+        },
+        {
+          "avatarUrl": "https://avatars3.githubusercontent.com/u/29981535?v=4",
+          "profileUrl": "https://github.com/watters-torc",
+          "userType": "User",
+          "username": "watters-torc"
+        },
+        {
+          "avatarUrl": "https://avatars2.githubusercontent.com/u/49001908?v=4",
+          "profileUrl": "https://github.com/itabrl",
+          "userType": "User",
+          "username": "itabrl"
+        },
+        {
+          "avatarUrl": "https://avatars1.githubusercontent.com/u/17771329?v=4",
+          "profileUrl": "https://github.com/aphelyon",
+          "userType": "User",
+          "username": "aphelyon"
+        },
+        {
+          "avatarUrl": "https://avatars2.githubusercontent.com/u/8008530?v=4",
+          "profileUrl": "https://github.com/Imp314",
+          "userType": "User",
+          "username": "Imp314"
+        },
+        {
+          "avatarUrl": "https://avatars0.githubusercontent.com/u/35111859?v=4",
+          "profileUrl": "https://github.com/MrZeekster",
+          "userType": "User",
+          "username": "MrZeekster"
+        },
+        {
+          "avatarUrl": "https://avatars1.githubusercontent.com/u/3028188?v=4",
+          "profileUrl": "https://github.com/snallamothu",
+          "userType": "User",
+          "username": "snallamothu"
+        },
+        {
+          "avatarUrl": "https://avatars0.githubusercontent.com/u/55887989?v=4",
+          "profileUrl": "https://github.com/jenctyler",
+          "userType": "User",
+          "username": "jenctyler"
+        },
+        {
+          "avatarUrl": "https://avatars0.githubusercontent.com/u/48106342?v=4",
+          "profileUrl": "https://github.com/icolwell-as",
+          "userType": "User",
+          "username": "icolwell-as"
+        },
+        {
+          "avatarUrl": "https://avatars1.githubusercontent.com/u/55258852?v=4",
+          "profileUrl": "https://github.com/saina-ramyar",
+          "userType": "User",
+          "username": "saina-ramyar"
+        },
+        {
+          "avatarUrl": "https://avatars1.githubusercontent.com/u/18197505?v=4",
+          "profileUrl": "https://github.com/tlochrane",
+          "userType": "User",
+          "username": "tlochrane"
+        },
+        {
+          "avatarUrl": "https://avatars2.githubusercontent.com/u/16179409?v=4",
+          "profileUrl": "https://github.com/zeekster28",
+          "userType": "User",
+          "username": "zeekster28"
+        },
+        {
+          "avatarUrl": "https://avatars2.githubusercontent.com/u/30732138?v=4",
+          "profileUrl": "https://github.com/adkissonj",
+          "userType": "User",
+          "username": "adkissonj"
+        }
+      ],
+      "releases": [],
+      "languages": {
+        "Java": 427734,
+        "Dockerfile": 3267,
+        "C++": 336964,
+        "Shell": 64429,
+        "C": 69804,
+        "CMake": 74934,
+        "MATLAB": 11698,
+        "Python": 44766
+      }
+    },
+    "generatedData": {
+      "rank": 5523,
+      "sonarMetrics": {
+        "bugs": {
+          "frmt_val": "47",
+          "key": "bugs",
+          "val": 47.0
+        },
+        "code_smells": {
+          "frmt_val": "633",
+          "key": "code_smells",
+          "val": 633.0
+        },
+        "reliability_rating": {
+          "frmt_val": "C",
+          "key": "reliability_rating",
+          "val": 3.0
+        },
+        "security_rating": {
+          "frmt_val": "C",
+          "key": "security_rating",
+          "val": 3.0
+        },
+        "sqale_index": {
+          "frmt_val": "A",
+          "key": "sqale_index",
+          "val": 80.0
+        },
+        "sqale_rating": {
+          "frmt_val": "A",
+          "key": "sqale_rating",
+          "val": 1.0
+        },
+        "violations": {
+          "frmt_val": "682",
+          "key": "violations",
+          "val": 682.0
+        },
+        "vulnerabilities": {
+          "frmt_val": "2",
+          "key": "vulnerabilities",
+          "val": 2.0
+        },
+        "complexity": {
+          "frmt_val": "958",
+          "key": "complexity",
+          "val": 958.0
+        }
+      },
+      "vscan": {
+        "data_scanned": "35.59 MB",
+        "infected_files": 0,
+        "lastscan": "2019-11-22T11:03:58.000+0000",
+        "scanned_directories": 214,
+        "scanned_files": 434,
+        "time": "55.564 sec (0 m 55 s)",
+        "reported_files": []
+      }
+    },
+    "codehubData": {
+      "etag": "N/A",
+      "source": "github",
+      "lastModified": "2019-12-20T21:49:36.000+0000",
+      "lastIngested": "2019-12-20T21:49:36.000+0000",
+      "badges": {
+        "status": "active",
+        "isFeatured": true
+      },
+      "isVisible": true,
+      "isIngested": true,
+      "isIngestionEnabled": true
+    }
+  }
+]
