@@ -127,7 +127,10 @@ describe('Project Details : ', () => {
   it('Expects Project Source link Click-Trigger to be', (done) => {
     component.create(bootstrap).then(() => {
       let element = document.querySelector(`#project-source-link-${mockRepositoriesData[0].id}`);
-      expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.sourceData.name,repo.sourceData.repositoryUrl,$event.target)');
+      console.log('----------------------------------------------------------------------------');
+      console.log(element);
+      console.log('----------------------------------------------------------------------------');
+      expect(element.innerHTML).toEqual('Github™');
       done();
     }).catch( e => { console.log(e.toString())} );
   });
