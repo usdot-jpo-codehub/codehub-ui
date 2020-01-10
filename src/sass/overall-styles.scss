@@ -1,0 +1,23 @@
+/* button */
+.btn:focus{
+    //remove when less is removed
+    outline: 0.25rem solid #2491ff !important;
+}
+.btn.btn-accent{
+    background-color: $btn-accent_background-color_default;
+    color: #ffffff;
+}
+.btn.btn-accent:hover,
+.btn.btn-accent:focus{
+    background-color: $btn-accent_background-color_focus-hover;
+}
+.btn.btn-accent:active{
+    background-color: $btn-accent_background-color_active;
+}
+
+/* font */
+.larger-font{
+    font-size: larger;
+}
+
+

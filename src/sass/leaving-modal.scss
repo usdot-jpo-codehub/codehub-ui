@@ -1,0 +1,28 @@
+#exitdialog-title{
+    .btn{
+        height: 46px;
+        margin-bottom: 15px;
+        margin-right: 16px;
+    }
+    .modal-header{
+        padding-left: 25px;
+        padding-right: 25px;
+        background-color: #f2f2f2;
+    }
+    .modal-body.leaving-modal{
+        padding: 0px 25px;
+        max-height: unset;
+
+        .modal-body-text{
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+        hr{
+            margin-bottom: 0px;
+            margin-top: 0px;
+        }
+    }
+    .modal-footer-scss{
+        padding-top: 15px;
+    }
+}
