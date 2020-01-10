@@ -5,7 +5,7 @@
 }
 .btn.btn-accent{
     background-color: $btn-accent_background-color_default;
-    color: #ffffff;
+    color: $btn-accent_font-color;
 }
 .btn.btn-accent:hover,
 .btn.btn-accent:focus{
