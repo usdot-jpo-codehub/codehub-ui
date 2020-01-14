@@ -95,13 +95,13 @@ export class Insight {
     return new Promise((resolve, reject) => {
       try {
         projects.sort((a, b) => {
-          if (b.sourceData.forks.forkedRepos && a.sourceData.forks.forkedRepos) {
-            return Number(b.sourceData.forks.forkedRepos.length) - Number(a.sourceData.forks.forkedRepos.length);
+          if (b.sourceData.forks && a.sourceData.forks) {
+            return Number(b.sourceData.forks.length) - Number(a.sourceData.forks.length);
           }
-          if (b.sourceData.forks.forkedRepos) {
+          if (b.sourceData.forks) {
             return 1;
           }
-          if (a.sourceData.forks.forkedRepos) {
+          if (a.sourceData.forks) {
             return -1;
           }
           return null;
@@ -359,7 +359,7 @@ export class Insight {
   buildChartForks(projects) {
     const calc = new Promise((resolve, reject) => {
       const forkProjectNames = projects.map(obj => obj.sourceData.name);
-      const forkAmount = projects.map(obj => obj.sourceData.forks.forkedRepos.length);
+      const forkAmount = projects.map(obj => obj.sourceData.forks.length);
       const result = { forkProjectNames, forkAmount };
       resolve(result);
     });

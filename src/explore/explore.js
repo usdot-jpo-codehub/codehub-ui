@@ -34,7 +34,7 @@ export class Explore {
       { value: 'sourceData.releases', name: 'Releases' },
       { value: 'sourceData.commits', name: 'Commits' },
       { value: 'sourceData.contributors', name: 'Contributors' },
-      { value: 'sourceData.forks.forkedRepos', name: 'Forks' }
+      { value: 'sourceData.forks', name: 'Forks' }
     ];
     this.openReadmeLinkId = null;
     this.exitDialogLinkId = null;

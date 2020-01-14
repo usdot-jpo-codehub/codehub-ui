@@ -147,7 +147,7 @@ describe('Test Card Feature : ', () => {
     component.create(bootstrap).then( () => {
       let num = new NumValueConverter();
       const element = document.querySelector(`#card-feature-project-forks-${mockRepositoriesData[0].id}`);
-      expect(element.innerHTML).toEqual(''+num.toView(mockRepositoriesData[0].sourceData.forks.forkedRepos.length));
+      expect(element.innerHTML).toEqual(''+num.toView(mockRepositoriesData[0].sourceData.forks.length));
       done();
     }).catch( e => { console.log(e.toString()) });
   });

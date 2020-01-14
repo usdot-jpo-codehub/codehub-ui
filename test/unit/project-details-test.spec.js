@@ -203,7 +203,7 @@ describe('Project Details : ', () => {
     component.create(bootstrap).then(() => {
       let element = document.querySelector('#project-stats-forks');
       let num = new NumValueConverter();
-      expect(element.innerHTML).toEqual(''+num.toView(mockRepositoriesData[0].sourceData.forks.forkedRepos.length));
+      expect(element.innerHTML).toEqual(''+num.toView(mockRepositoriesData[0].sourceData.forks.length));
       done();
     }).catch( e => { console.log(e.toString())} );
   });
@@ -214,7 +214,7 @@ describe('Project Details : ', () => {
       let collapsedItems = document.querySelector('#project-list-reusing-us-collapse').getElementsByTagName('li');
       let total = (visibleItems.length) + (collapsedItems.length);
 
-      expect(total).toEqual(mockRepositoriesData[0].sourceData.forks.forkedRepos.length);
+      expect(total).toEqual(mockRepositoriesData[0].sourceData.forks.length);
       done();
     }).catch( e => { console.log(e.toString())} );
   });
