@@ -8,7 +8,7 @@ export const FakeData = {
   stars: "?",
   watchers: "?",
   releases: "?",
-  forkedRepos: "?",
+  forks: "?",
   contributors: "?",
   commits: "?"
 };

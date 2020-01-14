@@ -80,9 +80,9 @@
                         <span id="project-stats-releases" class="num text-muted text-emphasized">${releases.length | num}</span>
                         <span class="stat-label">releases</span>
                       </span>
-                        <span class="stat" tabindex="0" aria-label="${repo.sourceData.forks.forkedRepos.length | num} forks">
+                        <span class="stat" tabindex="0" aria-label="${repo.sourceData.forks.length | num} forks">
                         <span class="octicon octicon-repo-forked"></span>
-                          <span id="project-stats-forks" class="num text-muted text-emphasized">${repo.sourceData.forks.forkedRepos.length | num}</span>
+                          <span id="project-stats-forks" class="num text-muted text-emphasized">${repo.sourceData.forks.length | num}</span>
                         <span class="stat-label">forks</span>
                       </span>
                       <span class="stat ${repo.generatedData.vscan.infected_files>0?' stat-vscan':''}" tabindex="0" aria-label="${repo.generatedData.vscan.infected_files} viruses">
@@ -237,9 +237,9 @@
                       <div class="row vscan-metrics">
                         <div class="row vscan-metric">
                           <div class="col-md-12">
-                            <span class="stat" tabindex="0" aria-label="${repo.generatedData.vscan.lastscan | ago}">
+                            <span class="stat" tabindex="0" aria-label="${repo.generatedData.vscan.lastScan | ago}">
                               <span class="octicon octicon-clock"></span>
-                              <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.generatedData.vscan.lastscan | ago}</span>
+                              <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.generatedData.vscan.lastScan | ago}</span>
                               <span class="stat-label"></span>
                             </span>
                           </div>
@@ -312,6 +312,19 @@
             </div>
             <div class="view-all clearfix">
               <a if.bind="repo.sourceData.contributors.length > 5" id="project-details_contributors" href="#" click.delegate="openContribModal(repo,$event.target)" class="" aria-label="View all contributors.">View All Contributors <i class="material-icons" aria-hidden="true">keyboard_arrow_right</i></a>
+            </div>
+            <hr class="hr-related-separator">
+            <h3 tabindex="0" aria-label="Related dataset in ITS DataHub">RELATED DATASETS ON ITS DATAHUB</h3>
+            <div class="media-list media-list-users list-group">
+              <template repeat.for="related of repo.related">
+                <a href.bind="related.url" class="list-group-item" target="_blank">
+                  <span class="media">
+                    <span class="media-body clearfix">
+                      <h5 tabindex="0" aria-label="${related.name}">${related.name}</h5>
+                    </span>
+                  </span>
+                </a>
+              </template>
             </div>
           </div>
         </div>

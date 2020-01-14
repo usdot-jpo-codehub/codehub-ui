@@ -182,7 +182,7 @@ describe('Insight : ', () => {
     component.create(bootstrap).then( () => {
       component.viewModel.activate();
       setTimeout(() => {
-        let forkAmount = mockDataInsightGetAll.map( x => x.sourceData.forks.forkedRepos.length).reverse();
+        let forkAmount = mockDataInsightGetAll.map( x => x.sourceData.forks.length).reverse();
         const chartData = component.viewModel.mfChart._api.getOption().series[0].data;
         expect(chartData.length).toEqual(forkAmount.length);
         let expected ='';
