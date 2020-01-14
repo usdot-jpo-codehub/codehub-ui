@@ -1,7 +1,7 @@
 {
   "name": "codehub-ui",
   "description": "An Aurelia client application.",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/usdot-jpo-codehub/codehub-ui.git"
