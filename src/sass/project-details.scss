@@ -1,6 +1,11 @@
 .btn-project-details{
     font-size: 14px;
 }
+.proj-details-wrapper {
+  .hr-related-separator{
+    border: 1px solid $lightgray;
+  }
+}
 .proj-details-wrapper .list-inline{
     margin-left: 0px;
 }

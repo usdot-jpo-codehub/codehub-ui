@@ -54,7 +54,7 @@ export class ProjectDetails {
         return;
       }
       this.repo = repo;
-      this.projectsThatUseUs = repo.sourceData.forks.forkedRepos;
+      this.projectsThatUseUs = repo.sourceData.forks;
 
       this.releases = this.repo.sourceData.releases;
       this.releases.forEach(r => { this.downloads += r.total_downloads; });

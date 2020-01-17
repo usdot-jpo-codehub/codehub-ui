@@ -1,8 +1,18 @@
 ![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoieE1PRzV1dmZyOTB5MVBIYzlGYUFKcitLUVpPVEtNd2Z3WDdraEUxYXMwQkV5SytJbk1MSitxenlqTFN1N3hqOVJ3bXRZVkFrS2paTXNnQVNkQWFVRmQwPSIsIml2UGFyYW1ldGVyU3BlYyI6Ik0ySy85bzR3OVU2eEMwUnUiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=usdot-jpo-codehub_codehub-ui&metric=alert_status)](https://sonarcloud.io/dashboard?id=usdot-jpo-codehub_codehub-ui)
 
 # codehub-ui
+> version: 2.0
 
 This repository holds the frontend user-interface (UI) code for the United States Department of Transportation (U.S. DOT) Joint Program Office (JPO) Intelligent Transit Systems (ITS) CodeHub website located at [https://its.dot.gov/code](https://its.dot.gov/code).
+
+## Changelog
+Changes are in reference with the previous version (1.1)
+
+- Changes related to data structure
+- Introduction of usage of USWDS (SASS)
+- Consolidation of styles between pages
+- Reorganization of controls in Project Details page.
+- Display DataHub related information in Project Details page.
 
 ## Getting Started
 
