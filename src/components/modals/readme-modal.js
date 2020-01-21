@@ -49,9 +49,6 @@ export class ReadmeModal {
           const fully_qualified_url = this.prependUrlForImages(this.repo, imgs[j].getAttribute("src"));
           imgs[j].setAttribute("src", fully_qualified_url);
         }
-        else{
-          console.log("do nothing");
-        }
       }
       const readmeTitle = document.querySelector('#readme-title');
       readmeTitle.focus();
@@ -90,7 +87,6 @@ navigateAndClose() {
     });
   }
   prependUrlForImages(repo, readmeImgUrl){
-    TODO: //"master" needs to be replaced with variable for branch
-    return(repo.sourceData.repositoryUrl + "/raw/master/" + readmeImgUrl);
+    return(repo.sourceData.repositoryUrl + "/raw/" + repo.sourceData.defaultBranch + "/" + readmeImgUrl);
   }
 }
