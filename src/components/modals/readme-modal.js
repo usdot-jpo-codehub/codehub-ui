@@ -27,6 +27,7 @@ export class ReadmeModal {
     this.taskQueue.queueMicroTask(() => {
       const readmeObj = document.querySelector('#readme-content');
       const anchors = readmeObj.getElementsByTagName('a');
+      const imgs = readmeObj.getElementsByTagName('img');
       for (let i = 0; i < anchors.length; i++) {
         anchors[i].onclick = function na(event) {
           if (event.target.tagName.toLowerCase() === 'a') {
@@ -42,6 +43,13 @@ export class ReadmeModal {
           return false;
         };
       }
+
+      for (let j = 0; j < imgs.length; j++){
+        if(imgs[j].getAttribute("src").indexOf("http")){
+          const fully_qualified_url = this.prependUrlForImages(this.repo, imgs[j].getAttribute("src"));
+          imgs[j].setAttribute("src", fully_qualified_url);
+        }
+      }
       const readmeTitle = document.querySelector('#readme-title');
       readmeTitle.focus();
     });
@@ -56,7 +64,7 @@ export class ReadmeModal {
     return this.repo.sourceData.readme.content ? true : false;
   }
 
-  navigateAndClose() {
+navigateAndClose() {
     this.router.navigateToRoute('project-details', { id: this.repo.id });
     this.controller.ok();
   }
@@ -77,5 +85,8 @@ export class ReadmeModal {
         }
       },200);
     });
+  }
+  prependUrlForImages(repo, readmeImgUrl){
+    return(repo.sourceData.repositoryUrl + "/raw/" + repo.sourceData.defaultBranch + "/" + readmeImgUrl);
   }
 }
