@@ -61,6 +61,13 @@ export class Popular {
         this.searchingFeatured = false;
         return this.featured;
       }
+      let b = 4;
+      if (results.length < b) {
+        b = results.length - 1;
+      }
+      if (this.fakeData) {
+        results.splice(b, 0, this.fakeData);
+      }
       this.featured = results;
       this.searchingFeatured = false;
     });
