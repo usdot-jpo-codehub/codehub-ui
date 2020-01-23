@@ -102,84 +102,6 @@
           <div class="col-lg-12">
             <div class="card full-width">
               <div class="lined-header">
-                <h2 tabindex="0" class="" aria-label="Project dependencies"><span aria-hidden="true">Dependencies</span></h2>
-              </div>
-              <div class="row proj-overview-row">
-                <div class="col-lg-6">
-                  <h3 tabindex="0" aria-label="Projects Reused by us, ${componentDependencies? componentDependencies.length+' detected': 'no projects detected'}">Projects Reused by us</h3>
-                  <div class="row">
-                    <div class="multi-column">
-                      <ul id="project-list-reused-by-us-visible" class="list-unstyled" aria-hidden="true">
-                        <li repeat.for="depend of componentDependencies | pick:numDepends" aria-hidden="true"><strong tabindex="0" aria-label="Artifact id: ${depend.artifactId}, version: ${depend.version}">${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
-                      </ul>
-                    </div>
-                    <div class="collapse" id="collapseDepend">
-                      <div class="multi-column">
-                        <ul id="project-list-reused-by-us-collapsed" class="list-unstyled" aria-hidden="true">
-                          <li repeat.for="depend of componentDependencies | skip:numDepends" aria-hidden="true"><strong tabindex="0" aria-label="Artifact id: ${depend.artifactId}, version: ${depend.version}">${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  <button if.bind="componentDependencies.length > numDepends" id="showMoreBtn" class="btn btn-link btn-sm" data-toggle="collapse" click.delegate="dependCollapsed = dependCollapsed !== true" href="#collapseDepend">
-                    <template if.bind="dependCollapsed">Show More <em class="material-icons">expand_more</em></template>
-                    <template if.bind="!dependCollapsed">Show Less <em class="material-icons">expand_less</em></template>
-                  </button>
-                  <div tabindex="0" class="coming-soon-watermark ${componentDependencies.length < 1  ? '' : 'hide'}" aria-label="${componentDependencies.length < 1  ? 'Feature comming soon' : ''}">Coming Soon</div>
-
-                  <div if.bind="componentDependencies.length < 1" class="empty-state text-center">
-                    <i class="material-icons large-icon" aria-hidden="true">add_circle</i>
-                    <em tabindex="0" class="text-muted" aria-label="None found.">None Found</em>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <h3 tabindex="0" aria-label="Projects reusing us, ${projectsThatUseUs ? projectsThatUseUs.length + 'projects detected': '0 projects detected'}">Projects reusing us</h3>
-                  <div class="row">
-                    <div class="multi-column">
-                      <ul id="project-list-reusing-us-visible" class="list-unstyled">
-                        <li tabindex="0" repeat.for="uses of projectsThatUseUs | pick:numDepends" aria-label="Project name: ${uses.name}, organization: ${uses.owner}">
-                          <strong aria-hidden="true">${uses.name}</strong>
-                          <small aria-hidden="true">${uses.owner}</small>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="collapse" id="collapseUseUs">
-                      <div class="multi-column">
-                        <ul id="project-list-reusing-us-collapse" class="list-unstyled">
-                          <li tabindex="0" repeat.for="uses of projectsThatUseUs | skip:numDepends" aria-label="Project name: ${uses.name}, organization: ${uses.owner}">
-                            <strong aria-hidden="true">${uses.name}</strong>
-                            <small aria-hidden="true">${uses.owner}</small>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  <button if.bind="projectsThatUseUs.length > numDepends" id="showMoreUseBtn" class="btn btn-link btn-sm" data-toggle="collapse" click.delegate="useUsCollapsed = useUsCollapsed !== true" href="#collapseUseUs">
-                    <template tabindex="0" if.bind="useUsCollapsed">Show More <i class="material-icons" aria-hidden="true">expand_more</i></template>
-                    <template tabindex="0" if.bind="!useUsCollapsed">Show Less <i class="material-icons" aria-hidden="true">expand_less</i></template>
-                  </button>
-
-                  <div if.bind="projectsThatUseUs.length < 1" class="empty-state text-center">
-                    <i class="material-icons large-icon" aria-hidden="true">add_circle</i>
-                    <em tabindex="0" class="text-muted" aria-label="No projects found.">None Found</em>
-                  </div>
-
-                  <div class="text-center">
-                    <button class="btn btn-link" id="project-details_add-project" click.trigger="openAddProjectModal($event.target)"><i class="material-icons" aria-hidden="true">add_circle</i> Are you using this project?</button>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row proj-content">
-          <div class="col-lg-12">
-            <div class="card full-width">
-              <div class="lined-header">
                 <h2 class="" tabindex="0" aria-label="Project Health Statistics"><span>Health Statistics</span></h2>
               </div>
               <div class="row proj-overview-row proj-health">
@@ -279,6 +201,86 @@
             </div>
           </div>
         </div>
+
+        <div class="row proj-content">
+          <div class="col-lg-12">
+            <div class="card full-width">
+              <div class="lined-header">
+                <h2 tabindex="0" class="" aria-label="Project dependencies"><span aria-hidden="true">Dependencies</span></h2>
+              </div>
+              <div class="row proj-overview-row">
+                <div class="col-lg-6">
+                  <h3 tabindex="0" aria-label="Projects Reused by us, ${componentDependencies? componentDependencies.length+' detected': 'no projects detected'}">Projects Reused by us</h3>
+                  <div class="row">
+                    <div class="multi-column">
+                      <ul id="project-list-reused-by-us-visible" class="list-unstyled" aria-hidden="true">
+                        <li repeat.for="depend of componentDependencies | pick:numDepends" aria-hidden="true"><strong tabindex="0" aria-label="Artifact id: ${depend.artifactId}, version: ${depend.version}">${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
+                      </ul>
+                    </div>
+                    <div class="collapse" id="collapseDepend">
+                      <div class="multi-column">
+                        <ul id="project-list-reused-by-us-collapsed" class="list-unstyled" aria-hidden="true">
+                          <li repeat.for="depend of componentDependencies | skip:numDepends" aria-hidden="true"><strong tabindex="0" aria-label="Artifact id: ${depend.artifactId}, version: ${depend.version}">${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button if.bind="componentDependencies.length > numDepends" id="showMoreBtn" class="btn btn-link btn-sm" data-toggle="collapse" click.delegate="dependCollapsed = dependCollapsed !== true" href="#collapseDepend">
+                    <template if.bind="dependCollapsed">Show More <em class="material-icons">expand_more</em></template>
+                    <template if.bind="!dependCollapsed">Show Less <em class="material-icons">expand_less</em></template>
+                  </button>
+                  <div tabindex="0" class="coming-soon-watermark ${componentDependencies.length < 1  ? '' : 'hide'}" aria-label="${componentDependencies.length < 1  ? 'Feature comming soon' : ''}">Coming Soon</div>
+
+                  <div if.bind="componentDependencies.length < 1" class="empty-state text-center">
+                    <i class="material-icons large-icon" aria-hidden="true">add_circle</i>
+                    <em tabindex="0" class="text-muted" aria-label="None found.">None Found</em>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <h3 tabindex="0" aria-label="Projects reusing us, ${projectsThatUseUs ? projectsThatUseUs.length + 'projects detected': '0 projects detected'}">Projects reusing us</h3>
+                  <div class="row">
+                    <div class="multi-column">
+                      <ul id="project-list-reusing-us-visible" class="list-unstyled">
+                        <li tabindex="0" repeat.for="uses of projectsThatUseUs | pick:numDepends" aria-label="Project name: ${uses.name}, organization: ${uses.owner}">
+                          <strong aria-hidden="true">${uses.name}</strong>
+                          <small aria-hidden="true">${uses.owner}</small>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="collapse" id="collapseUseUs">
+                      <div class="multi-column">
+                        <ul id="project-list-reusing-us-collapse" class="list-unstyled">
+                          <li tabindex="0" repeat.for="uses of projectsThatUseUs | skip:numDepends" aria-label="Project name: ${uses.name}, organization: ${uses.owner}">
+                            <strong aria-hidden="true">${uses.name}</strong>
+                            <small aria-hidden="true">${uses.owner}</small>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button if.bind="projectsThatUseUs.length > numDepends" id="showMoreUseBtn" class="btn btn-link btn-sm" data-toggle="collapse" click.delegate="useUsCollapsed = useUsCollapsed !== true" href="#collapseUseUs">
+                    <template tabindex="0" if.bind="useUsCollapsed">Show More <i class="material-icons" aria-hidden="true">expand_more</i></template>
+                    <template tabindex="0" if.bind="!useUsCollapsed">Show Less <i class="material-icons" aria-hidden="true">expand_less</i></template>
+                  </button>
+
+                  <div if.bind="projectsThatUseUs.length < 1" class="empty-state text-center">
+                    <i class="material-icons large-icon" aria-hidden="true">add_circle</i>
+                    <em tabindex="0" class="text-muted" aria-label="No projects found.">None Found</em>
+                  </div>
+
+                  <div class="text-center">
+                    <button class="btn btn-link" id="project-details_add-project" click.trigger="openAddProjectModal($event.target)"><i class="material-icons" aria-hidden="true">add_circle</i> Are you using this project?</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
       </div>
 
       <div class="col-lg-3 col-md-3 col-sidebar">
@@ -293,6 +295,24 @@
 
         <div class="row">
           <div class="col-lg-12">
+            <h3 tabindex="0" aria-label="Related dataset in ITS DataHub">RELATED DATASETS ON ITS DATAHUB</h3>
+            <div id="id-related-dataset-datahub" class="media-list media-list-users list-group">
+              <template repeat.for="related of repo.related">
+                <a href.bind="related.url" class="list-group-item" target="_blank">
+                  <span class="media">
+                    <span class="media-body clearfix">
+                      <h5 tabindex="0" aria-label="${related.name}">${related.name}</h5>
+                    </span>
+                  </span>
+                </a>
+              </template>
+              
+            </div>
+            <div class="none-message" if.bind="!repo.related || repo.related.length == 0">
+              None
+            </div>
+            <!-- <hr class="hr-related-separator"> -->
+            <br>
             <h3 tabindex="0" aria-label="Contributors, the project has ${repo.contributors_list.length} contributors.">Contributors</h3>
             <div class="media-list media-list-users list-group">
               <template repeat.for="contrib of repo.sourceData.contributors | pick:5">
@@ -312,19 +332,6 @@
             </div>
             <div class="view-all clearfix">
               <a if.bind="repo.sourceData.contributors.length > 5" id="project-details_contributors" href="#" click.delegate="openContribModal(repo,$event.target)" class="" aria-label="View all contributors.">View All Contributors <i class="material-icons" aria-hidden="true">keyboard_arrow_right</i></a>
-            </div>
-            <hr class="hr-related-separator">
-            <h3 tabindex="0" aria-label="Related dataset in ITS DataHub">RELATED DATASETS ON ITS DATAHUB</h3>
-            <div class="media-list media-list-users list-group">
-              <template repeat.for="related of repo.related">
-                <a href.bind="related.url" class="list-group-item" target="_blank">
-                  <span class="media">
-                    <span class="media-body clearfix">
-                      <h5 tabindex="0" aria-label="${related.name}">${related.name}</h5>
-                    </span>
-                  </span>
-                </a>
-              </template>
             </div>
           </div>
         </div>
