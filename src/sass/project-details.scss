@@ -10,6 +10,9 @@
     font-weight: bold;
     color: darken($lightgray, 10%)
   }
+  .collapse.show{
+      visibility: visible;
+  }
 }
 .proj-details-wrapper .list-inline{
     margin-left: 0px;
