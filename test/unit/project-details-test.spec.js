@@ -4,13 +4,9 @@ import { Router } from 'aurelia-router';
 import { ProjectDetails } from '../../src/project-details/project-details';
 import { DataContext } from '../../src/services/datacontext';
 import { DialogService } from 'aurelia-dialog';
-// import { mockRepositoriesData } from '../mockdata/mock-project-data';
-// import { MockDataInsightGetAll } from '../mockdata/mock-data-insight-getAll';
-// import { MockCodeHealthiestData } from '../mockdata/mock-code-healthiest-data';
 import { StageConfig } from '../../src/stageConf';
 import { AgoValueConverter } from '../../src/resources/value-converters/ago';
 import { NumValueConverter } from '../../src/resources/value-converters/num';
-// import { MockDataComponentDependencies } from '../mockdata/mock-data-component-dependencies';
 
 export class MockDataContext {
   constructor() {
@@ -309,6 +305,15 @@ describe('Project Details : ', () => {
     component.create(bootstrap).then(() => {
       let element = document.querySelector('#project-security-vulnerabilities');
       expect(element.innerHTML).toEqual(`${mockRepositoriesData[0].generatedData.sonarMetrics.vulnerabilities.val} vulnerabilities`);
+      done();
+    }).catch( e => { console.log(e.toString())} );
+  });
+
+  it('Expects Number of Related Datasets on DataHub', (done) => {
+    component.create(bootstrap).then(() => {
+      let element = document.querySelector('#id-related-dataset-datahub');
+      let anchors = element.querySelectorAll('a');
+      expect(anchors.length).toEqual(mockRepositoriesData[0].related.length);
       done();
     }).catch( e => { console.log(e.toString())} );
   });

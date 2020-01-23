@@ -118,7 +118,24 @@
       "isVisible": true,
       "isIngested": true,
       "isIngestionEnabled": true
-    }
+    },
+    "related": [
+      {
+        "id": "dtg-dusd-cr84",
+        "name": "Cooperative Automated Research Mobility Applications (CARMA) 2",
+        "url": "http://localhost:8080/search?t=Cooperative Automated Research Mobility Applications (CARMA) 2"
+      },
+      {
+        "id": "fake1",
+        "name": "Wyoming CV Pilot Traveler Information Message Sample (Schema Version 5)",
+        "url": "http://localhost:8080/search?t=Wyoming CV Pilot Traveler Information Message Sample (Schema Version 5)"
+      },
+      {
+        "id": "fake2",
+        "name": "Tampa CV Pilot Traveler Information Message (TIM) Sample",
+        "url": "http://localhost:8080/search?t=Tampa CV Pilot Traveler Information Message (TIM) Sample"
+      }
+    ]
   },
   {
     "id": "5e4d4c646f94e7f407498436eb726f94",
