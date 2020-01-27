@@ -1,0 +1,26 @@
+.btn-project-details{
+    font-size: 14px;
+}
+.proj-details-wrapper {
+  .hr-related-separator{
+    border: 1px solid $lightgray;
+  }
+  .none-message {
+    font-size: 14px;
+    font-weight: bold;
+    color: darken($lightgray, 10%)
+  }
+  .collapse.show{
+      visibility: visible;
+  }
+}
+.proj-details-wrapper .list-inline{
+    margin-left: 0px;
+}
+#btn-show-readme button{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+#show-readme-icon{
+    margin-right: 7px;
+}

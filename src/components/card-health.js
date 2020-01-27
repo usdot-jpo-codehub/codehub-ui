@@ -18,29 +18,29 @@ export class Card {
     this.repo = modelData;
 
     if (this.repo) {
-      if(this.repo.language) {
-        let url = `/img/language-icons/${this.repo.language.toLowerCase()}.svg`;
+      if(this.repo.sourceData.language) {
+        let url = `/img/language-icons/${this.repo.sourceData.language.toLowerCase()}.svg`;
         url = url.replace(/\#/g,'_sharp');
         this.validateImage(url, (isValid) => {
           this.language_image = isValid ? url : this.language_image;
         });
       }
 
-      if (this.repo.metrics) {
-        if (this.repo.metrics.bugs) {
-          this.bugs = Number(this.repo.metrics.bugs.val);
+      if (this.repo.generatedData.sonarMetrics) {
+        if (this.repo.generatedData.sonarMetrics.bugs) {
+          this.bugs = Number(this.repo.generatedData.sonarMetrics.bugs.val);
         }
-        if (this.repo.metrics.vulnerabilities) {
-          this.vulnerabilities = Number(this.repo.metrics.vulnerabilities.val);
+        if (this.repo.generatedData.sonarMetrics.vulnerabilities) {
+          this.vulnerabilities = Number(this.repo.generatedData.sonarMetrics.vulnerabilities.val);
         }
       }
 
-      if(this.repo.vscan && this.repo.vscan.infected_files) {
-        this.infected_files = this.repo.vscan.infected_files;
+      if(this.repo.generatedData.vscan && this.repo.generatedData.vscan.infected_files) {
+        this.infected_files = this.repo.generatedData.vscan.infected_files;
       }
 
-      if (this.repo.badges && this.repo.badges.status) {
-        switch(this.repo.badges.status.toLowerCase()) {
+      if (this.repo.codehubData.badges && this.repo.codehubData.badges.status) {
+        switch(this.repo.codehubData.badges.status.toLowerCase()) {
           case 'active':
             this.badge_status_image = '/img/active_flame_final_28w_35h.svg';
             break;
@@ -62,13 +62,13 @@ export class Card {
 
   @computedFrom('repo.project_description')
   get hasdescription() {
-    return this.repo.project_description ? true : false;
+    return this.repo.sourceData.description ? true : false;
   }
   get description() {
-    return this.repo.project_description  ? this.repo.project_description : NO_DESCRIPTION_MESSAGE;
+    return this.repo.sourceData.description  ? this.repo.sourceData.description : NO_DESCRIPTION_MESSAGE;
   }
   get language() {
-    return this.repo.language ? this.repo.language : this.stageConfig.NO_LANG
+    return this.repo.sourceData.language ? this.repo.sourceData.language : this.stageConfig.NO_LANG
   }
 
   validateImage(url, cbfx) {

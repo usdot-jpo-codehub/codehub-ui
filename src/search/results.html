@@ -15,14 +15,13 @@
             <div class="col-lg-6 col-md-6">
                 <select id="filterOrg" multiple="multiple"></select>
                 <select id="filterLang" multiple="multiple"></select>
-                <select id="filterOrigin" multiple="multiple"></select>
-              
+
             </div>
           </div>
-          <div class="row filter-result-bar" if.bind="(searchDone && resultCount > 0)&&(filters && (filters.selectedLanguages.length>0 || filters.selectedOrganizations.length>0 || filters.selectedOrigins.length>0))">
+          <div class="row filter-result-bar" if.bind="(searchDone && resultCount > 0)&&(filters && (filters.selectedLanguages.length>0 || filters.selectedOrganizations.length>0 ))">
             <div class="col-lg-10 col-md-10">
               <ul class='list-inline'>
-                <li if.bind="(searchDone && resultCount > 0)&&(filters && (filters.selectedLanguages.length>0 || filters.selectedOrganizations.length>0 || filters.selectedOrigins.length>0))">
+                <li if.bind="(searchDone && resultCount > 0)&&(filters && (filters.selectedLanguages.length>0 || filters.selectedOrganizations.length>0 ))">
                   <a id="result-clearall-filters" class="clear-btn" href="#" click.delegate="clearAllFilters()" aria-label="Clear all filters, the current number of results is: ${resultCount}">Clear All</a>
                 </li>
                 <li if.bind="!filterOrgEmpty" repeat.for="pill of filters.selectedOrganizations">
@@ -30,9 +29,6 @@
                 </li>
                 <li if.bind="!filterLangEmpty" repeat.for="pill of filters.selectedLanguages">
                   <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'language', pill)})</small> <a click.delegate="removePillFilter('#filterLang',pill)" href="#" aria-label="Remove language filter: ${pill}"><i class="material-icons" aria-hidden="true">close</i></a></span>
-                </li>
-                <li if.bind="!filterOriginEmpty" repeat.for="pill of filters.selectedOrigins">
-                  <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'origin', pill)})</small> <a click.delegate="removePillFilter('#filterOrigin',pill)" href="#" aria-label="Remove origin filter: ${pill}"><i class="material-icons" aria-hidden="true">close</i></a></span>
                 </li>
               </ul>
             </div>
@@ -63,13 +59,12 @@
         </div>
         <span if.bind="searchDone && resultCount > 0" id="results-main-panel" tabindex="0" aria-label="Results panel, ${ariaLabel}"></span>
         <div if.bind="searchDone && resultCount > 0" class="row"
-          virtual-repeat.for="repo of projects |
-          sort: { propertyName: selectedSort, direction: sortDirection} |
-          filter: { propertyName: 'organization', filterArray: filters.selectedOrganizations}:filters.selectedOrganizations.length |
-          filter: { propertyName: 'origin', filterArray: filters.selectedOrigins}:filters.selectedOrigins.length |
-          filter: { propertyName: 'language', filterArray: filters.selectedLanguages}:filters.selectedLanguages.length">
-          <compose view-model="../components/card-search" model.bind="repo"></compose>
-        </div>
+            virtual-repeat.for="repo of projects |
+            sort: { propertyName: selectedSort, direction: sortDirection} |
+            filter: { propertyName: 'sourceData.owner.name', filterArray: filters.selectedOrganizations}:filters.selectedOrganizations.length |
+            filter: { propertyName: 'sourceData.language', filterArray: filters.selectedLanguages}:filters.selectedLanguages.length">
+            <compose view-model="../components/card-search" model.bind="repo"></compose>
+          </div>
       </div>
     </div>
   </div>

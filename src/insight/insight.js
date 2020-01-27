@@ -5,9 +5,10 @@ import * as echarts from 'echarts/dist/echarts';
 import { DataContext } from 'services/datacontext';
 import { LeavingModal } from '../components/modals/leaving-modal';
 import { StageConfig } from '../../stageConf';
-@inject(DataContext, Router, DialogService, StageConfig)
+import { Filters } from 'components/filters';
+@inject(DataContext, Router, DialogService, StageConfig, Filters)
 export class Insight {
-  constructor(dataContext, router, dialogService, stageConfig) {
+  constructor(dataContext, router, dialogService, stageConfig, filters) {
     this.dataContext = dataContext;
     this.router = router;
     this.dialogService = dialogService;
@@ -15,52 +16,92 @@ export class Insight {
     this.sonarqube_projects = `${this.stageConfig.SONARQUBE_ADDRESS}`;
     this.insights = [];
     this.projects = [];
-    this.mulChart = {};
-    this.chartMostUsedLanguages = {};
+    this.mulChart = null;
+    this.mfChart = null;
+    this.myChart2 = null;
+    this.chartMostUsedLanguages = null;
     this.mostUsedLanguages = {};
     this.loading = true;
     this.exitDialogLinkId = null;
+    this.filters = filters;
+    this.organizations = [];
+    this.selectedOrganization = null;
+    this.organizationTitle='Organizations';
   }
 
-  getData() {
-    return Promise.all([
-      this.dataContext.findEnterpriseInsight(),
-      this.dataContext.getAll()]).then((values) => {
-        this.insights = values[0];
-        this.projects = values[1];
-        if(typeof this.insights==='undefined' || typeof this.projects==='undefined') {
-          return;
-        }
-        this.sortProjects(this.projects).then((projects) => {
-          Promise.all([
-            this.buildChartMostUsed(this.insights),
-            this.buildChartLanguages(this.insights),
-            this.buildChartForks(projects),
-            this.buildChartHealth(projects),
-          ]).then(() => {
-            const self = this;
-            setTimeout(() => {
-              self.handleResize();
-            }, 10, self);
-            this.loading = false;
-          });
-        }).catch((e) => {
-          return;
+  activate() {
+    this.loading = true;
+  }
+
+  attached() {
+    this.getData('All');
+    window.addEventListener('resize', this.handleResize, false);
+  }
+
+  deactivate() {
+    // this.mostUsedLanguages.destroy();
+    window.removeEventListener('resize', this.handleResize);
+  }
+
+  getData(organization) {
+    if (organization === 'All') {
+      return Promise.all([
+        this.dataContext.getMetrics(null),
+        this.dataContext.getRepositories(null)]).then((values) => {
+          this.insights = values[0];
+          this.projects = values[1];
+
+          this.organizations = this.buildOrganizations(this.insights.organizations);
+
+          this.prepareInsightData(this.insights, this.projects);
         });
+    } else {
+      return Promise.all([
+        this.dataContext.getMetrics(this.selectedOrganization.name),
+        this.dataContext.getRepositories(this.selectedOrganization.name)]).then((values) => {
+          this.insights = values[0];
+          this.projects = values[1];
+
+          this.prepareInsightData(this.insights, this.projects);
+        });
+    }
+
+  }
+
+  prepareInsightData(insights, projects) {
+    if(typeof insights==='undefined' || typeof projects==='undefined') {
+      return;
+    }
+
+    this.sortProjects(projects).then((sortedProjects) => {
+      Promise.all([
+        this.buildChartMostUsed(insights),
+        this.buildChartLanguages(insights),
+        this.buildChartForks(sortedProjects),
+        this.buildChartHealth(sortedProjects),
+      ]).then(() => {
+        const self = this;
+        setTimeout(() => {
+          self.handleResize();
+        }, 10, self);
+        this.loading = false;
       });
+    }).catch((e) => {
+      return;
+    });
   }
 
   sortProjects(projects) {
     return new Promise((resolve, reject) => {
       try {
         projects.sort((a, b) => {
-          if (b.forkedRepos && a.forkedRepos) {
-            return Number(b.forkedRepos.length) - Number(a.forkedRepos.length);
+          if (b.sourceData.forks && a.sourceData.forks) {
+            return Number(b.sourceData.forks.length) - Number(a.sourceData.forks.length);
           }
-          if (b.forkedRepos) {
+          if (b.sourceData.forks) {
             return 1;
           }
-          if (a.forkedRepos) {
+          if (a.sourceData.forks) {
             return -1;
           }
           return null;
@@ -72,20 +113,6 @@ export class Insight {
         reject(e);
       }
     });
-  }
-
-  activate() {
-    this.loading = true;
-  }
-
-  attached() {
-    this.getData();
-    window.addEventListener('resize', this.handleResize, false);
-  }
-
-  deactivate() {
-    // this.mostUsedLanguages.destroy();
-    window.removeEventListener('resize', this.handleResize);
   }
 
   handleResize = (event) => {
@@ -107,13 +134,16 @@ export class Insight {
   buildChartMostUsed(insights) {
     const calc = new Promise((resolve, reject) => {
       // Pie Chart
-      let mul = insights.language_counts_stat;
+      let mul = insights.languageCountsStat;
       mul = Object.entries(mul);
       mul.sort(this.multiArraySecondColumnDesc);
+      mul = mul.filter(x => x[1] != 0);
       const mulTop = mul.slice(0, 5);
-      const mulBot = mul.slice(6, mul.length);
-      const mulOther = mulBot.reduce((a, b) => b[1] + a, 0);
-      mulTop.push([`Other(${mulBot.length})`, mulOther]);
+      if (mul.length > 5) {
+        const mulBot = mul.slice(6, mul.length);
+        const mulOther = mulBot.reduce((a, b) => b[1] + a, 0);
+        mulTop.push([`Other(${mulBot.length})`, mulOther]);
+      }
       let data = mulTop.map((item) => {
         let r = {value:item[1],name:item[0]};
         return r;
@@ -123,7 +153,9 @@ export class Insight {
 
     calc.then((data) => {
       let dat = this.injectColorStyle(data);
-      this.chartMostUsedLanguages = echarts.init(document.getElementById('chartMostUsedLanguajes'));
+      if (!this.chartMostUsedLanguages) {
+        this.chartMostUsedLanguages = echarts.init(document.getElementById('chartMostUsedLanguajes'));
+      }
       this.chartMostUsedLanguages.setOption({
         tooltip: {
           trigger: 'axis',
@@ -213,19 +245,34 @@ export class Insight {
     return data;
   }
 
+  filterZeroStats(arrayNames, arrayValues) {
+    let i = 0;
+    while(i<arrayValues.length) {
+      if (arrayValues[i] === 0) {
+        arrayValues.splice(i,1);
+        arrayNames.splice(i,1);
+      } else {
+        i++;
+      }
+    }
+    return {arrayNames, arrayValues};
+  }
+
   buildChartLanguages(insights) {
     const calc = new Promise((resolve, reject) => {
-      const list = this.insights.language_counts_stat;
+      const list = this.insights.languageCountsStat;
       let arr1 = Object.keys(list).sort((a, b) => list[a] - list[b]);
       arr1 = arr1.slice(-10);
-      let arr2 = arr1.map(k => this.insights.language_counts_stat[k]);
+      let arr2 = arr1.map(k => this.insights.languageCountsStat[k]);
       arr2 = arr2.slice(-10);
-      const result = { arr1, arr2 };
+      const result = this.filterZeroStats(arr1, arr2);
       resolve(result);
     });
 
     calc.then((data) => {
-      this.mulChart = echarts.init(document.getElementById('main'));
+      if(!this.mulChart) {
+        this.mulChart = echarts.init(document.getElementById('main'));
+      }
       this.mulChart.setOption({
         tooltip: {
           trigger: 'axis',
@@ -295,14 +342,14 @@ export class Insight {
         yAxis: [
           {
             type: 'category',
-            data: data.arr1,
+            data: data.arrayNames,
           },
         ],
         series: [
           {
             name: 'Projects',
             type: 'bar',
-            data: data.arr2,
+            data: data.arrayValues,
           },
         ],
       });
@@ -311,14 +358,16 @@ export class Insight {
 
   buildChartForks(projects) {
     const calc = new Promise((resolve, reject) => {
-      const forkProjectNames = projects.map(obj => obj.project_name);
-      const forkAmount = projects.map(obj => obj.forkedRepos.length);
+      const forkProjectNames = projects.map(obj => obj.sourceData.name);
+      const forkAmount = projects.map(obj => obj.sourceData.forks.length);
       const result = { forkProjectNames, forkAmount };
       resolve(result);
     });
 
     calc.then((data) => {
-      this.mfChart = echarts.init(document.getElementById('mfChart'));
+      if(!this.mfChart) {
+        this.mfChart = echarts.init(document.getElementById('mfChart'));
+      }
       this.mfChart.setOption({
         color: ['#334aff'],
         tooltip: {
@@ -405,11 +454,11 @@ export class Insight {
 
   buildChartHealth(projects) {
     const calc = new Promise((resolve, reject) => {
-      const reliabilityData = this.getDataForRadarChart(this.insights.metrics_summary.reliability);
+      const reliabilityData = this.getDataForRadarChart(this.insights.metricsSummary.reliability.values);
       const maxReliability = reliabilityData && reliabilityData.length > 0 ? Math.max(...reliabilityData) : 10;
-      const securityData = this.getDataForRadarChart(this.insights.metrics_summary.security);
+      const securityData = this.getDataForRadarChart(this.insights.metricsSummary.security.values);
       const maxSecurity = securityData && securityData.length > 0 ? Math.max(...securityData) : 10;
-      const maintainabilityData = this.getDataForRadarChart(this.insights.metrics_summary.maintainability);
+      const maintainabilityData = this.getDataForRadarChart(this.insights.metricsSummary.maintainability.values);
       const maxMaintainability = maintainabilityData && maintainabilityData.length > 0 ? Math.max(...maintainabilityData) : 10;
 
       const result = {
@@ -420,12 +469,13 @@ export class Insight {
         maintainabilityData,
         maxMaintainability,
       };
-
       resolve(result);
     });
 
     calc.then((data) => {
-      this.myChart2 = echarts.init(document.getElementById('main2'));
+      if(!this.myChart2) {
+        this.myChart2 = echarts.init(document.getElementById('main2'));
+      }
       this.myChart2.setOption({
         title: [{
           text: 'Reliability',
@@ -538,7 +588,6 @@ export class Insight {
     Object.keys(obj).forEach((x) => {
       result.push(obj[x]);
     });
-
     return result;
   }
 
@@ -565,4 +614,26 @@ export class Insight {
       });
     }
   }
+
+  buildOrganizations(orgs) {
+    orgs.sort();
+    let organizations = [];
+    let allName = 'All'+(orgs.length > 0 ? ' ('+orgs.length+')' : '');
+    organizations.push({id:0, name: allName});
+    for(let i=0; i<orgs.length; i++) {
+      organizations.push({ id: i+1, name: orgs[i] });
+    }
+    return organizations;
+  }
+
+  organizationChanged(selectedOrganization) {
+    if (selectedOrganization.id == 0) {
+      this.organizationTitle = 'Organizations';
+      this.getData('All');
+    } else {
+      this.organizationTitle = 'Organization';
+      this.getData(selectedOrganization.name);
+    }
+  }
+
 }

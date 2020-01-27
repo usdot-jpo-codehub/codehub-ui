@@ -1,40 +1,40 @@
 <template>
   <require from="resources/value-converters/chunk"></require>
 
-  <div tabindex="-1" role="dialog" id="contributors-main" class="${visible?'':'hide'}" aria-label="Contributors for project ${repo.project_name}, press escape to exist at any time.">
+  <div tabindex="-1" role="dialog" id="contributors-main" class="${visible?'':'hide'}" aria-label="Contributors for project ${repo.sourceData.name}, press escape to exist at any time.">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button tabindex="0" type="button" click.trigger="controller.cancel()" class="close" aria-label="Close"><span
             aria-hidden="true"><i class="material-icons md-48" aria-hidden="true">close</i></span></button>
-          <h4 tabindex="0" class="modal-title" aria-label="Contributors for ${repo.project_name}, there are ${repo.contributors_list.length} contributors."><span class="text-uppercase">Contributors for ${repo.project_name}</span></h4>
+          <h4 tabindex="0" class="modal-title" aria-label="Contributors for ${repo.sourceData.name}, there are ${repo.sourceData.contributors.length} contributors."><span class="text-uppercase">Contributors for ${repo.sourceData.name}</span></h4>
         </div>
         <div class="modal-body contributors-modal">
           <div class="media-list media-list-users list-group">
-            <template repeat.for="contrib of repo.contributors_list | chunk: 2">
+            <template repeat.for="contrib of repo.sourceData.contributors | chunk: 2">
               <div class="row">
                 <div class="col-lg-6">
-                  <a id="contributor-modal-${contrib[0].username}" href="#" target="_blank" click.trigger="openLeavingSiteConfirmation('contributor url',contrib[0].profile_url,$event.target)" class="list-group-item">
+                  <a id="contributor-modal-${contrib[0].username}" href="#" target="_blank" click.trigger="openLeavingSiteConfirmation('contributor url',contrib[0].profileUrl,$event.target)" class="list-group-item">
                     <span class="media">
                       <span class="media-left">
-                        <img tabindex="0" role="img" alt="Avatar image," class="img-circle media-object" src="${contrib[0].avatar_url}" onError="this.onerror=null;this.src='/img/language-icons/unknown-user.svg';">
+                        <img tabindex="0" role="img" alt="Avatar image," class="img-circle media-object" src="${contrib[0].avatarUrl}" onError="this.onerror=null;this.src='/img/language-icons/unknown-user.svg';">
                       </span>
                       <span class="media-body clearfix">
                         <h5 tabindex="0" aria-label="Contributor name, ${contrib[0].username}">${contrib[0].username}<span class="pull-right"></span></h5>
-                        <span tabindex="0" class="media-body-secondary" aria-label="Profile url, ${contrib[0].profile_url}">${contrib[0].profile_url}</span>
+                        <span tabindex="0" class="media-body-secondary" aria-label="Profile url, ${contrib[0].profileUrl}">${contrib[0].profileUrl}</span>
                       </span>
                     </span>
                   </a>
                 </div>
-                <div if.bind="contrib[1].profile_url" class="col-lg-6">
-                  <a id="contributor-modal-${contrib[1].username}" href="#" target="_blank" click.trigger="openLeavingSiteConfirmation('contributor url',contrib[1].profile_url,$event.target)" class="list-group-item">
+                <div if.bind="contrib[1].profileUrl" class="col-lg-6">
+                  <a id="contributor-modal-${contrib[1].username}" href="#" target="_blank" click.trigger="openLeavingSiteConfirmation('contributor url',contrib[1].profileUrl,$event.target)" class="list-group-item">
                     <span class="media">
                       <span class="media-left">
-                        <img tabindex="0" role="img" alt="Avatar image," class="img-circle media-object" src="${contrib[1].avatar_url}" onError="this.onerror=null;this.src='/img/language-icons/unknown-user.svg';">
+                        <img tabindex="0" role="img" alt="Avatar image," class="img-circle media-object" src="${contrib[1].avatarUrl}" onError="this.onerror=null;this.src='/img/language-icons/unknown-user.svg';">
                       </span>
                       <span class="media-body clearfix">
                         <h5 tabindex="0" aria-label="Contributor name, ${contrib[1].username}">${contrib[1].username}<span class="pull-right"></span></h5>
-                        <span tabindex="0" class="media-body-secondary" aria-label="Profile url, ${contrib[1].profile_url}">${contrib[1].profile_url}</span>
+                        <span tabindex="0" class="media-body-secondary" aria-label="Profile url, ${contrib[1].profileUrl}">${contrib[1].profileUrl}</span>
                       </span>
                     </span>
                   </a>

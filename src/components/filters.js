@@ -4,14 +4,14 @@ export class Filters {
   constructor() {
     this.selectedOrganizations = [];
     this.selectedLanguages = [];
-    this.selectedOrigins = [];
   }
 
   getUniqueValues(array, property) {
     const propertyArray = [];
     for (const object of array) {
-      if (object[property]) {
-        propertyArray.push(object[property]);
+      let v = this.getNested(object, property);
+      if (v) {
+        propertyArray.push(v);
       } else {
         propertyArray.push('None');
       }
@@ -19,9 +19,15 @@ export class Filters {
     return Array.from(new Set(propertyArray));
   }
 
+  getNested(obj, prop) {
+    let props = prop.split('.');
+    let result = props.reduce((obj, level) => obj && obj[level], obj);
+    return result;
+  }
+
   toggleOrg(event, projects) {
     if (event.target.checked) {
-      this.selectedOrganizations = this.getUniqueValues(projects, 'organization');
+      this.selectedOrganizations = this.getUniqueValues(projects, 'sourceData.owner.name');
       return true;
     }
     this.selectedOrganizations = [];
@@ -30,7 +36,7 @@ export class Filters {
 
   toggleLang(event, projects) {
     if (event.target.checked) {
-      this.selectedLanguages = this.getUniqueValues(projects, 'language');
+      this.selectedLanguages = this.getUniqueValues(projects, 'sourceData.language');
       return true;
     }
     this.selectedLanguages = [];

@@ -17,28 +17,23 @@ export class CardSearch {
   activate(modelData) {
     if (modelData) {
       this.repo = modelData;
-
-      if(this.repo.language) {
-        let url = `/img/language-icons/${this.repo.language.toLowerCase()}.svg`;
+      if(this.repo.sourceData.language) {
+        let url = `/img/language-icons/${this.repo.sourceData.language.toLowerCase()}.svg`;
         url = url.replace(/\#/g,'_sharp');
         this.validateImage(url, (isValid) => {
           this.language_image = isValid ? url : this.language_image;
         });
       }
 
-      if (modelData.releases) {
-        this.releases = modelData.releases;
-        if (!Array.isArray(modelData.releases)) {
-          this.releases = [];
-          this.repo.releases = [];
-        }
+      if (modelData.sourceData.releases) {
+        this.releases = modelData.sourceData.releases;
       }
-      if (modelData.vscan && modelData.vscan.infected_files) {
-        this.infected_files = modelData.vscan.infected_files;
+      if (modelData.generatedData.vscan && modelData.generatedData.vscan.infected_files) {
+        this.infected_files = modelData.generatedData.vscan.infected_files;
       }
 
-      if (modelData.badges && modelData.badges.status) {
-        switch(modelData.badges.status.toLowerCase()) {
+      if (modelData.codehubData.badges && modelData.codehubData.badges.status) {
+        switch(modelData.codehubData.badges.status.toLowerCase()) {
           case 'active':
             this.badge_status_image = '/img/active_flame_final_28w_35h.svg';
             break;
@@ -62,23 +57,23 @@ export class CardSearch {
     });
   }
 
-  @computedFrom('repo.project_description', 'repo.highlight.project_description')
+  @computedFrom("repo.project_description", "repo.highlights['sourceData.description']")
   get hasdescription() {
-    return this.repo ? (this.repo.project_description ? true : false) : false;
+    return this.repo ? (this.repo.sourceData.description ? true : false) : false;
   }
   get description() {
-    if (!this.repo || !this.repo.project_description) {
+    if (!this.repo || !this.repo.sourceData.description) {
       return NO_DESCRIPTION_MESSAGE;
     }
 
-    if (this.repo.highlight) {
-      return this.repo.highlight.project_description ? this.repo.highlight.project_description : this.repo.project_description;
+    if (this.repo.highlights) {
+      return this.repo.highlights['sourceData.description'] ? this.repo.highlights['sourceData.description'] : this.repo.sourceData.description;
     }
 
-    return this.repo.project_description;
+    return this.repo.sourceData.description;
   }
   get language() {
-    return this.repo ? (this.repo.language ? this.repo.language : this.stageConfig.NO_LANG) : this.stageConfig.NO_LANG;
+    return this.repo ? (this.repo.sourceData.language ? this.repo.sourceData.language : this.stageConfig.NO_LANG) : this.stageConfig.NO_LANG;
   }
 
   validateImage(url, cbfx) {

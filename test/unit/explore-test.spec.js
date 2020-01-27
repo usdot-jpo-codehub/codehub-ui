@@ -10,7 +10,7 @@ import { Explore } from '../../src/explore/explore';
 export class MockDataContext {
   response  = undefined;
 
-  getAll() {return Promise.resolve(this.response)}
+  getRepositories() {return Promise.resolve(this.response)}
 }
 
 export class MockRouter {
@@ -24,11 +24,11 @@ describe('Explore : ', () => {
   let router = new MockRouter();
   let viewModel;
   let filters;
-  let mockProjectData;
+  let mockRepositoriesData;
 
   beforeEach( () => {
     jasmine.getFixtures().fixturesPath='base/test/mockdata/';
-    mockProjectData = JSON.parse(readFixtures('mock-project-data.json'));
+    mockRepositoriesData = JSON.parse(readFixtures('mock-repositories-data.json'));
 
     router.response = undefined;
     dtx.response = undefined;
@@ -51,12 +51,12 @@ describe('Explore : ', () => {
   });
 
   it('Validate Organization filter selection', (done) => {
-    dtx.response = mockProjectData;
+    dtx.response = mockRepositoriesData;
     router.response = true;
     component.create(bootstrap).then(() => {
       component.viewModel.activate();
       setTimeout(() => {
-        let expectedOrganizations = mockProjectData.map( x => x.organization)
+        let expectedOrganizations = mockRepositoriesData.map( x => x.sourceData.owner.name)
           .filter( (v, i, a) => a.indexOf(v) == i );
         let element = document.querySelector('#filterOrg');
 
@@ -76,12 +76,12 @@ describe('Explore : ', () => {
   });
 
   it('Validate Language filter selection', (done) => {
-    dtx.response = mockProjectData;
+    dtx.response = mockRepositoriesData;
     router.response = true;
     component.create(bootstrap).then(() => {
       component.viewModel.activate();
       setTimeout(() => {
-        let expectedLanguages = mockProjectData.map( x => x.language)
+        let expectedLanguages = mockRepositoriesData.map( x => x.sourceData.language)
           .filter( (v, i, a) => a.indexOf(v) == i );
         let element = document.querySelector('#filterLang');
 
@@ -100,33 +100,8 @@ describe('Explore : ', () => {
     }).catch( e => { console.log(e.toString())} );
   });
 
-  it('Validate Origin filter selection', (done) => {
-    dtx.response = mockProjectData;
-    router.response = true;
-    component.create(bootstrap).then(() => {
-      component.viewModel.activate();
-      setTimeout(() => {
-        let expectedOrigin = mockProjectData.map( x => x.origin)
-          .filter( (v, i, a) => a.indexOf(v) == i );
-        let element = document.querySelector('#filterOrigin');
-
-        expect(element.options.length).toEqual(expectedOrigin.length, 'Unexpected number of Origins');
-
-        let expected = '';
-        let data = '';
-        for(let i=0; i<expectedOrigin.length; i++) {
-          expected += expectedOrigin[i] + '|';
-          data += element.options[i].value + '|';
-        }
-        expect(data).toEqual(expected, 'Unexpected Origins');
-
-        done();
-      }, 100);
-    }).catch( e => { console.log(e.toString())} );
-  });
-
   it('Validate Sort list', (done) => {
-    dtx.response = mockProjectData;
+    dtx.response = mockRepositoriesData;
     router.response = true;
     component.create(bootstrap).then(() => {
       component.viewModel.activate();
@@ -150,7 +125,7 @@ describe('Explore : ', () => {
   });
 
   it('Validate Number of Projects', (done) => {
-    dtx.response = mockProjectData;
+    dtx.response = mockRepositoriesData;
     router.response = true;
     component.create(bootstrap).then(() => {
       component.viewModel.activate();

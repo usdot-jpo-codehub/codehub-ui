@@ -11,8 +11,10 @@ export class FilterValueConverter {
     .slice(0)
     .filter((object) => {
       for (const value of config.filterArray) {
-        if (object[config.propertyName]) {
-          if (object[config.propertyName] === value) {
+        let props = config.propertyName.split('.');
+        let v = props.reduce((object, level) => object && object[level], object);
+        if (v) {
+          if (v === value) {
             return true;
           }
         } else if (value === 'None') {

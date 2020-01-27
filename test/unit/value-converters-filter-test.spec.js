@@ -20,7 +20,7 @@ describe('Test - Value Converters - FilterValueConverter', () => {
 
   it('FilterValueConverter : No matching', (done) => {
     let data = [{dat1: 1},{dat2: 2}];
-    let conf = {filterArray:['dat3']};
+    let conf = {filterArray:['dat3'],propertyName:'dat3'};
     let fil = new FilterValueConverter();
     let val = fil.toView(data, conf);
     expect(val).toEqual([]);

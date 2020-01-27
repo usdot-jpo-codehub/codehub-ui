@@ -1,0 +1,20 @@
+/* --- Colors --- */
+$teal: rgb(0, 124, 133); //#007c85
+$white: rgb(255,255,255); //#ffffff
+$lightgray: rgb(211,211,211); //#d3d3d3
+
+/* --- Theme Colors --- */
+$primary-color: $teal;
+$primary-color_darken-10p: darken($primary-color, 10%);
+$primary-color_darken-20p: darken($primary-color, 20%);
+
+$primary-color-inverse: $white;
+
+/* -- Buttons -- */
+$btn-accent_background-color_default: $primary-color;
+$btn-accent_background-color_focus-hover: $primary-color_darken-10p;
+$btn-accent_background-color_active: $primary-color_darken-20p;
+$btn-accent_font-color: $primary-color-inverse;
+
+/* -- HR -- */
+$hr-group-separator: $lightgray;
