@@ -1,0 +1,51 @@
+.repopublishing-page{
+    .repo-publishing_download-template-section{
+        text-align: center;
+        border: solid 1px $primary-color;
+        padding: units(1) units(4);
+        margin-bottom: units(5);
+    
+        #a_repository-registration-download-template{
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: units(2);
+            background-color: $primary-color;
+            color: $primary-color-inverse;
+            font-size: 1.2rem;
+            white-space: normal;
+    
+            #repository-registration-download-template_down-icon{
+                margin-left: 2px;
+                font-size: 18px;
+                vertical-align: -4px;
+    
+            }
+            
+        }
+    }
+    h4{
+        font-size: larger;
+    }
+    h3{
+        margin-top: 5px !important;
+    }
+    .repository-registration_section{
+        margin-top: 20px;
+    }
+}
+.row .left_gray_4x_border{
+    border-left-color: $lightgray;
+    border-left-style: solid;
+    border-left-width: 4px;
+}
+@include at-media-max('mobile-lg'){
+    .row .left-column-image{
+        display: none;
+    }
+    .repository-registration_section .left_gray_4x_border{
+        width: 100%;
+    }
+    .repopublishing-page .repo-publishing_download-template-section #a_repository-registration-download-template{
+        font-size: smaller;
+    }
+}
