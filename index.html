@@ -13,16 +13,133 @@
     <link href="styles/fonts/octicons.css" rel="stylesheet">
     <link href="styles/fonts/material-icons.css" rel="stylesheet">
     <script src="https://code.iconify.design/1/1.0.2/iconify.min.js"></script>
+
+    <style>
+      .container {
+        width: 60%;
+        margin: 0 auto;
+        padding: 20px;
+        background: white;
+        margin-top: 50px;
+        box-shadow: 2px 2px 4px black;
+        display: none;
+        text-align: center;
+      }
+      .container > h1 > img{
+        height: 30px;
+        margin-right: 10px;
+      }
+      .container > p {
+        margin: 0px;
+      }
+      .container-browsers {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+      }
+      .container-browsers > div > a > img {
+        height: 40px;
+      }
+      .container-browser-option {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 10px;
+      }
+      .mark {
+        border: solid 1px gray;
+        border-radius: 5px;
+        font-size: larger;
+        font-weight: bold;
+        text-align: center;
+        width: 40px;
+      }
+    </style>
   </head>
 
   <body aurelia-app="main">
     <div class="splash">
-        <div class="loading">
+        <div id="id-loading" class="loading">
             <img src="img/loading.svg" alt="Loading...">
             <span class="txt-loading text-uppercase">Loading</span>
         </div>
+        <div id="id-not-support" class="container">
+          <h1><img src="img/exclamation.svg" alt="Loading...">Unsupported Browser</h1>
+          <p>We have detected that you're using a web browser that isn't supported by ITS CodeHub.</p>
+          <p>To get a better experience, go to one of the following sites and get the latest version of your preferred browser:</p>
+          <div class="container-browsers">
+            <div class="container-browser-option">
+              <a href="https://www.google.com/intl/en/chrome/browser/" target="_blank"><img src="img/chrome.svg" alt=""></a>
+              Google Chrome
+            </div>
+            <div class="container-browser-option">
+              <a href="https://www.mozilla.org/firefox/all/" target="_blank"><img src="img/firefox.svg" alt=""></a>
+              Mozilla Firefox
+            </div>
+          </div>
+        </div>
     </div>
+    <script>
+      var isValidBrowser = true;
+      function detectBrowser() {
+        result = []
+        // Opera 8.0+
+        var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+        if (isOpera)
+          result.push('opera');
+        // Firefox 1.0+
+        var isFirefox = typeof InstallTrigger !== 'undefined';
+        if (isFirefox)
+          result.push('firefox');
+        // Safari 3.0+ "[object HTMLElementConstructor]"
+        var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+        if (isSafari)
+          result.push('safari');
+        // Internet Explorer 6-11
+        var isIE = /*@cc_on!@*/false || !!document.documentMode;
+        if (isIE)
+          result.push('ie');
+        // Edge 20+
+        var isEdge = !isIE && !!window.StyleMedia;
+        if (isEdge)
+          result.push('edge');
+        // Chrome 1 - 79
+        var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
+        if (isChrome)
+          result.push('chrome');
+        // Edge (based on chromium) detection
+        var isEdgeChromium = isChrome && (navigator.userAgent.indexOf("Edg") != -1);
+        if (isEdgeChromium)
+          result.push('edgechromium');
+        // Blink engine detection
+        var isBlink = (isChrome || isOpera) && !!window.CSS;
+        return result;
+      }
+      function validateBrowser() {
+        var browsers = detectBrowser();
+        if (browsers.indexOf('ie') !== -1) {
+          isValidBrowser = false;
+          var divLoading = document.getElementById('id-loading');
+          if (divLoading){
+            divLoading.style.display = "none";
+          }
+          var divNotSupported = document.getElementById('id-not-support');
+          if (divNotSupported){
+            divNotSupported.style.display = "block";
+          }
+        }
+      }
+      validateBrowser();
+    </script>
     <script src="scripts/vendor-bundle.js"></script>
-    <script>SystemJS.import("aurelia-bootstrapper").catch(function(err) { console.log(err); })</script>
+    <script>
+      if (isValidBrowser) {
+        SystemJS.import("aurelia-bootstrapper").catch(function(err) { console.log(err); })
+      }
+    </script>
   </body>
 </html>
