@@ -13,16 +13,43 @@
     <link href="styles/fonts/octicons.css" rel="stylesheet">
     <link href="styles/fonts/material-icons.css" rel="stylesheet">
     <script src="https://code.iconify.design/1/1.0.2/iconify.min.js"></script>
+
+    <link rel="stylesheet" href="styles/unsupported.css">
   </head>
 
   <body aurelia-app="main">
     <div class="splash">
-        <div class="loading">
+        <div id="id-loading" class="loading">
             <img src="img/loading.svg" alt="Loading...">
             <span class="txt-loading text-uppercase">Loading</span>
         </div>
+        <div id="id-not-support" class="container">
+          <h1><img src="img/exclamation.svg" alt="Loading...">Unsupported Browser</h1>
+          <p>We have detected that you're using a web browser that isn't supported by ITS CodeHub.</p>
+          <p>To get a better experience, go to one of the following sites and get the latest version of your preferred browser:</p>
+          <div class="container-browsers">
+            <div class="container-browser-option">
+              <a href="https://www.google.com/intl/en/chrome/browser/" target="_blank"><img src="img/chrome.svg" alt=""></a>
+              Google Chrome
+            </div>
+            <div class="container-browser-option">
+              <a href="https://www.mozilla.org/firefox/all/" target="_blank"><img src="img/firefox.svg" alt=""></a>
+              Mozilla Firefox
+            </div>
+            <div class="container-browser-option">
+              <a href="https://www.microsoft.com/en-us/edge" target="_blank"><img src="img/edge.png" alt=""></a>
+              Microsoft Edge
+            </div>
+          </div>
+        </div>
     </div>
+    <script src="scripts/unsupported.js"></script>
     <script src="scripts/vendor-bundle.js"></script>
-    <script>SystemJS.import("aurelia-bootstrapper").catch(function(err) { console.log(err); })</script>
+    <script>
+      var isValidBrowser = validateBrowser();
+      if (isValidBrowser) {
+        SystemJS.import("aurelia-bootstrapper").catch(function(err) { console.log(err); })
+      }
+    </script>
   </body>
 </html>
