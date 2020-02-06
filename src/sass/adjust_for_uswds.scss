@@ -63,8 +63,37 @@ body{
     .external-link-icon-in-paragraph{
         height: 11px;
     }
-    
+    main > .grid-container{
+        margin: units(4);
+        padding: 0px;
+    }
+    .text-heavy-page{
+        padding: units(4);
+        background-color: #ffffff;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-bottom: 25px;
+        border-radius: 0.3rem;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        h1, h2, h3{
+            color: $primary-color;
+            font-family: Roberto, sans-serif !important;
+        }
+        h2{
+            font-weight: bold;
+        }
+        h3{
+            margin-top: 20px;
+            font-size: 22px;
+            text-transform: none;
+            letter-spacing: unset;
+        }
+        .p_full-width{
+            max-width: unset;
+        }
+    }
 }
+
 .octicon{
     font: normal normal normal 16px/1 Octicons !important;
 }
