@@ -1,10 +1,14 @@
 <template bindable="router">
   <nav>
       <ul id="titleBarNav" class="nav navbar-nav main-nav sidenav-ul" >
-        <li repeat.for="row of router.navigation" if.bind="row.settings.dropdownchild && row.settings.firstchild" class="parent-item sidenav-li">${row.settings.parent}</li>
-        <li repeat.for="row of router.navigation" if.bind="row.settings.dropdownchild"class="${row.isActive ? 'active-child' : 'stage-child'} sidenav-li">
-          <a href.bind="row.href" class="${row.isActive ? 'active-child' : 'stage-child'} dropdown-item sidnav-a" href="#">${row.settings.menuitem}</a>
-        </li>
+        <template repeat.for="row of router.navigation">
+          <li if.bind="row.settings.dropdownchild && row.settings.firstchild" class="parent-item sidenav-li">${row.settings.parent}</li>
+        </template>
+        <template repeat.for="row of router.navigation">
+          <li if.bind="row.settings.dropdownchild"class="${row.isActive ? 'active-child' : 'stage-child'} sidenav-li">
+            <a href.bind="row.href" class="${row.isActive ? 'active-child' : 'stage-child'} dropdown-item sidnav-a" href="#">${row.settings.menuitem}</a>
+          </li>
+        </template>
       </ul>
   </nav>
 </template>
