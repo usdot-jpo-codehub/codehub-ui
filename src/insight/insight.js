@@ -443,7 +443,7 @@ export class Insight {
         ],
         series: [
           {
-            name: 'Projects',
+            name: 'Forks',
             type: 'bar',
             data: data.forkAmount,
           },
