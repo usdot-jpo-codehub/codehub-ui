@@ -21,8 +21,8 @@ export class SortValueConverter {
     return array
       .slice(0)
       .sort((a, b) => {
-        let vA = props.reduce((a, level) => a && a[level], a);
-        let vB = props.reduce((b, level) => b && b[level], b);
+        let vA = props.reduce((aa, level) => aa && aa[level], a);
+        let vB = props.reduce((bb, level) => bb && bb[level], b);
         if (Array.isArray(vA) && Array.isArray(vB)) {
           return (vA.length - vB.length) * factor;
         }

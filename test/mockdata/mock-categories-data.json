@@ -1,0 +1,23 @@
+[
+  {
+      "id": "1",
+      "name": "Self Driving Car",
+      "description": "A vehicle that is capable of sensing its environment and moving safely with little or no human input.",
+      "lastModified": "2020-02-07T20:46:08.000+0000",
+      "isEnabled": true
+  },
+  {
+      "id": "2",
+      "name": "Vehicle Traffic Control",
+      "description": "System that combines traditional traffic lights with an array of sensors and artificial intelligence.",
+      "lastModified": null,
+      "isEnabled": true
+  },
+  {
+      "id": "3",
+      "name": "Artificial Intelligence",
+      "description": "Any device that perceives its environment and takes actions that maximize its chance of successfully achieving its goals.",
+      "lastModified": null,
+      "isEnabled": true
+  }
+]

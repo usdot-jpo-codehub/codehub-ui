@@ -4,6 +4,7 @@
   <require from="../resources/value-converters/filter"></require>
   <require from="../resources/value-converters/unique"></require>
   <require from="../resources/value-converters/chunk"></require>
+  <require from="../resources/value-converters/filter-category"></require>
 
   <div class="container-fluid title-wrapper">
     <div class="container-fluid">
@@ -11,6 +12,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 explore-filter-wrapper">
           <div class="row filter-result-bar">
             <div class="col-lg-9 col-md-9 col-sm-9">
+              <select id="filterCategories" multiple="multiple"></select>
               <select id="filterOrg" multiple="multiple"></select>
               <select id="filterLang" multiple="multiple"></select>
             </div>
@@ -29,12 +31,15 @@
         <div class="col-lg-12 col-chips">
           <ul class='list-inline'>
             <li><span class="project-counter">Projects</span> <span id="explore-projects-count">(${resultCount})</span></li>
-          <template if.bind="!filterLangEmpty || !filterOrgEmpty ">
+            <template if.bind="!filterLangEmpty || !filterOrgEmpty || !filterCategoriesEmpty ">
               <li if.bind="!filterLangEmpty" repeat.for="pill of filters.selectedLanguages">
               <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'sourceData.language', pill)})</small> <a href="#" click.trigger="removePill('#filterLang',pill)"><em class="material-icons">close</em></a></span>
               </li>
               <li if.bind="!filterOrgEmpty" repeat.for="pill of filters.selectedOrganizations">
               <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'sourceData.owner.name', pill)})</small> <a href="#" click.trigger="removePill('#filterOrg',pill)"><em class="material-icons">close</em></a></span>
+              </li>
+              <li if.bind="!filterCategoriesEmpty" repeat.for="pill of filters.selectedCategories">
+                <span class="stage-chip">${getDataFromPipedString(pill,1)} <small>(${filters.countProjectsInCategory(projects, getDataFromPipedString(pill,0))})</small> <a href="#" click.trigger="removePill('#filterCategories',pill)"><em class="material-icons">close</em></a></span>
               </li>
               <li>
                 <a class="clear-btn" href="#" click.delegate="clearAllFilters()">Clear All</a>
@@ -62,6 +67,7 @@
             <div class="row"
               virtual-repeat.for="repo of projects |
               sort: { propertyName: selectedSort, direction: sortDirection} |
+              filterCategory:{ filterArray: filters.selectedCategories}:filters.selectedCategories.length |
               filter: { propertyName: 'sourceData.owner.name', filterArray: filters.selectedOrganizations}:filters.selectedOrganizations.length |
               filter: { propertyName: 'sourceData.language', filterArray: filters.selectedLanguages}:filters.selectedLanguages.length |
               chunk: 3">
