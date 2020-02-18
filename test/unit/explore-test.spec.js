@@ -9,8 +9,10 @@ import { Explore } from '../../src/explore/explore';
 
 export class MockDataContext {
   response  = undefined;
+  responseCategories = undefined;
 
   getRepositories() {return Promise.resolve(this.response)}
+  getCategories() {return Promise.resolve(this.responseCategories)}
 }
 
 export class MockRouter {
@@ -25,13 +27,16 @@ describe('Explore : ', () => {
   let viewModel;
   let filters;
   let mockRepositoriesData;
+  let mockCategoriesData;
 
   beforeEach( () => {
     jasmine.getFixtures().fixturesPath='base/test/mockdata/';
     mockRepositoriesData = JSON.parse(readFixtures('mock-repositories-data.json'));
+    mockCategoriesData = JSON.parse(readFixtures('mock-categories-data.json'));
 
     router.response = undefined;
     dtx.response = undefined;
+    dtx.responseCategories = undefined;
     filters = new Filters();
     viewModel = new Explore(dtx, router, filters);
 
@@ -50,8 +55,34 @@ describe('Explore : ', () => {
 
   });
 
+  it('Validate Categories filter selection', (done) => {
+    dtx.response = mockRepositoriesData;
+    dtx.responseCategories = mockCategoriesData;
+    router.response = true;
+    component.create(bootstrap).then(() => {
+      component.viewModel.activate();
+      setTimeout(() => {
+        let expectedCategories = mockCategoriesData.map(x => x.id + '|' + x.name);
+        let element = document.querySelector('#filterCategories');
+        console.log('element', element);
+        expect(element.options.length).toEqual(expectedCategories.length, 'Unexpected number of Categories');
+
+        let expected = '';
+        let data = '';
+        for(let i=0; i<expectedCategories.length; i++) {
+          expected += expectedCategories[i] + '*';
+          data += element.options[i].value + '*';
+        }
+        expect(data).toEqual(expected, 'Unexpected Categories');
+
+        done();
+      }, 100);
+    }).catch( e => { console.log(e.toString())} );
+  });
+
   it('Validate Organization filter selection', (done) => {
     dtx.response = mockRepositoriesData;
+    dtx.responseCategories = mockRepositoriesData;
     router.response = true;
     component.create(bootstrap).then(() => {
       component.viewModel.activate();
@@ -77,6 +108,7 @@ describe('Explore : ', () => {
 
   it('Validate Language filter selection', (done) => {
     dtx.response = mockRepositoriesData;
+    dtx.responseCategories = mockRepositoriesData;
     router.response = true;
     component.create(bootstrap).then(() => {
       component.viewModel.activate();
@@ -102,6 +134,7 @@ describe('Explore : ', () => {
 
   it('Validate Sort list', (done) => {
     dtx.response = mockRepositoriesData;
+    dtx.responseCategories = mockRepositoriesData;
     router.response = true;
     component.create(bootstrap).then(() => {
       component.viewModel.activate();
@@ -126,6 +159,7 @@ describe('Explore : ', () => {
 
   it('Validate Number of Projects', (done) => {
     dtx.response = mockRepositoriesData;
+    dtx.responseCategories = mockRepositoriesData;
     router.response = true;
     component.create(bootstrap).then(() => {
       component.viewModel.activate();
@@ -139,6 +173,7 @@ describe('Explore : ', () => {
 
   it('Expect No Results message', (done) => {
     dtx.response = [];
+    dtx.responseCategories = mockRepositoriesData;
     router.response = true;
     component.create(bootstrap).then(() => {
       component.viewModel.activate();
@@ -152,6 +187,7 @@ describe('Explore : ', () => {
 
   it('Validate getUniqueValues ', (done) => {
     dtx.response = [];
+    dtx.responseCategories = mockRepositoriesData;
     router.response = true;
     component.create(bootstrap).then(() => {
       let mockData = [{"id":1},{"id":1},{"id":2},{"id":2},{"id":3},{"id":3},{"id":4}];
@@ -164,6 +200,7 @@ describe('Explore : ', () => {
 
   it('Validate countUniqueValues ', (done) => {
     dtx.response = [];
+    dtx.responseCategories = mockRepositoriesData;
     router.response = true;
     component.create(bootstrap).then(() => {
       let mockData = [{"letter":"A"},{"letter":"A"},{"letter":"B"},{"letter":"B"},{"letter":"C"},{"letter":"C"},{"letter":"D"}];      
@@ -175,6 +212,7 @@ describe('Explore : ', () => {
 
   it('Validate filterArray ', (done) => {
     dtx.response = [];
+    dtx.responseCategories = mockRepositoriesData;
     router.response = true;
     component.create(bootstrap).then(() => {
       let mockData = [{"case":1,"letter":"A"},{"case":1,"letter":"A"},{"case":2,"letter":"B"},{"case":2,"letter":"B"},{"case":3,"letter":"C"},{"case":3,"letter":"C"},{"case":4,"letter":"D"}];

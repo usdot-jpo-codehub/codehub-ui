@@ -3,6 +3,7 @@
   <require from="../resources/value-converters/pick"></require>
   <require from="../resources/value-converters/filter"></require>
   <require from="../resources/value-converters/unique"></require>
+  <require from="../resources/value-converters/filter-category"></require>
 
   <div class="container-fluid title-wrapper">
     <div class="container">
@@ -13,22 +14,26 @@
                 <span tabindex="0" id="results-result-text">${resultCount} results for <strong>${searchText}</strong></span>
             </div>
             <div class="col-lg-6 col-md-6">
+                <select id="filterCategories" multiple="multiple"></select>
                 <select id="filterOrg" multiple="multiple"></select>
                 <select id="filterLang" multiple="multiple"></select>
 
             </div>
           </div>
-          <div class="row filter-result-bar" if.bind="(searchDone && resultCount > 0)&&(filters && (filters.selectedLanguages.length>0 || filters.selectedOrganizations.length>0 ))">
+          <div class="row filter-result-bar" if.bind="(searchDone && resultCount > 0)&&(filters && (filters.selectedLanguages.length>0 || filters.selectedOrganizations.length>0 || filters.selectedCategories.length>0 ))">
             <div class="col-lg-10 col-md-10">
               <ul class='list-inline'>
-                <li if.bind="(searchDone && resultCount > 0)&&(filters && (filters.selectedLanguages.length>0 || filters.selectedOrganizations.length>0 ))">
+                <li if.bind="(searchDone && resultCount > 0)&&(filters && (filters.selectedLanguages.length>0 || filters.selectedOrganizations.length>0 || filters.selectedCategories.length>0 ))">
                   <a id="result-clearall-filters" class="clear-btn" href="#" click.delegate="clearAllFilters()" aria-label="Clear all filters, the current number of results is: ${resultCount}">Clear All</a>
                 </li>
+                <li if.bind="!filterCategoriesEmpty" repeat.for="pill of filters.selectedCategories">
+                  <span class="stage-chip">${getDataFromPipedString(pill,1)} <small>(${filters.countProjectsInCategory(projects, getDataFromPipedString(pill,0))})</small> <a href="#" click.trigger="removePillFilter('#filterCategories',pill)"><em class="material-icons">close</em></a></span>
+                </li>
                 <li if.bind="!filterOrgEmpty" repeat.for="pill of filters.selectedOrganizations">
-                  <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'organization', pill)})</small> <a click.delegate="removePillFilter('#filterOrg',pill)" href="#" aria-label="Remove organization filter: ${pill}"><i class="material-icons" aria-hidden="true">close</i></a></span>
+                  <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'sourceData.owner.name', pill)})</small> <a click.delegate="removePillFilter('#filterOrg',pill)" href="#" aria-label="Remove organization filter: ${pill}"><i class="material-icons" aria-hidden="true">close</i></a></span>
                 </li>
                 <li if.bind="!filterLangEmpty" repeat.for="pill of filters.selectedLanguages">
-                  <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'language', pill)})</small> <a click.delegate="removePillFilter('#filterLang',pill)" href="#" aria-label="Remove language filter: ${pill}"><i class="material-icons" aria-hidden="true">close</i></a></span>
+                  <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'sourceData.language', pill)})</small> <a click.delegate="removePillFilter('#filterLang',pill)" href="#" aria-label="Remove language filter: ${pill}"><i class="material-icons" aria-hidden="true">close</i></a></span>
                 </li>
               </ul>
             </div>
@@ -61,6 +66,7 @@
         <div if.bind="searchDone && resultCount > 0" class="row"
             virtual-repeat.for="repo of projects |
             sort: { propertyName: selectedSort, direction: sortDirection} |
+            filterCategory:{ filterArray: filters.selectedCategories}:filters.selectedCategories.length |
             filter: { propertyName: 'sourceData.owner.name', filterArray: filters.selectedOrganizations}:filters.selectedOrganizations.length |
             filter: { propertyName: 'sourceData.language', filterArray: filters.selectedLanguages}:filters.selectedLanguages.length">
             <compose view-model="../components/card-search" model.bind="repo"></compose>

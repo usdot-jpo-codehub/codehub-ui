@@ -14,9 +14,11 @@ import { multiselect } from 'bootstrap-multiselect';
 export class MockDataContext {
   responseGetAll = undefined;
   responseSearch = undefined;
+  responseCategories = undefined;
 
   getRepositories() {return Promise.resolve(this.responseGetAll)}
   search() {return Promise.resolve(this.responseSearch)}
+  getCategories() {return Promise.resolve(this.responseCategories)}
 }
 
 describe('Results : ', () => {
@@ -25,6 +27,7 @@ describe('Results : ', () => {
   let viewModel;
   let filters;
   let mockRepositoriesData;
+  let mockCategoriesData;
   let searchObject;
   let eventAggregator;
   let dialogService;
@@ -32,10 +35,12 @@ describe('Results : ', () => {
   beforeEach( () => {
     jasmine.getFixtures().fixturesPath='base/test/mockdata/';
     mockRepositoriesData = JSON.parse(readFixtures('mock-repositories-data.json'));
+    mockCategoriesData = JSON.parse(readFixtures('mock-categories-data.json'));
 
     searchObject = {searchText: "carma"};
     dtx.responseGetAll = undefined;
     dtx.responseSearch = undefined;
+    dtx.responseCategories = undefined;
     filters = new Filters();
     eventAggregator = new EventAggregator();
     dialogService = new DialogService();
@@ -61,6 +66,7 @@ describe('Results : ', () => {
   it('Validate result text', (done) => {
     dtx.responseGetAll = mockRepositoriesData;
     dtx.responseSearch = mockRepositoriesData;
+    dtx.responseCategories = mockCategoriesData;
     component.create(bootstrap).then(() => {
       component.viewModel.activate(searchObject);
       setTimeout(() => {
@@ -73,12 +79,14 @@ describe('Results : ', () => {
   it('Validate if filters are available', (done) => {
     dtx.responseGetAll = mockRepositoriesData;
     dtx.responseSearch = mockRepositoriesData;
+    dtx.responseCategories = mockCategoriesData;
     component.create(bootstrap).then(() => {
       component.viewModel.activate(searchObject);
       setTimeout(() => {
+        let filterCategories = document.querySelector('#filterCategories');
         let filterOrganization = document.querySelector('#filterOrg');
         let filterLanguage = document.querySelector('#filterOrg');
-        let ok = filterOrganization && filterLanguage ? true : false;
+        let ok = filterOrganization && filterLanguage && filterCategories ? true : false;
         expect(ok).toEqual(true);
         done();
       }, 100);
@@ -87,6 +95,7 @@ describe('Results : ', () => {
   it('Validate Organization Filter works', (done) => {
     dtx.responseGetAll = mockRepositoriesData;
     dtx.responseSearch = mockRepositoriesData;
+    dtx.responseCategories = mockCategoriesData;
     component.create(bootstrap).then(() => {
       component.viewModel.activate(searchObject);
       setTimeout(() => {
@@ -100,6 +109,7 @@ describe('Results : ', () => {
   it('Validate Organization Filter creates pill', (done) => {
     dtx.responseGetAll = mockRepositoriesData;
     dtx.responseSearch = mockRepositoriesData;
+    dtx.responseCategories = mockCategoriesData;
     component.create(bootstrap).then(() => {
       component.viewModel.activate(searchObject);
       let filterValue = 'usdot-fhwa-stol';
@@ -120,6 +130,7 @@ describe('Results : ', () => {
   it('Validate Language Filter works', (done) => {
     dtx.responseGetAll = mockRepositoriesData;
     dtx.responseSearch = mockRepositoriesData;
+    dtx.responseCategories = mockCategoriesData;
     component.create(bootstrap).then(() => {
       component.viewModel.activate(searchObject);
       setTimeout(() => {
@@ -133,6 +144,7 @@ describe('Results : ', () => {
   it('Validate Language Filter creates pill', (done) => {
     dtx.responseGetAll = mockRepositoriesData;
     dtx.responseSearch = mockRepositoriesData;
+    dtx.responseCategories = mockCategoriesData;
     component.create(bootstrap).then(() => {
       component.viewModel.activate(searchObject);
       let filterValue = 'Java';

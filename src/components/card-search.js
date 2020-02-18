@@ -59,10 +59,10 @@ export class CardSearch {
 
   @computedFrom("repo.project_description", "repo.highlights['sourceData.description']")
   get hasdescription() {
-    return this.repo ? (this.repo.sourceData.description ? true : false) : false;
+    return this.repo ? (this.repo.sourceData && this.repo.sourceData.description ? true : false) : false;
   }
   get description() {
-    if (!this.repo || !this.repo.sourceData.description) {
+    if (!this.repo || !this.repo.sourceData || !this.repo.sourceData.description) {
       return NO_DESCRIPTION_MESSAGE;
     }
 
@@ -73,7 +73,7 @@ export class CardSearch {
     return this.repo.sourceData.description;
   }
   get language() {
-    return this.repo ? (this.repo.sourceData.language ? this.repo.sourceData.language : this.stageConfig.NO_LANG) : this.stageConfig.NO_LANG;
+    return this.repo ? (this.repo.sourceData && this.repo.sourceData.language ? this.repo.sourceData.language : this.stageConfig.NO_LANG) : this.stageConfig.NO_LANG;
   }
 
   validateImage(url, cbfx) {
