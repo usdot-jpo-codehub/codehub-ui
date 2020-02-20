@@ -22,6 +22,7 @@ export class Explore {
     this.searchDone = false;
 
     this.projects = [];
+    this.categories = [];
 
     this.projectTitle = 'Explore';
 
@@ -41,8 +42,12 @@ export class Explore {
   }
 
   getData() {
-    return this.dataContext.getRepositories(null)
-      .then(projects => {
+    return Promise.all([
+      this.dataContext.getRepositories(null),
+      this.dataContext.getCategories()])
+      .then(response => {
+        let projects = response[0];
+        let categories = response[1];
         if (!projects) {
           this.searchDone = true;
           return this.projects;
@@ -50,8 +55,11 @@ export class Explore {
 
         setTimeout(() => {
           this.projects = JSON.parse(JSON.stringify(projects));
+          this.categories = categories;
+          this.filters.selectedCategories = this.categories.map(x => x.id+'|'+x.name);
           this.filters.selectedOrganizations = this.filters.getUniqueValues(this.projects, 'sourceData.owner.name');
           this.filters.selectedLanguages = this.filters.getUniqueValues(this.projects, 'sourceData.language');
+          this.rebuildFilterCategories(projects);
           this.rebuildFilterOrg(projects);
           this.rebuildFilterLang(projects);
           this.searchDone = true;
@@ -69,11 +77,29 @@ export class Explore {
   // TODO Filter work below here needs to be
 
   attached() {
+    this.setupFilterCategories();
     this.setupFilterOrg();
     this.setupFilterLang();
 
+    this.rebuildFilterCategories(this.projects);
     this.rebuildFilterOrg(this.projects);
     this.rebuildFilterLang(this.projects);
+  }
+
+  rebuildFilterCategories(projects) {
+    const options = [];
+    for (const category of this.categories) {
+      let count = this.filters.countProjectsInCategory(projects, category.id);
+      let op = {
+        label: `${category.name} <small>(${count})</small>`,
+        title: category.name,
+        value: `${category.id}|${category.name}`,
+        selected: false
+       }
+       options.push(op);
+    }
+    $('#filterCategories').multiselect('dataprovider', options);
+    $('#filterCategories').trigger('change');
   }
 
   rebuildFilterOrg(projects) {
@@ -94,6 +120,40 @@ export class Explore {
     }
     $('#filterLang').multiselect('dataprovider', options);
     $('#filterLang').trigger('change');
+  }
+
+  setupFilterCategories() {
+    $('#filterCategories').multiselect({
+      includeSelectAllOption: true,
+      enableFiltering: true,
+      disableIfEmpty: true,
+      enableCaseInsensitiveFiltering: true,
+      maxHeight: 250,
+      enableHTML: true,
+      position: 'relative',
+      buttonText(options, select) {
+        if (options.length === 0) {
+          return 'Categories';
+        } else if (options.length === options.prevObject.length) {
+          return `Categories (${options.length})`;
+        }
+        return `Categories (${options.length}) `;
+      },
+    });
+
+    $('#filterCategories').on('change', ev => {
+      if ($('#filterCategories').val()) {
+        this.filters.selectedCategories =  $('#filterCategories').val();
+        this.filterCategoriesEmpty = false;
+      } else {
+        this.filters.selectedCategories = this.categories.map(x => x.id+'|'+x.name);
+        this.filterCategoriesEmpty = true;
+      }
+
+      let filterArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'sourceData.language');
+      filterArr = this.filterArray(filterArr, this.filters.selectedOrganizations, 'sourceData.owner.name');
+      this.resultCount = this.filterArrayCategories(filterArr, this.filters.selectedCategories).length;
+    });
   }
 
   setupFilterOrg() {
@@ -124,8 +184,9 @@ export class Explore {
         this.filterOrgEmpty = true;
       }
 
-      let fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'sourceData.language');
-      this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'sourceData.owner.name').length;
+      let filterArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'sourceData.language');
+      filterArr = this.filterArray(filterArr, this.filters.selectedOrganizations, 'sourceData.owner.name');
+      this.resultCount = this.filterArrayCategories(filterArr, this.filters.selectedCategories).length;
     });
   }
 
@@ -156,18 +217,22 @@ export class Explore {
         this.filterLangEmpty = true;
       }
 
-      let fitlerArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'sourceData.language');
-      this.resultCount = this.filterArray(fitlerArr, this.filters.selectedOrganizations, 'sourceData.owner.name').length;
+      let filterArr = this.filterArray(this.projects, this.filters.selectedLanguages, 'sourceData.language');
+      filterArr = this.filterArray(filterArr, this.filters.selectedOrganizations, 'sourceData.owner.name');
+      this.resultCount = this.filterArrayCategories(filterArr, this.filters.selectedCategories).length;
     });
   }
 
   clearAllFilters() {
     $('#filterLang').multiselect('deselectAll', false);
     $('#filterOrg').multiselect('deselectAll', false);
+    $('#filterCategories').multiselect('deselectAll', false);
 
     $('#filterLang').trigger('change');
     $('#filterOrg').trigger('change');
+    $('#filterCategories').trigger('change');
 
+    this.rebuildFilterCategories(this.projects);
     this.rebuildFilterOrg(this.projects);
     this.rebuildFilterLang(this.projects);
   }
@@ -199,9 +264,9 @@ export class Explore {
       if (v) {
         if (v === value) {
           count++;
-        } else if ((v === null || v === undefined) && value === 'None') {
-          count++;
         }
+      } else if(value == 'None') {
+        count++;
       }
     }
     return count;
@@ -227,6 +292,23 @@ export class Explore {
         return false;
       });
 
+    return result;
+  }
+
+  filterArrayCategories(array, selectedCategories) {
+    if (selectedCategories.length === 0) {
+      return array;
+    }
+
+    let result = array.slice(0).filter( (project) => {
+      for(const category of selectedCategories) {
+        const categoryId = this.getDataFromPipedString(category,0);
+        if (project.codehubData.categories && project.codehubData.categories.length > 0 && project.codehubData.categories.includes(categoryId)) {
+          return true;
+        }
+      }
+      return false;
+    });
     return result;
   }
 
@@ -265,5 +347,17 @@ export class Explore {
         element.focus();
       }
     });
+  }
+
+  getDataFromPipedString(data, index) {
+    if (!data || data == '' || !data.includes('|')) {
+      return null;
+    }
+    let parts = data.split('|');
+    if (index >= parts.length) {
+      return null;
+    }
+
+    return parts[index];
   }
 }

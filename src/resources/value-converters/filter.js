@@ -12,7 +12,7 @@ export class FilterValueConverter {
     .filter((object) => {
       for (const value of config.filterArray) {
         let props = config.propertyName.split('.');
-        let v = props.reduce((object, level) => object && object[level], object);
+        let v = props.reduce((obj, level) => obj && obj[level], object);
         if (v) {
           if (v === value) {
             return true;

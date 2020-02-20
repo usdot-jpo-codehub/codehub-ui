@@ -117,7 +117,8 @@
       },
       "isVisible": true,
       "isIngested": true,
-      "isIngestionEnabled": true
+      "isIngestionEnabled": true,
+      "categories": ["1"]
     },
     "related": [
       {
@@ -455,7 +456,8 @@
       },
       "isVisible": true,
       "isIngested": true,
-      "isIngestionEnabled": true
+      "isIngestionEnabled": true,
+      "categories": ["2"]
     }
   },
   {
@@ -635,7 +637,8 @@
       },
       "isVisible": true,
       "isIngested": true,
-      "isIngestionEnabled": true
+      "isIngestionEnabled": true,
+      "categories": ["3"]
     }
   },
   {
@@ -854,7 +857,8 @@
       },
       "isVisible": true,
       "isIngested": true,
-      "isIngestionEnabled": true
+      "isIngestionEnabled": true,
+      "categories": ["1"]
     }
   },
   {
@@ -985,7 +989,8 @@
       },
       "isVisible": true,
       "isIngested": true,
-      "isIngestionEnabled": true
+      "isIngestionEnabled": true,
+      "categories": ["2"]
     }
   },
   {
@@ -1354,7 +1359,8 @@
       },
       "isVisible": true,
       "isIngested": true,
-      "isIngestionEnabled": true
+      "isIngestionEnabled": true,
+      "categories": ["3"]
     }
   }
 ]

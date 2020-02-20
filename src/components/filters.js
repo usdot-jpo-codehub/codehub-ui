@@ -2,6 +2,7 @@ import $ from 'jquery';
 
 export class Filters {
   constructor() {
+    this.selectedCategories = []
     this.selectedOrganizations = [];
     this.selectedLanguages = [];
   }
@@ -21,7 +22,7 @@ export class Filters {
 
   getNested(obj, prop) {
     let props = prop.split('.');
-    let result = props.reduce((obj, level) => obj && obj[level], obj);
+    let result = props.reduce((o, level) => o && o[level], obj);
     return result;
   }
 
@@ -41,6 +42,13 @@ export class Filters {
     }
     this.selectedLanguages = [];
     return true;
+  }
+
+  countProjectsInCategory(projects, categoryId) {
+    let f = projects.filter((x) => {
+      return x.codehubData && x.codehubData.categories && x.codehubData.categories.includes(categoryId);
+    });
+    return f.length;
   }
 
 }

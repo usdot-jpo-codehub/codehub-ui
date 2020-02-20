@@ -238,4 +238,18 @@ export class DataContext {
     });
   }
 
+  getCategories() {
+    let url = `${baseUrl}/configurations/categories`;
+    return this.http.fetch(url, {
+      method: 'GET',
+    })
+    .then(response => response.json())
+    .then(data => {
+      if(data.code == 200) {
+          return data.result;
+        }
+        return null;
+      });
+  }
+
 }
