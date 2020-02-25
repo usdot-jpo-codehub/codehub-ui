@@ -1,55 +1,56 @@
 import { inject, computedFrom } from 'aurelia-framework';
-import { NO_DESCRIPTION_MESSAGE } from '../constants/ch-contants';
+import { NO_DESCRIPTION_MESSAGE } from '../constants/ch-constants';
 import { StageConfig } from '../stageConf';
+import { DialogFunctions } from '../resources/shared/dialog-functions';
 
-@inject(StageConfig)
+
+@inject(StageConfig, DialogFunctions)
 export class Card {
-  constructor(stageConfig) {
+  constructor(stageConfig, dialogFunctions) {
     this.repo = {};
+    this.showFeatured = false;
     this.downloads = 0;
     this.releases = [];
     this.infected_files = 0;
-    this.language_image = '/img/language-icons/default.svg';
     this.stageConfig = stageConfig;
     this.badge_status_image = '/img/pending_review_final_29w_35h.svg';
+    this.metricsText = 'Metrics...';
+    this.showMetrics = false;
+    this.dialogFunctions = dialogFunctions;
   }
 
   activate(modelData) {
     if (modelData) {
-      this.repo = modelData;
+      this.repo = modelData.data;
+      if (this.repo) {
+        this.showFeatured = modelData.showFeatured ? modelData.showFeatured : false;
+        this.showMetrics = modelData.showMetrics ? modelData.showMetrics : false;
 
-      if(this.repo.sourceData.language) {
-        let url = `/img/language-icons/${this.repo.sourceData.language.toLowerCase()}.svg`;
-        url = url.replace(/\#/g,'_sharp');
-        this.validateImage(url, (isValid) => {
-          this.language_image = isValid ? url : this.language_image;
-        });
-      }
+        if (this.repo.sourceData && this.repo.sourceData.releases) {
+          this.releases = this.repo.sourceData.releases;
+        }
 
-      if (modelData.sourceData.releases) {
-        this.releases = modelData.sourceData.releases;
-      }
+        if (this.repo.generatedData && this.repo.generatedData.vscan && this.repo.generatedData.vscan.infected_files) {
+          this.infected_files = this.repo.generatedData.vscan.infected_files;
+        }
 
-      if (modelData.generatedData.vscan && modelData.generatedData.vscan.infected_files) {
-        this.infected_files = modelData.generatedData.vscan.infected_files;
-      }
-
-      if (modelData.codehubData.badges && modelData.codehubData.badges.status) {
-        switch(modelData.codehubData.badges.status.toLowerCase()) {
-          case 'active':
-            this.badge_status_image = '/img/active_flame_final_28w_35h.svg';
-            break;
-          case 'inactive':
-            this.badge_status_image = '/img/inactive_zzz_final_32w_35h.svg';
-            break;
-          case 'pending':
+        if (this.repo.codehubData && this.repo.codehubData.badges && this.repo.codehubData.badges.status) {
+          switch(this.repo.codehubData.badges.status.toLowerCase()) {
+            case 'active':
+              this.badge_status_image = '/img/active_flame_final_28w_35h.svg';
+              break;
+            case 'inactive':
+              this.badge_status_image = '/img/inactive_zzz_final_32w_35h.svg';
+              break;
+            case 'pending':
+                this.badge_status_image = '/img/pending_review_final_29w_35h.svg';
+                break;
+            case 'read-only':
+                this.badge_status_image = '/img/lock_final_28w_35h.svg';
+                break;
+            default:
               this.badge_status_image = '/img/pending_review_final_29w_35h.svg';
-              break;
-          case 'read-only':
-              this.badge_status_image = '/img/lock_final_28w_35h.svg';
-              break;
-          default:
-            this.badge_status_image = '/img/pending_review_final_29w_35h.svg';
+          }
         }
       }
     }
@@ -61,13 +62,24 @@ export class Card {
 
   @computedFrom('repo.project_description')
   get hasdescription() {
-    return this.repo.sourceData.description ? true : false;
+    return this.repo && this.repo.sourceData && this.repo.sourceData.description ? true : false;
   }
   get description() {
-    return this.repo.sourceData.description  ? this.repo.sourceData.description : NO_DESCRIPTION_MESSAGE;
+    return this.repo && this.repo.sourceData && this.repo.sourceData.description  ? this.repo.sourceData.description : NO_DESCRIPTION_MESSAGE;
   }
   get language() {
-    return this.repo.sourceData.language ? this.repo.sourceData.language : this.stageConfig.NO_LANG
+    return this.repo && this.repo.sourceData && this.repo.sourceData.language ? this.repo.sourceData.language : this.stageConfig.NO_LANG
+  }
+
+  @computedFrom('repo.sourceData.language')
+  get language_image() {
+    let image = '/img/language-icons/default.svg';
+    if(this.repo && this.repo.sourceData && this.repo.sourceData.language) {
+      let url = `/img/language-icons/${this.repo.sourceData.language.toLowerCase()}.svg`;
+      url = url.replace(/\#/g,'_sharp');
+      return url;
+    }
+    return image;
   }
 
   validateImage(url, cbfx) {
@@ -77,7 +89,12 @@ export class Card {
     img.src = url;
   }
 
-  badgeStatusClicked(event) {
-    console.log('badge status clicked');
+  showHideMetrics() {
+    this.showMetrics = !this.showMetrics;
+    if (this.showMetrics) {
+      this.metricsText = 'Hide metrics...';
+    } else {
+      this.metricsText = 'Metrics...';
+    }
   }
 }

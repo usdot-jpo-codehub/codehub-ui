@@ -1,17 +1,16 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
-import { DialogService } from 'aurelia-dialog';
+import { DialogFunctions } from '../resources/shared/dialog-functions';
 import * as echarts from 'echarts/dist/echarts';
 import { DataContext } from 'services/datacontext';
-import { LeavingModal } from '../components/modals/leaving-modal';
 import { StageConfig } from '../../stageConf';
 import { Filters } from 'components/filters';
-@inject(DataContext, Router, DialogService, StageConfig, Filters)
+@inject(DataContext, Router, DialogFunctions, StageConfig, Filters)
 export class Insight {
-  constructor(dataContext, router, dialogService, stageConfig, filters) {
+  constructor(dataContext, router, dialogFunctions, stageConfig, filters) {
     this.dataContext = dataContext;
     this.router = router;
-    this.dialogService = dialogService;
+    this.dialogFunctions = dialogFunctions;
     this.stageConfig = stageConfig;
     this.sonarqube_projects = `${this.stageConfig.SONARQUBE_ADDRESS}`;
     this.insights = [];
@@ -596,23 +595,6 @@ export class Insight {
       return 0;
     }
     return (a[1] > b[1]) ? -1 : 1;
-  }
-
-  openLeavingSiteConfirmation(name, url, target, bypass) {
-    this.exitDialogLinkId = target.getAttribute('id');
-    let byp = bypass === undefined ? false : bypass;
-    if(byp) {
-      const win = window.open(url, '_blank');
-      win.focus();
-    } else {
-      const mdl = { name, url };
-      this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed( response => {
-        const element = document.querySelector('#'+this.exitDialogLinkId);
-        if(element) {
-          element.focus();
-        }
-      });
-    }
   }
 
   buildOrganizations(orgs) {

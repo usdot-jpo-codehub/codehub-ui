@@ -24,7 +24,7 @@ export class AddProjectsModal {
   getData() {
     return this.dataContext.getRepositories(null)
       .then(projects => {
-          this.projects = JSON.parse(JSON.stringify(projects));
+          // this.projects = JSON.parse(JSON.stringify(projects));
           this.rebuildProjectSelect(projects);
           $('#selectProjects').click();
           $('#addproject-dialog').focus();
@@ -45,10 +45,11 @@ export class AddProjectsModal {
 
   rebuildProjectSelect(projects) {
     const options = [];
+    projects.sort((a, b) => a.sourceData.name >= b.sourceData.name ? 1 : -1);
     for (let i = 0; i < projects.length; i++) {
       options.push({
-        label: `${projects[i].project_name} <small>(${projects[i].organization})</small>`,
-        title: projects[i].project_name,
+        label: `${projects[i].sourceData.name} <small>(${projects[i].sourceData.owner.name})</small>`,
+        title: projects[i].sourceData.name,
         value: i,
         selected: false,
       });

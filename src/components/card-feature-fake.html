@@ -19,20 +19,22 @@
         <div tabindex="0" class="org-name">${repo.language ? repo.language : stageConfig.NO_LANG}</div>
       </div>
       <div tabindex="0" class="proj-desc multiline">${repo.project_description}</div>
-      <div class="text-muted last-updated"><span aria-hidden="true">By&nbsp;</span> <span
-          id="card-feature-organization-link-card-fake" >${repo.organization}</span> &nbsp; |
-        &nbsp; <span tabindex="0" id="card-feature-organization-updated-text-card-fake">${repo.updatedAt}</span> <span
-          class="pull-right repo-status"><i class="material-icons" aria-hidden="true">${repo.origin == 'PUBLIC' ?
-            'public' : 'business'}</i> <span tabindex="0"
-            id="card-feature-organization-origin-text-card-fake">${repo.origin}</span></span></div>
+      <div class="text-muted last-updated">
+        <span aria-hidden="true">By&nbsp;</span>
+        <span id="card-feature-organization-link-card-fake" >${repo.organization}</span>
+        &nbsp; | &nbsp; <span tabindex="0" id="card-feature-organization-updated-text-card-fake">${repo.updatedAt}</span>
+        <span class="pull-right repo-status">
+          <a id="card-popular-metrics-${repo.id}" href="#" click.trigger="showHideMetrics()" bootstrap-tooltip data-toggle="tooltip" data-placement="top" aria-label="Show or Hide Metrics">${metricsText}</a>
+        </span>
+      </div>
 
-      <div class="card-stats lined-header">
+      <div if.bind="showMetrics" class="card-stats lined-header">
         <span class="pull-right"><em class="text-muted">Source: <span id="card-feature-project-status-link-card-fake"
               >Github™</span></em></span>
         <h4 tabindex="0" class="" aria-label="Project Stats">Project Stats</h4>
       </div>
 
-      <div class="row github-stats row-1">
+      <div if.bind="showMetrics" class="row github-stats row-1">
         <div class="col-md-3 col-sm-3">
           <span class="stat" tabindex="0" aria-label="${repo.stars} stars">
             <span class="octicon octicon-star" aria-hidden="true"></span>
@@ -67,7 +69,7 @@
         </div>
       </div>
 
-      <div class="row github-stats row-2">
+      <div if.bind="showMetrics" class="row github-stats row-2">
         <div class="col-md-3 col-sm-3">
           <span class="stat" tabindex="0" aria-label="${repo.contributors} contributors">
             <span class="octicon octicon-organization" aria-hidden="true"></span>

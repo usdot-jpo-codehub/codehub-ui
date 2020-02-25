@@ -38,7 +38,7 @@
 
       <div class="row card-links clearfix">
         <ul class="list-inline pull-left">
-          <li><a id="card-health-project-open-readme-${repo.id}" href="#" click.trigger="openReadmeModal(repo,$event.target)" aria-label="Show readme file"><i class="material-icons" aria-hidden="true">library_books</i> Show README</a></li>
+          <li><a id="card-health-project-open-readme-${repo.id}" href="#" click.trigger="dialogFunctions.openReadmeModal(repo,$event.target)" aria-label="Show readme file"><i class="material-icons" aria-hidden="true">library_books</i> Show README</a></li>
         </ul>
         <ul class="list-inline pull-right">
           <li if.bind="badge_status_image"><a href="#"  route-href="route:badges-about" title="Status ${repo.codehubData.badges.status}"><img alt="Badge status image" src.bind="badge_status_image"></a></li>

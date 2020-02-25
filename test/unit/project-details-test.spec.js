@@ -82,7 +82,7 @@ describe('Project Details : ', () => {
   it('Expects Project Organization link Click-Trigger to be', (done) => {
     component.create(bootstrap).then(() => {
       let element = document.querySelector(`#project-organization-link-${mockRepositoriesData[0].id}`);
-      expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.sourceData.owner.name,repo.sourceData.owner.url,$event.target)');
+      expect(element.getAttribute('click.trigger')).toEqual('dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.owner.name,repo.sourceData.owner.url,$event.target)');
       done();
     }).catch( e => { console.log(e.toString())} );
   });
@@ -107,7 +107,7 @@ describe('Project Details : ', () => {
   it('Expects Project Readme button Click-Trigger to be', (done) => {
     component.create(bootstrap).then(() => {
       let element = document.querySelector(`#project-readme-button-${mockRepositoriesData[0].id}`);
-      expect(element.getAttribute('click.trigger')).toEqual('openReadmeModal(repo,$event.target)');
+      expect(element.getAttribute('click.trigger')).toEqual('dialogFunctions.openReadmeModal(repo,$event.target)');
       done();
     }).catch( e => { console.log(e.toString())} );
   });
@@ -123,9 +123,6 @@ describe('Project Details : ', () => {
   it('Expects Project Source link Click-Trigger to be', (done) => {
     component.create(bootstrap).then(() => {
       let element = document.querySelector(`#project-source-link-${mockRepositoriesData[0].id}`);
-      console.log('----------------------------------------------------------------------------');
-      console.log(element);
-      console.log('----------------------------------------------------------------------------');
       expect(element.innerHTML).toEqual('Github™');
       done();
     }).catch( e => { console.log(e.toString())} );

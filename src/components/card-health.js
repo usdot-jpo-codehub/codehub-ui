@@ -1,5 +1,5 @@
 import { inject, computedFrom } from 'aurelia-framework';
-import { NO_DESCRIPTION_MESSAGE } from '../constants/ch-contants';
+import { NO_DESCRIPTION_MESSAGE } from '../constants/ch-constants';
 import { StageConfig } from '../stageConf';
 
 @inject(StageConfig)

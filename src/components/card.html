@@ -5,10 +5,13 @@
 
   <div if.bind="repo" class="col-lg-4 col-md-12 col-sm-12">
     <div class="card card-default hover-card">
+      <div if.bind="repo.codehubData.badges.isFeatured && showFeatured" class="ribbon-wrapper">
+        <div id="card-popular-featured-ribbon-${repo.id}" tabindex="0" class="ribbon" role="img" aria-label="Featured ribbon image.">Featured</div>
+      </div>
       <div class="card-header">
         <div tabindex="0" class="lang-logo" role="img" aria-label="Language icon ${repo.sourceData.language}">
           <span>
-            <img alt="Language icon ${repo.sourceData.language}" if.bind="repo.sourceData.owner.type != 'foundation'" src.bind="language_image">
+            <img alt="Language icon ${repo.sourceData.language}" if.bind="repo.sourceData.owner.type != 'foundation'" src.bind="language_image" onError="this.onerror=null;this.src='/img/language-icons/default.svg';">
             <img if.bind="repo.sourceData.owner.type == 'foundation'" src="img/language-icons/foundation.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';" alt="Foundation">
           </span>
         </div>
@@ -18,19 +21,27 @@
         <div tabindex="0" class="org-name">${language}</div>
       </div>
       <div tabindex="0" class="proj-desc ${hasdescription ? '' : 'no-desc'} multiline">${description}</div>
-      <div class="text-muted last-updated"><span aria-hidden="true">By&nbsp;</span><a id="card-popular-organization-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.sourceData.owner.name,repo.sourceData.owner.url,$event.target)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" aria-label="Project organization: ${repo.sourceData.owner.name}, view on GitHub." target="_blank">${repo.sourceData.owner.name}</a> &nbsp; | &nbsp; <span tabindex="0" id="card-popular-organization-updated-text-${repo.id}">Updated ${repo.sourceData.lastPush | ago}</span><span class="pull-right repo-status"><i class="material-icons" aria-hidden="true">public</i> <span tabindex="0" id="card-popular-organization-origin-text-${repo.id}">PUBLIC</span></span></div>
+      <div class="text-muted last-updated">
+        <span aria-hidden="true">By&nbsp;</span>
+        <a id="card-popular-organization-link-${repo.id}" href="#" click.trigger="dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.owner.name,repo.sourceData.owner.url,$event.target)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" aria-label="Project organization: ${repo.sourceData.owner.name}, view on GitHub." target="_blank">${repo.sourceData.owner.name}</a>
+        &nbsp; | &nbsp;
+        <span tabindex="0" id="card-popular-organization-updated-text-${repo.id}">Updated ${repo.sourceData.lastPush | ago}</span>
+        <span class="pull-right repo-status">
+          <a id="card-popular-metrics-${repo.id}" href="#" click.trigger="showHideMetrics()" bootstrap-tooltip data-toggle="tooltip" data-placement="top" aria-label="Show or Hide Metrics">${metricsText}</a>
+        </span>
+      </div>
 
-      <div class="card-stats lined-header">
+      <div if.bind="showMetrics" class="card-stats lined-header">
         <span class="pull-right">
           <em class="text-muted">Source:
-            <a if.bind="infected_files == 0" id="card-popular-project-status-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.sourceData.name,repo.sourceData.repositoryUrl,$event.target)"  target="_blank" aria-label="View source code on Github.">Github™</a>
-            <a if.bind="infected_files > 0" id="card-popular-project-status-link-${repo.id}" href="#" click.trigger="displayVScanDialog(repo,$event.target)"  target="_blank" aria-label="View source code on Github.">Github™</a>
+            <a if.bind="infected_files == 0" id="card-popular-project-status-link-${repo.id}" href="#" click.trigger="dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.name,repo.sourceData.repositoryUrl,$event.target)"  target="_blank" aria-label="View source code on Github.">Github™</a>
+            <a if.bind="infected_files > 0" id="card-popular-project-status-link-${repo.id}" href="#" click.trigger="dialogFunctions.displayVScanDialog(repo,$event.target)"  target="_blank" aria-label="View source code on Github.">Github™</a>
           </em>
         </span>
         <h4 tabindex="0" class=""  aria-label="Project Stats">Project Stats</h4>
       </div>
 
-      <div class="row github-stats">
+      <div if.bind="showMetrics" class="row github-stats">
         <div class="col-md-3 col-sm-3">
           <span class="stat" tabindex="0" aria-label="${repo.sourceData.stars} stars">
             <span class="octicon octicon-star" aria-hidden="true"></span>
@@ -61,7 +72,7 @@
         </div>
       </div>
 
-      <div class="row github-stats">
+      <div if.bind="showMetrics" class="row github-stats">
         <div class="col-md-3 col-sm-3">
           <span class="stat" tabindex="0" aria-label="${repo.sourceData.contributors.length} contributors">
             <span class="octicon octicon-organization" aria-hidden="true"></span>
@@ -94,7 +105,7 @@
 
       <div class="row card-links clearfix">
         <ul class="list-inline pull-left">
-          <li><a id="card-popular-project-open-readme-${repo.id}" href="#" click.trigger="openReadmeModal(repo,$event.target)" aria-label="Show readme file"><em class="material-icons">library_books</em> Show README</a></li>
+          <li><a id="card-popular-project-open-readme-${repo.id}" href="#" click.trigger="dialogFunctions.openReadmeModal(repo,$event.target)" aria-label="Show readme file"><em class="material-icons">library_books</em> Show README</a></li>
         </ul>
         <ul class="list-inline pull-right">
           <li if.bind="badge_status_image"><a href="#" route-href="route:badges-about" title="Status ${repo.codehubData.badges.status}"><img alt="Badge status image" src.bind="badge_status_image"></a></li>
