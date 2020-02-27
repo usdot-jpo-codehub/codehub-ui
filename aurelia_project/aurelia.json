@@ -10,7 +10,6 @@
       {
         "id": "web",
         "displayName": "Web",
-        "port": 8083,
         "index": "index.html",
         "baseDir": ".",
         "output": "scripts"
@@ -79,7 +78,7 @@
   "platform": {
     "id": "web",
     "displayName": "Web",
-    "port": 8083,
+    "port": 8085,
     "index": "index.html",
     "baseDir": ".",
     "output": "scripts"
