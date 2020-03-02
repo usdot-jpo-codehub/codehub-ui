@@ -24,7 +24,6 @@ export class AddProjectsModal {
   getData() {
     return this.dataContext.getRepositories(null)
       .then(projects => {
-          // this.projects = JSON.parse(JSON.stringify(projects));
           this.rebuildProjectSelect(projects);
           $('#selectProjects').click();
           $('#addproject-dialog').focus();
