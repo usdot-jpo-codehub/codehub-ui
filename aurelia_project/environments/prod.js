@@ -1,5 +1,7 @@
 export default {
   debug: false,
   testing: false,
-  version: null
+  version: null,
+  webApiUrl: '',
+  apiCCUrl: ''
 };
