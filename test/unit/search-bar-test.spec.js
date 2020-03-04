@@ -20,7 +20,7 @@ describe('Test Search Bar : ', () => {
   it('Expect main title', (done) => {
     component.create(bootstrap).then( () => {
       const element = document.querySelector('#search-bar_main-title');
-      expect(element.innerHTML.indexOf('Welcome to ITS CodeHub') !== -1).toBe(true);
+      expect(element.innerHTML.indexOf('Explore ITS CodeHub') !== -1).toBe(true);
       done();
     }).catch( e => { console.log(e.toString()) });
   });
