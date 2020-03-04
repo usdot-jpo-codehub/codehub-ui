@@ -1,0 +1,61 @@
+.hero-banner{
+    .jumbotron.hero-jumbotron{
+        #homepage-banner{
+            margin-top: 30px;
+
+            .row.image-and-text{
+                padding-left: 25px;
+                padding-right: 25px;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 700px;
+                
+                .magnifying-glass-image-column{
+                    @include at-media-max('desktop-lg'){
+                        max-width: 200px;
+                        margin-right: auto;
+                        margin-left: auto;
+                    }
+                    @include at-media('desktop-lg'){
+                        width: 22%;
+                    }
+                }
+                .text-column{
+                    @include at-media('desktop-lg'){
+                        width: 78%;
+                        border-left: 4px solid rgba(137, 161, 179, 0.8);
+
+                        h1, p{
+                            text-align: left;
+                        }
+                    }
+
+                    #search-bar_main-title{
+                        margin-bottom: 13px;
+                        margin-top: 0px;
+                    }
+                    #search-bar_sub-text{
+                        margin-bottom: 0px;
+                    }
+                }
+            }
+            .row.search-bar{
+                max-width: 750px;
+                margin-left: auto;
+                margin-right: auto;
+                
+                .search-bar-column{
+                    margin-top: 20px;
+                }
+                #searchBar{
+                    border-top-left-radius: 6px;
+                    border-bottom-left-radius: 6px; 
+                }
+                .stage-search-btn{
+                    width: 130px;
+                    font-size: 21px;
+                }
+            }
+        }
+    }
+}
