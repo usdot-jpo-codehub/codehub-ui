@@ -41,13 +41,6 @@ describe('Test Search Bar : ', () => {
       done();
     }).catch( e => { console.log(e.toString()) });
   });
-  // it('Expect search button icon to be "search"', (done) => {
-  //   component.create(bootstrap).then( () => {
-  //     const element = document.querySelector('#search-bar_search-button-icon');
-  //     expect(element.innerHTML).toEqual('search');
-  //     done();
-  //   }).catch( e => { console.log(e.toString()) });
-  // });
   it('Expect search button text to be "Search"', (done) => {
     component.create(bootstrap).then( () => {
       const element = document.querySelector('#search-bar_search-button-text');
