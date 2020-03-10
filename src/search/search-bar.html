@@ -1,28 +1,35 @@
 <template>
   <div class="jumbotron hero-jumbotron">
-    <div class="container-fluid">
-      <h1 tabindex="0" id="search-bar_main-title" aria-label="Welcome to ITS CodeHub ${stageConfig.IS_BETA ? ', beta version' : ''}">Welcome to ITS CodeHub<span if.bind="stageConfig.IS_BETA" class="beta-message" aria-hidden="true">&nbsp;${stageConfig.IS_BETA ? "BETA" : ""}</span></h1>
-      <p innerhtml.bind="stageConfig.HOME_TEXT_ABOVE_SEARCH"></p>
-      <div class="col-lg-12">
-        <form submit.delegate="executeSearch(searchText)" id="middleOfHeader_bigOne">
-          <div class="form-group">
-            <div class="col-lg-offset-3 col-lg-6 search-field">
-              <div id="searchBox" class="input-group">
-                <label for="searchBar" class="control-label sr-only">Search</label>
-                <input type="text" class="typeahead form-control input-lg" value.bind="searchText" delay.bind="400" id="searchBar" placeholder="Search for project names and languages...">
-                <span class="input-group-btn">
-                  <button class="btn stage-search-btn" type="submit" aria-label="Search"><em class="material-icons" id="search-bar_search-button-icon">search</em><span class="sr-only" id="search-bar_search-button-text">Search</span></button>
-                </span>
+    <div class="container-fluid" id="homepage-banner">
+      <div class="row image-and-text">
+        <div class="col-lg-3 magnifying-glass-image-column"><img src="img/magnifying-glass-banner.svg" /></div>
+        <div class="col-lg-9 text-column">
+          <h1 tabindex="0" id="search-bar_main-title"  aria-label="Explore ITS CodeHub ${stageConfig.IS_BETA ? ', beta version' : ''}">Explore ITS CodeHub<span if.bind="stageConfig.IS_BETA" class="beta-message" aria-hidden="true">&nbsp;${stageConfig.IS_BETA ? "BETA" : ""}</span></h1>
+          <p id="search-bar_sub-text"innerhtml.bind="stageConfig.HOME_TEXT_ABOVE_SEARCH"></p>
+        </div>
+        
+      </div>
+      <div class="row search-bar">
+        <div class="col-lg-12 search-bar-column">
+          <form submit.delegate="executeSearch(searchText)" id="middleOfHeader_bigOne">
+            <div class="form-group">
+              <div class="search-field">
+                <div id="searchBox" class="input-group">
+                  <label for="searchBar" class="control-label sr-only">Search</label>
+                  <input type="text" class="typeahead form-control input-lg" value.bind="searchText" delay.bind="400" id="searchBar" placeholder="Search for project names and languages...">
+                  <span class="input-group-btn">
+                    <button class="btn stage-search-btn btn-default btn-accent" type="submit" aria-label="Search">
+                      <!-- <em class="material-icons" id="search-bar_search-button-icon">search</em> -->
+                      <span class="sr-only" id="search-bar_search-button-text">Search</span>
+                      Search
+                    </button>
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-      <p class="search-bar-description" id="search-bar_text-below-search" innerhtml.bind="stageConfig.HOME_TEXT_BELOW_SEARCH" tabindex="0"></p>
-      <div id="header-connect-repo">
-          <span class="button-lead button-lead-header">JOIN OUR COMMUNITY!</span>
-          <button class="btn btn-yellow" click.delegate="router.navigateToRoute('repopublishing')">Connect Your Repo</button>
-        </div>  
     </div>
   </div>
 </template>
