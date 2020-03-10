@@ -1,0 +1,57 @@
+.popular-categories_wrapper {
+  padding-left: units(2);
+  padding-right: units(2);
+  margin-top: units(0.5);
+  margin-bottom: units(1.5);
+  transition: all 0.3s linear;
+  
+  .popular-categories_body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    align-content: stretch;
+    align-items: stretch;
+    padding-top: units(0.5);
+    background-color: $body-bk;
+
+    .popular-categories_content {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: units(1);
+      flex: 1;
+      .popular-categories_cards {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        justify-items: center;
+        align-items: stretch;
+        align-content: stretch;
+        flex-wrap: wrap;
+        margin-top: units(1.5);
+        @media(min-width: 1200px) {
+          justify-content: space-between;
+          justify-items: space-between;
+        }
+      }
+      .popular-categories_title {
+        @include popular-container-title();
+      }
+      .popular-categories_loader {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        span {
+          color: $gray;
+          font-weight: bolder;
+          font-size: $font-size-large;
+          text-shadow: 1px 1px rgba(0,0,0,0.2);
+        }
+      }
+    }
+    
+  }
+}

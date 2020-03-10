@@ -2,6 +2,7 @@
 @import './override_uswds.scss';
 @import '../../node_modules/uswds/src/stylesheets/uswds.scss';
 @import 'variables-colors.scss';
+@import 'codehub_mixins.scss';
 @import 'navbar.scss';
 @import 'leaving-modal.scss';
 @import 'overall-styles.scss';
@@ -9,4 +10,6 @@
 @import 'project-details.scss';
 @import 'repopublishing.scss';
 @import 'carousel-card.scss';
+@import 'popular-categories.scss';
+@import 'card-category.scss';
 @import 'home.scss';

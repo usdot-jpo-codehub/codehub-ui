@@ -12,6 +12,7 @@ export class Explore {
     this.dataContext = dataContext;
     this.router = router;
     this.filters = filters;
+    this.params = null;
 
     this.resultCount = 0;
     this.searchDone = false;
@@ -34,6 +35,13 @@ export class Explore {
     ];
     this.openReadmeLinkId = null;
     this.exitDialogLinkId = null;
+  }
+
+  activate(params) {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+    this.params = params;
+    this.searchDone = false;
+    this.getData();
   }
 
   getData() {
@@ -59,17 +67,12 @@ export class Explore {
           this.rebuildFilterLang(projects);
           this.searchDone = true;
           this.resultCount = this.projects.length;
+
+          this.manageParams();
           return this.projects;
         }, 10);
       });
   }
-
-  activate() {
-    this.searchDone = false;
-    this.getData();
-  }
-
-  // TODO Filter work below here needs to be
 
   attached() {
     this.setupFilterCategories();
@@ -317,5 +320,17 @@ export class Explore {
     }
 
     return parts[index];
+  }
+
+  manageParams() {
+    if (!this.params) {
+      return;
+    }
+
+    if(this.params.category) {
+      this.filters.selectedCategories = [this.params.category];
+      $('#filterCategories').multiselect('select', [this.params.category]);
+      $('#filterCategories').trigger('change');
+    }
   }
 }

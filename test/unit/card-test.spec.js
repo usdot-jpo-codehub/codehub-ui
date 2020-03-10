@@ -68,6 +68,8 @@ describe('Test - Card : ', () => {
   });
 
   it('Expect organization link', (done) => {
+    modelData.showMetrics = true;
+    component = getComponent(modelData);
     component.create(bootstrap).then( () => {
       const element = document.querySelector(`#card-popular-organization-link-${mockRepositoriesData[0].id}`);
       expect(element.getAttribute('click.trigger')).toEqual('dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.owner.name,repo.sourceData.owner.url,$event.target)');
@@ -76,6 +78,8 @@ describe('Test - Card : ', () => {
   });
 
   it('Expect organization link title to be "View on Gitbub"', (done) => {
+    modelData.showMetrics = true;
+    component = getComponent(modelData);
     component.create(bootstrap).then( () => {
       const element = document.querySelector(`#card-popular-organization-link-${mockRepositoriesData[0].id}`);
       const text = `Project organization: ${mockRepositoriesData[0].sourceData.owner.name}, view on GitHub.`;
@@ -85,6 +89,8 @@ describe('Test - Card : ', () => {
   });
 
   it('Expect organization text to be the organization name', (done) => {
+    modelData.showMetrics = true;
+    component = getComponent(modelData);
     component.create(bootstrap).then( () => {
       const element = document.querySelector(`#card-popular-organization-link-${mockRepositoriesData[0].id}`);
       expect(element.innerHTML).toEqual(mockRepositoriesData[0].sourceData.owner.name);
@@ -102,13 +108,7 @@ describe('Test - Card : ', () => {
   });
 
   it('Expect project status link url', (done) => {
-    modelData.showMetrics = true;
-    component = getComponent(modelData);
-
     component.create(bootstrap).then( () => {
-      component.viewModel.currentViewModel.showMetrics = true;
-      component.showMetrics = true;
-
       const element = document.querySelector(`#card-popular-project-status-link-${mockRepositoriesData[0].id}`);
       expect(element.getAttribute('click.trigger')).toEqual('dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.name,repo.sourceData.repositoryUrl,$event.target)');
       done();

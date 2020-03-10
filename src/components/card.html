@@ -22,8 +22,10 @@
       </div>
       <div tabindex="0" class="proj-desc ${hasdescription ? '' : 'no-desc'} multiline">${description}</div>
       <div class="text-muted last-updated">
-        <span aria-hidden="true">By&nbsp;</span>
-        <a id="card-popular-organization-link-${repo.id}" href="#" click.trigger="dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.owner.name,repo.sourceData.owner.url,$event.target)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" aria-label="Project organization: ${repo.sourceData.owner.name}, view on GitHub." target="_blank">${repo.sourceData.owner.name}</a>
+        <em class="text-muted">Source:
+          <a if.bind="infected_files == 0" id="card-popular-project-status-link-${repo.id}" href="#" click.trigger="dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.name,repo.sourceData.repositoryUrl,$event.target)"  target="_blank" aria-label="View source code on Github.">Github™</a>
+          <a if.bind="infected_files > 0" id="card-popular-project-status-link-${repo.id}" href="#" click.trigger="dialogFunctions.displayVScanDialog(repo,$event.target)"  target="_blank" aria-label="View source code on Github.">Github™</a>
+        </em>
         &nbsp; | &nbsp;
         <span tabindex="0" id="card-popular-organization-updated-text-${repo.id}">Updated ${repo.sourceData.lastPush | ago}</span>
         <span class="pull-right repo-status">
@@ -33,10 +35,8 @@
 
       <div if.bind="showMetrics" class="card-stats lined-header">
         <span class="pull-right">
-          <em class="text-muted">Source:
-            <a if.bind="infected_files == 0" id="card-popular-project-status-link-${repo.id}" href="#" click.trigger="dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.name,repo.sourceData.repositoryUrl,$event.target)"  target="_blank" aria-label="View source code on Github.">Github™</a>
-            <a if.bind="infected_files > 0" id="card-popular-project-status-link-${repo.id}" href="#" click.trigger="dialogFunctions.displayVScanDialog(repo,$event.target)"  target="_blank" aria-label="View source code on Github.">Github™</a>
-          </em>
+          <span aria-hidden="true">By&nbsp;</span>
+          <a id="card-popular-organization-link-${repo.id}" href="#" click.trigger="dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.owner.name,repo.sourceData.owner.url,$event.target)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" aria-label="Project organization: ${repo.sourceData.owner.name}, view on GitHub." target="_blank">${repo.sourceData.owner.name}</a>
         </span>
         <h4 tabindex="0" class=""  aria-label="Project Stats">Project Stats</h4>
       </div>

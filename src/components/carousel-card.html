@@ -2,14 +2,14 @@
   <div class="cards-wrapper carousel_wrapper">
     
     <div class="carousel_body">
-      <div class="carousel_controls">
-        <button if.bind="repositories.length > 0" title="Rotate left" click.trigger="rotateLeft()">
-          <i class="material-icons" aria-hidden="true">chevron_left</i>
-        </button>
+      <div class="carousel_title">
+        <h1 tabindex="0" textcontent.bind="caption"></h1>
       </div>
       <div class="carousel_content">
-        <div class="carousel_title">
-          <h1 textcontent.bind="caption"></h1>
+        <div class="carousel_controls">
+          <button if.bind="repositories.length > 0" title="Rotate left" click.trigger="rotateLeft()">
+            <i class="material-icons" aria-hidden="true">chevron_left</i>
+          </button>
         </div>
         <div if.bind="(repositories.length < 1)" class="carousel_loader" width="100%" height="100%" valign="center">
           <img src="../../img/loading.svg" width="100px" alt="Loading...">
@@ -21,14 +21,14 @@
             <compose view-model="./card-feature-fake" if.bind="repo.isFake" model.bind="repo"></compose>
           </template>
         </div>
-        <div class="carousel_paginator">
-          <button class.bind="currentCenter == $index ? 'current' : ''" repeat.for="item of repositories" click.trigger="centerTile($index)">&nbsp;</button>
+        <div class="carousel_controls">
+          <button if.bind="repositories.length > 0" title="Rotate right" click.trigger="rotateRight()">
+            <i class="material-icons" aria-hidden="true">chevron_right</i>
+          </button>
         </div>
       </div>
-      <div class="carousel_controls">
-        <button if.bind="repositories.length > 0" title="Rotate right" click.trigger="rotateRight()">
-          <i class="material-icons" aria-hidden="true">chevron_right</i>
-        </button>
+      <div class="carousel_paginator">
+        <button class.bind="currentCenter == $index ? 'current' : ''" repeat.for="item of repositories" click.trigger="centerTile($index)" aria-label="Paginator option ${$index+1} of ${repositories.length} for ${item.sourceData.name}">&nbsp;</button>
       </div>
       
     </div>

@@ -4,7 +4,7 @@ import { Router } from 'aurelia-router';
 import { DataContext } from 'services/datacontext';
 import { StageConfig } from '../../stageConf';
 import { FakeData } from '../fakeData';
-import { EA_MS_FEATURED_DATA } from '../constants/ch-constants';
+import { EA_MS_FEATURED_DATA, ES_MSG_CATEGORIES_DATA } from '../constants/ch-constants';
 
 @inject(DataContext, Router, StageConfig, FakeData, EventAggregator)
 export class Popular {
@@ -20,6 +20,7 @@ export class Popular {
     this.projects = [];
     this.featured = [];
     this.healthiest = [];
+    this.categories = [];
 
     this.projectTitle = 'Most Popular Projects';
 
@@ -64,6 +65,14 @@ export class Popular {
       this.featured = results;
       this.searchingFeatured = false;
       this.eventAggregator.publish(EA_MS_FEATURED_DATA, this.featured);
+    });
+
+    this.dataContext.getCategories().then((response) => {
+      if (!response) {
+        return;
+      }
+      this.categories = response;
+      this.eventAggregator.publish(ES_MSG_CATEGORIES_DATA, this.categories);
     });
   }
 
