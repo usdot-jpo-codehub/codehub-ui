@@ -1,7 +1,5 @@
 $font-transform-y: 1.2;
 .carousel_wrapper {
-  padding-left: units(2);
-  padding-right: units(2);
   margin-top: units(0.5);
   margin-bottom: units(2.5);
   transition: all 0.3s linear;
@@ -51,7 +49,7 @@ $font-transform-y: 1.2;
           transition: all 0.2s linear;
           height: units(6);
           width: units(6);
-          z-index: 1000;
+          z-index: 195;
           &:hover {
             border: solid 1px $teal;
             transform: translateY(-2px);
