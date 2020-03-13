@@ -42,7 +42,7 @@ describe('Test - Card Category : ', () => {
   it('Expect to use image from url', (done) => {
     component.create(bootstrap).then( () => {
       const imgElements = document.querySelectorAll('img');
-      expect(mockCategoriesData[0].imageFileName).toEqual(imgElements[0].getAttribute('src'));
+      expect(imgElements[0].getAttribute('src').includes('http://')).toEqual(true);
       done();
     }).catch( e => { console.log(e.toString()) });
   });
