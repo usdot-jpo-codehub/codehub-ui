@@ -12,10 +12,10 @@
             <div class="btn-group">
               <a id="btn-go-back" class="btn btn-secondary btn-sm btn-project-details" href="#" click.delegate="goBack()" aria-label="Go back to project summary."><i class="material-icons" aria-hidden="true">chevron_left</i>Back</a>
               <ul class="list-inline pull-left" aria-hidden="true">
-                <li id="btn-show-readme" aria-hidden="true"><button id="project-readme-button-${repo.id}" click.trigger="openReadmeModal(repo,$event.target)" class="btn btn-secondary btn-project-details" aria-label="View project readme file."><i id="show-readme-icon" class="material-icons" aria-hidden="true">library_books</i><span id="project-readme-button-text" aria-hidden="true">Show README</span></button></li>
+                <li id="btn-show-readme" aria-hidden="true"><button id="project-readme-button-${repo.id}" click.trigger="dialogFunctions.openReadmeModal(repo,$event.target)" class="btn btn-secondary btn-project-details" aria-label="View project readme file."><i id="show-readme-icon" class="material-icons" aria-hidden="true">library_books</i><span id="project-readme-button-text" aria-hidden="true">Show README</span></button></li>
               </ul>
-              <a id="btn-view-repo" if.bind="repo.generatedData.vscan.infected_files == 0" class="btn btn-secondary btn-sm btn-project-details" id="project-details-header-github-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.sourceData.name,repo.sourceData.repositoryUrl,$event.target)" target="_blank" aria-label="View project source code on GitHub.">View on Github<i class="material-icons" aria-hidden="true">chevron_right</i></a>
-              <a if.bind="repo.generatedData.vscan.infected_files > 0" class="btn btn-secondary btn-sm btn-project-details" id="project-details-header-github-${repo.id}" href="#" click.trigger="displayVScanDialog(repo,$event.target)" target="_blank" aria-label="View project source code on GitHub.">View on Github<i class="material-icons" aria-hidden="true">chevron_right</i></a>
+              <a id="btn-view-repo" if.bind="repo.generatedData.vscan.infected_files == 0" class="btn btn-secondary btn-sm btn-project-details" id="project-details-header-github-${repo.id}" href="#" click.trigger="dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.name,repo.sourceData.repositoryUrl,$event.target)" target="_blank" aria-label="View project source code on GitHub.">View on Github<i class="material-icons" aria-hidden="true">chevron_right</i></a>
+              <a if.bind="repo.generatedData.vscan.infected_files > 0" class="btn btn-secondary btn-sm btn-project-details" id="project-details-header-github-${repo.id}" href="#" click.trigger="dialogFunctions.displayVScanDialog(repo,$event.target)" target="_blank" aria-label="View project source code on GitHub.">View on Github<i class="material-icons" aria-hidden="true">chevron_right</i></a>
             </div>
             <div class="card full-width">
               <div class="row">
@@ -24,7 +24,7 @@
                     <h2 tabindex="0" class="" aria-label="Project overview."><span>Overview</span></h2>
                   </div>
                   <div id="project-description" tabindex="0" class="proj-desc ${hasdescription ? '' : 'no-desc'} " aria-label="Project description: ${description}">${description}</div>
-                    <div class="text-muted last-updated">By <a id="project-organization-link-${repo.id}" href="#" click.trigger="openLeavingSiteConfirmation(repo.sourceData.owner.name,repo.sourceData.owner.url,$event.target)" target="_blanks" aria-label="Project organization: ${repo.sourceData.owner.name}, view on GitHub.">${repo.sourceData.owner.name}</a> &nbsp; | &nbsp;<span id="project-update-at" tabindex="0" aria-label="Updated ${repo.sourceData.lastPush | ago}">Updated ${repo.sourceData.lastPush | ago}</span></div>
+                    <div class="text-muted last-updated">By <a id="project-organization-link-${repo.id}" href="#" click.trigger="dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.owner.name,repo.sourceData.owner.url,$event.target)" target="_blanks" aria-label="Project organization: ${repo.sourceData.owner.name}, view on GitHub.">${repo.sourceData.owner.name}</a> &nbsp; | &nbsp;<span id="project-update-at" tabindex="0" aria-label="Updated ${repo.sourceData.lastPush | ago}">Updated ${repo.sourceData.lastPush | ago}</span></div>
 
                   <div class="row card-links-project-details">
                     <ul class="list-inline pull-right" aria-hidden="true">
@@ -271,7 +271,7 @@
                   </div>
 
                   <div class="text-center">
-                    <button class="btn btn-link" id="project-details_add-project" click.trigger="openAddProjectModal($event.target)"><i class="material-icons" aria-hidden="true">add_circle</i> Are you using this project?</button>
+                    <button class="btn btn-link" id="project-details_add-project" click.trigger="dialogFunctions.openAddProjectModal(repo, $event.target)"><i class="material-icons" aria-hidden="true">add_circle</i> Are you using this project?</button>
                   </div>
                 </div>
 
@@ -315,7 +315,7 @@
             <h3 tabindex="0" aria-label="Contributors, the project has ${repo.contributors_list.length} contributors.">Contributors</h3>
             <div class="media-list media-list-users list-group">
               <template repeat.for="contrib of repo.sourceData.contributors | pick:5">
-                <a id="contributor-${contrib.username}" href="#" click.trigger="openLeavingSiteConfirmation('Contributor url', contrib.profileUrl, $event.target)" target="_blank" class="list-group-item">
+                <a id="contributor-${contrib.username}" href="#" click.trigger="dialogFunctions.openLeavingSiteConfirmation('Contributor url', contrib.profileUrl, $event.target)" target="_blank" class="list-group-item">
                   <span class="media">
                     <span class="media-left">
                       <img tabindex="0" class="img-circle media-object" role="img" alt="Avatar image," src="${contrib.avatarUrl}" onError="this.onerror=null;this.src='/img/language-icons/unknown-user.svg';">
@@ -330,7 +330,7 @@
 
             </div>
             <div class="view-all clearfix">
-              <a if.bind="repo.sourceData.contributors.length > 5" id="project-details_contributors" href="#" click.delegate="openContribModal(repo,$event.target)" class="" aria-label="View all contributors.">View All Contributors <i class="material-icons" aria-hidden="true">keyboard_arrow_right</i></a>
+              <a if.bind="repo.sourceData.contributors.length > 5" id="project-details_contributors" href="#" click.delegate="dialogFunctions.openContribModal(repo,$event.target)" class="" aria-label="View all contributors.">View All Contributors <i class="material-icons" aria-hidden="true">keyboard_arrow_right</i></a>
             </div>
           </div>
         </div>

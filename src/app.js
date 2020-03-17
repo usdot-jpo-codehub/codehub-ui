@@ -1,14 +1,11 @@
 import { Router } from 'aurelia-router';
-import { DialogService } from 'aurelia-dialog';
 import { inject } from 'aurelia-framework';
-import { FeedbackModal } from 'components/modals/feedback-modal.js';
-import { LeavingModal } from 'components/modals/leaving-modal.js';
 import { StageConfig } from './stageConf';
 import 'bootstrap';
 import environment from './environment';
 import 'uswds';
 
-@inject(DialogService, StageConfig, environment)
+@inject(StageConfig, environment)
 export class App {
   configureRouter(config, router) {
     config.title = 'ITS CodeHub';
@@ -31,8 +28,7 @@ export class App {
     this.router = router;
   }
 
-  constructor(dialogService, stageConfig, env) {
-    this.dialogService = dialogService;
+  constructor(stageConfig, env) {
     this.stageConfig = stageConfig;
     this.exitDialogLinkId = null;
     this.version = this.prepareVersion(env.version);
@@ -59,78 +55,7 @@ export class App {
     return {version, build};
   }
 
-  openFeedbackModal() {
-    this.dialogService.open({ viewModel: FeedbackModal, lock:false });
-  }
-
-  openLeavingSiteConfirmation(name, url, target, bypass) {
-    this.exitDialogLinkId = target.getAttribute('id');
-    let byp = bypass === undefined ? false : bypass;
-    if(byp) {
-      const win = window.open(url, '_blank');
-      win.focus();
-    } else {
-      const mdl = { name, url };
-      this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed( response => {
-        const element = document.querySelector('#'+this.exitDialogLinkId);
-        if(element) {
-          element.focus();
-        }
-      });
-    }
-  }
-
   scrollToTop() {
     window.scrollTo(0, 0);
   }
-
-  // mapNavigation(config, router) {
-  //   let promises = [];
-  //   let c = config ? config : {route: null};
-  //   router.navigation.forEach( nav => {
-  //     if (c.route !== nav.config.route) {
-  //       promises.push(this.mapNavigationItem(nav, router));
-  //     } else {
-  //       promises.push(Promise.resolve(nav));
-  //     }
-  
-  //   })
-  //   return Promise.all(promises)
-  // }
-
-  // mapNavigationItem(navModel, router) {
-  //   const config = /*<any>*/nav.config;
-  //   const navModel = nav;
-  
-  //   if (config.moduleId) {
-  //     const childContainer = router.container.createChild();
-  //     const instruction = {
-  //       viewModel: relativeToFile(config.moduleId, Origin.get(router.container.viewModel.constructor).moduleId),
-  //       childContainer: childContainer,
-  //       view: config.view || config.viewStrategy,
-  //     };
-  //     return this.compositionEngine.ensureViewModel(/*<any>*/instruction)
-  //     .then((context) => {
-  //       if ('configureRouter' in context.viewModel) {
-  //         const childRouter = new Router(childContainer, router.history)
-  //         const childConfig = new RouterConfiguration()
-  
-  //         context.viewModel.configureRouter(childConfig, childRouter)
-  //         childConfig.exportToRouter(childRouter)
-  
-  //         childRouter.navigation.forEach( nav => {
-  //           nav.href = `${navModel.href}/${nav.config.href ? nav.config.href : nav.config.name}`
-  //         })
-  //         return this.mapNavigation(childRouter, config)
-  //           .then(r => navModel.navigation = r)
-  //           .then( () => navModel);
-  //       }
-  //       return navModel
-  //     })
-  //   }
-  //   return Promise.resolve(navModel);
-  // }
-  // attached() {
-  //   return this.mapNavigation(this.router)
-  // }
 }

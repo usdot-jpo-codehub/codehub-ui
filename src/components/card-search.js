@@ -1,10 +1,11 @@
 import { inject, computedFrom } from 'aurelia-framework';
-import { NO_DESCRIPTION_MESSAGE } from '../constants/ch-contants';
+import { NO_DESCRIPTION_MESSAGE } from '../constants/ch-constants';
 import { StageConfig } from '../stageConf';
+import { DialogFunctions } from '../resources/shared/dialog-functions';
 
-@inject(StageConfig)
+@inject(StageConfig, DialogFunctions)
 export class CardSearch {
-  constructor(stageConfig) {
+  constructor(stageConfig, dialogFunctions) {
     this.repo = [];
     this.downloads = 0;
     this.releases = [];
@@ -12,6 +13,7 @@ export class CardSearch {
     this.language_image = '/img/language-icons/default.svg';
     this.stageConfig = stageConfig;
     this.badge_status_image = '/img/pending_review_final_29w_35h.svg';
+    this.dialogFunctions = dialogFunctions;
   }
 
   activate(modelData) {

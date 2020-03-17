@@ -65,15 +65,15 @@
             </div>
           </div>
             <div class="row"
-              virtual-repeat.for="repo of projects |
+              repeat.for="repo of projects |
               sort: { propertyName: selectedSort, direction: sortDirection} |
               filterCategory:{ filterArray: filters.selectedCategories}:filters.selectedCategories.length |
               filter: { propertyName: 'sourceData.owner.name', filterArray: filters.selectedOrganizations}:filters.selectedOrganizations.length |
               filter: { propertyName: 'sourceData.language', filterArray: filters.selectedLanguages}:filters.selectedLanguages.length |
               chunk: 3">
-                <compose view-model="../components/card" if.bind="repo[0]" model.bind="repo[0]"></compose>
-                <compose view-model="../components/card" if.bind="repo[1]" model.bind="repo[1]"></compose>
-                <compose view-model="../components/card" if.bind="repo[2]" model.bind="repo[2]"></compose>
+                <compose view-model="../components/card" if.bind="repo[0]" model.bind="{data:repo[0],showFeatured: true}"></compose>
+                <compose view-model="../components/card" if.bind="repo[1]" model.bind="{data:repo[1],showFeatured: true}"></compose>
+                <compose view-model="../components/card" if.bind="repo[2]" model.bind="{data:repo[2],showFeatured: true}"></compose>
             </div>
         </div>
       </div>

@@ -1,23 +1,32 @@
 [
   {
-      "id": "1",
-      "name": "Self Driving Car",
-      "description": "A vehicle that is capable of sensing its environment and moving safely with little or no human input.",
-      "lastModified": "2020-02-07T20:46:08.000+0000",
-      "isEnabled": true
+    "id": "1",
+    "name": "Self Driving Car",
+    "description": "A vehicle that is capable of sensing its environment and moving safely with little or no human input.",
+    "lastModified": 1583761596000,
+    "orderPopular": 3,
+    "imageFileName": "http://d66sfbdx0p5w.cloudfront.net/CVPCars.png",
+    "isEnabled": true,
+    "isPopular": true
   },
   {
       "id": "2",
       "name": "Vehicle Traffic Control",
       "description": "System that combines traditional traffic lights with an array of sensors and artificial intelligence.",
-      "lastModified": null,
-      "isEnabled": true
+      "lastModified": 1583761581000,
+      "orderPopular": 1,
+      "imageFileName": "http://d66sfbdx0p5w.cloudfront.net/ResearchResults.png",
+      "isEnabled": true,
+      "isPopular": true
   },
   {
       "id": "3",
       "name": "Artificial Intelligence",
       "description": "Any device that perceives its environment and takes actions that maximize its chance of successfully achieving its goals.",
       "lastModified": null,
-      "isEnabled": true
+      "orderPopular": 2,
+      "imageFileName": null,
+      "isEnabled": true,
+      "isPopular": false
   }
 ]

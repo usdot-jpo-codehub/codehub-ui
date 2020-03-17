@@ -1,0 +1,9 @@
+<template>
+  <div class="card-category_wrapper">
+    <a href="#" route-href="route:explore; params.bind: {category:categoryId}" aria-label="Open explore view filter by category: ${category.name}">
+      <img alt="Category image" if.bind="category.imageFileName" src.bind="category.imageFileName" onError="this.onerror=null;this.src='/img/language-icons/unknown.svg';">
+      <div class="card-category_title" aria-hidden="true">${category.name}</div>
+    </a>
+  </div>
+  </div>
+</template>

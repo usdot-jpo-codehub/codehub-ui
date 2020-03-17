@@ -3,7 +3,7 @@ import { bootstrap } from 'aurelia-bootstrapper';
 import { AgoValueConverter } from '../../src/resources/value-converters/ago';
 import { NumValueConverter } from '../../src/resources/value-converters/num';
 import { StageConfig } from '../../src/stageConf';
-import { NO_DESCRIPTION_MESSAGE } from '../../src/constants/ch-contants';
+import { NO_DESCRIPTION_MESSAGE } from '../../src/constants/ch-constants';
 
 describe('Test - Card Health : ', () => {
 
@@ -153,7 +153,7 @@ describe('Test - Card Health : ', () => {
     component.create(bootstrap).then( () => {
       const id = `#card-health-project-open-readme-${mockRepositoriesData[0].id}`;
       const element = document.querySelector(id);
-      expect(element.getAttribute('click.trigger')).toEqual('openReadmeModal(repo,$event.target)');
+      expect(element.getAttribute('click.trigger')).toEqual('dialogFunctions.openReadmeModal(repo,$event.target)');
       done();
     }).catch( e => { console.log(e.toString()) });
   });

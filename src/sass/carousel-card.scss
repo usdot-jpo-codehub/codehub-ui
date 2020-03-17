@@ -1,0 +1,121 @@
+$font-transform-y: 1.2;
+.carousel_wrapper {
+  margin-top: units(0.5);
+  margin-bottom: units(2.5);
+  transition: all 0.3s linear;
+  
+  .carousel_body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    justify-items: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+    padding-top: units(0.5);
+    background-color: $body-bk;
+
+    .carousel_title {
+      @include popular-container-title();
+    }
+
+    .carousel_content {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-top: units(1);
+      padding-left: units(1);
+      padding-right: units(1);
+      padding-bottom: 0;
+      flex: 1;
+
+      .carousel_controls{
+        background-color: transparent;
+        width: units(3);
+        color: $gray;
+        font-size: $font-size-largest !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+
+        button {
+          border: solid 1px $lightgray;
+          border-radius: 50%;
+          background: $white;
+          box-shadow: 0 2px 3px rgba(50,50,50,0.2);
+          text-align: center;
+          font-size: $font-size-medium;
+          transition: all 0.2s linear;
+          height: units(6);
+          width: units(6);
+          z-index: 195;
+          &:hover {
+            border: solid 1px $teal;
+            transform: translateY(-2px);
+            background: $teal;
+            color: $white;
+            box-shadow: 0 2px 3px rgba(10,10,10,0.2);
+          }
+          .material-icons {
+            width: 100%;
+            transform: scale(1, $font-transform-y);
+            -webkit-transform: scale(1, $font-transform-y); /* Safari and Chrome */
+            -moz-transform: scale(1, $font-transform-y); /* Firefox */
+            -ms-transform: scale(1, $font-transform-y); /* IE 9+ */
+            -o-transform: scale(1, $font-transform-y); /* Opera */
+            font: normal normal bolder $font-size-larger/1 Material Icons, Helvetica, Arial, Verdana, Tahoma, sans-serif !important;
+            line-height: 25px;
+            display: block;
+            text-align: center;
+          }
+        }
+      }
+      .carousel_cards {
+        margin-top: units(1.5);
+        // height: 100%;
+      }
+      .carousel_loader {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        span {
+          color: $gray;
+          font-weight: bolder;
+          font-size: $font-size-large;
+          text-shadow: 1px 1px rgba(0,0,0,0.2);
+        }
+      }
+    }
+
+    .carousel_paginator {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      button {
+        flex-grow: 0;
+        background-color: $white;
+        font-size: $font-size-smallest;
+        border: solid 1px $lightgray;
+        border-radius: 2px;
+        margin-left: units(2px);
+        margin-right: units(2px);
+        height: units(1);
+        width: units(1.5);
+        transition: all 0.2s linear;
+        &:hover {
+          border: solid 1px $teal;
+          height: units(1.5);
+        }
+        &.current {
+          border: solid 1px $teal;
+          background: $teal;
+          height: units(1.5);
+        }
+      }
+    }
+  }
+}
