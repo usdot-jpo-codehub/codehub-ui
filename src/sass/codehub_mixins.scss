@@ -1,0 +1,19 @@
+@mixin popular-container-title {
+  background: $banner-bk; /* support for browsers without gradient */
+  background: linear-gradient(to right,$banner-end, $banner-start, $banner-end);
+  box-shadow: 2px 2px rgba(0,0,0,0.1);
+  padding-left: units(1);
+  padding-right: units(1);
+  padding-top: units(0.5);
+  padding-bottom: units(0.5);
+  h1 {
+    color: $white;
+    padding: 0;
+    padding-left: units(1);
+    margin: 0;
+    font-size: ceil(($font-size-base * 1.70));
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.3);
+    font-weight: bolder;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+  }
+}

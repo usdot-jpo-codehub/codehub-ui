@@ -2,21 +2,17 @@ import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import $ from 'jquery';
 import 'bootstrap-multiselect';
-import { DialogService } from 'aurelia-dialog';
 import { DataContext } from 'services/datacontext';
 import { Filters } from 'components/filters';
-import { ReadmeModal } from '../components/modals/readme-modal';
-import { LeavingModal } from '../components/modals/leaving-modal';
-import { VScanModal } from '../components/modals/vscan-modal';
 
-@inject(DataContext, Router, Filters, DialogService)
+@inject(DataContext, Router, Filters)
 export class Explore {
 
-  constructor(dataContext, router, filters, dialogService) {
+  constructor(dataContext, router, filters) {
     this.dataContext = dataContext;
     this.router = router;
     this.filters = filters;
-    this.dialogService = dialogService;
+    this.params = null;
 
     this.resultCount = 0;
     this.searchDone = false;
@@ -39,6 +35,13 @@ export class Explore {
     ];
     this.openReadmeLinkId = null;
     this.exitDialogLinkId = null;
+  }
+
+  activate(params) {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+    this.params = params;
+    this.searchDone = false;
+    this.getData();
   }
 
   getData() {
@@ -64,17 +67,12 @@ export class Explore {
           this.rebuildFilterLang(projects);
           this.searchDone = true;
           this.resultCount = this.projects.length;
+
+          this.manageParams();
           return this.projects;
         }, 10);
       });
   }
-
-  activate() {
-    this.searchDone = false;
-    this.getData();
-  }
-
-  // TODO Filter work below here needs to be
 
   attached() {
     this.setupFilterCategories();
@@ -312,43 +310,6 @@ export class Explore {
     return result;
   }
 
-  openReadmeModal(repo, target) {
-    this.openReadmeLinkId = target.getAttribute('id');
-    this.dialogService.open({ viewModel: ReadmeModal, model: repo, lock: false }).whenClosed(response => {
-      if (response.wasCancelled) {
-        const element = document.querySelector('#'+this.openReadmeLinkId);
-        element.focus();
-      }
-    });
-  }
-
-  openLeavingSiteConfirmation(name, url, target, bypass) {
-    this.exitDialogLinkId = target.getAttribute('id');
-    let byp = bypass === undefined ? false : bypass;
-    if(byp) {
-      const win = window.open(url, '_blank');
-      win.focus();
-    } else {
-      const mdl = { name, url };
-      this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed( response => {
-        const element = document.querySelector('#'+this.exitDialogLinkId);
-        if(element) {
-          element.focus();
-        }
-      });
-    }
-  }
-
-  displayVScanDialog(repo, target) {
-    this.exitDialogLinkId = target.getAttribute('id');
-    this.dialogService.open({viewModel: VScanModal, model: repo, lock: false}).whenClosed( reponse => {
-      const element = document.querySelector('#'+this.exitDialogLinkId);
-      if(element) {
-        element.focus();
-      }
-    });
-  }
-
   getDataFromPipedString(data, index) {
     if (!data || data == '' || !data.includes('|')) {
       return null;
@@ -359,5 +320,17 @@ export class Explore {
     }
 
     return parts[index];
+  }
+
+  manageParams() {
+    if (!this.params) {
+      return;
+    }
+
+    if(this.params.category) {
+      this.filters.selectedCategories = [this.params.category];
+      $('#filterCategories').multiselect('select', [this.params.category]);
+      $('#filterCategories').trigger('change');
+    }
   }
 }

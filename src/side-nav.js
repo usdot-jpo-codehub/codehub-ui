@@ -1,78 +1,10 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
-import { EventAggregator } from 'aurelia-event-aggregator';
-import $ from 'jquery';
-import { DataContext } from 'services/datacontext';
-import { StageConfig } from './stageConf';
 
-@inject(DataContext, Router, EventAggregator, StageConfig)
+@inject(Router)
 export class SideNav {
 
-  constructor(dataContext, router, eventAggregator, stageConfig) {
-    this.dataContext = dataContext;
+  constructor(router) {
     this.router = router;
-    this.eventAggregator = eventAggregator;
-    this.stageConfig = stageConfig;
-
-    this.PF_AUTH_GIVENNAME = this.PF_AUTH_GIVENNAME !== '' ? this.PF_AUTH_GIVENNAME : 'Guest'; // eslint-disable-line
-    this.PF_AUTH_GIVENNAME = this.PF_AUTH_GIVENNAME === '<!--#echo var="PF_AUTH_GIVENNAME" -->' ? 'Guest' : this.PF_AUTH_GIVENNAME; // in case that the SSI variables are not set
-
-    this.navSearchText = '';
-  }
-
-  executeNavSearch(searchText) {
-    this.eventAggregator.publish('searchExecuted', searchText);
-
-    this.router.navigateToRoute('results', { searchText });
-    this.hideNavSearch();
-  }
-
-  hideNavSearch() {
-    $('#searchBtn').removeClass('hidden');
-    $('#titleBarNav').removeClass('hidden');
-    $('#searchForm').addClass('hidden');
-    $('#searchBtn').parent().removeClass('hidden');
-  }
-
-  attached() {
-    $('#searchBtn').on('click', event => {
-      $('#searchBtn').parent().addClass('hidden');
-      $('#titleBarNav').addClass('hidden');
-      $('#searchForm').removeClass('hidden');
-      $('#searchForm input').focus();
-      this.navSearchText = '';
-    });
-
-    $('#searchForm input').focusout(event => {
-      this.hideNavSearch();
-      $('#searchBtn').focus();
-    });
-
-    $('#searchForm input').keydown(event => {
-      if(event.key === 'Escape'){
-        this.hideNavSearch();
-        $('#searchBtn').focus();
-      }
-    });
-
-    /*eslint-disable */
-    var pxScrolled = 25;
-    var duration = 500;
-
-    $(window).scroll(function() {
-      if ($(this).scrollTop() > pxScrolled) {
-        $('.navbar').addClass('sticky-header');
-        $('.fab-container').css({'bottom': '0px', 'transition': '.05s'});
-      } else {
-        $('.navbar').removeClass('sticky-header');
-        $('.fab-container').css({'bottom': '-72px'});
-      }
-    });
-
-    $('#backToTop').click(function(e) {
-      e.preventDefault();
-      $('body').animate({scrollTop: 0}, duration);
-    });
-    /*eslint-enable */
   }
 }

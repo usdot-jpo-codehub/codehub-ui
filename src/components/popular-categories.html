@@ -1,0 +1,20 @@
+<template>
+  <div class="popular-categories_wrapper">
+    <div class="popular-categories_body">
+      <div class="popular-categories_content">
+        <div class="popular-categories_title">
+          <h1 tabindex="0" textcontent.bind="caption"></h1>
+        </div>
+        <div if.bind="(repositories.length < 1)" class="popular-categories_loader" width="100%" height="100%" valign="center">
+          <img src="../../img/loading.svg" width="100px" alt="Loading...">
+          <span>Loading...</span>
+        </div>
+        <div class="row popular-categories_cards">
+          <template repeat.for="cate of categories">
+            <compose view-model="./card-category" if.bind="cate" model.bind="cate"></compose>
+          </template>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

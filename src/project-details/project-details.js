@@ -1,22 +1,18 @@
 import { inject, computedFrom } from 'aurelia-framework';
 import { Router, activationStrategy } from 'aurelia-router';
-import { DialogService } from 'aurelia-dialog';
 import { DataContext } from 'services/datacontext';
-import { AddProjectsModal } from 'components/modals/addprojects-modal.js';
-import { ReadmeModal } from '../components/modals/readme-modal';
-import { LeavingModal } from '../components/modals/leaving-modal';
-import { ContributorsModal } from '../components/modals/contributors-modal';
 import { StageConfig } from '../../stageConf';
-import { VScanModal } from '../components/modals/vscan-modal';
-import { NO_DESCRIPTION_MESSAGE } from '../constants/ch-contants';
+import { NO_DESCRIPTION_MESSAGE } from '../constants/ch-constants';
+import { DialogFunctions } from '../resources/shared/dialog-functions';
 
-@inject(DataContext, Router, DialogService, StageConfig)
+@inject(DataContext, Router, StageConfig, DialogFunctions)
 export class ProjectDetails {
 
-  constructor(dataContext, router, dialogService, stageConfig) {
+  constructor(dataContext, router, stageConfig, dialogFunctions) {
     this.dataContext = dataContext;
-    this.dialogService = dialogService;
+    this.router = router;
     this.stageConfig = stageConfig;
+    this.dialogFunctions = dialogFunctions;
 
     this.repo = {};
     this.repo.contributors_list = [];
@@ -98,70 +94,6 @@ export class ProjectDetails {
   }
   get hasdescription() {
     return this.repo.sourceData && this.repo.sourceData.description ? true : false;
-  }
-
-  
-
-  openAddProjectModal(target) {
-    this.addProjectLinkId = target.getAttribute('id');
-    this.dialogService.open({ viewModel: AddProjectsModal, model: this.repo, lock: false }).whenClosed(response => {
-      if (response && response.wasCancelled) {
-        this.dataContext.postUsedProject(response.output, this.repo.id).then(data => {
-          this.projectsThatUseUs.push(response.output);
-        }).catch((e) => {console.log(e);});
-      }
-      const element = document.querySelector('#'+this.addProjectLinkId);
-      if(element) {
-        element.focus();
-      }
-    });
-  }
-
-  openReadmeModal(repo, target) {
-    this.openReadmeLinkId = target.getAttribute('id');
-    this.dialogService.open({ viewModel: ReadmeModal, model: repo, lock: false }).whenClosed(response => {
-      if (response.wasCancelled) {
-        const element = document.querySelector('#'+this.openReadmeLinkId);
-        element.focus();
-      }
-    });
-  }
-
-  openLeavingSiteConfirmation(name, url, target, bypass) {
-    this.exitDialogLinkId = target.getAttribute('id');
-    let byp = bypass === undefined ? false : bypass;
-    if(byp) {
-      const win = window.open(url, '_blank');
-      win.focus();
-    } else {
-      const mdl = { name, url };
-      this.dialogService.open({ viewModel: LeavingModal, model: mdl, lock: false }).whenClosed( response => {
-        const element = document.querySelector('#'+this.exitDialogLinkId);
-        if(element) {
-          element.focus();
-        }
-      });
-    }
-  }
-
-  openContribModal(repo, target) {
-    this.contributorsLinkid = target.getAttribute('id');
-    this.dialogService.open({ viewModel: ContributorsModal, model: repo, lock:false }).whenClosed( response => {
-      const element = document.querySelector('#'+this.contributorsLinkid);
-      if(element) {
-        element.focus();
-      }
-    });
-  }
-
-  displayVScanDialog(repo, target) {
-    this.exitDialogLinkId = target.getAttribute('id');
-    this.dialogService.open({viewModel: VScanModal, model: repo, lock: false}).whenClosed( reponse => {
-      const element = document.querySelector('#'+this.exitDialogLinkId);
-      if(element) {
-        element.focus();
-      }
-    });
   }
 
   goBack() {

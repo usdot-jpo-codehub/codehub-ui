@@ -2,7 +2,7 @@ import { StageComponent } from 'aurelia-testing';
 import { bootstrap } from 'aurelia-bootstrapper';
 import { AgoValueConverter } from '../../src/resources/value-converters/ago';
 import { NumValueConverter } from '../../src/resources/value-converters/num';
-import { NO_DESCRIPTION_MESSAGE } from '../../src/constants/ch-contants';
+import { NO_DESCRIPTION_MESSAGE } from '../../src/constants/ch-constants';
 
 describe('Test - Card Search : ', () => {
 
@@ -57,7 +57,7 @@ describe('Test - Card Search : ', () => {
   it('Expect organization link', (done) => {
     component.create(bootstrap).then( () => {
       const element = document.querySelector(`#card-search-organization-link-${mockRepositoriesData[0].id}`);
-      expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.sourceData.owner.name,repo.sourceData.owner.url,$event.target)');
+      expect(element.getAttribute('click.trigger')).toEqual('dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.owner.name,repo.sourceData.owner.url,$event.target)');
       done();
     }).catch( e => { console.log(e.toString()) });
   });
@@ -91,7 +91,7 @@ describe('Test - Card Search : ', () => {
   it('Expect project status link url', (done) => {
     component.create(bootstrap).then( () => {
       const element = document.querySelector(`#card-search-project-status-link-${mockRepositoriesData[0].id}`);
-      expect(element.getAttribute('click.trigger')).toEqual('openLeavingSiteConfirmation(repo.sourceData.name,repo.sourceData.repositoryUrl,$event.target)');
+      expect(element.getAttribute('click.trigger')).toEqual('dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.name,repo.sourceData.repositoryUrl,$event.target)');
       done();
     }).catch( e => { console.log(e.toString()) });
   });
@@ -165,7 +165,7 @@ describe('Test - Card Search : ', () => {
     component.create(bootstrap).then( () => {
     const id = `#card-search-project-open-readme-${mockRepositoriesData[0].id}`;
     const element = document.querySelector(id);
-    expect(element.getAttribute('click.trigger')).toEqual('openReadmeModal(repo,$event.target)');
+    expect(element.getAttribute('click.trigger')).toEqual('dialogFunctions.openReadmeModal(repo,$event.target)');
     done();
     }).catch( e => { console.log(e.toString()) });
   });

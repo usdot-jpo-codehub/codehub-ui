@@ -64,7 +64,6 @@ describe('Explore : ', () => {
       setTimeout(() => {
         let expectedCategories = mockCategoriesData.map(x => x.id + '|' + x.name);
         let element = document.querySelector('#filterCategories');
-        console.log('element', element);
         expect(element.options.length).toEqual(expectedCategories.length, 'Unexpected number of Categories');
 
         let expected = '';
@@ -219,6 +218,21 @@ describe('Explore : ', () => {
       let result = component.viewModel.filterArray(mockData, [2,4],'case');
       expect(result.length).toEqual(3);
       done();
+    }).catch( e => { console.log(e.toString())} );
+  });
+
+  it('Expect filter Categories base on query string params.', (done) => {
+    dtx.response = mockRepositoriesData;
+    dtx.responseCategories = mockCategoriesData;
+    router.response = true;
+    let params = {category: mockCategoriesData[0].id + "|" + mockCategoriesData[0].name}
+    component.create(bootstrap).then(() => {
+      component.viewModel.activate(params);
+      setTimeout(() => {
+        const elements = document.querySelectorAll('.card');
+        expect(elements.length).toEqual(2);
+        done();
+      }, 200);
     }).catch( e => { console.log(e.toString())} );
   });
 
