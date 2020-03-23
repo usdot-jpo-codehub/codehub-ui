@@ -1,0 +1,31 @@
+.about-main_wrapper {
+    .about_main_auto_size_image {
+        min-height: 120px;
+        background-image: url("../../img/ITSJPO_CodeHub_About.png");
+        background-attachment: fixed;
+        background-position-x: center;
+        background-position-y: 75px;
+        background-repeat: no-repeat;
+        background-size: 75% auto;
+
+        @include at-media-max('desktop-lg'){
+            background-position-y: 125px;
+        }
+        @include at-media-max('desktop'){
+            background-size: 100%;
+            background-position-y: 78px;
+            
+        }
+        @include at-media-max('tablet'){
+            background-attachment: unset;
+            background-position: unset;
+            background-size: 100%;
+            min-height: 100px;
+        
+        }
+        @include at-media-max('mobile-lg'){
+            min-height: 50px;
+            background-position-y: -2px;
+        }
+    }
+}
