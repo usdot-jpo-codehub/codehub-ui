@@ -3,16 +3,26 @@ body{
     .repopublishing-page, .faqs-page, .about-page, .home-page, 
     .explore-page, .insight-page, .project-details-page{
         padding-top: 0px;
-        padding-bottom: units(6);
+        padding-bottom: 12rem;
+
         .grid-container{
             max-width: unset;
         }
+
+        @include at-media-max('desktop-lg'){
+            padding-bottom: 12rem;
+        }
         @include at-media-max('desktop'){
-            margin-bottom: units(3);
+            padding-bottom: 18rem;
         }
         @include at-media-max('tablet'){
-            padding-bottom: units(10);
-            margin-bottom: units(3);
+            padding-bottom: 18rem;
+        }
+        @include at-media-max('mobile-lg'){
+            padding-bottom: 24rem;
+        }
+        @include at-media-max('mobile'){
+            padding-bottom: 25rem;
         }
     }
     .project-details-page{
