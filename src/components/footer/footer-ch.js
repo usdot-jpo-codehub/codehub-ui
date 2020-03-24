@@ -8,6 +8,7 @@ export class Footer {
   constructor(element, dataContext, env) {
     this.element = element;
     this.valid = true;
+    this.confirmed = false;
     this.email = '';
     this.timer = null;
     this.words = ['Code', 'Insight', 'Engagement'];
@@ -18,6 +19,7 @@ export class Footer {
     this.message = 'Stay up to date on new features and repositories!';
     this.message_alert = 'There is a problem with the registration service, please try again later.';
     this.message_invalid_email = 'Invalid email format, please try again.';
+    this.message_confirmation = 'Thanks for signing up to stay in touch with ITS CodeHub!.';
     this.is_error = false;
     this.version = this.prepareVersion(env.version);
   }
@@ -39,14 +41,16 @@ export class Footer {
     if (this.validate_email()) {
       this.dataContext.registerUserEmail(this.email).then(resp => {
         if (resp && (resp.code === 200 || resp.code === 201)) {
-          $(this.element).hide();
-          this.focusActiveMenu();
+          this.email = '';
+          this.confirmed = true;
         } else {
           this.is_error = true;
+          this.confirmed = false;
         }
       });
     } else {
       this.valid = false;
+      this.confirmed = false;
       this.email = '';
       this.focus_input();
     }
