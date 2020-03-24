@@ -49,11 +49,11 @@
               <div if.bind="is_error && valid" class="message message-alert">
                 ${message_alert}
               </div>
-              <div if.bind="!is_error && valid && confirmed" class="message">
+              <div if.bind="!is_error && valid && confirmed" class="message message-confirmed">
                 ${message_confirmation}
               </div>
               <div class="controls">
-                <input type="email" class="form-control ${valid ? 'valid' : 'invalid'}" id="input-email-address" aria-describedby="emailHelp" placeholder="Email address" value.two-way="email" keypress.trigger="handleKeypress($event)">
+                <input type="email" class="form-control ${valid ? 'valid' : 'invalid'} ${confirmed ? 'confirmed' : ''}" id="input-email-address" aria-describedby="emailHelp" placeholder="Email address" value.two-way="email" keypress.trigger="handleKeypress($event)">
                 <button type="button" class="btn btn-default btn-accent" click.delegate="signup()">
                   Sign Up
                 </button>
