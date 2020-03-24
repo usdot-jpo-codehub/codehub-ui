@@ -40,14 +40,17 @@
               <div class="header-text">
                 <span class="title1">Join our mailing list!</span>
               </div>
-              <div if.bind="!is_error && valid" class="message">
+              <div if.bind="!is_error && valid && !confirmed" class="message">
                 ${message}
               </div>
-              <div if.bind="!valid" class="message-alert">
+              <div if.bind="!valid" class="message message-alert">
                 ${message_invalid_email}
               </div>
-              <div if.bind="is_error && valid" class="message-alert">
+              <div if.bind="is_error && valid" class="message message-alert">
                 ${message_alert}
+              </div>
+              <div if.bind="!is_error && valid && confirmed" class="message">
+                ${message_confirmation}
               </div>
               <div class="controls">
                 <input type="email" class="form-control ${valid ? 'valid' : 'invalid'}" id="input-email-address" aria-describedby="emailHelp" placeholder="Email address" value.two-way="email" keypress.trigger="handleKeypress($event)">
