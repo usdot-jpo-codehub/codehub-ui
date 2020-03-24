@@ -112,3 +112,17 @@ body{
 .octicon{
     font: normal normal normal 16px/1 Octicons, Helvetica, Arial, Verdana, Tahoma, sans-serif !important;
 }
+
+iframe:focus,
+[href]:focus,
+[tabindex]:focus,
+[contentEditable="true"]:focus,
+input:not([disabled]):focus,
+select:not([disabled]):focus,
+textarea:not([disabled]):focus,
+button:not([disabled]):focus,
+.btn:not([disabled]):focus {
+  outline-width: 2px !important; 
+  outline-color: rgb(36, 145, 255) !important;
+  outline-style: solid !important;        
+}
