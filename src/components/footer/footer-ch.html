@@ -1,0 +1,67 @@
+<template>
+  <div class="usa-footer__primary-section">
+    <nav class="usa-footer__nav">
+      <div class="ch-footer__social-wrapper">
+        <div class="ch-footer__social share">
+          <p class="social-share">Share</p>
+          <div class="addthis_inline_share_toolbox_yi93_mcf8"></div>
+        </div>
+        <div class="ch-footer__social follow">
+          <p id="follow_header" class="social-share">Follow</p>
+          <a class="usa-social-link ch-follow-us" target="_blank" href="https://www.facebook.com/USDOT/" rel="noopener noreferrer">
+            <img src="/img/facebook_follow_svg_ch.svg" class="footer-share-social-icons" alt="Follow us on Facebook">
+          </a>
+          <a class="usa-social-link ch-follow-us" target="_blank" href="https://twitter.com/USDOT" rel="noopener noreferrer">
+            <img src="/img/twitter_follow_svg_ch.svg" class="footer-share-social-icons" alt="Follow us on Twitter">
+          </a>
+          <a class="usa-social-link ch-follow-us" target="_blank" href="https://www.instagram.com/usdot/?hl=en" rel="noopener noreferrer">
+            <img src="/img/instagram_follow_svg_ch.svg" class="footer-share-social-icons" alt="Follow us on Instagram">
+          </a>
+          <a class="usa-social-link ch-follow-us" target="_blank" href="https://github.com/usdot-its-jpo-data-portal/microsite" rel="noopener noreferrer">
+            <img src="/img/github_follow_svg_ch.svg" class="footer-share-social-icons" alt="Follow us on GitHub">
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="usa-footer__secondary-section">
+    <div class="grid-container">
+      <div class="row">
+        <div class="col-md-6 left-column">
+          <img id="usa-footer__logo-img-dot" class="usa-footer__logo-img" src="/img/joint_dot_its_logo_footer.svg" alt>
+          <div class="contact-ch-wrapper">
+            <h4 class="content">Contact ITS CodeHub</h4>
+              <a id="dh-footer_contact-us-email" class="content" href="mailto:data.itsjpo@dot.gov">data.itsjpo@dot.gov</a>
+          </div>
+        </div>
+        <div class="col-md-6 right-column">
+          <div id="email-registration" class="email-registration-wrapper">
+            <div class="content">
+              <div class="header-text">
+                <span class="title1">Join our mailing list!</span>
+              </div>
+              <div if.bind="!is_error && valid && !confirmed" class="message">
+                ${message}
+              </div>
+              <div if.bind="!valid" class="message message-alert">
+                ${message_invalid_email}
+              </div>
+              <div if.bind="is_error && valid" class="message message-alert">
+                ${message_alert}
+              </div>
+              <div if.bind="!is_error && valid && confirmed" class="message message-confirmed">
+                ${message_confirmation}
+              </div>
+              <div class="controls">
+                <input type="email" class="form-control ${valid ? 'valid' : 'invalid'} ${confirmed ? 'confirmed' : ''}" id="input-email-address" aria-describedby="emailHelp" placeholder="Email address" value.two-way="email" keypress.trigger="handleKeypress($event)">
+                <button type="button" class="btn btn-default btn-accent" click.delegate="signup()">
+                  Sign Up
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
