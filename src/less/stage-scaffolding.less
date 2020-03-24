@@ -751,7 +751,10 @@ a.disabled {
     }
     .message-alert {
       font-weight: normal;
-      color: darken(red, 15%);
+      color: #920000;
+    }
+    .message-confirmed{
+      color: #004F00;
     }
     .controls {
       display: flex;
@@ -766,6 +769,11 @@ a.disabled {
         padding: 5px 12px;
         @media screen and (max-width: @screen-xs-min) {
           max-width: unset;
+        }
+        &.confirmed{
+          background-color: #CEF2C5;
+          font-weight: bold;
+          color: #2d2d2d;
         }
       }
       button {
@@ -790,6 +798,9 @@ a.disabled {
       }
       .invalid {
         background-color: lighten(red, 40%) !important;
+        &::placeholder{
+          color: #2d2d2d;
+        }
       }
     }
   }
