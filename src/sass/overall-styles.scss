@@ -1,8 +1,4 @@
 /* button */
-.btn:focus{
-    //remove when less is removed
-    outline: 0.25rem solid #2491ff !important;
-}
 .btn.btn-accent{
     background-color: $btn-accent_background-color_default;
     color: $btn-accent_font-color;

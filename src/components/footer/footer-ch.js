@@ -25,7 +25,6 @@ export class Footer {
   }
 
   attached() {
-    this.focus_input();
     this.timer_timeout();
   }
 
