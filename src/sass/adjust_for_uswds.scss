@@ -25,8 +25,13 @@ body{
             padding-bottom: 25rem;
         }
     }
+    .home-page, 
+    .explore-page, 
+    .insight-page {
+        margin-bottom: 57px;
+    }
     .project-details-page{
-        padding-bottom: units(6);
+        margin-bottom: 20px;
     }
     h1, h2, h3, h4, h5, p, li, span{
         font-family: Roboto, sans-serif !important;
