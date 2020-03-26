@@ -254,4 +254,17 @@ export class DataContext {
       });
   }
 
+  getEngagementPopups() {
+    let url = `${this.env.webApiUrl}${baseUrl}/configurations/engagementpopups`;
+    return this.http.fetch(url, {
+      method: 'GET',
+    })
+    .then(response => response.json())
+    .then(data => {
+      if(data.code == 200) {
+          return data.result;
+      }
+      return [];
+    });
+  }
 }
