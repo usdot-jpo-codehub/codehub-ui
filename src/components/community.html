@@ -1,0 +1,43 @@
+<template>
+    <div class="popular-categories_title">
+        <h1 tabindex="0" textcontent.bind="caption"></h1>
+    </div>
+    <div class="open-source-community">
+        <div class="flex-row">
+            <div id="" class="left-column">
+                <div id="box1">
+                    <div class="box1-top-half-wrapper">
+                        <img class="box1-image" src="${box1_image_url}" alt="${box1_image_alt_text}">
+                    </div>
+                    <div class="box1-bottom-half-wrapper">
+                        <h3>${box1_header_text}</h3>
+                        <p>${box1_p_text}</p>
+                        <a class="internal-link" href="#" route-href="route:repopublishing;" aria-label="${box1_button_alt_text}">${box1_button_text}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="right-column">
+                <div id="box2" class="">
+                    <div class="box2-top-half-wrapper smaller-box-top-half">
+                        <img id="box2-image" class="box2-image" src="${box2_image_url}" alt="${box2_image_alt_text}">
+                    </div>
+                    <div class="box2-bottom-half-wrapper smaller-box-bottom-half">
+                        <h3>${box2_header_text}</h3>
+                        <p>${box2_p_text}</p>
+                        <a class="internal-link" href="#" route-href="route:explore;" aria-label="box2_button_aria_text">${box2_button_text}</a>
+                    </div>
+                </div>
+                <div id="box3" class="">
+                    <div class="box3-top-half-wrapper smaller-box-top-half">
+                        <img id="box3-image" class="explore-image" src="${box3_image_url}" alt="${box3_image_alt_text}">
+                    </div>
+                    <div class="box3-bottom-half-wrapper smaller-box-bottom-half">
+                        <h3>${box3_header_text}</h3>
+                        <p>${box3_p_text}</p>
+                        <a class="internal-link" href="#" route-href="route:insight;" aria-label="${box3_button_aria_text}">${box3_button_text}</a>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</template>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="546px" height="403px" viewBox="0 0 546 403" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>connect-people-background</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="20.9409218%" cy="71.4528355%" fx="20.9409218%" fy="71.4528355%" r="95.8014214%" gradientTransform="translate(0.209409,0.714528),scale(0.735971,1.000000),rotate(0.017480),translate(-0.209409,-0.714528)" id="radialGradient-1">
+            <stop stop-color="#8FD4DB" offset="0%"></stop>
+            <stop stop-color="#177594" stop-opacity="0.725770323" offset="76.0953336%"></stop>
+            <stop stop-color="#177594" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="connect-people-background" transform="translate(1.000000, 1.000000)">
+            <rect id="Rectangle" stroke="#979797" fill="#177594" x="0" y="0" width="544" height="401"></rect>
+            <rect id="Rectangle" fill="url(#radialGradient-1)" fill-rule="nonzero" x="0.5" y="0.99" width="543.5" height="400"></rect>
+        </g>
+    </g>
+</svg>
