@@ -2,11 +2,11 @@ import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { DialogFunctions } from '../resources/shared/dialog-functions';
 import * as echarts from 'echarts/dist/echarts';
-import { DataContext } from 'services/datacontext';
+import { DataContext } from '../services/datacontext';
 import { StageConfig } from '../../stageConf';
-import { Filters } from 'components/filters';
+import { Filters } from '../components/filters';
 @inject(DataContext, Router, DialogFunctions, StageConfig, Filters)
-export class Insight {
+export class Metrics {
   constructor(dataContext, router, dialogFunctions, stageConfig, filters) {
     this.dataContext = dataContext;
     this.router = router;
@@ -199,7 +199,7 @@ export class Insight {
           {
               name:'Most Used Languages',
               type:'pie',
-              radius : '50%',
+              radius : '70%',
               center: ['50%', '50%'],
               data: dat,
               label: {
@@ -505,7 +505,7 @@ export class Insight {
               { text: 'E', max: data.maxReliability },
             ],
             center: ['25%', '55%'],
-            radius: 80,
+            radius: 100,
           },
           {
             indicator: [

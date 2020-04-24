@@ -28,10 +28,11 @@
     <div class="grid-container">
       <div class="row">
         <div class="col-md-6 left-column">
-          <img id="usa-footer__logo-img-dot" class="usa-footer__logo-img" src="/img/joint_dot_its_logo_footer.svg" alt>
+          <img id="usa-footer__logo-img-dot" class="usa-footer__logo-img" src="/img/joint_dot_its_logo_footer.svg" alt dblclick.delegate="displayVersion($event)">
           <div class="contact-ch-wrapper">
             <h4 class="content">Contact ITS CodeHub</h4>
               <a id="dh-footer_contact-us-email" class="content" href="mailto:data.itsjpo@dot.gov">data.itsjpo@dot.gov</a>
+            <div if.bind="showVersion">${version.version}.${version.build}</div>
           </div>
         </div>
         <div class="col-md-6 right-column">

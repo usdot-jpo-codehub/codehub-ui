@@ -22,6 +22,7 @@ export class Footer {
     this.message_confirmation = 'Thanks for signing up to stay in touch with ITS CodeHub!';
     this.is_error = false;
     this.version = this.prepareVersion(env.version);
+    this.showVersion = false;
   }
 
   attached() {
@@ -143,5 +144,14 @@ export class Footer {
     let version = `${parts[0]}.${parts[1]}`
     let build = `${parts[2]}`
     return {version, build};
+  }
+
+  displayVersion(event) {
+    if (event && event.altKey) {
+      this.showVersion = true;
+      setTimeout(()=>{
+        this.showVersion = false;
+      },3000);
+    }
   }
 }
