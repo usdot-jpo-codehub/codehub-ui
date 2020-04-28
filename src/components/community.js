@@ -28,7 +28,7 @@ export class Community {
         this.box3_header_text='Repository Metrics';
         this.box3_p_text='Explore repository and organizational metrics.';
         this.box3_button_text='Explore Metrics ';
-        this.box3_button_route='route:insight;';
+        this.box3_button_route='route:metrics;';
         this.box3_button_aria_text='Link to Repository Metrics page';
         this.box3_image_url='../../img/magnifying_glass_final.svg';
         this.box3_image_alt_text='Hand holding a magnifying glass over a vertical bar chart';

@@ -4,6 +4,8 @@ $teal: rgb(0, 124, 133); //#007c85
 $white: rgb(255,255,255); //#ffffff
 $lightgray: rgb(211,211,211); //#d3d3d3
 $gray: gray;
+$red: rgb(242, 107, 100); //#F26B64
+$green: #39b54a;
 
 $body-bk: rgb(225,225,225); //#E1E1E1
 $banner-bk: rgb(0, 74, 113); //#f05154
@@ -19,6 +21,15 @@ $font-size-medium:        ceil(($font-size-base * 1.05)); // ~15px
 $font-size-small:         ceil(($font-size-base * 0.85)); // ~13px
 $font-size-smaller: 	  ceil(($font-size-base * 0.80)); // ~12px
 $font-size-smallest: 	  ceil(($font-size-base * 0.70)); // ~10px
+
+$font-size-material:      ceil(($font-size-base * 1.95)); // ~28px
+
+$font-size-h1:            floor(($font-size-base * 2.6)); // ~39px
+$font-size-h2:            floor(($font-size-base * 2.15)); // ~32px
+$font-size-h3:            ceil(($font-size-base * 1.15)); // ~17px
+$font-size-h4:            ceil(($font-size-base * 1.25)); // ~19px
+$font-size-h5:            $font-size-base;
+$font-size-h6:            ceil(($font-size-base * 0.85)); // ~13px
 
 /* --- Theme Colors --- */
 $primary-color: $teal;

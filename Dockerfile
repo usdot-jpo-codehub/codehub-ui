@@ -1,4 +1,4 @@
-FROM node:8.16.1-jessie as buildimage
+FROM node:10.20.1-jessie as buildimage
 
 WORKDIR /app
 
@@ -11,7 +11,7 @@ RUN npm install
 
 RUN npm run bundle
 
-FROM nginx:1.14.1
+FROM nginx:1.17.10
 
 WORKDIR /app
 
