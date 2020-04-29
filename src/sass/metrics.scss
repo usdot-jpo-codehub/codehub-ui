@@ -1,0 +1,138 @@
+.metrics-wrapper {
+  margin-top: 25px;
+  .row {
+    padding: 0;
+  }
+  .card-metrics {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-bottom: 15px;
+    min-height: 140px;
+    border: solid 1px lighten($gray, 10%);
+    h2 {
+      text-transform: uppercase;
+      font-size: $font-size-large;
+      margin-top: 0;
+      font-weight: 900;
+      max-width: 100%;
+      overflow: hidden;
+      white-space: wrap;
+    }
+
+    .health-num {
+      font-size: $font-size-largest;
+      font-weight: 400;
+      margin-bottom: 0;
+      line-height: 60px;
+    }
+
+    .material-icons {
+      font-size: $font-size-h2;
+      line-height: $font-size-base;
+      vertical-align: -10px;
+    }
+
+    .negative {
+      color: $red;
+    }
+
+    .positive {
+      color: $green;
+    }
+
+    .temp-img {
+      text-align: center;
+
+      img {
+        height: 75%;
+        width: 75%;
+        margin: 0 auto;
+      }
+    }
+
+    .media-body-secondary {
+      font-weight: bold;
+
+      span {
+        font-weight: normal;
+      }
+    }
+
+    .lined-header {
+      .pull-right {
+        padding-top: 5px;
+        padding-left: 10px;
+
+        .text-muted {
+          vertical-align: -4px;
+        }
+      }
+    }
+
+    .media-list {
+      margin-bottom: 0;
+    }
+  }
+  .card-metrics-organization {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+    margin-bottom: 15px;
+    h2 {
+      color: black;
+      text-transform: uppercase;
+      font-size: $font-size-larger;
+      margin-top: 0;
+      font-weight: 500;
+      max-width: 100%;
+      overflow: hidden;
+      white-space: wrap;
+      padding: 0;
+      margin: 0;
+    }
+
+    .card-metrics-organization-controls {
+      select {
+        border: none;
+        font-family: Roberto, sans-serif;
+        font-size: $font-size-larger*1.5;
+        font-weight: 500;
+        text-align: left;
+        text-align-last: left;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow:ellipsis;
+        background: white;
+        color: black;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      }
+      option {
+        text-align: left;
+      }
+    }
+  }
+}
+.metrics-loading-message {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  img {
+    height: units(10);
+    width: auto;
+    margin-bottom: 10px;
+  }
+
+  .metrics-loading-message-txt {
+    font-family: Roboto-Condensed, sans-serif;
+    font-style: italic;
+    font-weight: bolder;
+    letter-spacing: 3px;
+    font-size: $font-size-larger;
+    opacity: 0.4;
+  }
+}
