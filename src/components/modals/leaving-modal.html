@@ -13,7 +13,7 @@
               <span class="larger-font">You are about to access a non-government link outside of the U.S. Department of Transportation (DOT): </span>
               </p>
               <p id="leavingModla-p2">
-                <a href="#" click.trigger="navigateAndClose()" aria-label="Target link belongs to: ${model.name}">${model.url}</a>
+                <a id="github-repo-url" href="#" click.trigger="navigateAndClose()" aria-label="Target link belongs to: ${model.name}">${model.url}</a>
               </p>
               <p id="leavingModla-p3">
                   Our Web sites have many links to other organizations, including educational institutions and non-profit associations.
@@ -31,7 +31,7 @@
             </div>
             <hr>
             <div class="modal-footer-scss">
-              <button type="button" class="btn btn-accent btn-icon-right" click.delegate="navigateAndClose()" >Continue to GitHub <em class="material-icons" aria-hidden="true">chevron_right</em></button>
+              <button id="navigate-to-github_button" type="button" class="btn btn-accent btn-icon-right" click.delegate="navigateAndClose()" >Continue to GitHub <em class="material-icons" aria-hidden="true">chevron_right</em></button>
               <button type="button" class="btn btn-secondary" click.trigger="controller.cancel()">Cancel</button>
             </div> 
         </div>
