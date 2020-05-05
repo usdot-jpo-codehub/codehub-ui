@@ -22,6 +22,7 @@
                 <div class="col-lg-7">
                   <div class="lined-header">
                     <h2 tabindex="0" class="" aria-label="Project overview."><span>Overview</span></h2>
+                    <span id="repo-sourceData-repositoryUrl" style="visibility: hidden;">${repo.sourceData.repositoryUrl}</span>
                   </div>
                   <div id="project-description" tabindex="0" class="proj-desc ${hasdescription ? '' : 'no-desc'} " aria-label="Project description: ${description}">${description}</div>
                     <div class="text-muted last-updated">By <a id="project-organization-link-${repo.id}" href="#" click.trigger="dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.owner.name,repo.sourceData.owner.url,$event.target)" target="_blanks" aria-label="Project organization: ${repo.sourceData.owner.name}, view on GitHub.">${repo.sourceData.owner.name}</a> &nbsp; | &nbsp;<span id="project-update-at" tabindex="0" aria-label="Updated ${repo.sourceData.lastPush | ago}">Updated ${repo.sourceData.lastPush | ago}</span></div>
