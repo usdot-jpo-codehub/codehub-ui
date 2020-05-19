@@ -29,12 +29,12 @@
     border-radius: 3px;
     transition: border-color 1s;
     transition: background-color 1s;
-    padding: 2px 5px;
     a{
         word-break: break-all;
     }
 }
 .referred-to-thing{
+    padding: 2px 5px;
     border-color: dimgray;
     background-color: gold;
 }

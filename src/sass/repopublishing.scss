@@ -24,11 +24,17 @@
     h4{
         font-size: larger;
     }
-    h3{
-        margin-top: 5px !important;
-    }
     .repository-registration_section{
         margin-top: 20px;
+    }
+    ul {
+      margin-top: 0 !important;
+      li {
+        margin-bottom: units(0.5);
+      }
+    }
+    #background-and-purpose {
+      margin-top: 0;
     }
 }
 .row .left_gray_4x_border{
