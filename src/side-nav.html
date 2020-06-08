@@ -1,6 +1,7 @@
 <template bindable="router">
   <nav>
     <ul id="source-code-guidelines_wrapper" class="nav navbar-nav main-nav sidenav-ul usa-sidenav" >
+      <li class="parent-item sidenav-li">Guidelines and Support</li>
       <template repeat.for="row of router.navigation">
         <li if.bind="row.settings.child && row.settings.headerLabel=='Source Code Guidelines'" class="${row.isActive ? 'active-child' : 'stage-child'} sidenav-li">
           <a href.bind="row.href" class="${row.isActive ? 'active-child' : 'stage-child'} dropdown-item sidnav-a" href="#">${row.settings.menuitemLabel}</a>
