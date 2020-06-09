@@ -4,6 +4,7 @@ $teal: rgb(0, 124, 133); //#007c85
 $white: rgb(255,255,255); //#ffffff
 $lightgray: rgb(211,211,211); //#d3d3d3
 $gray: gray;
+$darkgray: rgb(27,27,27); //#1b1b1b
 $red: rgb(242, 107, 100); //#F26B64
 $green: #39b54a;
 
@@ -37,6 +38,8 @@ $primary-color_darken-10p: darken($primary-color, 10%);
 $primary-color_darken-20p: darken($primary-color, 20%);
 
 $primary-color-inverse: $white;
+
+$font-color: $darkgray;
 
 /* -- Buttons -- */
 $btn-accent_background-color_default: $primary-color;

@@ -1,13 +1,53 @@
 .source-code-guidelines-page{
     .usa-layout-docs__main a{
         text-decoration: underline;
+        color: $teal;
+    }
+    .references, .definitions{
+        border: transparent 2px solid;
+        border-radius: 3px;
+        transition: border-color 1s;
+        transition: background-color 1s;
+        padding: 2px 5px;
+        a{
+            word-break: break-all;
+        }
+    }
+    .referred-to-thing{
+        border-color: dimgray;
+        background-color: gold;
+    }
+    a{
+        transition: background-color 1s;
+        em.material-icons{
+            font-size: 15px;
+            vertical-align: -2px;
+        }
+    }
+    .original-location{
+        background-color: gold;
+    }
+    .btn.btn-default.btn-return-to-text{
+        font-size: small;
+        padding: 4px 10px;
+        border: $teal 1px solid;
+        display: none;
+        &:focus,
+        &:hover{
+            color: $white;
+        }
+    }
+    .source-code-button_show{
+        display: inline !important;
     }
 }
+
 #source-code-guidelines_wrapper{
     font-size: 14px;
     border-bottom: 0px;
     margin-bottom: 40px; 
 }
+
 #ul-guidelines-toc{
     display: none;
     list-style: none;
@@ -22,21 +62,19 @@
         }
     }
 }
+
 #ul-guidelines-toc.active{
     display: block;
 }
 
-.references, .definitions{
-    border: transparent 2px solid;
-    border-radius: 3px;
-    transition: border-color 1s;
-    transition: background-color 1s;
-    padding: 2px 5px;
-    a{
-        word-break: break-all;
+#source-code-guidelines-date{
+    font-size: $font-size-larger;
+    font-weight: normal;
+    color: $font-color;
+    padding-left: 30px;
+    @include at-media-max('tablet-lg'){
+        padding-left:0px;
+        display: block;
+        margin-top: 2px;
     }
-}
-.referred-to-thing{
-    border-color: dimgray;
-    background-color: gold;
 }
