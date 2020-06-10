@@ -1,15 +1,58 @@
 <template bindable="router">
   <nav>
-      <ul id="titleBarNav" class="nav navbar-nav main-nav sidenav-ul" >
-        <template repeat.for="row of router.navigation">
-          <li if.bind="row.settings.dropdownchild && row.settings.firstchild" class="parent-item sidenav-li">${row.settings.parent}</li>
-        </template>
-        <template repeat.for="row of router.navigation">
-          <li if.bind="row.settings.dropdownchild"class="${row.isActive ? 'active-child' : 'stage-child'} sidenav-li">
-            <a href.bind="row.href" class="${row.isActive ? 'active-child' : 'stage-child'} dropdown-item sidnav-a" href="#">${row.settings.menuitem}</a>
-          </li>
-        </template>
-      </ul>
+    <ul id="source-code-guidelines_wrapper" class="nav navbar-nav main-nav sidenav-ul usa-sidenav" >
+      <li class="parent-item sidenav-li">Guidelines and Support</li>
+      <template repeat.for="row of router.navigation">
+        <li if.bind="row.settings.child && row.settings.headerLabel=='Source Code Guidelines'" class="${row.isActive ? 'active-child' : 'stage-child'} sidenav-li">
+          <a href.bind="row.href" class="${row.isActive ? 'active-child' : 'stage-child'} dropdown-item sidnav-a" href="#">${row.settings.menuitemLabel}</a>
+          <ul class="${isVisible('source-code-guidelines')? 'active': ''} cdh_usa-sidenav__sublist" id="ul-guidelines-toc">
+            <li class="usa-sidenav__item sidenav-li">
+              <a href="#" click.trigger="moveToTag($event,'background-and-purpose')" class="table-of-contents">Background & Purpose</a>
+            </li>
+            <li class="usa-sidenav__item">
+              <a href="#" click.trigger="moveToTag($event,'scope')" class="table-of-contents">Scope</a>
+            </li>
+            <li class="usa-sidenav__item">
+              <a href="#" click.trigger="moveToTag($event,'audience')" class="table-of-contents">Audience</a>
+            </li>
+            <li class="usa-sidenav__item">
+              <a href="#" click.trigger="moveToTag($event,'access')" class="table-of-contents">Access</a>
+            </li>
+            <li class="usa-sidenav__item">
+              <a href="#" click.trigger="moveToTag($event,'rights-and-ownership')" class="table-of-contents">Rights & Ownership</a>
+            </li>
+            <li class="usa-sidenav__item">
+              <a href="#" click.trigger="moveToTag($event,'storage-and-retention')" class="table-of-contents">Storage & Retention</a>
+            </li>
+            <li class="usa-sidenav__item">
+              <a href="#" click.trigger="moveToTag($event,'security-and-privacy')" class="table-of-contents">Security & Privacy</a>
+            </li>
+            <li class="usa-sidenav__item">
+              <a href="#" click.trigger="moveToTag($event,'documentation')" class="table-of-contents">Documentation</a>
+            </li>
+            <li class="usa-sidenav__item">
+              <a href="#" click.trigger="moveToTag($event,'implementation-roles-and-responsibilities')" class="table-of-contents">Implementation Roles & Responsibilities</a>
+            </li>
+            <li class="usa-sidenav__item">
+              <a href="#" click.trigger="moveToTag($event,'definitions')" class="table-of-contents">Definitions</a>
+            </li>
+            <li class="usa-sidenav__item">
+              <a href="#" click.trigger="moveToTag($event,'references')" class="table-of-contents">References</a>
+            </li>
+          </ul>
+        </li>
+      </template>
+    </ul>
+    <ul id="titleBarNav" class="nav navbar-nav main-nav sidenav-ul" >
+      <template repeat.for="row of router.navigation">
+        <li if.bind="row.settings.child && row.settings.firstchild  && row.settings.displayheader" class="parent-item sidenav-li">${row.settings.headerLabel}</li>
+      </template>
+      <template repeat.for="row of router.navigation">
+        <li if.bind="row.settings.child && row.settings.headerLabel=='Site Resources'" class="${row.isActive ? 'active-child' : 'stage-child'} sidenav-li">
+          <a href.bind="row.href" class="${row.isActive ? 'active-child' : 'stage-child'} dropdown-item sidnav-a" href="#">${row.settings.menuitemLabel}</a>
+        </li>
+      </template>
+    </ul>
   </nav>
 </template>
         
