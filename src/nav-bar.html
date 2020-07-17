@@ -2,7 +2,7 @@
   <header class="usa-header usa-header--extended">
     <div class="usa-navbar">
         <div class="usa-logo" id="extended-logo">
-          <a class="navbar-brand" route-href="route:popular">
+          <a class="navbar-brand" href="https://www.transportation.gov/" target="_blank" aria-label="U.S. DOT Logo - Link to dot.gov" rel="noopener noreferrer">
             <img src="../img/logo.png" alt="ITS CodeHub Logo, United States of America, Department of Transportation" id="logo-mobile">
           </a>
         </div>
@@ -11,7 +11,7 @@
     <nav aria-label="Primary navigation" class="navbar navbar-default usa-nav">
       <div class="usa-nav__inner"><button class="usa-nav__close"><img src="../img/close.svg" alt="close"></button>    
         <div class="navbar-header">
-            <a class="navbar-brand" route-href="route:popular">
+          <a class="navbar-brand" href="https://www.transportation.gov/" target="_blank" aria-label="U.S. DOT Logo - Link to dot.gov" rel="noopener noreferrer">
               <img src="../img/logo.png" alt="ITS CodeHub Logo, United States of America, Department of Transportation" id="logo">
               <span if.bind="stageConfig.IS_BETA" class="beta-message" aria-label="Beta version">Beta</span>
             </a>
@@ -26,7 +26,7 @@
             <template repeat.for="row of router.navigation">
               <li if.bind="row.settings.isTopLevelMenu_hasChildren" class="nav-item dropdown usa-nav__primary-item">
                 <template repeat.for="row of router.navigation">
-                  <a tabindex="0" if.bind="row.settings.isTopLevelMenu_hasChildren" route-href="route:repopublishing;" class="usa-nav__link nav-link ${ is_resources_subpage(router.currentInstruction.config.name) ? 'active': ''}" href="#" role="button">${row.settings.parent}</a>
+                  <a tabindex="0" if.bind="row.settings.isTopLevelMenu_hasChildren" route-href="route:source-code-guidelines;" class="usa-nav__link nav-link ${ is_resources_subpage(router.currentInstruction.config.name) ? 'active': ''}" href="#" role="button">${row.settings.topLevelMenu_parentName}</a>
                 </template>
               </li>
             </template>
