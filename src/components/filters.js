@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 export class Filters {
   constructor() {
     this.selectedCategories = []
@@ -27,21 +25,17 @@ export class Filters {
   }
 
   toggleOrg(event, projects) {
+    this.selectedOrganizations = [];
     if (event.target.checked) {
       this.selectedOrganizations = this.getUniqueValues(projects, 'sourceData.owner.name');
-      return true;
     }
-    this.selectedOrganizations = [];
-    return true;
   }
 
   toggleLang(event, projects) {
+    this.selectedLanguages = [];
     if (event.target.checked) {
       this.selectedLanguages = this.getUniqueValues(projects, 'sourceData.language');
-      return true;
     }
-    this.selectedLanguages = [];
-    return true;
   }
 
   countProjectsInCategory(projects, categoryId) {
