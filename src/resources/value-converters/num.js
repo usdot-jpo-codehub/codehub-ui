@@ -9,7 +9,11 @@ export class NumValueConverter {
       { value: 1E6, symbol: 'M' },
       { value: 1E3, symbol: 'K' },
     ];
-    const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
+    /*
+      The following regex is not security-sensitive
+      This filter is used to format numbers that are not human made.
+    */
+    const rx = /\.0+$|(\.[0-9]*[1-9])0+$/; //NOSONAR
     for (let i = 0; i < si.length; i++) {
       if (num >= si[i].value) {
         let n = (num / si[i].value);
