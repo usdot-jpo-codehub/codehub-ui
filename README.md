@@ -2,6 +2,7 @@
 
 # codehub-ui
 > version: 3.2
+![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoieE1PRzV1dmZyOTB5MVBIYzlGYUFKcitLUVpPVEtNd2Z3WDdraEUxYXMwQkV5SytJbk1MSitxenlqTFN1N3hqOVJ3bXRZVkFrS2paTXNnQVNkQWFVRmQwPSIsIml2UGFyYW1ldGVyU3BlYyI6Ik0ySy85bzR3OVU2eEMwUnUiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=usdot-jpo-codehub_codehub-ui&metric=alert_status)](https://sonarcloud.io/dashboard?id=usdot-jpo-codehub_codehub-ui)
 
 # Project Description
 This repository holds the frontend user-interface (UI) code for the United States Department of Transportation (U.S. DOT) Joint Program Office (JPO) Intelligent Transit Systems (ITS) CodeHub website located at [https://its.dot.gov/code](https://its.dot.gov/code).
@@ -85,25 +86,16 @@ Where 10.0.0.2 is the location of your network's domain name server (10.0.0.2 is
 Run "npm start serve" at your root codehub-ui repo.
 
 # Version History and Retention
-Changes are in reference with the previous version (3.0)
-
-- Change location of Insight page from main menu to a submenu under Resources.
-- Rename Insight page to Metrics.
+See [CHANGELOG.md](CHANGELOG.md) file.
 
 # License
-This project is licensed under the Apache 2.0 License.
+This project is licensed under the Apache 2.0 License, see [LICENSE].(https://github.com/usdot-jpo-codehub/codehub-ui/blob/master/LICENSE).
 
 # Contribution
-Please read CONTRIBUTING.md for details on our Code of Conduct, the process for submitting pull requests to us, and how contributions will be released.
+Please read [CONTRIBUTING.md](https://github.com/usdot-jpo-codehub/codehub-readme-template/blob/master/Contributing.MD) for details on our Code of Conduct, the process for submitting pull requests to us, and how contributions will be released.
 
 # Contact Information
-Agency: DOT
-Short Description: The backend API for the ITS CodeHub repository-sharing website.
-Status: Beta
-Tags: transportation, connected vehicles, intelligent transportation systems, javascript, api
-Labor Hours: 0
-Contact Name: Brian Brotsos
-Contact Phone:
+
 
 # Acknowledgements
 Digital Object Identifier: 
