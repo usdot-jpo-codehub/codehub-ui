@@ -40,8 +40,7 @@
             "path": "node_modules/aurelia-cli/lib/resources/scripts/configure-bluebird.js",
             "env": "dev"
           },
-          "node_modules/systemjs/dist/system.js",
-          "node_modules/@babel/polyfill/dist/polyfill.min.js"
+          "node_modules/systemjs/dist/system.js"
         ],
         "dependencies": [
           "aurelia-bootstrapper",
@@ -120,8 +119,8 @@
   },
   "unitTestRunners": [
     {
-      "id": "karma",
-      "displayName": "Karma",
+      "id": "jest",
+      "displayName": "Jest",
       "source": "test/unit/**/*.js"
     }
   ],

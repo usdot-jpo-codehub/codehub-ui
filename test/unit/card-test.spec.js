@@ -1,240 +1,134 @@
 import { StageComponent } from 'aurelia-testing';
 import { bootstrap } from 'aurelia-bootstrapper';
-import { AgoValueConverter } from '../../src/resources/value-converters/ago';
-import { NumValueConverter } from '../../src/resources/value-converters/num';
-import { NO_DESCRIPTION_MESSAGE } from '../../src/constants/ch-constants';
+import MockRepositoriesData from '../mockdata/mock-repositories-data.json';
+import { HttpClient } from "aurelia-fetch-client";
+
+export class MockDialogFunctions {
+  mockRepo = null;
+  mockTarget = null;
+  openReadmeModal(repo, target) {
+    this.mockRepo = repo;
+    this.mockTarget = target;
+  }
+}
 
 
 describe('Test - Card : ', () => {
 
+  let dialogFunctions;
   let component;
-  let mockRepositoriesData;
   let viewCompose;
   let modelData;
   let getComponent;
+  let testTimeout;
 
   beforeEach( () => {
-    jasmine.getFixtures().fixturesPath='base/test/mockdata/';
-    mockRepositoriesData = JSON.parse(readFixtures('mock-repositories-data.json'));
+    testTimeout = 3000;
+    dialogFunctions = new MockDialogFunctions();
     viewCompose = '<compose view-model="components/card" model.bind="repoData"></compose>';
-    modelData = { data: mockRepositoriesData[0], showFeatured: false, showMetrics: false};
+    modelData = { data: MockRepositoriesData[0], showFeatured: false, showMetrics: false};
 
     getComponent = (modelData) => {
       let component = StageComponent.withResources('components/card')
       .inView(viewCompose)
       .boundTo({repoData: modelData});
+      component.bootstrap( aurelia => {
+        aurelia.use.standardConfiguration();
+        aurelia.container.registerInstance(HttpClient);
+      });
       return component;
     };
 
     component = getComponent(modelData);
 
-    component.bootstrap( aurelia => {
-      aurelia.use.standardConfiguration();
-    });
-
   });
 
-  it('Expect title card link text to be project name', (done) => {
+  test('Test instance of the component', (done) => {
     component.create(bootstrap).then( () => {
-      const element = document.querySelector(`#card-popular-title-link-${mockRepositoriesData[0].id}`);
-      expect(element.innerHTML).toEqual(mockRepositoriesData[0].sourceData.name);
+      const element = document.querySelector(`#card-popular-title-link-${MockRepositoriesData[0].id}`);
+      expect(element.innerHTML).toEqual(MockRepositoriesData[0].sourceData.name);
       done();
     }).catch( e => { console.log(e.toString()) });
-  });
+  }, testTimeout);
 
-  it('Expect title card link title to be project name', (done) => {
-    component.create(bootstrap).then( () => {
-      const element = document.querySelector(`#card-popular-title-link-${mockRepositoriesData[0].id}`);
-      const text = `Project name: ${mockRepositoriesData[0].sourceData.name}`;
-      expect(element.getAttribute('aria-label')).toEqual(text);
-      done();
-    }).catch( e => { console.log(e.toString()) });
-  });
-
-  it('Expect language name', (done) => {
-    component.create(bootstrap).then( () => {
-      const element = document.querySelector('.org-name');
-      expect(element.innerHTML).toEqual(mockRepositoriesData[0].sourceData.language);
-      done();
-    }).catch( e => { console.log(e.toString()) });
-  });
-
-  it('Expect project description', (done) => {
-    component.create(bootstrap).then( () => {
-      const element = document.querySelector('.proj-desc');
-      expect(element.innerText).toEqual(mockRepositoriesData[0].sourceData.description ? mockRepositoriesData[0].sourceData.description : NO_DESCRIPTION_MESSAGE);
-      done();
-    }).catch( e => { console.log(e.toString()) });
-  });
-
-  it('Expect organization link', (done) => {
-    modelData.showMetrics = true;
+  test('Test infected files', (done) => {
+    let infected = 10;
+    modelData.data.generatedData.vscan.infected_files = infected;
     component = getComponent(modelData);
     component.create(bootstrap).then( () => {
-      const element = document.querySelector(`#card-popular-organization-link-${mockRepositoriesData[0].id}`);
-      expect(element.getAttribute('click.trigger')).toEqual('dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.owner.name,repo.sourceData.owner.url,$event.target)');
+      expect(component.viewModel.currentViewModel.infected_files).toEqual(infected);
       done();
     }).catch( e => { console.log(e.toString()) });
-  });
+  }, testTimeout);
 
-  it('Expect organization link title to be "View on Gitbub"', (done) => {
-    modelData.showMetrics = true;
+  test('Test status active', (done) => {
+    modelData.data.codehubData.badges.status = 'active';
     component = getComponent(modelData);
     component.create(bootstrap).then( () => {
-      const element = document.querySelector(`#card-popular-organization-link-${mockRepositoriesData[0].id}`);
-      const text = `Project organization: ${mockRepositoriesData[0].sourceData.owner.name}, view on GitHub.`;
-      expect(element.getAttribute('aria-label')).toEqual(text);
+      expect(component.viewModel.currentViewModel.badge_status_image).toEqual('/img/active_flame_final_28w_35h.svg');
       done();
     }).catch( e => { console.log(e.toString()) });
-  });
+  }, testTimeout);
 
-  it('Expect organization text to be the organization name', (done) => {
-    modelData.showMetrics = true;
+  test('Test status inactive', (done) => {
+    modelData.data.codehubData.badges.status = 'inactive';
     component = getComponent(modelData);
     component.create(bootstrap).then( () => {
-      const element = document.querySelector(`#card-popular-organization-link-${mockRepositoriesData[0].id}`);
-      expect(element.innerHTML).toEqual(mockRepositoriesData[0].sourceData.owner.name);
+      expect(component.viewModel.currentViewModel.badge_status_image).toEqual('/img/inactive_zzz_final_32w_35h.svg');
       done();
     }).catch( e => { console.log(e.toString()) });
-  });
+  }, testTimeout);
 
-  it('Expect organization updated days', (done) => {
-    component.create(bootstrap).then( () => {
-      let ago = new AgoValueConverter();
-      const element = document.querySelector(`#card-popular-organization-updated-text-${mockRepositoriesData[0].id}`);
-      expect(element.innerHTML).toEqual('Updated '+ago.toView(mockRepositoriesData[0].sourceData.lastPush));
-      done();
-    }).catch( e => { console.log(e.toString()) });
-  });
-
-  it('Expect project status link url', (done) => {
-    component.create(bootstrap).then( () => {
-      const element = document.querySelector(`#card-popular-project-status-link-${mockRepositoriesData[0].id}`);
-      expect(element.getAttribute('click.trigger')).toEqual('dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.name,repo.sourceData.repositoryUrl,$event.target)');
-      done();
-    }).catch( e => { console.log(e.toString()) });
-  });
-
-  it('Expect project number of stars', (done) => {
-    modelData.showMetrics = true;
+  test('Test status inactive', (done) => {
+    modelData.data.codehubData.badges.status = 'pending';
     component = getComponent(modelData);
     component.create(bootstrap).then( () => {
-      let num = new NumValueConverter();
-      const element = document.querySelector(`#card-popular-project-stars-${mockRepositoriesData[0].id}`);
-      expect(element.innerHTML).toEqual(num.toView(mockRepositoriesData[0].sourceData.stars));
+      expect(component.viewModel.currentViewModel.badge_status_image).toEqual('/img/pending_review_final_29w_35h.svg');
       done();
     }).catch( e => { console.log(e.toString()) });
-  });
+  }, testTimeout);
 
-  it('Expect project number of contributors', (done) => {
-    modelData.showMetrics = true;
+  test('Test status ready-only', (done) => {
+    modelData.data.codehubData.badges.status = 'read-only';
     component = getComponent(modelData);
     component.create(bootstrap).then( () => {
-      let num = new NumValueConverter();
-      const element = document.querySelector(`#card-popular-project-contributors-${mockRepositoriesData[0].id}`);
-      expect(element.innerHTML).toEqual(num.toView(mockRepositoriesData[0].sourceData.contributors.length));
+      expect(component.viewModel.currentViewModel.badge_status_image).toEqual('/img/lock_final_28w_35h.svg');
       done();
     }).catch( e => { console.log(e.toString()) });
-  });
+  }, testTimeout);
 
-  it('Expect project number of watchers', (done) => {
-    modelData.showMetrics = true;
+  test('Test status default', (done) => {
+    modelData.data.codehubData.badges.status = 'something else';
     component = getComponent(modelData);
     component.create(bootstrap).then( () => {
-      let num = new NumValueConverter();
-      const element = document.querySelector(`#card-popular-project-watchers-${mockRepositoriesData[0].id}`);
-      expect(element.innerHTML).toEqual(num.toView(mockRepositoriesData[0].sourceData.watchers));
+      expect(component.viewModel.currentViewModel.badge_status_image).toEqual('/img/pending_review_final_29w_35h.svg');
       done();
     }).catch( e => { console.log(e.toString()) });
-  });
+  }, testTimeout);
 
-  it('Expect project number of commits', (done) => {
-    modelData.showMetrics = true;
+  test('Test dowloads', (done) => {
+    let mockRelease = {
+      total_downloads: 10
+    };
+    modelData.data.sourceData.releases.push(mockRelease);
     component = getComponent(modelData);
     component.create(bootstrap).then( () => {
-      let num = new NumValueConverter();
-      const element = document.querySelector(`#card-popular-project-commits-${mockRepositoriesData[0].id}`);
-      expect(element.innerHTML).toEqual(num.toView(mockRepositoriesData[0].sourceData.commits, 1));
+      expect(component.viewModel.currentViewModel.downloads).toEqual(mockRelease.total_downloads);
       done();
     }).catch( e => { console.log(e.toString()) });
-  });
+  }, testTimeout);
 
-  it('Expect project number of releases', (done) => {
-    modelData.showMetrics = true;
+  test('Test invalid language image', (done) => {
+    modelData.data.sourceData.language = null;
     component = getComponent(modelData);
     component.create(bootstrap).then( () => {
-      let num = new NumValueConverter();
-      const element = document.querySelector(`#card-popular-project-releases-${mockRepositoriesData[0].id}`);
-      expect(element.innerHTML).toEqual(''+num.toView(mockRepositoriesData[0].sourceData.releases.length));
+      expect(component.viewModel.currentViewModel.repo.sourceData.language).toBeNull()
       done();
     }).catch( e => { console.log(e.toString()) });
-  });
-
-  it('Expect project number of forks', (done) => {
-    modelData.showMetrics = true;
-    component = getComponent(modelData);
-    component.create(bootstrap).then( () => {
-      let num = new NumValueConverter();
-      const element = document.querySelector(`#card-popular-project-forks-${mockRepositoriesData[0].id}`);
-      expect(element.innerHTML).toEqual(''+num.toView(mockRepositoriesData[0].sourceData.forks.length));
-      done();
-    }).catch( e => { console.log(e.toString()) });
-  });
-
-  it('Expect project number of dowloads', (done) => {
-    modelData.showMetrics = true;
-    component = getComponent(modelData);
-    component.create(bootstrap).then( () => {
-      let num = new NumValueConverter();
-      const element = document.querySelector(`#card-popular-project-downloads-${mockRepositoriesData[0].id}`);
-      let downloads = 0;
-      mockRepositoriesData[0].sourceData.releases.forEach( e => downloads += e.total_downloads);
-      expect(element.innerHTML).toEqual(''+num.toView(downloads));
-      done();
-    }).catch( e => { console.log(e.toString()) });
-  });
-
-  it('Expect project readme click trigger', (done) => {
-    component.create(bootstrap).then( () => {
-      let num = new NumValueConverter();
-      const id = `#card-popular-project-open-readme-${mockRepositoriesData[0].id}`;
-      const element = document.querySelector(id);
-      expect(element.getAttribute('click.trigger')).toEqual('dialogFunctions.openReadmeModal(repo,$event.target)');
-      done();
-    }).catch( e => { console.log(e.toString()) });
-  });
-
-  it('Expect card link to use project-details route passing repo id', (done) => {
-    component.create(bootstrap).then( () => {
-      let num = new NumValueConverter();
-      const element = document.querySelector('.card-link');
-      expect(element.getAttribute('route-href')).toEqual('route:project-details; params.bind: {id:repo.id}');
-      done();
-    }).catch( e => { console.log(e.toString()) });
-  });
-
-  it('Expect card to have label: Metrics...', (done) => {
-    component.create(bootstrap).then( () => {
-      let num = new NumValueConverter();
-      const element = document.querySelector(`#card-popular-metrics-${mockRepositoriesData[0].id}`);
-      expect('Metrics...').toEqual(element.innerText);
-      done();
-    }).catch( e => { console.log(e.toString()) });
-  });
-
-  it('Expect card to have Featured Ribbon', (done) => {
-    modelData.showFeatured = true;
-    modelData.data.codehubData.badges.isFeatured = true;
-    component = getComponent(modelData);
-    component.create(bootstrap).then( () => {
-      const element = document.querySelector(`#card-popular-featured-ribbon-${mockRepositoriesData[0].id}`);
-      expect('Featured').toEqual(element.innerText);
-      done();
-    }).catch( e => { console.log(e.toString()) });
-  });
+  }, testTimeout);
 
   afterEach( () => {
-    component.dispose();
+    // component.dispose();
   });
 
 });

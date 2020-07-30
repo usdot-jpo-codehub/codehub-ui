@@ -3,7 +3,7 @@ import { Router } from 'aurelia-router';
 import { DialogFunctions } from '../resources/shared/dialog-functions';
 import * as echarts from 'echarts/dist/echarts';
 import { DataContext } from '../services/datacontext';
-import { StageConfig } from '../../stageConf';
+import StageConfig from '../../stageConf';
 import { Filters } from '../components/filters';
 @inject(DataContext, Router, DialogFunctions, StageConfig, Filters)
 export class Metrics {

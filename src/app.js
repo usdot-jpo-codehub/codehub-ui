@@ -1,6 +1,6 @@
 import { Router } from 'aurelia-router';
 import { inject } from 'aurelia-framework';
-import { StageConfig } from './stageConf';
+import StageConfig from './stageConf';
 import 'bootstrap';
 import environment from './environment';
 import 'uswds';

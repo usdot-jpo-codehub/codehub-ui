@@ -1,6 +1,6 @@
 import { inject, computedFrom, bindable, bindingMode} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
-import { EA_MS_FEATURED_DATA } from '../constants/ch-constants';
+import CHContants from '../constants/ch-constants';
 
 @inject(EventAggregator)
 export class CarouselCard {
@@ -15,7 +15,7 @@ export class CarouselCard {
   }
 
   attached() {
-    this.subscription = this.eventAggregator.subscribe(EA_MS_FEATURED_DATA, repositories => {
+    this.subscription = this.eventAggregator.subscribe(CHContants.EA_MS_FEATURED_DATA, repositories => {
       this.repositories = repositories;
       this.rotateRight();
     });

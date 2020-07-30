@@ -1,5 +1,5 @@
 import { inject, bindable, bindingMode } from 'aurelia-framework';
-import { ES_MSG_CATEGORIES_DATA } from '../constants/ch-constants';
+import CHContants from '../constants/ch-constants';
 import {EventAggregator} from 'aurelia-event-aggregator';
 
 @inject(EventAggregator)
@@ -13,7 +13,7 @@ export class PopularCategories {
   }
 
   attached() {
-    this.eaSubscription = this.eventAggregator.subscribe(ES_MSG_CATEGORIES_DATA, categories => {
+    this.eaSubscription = this.eventAggregator.subscribe(CHContants.ES_MSG_CATEGORIES_DATA, categories => {
       let popularCategories = categories.filter( x => {return x.isPopular == true;});
       popularCategories.sort((a, b) => {
         if (a.orderPopular > b.orderPopular) {

@@ -3,7 +3,7 @@ import { Router } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import $ from 'jquery';
 import { DataContext } from 'services/datacontext';
-import { StageConfig } from './stageConf';
+import StageConfig from './stageConf';
 
 @inject(DataContext, Router, EventAggregator, StageConfig)
 export class NavBar {

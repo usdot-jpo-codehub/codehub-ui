@@ -1,6 +1,6 @@
 import { inject, computedFrom } from 'aurelia-framework';
-import { NO_DESCRIPTION_MESSAGE } from '../constants/ch-constants';
-import { StageConfig } from '../stageConf';
+import CHContants from '../constants/ch-constants';
+import StageConfig from '../stageConf';
 import { DialogFunctions } from '../resources/shared/dialog-functions';
 
 @inject(StageConfig, DialogFunctions)
@@ -65,7 +65,7 @@ export class CardSearch {
   }
   get description() {
     if (!this.repo || !this.repo.sourceData || !this.repo.sourceData.description) {
-      return NO_DESCRIPTION_MESSAGE;
+      return CHContants.NO_DESCRIPTION_MESSAGE;
     }
 
     if (this.repo.highlights) {

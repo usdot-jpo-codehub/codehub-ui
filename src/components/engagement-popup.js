@@ -1,5 +1,5 @@
 import { inject } from 'aurelia-framework';
-import { ES_MSG_ENGAGEMENTPOPUP_DATA, LS_CODEHUB_ENGAGEMENT_POPUP } from '../constants/ch-constants';
+import CHContants from '../constants/ch-constants';
 import {EventAggregator} from 'aurelia-event-aggregator';
 
 @inject(Element, EventAggregator)
@@ -15,7 +15,7 @@ export class EngagementPopup {
   }
 
   attached() {
-    this.eaSubscription = this.eventAggregator.subscribe(ES_MSG_ENGAGEMENTPOPUP_DATA, engagementPopups => {
+    this.eaSubscription = this.eventAggregator.subscribe(CHContants.ES_MSG_ENGAGEMENTPOPUP_DATA, engagementPopups => {
       this.data = engagementPopups && engagementPopups.length>0 ? engagementPopups[0] : null;
       this.isVisible = this.getUserSelection(this.data);
     });
@@ -37,14 +37,14 @@ export class EngagementPopup {
   noShowClicked(event) {
     this.noShowChecked = !this.noShowChecked;
     if (this.data) {
-      window.localStorage.setItem(LS_CODEHUB_ENGAGEMENT_POPUP, this.data.id);
+      window.localStorage.setItem(CHContants.LS_CODEHUB_ENGAGEMENT_POPUP, this.data.id);
       this.close();
     }
     return true;
   }
 
   getUserSelection(data) {
-    let val = window.localStorage.getItem(LS_CODEHUB_ENGAGEMENT_POPUP);
+    let val = window.localStorage.getItem(CHContants.LS_CODEHUB_ENGAGEMENT_POPUP);
     if (!val) {
       return true;
     }

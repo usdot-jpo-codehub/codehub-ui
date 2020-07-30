@@ -1,6 +1,6 @@
 import { inject } from 'aurelia-framework';
 import { HttpClient, json } from 'aurelia-fetch-client';
-import { StageConfig } from '../stageConf';
+import StageConfig from '../stageConf';
 import environment from '../environment';
 
 const baseUrl = '/api/v1';

@@ -60,3 +60,7 @@ uswds/*
 # Auto-Generated files
 ./styles/styles.css
 ./styles/uswds_css/main.css
+test/coverage-jest
+test/temp
+*.gio
+.scannerwork/

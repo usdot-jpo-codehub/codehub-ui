@@ -2,7 +2,7 @@ import { inject, TaskQueue, computedFrom } from 'aurelia-framework';
 import { DialogController, DialogService } from 'aurelia-dialog';
 import { Router } from 'aurelia-router';
 import { LeavingModal } from './leaving-modal';
-import { NO_README_MESSAGE } from '../../constants/ch-constants';
+import CHContants from '../../constants/ch-constants';
 
 @inject(DialogController, Router, TaskQueue, DialogService)
 export class ReadmeModal {
@@ -57,7 +57,7 @@ export class ReadmeModal {
 
   @computedFrom('repo.content')
   get content() {
-    let c = this.repo.sourceData.readme.content ? this.repo.sourceData.readme.content : NO_README_MESSAGE;
+    let c = this.repo.sourceData.readme.content ? this.repo.sourceData.readme.content : CHContants.NO_README_MESSAGE;
     return c;
   }
   get hascontent() {

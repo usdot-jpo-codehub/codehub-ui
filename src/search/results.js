@@ -4,7 +4,7 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 import $ from 'jquery';
 import { DataContext } from 'services/datacontext';
 import { Filters } from 'components/filters';
-import { StageConfig } from '../../stageConf';
+import StageConfig from '../../stageConf';
 
 @inject(DataContext, Filters, EventAggregator, StageConfig)
 export class Results {

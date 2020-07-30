@@ -1,32 +1,23 @@
-import gulp from 'gulp';
-import {Server as Karma} from 'karma';
+import jest from 'jest-cli';
+import PluginError from 'plugin-error';
+import path from 'path';
+import packageJson from '../../package.json';
 import {CLIOptions} from 'aurelia-cli';
-import build from './build';
-import watch from './watch';
-import * as path from 'path';
 
-let karma = done => {
-  new Karma({
-    configFile: path.join(__dirname, '/../../karma.conf.js'),
-    singleRun: !CLIOptions.hasFlag('watch')
-  }, function (err) { done(); if (err) { process.exit(err); } }).start();
+export default (cb) => {
+  let options = packageJson.jest;
+
+  if (CLIOptions.hasFlag('watch')) {
+    Object.assign(options, { watch: true});
+  }
+
+  process.env.BABEL_TARGET = 'node';
+
+  jest.runCLI(options, [path.resolve(__dirname, '../../')]).then((result) => {
+    if (result.numFailedTests || result.numFailedTestSuites) {
+      cb(new PluginError('gulp-jest', { message: 'Tests Failed' }));
+    } else {
+      cb();
+    }
+  });
 };
-
-let unit;
-
-if (CLIOptions.hasFlag('watch')) {
-  unit = gulp.series(
-    build,
-    gulp.parallel(
-      done => { watch(); done(); },
-      karma
-    )
-  );
-} else {
-  unit = gulp.series(
-    build,
-    karma
-  );
-}
-
-export { unit as default };

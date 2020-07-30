@@ -2,9 +2,9 @@ import { inject } from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import { Router } from 'aurelia-router';
 import { DataContext } from 'services/datacontext';
-import { StageConfig } from '../../stageConf';
+import StageConfig from '../../stageConf';
 import { FakeData } from '../fakeData';
-import { EA_MS_FEATURED_DATA, ES_MSG_CATEGORIES_DATA, ES_MSG_ENGAGEMENTPOPUP_DATA } from '../constants/ch-constants';
+import CHConstants from '../constants/ch-constants';
 
 @inject(DataContext, Router, StageConfig, FakeData, EventAggregator)
 export class Popular {
@@ -65,7 +65,7 @@ export class Popular {
       }
       this.featured = results;
       this.searchingFeatured = false;
-      this.eventAggregator.publish(EA_MS_FEATURED_DATA, this.featured);
+      this.eventAggregator.publish(CHConstants.EA_MS_FEATURED_DATA, this.featured);
     });
 
     this.dataContext.getCategories().then((response) => {
@@ -73,7 +73,7 @@ export class Popular {
         return;
       }
       this.categories = response;
-      this.eventAggregator.publish(ES_MSG_CATEGORIES_DATA, this.categories);
+      this.eventAggregator.publish(CHConstants.ES_MSG_CATEGORIES_DATA, this.categories);
     });
 
     this.dataContext.getEngagementPopups().then((response) => {
@@ -81,7 +81,7 @@ export class Popular {
         return;
       }
       this.engagementPopups = response;
-      this.eventAggregator.publish(ES_MSG_ENGAGEMENTPOPUP_DATA, this.engagementPopups);
+      this.eventAggregator.publish(CHConstants.ES_MSG_ENGAGEMENTPOPUP_DATA, this.engagementPopups);
     });
   }
 

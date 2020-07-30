@@ -1,6 +1,6 @@
 import { inject, computedFrom } from 'aurelia-framework';
-import { NO_DESCRIPTION_MESSAGE } from '../constants/ch-constants';
-import { StageConfig } from '../stageConf';
+import CHContants from '../constants/ch-constants';
+import StageConfig from '../stageConf';
 import { DialogFunctions } from '../resources/shared/dialog-functions';
 
 
@@ -65,7 +65,7 @@ export class Card {
     return this.repo && this.repo.sourceData && this.repo.sourceData.description ? true : false;
   }
   get description() {
-    return this.repo && this.repo.sourceData && this.repo.sourceData.description  ? this.repo.sourceData.description : NO_DESCRIPTION_MESSAGE;
+    return this.repo && this.repo.sourceData && this.repo.sourceData.description  ? this.repo.sourceData.description : CHContants.NO_DESCRIPTION_MESSAGE;
   }
   get language() {
     return this.repo && this.repo.sourceData && this.repo.sourceData.language ? this.repo.sourceData.language : this.stageConfig.NO_LANG

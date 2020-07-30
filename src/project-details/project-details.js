@@ -1,8 +1,8 @@
 import { inject, computedFrom } from 'aurelia-framework';
 import { Router, activationStrategy } from 'aurelia-router';
 import { DataContext } from 'services/datacontext';
-import { StageConfig } from '../../stageConf';
-import { NO_DESCRIPTION_MESSAGE } from '../constants/ch-constants';
+import StageConfig from '../../stageConf';
+import CHContants from '../constants/ch-constants';
 import { DialogFunctions } from '../resources/shared/dialog-functions';
 
 @inject(DataContext, Router, StageConfig, DialogFunctions)
@@ -90,7 +90,7 @@ export class ProjectDetails {
 
   @computedFrom('repo.sourceData.description')
   get description() {
-    return this.repo.sourceData && this.repo.sourceData.description ? this.repo.sourceData.description : NO_DESCRIPTION_MESSAGE;
+    return this.repo.sourceData && this.repo.sourceData.description ? this.repo.sourceData.description : CHContants.NO_DESCRIPTION_MESSAGE;
   }
   get hasdescription() {
     return this.repo.sourceData && this.repo.sourceData.description ? true : false;

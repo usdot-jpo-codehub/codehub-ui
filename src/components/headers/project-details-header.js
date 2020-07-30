@@ -1,7 +1,7 @@
 import { inject } from 'aurelia-framework';
 import { activationStrategy } from 'aurelia-router';
 import { DataContext } from 'services/datacontext';
-import { StageConfig } from '../../stageConf';
+import StageConfig from '../../stageConf';
 
 @inject(DataContext, StageConfig)
 export class ProjectDetailsHeader {
