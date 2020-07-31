@@ -148,7 +148,8 @@
       {"name": "favicon", "pattern": "favicon.ico", "dest":""},
       {"name": "scripts", "pattern": "scripts/**/*.js", "dest":"/scripts/"},
       {"name": "styles", "pattern": "styles/**/*", "dest":"/styles/"},
-      {"name": "images", "pattern": "img/**/*", "dest":"/img/"}
+      {"name": "images", "pattern": "img/**/*", "dest":"/img/"},
+      {"name": "documents", "pattern": "documents/**/*", "dest":"/documents/"}
     ]
   },
   "packageManager": "npm"
