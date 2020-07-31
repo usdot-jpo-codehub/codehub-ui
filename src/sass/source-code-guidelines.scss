@@ -68,13 +68,6 @@
 }
 
 #source-code-guidelines-date{
-    font-size: $font-size-larger;
-    font-weight: normal;
+    padding-top: 2em;
     color: $font-color;
-    padding-left: 30px;
-    @include at-media-max('tablet-lg'){
-        padding-left:0px;
-        display: block;
-        margin-top: 2px;
-    }
 }
