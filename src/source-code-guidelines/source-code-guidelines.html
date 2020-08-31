@@ -14,7 +14,7 @@
                             <ul>
                                 <li><a id="m-16-21_fscp" href="#" click.trigger="moveToTag($event,'m-16-21','m-16-21_fscp')">The Federal Source Code Policy (FSCP)</a></li>
                                 
-                                <li><a id="US-DOT-source-code-management-memo" href="#" click.trigger="moveToTag($event,'rights-in-data-general', 'US-DOT-source-code-management-memo')">The U.S. DOT Departmental Source Code Management Memo</a></li>
+                                <li><a id="US-DOT-source-code-management-memo" href="#" click.trigger="moveToTag($event,'departmental-source-code-management', 'US-DOT-source-code-management-memo')">The U.S. DOT Departmental Source Code Management Memo</a></li>
                                 
                                 <li><a id="code-dot-gov_1" href="#" click.trigger="moveToTag($event,'code-dot-gov', 'code-dot-gov_1')">Code.gov</a></li>
                             </ul>
@@ -75,8 +75,9 @@
                                 <li>(Optional, but encouraged) Description of coding practices and community norms requested of potential contributors</li>
                             </ul>
                         </p>
+                        <p>SECURITY CODE REVIEW documentation</p>
                         <p>To promote interoperability of source code across platforms and users, all ITS JPO-funded source code should use open standards. All ITS JPO-funded source code and associated documentation must be <a id="section508-gov_1" href="#" click.trigger="moveToTag($event,'section508-gov','section508-gov_1')">508-compliant</a> to allow reuse and evaluation of the source code by users with disabilities. </p>
-                        <p>The ITS JPO will issue a Digital Object Identifier (DOI) for ITS JPO-funded projects without one to make the project more citable and shareable. A DOI should be referenced on all source code documentation.</p>
+                        <p>The ITS JPO will issue a Digital Object Identifier (DOI) for ITS JPO-funded projects without one to make the project more citable and shareable. A DOI should be referenced in the source code management plan.</p>
 
                         <h3 id="security-and-privacy">8. Security & Privacy</h3>
                         <p>Consistent with federal and U.S. DOT policy (e.g., <a id="fips-pub-199_1" href="#" click.trigger="moveToTag($event,'fips-pub-199','fips-pub-199_1')">FIPS 199</a>, <a id="sp-800-37_1" href="#" click.trigger="moveToTag($event,'sp-800-37', 'sp-800-37_1')">NIST SP 800-37</a>, <a id="dot-order-1351-37_1" href="#" click.trigger="moveToTag($event,'dot-order-1351-37','dot-order-1351-37_1')">DOT Cybersecurity Policy</a> and <a id="dot-departmental-cybersecurity-compendium_1" href="#" click.trigger="moveToTag($event,'dot-departmental-cybersecurity-compendium','dot-departmental-cybersecurity-compendium_1')">DOT Departmental Cybersecurity Compendium</a>), all U.S. DOT and U.S. DOT contractor information systems that generate, store, process, transfer, display, or communicate information must be protected at a level commensurate with the potential impact of a loss of confidentiality, integrity, or availability on the U.S. DOT’s operations, assets, or individuals. This includes information systems that store ITS JPO-funded source code. As such, commensurate security specifications or requirements must be incorporated into solicitation, funding agreement, project, and supplemental documentation.</p>
@@ -85,12 +86,25 @@
 
                         <h3 id="documentation">9. Documentation</h3>
                         <p>Project teams must include all documentation required by the above guidelines, as well as any documentation that will aid in successful source code management. This includes, but is not limited to:
-                            <ul>
-                                <li>Documentation including a README file, LICENSE file, and CONTRIBUTING file as stated in the Standards section of these guidelines</li>
-                                <li>Security code reviews</li>
-                            </ul>
                         </p>
-                        
+                        <h4>Source Code Management Plan</h4>
+                        <p>Project teams must include a preliminary Source Code Management Plan (SCMP) in their proposal, or for intramural projects prior to the beginning of the project, that summarizes how they will comply with these guidelines. The U.S. DOT will use the information in the preliminary SCMP as part of its evaluation criteria for award and may ask for clarifications or changes from the project team prior to award to ensure the U.S. DOT and/or public receives appropriate access. The preliminary SCMP must provide a preliminary overview of source code that may be created through the project, and include the following:
+                            <ol>
+                                <li>Project Description</li>
+                                <li>Intended purpose of the source code and description of what the source code does</li>
+                                <li>Plan for the overall structure of their source code and what source code storage system(s) the project team intends to use</li>
+                                <li>Expected engagement level (i.e. how frequently the community can expect activity)</li>
+                                <li>Any other relevant technical details on how to build, make, install, or use the software, including dependencies</li>
+                                <li>The license the project team plans to use</li>
+                                <li>Contact Information</li>
+                            </ol>
+                        </p>
+
+                        <p>The SCMP will serve as a project’s 
+                            <a target="_blank" rel="noopener noreferrer" href="https://github.com/usdot-jpo-codehub/codehub-readme-template">README<img src="img/external-link-alt-hover_darkGray.svg" class="external-link-icon-in-paragraph" alt="External link icon"></a>
+                            throughout the period of performance. Project teams must then maintain the SCMP throughout the period of performance with more detailed, updated information as it becomes available. At a minimum,  project teams must update the SCMP every six months.</p>
+                        <p>The SCMP must demonstrate the project's full compliance with these guidelines and all applicable U.S. DOT and federal policies and guidance.</p>
+
                         <h3 id="implementation-roles-and-responsibilities">10. Implementation Roles & Responsibilities</h3>
                         <p>There are several key roles for implementing these guidelines, defined below.
                             <ul>
@@ -141,7 +155,8 @@
                             <ul>
                                 <li id="code-dot-gov" class="references"><strong>Code.gov: Sharing America’s Code.</strong> U.S. General Services Administration. <a target="_blank" rel="noopener noreferrer" href="https://code.gov">https://code.gov<img src="img/external-link-alt-hover_darkGray.svg" class="external-link-icon-in-paragraph" alt="External link icon"></a>.
                                     <a href="#"  click.trigger="returnToOriginalLocation('code-dot-gov')" class="btn btn-default btn-return-to-text">Return <em class="material-icons">arrow_upward</em></a></li>
-                                <li id="departmental-source-code-management" class="references"><strong>Departmental Source Code Management.</strong> U.S. Department of Transportation, August 11, 2017. <a target="_blank" rel="noopener noreferrer" href="https://www.transportation.gov/sites/dot.gov/files/docs/mission/284471/policy-135127-enterprise-architecture-implementation-instruction-source-code-managementfinal.pdf">https://www.transportation.gov/sites/dot.gov/files/docs/mission/284471/policy-135127-enterprise-architecture-implementation-instruction-source-code-managementfinal.pdf<img src="img/external-link-alt-hover_darkGray.svg" class="external-link-icon-in-paragraph" alt="External link icon"></a>.</li>
+                                <li id="departmental-source-code-management" class="references"><strong>Departmental Source Code Management.</strong> U.S. Department of Transportation, August 11, 2017. <a target="_blank" rel="noopener noreferrer" href="https://www.transportation.gov/sites/dot.gov/files/docs/mission/284471/policy-135127-enterprise-architecture-implementation-instruction-source-code-managementfinal.pdf">https://www.transportation.gov/sites/dot.gov/files/docs/mission/284471/policy-135127-enterprise-architecture-implementation-instruction-source-code-managementfinal.pdf<img src="img/external-link-alt-hover_darkGray.svg" class="external-link-icon-in-paragraph" alt="External link icon"></a>.
+                                    <a href="#"  click.trigger="returnToOriginalLocation('departmental-source-code-management')" class="btn btn-default btn-return-to-text">Return <em class="material-icons">arrow_upward</em></a></li>
                                 <li id="dot-departmental-cybersecurity-compendium" class="references"><strong>DOT Departmental Cybersecurity Compendium:</strong> The Departmental Cybersecurity Policy (DOT Order 1351.37) serves as the overarching, foundational directive for cybersecurity for the U.S. DOT and authorizes the U.S. DOT Chief Information Officer to develop and disseminate supplemental policies, guidance, procedures, standards and processes that implement mandatory cybersecurity requirements required of the U.S. DOT by other entities. These entities include, but are not limited to, Congress, OMB, NIST, and DHS. This collection of supplemental policies and guidance is collectively referred to as the Departmental Cybersecurity Compendium. The Departmental Cybersecurity Compendium:
                                     <ul>
                                         <li>Incorporates and cross references cybersecurity requirements and national standards such as NIST Special Publication (SP) 800-53, according to information assurance control families in a manner that clearly presents scope and applicability.</li>
@@ -164,7 +179,7 @@
                                 <li id="intangible-property" class="references"><strong>Intangible Property,</strong> 2 C.F.R. § 200.315 (2014).
                                     <a href="#"  click.trigger="returnToOriginalLocation('intangible-property')" class="btn btn-default btn-return-to-text">Return <em class="material-icons">arrow_upward</em></a></li>
                                 <li id="its-jpo" class="references"><strong>Intelligent Transportation Systems Joint Program Office.</strong> U.S. Department of Transportation. <a target="_blank" rel="noopener noreferrer" href="https://www.its.dot.gov">https://www.its.dot.gov<img src="img/external-link-alt-hover_darkGray.svg" class="external-link-icon-in-paragraph" alt="External link icon"></a>.</li>
-                                <li id="m-16-21" class="references"><strong>M-16-21: Federal Source Code Policy: Achieving Efficiency, Transparency, and Innovation through Reusable and Open Source Software.</strong> Office of Management & Budget, Executive Office of the President, August 8, 2016. <a target="_blank" rel="noopener noreferrer" href="https://sourcecode.cio.gov">https://sourcecode.cio.gov<img src="img/external-link-alt-hover_darkGray.svg" class="external-link-icon-in-paragraph" alt="External link icon"></a>.
+                                <li id="m-16-21" class="references"><strong>M-16-21: Federal Source Code Policy: Achieving Efficiency, Transparency, and Innovation through Reusable and Open Source Software.</strong> Office of Management & Budget, Executive Office of the President, August 8, 2016. <a target="_blank" rel="noopener noreferrer" href="https://www.whitehouse.gov/sites/whitehouse.gov/files/omb/memoranda/2016/m_16_21.pdf">https://www.whitehouse.gov/sites/whitehouse.gov/files/omb/memoranda/2016/m_16_21.pdf<img src="img/external-link-alt-hover_darkGray.svg" class="external-link-icon-in-paragraph" alt="External link icon"></a>.
                                     <a href="#"  click.trigger="returnToOriginalLocation('m-16-21')" class="btn btn-default btn-return-to-text">Return <em class="material-icons">arrow_upward</em></a></li>
                                 <li id="rights-in-data-general" class="references"><strong>Rights in Data – General,</strong> FAR § 52.227-14 (2014).
                                     <a href="#"  click.trigger="returnToOriginalLocation('rights-in-data-general')" class="btn btn-default btn-return-to-text">Return <em class="material-icons">arrow_upward</em></a></li>
@@ -184,7 +199,7 @@
                                     <a href="#"  click.trigger="returnToOriginalLocation('what-is-free-software')" class="btn btn-default btn-return-to-text">Return <em class="material-icons">arrow_upward</em></a></li>
                             </ul>
                         </p>
-                        <p id="source-code-guidelines-date">Last updated: Friday, July 24, 2020</p>
+                        <p id="source-code-guidelines-date">Last updated: August,  31, 2020</p>
                     </div> 
                 </div>
             </div>
