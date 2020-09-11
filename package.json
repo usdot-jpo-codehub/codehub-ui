@@ -1,7 +1,7 @@
 {
   "name": "codehub-ui",
   "description": "An Aurelia client application.",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/usdot-jpo-codehub/codehub-ui.git"
@@ -25,7 +25,7 @@
     "fetch": "^1.1.0",
     "gulp-sass": "^4.0.2",
     "humanize-duration": "^3.21.0",
-    "jquery": "^3.5.0",
+    "jquery": "^3.5.1",
     "jquery-tooltip": "^0.2.1",
     "karma-headless-chrome-launcher": "0.0.6",
     "lighthouse": "^4.3.1",
