@@ -110,10 +110,8 @@
     ],
     "coverageDirectory": "<rootDir>/test/coverage-jest",
     "coverageReporters": [
-      "json",
-      "lcov",
-      "text",
-      "html"
+      "lcovonly",
+      "text"
     ]
   }
 }
