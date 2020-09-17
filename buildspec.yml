@@ -9,6 +9,8 @@ phases:
       - . ./extras.sh
       # Unit Tests
       - npm install
+      - npm install -g gulp@4.0.0
+      - npm install -g aurelia-cli@1.0.0-beta.15
       - npm run bundle
       - au test --browsers ChromeHeadlessNoSandbox --watch=false --code-coverage
       # Sonar Scan
