@@ -33,7 +33,7 @@
     "showdown": "^1.9.1",
     "systemjs": "^0.21.5",
     "systemjs-plugin-text": "^0.0.11",
-    "uswds": "^2.2.1"
+    "uswds": "^2.8.1"
   },
   "peerDependencies": {},
   "devDependencies": {
@@ -54,7 +54,7 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "bootstrap-less": "^3.3.8",
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.26.12",
     "connect-history-api-fallback": "^1.5.0",
     "debounce": "^1.2.0",
     "gulp": "^4.0.0",
