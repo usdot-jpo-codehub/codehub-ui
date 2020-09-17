@@ -12,12 +12,14 @@ export default (cb) => {
   }
 
   process.env.BABEL_TARGET = 'node';
-
   jest.runCLI(options, [path.resolve(__dirname, '../../')]).then((result) => {
     if (result.numFailedTests || result.numFailedTestSuites) {
       cb(new PluginError('gulp-jest', { message: 'Tests Failed' }));
     } else {
       cb();
     }
+  }).catch((failure) => {
+    console.error(failure);
+    cb();
   });
 };
