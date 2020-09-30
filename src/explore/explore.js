@@ -1,7 +1,7 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
-import $ from 'jquery';
-import 'bootstrap-multiselect';
+// import $ from 'jquery';
+// import 'bootstrap-multiselect';
 import { DataContext } from 'services/datacontext';
 import { Filters } from 'components/filters';
 

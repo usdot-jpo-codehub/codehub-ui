@@ -1,11 +1,10 @@
 import { inject, bindable } from 'aurelia-framework';
 import { DataContext } from '../../services/datacontext';
-import environment from '../../environment';
 
-@inject(Element, DataContext, environment)
+@inject(Element, DataContext)
 export class Footer {
   @bindable active;
-  constructor(element, dataContext, env) {
+  constructor(element, dataContext) {
     this.element = element;
     this.valid = true;
     this.confirmed = false;
@@ -21,7 +20,7 @@ export class Footer {
     this.message_invalid_email = 'Invalid email format, please try again.';
     this.message_confirmation = 'Thanks for signing up to stay in touch with ITS CodeHub!';
     this.is_error = false;
-    this.version = this.prepareVersion(env.version);
+    // this.version = this.prepareVersion(env.version);
     this.showVersion = false;
   }
 

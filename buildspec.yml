@@ -7,22 +7,6 @@ phases:
     commands:
       - curl -fsSL https://raw.githubusercontent.com/usdot-jpo-codehub/aws-codebuild-extras/master/install >> extras.sh
       - . ./extras.sh
-      # Unit Tests
-      - npm install
-      - npm install -g gulp
-      - npm install -g aurelia-cli
-      - au test --browsers ChromeHeadlessNoSandbox --watch=false --code-coverage
-      # Sonar Scan
-      - export SONAR_SCANNER_VERSION=4.0.0.1744
-      - export SONAR_SCANNER_HOME=$HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux
-      - rm -rf $SONAR_SCANNER_HOME
-      - mkdir -p $SONAR_SCANNER_HOME
-      - curl -sSLo $HOME/.sonar/sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_SCANNER_VERSION-linux.zip
-      - unzip $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
-      - rm $HOME/.sonar/sonar-scanner.zip
-      - export PATH=$SONAR_SCANNER_HOME/bin:$PATH
-      - export SONAR_SCANNER_OPTS="-server"
-      - sonar-scanner -Dsonar.projectKey=usdot-jpo-codehub_codehub-ui -Dsonar.organization=usdot-jpo-codehub -Dsonar.sources=src -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN -Dsonar.branch.name=$CODEBUILD_GIT_BRANCH
   pre_build:
     commands:
       - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
@@ -31,7 +15,7 @@ phases:
       - IMAGE_URI="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME"
   build:
     commands:
-      - docker build -t $IMAGE_URI:$IMAGE_TAG .
+      - docker build --build-arg SONAR_TOKEN=$SONAR_TOKEN --build-arg CODEBUILD_GIT_BRANCH=$CODEBUILD_GIT_BRANCH -t $IMAGE_URI:$IMAGE_TAG .
   post_build:
     commands:
       - |

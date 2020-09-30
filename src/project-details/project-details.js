@@ -1,9 +1,9 @@
 import { inject, computedFrom } from 'aurelia-framework';
 import { Router, activationStrategy } from 'aurelia-router';
 import { DataContext } from 'services/datacontext';
-import { StageConfig } from '../../stageConf';
-import { NO_DESCRIPTION_MESSAGE } from '../constants/ch-constants';
-import { DialogFunctions } from '../resources/shared/dialog-functions';
+import { StageConfig } from 'stageConf';
+import { NO_DESCRIPTION_MESSAGE } from 'constants/ch-constants';
+import { DialogFunctions } from 'resources/shared/dialog-functions';
 
 @inject(DataContext, Router, StageConfig, DialogFunctions)
 export class ProjectDetails {

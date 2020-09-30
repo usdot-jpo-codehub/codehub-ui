@@ -1,6 +1,6 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
-import { DialogFunctions } from '../resources/shared/dialog-functions';
+import { DialogFunctions } from 'resources/shared/dialog-functions';
 
 
 @inject(Router, DialogFunctions)

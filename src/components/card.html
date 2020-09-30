@@ -1,7 +1,7 @@
 <template>
-  <require from="../resources/value-converters/num"></require>
-  <require from="../resources/value-converters/ago"></require>
-  <require from="../resources/custom-attributes/bootstrap-tooltip"></require>
+  <require from="resources/value-converters/num"></require>
+  <require from="resources/value-converters/ago"></require>
+  <require from="resources/custom-attributes/bootstrap-tooltip"></require>
 
   <div if.bind="repo" class="col-lg-4 col-md-12 col-sm-12">
     <div class="card card-default hover-card">
@@ -12,7 +12,7 @@
         <div tabindex="0" class="lang-logo" role="img" aria-label="Language icon ${repo.sourceData.language}">
           <span>
             <img alt="Language icon ${repo.sourceData.language}" if.bind="repo.sourceData.owner.type != 'foundation'" src.bind="language_image" onError="this.onerror=null;this.src='/img/language-icons/default.svg';">
-            <img if.bind="repo.sourceData.owner.type == 'foundation'" src="img/language-icons/foundation.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';" alt="Foundation">
+            <img if.bind="repo.sourceData.owner.type == 'foundation'" src="/img/language-icons/foundation.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';" alt="Foundation">
           </span>
         </div>
         <div class="card-title multiline">

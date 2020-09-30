@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5WMHFVF');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8">
+    <title>ITS CodeHub | Home</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <meta name="googlebot" content="noindex">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="google-site-verification" content="9DErMb-lXKAHFNWTwvxBv-ajtqoxJMbvaXPGOGEMvPk">
+    <base href="<%- htmlWebpackPlugin.options.metadata.baseUrl %>">
+    <link rel="icon" href="favicon.ico">
+    <link href="styles/fonts/octicons.css" rel="stylesheet">
+    <link href="styles/fonts/material-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="unsupported/unsupported-200210.css">
+    <!-- imported CSS are concatenated and added automatically -->
+    <%= htmlWebpackPlugin.tags.headTags %>
+  </head>
+  <body aurelia-app="main">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5WMHFVF"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="splash">
+      <div id="id-loading" class="loading">
+          <img src="img/loading.svg" alt="Loading...">
+          <span class="txt-loading text-uppercase">Loading</span>
+      </div>
+      <div id="id-not-support" class="unsupported-container">
+        <h1><img src="img/exclamation.svg" alt="Loading...">Unsupported Browser</h1>
+        <p>We have detected that you're using a web browser that isn't supported by ITS CodeHub.</p>
+        <p>To get a better experience, go to one of the following sites and get the latest version of your preferred browser:</p>
+        <div class="unsupported-container-browsers">
+          <div class="unsupported-container-browser-option">
+            <a href="https://www.google.com/intl/en/chrome/browser/" target="_blank"><img src="img/chrome.svg" alt=""></a>
+            Google Chrome
+          </div>
+          <div class="unsupported-container-browser-option">
+            <a href="https://www.mozilla.org/firefox/all/" target="_blank"><img src="img/firefox.svg" alt=""></a>
+            Mozilla Firefox
+          </div>
+          <div class="unsupported-container-browser-option">
+            <a href="https://www.microsoft.com/en-us/edge" target="_blank"><img src="img/edge.png" alt=""></a>
+            Microsoft Edge
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="unsupported/unsupported-200210.js"></script>
+    <script>
+      var isValidBrowser = validateBrowser();
+    </script>
+    <% for (index in htmlWebpackPlugin.files.js) { %>
+      <script>
+        if (isValidBrowser) {
+          var element = document.createElement("script");
+          element.src = "<%= htmlWebpackPlugin.files.js[index] %>";
+          document.body.appendChild(element);
+        }
+      </script>
+    <% } %>
+  </body>
+</html>
