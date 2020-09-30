@@ -2,7 +2,7 @@ import { inject } from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import { Router } from 'aurelia-router';
 import { DataContext } from 'services/datacontext';
-import { StageConfig } from '../../stageConf';
+import { StageConfig } from '../stageConf';
 import { FakeData } from '../fakeData';
 import { EA_MS_FEATURED_DATA, ES_MSG_CATEGORIES_DATA, ES_MSG_ENGAGEMENTPOPUP_DATA } from '../constants/ch-constants';
 

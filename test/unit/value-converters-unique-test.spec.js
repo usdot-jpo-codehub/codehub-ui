@@ -41,7 +41,6 @@ describe('Test - Value Converters - UniqueValueConverter', () => {
     }
     let unique = new UniqueValueConverter();
     let val = unique.toView(data, config);
-    console.log(val);
     expect(val).toEqual([1,2]);
     done();
   });

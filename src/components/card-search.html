@@ -10,7 +10,7 @@
           <div class="card-header">
             <div tabindex="0" class="lang-logo" role="img" aria-label="Language icon ${repo.sourceData.language}">
               <img alt="Language icon ${repo.sourceData.language}" if.bind="repo.sourceData.owner.type != 'foundation'" src.bind="language_image">
-              <img if.bind="repo.sourceData.owner.type == 'foundation'" src="img/language-icons/foundation.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';" alt="Foundation">
+              <img if.bind="repo.sourceData.owner.type == 'foundation'" src="/img/language-icons/foundation.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';" alt="Foundation">
             </div>
             <div class="card-title multiline">
               <a id="card-search-title-link-${repo.id}" href="#" route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Project name: ${repo.sourceData.name}" innerhtml.bind="repo.highlights['sourceData.name'] ? repo.highlights['sourceData.name'] : repo.sourceData.name"></a>

@@ -4,7 +4,7 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 import $ from 'jquery';
 // import 'typeahead';
 import { DataContext } from 'services/datacontext';
-import { StageConfig } from '../../stageConf';
+import { StageConfig } from '../stageConf';
 
 @inject(DataContext, Router, EventAggregator, StageConfig)
 export class SearchBar {

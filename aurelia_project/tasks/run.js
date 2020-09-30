@@ -1,48 +1,47 @@
-import gulp from 'gulp';
-import browserSync from 'browser-sync';
-import historyApiFallback from 'connect-history-api-fallback/lib';
-import {CLIOptions} from 'aurelia-cli';
-import project from '../aurelia.json';
-import build from './build';
-import watch from './watch';
+import { NPM } from 'aurelia-cli';
+import kill from 'tree-kill';
+import { platform } from '../aurelia.json';
 
-let serve = gulp.series(
-  build,
-  done => {
-    browserSync({
-      online: false,
-      open: CLIOptions.hasFlag('open'),
-      port: project.platform.port,
-      logLevel: 'silent',
-      server: {
-        baseDir: [project.platform.baseDir],
-        middleware: [historyApiFallback(), function(req, res, next) {
-          res.setHeader('Access-Control-Allow-Origin', '*');
-          next();
-        }]
+const npm =  new NPM();
+
+function run() {
+  console.log('`au run` is an alias of the `npm start`, you may use either of those; see README for more details.');
+  const args = process.argv.slice(3);
+  return npm.run('start', ['--', ... cleanArgs(args)]);
+}
+
+// Cleanup --env prod to --env.production
+// for backwards compatibility
+function cleanArgs(args) {
+  let host;
+  const cleaned = [];
+
+  for (let i = 0, ii = args.length; i < ii; i++) {
+    if (args[i] === '--env' && i < ii - 1) {
+      const env = args[++i].toLowerCase();
+      if (env.startsWith('prod')) {
+        cleaned.push('--env.production');
+      } else if (env.startsWith('test')) {
+        cleaned.push('--tests');
       }
-    }, function (err, bs) {
-      if (err) return done(err);
-      let urls = bs.options.get('urls').toJS();
-      log(`Application Available At: ${urls.local}`);
-      log(`BrowserSync Available At: ${urls.ui}`);
-      done();
-    });
+    } else if (args[i] === '--host' && i < ii -1) {
+      host = args[++i];
+    } else {
+      cleaned.push(args[i]);
+    }
   }
-);
 
-function log(message) {
-  console.log(message); //eslint-disable-line no-console
+  // Deal with --host before webpack-dev-server calls webpack config.
+  // Because of https://discourse.aurelia.io/t/changing-platform-host-in-aurelia-json-doesnt-change-the-host-ip/3043/10?u=huochunpeng
+  if (!host) host = platform.host;
+  if (host) cleaned.push('--host', host);
+  return cleaned;
 }
 
-function reload() {
-  log('Refreshing the browser');
-  browserSync.reload();
-}
+const shutdownDevServer = () => {
+  if (npm && npm.proc) {
+    kill(npm.proc.pid);
+  }
+};
 
-let run = gulp.series(
-  serve,
-  done => { watch(reload); done(); }
-);
-
-export default run;
+export { run as default, shutdownDevServer };

@@ -52,7 +52,7 @@
     }
 
     #box1 {
-        background-image: url("../../img/20_opacity.svg"), url("../../img/connect-people-background_lighter-gradient.svg");
+        background-image: url("/img/20_opacity.svg"), url("/img/connect-people-background_lighter-gradient.svg");
         background-position: -85px 200px, left top;
         background-repeat: no-repeat, no-repeat;
         background-size: 200%, cover;
@@ -73,7 +73,7 @@
     }
 
     #box2 {
-        background-image: url("../../img/20_opacity.svg"), url("../../img/explore_blue_background.svg");
+        background-image: url("/img/20_opacity.svg"), url("/img/explore_blue_background.svg");
         background-position: -576px -82px, left top;
         background-repeat: no-repeat, no-repeat;
         background-size: 362%, cover;
@@ -90,12 +90,12 @@
             }
         }
         @include at-media-max('tablet') {
-            background-image: url("../../img/20_opacity.svg"), url("../../img/connect-people-background_lighter-gradient.svg");
+            background-image: url("/img/20_opacity.svg"), url("/img/connect-people-background_lighter-gradient.svg");
         }
     }
     
     #box3 {
-        background-image: url("../../img/20_opacity.svg"), url("../../img/insight_background.svg");
+        background-image: url("/img/20_opacity.svg"), url("/img/insight_background.svg");
         background-position: 0px 0px, left top;
         background-position: -497px -58px, left top;
         background-repeat: no-repeat, no-repeat;
@@ -108,7 +108,7 @@
                 }
             }
         @include at-media-max('tablet'){
-            background-image: url("../../img/20_opacity.svg"), url("../../img/connect-people-background_lighter-gradient.svg");
+            background-image: url("/img/20_opacity.svg"), url("/img/connect-people-background_lighter-gradient.svg");
         }
         
     }

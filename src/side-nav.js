@@ -15,7 +15,6 @@ export class SideNav {
   }
 
   moveToTag(event,id) {
-    console.log("got to move to tag 1");
     event.preventDefault();
     let element = document.getElementById(`${id}`);
     if(element) {

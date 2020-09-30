@@ -1,22 +1,20 @@
 import { inject } from 'aurelia-framework';
 import { HttpClient, json } from 'aurelia-fetch-client';
 import { StageConfig } from '../stageConf';
-import environment from '../environment';
 
 const baseUrl = '/api/v1';
 
-@inject(HttpClient, StageConfig, environment)
+@inject(HttpClient, StageConfig)
 export class DataContext {
   constructor(httpClient, stageConfig, env) {
     this.http = httpClient;
     this.stageConfig = stageConfig;
-    this.env = env;
   }
 
   // TODO Wrap API calls in promises to catch errors
 
   getRepositories(owners) {
-    let url = `${this.env.webApiUrl}${baseUrl}/repositories` + (owners ? `?owner=${owners}` : '');
+    let url = `${baseUrl}/repositories` + (owners ? `?owner=${owners}` : '');
     return this.http.fetch(url, {
       method: 'GET',
     })
@@ -30,7 +28,7 @@ export class DataContext {
   }
 
   findPopular() {
-    return this.http.fetch(`${this.env.webApiUrl}${baseUrl}/repositories?limit=6&rank=popular`, {
+    return this.http.fetch(`${baseUrl}/repositories?limit=6&rank=popular`, {
       method: 'GET',
     })
       .then(response => response.json())
@@ -44,7 +42,7 @@ export class DataContext {
   }
 
   findFeatured() {
-    return this.http.fetch(`${this.env.webApiUrl}${baseUrl}/repositories?limit=5&rank=featured`, {
+    return this.http.fetch(`${baseUrl}/repositories?limit=5&rank=featured`, {
       method: 'GET'
     })
     .then( (response) => response.json())
@@ -58,7 +56,7 @@ export class DataContext {
   }
 
   getMetrics(organizations) {
-    let url = `${this.env.webApiUrl}${baseUrl}/metrics` + (organizations ? `/${organizations}` : '')
+    let url = `${baseUrl}/metrics` + (organizations ? `/${organizations}` : '')
     return this.http.fetch(url, {
       method: 'GET',
     })
@@ -72,7 +70,7 @@ export class DataContext {
   }
 
   getProjectsByOrganization(organization) {
-    return this.http.fetch(`${this.env.webApiUrl}${baseUrl}/getProjectsByOrganization`, {
+    return this.http.fetch(`${baseUrl}/getProjectsByOrganization`, {
       method: 'POST',
       body: json(organization),
     }).then(response => {
@@ -84,7 +82,7 @@ export class DataContext {
   }
 
   getLastProcessedDateTime() {
-    return this.http.fetch(`${this.env.webApiUrl}/api/codes/getLastProcessedDateTime`, {
+    return this.http.fetch(`/api/codes/getLastProcessedDateTime`, {
       method: 'GET',
     })
       .then(response => {
@@ -101,7 +99,7 @@ export class DataContext {
       limit: 1000,
       matchAll: false
     }
-    return this.http.fetch(`${this.env.webApiUrl}${baseUrl}/search`, {
+    return this.http.fetch(`${baseUrl}/search`, {
       method: 'POST',
       headers: {
         'Content-Type':'application/json',
@@ -118,7 +116,7 @@ export class DataContext {
   }
 
   findSuggestions(searchText) {
-    return this.http.fetch(`${this.env.webApiUrl}${baseUrl}/findSuggestions`, {
+    return this.http.fetch(`${baseUrl}/findSuggestions`, {
       method: 'POST',
       body: json(searchText),
     })
@@ -131,7 +129,7 @@ export class DataContext {
   }
 
   findById(id) {
-    const adjustedURL = `${this.env.webApiUrl}${baseUrl}/repositories/${id}`;
+    const adjustedURL = `${baseUrl}/repositories/${id}`;
     return this.http.fetch(adjustedURL)
       .then(response => response.json())
       .then(data => {
@@ -143,7 +141,7 @@ export class DataContext {
   }
 
   findByIds(ids) {
-    return this.http.fetch(`${this.env.webApiUrl}${baseUrl}/repositories/${ids}`)
+    return this.http.fetch(`${baseUrl}/repositories/${ids}`)
       .then(response => response.json())
       .then(data => {
         if (data.code == 200 && data.result.length>0) {
@@ -154,7 +152,7 @@ export class DataContext {
   }
 
   findSimilarProjects(id) {
-    const adjustedURL = `${this.env.webApiUrl}${baseUrl}/findSimilarProjects/${id}`;
+    const adjustedURL = `${baseUrl}/findSimilarProjects/${id}`;
     return this.http.fetch(adjustedURL, {
       method: 'GET',
     })
@@ -167,7 +165,7 @@ export class DataContext {
   }
 
   getHealthById(id) {
-    const adjustedURL = `${this.env.webApiUrl}${baseUrl}/findSonarHealthMetrics/${id}`;
+    const adjustedURL = `${baseUrl}/findSonarHealthMetrics/${id}`;
     return this.http.fetch(adjustedURL, {
       method: 'GET',
     })
@@ -180,7 +178,7 @@ export class DataContext {
   }
 
   getComponentDependencies(id) {
-    const adjustedURL = `${this.env.webApiUrl}${baseUrl}/findComponentDependencies/${id}`;
+    const adjustedURL = `${baseUrl}/findComponentDependencies/${id}`;
     return this.http.fetch(adjustedURL, {
       method: 'GET',
     })
@@ -193,7 +191,7 @@ export class DataContext {
   }
 
   postUsedProject(postObject, id) {
-    return this.http.fetch(`${this.env.webApiUrl}${baseUrl}/addForkedProjects/${id}`, {
+    return this.http.fetch(`${baseUrl}/addForkedProjects/${id}`, {
       method: 'POST',
       body: json(postObject),
     })
@@ -206,7 +204,7 @@ export class DataContext {
   }
 
   findHealthiest() {
-    return this.http.fetch(`${this.env.webApiUrl}${baseUrl}/repositories?limit=6&rank=healthiest&order=asc`, {
+    return this.http.fetch(`${baseUrl}/repositories?limit=6&rank=healthiest&order=asc`, {
       method: 'GET',
     })
       .then(response => response.json())
@@ -241,7 +239,7 @@ export class DataContext {
   }
 
   getCategories() {
-    let url = `${this.env.webApiUrl}${baseUrl}/configurations/categories`;
+    let url = `${baseUrl}/configurations/categories`;
     return this.http.fetch(url, {
       method: 'GET',
     })
@@ -255,7 +253,7 @@ export class DataContext {
   }
 
   getEngagementPopups() {
-    let url = `${this.env.webApiUrl}${baseUrl}/configurations/engagementpopups`;
+    let url = `${baseUrl}/configurations/engagementpopups`;
     return this.http.fetch(url, {
       method: 'GET',
     })
