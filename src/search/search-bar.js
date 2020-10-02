@@ -1,8 +1,6 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
-import $ from 'jquery';
-// import 'typeahead';
 import { DataContext } from 'services/datacontext';
 import { StageConfig } from '../stageConf';
 
@@ -32,7 +30,6 @@ export class SearchBar {
 
   executeSearch(searchText) {
     this.router.navigateToRoute('results', { searchText });
-    // $('#searchBox .typeahead').typeahead('close');
   }
 
   activate() {
@@ -40,6 +37,12 @@ export class SearchBar {
       this.landing = this.router.currentInstruction.fragment === '/';
     } else {
       this.landing = false;
+    }
+  }
+
+  detached() {
+    if (this.subscriber) {
+      this.subscriber.dispose();
     }
   }
 
