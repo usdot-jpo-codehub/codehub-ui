@@ -1,4 +1,5 @@
 <template>
+  <require from="components/ch-dropdown"></require>
   <require from="../resources/value-converters/sort"></require>
   <require from="../resources/value-converters/pick"></require>
   <require from="../resources/value-converters/filter"></require>
@@ -14,9 +15,15 @@
                 <span tabindex="0" id="results-result-text">${resultCount} results for <strong>${searchText}</strong></span>
             </div>
             <div class="col-lg-6 col-md-6">
-                <select id="filterCategories" multiple="multiple"></select>
-                <select id="filterOrg" multiple="multiple"></select>
-                <select id="filterLang" multiple="multiple"></select>
+                <div>
+                  <ch-dropdown id="filterCategories" collection.bind="categoriesFilter" title="Categories" onitemchanged.call="categoriesChanged($event)" />
+                </div>
+                <div>
+                  <ch-dropdown id="filterOrganizations" collection.bind="organizationsFilter" title="Organizations" onitemchanged.call="organizationsChanged($event)" />
+                </div>
+                <div>
+                  <ch-dropdown id="filterLanguages" collection.bind="languagesFilter" title="Languages" onitemchanged.call="languagesChanged($event)" />
+                </div>
 
             </div>
           </div>
@@ -24,16 +31,16 @@
             <div class="col-lg-10 col-md-10">
               <ul class='list-inline'>
                 <li if.bind="(searchDone && resultCount > 0)&&(filters && (filters.selectedLanguages.length>0 || filters.selectedOrganizations.length>0 || filters.selectedCategories.length>0 ))">
-                  <a id="result-clearall-filters" class="clear-btn" href="#" click.delegate="clearAllFilters()" aria-label="Clear all filters, the current number of results is: ${resultCount}">Clear All</a>
+                  <a id="result-clearall-filters" class="clear-btn" href="#" click.delegate="filters.clearAllFilters()" aria-label="Clear all filters, the current number of results is: ${resultCount}">Clear All</a>
                 </li>
-                <li if.bind="!filterCategoriesEmpty" repeat.for="pill of filters.selectedCategories">
-                  <span class="stage-chip">${getDataFromPipedString(pill,1)} <small>(${filters.countProjectsInCategory(projects, getDataFromPipedString(pill,0))})</small> <a href="#" click.trigger="removePillFilter('#filterCategories',pill)"><em class="material-icons">close</em></a></span>
+                <li if.bind="filters.selectedCategories.length>0" repeat.for="pill of filters.selectedCategories">
+                  <span class="stage-chip">${filters.getDataFromPipedString(pill,1)} <small>(${filters.countProjectsInCategory(projects, filters.getDataFromPipedString(pill,0))})</small> <a href="#" click.trigger="filters.removePill('#filterCategories',pill)"><em class="material-icons">close</em></a></span>
                 </li>
-                <li if.bind="!filterOrgEmpty" repeat.for="pill of filters.selectedOrganizations">
-                  <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'sourceData.owner.name', pill)})</small> <a click.delegate="removePillFilter('#filterOrg',pill)" href="#" aria-label="Remove organization filter: ${pill}"><i class="material-icons" aria-hidden="true">close</i></a></span>
+                <li if.bind="filters.selectedOrganizations.length>0" repeat.for="pill of filters.selectedOrganizations">
+                  <span class="stage-chip">${pill} <small>(${filters.countUniqueValues(projects, 'sourceData.owner.name', pill)})</small> <a click.delegate="filters.removePill('#filterOrganizations',pill)" href="#" aria-label="Remove organization filter: ${pill}"><i class="material-icons" aria-hidden="true">close</i></a></span>
                 </li>
-                <li if.bind="!filterLangEmpty" repeat.for="pill of filters.selectedLanguages">
-                  <span class="stage-chip">${pill} <small>(${countUniqueValues(projects, 'sourceData.language', pill)})</small> <a click.delegate="removePillFilter('#filterLang',pill)" href="#" aria-label="Remove language filter: ${pill}"><i class="material-icons" aria-hidden="true">close</i></a></span>
+                <li if.bind="filters.selectedLanguages.length>0" repeat.for="pill of filters.selectedLanguages">
+                  <span class="stage-chip">${pill} <small>(${filters.countUniqueValues(projects, 'sourceData.language', pill)})</small> <a click.delegate="filters.removePill('#filterLanguages',pill)" href="#" aria-label="Remove language filter: ${pill}"><i class="material-icons" aria-hidden="true">close</i></a></span>
                 </li>
               </ul>
             </div>
@@ -64,7 +71,7 @@
         </div>
         <span if.bind="searchDone && resultCount > 0" id="results-main-panel" tabindex="0" aria-label="Results panel, ${ariaLabel}"></span>
         <div if.bind="searchDone && resultCount > 0" class="row"
-            virtual-repeat.for="repo of projects |
+            repeat.for="repo of projects |
             sort: { propertyName: selectedSort, direction: sortDirection} |
             filterCategory:{ filterArray: filters.selectedCategories}:filters.selectedCategories.length |
             filter: { propertyName: 'sourceData.owner.name', filterArray: filters.selectedOrganizations}:filters.selectedOrganizations.length |

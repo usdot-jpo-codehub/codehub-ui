@@ -1,4 +1,5 @@
 import 'bootstrap';
+import 'bootstrap-select/dist/css/bootstrap-select.min.css';
 import * as environment from '../config/environment.json';
 import {PLATFORM} from 'aurelia-pal';
 
@@ -6,6 +7,7 @@ export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
     .plugin(PLATFORM.moduleName('aurelia-dialog'))
+    .plugin(PLATFORM.moduleName('aurelia-bootstrap-select'))
     .feature(PLATFORM.moduleName('resources/index'));
 
   aurelia.use.developmentLogging(environment.debug ? 'debug' : 'warn');
