@@ -3,10 +3,10 @@
   <require from="../resources/value-converters/ago"></require>
   <require from="../resources/custom-attributes/bootstrap-tooltip"></require>
 
-  <div if.bind="repo" class="col-lg-12 col-md-12 col-sm-12">
+  <div if.bind="repo" class="grid-col-12 col-lg-12 col-md-12 col-sm-12">
     <div class="card card-search hover-card">
-      <div class="row">
-        <div class="col-lg-7">
+      <div class="grid-row row">
+        <div class="grid-col-7 col-lg-7">
           <div class="card-header">
             <div tabindex="0" class="lang-logo" role="img" aria-label="Language icon ${repo.sourceData.language}">
               <img alt="Language icon ${repo.sourceData.language}" if.bind="repo.sourceData.owner.type != 'foundation'" src.bind="language_image">
@@ -42,7 +42,7 @@
           </div>
         </div>
 
-        <div class="col-lg-5 col-github-stats">
+        <div class="grid-col-5 col-lg-5 col-github-stats">
           <div class="card-stats lined-header">
             <span class="pull-right">
               <em class="text-muted">Source:
@@ -101,6 +101,7 @@
       </div>
     </div>
 
+    <!-- OUTDATED. TODO: Replace with newer code when merging -->
     <div class="row card-links">
       <ul class="list-inline pull-left">
         <li><a id="card-search-project-open-readme-${repo.id}" href="#" click.trigger="dialogFunctions.openReadmeModal(repo,$event.target)"><i class="material-icons" aria-hidden="true">library_books</i> Show README</a></li>

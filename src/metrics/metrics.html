@@ -13,10 +13,10 @@
           <p id="id-metrics-description" class="p_full-width">
             Below is the ITS CodeHub metrics dashboard. The metrics dashboard provides statistics on GitHub organizations and their corresponding repositories. Users can review known bugs and vulnerabilities, counts and estimated technical debt, as well as detailed source code health scores.
           </p>
-          <div class="row ${loading ? 'hidden' : ''}">
-            <div class="col-lg-12 cards-wrapper metrics-wrapper">
-              <div class="row">
-                <div class="div col-lg-12">
+          <div class="grid-row row ${loading ? 'hidden' : ''}">
+            <div class="grid-col-12 col-lg-12 cards-wrapper metrics-wrapper">
+              <div class="grid-row row">
+                <div class="div grid-col-12 col-lg-12">
                   <div class="card-metrics-organization">
                     <h2 tabindex="0" class="text-center">${organizationTitle}:</h2>
                     <div class="card-metrics-organization-controls">
@@ -29,7 +29,7 @@
                   </div>
                 </div>
               </div>
-              <div class="row">
+              <div class="grid-row row">
                 <div class="div col-lg-4">
                   <div class="card card-metrics">
                     <h2 tabindex="0" class="text-center">Projects</h2>
@@ -49,7 +49,7 @@
                   </div>
                 </div>
               </div>
-              <div class="row">
+              <div class="grid-row row">
                 <div class="col-lg-6">
                   <div class="card card-metrics">
                     <div class="lined-header">
@@ -68,8 +68,8 @@
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-lg-12">
+              <div class="grid-row row">
+                <div class="grid-col-12 col-lg-12">
                   <div class="card card-metrics">
                     <div class="lined-header">
                       <h2 tabindex="0" class=""><span>Most Used Languages</span></h2>
@@ -78,8 +78,8 @@
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-lg-12">
+              <div class="grid-row row">
+                <div class="grid-col-12col-lg-12">
                   <div class="card card-metrics">
                     <div class="lined-header">
                       <span class="pull-right hidden"><em class="text-muted">Source: <a href="#" id="insight-overall-health" click.trigger="dialogFunctions.openLeavingSiteConfirmation('SonarQube™', sonarqube_projects,$event.target)" target="_blank">SonarQube™</a></em></span>

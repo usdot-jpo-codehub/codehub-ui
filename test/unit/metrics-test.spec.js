@@ -1,6 +1,6 @@
 import { StageComponent } from 'aurelia-testing';
 import { bootstrap } from 'aurelia-bootstrapper';
-import { Router } from 'aurelia-router'
+import { Router } from '../../src/templates-and-guides/aurelia-router'
 import { DialogService } from 'aurelia-dialog';
 import { DataContext } from '../../src/services/datacontext';
 import { Metrics } from '../../src/metrics/metrics';

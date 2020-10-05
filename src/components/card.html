@@ -41,29 +41,29 @@
         <h4 tabindex="0" class=""  aria-label="Project Stats">Project Stats</h4>
       </div>
 
-      <div if.bind="showMetrics" class="row github-stats">
-        <div class="col-md-3 col-sm-3">
+      <div if.bind="showMetrics" class="grid-row row github-stats">
+        <div class="grid-col-3 col-md-3 col-sm-3">
           <span class="stat" tabindex="0" aria-label="${repo.sourceData.stars} stars">
             <span class="octicon octicon-star" aria-hidden="true"></span>
             <span id="card-popular-project-stars-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.sourceData.stars | num}</span>
             <span class="stat-label" aria-hidden="true">stars</span>
           </span>
         </div>
-        <div class="col-md-3 col-sm-3">
+        <div class="grid-col-3 col-md-3 col-sm-3">
           <span class="stat" tabindex="0" aria-label="${repo.sourceData.watchers | num} watchers">
             <span class="octicon octicon-eye" aria-hidden="true"></span>
             <span id="card-popular-project-watchers-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.sourceData.watchers | num}</span>
             <span class="stat-label" aria-hidden="true">watchers</span>
           </span>
         </div>
-        <div class="col-md-3 col-sm-3">
+        <div class="grid-col-3 col-md-3 col-sm-3">
           <span class="stat" tabindex="0" aria-label="${releases.length | num} releases">
             <span class="octicon octicon-tag" aria-hidden="true"></span>
             <span id="card-popular-project-releases-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${releases.length | num}</span>
             <span class="stat-label" aria-hidden="true">releases</span>
           </span>
         </div>
-        <div class="col-md-3 col-sm-3">
+        <div class="grid-col-3 col-md-3 col-sm-3">
           <span class="stat" tabindex="0" aria-label="${repo.sourceData.forks.length | num} forks">
             <span class="octicon octicon-repo-forked" aria-hidden="true"></span>
             <span id="card-popular-project-forks-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.sourceData.forks.length | num}</span>
@@ -72,29 +72,29 @@
         </div>
       </div>
 
-      <div if.bind="showMetrics" class="row github-stats">
-        <div class="col-md-3 col-sm-3">
+      <div if.bind="showMetrics" class="grid-row row github-stats">
+        <div class="grid-col-3 col-md-3 col-sm-3">
           <span class="stat" tabindex="0" aria-label="${repo.sourceData.contributors.length} contributors">
             <span class="octicon octicon-organization" aria-hidden="true"></span>
             <span id="card-popular-project-contributors-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.sourceData.contributors.length | num}</span>
             <span class="stat-label" aria-hidden="true">contributors</span>
           </span>
         </div>
-        <div class="col-md-3 col-sm-3">
+        <div class="grid-col-3 col-md-3 col-sm-3">
           <span class="stat" tabindex="0" aria-label="${repo.sourceData.commits} commits">
             <span class="octicon octicon-git-commit" aria-hidden="true"></span>
             <span id="card-popular-project-commits-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.sourceData.commits | num:1}</span>
             <span class="stat-label" aria-hidden="true">commits</span>
           </span>
         </div>
-        <div class="col-md-3 col-sm-3">
+        <div class="grid-col-3 col-md-3 col-sm-3">
           <span class="stat" tabindex="0" aria-label="${downloads} downloads">
             <span class="octicon octicon-cloud-download" aria-hidden="true"></span>
             <span id="card-popular-project-downloads-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${downloads | num}</span>
             <span class="stat-label" aria-hidden="true">downloads</span>
           </span>
         </div>
-        <div class="col-md-3 col-sm-3">
+        <div class="grid-col-3 col-md-3 col-sm-3">
           <span class="${infected_files>0?'stat-vscan':'stat'}" tabindex="0" aria-label="${infected_files} infected files">
             <span class="octicon ${infected_files>0?'octicon-bug':'octicon-check'}" aria-hidden="true"></span>
             <span id="card-popular-project-infected-files-${repo.id}" class="num ${(infected_files>0)?'':' text-muted text-emphasized'}" aria-hidden="true">${infected_files | num}</span>
@@ -103,7 +103,7 @@
         </div>
       </div>
 
-      <div class="row card-links clearfix">
+      <div class="grid-row row card-links clearfix">
         <ul class="list-inline pull-left">
           <li><a id="card-popular-project-open-readme-${repo.id}" href="#" click.trigger="dialogFunctions.openReadmeModal(repo,$event.target)" aria-label="Show readme file"><em class="material-icons">library_books</em> Show README</a></li>
         </ul>

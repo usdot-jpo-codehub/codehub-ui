@@ -1,16 +1,16 @@
 <template>
   <div class="jumbotron hero-jumbotron">
     <div class="container-fluid" id="homepage-banner">
-      <div class="row image-and-text">
-        <div class="col-lg-3 magnifying-glass-image-column"><img src="img/magnifying-glass-banner.svg" alt="Magnifying glass" /></div>
-        <div class="col-lg-9 text-column">
+      <div class="grid-row row image-and-text">
+        <div class="tablet-lg:grid-col-3 col-lg-3 magnifying-glass-image-column"><img src="img/magnifying-glass-banner.svg" alt="Magnifying glass" /></div>
+        <div class="tablet-lg:grid-col-9 col-lg-9 text-column">
           <h1 tabindex="0" id="search-bar_main-title"  aria-label="Explore ITS CodeHub ${stageConfig.IS_BETA ? ', beta version' : ''}">Explore ITS CodeHub<span if.bind="stageConfig.IS_BETA" class="beta-message" aria-hidden="true">&nbsp;${stageConfig.IS_BETA ? "BETA" : ""}</span></h1>
           <p id="search-bar_sub-text"innerhtml.bind="stageConfig.HOME_TEXT_ABOVE_SEARCH"></p>
         </div>
         
       </div>
-      <div class="row search-bar">
-        <div class="col-lg-12 search-bar-column">
+      <div class="grid-row row search-bar">
+        <div class="grid-col-12 col-lg-12 search-bar-column">
           <form submit.delegate="executeSearch(searchText)" id="middleOfHeader_bigOne">
             <div class="form-group">
               <div class="search-field">

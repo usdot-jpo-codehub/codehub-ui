@@ -24,3 +24,17 @@
 #show-readme-icon{
     margin-right: 7px;
 }
+
+.hero-banner .details .proj-title{
+  position: relative;
+}
+.hero-banner .details .proj-title .lang-logo {
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  overflow: hidden;
+  text-align: center;
+  border: 1px solid #ffffff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
