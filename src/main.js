@@ -1,5 +1,4 @@
 import 'bootstrap';
-import 'bootstrap-select/dist/css/bootstrap-select.min.css';
 import * as environment from '../config/environment.json';
 import {PLATFORM} from 'aurelia-pal';
 
