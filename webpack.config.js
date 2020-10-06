@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 const project = require('./aurelia_project/aurelia.json');
 const { AureliaPlugin, ModuleDependenciesPlugin } = require('aurelia-webpack-plugin');
-const { ProvidePlugin } = require('webpack');
+const { ProvidePlugin, DefinePlugin } = require('webpack');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
@@ -13,7 +13,17 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ensureArray = (config) => config && (Array.isArray(config) ? config : [config]) || [];
 const when = (condition, config, negativeConfig) =>
   condition ? ensureArray(config) : ensureArray(negativeConfig);
-
+const resolveVersion = (ver) => {
+  let dt = new Date();
+  let m = (dt.getUTCMonth() + 1).toString();
+  let d = dt.getUTCDate().toString();
+  let h = dt.getUTCHours().toString();
+  let mi = dt.getUTCMinutes().toString();
+  let b = dt.getFullYear().toString()+(m.length<2 ? '0'+m : ''+m) + (d.length<2 ? '0'+d : ''+d) + (h.length<2?'0'+h:''+h) + (mi.length<2?'0'+mi:''+mi);
+  let v = ver.split('.');
+  v[2] = b;
+  return v.join('.')+'"';
+}
 // primary config:
 const outDir = path.resolve(__dirname, project.platform.output);
 const srcDir = path.resolve(__dirname, 'src');
@@ -275,6 +285,9 @@ module.exports = ({ production } = {}, {extractCss, analyze, tests, hmr, port, h
     ]
   },
   plugins: [
+    new DefinePlugin({
+      APP_VERSION: resolveVersion(JSON.stringify(require('./package.json').version))
+    }),
     new CopyWebpackPlugin({
       patterns: [
         { from: 'node_modules/uswds/dist/img', to: 'img'},
