@@ -5,6 +5,7 @@ import { DialogService } from 'aurelia-dialog';
 import { HttpClient } from "aurelia-fetch-client";
 import CHConstants from '../../src/constants/ch-constants';
 import MockRepositoriesData from '../mockdata/mock-repositories-data.json';
+import { CarouselCard } from '../../src/components/carousel-card';
 
 describe('Test - Carousel-Card: ', () => {
 
@@ -47,6 +48,95 @@ describe('Test - Carousel-Card: ', () => {
       expect(element.innerHTML).toEqual('Repository Spotlight');
       done();
     }).catch( e => { console.log(e.toString()) });
+  }, testTimeout);
+
+  test('Test centerTile goes to end', (done) => {
+    let eventAggregator = {};
+    let carouselCard = new CarouselCard(eventAggregator);
+    carouselCard.repositories = MockRepositoriesData;
+    carouselCard.caption = 'Featured';
+
+    carouselCard.centerTile(0);
+    expect(carouselCard.currentIndex).toEqual(MockRepositoriesData.length-1);
+    done();
+
+  }, testTimeout);
+
+  test('Test centerTile current index zero', (done) => {
+    let eventAggregator = {};
+    let carouselCard = new CarouselCard(eventAggregator);
+    carouselCard.repositories = MockRepositoriesData;
+    carouselCard.caption = 'Featured';
+
+    carouselCard.centerTile(1);
+    expect(carouselCard.currentIndex).toEqual(0);
+    done();
+
+  }, testTimeout);
+
+  test('Test rotateLeft', (done) => {
+    let eventAggregator = {};
+    let carouselCard = new CarouselCard(eventAggregator);
+    carouselCard.repositories = MockRepositoriesData;
+    carouselCard.caption = 'Featured';
+    carouselCard.currentIndex = 1;
+
+    carouselCard.rotateLeft();
+    expect(carouselCard.currentIndex).toEqual(0);
+    done();
+
+  }, testTimeout);
+
+  test('Test rotateLeft current index zero', (done) => {
+    let eventAggregator = {};
+    let carouselCard = new CarouselCard(eventAggregator);
+    carouselCard.repositories = MockRepositoriesData;
+    carouselCard.caption = 'Featured';
+    carouselCard.currentIndex = 0;
+
+    carouselCard.rotateLeft();
+    expect(carouselCard.currentIndex).toEqual(MockRepositoriesData.length-1);
+    done();
+
+  }, testTimeout);
+
+  test('Test rotateRight', (done) => {
+    let eventAggregator = {};
+    let carouselCard = new CarouselCard(eventAggregator);
+    carouselCard.repositories = MockRepositoriesData;
+    carouselCard.caption = 'Featured';
+    carouselCard.currentIndex = 0;
+
+    carouselCard.rotateRight();
+    expect(carouselCard.currentIndex).toEqual(1);
+    done();
+
+  }, testTimeout);
+
+  test('Test rotateRight at the end', (done) => {
+    let eventAggregator = {};
+    let carouselCard = new CarouselCard(eventAggregator);
+    carouselCard.repositories = MockRepositoriesData;
+    carouselCard.caption = 'Featured';
+    carouselCard.currentIndex = MockRepositoriesData.length-1;
+
+    carouselCard.rotateRight();
+    expect(carouselCard.currentIndex).toEqual(0);
+    done();
+
+  }, testTimeout);
+
+  test('Test currentRepositories', (done) => {
+    let eventAggregator = {};
+    let carouselCard = new CarouselCard(eventAggregator);
+    carouselCard.repositories = MockRepositoriesData;
+    carouselCard.caption = 'Featured';
+    carouselCard.currentIndex = MockRepositoriesData.length;
+
+    let repos = carouselCard.currentRepositories;
+    expect(repos[0].id).toEqual(MockRepositoriesData[0].id);
+    done();
+
   }, testTimeout);
 
 });
