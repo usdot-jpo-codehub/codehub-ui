@@ -7,6 +7,7 @@ export function configure(aurelia) {
     .standardConfiguration()
     .plugin(PLATFORM.moduleName('aurelia-dialog'))
     .plugin(PLATFORM.moduleName('aurelia-bootstrap-select'))
+    .plugin(PLATFORM.moduleName('aurelia-ui-virtualization'))
     .feature(PLATFORM.moduleName('resources/index'));
 
   aurelia.use.developmentLogging(environment.debug ? 'debug' : 'warn');
