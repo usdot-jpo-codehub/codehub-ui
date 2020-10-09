@@ -1,5 +1,182 @@
 .hero-banner{
+    background: linear-gradient(180deg, #004a71 54%, #0a1217 100%);
+    position: relative;
+
+    .details{
+        padding-bottom: 40px;
+        .container-fluid h1 {
+            padding-left: 70px;
+        }
+    }
+    
+    .secondary{
+        padding: 20px;
+    padding-top: 45px;
+        .hero-jumbotron{
+            text-align: left;
+        }
+    }
+
+    .hero-jumbotron .container-fluid h1,
+    .hero-jumbotron .container h1 {
+        margin-top: 5px;
+        font-size: 3em;
+        font-weight: 700;
+    }
+    .secondary .container-fluid h1, 
+    .secondary .container h1, 
+    .secondary .container p {
+        text-align: left;
+        color: #ffffff;
+    }
+    .secondary .container-fluid h1, 
+    .secondary .container h1 {
+        margin-bottom: 0;
+    }
+
+    
+
+    .jumbotron {
+        
+        h1,
+        .h1 {
+          color: #ffffff;
+        }
+        
+        // > hr {
+        //   border-top-color: darken(@jumbotron-bg, 10%);
+        // }
+      
+        // .container &,
+        // .container-fluid & {
+        //   border-radius: @border-radius-large; // Only round corners at higher resolutions if contained in a container
+        // }
+      
+        // .container {
+        //   max-width: 100%;
+        // }
+      
+        @media screen and (min-width: 768px) {
+          padding: 48px 0;
+      
+        //   .container &,
+        //   .container-fluid & {
+        //     padding-left:  (@jumbotron-padding * 2);
+        //     padding-right: (@jumbotron-padding * 2);
+        //   }
+      
+          h1,
+          .h1 {
+            font-size: 3em;
+          }
+        }
+      }
+
     .jumbotron.hero-jumbotron{
+        .hero-jumbotron {
+            background-color: transparent;
+            margin-bottom: 0px;
+            //padding-top: 40px;
+            text-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    
+            .input-lg {
+                height: 60px;
+                font-weight: 300;
+                font-size: 1.5em;
+                border: none;
+                background-color: #ffffff !important;
+                &:focus {
+                    font-weight: 400;
+              }
+            }
+    
+            .input-group-btn {
+                z-index: 1;
+            }
+    
+            //TODO find other references in less to ".input-group" that has 
+            /*
+                .input-group {
+                    position: relative;
+                    display: table;
+                    border-collapse: separate;
+            */
+            .input-group {
+                position: relative;
+    
+                // .tt-menu {
+                //     width: 100% !important;
+                // }
+    
+                &:after {
+                    position: absolute;
+                    content: "";
+                    bottom: 30%;
+                    right: auto;
+                    left: 0;
+                    top:50%;
+                    width: 100%;
+                    background: none;
+                    box-shadow: 0 35px 50px rgba(0, 0, 0, 0.4);
+                    //box-shadow: 0 35px 50px fade(@black, 40%);
+                    transform: scale(0.95);
+                }
+            }
+    
+            .stage-search-btn {
+                height: 60px;
+                border: none;
+                padding: 10px;
+    
+                &:last-child {
+                    border-radius: 0 6px 6px 0;
+                }
+    
+                //Probab
+                // .material-icons {
+                //     font-size: 40px;
+                //     color: darken(@stage-red, 20%);
+                // }
+            }
+    
+            .container-fluid,
+            .container {
+                h1, p {
+                    color: #ffffff;
+                }
+    
+                h1 {
+                    margin-top: 5px;
+                    font-size: 3em;
+                    font-weight: 700;
+                }
+    
+                p {
+                    font-size: 1.4em;
+                    font-weight: 300;
+                }
+    
+                //not used?
+                // .search-bar-description {
+                //     @media (min-width: 300px) {
+                //         font-size: 8px;
+                //     }
+                //     @media (min-width: 600px) {
+                //         font-size: 1.2vw;
+                //     }
+                //     @media (min-width: 1200px) {
+                //         font-size: 15px;
+                //     }
+                //     font-weight: 150;
+                //     text-align: center;
+                //     margin-left: 50px;
+                //     margin-right: 50px;
+                // }
+            }
+        }
+
+
+
         #homepage-banner{
             margin-top: 30px;
 
