@@ -15,6 +15,7 @@
     "aurelia-fetch-client": "^1.8.2",
     "aurelia-ui-virtualization": "^1.0.0-rc2",
     "bootstrap": "^4.5.2",
+    "detect-browser": "^5.2.0",
     "echarts": "^4.9.0",
     "humanize-duration": "^3.23.1",
     "jquery": "^3.5.1",
