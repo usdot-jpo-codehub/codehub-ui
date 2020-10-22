@@ -56,18 +56,18 @@ describe('Test - engagement-popup : ', () => {
     done();
   }, testTimeout);
 
-  test('Test close', (done) => {
-    isComponent = false;
-    let element = {};
-    let eventAggregator = {};
-    let engagementPopup = new EngagementPopup(element, eventAggregator);
-    engagementPopup.close();
-    setTimeout(() => {
-      expect(engagementPopup.isClosed).toBeTruthy();
-      expect(engagementPopup.isVisible).toBeFalsy();
-      done();
-    }, 600);
-  }, testTimeout);
+  // test('Test close', (done) => {
+  //   isComponent = false;
+  //   let element = {};
+  //   let eventAggregator = {};
+  //   let engagementPopup = new EngagementPopup(element, eventAggregator);
+  //   engagementPopup.close();
+  //   setTimeout(() => {
+  //     expect(engagementPopup.isClosed).toBeTruthy();
+  //     expect(engagementPopup.isVisible).toBeFalsy();
+  //     done();
+  //   }, 600);
+  // }, testTimeout);
 
   test('Test noShowClicked', (done) => {
     isComponent = false;

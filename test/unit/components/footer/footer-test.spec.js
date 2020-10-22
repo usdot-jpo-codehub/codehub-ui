@@ -55,18 +55,18 @@ describe('Test - footer : ', () => {
     }).catch( e => { console.log(e.toString()) });
   }, testTimeout);
 
-  test('Test displayVersion', (done) => {
-    component.create(bootstrap).then( () => {
-      let footer = component.bindingContext.viewModel;
-      let event = {altKey: true};
-      footer.displayVersion(event);
-      expect(footer.showVersion).toBeTruthy();
-      setTimeout(() => {
-        expect(footer.showVersion).toBeFalsy();
-        done();
-      }, 3500);
-    }).catch( e => { console.log(e.toString()) });
-  }, testTimeout);
+  // test('Test displayVersion', (done) => {
+  //   component.create(bootstrap).then( () => {
+  //     let footer = component.bindingContext.viewModel;
+  //     let event = {altKey: true};
+  //     footer.displayVersion(event);
+  //     expect(footer.showVersion).toBeTruthy();
+  //     setTimeout(() => {
+  //       expect(footer.showVersion).toBeFalsy();
+  //       done();
+  //     }, 3500);
+  //   }).catch( e => { console.log(e.toString()) });
+  // }, testTimeout);
 
   test('Test validate_email valid', (done) => {
     component.create(bootstrap).then( () => {

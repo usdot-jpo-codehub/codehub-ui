@@ -104,21 +104,21 @@ describe('Test - leaving-modal : ', () => {
     }).catch( e => { console.log(e.toString()) });
   }, testTimeout);
 
-  test('Test openLeavingSiteConfirmation', (done) => {
-    component.create(bootstrap).then( () => {
-      let obj = component.bindingContext.viewModel;
-      obj.activate(MockRepositoriesData[0], {});
-      let target = {
-        getAttribute: function(id){ return null; }
-      }
-      obj.dialogService.response = {};
-      obj.openLeavingSiteConfirmation('name', 'url',target);
-      setTimeout(() => {
-        expect(obj.visible).toBeTruthy();
-        done();
-      }, 300);
-    }).catch( e => { console.log(e.toString()) });
-  }, testTimeout);
+  // test('Test openLeavingSiteConfirmation', (done) => {
+  //   component.create(bootstrap).then( () => {
+  //     let obj = component.bindingContext.viewModel;
+  //     obj.activate(MockRepositoriesData[0], {});
+  //     let target = {
+  //       getAttribute: function(id){ return null; }
+  //     }
+  //     obj.dialogService.response = {};
+  //     obj.openLeavingSiteConfirmation('name', 'url',target);
+  //     setTimeout(() => {
+  //       expect(obj.visible).toBeTruthy();
+  //       done();
+  //     }, 300);
+  //   }).catch( e => { console.log(e.toString()) });
+  // }, testTimeout);
 
   test('Test prependUrlForImages', (done) => {
     component.create(bootstrap).then( () => {

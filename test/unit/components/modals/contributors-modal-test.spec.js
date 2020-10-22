@@ -81,20 +81,20 @@ describe('Test - contributors-modal : ', () => {
     }).catch( e => { console.log(e.toString()) });
   }, testTimeout);
 
-  test('Test openLeavingSiteConfirmation', (done) => {
-    component.create(bootstrap).then( () => {
-      let obj = component.bindingContext.viewModel;
-      let target = {
-        getAttribute: (id) => {return id}
-      }
-      obj.dialogService.response = {};
-      obj.openLeavingSiteConfirmation('name', 'url', target);
-      setTimeout(() => {
-        expect(obj.visible).toBeTruthy();
-        done();
-      }, 300);
-    }).catch( e => { console.log(e.toString()) });
-  }, testTimeout);
+  // test('Test openLeavingSiteConfirmation', (done) => {
+  //   component.create(bootstrap).then( () => {
+  //     let obj = component.bindingContext.viewModel;
+  //     let target = {
+  //       getAttribute: (id) => {return id}
+  //     }
+  //     obj.dialogService.response = {};
+  //     obj.openLeavingSiteConfirmation('name', 'url', target);
+  //     setTimeout(() => {
+  //       expect(obj.visible).toBeTruthy();
+  //       done();
+  //     }, 300);
+  //   }).catch( e => { console.log(e.toString()) });
+  // }, testTimeout);
 
 
 });
