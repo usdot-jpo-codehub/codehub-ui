@@ -10,6 +10,8 @@ class RouterStub {
   }
 }
 
+jest.useFakeTimers();
+
 describe('the App module', () => {
   let sut;
   let mockedRouter;
