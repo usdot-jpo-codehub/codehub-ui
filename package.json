@@ -1,7 +1,7 @@
 {
   "name": "codehub-ui",
   "description": "ITS CodeHub",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/usdot-jpo-codehub/codehub-ui.git"
