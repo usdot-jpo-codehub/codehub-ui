@@ -56,6 +56,8 @@ describe('Test - engagement-popup : ', () => {
     done();
   }, testTimeout);
 
+
+  //// Requires investigation since the test is running ok locally by not in the CI/CD pipeline
   // test('Test close', (done) => {
   //   isComponent = false;
   //   let element = {};

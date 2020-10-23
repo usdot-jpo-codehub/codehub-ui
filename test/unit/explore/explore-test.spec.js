@@ -48,7 +48,6 @@ describe('Test - explore : ', () => {
 
       comp.bootstrap( aurelia => {
         aurelia.use.standardConfiguration()
-        // aurelia.use.plugin(PLATFORM.moduleName('aurelia-ui-virtualization'));
         aurelia.container.registerInstance(Router, mockRouter);
         aurelia.container.registerInstance(DataContext, mockDataContext);
         aurelia.container.registerInstance(Filters, filters);

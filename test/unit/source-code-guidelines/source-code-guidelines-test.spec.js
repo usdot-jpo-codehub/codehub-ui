@@ -63,6 +63,7 @@ describe('Test - source-code-guidelines : ', () => {
     }).catch( e => { console.log(e.toString()) });
   }, testTimeout);
 
+  //// Requires investigation since the test is running ok locally by not in the CI/CD pipeline
   // test('Test moveToTag', (done) => {
   //   component.create(bootstrap).then( () => {
   //     let obj = component.bindingContext.viewModel;
@@ -94,6 +95,7 @@ describe('Test - source-code-guidelines : ', () => {
     }).catch( e => { console.log(e.toString()) });
   }, testTimeout);
 
+  //// Requires investigation since the test is running ok locally by not in the CI/CD pipeline
   // test('Test returnToOriginalLocation', (done) => {
   //   component.create(bootstrap).then( () => {
   //     let obj = component.bindingContext.viewModel;

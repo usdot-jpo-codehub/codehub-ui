@@ -55,6 +55,7 @@ describe('Test - footer : ', () => {
     }).catch( e => { console.log(e.toString()) });
   }, testTimeout);
 
+  //// Requires investigation since the test is running ok locally by not in the CI/CD pipeline
   // test('Test displayVersion', (done) => {
   //   component.create(bootstrap).then( () => {
   //     let footer = component.bindingContext.viewModel;
