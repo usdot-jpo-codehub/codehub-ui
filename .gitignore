@@ -60,3 +60,10 @@ uswds/*
 # Auto-Generated files
 ./styles/styles.css
 ./styles/uswds_css/main.css
+
+# Sonar local
+.scannerwork/
+
+# Test coverage
+test/coverage-jest/
+test/temp/
