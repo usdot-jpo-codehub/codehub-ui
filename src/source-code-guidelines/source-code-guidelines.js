@@ -12,9 +12,19 @@ export class Repopublishing {
     this.id='';
     this.pageLocationId=null;
     this.returnButtonClassName="btn-return-to-text";
+    this.params=null;
   }
-  activate(){
+  activate(params){
+    this.params=params;
+  }
+  attached(){
     document.body.scrollTop = document.documentElement.scrollTop = 0;
+    if(this.params){
+      let element = document.getElementById(this.params.pathId);
+      if(element){
+        this.scrollPageWithOffset(element);
+      }
+    }
   }
   moveToTag(event, endLocationId, startLocationId) {
     this.pageLocationId=startLocationId;
