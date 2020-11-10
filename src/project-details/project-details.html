@@ -153,8 +153,10 @@
                       </div>
                     </div>
                   </div>
-                  <div if.bind="noSonarData" class="empty-state text-center">
-                    <i class="material-icons large-icon" aria-hidden="true">block</i>
+                  <div if.bind="noSonarData" class="empty-state">
+                    <div class="text-center">
+                      <i class="material-icons large-icon" aria-hidden="true">block</i>
+                    </div>
                     <em tabindex="0" class="text-muted" aria-label="${noSonarDataMessage}" innerhtml="${noSonarDataMessage}"></em>
                   </div>
                 </div>
