@@ -189,7 +189,7 @@ describe('Metrics : ', () => {
     component.create(bootstrap).then( () => {
       component.viewModel.activate();
       setTimeout(() => {
-        let forkAmount = mockDataMetricsGetAll.map( x => x.sourceData.forks.length).reverse();
+        let forkAmount = mockDataMetricsGetAll.map( x => x.sourceData.forksCount).reverse();
         const chartData = component.viewModel.mfChart._api.getOption().series[0].data;
         expect(chartData.length).toEqual(forkAmount.length);
         let expected ='';
