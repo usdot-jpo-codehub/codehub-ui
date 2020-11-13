@@ -94,13 +94,13 @@ export class Metrics {
     return new Promise((resolve, reject) => {
       try {
         projects.sort((a, b) => {
-          if (b.sourceData.forks && a.sourceData.forks) {
-            return Number(b.sourceData.forks.length) - Number(a.sourceData.forks.length);
+          if (b.sourceData.forksCount && a.sourceData.forksCount) {
+            return Number(b.sourceData.forksCount) - Number(a.sourceData.forksCount);
           }
-          if (b.sourceData.forks) {
+          if (b.sourceData.forksCount) {
             return 1;
           }
-          if (a.sourceData.forks) {
+          if (a.sourceData.forksCount) {
             return -1;
           }
           return null;
@@ -358,7 +358,7 @@ export class Metrics {
   buildChartForks(projects) {
     const calc = new Promise((resolve, reject) => {
       const forkProjectNames = projects.map(obj => obj.sourceData.name);
-      const forkAmount = projects.map(obj => obj.sourceData.forks.length);
+      const forkAmount = projects.map(obj => obj.sourceData.forksCount);
       const result = { forkProjectNames, forkAmount };
       resolve(result);
     });
