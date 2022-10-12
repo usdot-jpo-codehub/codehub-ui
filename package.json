@@ -28,7 +28,7 @@
     "jquery": "^3.5.1",
     "jquery-tooltip": "^0.2.1",
     "karma-headless-chrome-launcher": "0.0.6",
-    "lighthouse": "^4.3.1",
+    "lighthouse": "^9.6.7",
     "moment": "^2.24.0",
     "popper.js": "^1.14.7",
     "roboto-fontface": "^0.10.0",
